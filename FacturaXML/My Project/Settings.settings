@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="Empresa" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TELEMATIC SOLUCIONS INFORMATIQUES,SL</Value>
+    </Setting>
+    <Setting Name="Direccio" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SANT SEBASTIA 7</Value>
+    </Setting>
+    <Setting Name="CodiPostal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">08800</Value>
+    </Setting>
+    <Setting Name="Provincia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BARCELONA</Value>
+    </Setting>
+    <Setting Name="Pais" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ES</Value>
+    </Setting>
+    <Setting Name="Ciuat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">VILANOVA I LA GELTRU</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
