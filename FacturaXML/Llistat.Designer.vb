@@ -88,8 +88,6 @@ Partial Class Llistat
         '
         Me.CB_JaPresentades.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_JaPresentades.AutoSize = True
-        Me.CB_JaPresentades.Checked = True
-        Me.CB_JaPresentades.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CB_JaPresentades.Location = New System.Drawing.Point(28, 405)
         Me.CB_JaPresentades.Name = "CB_JaPresentades"
         Me.CB_JaPresentades.Size = New System.Drawing.Size(198, 19)
@@ -101,7 +99,7 @@ Partial Class Llistat
         '
         Me.RB_SitioWeb.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_SitioWeb.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_SitioWeb.Location = New System.Drawing.Point(6, 59)
+        Me.RB_SitioWeb.Location = New System.Drawing.Point(6, 74)
         Me.RB_SitioWeb.Name = "RB_SitioWeb"
         Me.RB_SitioWeb.Size = New System.Drawing.Size(174, 25)
         Me.RB_SitioWeb.TabIndex = 6
@@ -112,7 +110,7 @@ Partial Class Llistat
         '
         Me.RB_ComercioElectronico.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_ComercioElectronico.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_ComercioElectronico.Location = New System.Drawing.Point(6, 90)
+        Me.RB_ComercioElectronico.Location = New System.Drawing.Point(6, 105)
         Me.RB_ComercioElectronico.Name = "RB_ComercioElectronico"
         Me.RB_ComercioElectronico.Size = New System.Drawing.Size(174, 25)
         Me.RB_ComercioElectronico.TabIndex = 7
@@ -123,7 +121,7 @@ Partial Class Llistat
         '
         Me.RB_RedesSociales.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_RedesSociales.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_RedesSociales.Location = New System.Drawing.Point(6, 121)
+        Me.RB_RedesSociales.Location = New System.Drawing.Point(6, 136)
         Me.RB_RedesSociales.Name = "RB_RedesSociales"
         Me.RB_RedesSociales.Size = New System.Drawing.Size(174, 25)
         Me.RB_RedesSociales.TabIndex = 8
@@ -168,7 +166,7 @@ Partial Class Llistat
         Me.TB_FacturaElectronica.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_FacturaElectronica.Enabled = False
         Me.TB_FacturaElectronica.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_FacturaElectronica.Location = New System.Drawing.Point(186, 246)
+        Me.TB_FacturaElectronica.Location = New System.Drawing.Point(186, 261)
         Me.TB_FacturaElectronica.Name = "TB_FacturaElectronica"
         Me.TB_FacturaElectronica.Size = New System.Drawing.Size(40, 23)
         Me.TB_FacturaElectronica.TabIndex = 29
@@ -178,7 +176,7 @@ Partial Class Llistat
         '
         Me.RB_FacturaElectronica.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_FacturaElectronica.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_FacturaElectronica.Location = New System.Drawing.Point(6, 245)
+        Me.RB_FacturaElectronica.Location = New System.Drawing.Point(6, 260)
         Me.RB_FacturaElectronica.Name = "RB_FacturaElectronica"
         Me.RB_FacturaElectronica.Size = New System.Drawing.Size(174, 25)
         Me.RB_FacturaElectronica.TabIndex = 28
@@ -190,7 +188,7 @@ Partial Class Llistat
         Me.TB_Ciberseguridad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Ciberseguridad.Enabled = False
         Me.TB_Ciberseguridad.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Ciberseguridad.Location = New System.Drawing.Point(186, 339)
+        Me.TB_Ciberseguridad.Location = New System.Drawing.Point(186, 354)
         Me.TB_Ciberseguridad.Name = "TB_Ciberseguridad"
         Me.TB_Ciberseguridad.Size = New System.Drawing.Size(40, 23)
         Me.TB_Ciberseguridad.TabIndex = 27
@@ -201,7 +199,7 @@ Partial Class Llistat
         Me.TB_ComunicacionesSeguras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_ComunicacionesSeguras.Enabled = False
         Me.TB_ComunicacionesSeguras.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComunicacionesSeguras.Location = New System.Drawing.Point(186, 308)
+        Me.TB_ComunicacionesSeguras.Location = New System.Drawing.Point(186, 323)
         Me.TB_ComunicacionesSeguras.Name = "TB_ComunicacionesSeguras"
         Me.TB_ComunicacionesSeguras.Size = New System.Drawing.Size(40, 23)
         Me.TB_ComunicacionesSeguras.TabIndex = 26
@@ -212,7 +210,7 @@ Partial Class Llistat
         Me.TB_OficinaVirtual.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_OficinaVirtual.Enabled = False
         Me.TB_OficinaVirtual.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_OficinaVirtual.Location = New System.Drawing.Point(186, 277)
+        Me.TB_OficinaVirtual.Location = New System.Drawing.Point(186, 292)
         Me.TB_OficinaVirtual.Name = "TB_OficinaVirtual"
         Me.TB_OficinaVirtual.Size = New System.Drawing.Size(40, 23)
         Me.TB_OficinaVirtual.TabIndex = 25
@@ -222,7 +220,7 @@ Partial Class Llistat
         '
         Me.RB_OficinaVirtual.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_OficinaVirtual.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_OficinaVirtual.Location = New System.Drawing.Point(6, 276)
+        Me.RB_OficinaVirtual.Location = New System.Drawing.Point(6, 291)
         Me.RB_OficinaVirtual.Name = "RB_OficinaVirtual"
         Me.RB_OficinaVirtual.Size = New System.Drawing.Size(174, 25)
         Me.RB_OficinaVirtual.TabIndex = 22
@@ -233,7 +231,7 @@ Partial Class Llistat
         '
         Me.RB_Ciberseguridad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_Ciberseguridad.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Ciberseguridad.Location = New System.Drawing.Point(6, 338)
+        Me.RB_Ciberseguridad.Location = New System.Drawing.Point(6, 353)
         Me.RB_Ciberseguridad.Name = "RB_Ciberseguridad"
         Me.RB_Ciberseguridad.Size = New System.Drawing.Size(174, 25)
         Me.RB_Ciberseguridad.TabIndex = 24
@@ -244,7 +242,7 @@ Partial Class Llistat
         '
         Me.RB_ComunicacionesSeguras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_ComunicacionesSeguras.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_ComunicacionesSeguras.Location = New System.Drawing.Point(6, 307)
+        Me.RB_ComunicacionesSeguras.Location = New System.Drawing.Point(6, 322)
         Me.RB_ComunicacionesSeguras.Name = "RB_ComunicacionesSeguras"
         Me.RB_ComunicacionesSeguras.Size = New System.Drawing.Size(174, 25)
         Me.RB_ComunicacionesSeguras.TabIndex = 23
@@ -256,7 +254,7 @@ Partial Class Llistat
         Me.TB_GestionClientes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_GestionClientes.Enabled = False
         Me.TB_GestionClientes.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_GestionClientes.Location = New System.Drawing.Point(186, 153)
+        Me.TB_GestionClientes.Location = New System.Drawing.Point(186, 168)
         Me.TB_GestionClientes.Name = "TB_GestionClientes"
         Me.TB_GestionClientes.Size = New System.Drawing.Size(40, 23)
         Me.TB_GestionClientes.TabIndex = 21
@@ -266,7 +264,7 @@ Partial Class Llistat
         '
         Me.RB_GestionClientes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_GestionClientes.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_GestionClientes.Location = New System.Drawing.Point(6, 152)
+        Me.RB_GestionClientes.Location = New System.Drawing.Point(6, 167)
         Me.RB_GestionClientes.Name = "RB_GestionClientes"
         Me.RB_GestionClientes.Size = New System.Drawing.Size(174, 25)
         Me.RB_GestionClientes.TabIndex = 20
@@ -278,7 +276,7 @@ Partial Class Llistat
         Me.TB_GestionProcesos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_GestionProcesos.Enabled = False
         Me.TB_GestionProcesos.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_GestionProcesos.Location = New System.Drawing.Point(186, 215)
+        Me.TB_GestionProcesos.Location = New System.Drawing.Point(186, 230)
         Me.TB_GestionProcesos.Name = "TB_GestionProcesos"
         Me.TB_GestionProcesos.Size = New System.Drawing.Size(40, 23)
         Me.TB_GestionProcesos.TabIndex = 19
@@ -289,7 +287,7 @@ Partial Class Llistat
         Me.TB_BusinessInteligence.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_BusinessInteligence.Enabled = False
         Me.TB_BusinessInteligence.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BusinessInteligence.Location = New System.Drawing.Point(186, 184)
+        Me.TB_BusinessInteligence.Location = New System.Drawing.Point(186, 199)
         Me.TB_BusinessInteligence.Name = "TB_BusinessInteligence"
         Me.TB_BusinessInteligence.Size = New System.Drawing.Size(40, 23)
         Me.TB_BusinessInteligence.TabIndex = 18
@@ -299,7 +297,7 @@ Partial Class Llistat
         '
         Me.RB_GestionProcesos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_GestionProcesos.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_GestionProcesos.Location = New System.Drawing.Point(6, 214)
+        Me.RB_GestionProcesos.Location = New System.Drawing.Point(6, 229)
         Me.RB_GestionProcesos.Name = "RB_GestionProcesos"
         Me.RB_GestionProcesos.Size = New System.Drawing.Size(174, 25)
         Me.RB_GestionProcesos.TabIndex = 16
@@ -310,7 +308,7 @@ Partial Class Llistat
         '
         Me.RB_BusinessInteligence.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_BusinessInteligence.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_BusinessInteligence.Location = New System.Drawing.Point(6, 183)
+        Me.RB_BusinessInteligence.Location = New System.Drawing.Point(6, 198)
         Me.RB_BusinessInteligence.Name = "RB_BusinessInteligence"
         Me.RB_BusinessInteligence.Size = New System.Drawing.Size(174, 25)
         Me.RB_BusinessInteligence.TabIndex = 15
@@ -332,12 +330,10 @@ Partial Class Llistat
         '
         Me.RB_Totes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RB_Totes.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Totes.Checked = True
         Me.RB_Totes.Location = New System.Drawing.Point(6, 28)
         Me.RB_Totes.Name = "RB_Totes"
         Me.RB_Totes.Size = New System.Drawing.Size(174, 25)
         Me.RB_Totes.TabIndex = 12
-        Me.RB_Totes.TabStop = True
         Me.RB_Totes.Text = "Totes les solucions"
         Me.RB_Totes.UseVisualStyleBackColor = True
         '
@@ -346,7 +342,7 @@ Partial Class Llistat
         Me.TB_RedesSociales.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_RedesSociales.Enabled = False
         Me.TB_RedesSociales.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_RedesSociales.Location = New System.Drawing.Point(186, 122)
+        Me.TB_RedesSociales.Location = New System.Drawing.Point(186, 137)
         Me.TB_RedesSociales.Name = "TB_RedesSociales"
         Me.TB_RedesSociales.Size = New System.Drawing.Size(40, 23)
         Me.TB_RedesSociales.TabIndex = 11
@@ -357,7 +353,7 @@ Partial Class Llistat
         Me.TB_ComercioElectronico.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_ComercioElectronico.Enabled = False
         Me.TB_ComercioElectronico.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComercioElectronico.Location = New System.Drawing.Point(186, 91)
+        Me.TB_ComercioElectronico.Location = New System.Drawing.Point(186, 106)
         Me.TB_ComercioElectronico.Name = "TB_ComercioElectronico"
         Me.TB_ComercioElectronico.Size = New System.Drawing.Size(40, 23)
         Me.TB_ComercioElectronico.TabIndex = 10
@@ -368,7 +364,7 @@ Partial Class Llistat
         Me.TB_SitioWeb.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_SitioWeb.Enabled = False
         Me.TB_SitioWeb.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_SitioWeb.Location = New System.Drawing.Point(186, 60)
+        Me.TB_SitioWeb.Location = New System.Drawing.Point(186, 75)
         Me.TB_SitioWeb.Name = "TB_SitioWeb"
         Me.TB_SitioWeb.Size = New System.Drawing.Size(40, 23)
         Me.TB_SitioWeb.TabIndex = 9
@@ -387,6 +383,7 @@ Partial Class Llistat
         Me.Name = "Llistat"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Llistat"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_TipusSolucions.ResumeLayout(False)
         Me.GB_TipusSolucions.PerformLayout()

@@ -5,13 +5,71 @@ Public Class Llistat
     Dim DT_Llistat As New DataTable
     Dim MostratActual As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
+
+    Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
+
+        DataLlistat.ClearSelection()
+        DataLlistat.Columns("Id").Visible = False
+        DataLlistat.Columns("DataContracte").Width = 100
+        DataLlistat.Columns("DataContracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("DataVenciment").Width = 100
+        DataLlistat.Columns("DataVenciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Empresa").Width = 300
+        DataLlistat.Columns("Justificat").Width = 100
+        DataLlistat.Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        If MostratActual = 0 Then
+            SitioWeb = 0
+            ComercioElectronico = 0
+            RedesSociales = 0
+            Clientes = 0
+            Business = 0
+            Procesos = 0
+            Factura = 0
+            Oficina = 0
+            Comunicaciones = 0
+            Ciberseguridad = 0
+        End If
+
+        If DataLlistat.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In DataLlistat.Rows
+
+                If Fila.Cells("DataVenciment").Value < Date.Now Then
+
+                    If Fila.Cells("Justificat").Value = True Then
+                        Fila.DefaultCellStyle.BackColor = Color.LightGreen
+                    Else
+                        Fila.DefaultCellStyle.BackColor = Color.Red
+                    End If
+                End If
+
+                If MostratActual = 0 Then
+                    If IsNumeric(Fila.Cells("Id").Value) Then
+                        If Fila.Cells("Id").Value = 1 Then SitioWeb += 1
+                        If Fila.Cells("Id").Value = 2 Then ComercioElectronico += 1
+                        If Fila.Cells("Id").Value = 3 Then RedesSociales += 1
+                        If Fila.Cells("Id").Value = 4 Then Clientes += 1
+                        If Fila.Cells("Id").Value = 5 Then Business += 1
+                        If Fila.Cells("Id").Value = 6 Then Procesos += 1
+                        If Fila.Cells("Id").Value = 7 Then Factura += 1
+                        If Fila.Cells("Id").Value = 8 Then Oficina += 1
+                        If Fila.Cells("Id").Value = 9 Then Comunicaciones += 1
+                        If Fila.Cells("Id").Value = 10 Then Ciberseguridad += 1
+                    End If
+                End If
+            Next
+        End If
+        numeraSolucions()
+    End Sub
+
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
+        CarregaLlistat()
     End Sub
     'Carrega el llistat de solucions de la base de dades
     Public Sub CarregaLlistat(i As Integer)
@@ -117,6 +175,7 @@ Public Class Llistat
                 DT_Llistat.Clear()
                 DA.Fill(DT_Llistat)
                 DataLlistat.DataSource = DT_Llistat
+
             End If
             conexion.Close()
 
@@ -126,61 +185,6 @@ Public Class Llistat
 
     End Sub
 
-
-    Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
-
-        DataLlistat.Columns("Id").Visible = False
-        DataLlistat.Columns("DataContracte").Width = 100
-        DataLlistat.Columns("DataContracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("DataVenciment").Width = 100
-        DataLlistat.Columns("DataVenciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Empresa").Width = 300
-        DataLlistat.Columns("Justificat").Width = 100
-        DataLlistat.Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-        If MostratActual = 0 Then
-            SitioWeb = 0
-            ComercioElectronico = 0
-            RedesSociales = 0
-            Clientes = 0
-            Business = 0
-            Procesos = 0
-            Factura = 0
-            Oficina = 0
-            Comunicaciones = 0
-            Ciberseguridad = 0
-        End If
-
-        If DataLlistat.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In DataLlistat.Rows
-                If Fila.Cells("DataVenciment").Value < Date.Now Then
-                    If Fila.Cells("Justificat").Value = 1 Then
-                        Fila.DefaultCellStyle.BackColor = Color.Red
-                    Else
-                        Fila.DefaultCellStyle.BackColor = Color.LightGreen
-                    End If
-                End If
-
-                If MostratActual = 0 Then
-                    If IsNumeric(Fila.Cells("Id").Value) Then
-                        If Fila.Cells("Id").Value = 1 Then SitioWeb += 1
-                        If Fila.Cells("Id").Value = 2 Then ComercioElectronico += 1
-                        If Fila.Cells("Id").Value = 3 Then RedesSociales += 1
-                        If Fila.Cells("Id").Value = 4 Then Clientes += 1
-                        If Fila.Cells("Id").Value = 5 Then Business += 1
-                        If Fila.Cells("Id").Value = 6 Then Procesos += 1
-                        If Fila.Cells("Id").Value = 7 Then Factura += 1
-                        If Fila.Cells("Id").Value = 8 Then Oficina += 1
-                        If Fila.Cells("Id").Value = 9 Then Comunicaciones += 1
-                        If Fila.Cells("Id").Value = 10 Then Ciberseguridad += 1
-                    End If
-                End If
-            Next
-        End If
-        numeraSolucions()
-
-    End Sub
     Private Sub numeraSolucions()
         If MostratActual = 0 Then TB_totes.Text = DataLlistat.RowCount.ToString
         TB_SitioWeb.Text = SitioWeb.ToString

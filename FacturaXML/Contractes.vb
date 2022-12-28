@@ -74,8 +74,8 @@ Public Class Contractes
             Dim idBorrar As Integer
             idBorrar = row.Cells(0).Value
             Query = "UPDATE Empreses SET 
-                     Nom =" & StringDB(empresaTxt) &
-                     ", Nif=" & StringDB(nifTxt) &
+                     Nom=" & StringDB(empresaTxt) &
+                     ",Nif=" & StringDB(nifTxt) &
                      ",DIreccio=" & StringDB(direccioTxt) &
                      ",CodiPostal=" & StringDB(codiPostalTxt) &
                      ",Ciutat=" & StringDB(ciutatTxt) &
