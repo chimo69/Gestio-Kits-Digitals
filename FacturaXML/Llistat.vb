@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-
+' Esto es una prueba de GitHub
 Public Class Llistat
     Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
     Dim DT_Llistat As New DataTable
