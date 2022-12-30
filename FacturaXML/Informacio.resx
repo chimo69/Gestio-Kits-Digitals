@@ -57,12 +57,79 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="MenuPrincipal.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>59</value>
-  </metadata>
+  <data name="TextBox16.Text" xml:space="preserve">
+    <value>Capturas de pantalla de la herramienta de gestión de contenidos de la página web desarrollada en las que se evidencie la posibilidad de crear y editar contenidos de las distintas páginas que componen el site.</value>
+  </data>
+  <data name="TextBox18.Text" xml:space="preserve">
+    <value>Capturas de pantalla que evidencien el funcionamiento del sitio web desde todos los dispositivos indicados en el formulario de justificación (al menos PC, smartphone y tablet). Estas capturas de pantalla podrán realizarse desde los dispositivos  que se han indicado en el formulario de justificación o mediante el uso de las opciones de emulación de distintos dispositivos que ofrecen los navegadores más comunes.</value>
+  </data>
+  <data name="TextBox4.Text" xml:space="preserve">
+    <value>Capturas de pantalla de la herramienta de gestión de contenidos de la página web desarrollada en las que se evidencie la posibilidad de crear y editar contenidos de las distintas páginas que componen el site.</value>
+  </data>
+  <data name="TextBox6.Text" xml:space="preserve">
+    <value>Capturas de pantalla que evidencien el funcionamiento del sitio web desde todos los dispositivos indicados en el formulario de justificación (al menos PC, smartphone y tablet). Estas capturas de pantalla podrán realizarse desde los dispositivos  que se han indicado en el formulario de justificación o mediante el uso de las opciones de emulación de distintos dispositivos que ofrecen los navegadores más comunes.</value>
+  </data>
+  <data name="TextBox30.Text" xml:space="preserve">
+    <value>Se deberán detallar las Redes Sociales gestionadas, así como la monitorización y el análisis realizado de cada una de ellas para su optimización. Deberá incluir, así mismo, las publicaciones realizadas semanalmente y el rendimiento y las estadísticas que se han obtenido de ellas.</value>
+  </data>
+  <data name="TextBox28.Text" xml:space="preserve">
+    <value>la estrategia definida deberá encontrarse alineada con los intereses del Beneficiario y estar orientada a la captación de nuevos clientes y al mantenimiento de los existentes. Así mismo, se deberán indicar los contenidos que se pretenden implementar con esta estrategia.</value>
+  </data>
+  <data name="TextBox32.Text" xml:space="preserve">
+    <value>Capturas de pantalla que evidencien la disponibilidad de la funcionalidad de una herramienta de reporting que incluya las siguientes características:
+
+o El seguimiento mediante indicadores con diferentes niveles de agregación de información en función del perfil del usuario de la solución.
+o La generación de informes para el seguimiento y monitorización de la actividad comercial, contemplando ratios de eficiencia, estado de fases, pipeline y otros atributos medibles (como productos, cotizaciones, etc.), y según los canales, perfiles, roles y/o fases comerciales. Estos informes podrán mostrar, al menos, datos mensuales, acumulados y/o comparativos entre diferentes ejercicios comerciales.
+</value>
+  </data>
+  <data name="TextBox42.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se muestre la relación de usuarios con acceso a la solución o el número máximo de usuarios permitidos, coincidentes con lo indicado en el formulario de justificación (mínimo 3 usuarios).</value>
+  </data>
+  <data name="TextBox54.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se evidencie la disponibilidad de la funcionalidad de integración de bases de datos incluida en la solución, así como el catálogo de bases y las posibilidades de conexión a fuentes de datos de origen y destino.</value>
+  </data>
+  <data name="TextBox56.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se muestre la relación de usuarios con acceso a la solución o el número máximo de usuarios permitidos, coincidentes con lo indicado en el formulario de justificación (mínimo 3 usuarios).</value>
+  </data>
+  <data name="TextBox46.Text" xml:space="preserve">
+    <value>Capturas de pantalla de la data sheet u hoja del producto en la que se indique que la solución es actualizable o bien, capturas de pantalla en las que se evidencie la versión del producto instalada con referencia a la fecha de dicha versión y/o el historial de versiones.</value>
+  </data>
+  <data name="TextBox60.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se evidencie la disponibilidad de la funcionalidad de integración de la solución, así como las opciones de integración que ofrece, las conexiones con fuentes de datos de origen y destino y el menú de conectores disponibles.</value>
+  </data>
+  <data name="TextBox64.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se evidencie la disponibilidad de la funcionalidad de gestión de los procesos y flujos de trabajo de la Pyme que se han digitalizado conforme a lo indicado en el formulario de justificación. Se adjuntarán, por tanto, capturas de pantalla por cada proceso o flujo digitalizado.</value>
+  </data>
+  <data name="TextBox66.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se muestre la relación de usuarios con acceso a la solución o el número máximo de usuarios permitidos, coincidentes con lo indicado en el formulario de justificación (mínimo 10 usuarios).</value>
+  </data>
+  <data name="TextBox84.Text" xml:space="preserve">
+    <value>Capturas de pantalla del sistema de control del vencimiento y/ o del apartado de parametrización del vencimiento de facturas o elemento de selección de vencimiento en la generación de facturas concretas. Podrá evidenciarse, así mismo, a través de capturas de pantalla de las características del producto donde se indique la inclusión de un sistema de control de vencimiento de facturas en la solución suministrada.</value>
+  </data>
+  <data name="TextBox82.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se muestren, por ejemplo, la funcionalidad de integración las opciones de integración que ofrece, las conexiones con fuentes de datos de origen y destino y el menú de conectores.</value>
+  </data>
+  <data name="TextBox80.Text" xml:space="preserve">
+    <value>Capturas de pantalla que evidencien la capacidad de almacenamiento de la solución y/o capturas de pantalla de las características del producto donde se indique la capacidad de almacenamiento de la solución.</value>
+  </data>
+  <data name="TextBox70.Text" xml:space="preserve">
+    <value>Capturas de pantalla del apartado de administración de la solución donde se establezca la periodicidad de las copias de seguridad y/o capturas de pantalla de las características del producto donde se indique que existe una copia de seguridad periódica con, al menos, periodicidad diaria.</value>
+  </data>
+  <data name="TextBox72.Text" xml:space="preserve">
+    <value>Capturas de pantalla del apartado de edición de facturas de la solución o similar. Podrá evidenciarse, así mismo, a través de capturas de pantalla de un ejemplo de factura emitida y, adicional y opcionalmente, capturas de pantalla de las características del producto donde se indique la posibilidad de personalizar facturas.</value>
+  </data>
+  <data name="TextBox78.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se muestre la relación de usuarios con acceso a la solución o el número máximo de usuarios permitidos, coincidentes con lo indicado en el formulario de justificación (mínimo 3 usuarios).</value>
+  </data>
+  <data name="TextBox90.Text" xml:space="preserve">
+    <value>Capturas de pantalla en las que se evidencie que la solución permite una gestión ágil y eficiente de los equipos para el desarrollo de proyectos de forma colaborativa, compartir recursos y/o conocimientos, dotar de herramientas para la interacción de los equipos en los procesos de ideación o resolución de problemas, así como la configuración y personalización de flujos de trabajo. Deberán evidenciarse cada una de las funcionalidades.</value>
+  </data>
+  <data name="TextBox124.Text" xml:space="preserve">
+    <value>Capturas de pantalla de las opciones de configuración / parametrización de los distintos productos suministrados (consola centralizada o en cada instalación individual) en las que se evidencien todas las coberturas exigidas para la solución: antimalware, antispyware, correo seguro, navegación segura, análisis y detección de amenazas, monitorización de la red. Podrán incluirse capturas de pantalla de la data sheet u hoja del producto en las que figuren estas funcionalidades.</value>
+  </data>
+  <data name="TextBox128.Text" xml:space="preserve">
+    <value>Capturas de pantalla que evidencien el número de dispositivos suministrados conforme a lo indicado en el formulario de justificación. Podrán aportarse capturas de las consolas de control donde figuren los dispositivos en los que se encuentran instalados los productos o de ventanas en las que aparezca el nombre de cada equipo y el producto instalado.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

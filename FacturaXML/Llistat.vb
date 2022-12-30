@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-' Esto es una prueba de GitHub
+
 Public Class Llistat
     Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
     Dim DT_Llistat As New DataTable
@@ -35,6 +35,7 @@ Public Class Llistat
         If DataLlistat.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In DataLlistat.Rows
 
+
                 If Fila.Cells("DataVenciment").Value < Date.Now Then
 
                     If Fila.Cells("Justificat").Value = True Then
@@ -46,16 +47,46 @@ Public Class Llistat
 
                 If MostratActual = 0 Then
                     If IsNumeric(Fila.Cells("Id").Value) Then
-                        If Fila.Cells("Id").Value = 1 Then SitioWeb += 1
-                        If Fila.Cells("Id").Value = 2 Then ComercioElectronico += 1
-                        If Fila.Cells("Id").Value = 3 Then RedesSociales += 1
-                        If Fila.Cells("Id").Value = 4 Then Clientes += 1
-                        If Fila.Cells("Id").Value = 5 Then Business += 1
-                        If Fila.Cells("Id").Value = 6 Then Procesos += 1
-                        If Fila.Cells("Id").Value = 7 Then Factura += 1
-                        If Fila.Cells("Id").Value = 8 Then Oficina += 1
-                        If Fila.Cells("Id").Value = 9 Then Comunicaciones += 1
-                        If Fila.Cells("Id").Value = 10 Then Ciberseguridad += 1
+                        If Fila.Cells("Id").Value = 1 Then
+                            SitioWeb += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightGray
+                        End If
+                        If Fila.Cells("Id").Value = 2 Then
+                            ComercioElectronico += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightSlateGray
+                        End If
+                        If Fila.Cells("Id").Value = 3 Then
+                            RedesSociales += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.OrangeRed
+                        End If
+                        If Fila.Cells("Id").Value = 4 Then
+                            Clientes += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.Orange
+                        End If
+                        If Fila.Cells("Id").Value = 5 Then
+                            Business += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightYellow
+                        End If
+                        If Fila.Cells("Id").Value = 6 Then
+                            Procesos += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.Aquamarine
+                        End If
+                        If Fila.Cells("Id").Value = 7 Then
+                            Factura += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightBlue
+                        End If
+                        If Fila.Cells("Id").Value = 8 Then
+                            Oficina += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.BlueViolet
+                        End If
+                        If Fila.Cells("Id").Value = 9 Then
+                            Comunicaciones += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightPink
+                        End If
+                        If Fila.Cells("Id").Value = 10 Then
+                            Ciberseguridad += 1
+                            Fila.Cells("Solucio").Style.BackColor = Color.LightSalmon
+                        End If
                     End If
                 End If
             Next

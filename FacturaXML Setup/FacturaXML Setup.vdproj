@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_02518BB4D57B4BC995BC0C239B339477"
+        "MsmKey" = "8:_0EF26AA473B2409C823775FEE7732B5C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_0EF26AA473B2409C823775FEE7732B5C"
+        "MsmKey" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -50,6 +50,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 y x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.SqlServer.SqlLocalDB.15.0"
+                    {
+                    "Name" = "8:SQL Server 2019 Express LocalDB"
+                    "ProductCode" = "8:Microsoft.SqlServer.SqlLocalDB.15.0"
+                    }
+                }
             }
         }
         "Release"
@@ -74,6 +87,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -183,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FacturaXML Setup"
         "ProductCode" = "8:{B68CEE38-29EE-4662-9985-B41704D2BBC6}"
-        "PackageCode" = "8:{21572FB9-06C1-4854-AA34-5085BE539FC2}"
+        "PackageCode" = "8:{840964F3-D89E-4DDA-AEA7-9BF7E8B4E459}"
         "UpgradeCode" = "8:{9A946EC5-1B27-4664-9217-BC33B3DA64BD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -303,32 +324,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4BCBB12ECBD148A6BC73E359C94354BC"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2A0AE0CF633445A697C7AD48F586F802"
             {
-            "Name" = "8:FacturaXML"
+            "Name" = "8:Gestio Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_02518BB4D57B4BC995BC0C239B339477"
-            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
-            "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E1A4D6B966D04011BD3B7529017BD852"
-            {
-            "Name" = "8:FacturaXML"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_02518BB4D57B4BC995BC0C239B339477"
+            "Target" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
             "Folder" = "8:_210FB9F9DC5F41099F13CC942D7189E6"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E83C001723274125AE516DDEB58CA45B"
+            {
+            "Name" = "8:Gestio Kits Digitals"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
+            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
+            "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -730,7 +751,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_02518BB4D57B4BC995BC0C239B339477"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_548413C25B6A45EE842D7BBFF04D33BE"
             {
             "SourcePath" = "8:..\\FacturaXML\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"

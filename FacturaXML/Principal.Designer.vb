@@ -23,7 +23,6 @@ Partial Class Principal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
-        Me.Btn_Factures = New System.Windows.Forms.Button()
         Me.Btn_Contractes = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
@@ -35,6 +34,7 @@ Partial Class Principal
         Me.KitsDigitalsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LlistatTotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GestióDeKitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InformacióDeSolucionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FacturesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DadesEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,33 +42,21 @@ Partial Class Principal
         Me.SobreGestioDeKitsDigitalsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Btn_Factures = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Btn_Factures
-        '
-        Me.Btn_Factures.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_facturas
-        Me.Btn_Factures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Btn_Factures.FlatAppearance.BorderSize = 0
-        Me.Btn_Factures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_Factures.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Btn_Factures.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Btn_Factures.Location = New System.Drawing.Point(115, 216)
-        Me.Btn_Factures.Name = "Btn_Factures"
-        Me.Btn_Factures.Size = New System.Drawing.Size(132, 124)
-        Me.Btn_Factures.TabIndex = 0
-        Me.Btn_Factures.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Btn_Factures.UseVisualStyleBackColor = True
-        '
         'Btn_Contractes
         '
-        Me.Btn_Contractes.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_empresas
+        Me.Btn_Contractes.BackgroundImage = Global.FacturaXML.My.Resources.Resources.Gestio
         Me.Btn_Contractes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Btn_Contractes.FlatAppearance.BorderSize = 0
         Me.Btn_Contractes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_Contractes.Location = New System.Drawing.Point(278, 216)
+        Me.Btn_Contractes.Location = New System.Drawing.Point(225, 216)
         Me.Btn_Contractes.Name = "Btn_Contractes"
         Me.Btn_Contractes.Size = New System.Drawing.Size(130, 124)
         Me.Btn_Contractes.TabIndex = 1
@@ -76,7 +64,7 @@ Partial Class Principal
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic_2
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(39, 52)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(222, 73)
@@ -86,8 +74,8 @@ Partial Class Principal
         '
         'PictureBox3
         '
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(296, 52)
+        Me.PictureBox3.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
+        Me.PictureBox3.Location = New System.Drawing.Point(318, 52)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(399, 73)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -98,7 +86,7 @@ Partial Class Principal
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(137, 343)
+        Me.Label1.Location = New System.Drawing.Point(65, 343)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(81, 25)
         Me.Label1.TabIndex = 20
@@ -108,18 +96,19 @@ Partial Class Principal
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(256, 343)
+        Me.Label2.Location = New System.Drawing.Point(232, 343)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(175, 25)
+        Me.Label2.Size = New System.Drawing.Size(117, 50)
         Me.Label2.TabIndex = 21
-        Me.Label2.Text = "Gestió de solucions"
+        Me.Label2.Text = "Gestió" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "de solucions"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MenuPrincipal
         '
         Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArxiuToolStripMenuItem, Me.KitsDigitalsToolStripMenuItem, Me.FacturesToolStripMenuItem, Me.AjudaToolStripMenuItem})
         Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(727, 24)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(769, 24)
         Me.MenuPrincipal.TabIndex = 22
         Me.MenuPrincipal.Text = "MenuStrip1"
         '
@@ -132,29 +121,39 @@ Partial Class Principal
         '
         'SortirToolStripMenuItem
         '
-        Me.SortirToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_salir
+        Me.SortirToolStripMenuItem.Image = CType(resources.GetObject("SortirToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SortirToolStripMenuItem.Name = "SortirToolStripMenuItem"
         Me.SortirToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
         Me.SortirToolStripMenuItem.Text = "Sortir"
         '
         'KitsDigitalsToolStripMenuItem
         '
-        Me.KitsDigitalsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LlistatTotalToolStripMenuItem, Me.GestióDeKitsToolStripMenuItem})
+        Me.KitsDigitalsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LlistatTotalToolStripMenuItem, Me.GestióDeKitsToolStripMenuItem, Me.InformacióDeSolucionsToolStripMenuItem})
         Me.KitsDigitalsToolStripMenuItem.Name = "KitsDigitalsToolStripMenuItem"
         Me.KitsDigitalsToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
         Me.KitsDigitalsToolStripMenuItem.Text = "Kits Digitals"
         '
         'LlistatTotalToolStripMenuItem
         '
+        Me.LlistatTotalToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.LlistatTotalToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Llistat
         Me.LlistatTotalToolStripMenuItem.Name = "LlistatTotalToolStripMenuItem"
-        Me.LlistatTotalToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LlistatTotalToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.LlistatTotalToolStripMenuItem.Text = "Llistat total"
         '
         'GestióDeKitsToolStripMenuItem
         '
+        Me.GestióDeKitsToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Gestio
         Me.GestióDeKitsToolStripMenuItem.Name = "GestióDeKitsToolStripMenuItem"
-        Me.GestióDeKitsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GestióDeKitsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.GestióDeKitsToolStripMenuItem.Text = "Gestió de Solucions"
+        '
+        'InformacióDeSolucionsToolStripMenuItem
+        '
+        Me.InformacióDeSolucionsToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Info
+        Me.InformacióDeSolucionsToolStripMenuItem.Name = "InformacióDeSolucionsToolStripMenuItem"
+        Me.InformacióDeSolucionsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.InformacióDeSolucionsToolStripMenuItem.Text = "Informació de Solucions"
         '
         'FacturesToolStripMenuItem
         '
@@ -165,14 +164,16 @@ Partial Class Principal
         '
         'CrearFacturaToolStripMenuItem
         '
+        Me.CrearFacturaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Factures
         Me.CrearFacturaToolStripMenuItem.Name = "CrearFacturaToolStripMenuItem"
-        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.CrearFacturaToolStripMenuItem.Text = "Crear factura"
         '
         'DadesEmpresaToolStripMenuItem
         '
+        Me.DadesEmpresaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
         Me.DadesEmpresaToolStripMenuItem.Name = "DadesEmpresaToolStripMenuItem"
-        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.DadesEmpresaToolStripMenuItem.Text = "Dades empresa"
         '
         'AjudaToolStripMenuItem
@@ -184,7 +185,7 @@ Partial Class Principal
         '
         'SobreGestioDeKitsDigitalsToolStripMenuItem
         '
-        Me.SobreGestioDeKitsDigitalsToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ayuda
+        Me.SobreGestioDeKitsDigitalsToolStripMenuItem.Image = CType(resources.GetObject("SobreGestioDeKitsDigitalsToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SobreGestioDeKitsDigitalsToolStripMenuItem.Name = "SobreGestioDeKitsDigitalsToolStripMenuItem"
         Me.SobreGestioDeKitsDigitalsToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.SobreGestioDeKitsDigitalsToolStripMenuItem.Text = "Sobre Gestió de Kits Digitals"
@@ -193,30 +194,71 @@ Partial Class Principal
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(443, 343)
+        Me.Label3.Location = New System.Drawing.Point(416, 343)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(171, 25)
+        Me.Label3.Size = New System.Drawing.Size(117, 50)
         Me.Label3.TabIndex = 24
-        Me.Label3.Text = "Llistat de solucions"
+        Me.Label3.Text = "Llistat" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "de solucions"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button1
         '
-        Me.Button1.BackgroundImage = Global.FacturaXML.My.Resources.Resources.tarea
+        Me.Button1.BackgroundImage = Global.FacturaXML.My.Resources.Resources.Llistat
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(463, 216)
+        Me.Button1.Location = New System.Drawing.Point(409, 216)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(130, 124)
         Me.Button1.TabIndex = 23
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Btn_Factures
+        '
+        Me.Btn_Factures.BackgroundImage = Global.FacturaXML.My.Resources.Resources.Factures
+        Me.Btn_Factures.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Btn_Factures.FlatAppearance.BorderSize = 0
+        Me.Btn_Factures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Factures.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Btn_Factures.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Btn_Factures.Location = New System.Drawing.Point(39, 216)
+        Me.Btn_Factures.Name = "Btn_Factures"
+        Me.Btn_Factures.Size = New System.Drawing.Size(132, 124)
+        Me.Btn_Factures.TabIndex = 0
+        Me.Btn_Factures.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Btn_Factures.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Location = New System.Drawing.Point(600, 343)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(117, 50)
+        Me.Label4.TabIndex = 26
+        Me.Label4.Text = "Informació" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "de solucions"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Button2
+        '
+        Me.Button2.BackgroundImage = Global.FacturaXML.My.Resources.Resources.Info
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(593, 216)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(130, 124)
+        Me.Button2.TabIndex = 25
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(727, 408)
+        Me.ClientSize = New System.Drawing.Size(769, 450)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
@@ -241,8 +283,6 @@ Partial Class Principal
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Btn_Factures As Button
     Friend WithEvents Btn_Contractes As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
@@ -261,4 +301,8 @@ Partial Class Principal
     Friend WithEvents DadesEmpresaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label3 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents Btn_Factures As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Button2 As Button
+    Friend WithEvents InformacióDeSolucionsToolStripMenuItem As ToolStripMenuItem
 End Class

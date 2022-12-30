@@ -381,7 +381,6 @@ Partial Class Factures
         Me.FacturaAcord.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.FacturaAcord.Location = New System.Drawing.Point(275, 114)
         Me.FacturaAcord.Name = "FacturaAcord"
-        Me.FacturaAcord.PlaceholderText = "KD/0000004727"
         Me.FacturaAcord.Size = New System.Drawing.Size(92, 23)
         Me.FacturaAcord.TabIndex = 2
         Me.FacturaAcord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -491,7 +490,7 @@ Partial Class Factures
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
         Me.PictureBox1.Location = New System.Drawing.Point(25, 37)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(388, 64)
@@ -510,7 +509,7 @@ Partial Class Factures
         '
         'PictureBox2
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
         Me.PictureBox2.Location = New System.Drawing.Point(461, 37)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(383, 64)

@@ -383,7 +383,6 @@ Partial Class Llistat
         Me.Name = "Llistat"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Llistat"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_TipusSolucions.ResumeLayout(False)
         Me.GB_TipusSolucions.PerformLayout()

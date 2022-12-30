@@ -356,6 +356,10 @@ Public Class Contractes
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
         afegirSolucio()
     End Sub
+
+    Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
+
+    End Sub
     'Esborra la solució seleccionada
     Private Sub esborrarSolucio(id As Integer)
 

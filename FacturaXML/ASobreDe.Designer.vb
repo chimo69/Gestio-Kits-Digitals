@@ -30,7 +30,7 @@ Partial Class ASobreDe
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic_2
+        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
         Me.PictureBox1.Location = New System.Drawing.Point(10, 24)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(300, 137)

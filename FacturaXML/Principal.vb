@@ -1,5 +1,16 @@
-﻿Public Class Principal
-    Private Sub Btn_Factures_Click(sender As Object, e As EventArgs) Handles Btn_factures.Click
+﻿Imports System.Data.SqlClient
+
+Public Class Principal
+
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+    End Sub
+    Private Sub Btn_Factures_Click(sender As Object, e As EventArgs) Handles Btn_Factures.Click
 
         Dim Factures As New Factures
         Factures.Show()
@@ -44,5 +55,15 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Llistat As New Llistat
         Llistat.Show()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim Informacio As New Informacio
+        Informacio.Show()
+    End Sub
+
+    Private Sub InformacióDeSolucionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InformacióDeSolucionsToolStripMenuItem.Click
+        Dim Informacio As New Informacio
+        Informacio.Show()
     End Sub
 End Class
