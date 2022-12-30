@@ -200,7 +200,9 @@ Public Class Contractes
             CB_TipusSolucio.DisplayMember = "Nom"
             CB_TipusSolucio.ValueMember = "Id"
             CB_TipusSolucio.Text = "Selecciona un tipus de solució"
-            If DT_Solucions.Rows.Count = 0 Then TitolSolucio.Text = "Sense solucions"
+            If DT_Solucions.Rows.Count = 0 Then
+                TitolSolucio.Text = "Sense solucions"
+            End If
         End If
         conexion.Close()
     End Sub
@@ -233,11 +235,13 @@ Public Class Contractes
             Btn_EsborrarSolucio.Enabled = True
             TitolSolucio.Text = row.Cells(1).Value
             CheckEstaJustificat.Checked = row.Cells(5).Value
+            Btn_EstatJustificacio.Enabled = True
         Else
             EsborrarCampsSolucio()
             Btn_AfegirSolucio.Text = "Afegir solució"
             Btn_EsborrarSolucio.Enabled = False
             TitolSolucio.Text = "Sense solucions"
+            Btn_EstatJustificacio.Enabled = False
         End If
 
     End Sub
@@ -358,7 +362,8 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
-
+        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada)
+        EstatJustificacio.Show()
     End Sub
     'Esborra la solució seleccionada
     Private Sub esborrarSolucio(id As Integer)

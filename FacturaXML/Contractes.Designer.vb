@@ -501,7 +501,7 @@ Partial Class Contractes
         '
         'Btn_EstatJustificacio
         '
-        Me.Btn_EstatJustificacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EstatJustificacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_EstatJustificacio.Location = New System.Drawing.Point(1441, 321)
         Me.Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
         Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(146, 63)
