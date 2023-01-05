@@ -9,13 +9,21 @@ Public Class Llistat
     Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
 
         DataLlistat.ClearSelection()
+        DataLlistat.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
         DataLlistat.Columns("Id").Visible = False
-        DataLlistat.Columns("DataContracte").Width = 100
-        DataLlistat.Columns("DataContracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("DataVenciment").Width = 100
-        DataLlistat.Columns("DataVenciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Data contracte").Width = 100
+        DataLlistat.Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Data contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Data venciment").Width = 100
+        DataLlistat.Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Data venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Empresa").Width = 300
-        DataLlistat.Columns("Justificat").Width = 100
+        DataLlistat.Columns("Dies").Width = 100
+        DataLlistat.Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Estat justificació").Width = 100
+        DataLlistat.Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Estat justificació").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
 
@@ -35,57 +43,51 @@ Public Class Llistat
         If DataLlistat.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In DataLlistat.Rows
 
-
-                If Fila.Cells("DataVenciment").Value < Date.Now Then
-
-                    If Fila.Cells("Justificat").Value = True Then
-                        Fila.DefaultCellStyle.BackColor = Color.LightGreen
-                    Else
-                        Fila.DefaultCellStyle.BackColor = Color.Red
-                    End If
-                End If
+                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
+                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
+                If Fila.Cells("Justificat").Value = True Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
 
                 If MostratActual = 0 Then
                     If IsNumeric(Fila.Cells("Id").Value) Then
                         If Fila.Cells("Id").Value = 1 Then
                             SitioWeb += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightGray
+
                         End If
                         If Fila.Cells("Id").Value = 2 Then
                             ComercioElectronico += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightSlateGray
+
                         End If
                         If Fila.Cells("Id").Value = 3 Then
                             RedesSociales += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.OrangeRed
+
                         End If
                         If Fila.Cells("Id").Value = 4 Then
                             Clientes += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.Orange
+
                         End If
                         If Fila.Cells("Id").Value = 5 Then
                             Business += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightYellow
+
                         End If
                         If Fila.Cells("Id").Value = 6 Then
                             Procesos += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.Aquamarine
+
                         End If
                         If Fila.Cells("Id").Value = 7 Then
                             Factura += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightBlue
+
                         End If
                         If Fila.Cells("Id").Value = 8 Then
                             Oficina += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.BlueViolet
+
                         End If
                         If Fila.Cells("Id").Value = 9 Then
                             Comunicaciones += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightPink
+
                         End If
                         If Fila.Cells("Id").Value = 10 Then
                             Ciberseguridad += 1
-                            Fila.Cells("Solucio").Style.BackColor = Color.LightSalmon
+
                         End If
                     End If
                 End If
@@ -122,12 +124,15 @@ Public Class Llistat
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
-                          Solucions.DataContracte,
-                          Solucions.DataVenciment,
-                          Solucions.Justificat
+                          Solucions.DataContracte AS 'Data contracte',
+                          Solucions.DataVenciment AS 'Data venciment',
+                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                          Justificacions.Percentatge AS 'Estat justificació',
+                          Solucions.Justificat                          
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
+                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio 
                           WHERE Solucions.Justificat=0 AND Solucions.idSolucio=" & i & " 
                           ORDER BY Solucions.DataVenciment ASC"
 
@@ -136,12 +141,15 @@ Public Class Llistat
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
-                          Solucions.DataContracte,
-                          Solucions.DataVenciment,
+                          Solucions.DataContracte AS 'Data contracte',
+                          Solucions.DataVenciment AS 'Data venciment',
+                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies, 
+                          Justificacions.Percentatge AS 'Estat justificació',
                           Solucions.Justificat
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
+                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
                           WHERE Solucions.idSolucio=" & i & "
                           ORDER BY Solucions.DataVenciment ASC"
                 End If
@@ -178,12 +186,15 @@ Public Class Llistat
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
-                          Solucions.DataContracte,
-                          Solucions.DataVenciment,
+                          Solucions.DataContracte AS 'Data contracte',
+                          Solucions.DataVenciment AS 'Data venciment',
+                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,                           
+                          Justificacions.percentatge AS 'Estat justificació',                          
                           Solucions.Justificat
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
+                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
                           WHERE Solucions.Justificat=0 
                           ORDER BY Solucions.DataVenciment ASC"
                 Else
@@ -191,12 +202,15 @@ Public Class Llistat
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
-                          Solucions.DataContracte,
-                          Solucions.DataVenciment,
+                          Solucions.DataContracte AS 'Data contracte',
+                          Solucions.DataVenciment AS 'Data venciment',
+                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies, 
+                          Justificacions.percentatge AS 'Estat justificació',
                           Solucions.Justificat
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id                          
+                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
                           ORDER BY Solucions.DataVenciment ASC"
                 End If
 

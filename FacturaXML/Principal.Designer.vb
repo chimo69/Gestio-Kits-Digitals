@@ -128,7 +128,7 @@ Partial Class Principal
         '
         'KitsDigitalsToolStripMenuItem
         '
-        Me.KitsDigitalsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LlistatTotalToolStripMenuItem, Me.GestióDeKitsToolStripMenuItem, Me.InformacióDeSolucionsToolStripMenuItem})
+        Me.KitsDigitalsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GestióDeKitsToolStripMenuItem, Me.LlistatTotalToolStripMenuItem, Me.InformacióDeSolucionsToolStripMenuItem})
         Me.KitsDigitalsToolStripMenuItem.Name = "KitsDigitalsToolStripMenuItem"
         Me.KitsDigitalsToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
         Me.KitsDigitalsToolStripMenuItem.Text = "Kits Digitals"

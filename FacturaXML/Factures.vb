@@ -43,6 +43,7 @@ Public Class Factures
         Dim totalString, solucioString, ivaString, subvencioString, dataInici, dataFi As String
         Dim totalDecimal, solucioDecimal, IvaDecimal, SubvencioDecimal As Decimal
 
+        If FacturaImportSubvencionat.Text = "" Then FacturaImportSubvencionat.Text = 0
         If (FacturaImportSolucio.Text <> "") Then
             totalDecimal = FacturaImportTotal.Text
             solucioDecimal = FacturaImportSolucio.Text
@@ -374,6 +375,7 @@ Public Class Factures
         Dim row As DataRowView = DirectCast(CB_Solucions.SelectedItem, DataRowView)
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
+        FacturaImportSolucio.Text = row.Item("TotalSolucio")
     End Sub
 
     Private Sub CarregaSolucions(id As Integer)
@@ -386,7 +388,16 @@ Public Class Factures
 
             If conexion.State = ConnectionState.Open Then
                 DT_Solucions.Clear()
-                Dim DA_Solucions As New SqlDataAdapter("SELECT Solucions.idSolucio, Solucions.IdEmpresa, TipusSolucions.Nom, Solucions.Contracte FROM Solucions INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio WHERE idEmpresa=" & id, conexion)
+                Dim Sql As String = "SELECT Solucions.idSolucio,
+                                            Solucions.IdEmpresa,
+                                            TipusSolucions.Nom,
+                                            Solucions.Contracte,
+                                            Justificacions.TotalSolucio
+                                     FROM Solucions
+                                     INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                     INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
+                                     WHERE idEmpresa=" & id
+                Dim DA_Solucions As New SqlDataAdapter(Sql, conexion)
                 DA_Solucions.Fill(DT_Solucions)
                 CB_Solucions.DataSource = DT_Solucions
                 CB_Solucions.DisplayMember = "Nom"

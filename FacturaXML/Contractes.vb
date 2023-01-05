@@ -144,8 +144,8 @@ Public Class Contractes
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_SelectionChanged(sender As Object, e As EventArgs) Handles DataEmpreses.SelectionChanged
 
-        If DataEmpreses.RowCount > 0 Then
-            Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
+        If DataEmpreses.SelectedRows.Count > 0 Then
+            Dim index As Integer = DataEmpreses.CurrentRow.Index
             Dim row As DataGridViewRow = DataEmpreses.Rows(index)
 
             TitolEmpresa.Text = row.Cells(1).Value
@@ -156,22 +156,24 @@ Public Class Contractes
             Ciutat.Text = row.Cells(5).Value
             Provincia.Text = row.Cells(6).Value
             Pais.Text = row.Cells(7).Value
-
             Btn_afegir.Text = "Modificar empresa"
             empresaSeleccionada = True
             idEmpresaSeleccionada = row.Cells(0).Value
             OmpleSolucions(idEmpresaSeleccionada)
-            If DataSolucions.RowCount > 0 Then
-                Btn_AfegirSolucio.Text = "Modificar solució"
-            Else
-                Btn_AfegirSolucio.Text = "Afegir solució"
-            End If
+            EstaLaSolucioSeleccionada(False)
+            'If DataSolucions.RowCount > 0 Then
+            '    Btn_AfegirSolucio.Text = "Modificar solució"
+            'Else
+            '    Btn_AfegirSolucio.Text = "Afegir solució"
+            'End If
         End If
 
     End Sub
 
     Private Sub btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
-
+        esborraCampsEmpresa()
+    End Sub
+    Private Sub EsborraCampsEmpresa()
         DataEmpreses.ClearSelection()
         Empresa.Clear()
         Nif.Clear()
@@ -184,7 +186,8 @@ Public Class Contractes
         Btn_afegir.Text = "Afegir empresa"
         TitolEmpresa.Clear()
         empresaSeleccionada = False
-
+        DataSolucions.DataSource = ""
+        EstaLaSolucioSeleccionada(False)
     End Sub
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -200,9 +203,10 @@ Public Class Contractes
             CB_TipusSolucio.DisplayMember = "Nom"
             CB_TipusSolucio.ValueMember = "Id"
             CB_TipusSolucio.Text = "Selecciona un tipus de solució"
-            If DT_Solucions.Rows.Count = 0 Then
-                TitolSolucio.Text = "Sense solucions"
-            End If
+            'If DT_Solucions.Rows.Count = 0 Then
+            '    TitolSolucio.Text = "Sense solucions"
+            '    Btn_AfegirSolucio.Enabled = True
+            'End If
         End If
         conexion.Close()
     End Sub
@@ -216,32 +220,27 @@ Public Class Contractes
     'Omple els camps amb els valors de la solució seleccionada
     Private Sub DataSolucions_SelectionChanged(sender As Object, e As EventArgs) Handles DataSolucions.SelectionChanged
 
-        If DataSolucions.RowCount > 0 Then
+        If DataSolucions.SelectedRows.Count > 0 Then
 
-            Btn_AfegirSolucio.Enabled = True
-            Btn_EsborrarSeleccioSolucio.Enabled = True
-            Dim index As Integer = DataSolucions.CurrentCell.RowIndex
+            Dim index As Integer = DataSolucions.CurrentRow.Index
             Dim row As DataGridViewRow = DataSolucions.Rows(index)
             Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
 
+            EstaLaSolucioSeleccionada(True)
             CB_TipusSolucio.Text = row.Cells(1).Value
             NoAcord.Text = row.Cells(2).Value
             DataContracte.Text = Format(row.Cells(3).Value, "Short Date")
             DataVenciment.Text = Format(row.Cells(4).Value, "Short Date")
-            DiesCaducitat.Text = dies.ToString
+            DiesCaducitat.Text = row.Cells("Dies").Value
             solucioSeleccionada = True
             idSolucioSeleccionada = row.Cells(0).Value
-            Btn_AfegirSolucio.Text = "Modificar solució"
-            Btn_EsborrarSolucio.Enabled = True
             TitolSolucio.Text = row.Cells(1).Value
             CheckEstaJustificat.Checked = row.Cells(5).Value
-            Btn_EstatJustificacio.Enabled = True
+            ProgressBar1.Value = row.Cells("%").Value
+
         Else
             EsborrarCampsSolucio()
-            Btn_AfegirSolucio.Text = "Afegir solució"
-            Btn_EsborrarSolucio.Enabled = False
-            TitolSolucio.Text = "Sense solucions"
-            Btn_EstatJustificacio.Enabled = False
+            EstaLaSolucioSeleccionada(False)
         End If
 
     End Sub
@@ -265,54 +264,51 @@ Public Class Contractes
                     comm = New SqlCommand("SELECT Solucions.Id,
                                               TipusSolucions.Nom,
                                               Solucions.Contracte,
-                                              Solucions.DataContracte,
-                                              Solucions.DataVenciment,
-                                              Solucions.Justificat
+                                              Solucions.DataContracte AS 'Dia contracte',
+                                              Solucions.DataVenciment AS 'Dia venciment',
+                                              Solucions.Justificat,                                              
+                                              DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                                              Justificacions.Percentatge AS '%'
                                               FROM Solucions
                                               INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                              INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
                                               WHERE idEmpresa=" & id, conexion)
                 Else
                     comm = New SqlCommand("SELECT Solucions.Id,
                                               TipusSolucions.Nom,
                                               Solucions.Contracte,
-                                              Solucions.DataContracte,
-                                              Solucions.DataVenciment,
-                                              Solucions.Justificat
+                                              Solucions.DataContracte AS 'Dia Contracte',
+                                              Solucions.DataVenciment AS 'Dia Venciment',
+                                              Solucions.Justificat,                                              
+                                              DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                                              Justificacions.Percentatge AS '%'
                                               FROM Solucions
                                               INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
+                                              INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
                                               WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
                 End If
 
                 DA.SelectCommand = comm
                 DT_Solucions.Clear()
                 DA.Fill(DT_Solucions)
-                DataSolucions.DataSource = DT_Solucions
+                If DT_Solucions.Rows.Count > 0 Then
+                    DataSolucions.DataSource = DT_Solucions
+                    TitolSolucio.Text = "Escull una solució"
+                Else
+                    DataSolucions.DataSource = ""
+                    TitolSolucio.Text = "Sense solucions"
+                End If
 
             End If
             conexion.Close()
         Catch ex As Exception
-            MsgBox("No s'ha pogut accedir a la base de dades",, "Error")
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
-
-
-        If DataSolucions.Rows.Count > 0 Then
-            Dim colId As DataGridViewColumn = DataSolucions.Columns(0)
-            Dim colJustificat As DataGridViewColumn = DataSolucions.Columns(5)
-            colId.Visible = False
-            colJustificat.Visible = False
-            For Each Fila As DataGridViewRow In DataSolucions.Rows
-                If Not Fila.Cells("DataVenciment").Value > Date.Now Then
-                    If Not Fila.Cells("Justificat").Value = 0 Then
-                        Fila.DefaultCellStyle.BackColor = Color.LightGreen
-                    Else
-                        Fila.DefaultCellStyle.BackColor = Color.Red
-                    End If
-                End If
-            Next
-        End If
-
         DataVenciment.Text = DataContracte.Value.Date.AddMonths(6)
+        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
+        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DiesCaducitat.Text = dies.ToString
 
     End Sub
 
@@ -325,36 +321,26 @@ Public Class Contractes
     End Sub
 
     Private Sub EsborrarCampsSolucio()
-        DataSolucions.ClearSelection()
-        CB_TipusSolucio.Text = "Selecciona un tipus de solució"
+
         NoAcord.Clear()
         DataContracte.Text = ""
         DataVenciment.Text = ""
         DiesCaducitat.Clear()
         solucioSeleccionada = False
-        Btn_AfegirSolucio.Text = "Afegir solució"
         TitolSolucio.Clear()
         DataVenciment.Text = DataContracte.Value.Date.AddMonths(6)
+        ProgressBar1.Value = 0
+        CheckEstaJustificat.Checked = False
+        CB_TipusSolucio.Text = "Selecciona un tipus de solució"
+        DataSolucions.ClearSelection()
+        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
+        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DiesCaducitat.Text = dies.ToString
 
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckJustificat.CheckedChanged
+    Private Sub CheckJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckJustificat.CheckedChanged
         OmpleSolucions(idEmpresaSeleccionada)
-    End Sub
-    Private Sub DataSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataSolucions.CellFormatting
-        DataSolucions.Columns("DataContracte").Width = 100
-        DataSolucions.Columns("DataContracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("DataContracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("DataVenciment").Width = 100
-        DataSolucions.Columns("DataVenciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("DataVenciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Contracte").Width = 100
-    End Sub
-    Private Sub DataEmpreses_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEmpreses.CellFormatting
-        DataEmpreses.Columns("Nom").Width = 300
-        DataEmpreses.Columns("CodiPostal").Width = 70
-        DataEmpreses.Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataEmpreses.Columns("Pais").Width = 100
     End Sub
 
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
@@ -362,8 +348,10 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
-        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada)
-        EstatJustificacio.Show()
+        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
+        EstatJustificacio.ShowDialog()
+        OmpleSolucions(idEmpresaSeleccionada)
+        EsborrarCampsSolucio()
     End Sub
     'Esborra la solució seleccionada
     Private Sub esborrarSolucio(id As Integer)
@@ -387,6 +375,46 @@ Public Class Contractes
             End Try
         End If
 
+    End Sub
+
+    Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
+        EsborraCampsEmpresa()
+        EstaLaSolucioSeleccionada(False)
+        DataEmpreses.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+        DataEmpreses.Columns("Nom").Width = 300
+        DataEmpreses.Columns("CodiPostal").Width = 70
+        DataEmpreses.Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataEmpreses.Columns("Pais").Width = 100
+    End Sub
+
+    Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
+
+        DataSolucions.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+        DataSolucions.Columns("Nom").Width = 150
+        DataSolucions.Columns("Id").Visible = False
+        DataSolucions.Columns("Justificat").Visible = False
+        DataSolucions.Columns("Dies").Width = 50
+        DataSolucions.Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Dia Contracte").Width = 100
+        DataSolucions.Columns("Dia Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Dia Contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Dia Venciment").Width = 100
+        DataSolucions.Columns("Dia Venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Dia Venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("Contracte").Width = 100
+        DataSolucions.Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataSolucions.Columns("%").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        If DataSolucions.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In DataSolucions.Rows
+                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
+                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
+                If Fila.Cells("Justificat").Value = True Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+            Next
+        End If
+        EsborrarCampsSolucio()
+        EstaLaSolucioSeleccionada(False)
     End Sub
     'Afegeix o actualitza una solució
     Private Sub afegirSolucio()
@@ -441,15 +469,24 @@ Public Class Contractes
             conexion.Open()
             strCommand.ExecuteNonQuery()
             conexion.Close()
-            OmpleSolucions(idEmpresaSeleccionada)
 
-            If seleccio = True Then MsgBox("Solució modificada correctament",, "Modificar solució")
-            If seleccio = False Then MsgBox("Solució introduida correctament",, "Introduir solució")
+
+            If seleccio = True Then
+                MsgBox("Solució modificada correctament",, "Modificar solució")
+            End If
+            If seleccio = False Then
+                MsgBox("Solució introduida correctament",, "Introduir solució")
+                insertaJustificacioBuida(idSolucio, idEmpresaSeleccionada)
+            End If
+            OmpleSolucions(idEmpresaSeleccionada)
         Catch ex As Exception
             If seleccio = True Then MsgBox("No s'ha pogut modificar la solució",, "Modificar solució")
             If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
         End Try
+
     End Sub
+
+
     'Comproba que s'hagin introduit totes les dades
     Private Function ComprovaDadesSolucions() As Boolean
         If CB_TipusSolucio.Text = "Selecciona un tipus de solució" Then
@@ -462,7 +499,55 @@ Public Class Contractes
             MsgBox("Has de introduir el nº d'acord")
             Return False
         End If
+        If ProgressBar1.Value < 100 And CheckEstaJustificat.Checked = True Then
+            If MsgBox("¿Estas segur que ho vols donar per justificat sense tenir el proces al 100%?", vbYesNo + vbExclamation, "Introduir solució") = vbYes Then
+                Return True
+            Else
+                Return False
+            End If
+        End If
         Return True
     End Function
+    Private Sub insertaJustificacioBuida(idSolucio As Integer, idEmpresa As Integer)
+        Dim conexion As New SqlConnection(cadena)
+        Dim Query As String
+        Dim strCommand As SqlCommand
+        Dim id As Integer
+        Try
+            Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
+            strCommand = New SqlCommand(Query, conexion)
+            conexion.Open()
+
+            Dim lector As SqlDataReader = strCommand.ExecuteReader
+            If lector.Read Then
+                id = lector.GetValue("Id")
+            End If
+            lector.Close()
+
+            Query = "INSERT INTO Justificacions (idSolucio) VALUES (" & id & ")"
+            strCommand = New SqlCommand(Query, conexion)
+            strCommand.ExecuteNonQuery()
+
+            conexion.Close()
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Private Sub EstaLaSolucioSeleccionada(x As Boolean)
+        If x = True Then
+            Btn_EstatJustificacio.Enabled = True
+            Btn_EsborrarSeleccioSolucio.Enabled = True
+            Btn_EsborrarSolucio.Enabled = True
+            Btn_AfegirSolucio.Text = "Modificar solució"
+            Btn_AfegirSolucio.Enabled = True
+        Else
+            Btn_EstatJustificacio.Enabled = False
+            Btn_EsborrarSeleccioSolucio.Enabled = False
+            Btn_EsborrarSolucio.Enabled = False
+            Btn_AfegirSolucio.Text = "Afegir solució"
+            Btn_AfegirSolucio.Enabled = True
+        End If
+    End Sub
 
 End Class

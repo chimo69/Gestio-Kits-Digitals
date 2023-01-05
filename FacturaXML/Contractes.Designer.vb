@@ -66,6 +66,8 @@ Partial Class Contractes
         Me.Label14 = New System.Windows.Forms.Label()
         Me.CheckEstaJustificat = New System.Windows.Forms.CheckBox()
         Me.Btn_EstatJustificacio = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label15 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -90,8 +92,10 @@ Partial Class Contractes
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataEmpreses.ColumnHeadersHeight = 30
+        Me.DataEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataEmpreses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataEmpreses.EnableHeadersVisualStyles = False
         Me.DataEmpreses.Location = New System.Drawing.Point(360, 65)
         Me.DataEmpreses.MultiSelect = False
         Me.DataEmpreses.Name = "DataEmpreses"
@@ -115,7 +119,7 @@ Partial Class Contractes
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 31)
+        Me.Label1.Location = New System.Drawing.Point(21, 73)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 15)
         Me.Label1.TabIndex = 1
@@ -124,7 +128,7 @@ Partial Class Contractes
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(31, 73)
+        Me.Label2.Location = New System.Drawing.Point(21, 115)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(25, 15)
         Me.Label2.TabIndex = 2
@@ -133,7 +137,7 @@ Partial Class Contractes
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 115)
+        Me.Label3.Location = New System.Drawing.Point(21, 157)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 15)
         Me.Label3.TabIndex = 3
@@ -142,7 +146,7 @@ Partial Class Contractes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(31, 157)
+        Me.Label4.Location = New System.Drawing.Point(21, 199)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(67, 15)
         Me.Label4.TabIndex = 4
@@ -151,7 +155,7 @@ Partial Class Contractes
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(31, 199)
+        Me.Label5.Location = New System.Drawing.Point(21, 241)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(39, 15)
         Me.Label5.TabIndex = 5
@@ -160,7 +164,7 @@ Partial Class Contractes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(31, 241)
+        Me.Label6.Location = New System.Drawing.Point(21, 283)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(56, 15)
         Me.Label6.TabIndex = 6
@@ -169,7 +173,7 @@ Partial Class Contractes
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(31, 283)
+        Me.Label7.Location = New System.Drawing.Point(21, 325)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(28, 15)
         Me.Label7.TabIndex = 7
@@ -178,7 +182,7 @@ Partial Class Contractes
         'Empresa
         '
         Me.Empresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Empresa.Location = New System.Drawing.Point(86, 23)
+        Me.Empresa.Location = New System.Drawing.Point(76, 65)
         Me.Empresa.Name = "Empresa"
         Me.Empresa.Size = New System.Drawing.Size(255, 23)
         Me.Empresa.TabIndex = 8
@@ -186,7 +190,7 @@ Partial Class Contractes
         'Nif
         '
         Me.Nif.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Nif.Location = New System.Drawing.Point(86, 65)
+        Me.Nif.Location = New System.Drawing.Point(76, 107)
         Me.Nif.Name = "Nif"
         Me.Nif.Size = New System.Drawing.Size(93, 23)
         Me.Nif.TabIndex = 9
@@ -194,7 +198,7 @@ Partial Class Contractes
         'Direccio
         '
         Me.Direccio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Direccio.Location = New System.Drawing.Point(86, 107)
+        Me.Direccio.Location = New System.Drawing.Point(76, 149)
         Me.Direccio.Name = "Direccio"
         Me.Direccio.Size = New System.Drawing.Size(255, 23)
         Me.Direccio.TabIndex = 10
@@ -202,7 +206,7 @@ Partial Class Contractes
         'CodiPostal
         '
         Me.CodiPostal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.CodiPostal.Location = New System.Drawing.Point(115, 149)
+        Me.CodiPostal.Location = New System.Drawing.Point(105, 191)
         Me.CodiPostal.Name = "CodiPostal"
         Me.CodiPostal.Size = New System.Drawing.Size(85, 23)
         Me.CodiPostal.TabIndex = 11
@@ -210,7 +214,7 @@ Partial Class Contractes
         'Ciutat
         '
         Me.Ciutat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Ciutat.Location = New System.Drawing.Point(86, 191)
+        Me.Ciutat.Location = New System.Drawing.Point(76, 233)
         Me.Ciutat.Name = "Ciutat"
         Me.Ciutat.Size = New System.Drawing.Size(255, 23)
         Me.Ciutat.TabIndex = 12
@@ -218,7 +222,7 @@ Partial Class Contractes
         'Provincia
         '
         Me.Provincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Provincia.Location = New System.Drawing.Point(105, 233)
+        Me.Provincia.Location = New System.Drawing.Point(95, 275)
         Me.Provincia.Name = "Provincia"
         Me.Provincia.Size = New System.Drawing.Size(236, 23)
         Me.Provincia.TabIndex = 13
@@ -226,7 +230,7 @@ Partial Class Contractes
         'Pais
         '
         Me.Pais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Pais.Location = New System.Drawing.Point(86, 275)
+        Me.Pais.Location = New System.Drawing.Point(76, 317)
         Me.Pais.Name = "Pais"
         Me.Pais.Size = New System.Drawing.Size(255, 23)
         Me.Pais.TabIndex = 14
@@ -254,7 +258,7 @@ Partial Class Contractes
         '
         'btn_esborrarSeleccio
         '
-        Me.btn_esborrarSeleccio.Location = New System.Drawing.Point(31, 330)
+        Me.btn_esborrarSeleccio.Location = New System.Drawing.Point(21, 372)
         Me.btn_esborrarSeleccio.Name = "btn_esborrarSeleccio"
         Me.btn_esborrarSeleccio.Size = New System.Drawing.Size(148, 54)
         Me.btn_esborrarSeleccio.TabIndex = 17
@@ -270,7 +274,9 @@ Partial Class Contractes
         Me.DataSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataSolucions.ColumnHeadersHeight = 30
+        Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataSolucions.EnableHeadersVisualStyles = False
         Me.DataSolucions.Location = New System.Drawing.Point(1009, 65)
         Me.DataSolucions.MultiSelect = False
         Me.DataSolucions.Name = "DataSolucions"
@@ -284,6 +290,7 @@ Partial Class Contractes
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataSolucions.RowHeadersVisible = False
+        Me.DataSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.DataSolucions.RowTemplate.Height = 25
         Me.DataSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataSolucions.Size = New System.Drawing.Size(578, 233)
@@ -442,6 +449,7 @@ Partial Class Contractes
         Me.TitolEmpresa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolEmpresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TitolEmpresa.Enabled = False
         Me.TitolEmpresa.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.TitolEmpresa.Location = New System.Drawing.Point(442, 23)
         Me.TitolEmpresa.Multiline = True
@@ -456,6 +464,7 @@ Partial Class Contractes
         '
         Me.TitolSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolSolucio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TitolSolucio.Enabled = False
         Me.TitolSolucio.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.TitolSolucio.Location = New System.Drawing.Point(1009, 23)
         Me.TitolSolucio.Multiline = True
@@ -506,14 +515,34 @@ Partial Class Contractes
         Me.Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
         Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(146, 63)
         Me.Btn_EstatJustificacio.TabIndex = 41
-        Me.Btn_EstatJustificacio.Text = "Veure estat de justificació"
+        Me.Btn_EstatJustificacio.Text = "Veure estat de" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "justificació"
         Me.Btn_EstatJustificacio.UseVisualStyleBackColor = True
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Location = New System.Drawing.Point(1009, 646)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(576, 23)
+        Me.ProgressBar1.TabIndex = 42
+        '
+        'Label15
+        '
+        Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(1010, 624)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(146, 15)
+        Me.Label15.TabIndex = 43
+        Me.Label15.Text = "Percentatge de justificació"
         '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1607, 774)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Btn_EstatJustificacio)
         Me.Controls.Add(Me.CheckEstaJustificat)
         Me.Controls.Add(Me.Label14)
@@ -606,4 +635,6 @@ Partial Class Contractes
     Friend WithEvents Label14 As Label
     Friend WithEvents CheckEstaJustificat As CheckBox
     Friend WithEvents Btn_EstatJustificacio As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Label15 As Label
 End Class

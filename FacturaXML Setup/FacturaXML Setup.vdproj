@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
+        "MsmKey" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -324,32 +324,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2A0AE0CF633445A697C7AD48F586F802"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_549DA122096F43C388328909C9DD90A0"
             {
-            "Name" = "8:Gestio Kits Digitals"
+            "Name" = "8:Gestió Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
+            "Target" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
             "Folder" = "8:_210FB9F9DC5F41099F13CC942D7189E6"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:"
+            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E83C001723274125AE516DDEB58CA45B"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8055852F4F5645DDAA756B29739E59C7"
             {
-            "Name" = "8:Gestio Kits Digitals"
+            "Name" = "8:Gestió Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_548413C25B6A45EE842D7BBFF04D33BE"
+            "Target" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
             "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:"
+            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
             "Feature" = "8:"
             }
         }
@@ -751,7 +751,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_548413C25B6A45EE842D7BBFF04D33BE"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_43D7E24C6B5F4E0E82D18FB3795EB76B"
             {
             "SourcePath" = "8:..\\FacturaXML\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"

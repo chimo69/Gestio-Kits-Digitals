@@ -72,7 +72,9 @@ Partial Class Llistat
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataLlistat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataLlistat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataLlistat.ColumnHeadersHeight = 30
+        Me.DataLlistat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataLlistat.EnableHeadersVisualStyles = False
         Me.DataLlistat.Location = New System.Drawing.Point(12, 49)
         Me.DataLlistat.MultiSelect = False
         Me.DataLlistat.Name = "DataLlistat"
@@ -383,6 +385,7 @@ Partial Class Llistat
         Me.Name = "Llistat"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Llistat"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_TipusSolucions.ResumeLayout(False)
         Me.GB_TipusSolucions.PerformLayout()
