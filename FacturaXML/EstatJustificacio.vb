@@ -1,8 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Runtime.CompilerServices
+Imports System.Data.SQLite
 
 Public Class EstatJustificacio
-    Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
+
     Dim Id, IdTipusSolucio As Integer
     Dim PorcentatgeDesglossament As Integer = 0
     Dim PorcentatgeFabricantSolucio As Integer = 0
@@ -28,14 +29,14 @@ Public Class EstatJustificacio
     End Sub
 
     Private Sub rebreDades()
-        Dim conexion As New SqlConnection(cadena)
+        Dim conexion As New SqLiteConnection(cadena)
         Dim Query As String
-        Dim strCommand As SqlCommand
+        Dim strCommand As SQLiteCommand
 
         Query = "SELECT * FROM Justificacions WHERE iDSolucio=" & Id
-        strCommand = New SqlCommand(Query, conexion)
+        strCommand = New SQLiteCommand(Query, conexion)
         conexion.Open()
-        Dim lector As SqlDataReader = strCommand.ExecuteReader
+        Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
         If lector.Read() Then
             FabricantSolucio.Text = lector.GetValue("FabricantSolucio")
@@ -93,9 +94,9 @@ Public Class EstatJustificacio
         ActualitzaProgresBar()
     End Sub
     Private Sub guardarDades()
-        Dim conexion As New SqlConnection(cadena)
+        Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
-        Dim strCommand As SqlCommand
+        Dim strCommand As SQLiteCommand
 
         Try
             Query = "UPDATE Justificacions SET
@@ -109,7 +110,7 @@ Public Class EstatJustificacio
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & "
                         
                         WHERE iDSolucio=" & Id
-            strCommand = New SqlCommand(Query, conexion)
+            strCommand = New SQLiteCommand(Query, conexion)
 
             conexion.Open()
             strCommand.ExecuteNonQuery()

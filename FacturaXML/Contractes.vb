@@ -27,28 +27,22 @@ Public Class Contractes
     'Actualitza la taula amb dades de la Base de dades
     Private Sub actualitzaTaula()
 
-        Dim conexion As New SqlConnection()
-        Dim conn As New SQLiteConnection("Data Source=\GestioKitsDB.db;Version=3;UseUTF8Encoding=True;")
+        'Dim conexion As New SqlConnection()
+        Dim conexion As New SQLiteConnection()
 
         Try
-            'conexion = New SqlConnection(cadena)
-            'conexion.Open()
-            conn.Open()
-            Dim da As New SQLiteDataAdapter("SELECT * FROM Empreses", conn)
-            Dim DT As New DataTable
-            da.Fill(DT)
-            DataEmpreses.DataSource = DT
+            conexion = New SQLiteConnection(cadena)
+            conexion.Open()
 
-            'If conexion.State = ConnectionState.Open Then
-            '    Dim DT As New DataTable
-            '    'Dim DA As New SqlDataAdapter("SELECT * FROM Empreses", conexion)
-            '    Dim da As New SQLiteDataAdapter("SELECT * FROM Empreses", conn)
-            '    da.Fill(DT)
-            '    DataEmpreses.DataSource = DT
-            '    Dim colId As DataGridViewColumn = DataEmpreses.Columns(0)
-            '    colId.Visible = False
+            If conexion.State = ConnectionState.Open Then
+                Dim DA As New SQLiteDataAdapter("SELECT * FROM Empreses", conexion)
+                Dim DT As New DataTable
+                DA.Fill(DT)
+                DataEmpreses.DataSource = DT
+                Dim colId As DataGridViewColumn = DataEmpreses.Columns(0)
+                colId.Visible = False
 
-            'End If
+            End If
             conexion.Close()
 
         Catch ex As Exception
@@ -59,9 +53,9 @@ Public Class Contractes
     'Introdueix una empresa nova
     Private Sub inserirEmpresa()
 
-        Dim conexion As New SqlConnection(cadena)
+        Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
-        Dim strCommand As SqlCommand
+        Dim strCommand As SQLiteCommand
         Dim empresaTxt As String = Empresa.Text
         Dim nifTxt As String = Nif.Text
         Dim direccioTxt As String = Direccio.Text
@@ -88,7 +82,7 @@ Public Class Contractes
                      ",Pais=" & StringDB(paisTxt) &
                      "WHERE Id=" & idBorrar
         Else
-            Query = "INSERT INTO Empreses VALUES (" &
+            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais) VALUES (" &
                     StringDB(empresaTxt) & "," &
                     StringDB(nifTxt) & "," &
                     StringDB(direccioTxt) & "," &
@@ -99,7 +93,7 @@ Public Class Contractes
         End If
 
         Try
-            strCommand = New SqlCommand(Query, conexion)
+            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
             strCommand.ExecuteNonQuery()
             conexion.Close()
@@ -109,7 +103,7 @@ Public Class Contractes
             If seleccio = False Then MsgBox("Empresa introduida correctament",, "Introduir empresa")
         Catch ex As Exception
             If seleccio = True Then MsgBox("No s'ha pogut modificar l'empresa",, "Modificar empresa")
-            If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
+        If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
         End Try
     End Sub
     'Esborra l'empresa seleccionada
@@ -119,11 +113,11 @@ Public Class Contractes
 
         If resposta = vbYes Then
             Try
-                Dim conexion As New SqlConnection(cadena)
+                Dim conexion As New SQLiteConnection(cadena)
                 Dim Query As String
-                Dim strCommand As SqlCommand
+                Dim strCommand As SQLiteCommand
                 Query = "DELETE FROM Empreses WHERE id=" & id
-                strCommand = New SqlCommand(Query, conexion)
+                strCommand = New SQLiteCommand(Query, conexion)
                 conexion.Open()
                 strCommand.ExecuteNonQuery()
                 conexion.Close()
@@ -163,13 +157,11 @@ Public Class Contractes
     End Sub
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim conexion As New SqlConnection()
-
-        conexion = New SqlConnection(cadena)
+        Dim conexion As New SQLiteConnection(cadena)
         conexion.Open()
 
         If conexion.State = ConnectionState.Open Then
-            Dim DA As New SqlDataAdapter("SELECT * FROM TipusSolucions", conexion)
+            Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
             DA.Fill(DT_Empreses)
             CB_TipusSolucio.DataSource = DT_Empreses
             CB_TipusSolucio.DisplayMember = "Nom"
@@ -191,42 +183,67 @@ Public Class Contractes
     End Sub
     'Carrega la taula amb les solucions trobades a la base de dades
     Private Sub OmpleSolucions(id As Integer)
-        Dim conexion As New SqlConnection()
+
+        Dim conexion As New SQLiteConnection(cadena)
 
         Try
-            conexion = New SqlConnection(cadena)
+
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SqlDataAdapter
-                Dim comm As SqlCommand
+                Dim DA As New SQLiteDataAdapter
+                Dim comm As SQLiteCommand
 
                 If CheckJustificat.Checked = True Then
-                    comm = New SqlCommand("SELECT Solucions.Id,
-                                              TipusSolucions.Nom,
-                                              Solucions.Contracte,
-                                              Solucions.DataContracte AS 'Dia contracte',
-                                              Solucions.DataVenciment AS 'Dia venciment',
-                                              Solucions.Justificat,                                              
-                                              DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
-                                              Justificacions.Percentatge AS '%'
-                                              FROM Solucions
-                                              INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
-                                              INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                              WHERE idEmpresa=" & id, conexion)
+                    'comm = New SQLiteCommand("SELECT Solucions.Id,
+                    '                          TipusSolucions.Nom,
+                    '                          Solucions.Contracte,
+                    '                          Solucions.DataContracte AS 'Dia contracte',
+                    '                          Solucions.DataVenciment AS 'Dia venciment',
+                    '                          Solucions.Justificat,                                              
+                    '                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                    '                          Justificacions.Percentatge AS '%'
+                    '                          FROM Solucions
+                    '                          INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                    '                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                    '                          WHERE idEmpresa=" & id, conexion)
+                    comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          TipusSolucions.Nom,
+                                          Solucions.Contracte,
+                                          Solucions.DataContracte AS 'Dia contracte',
+                                          Solucions.DataVenciment AS 'Dia venciment',
+                                          Solucions.Justificat,                                              
+                                          julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
+                                          Justificacions.Percentatge AS '%'
+                                          FROM Solucions
+                                          INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                                          WHERE idEmpresa=" & id, conexion)
                 Else
-                    comm = New SqlCommand("SELECT Solucions.Id,
-                                              TipusSolucions.Nom,
-                                              Solucions.Contracte,
-                                              Solucions.DataContracte AS 'Dia Contracte',
-                                              Solucions.DataVenciment AS 'Dia Venciment',
-                                              Solucions.Justificat,                                              
-                                              DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
-                                              Justificacions.Percentatge AS '%'
-                                              FROM Solucions
-                                              INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
-                                              INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                              WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
+                    'comm = New SQLiteCommand("SELECT Solucions.Id,
+                    '                          TipusSolucions.Nom,
+                    '                          Solucions.Contracte,
+                    '                          Solucions.DataContracte AS 'Dia Contracte',
+                    '                          Solucions.DataVenciment AS 'Dia Venciment',
+                    '                          Solucions.Justificat,                                              
+                    '                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                    '                          Justificacions.Percentatge AS '%'
+                    '                          FROM Solucions
+                    '                          INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
+                    '                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                    '                          WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
+                    comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          TipusSolucions.Nom,
+                                          Solucions.Contracte,
+                                          Solucions.DataContracte AS 'Dia Contracte',
+                                          Solucions.DataVenciment AS 'Dia Venciment',
+                                          Solucions.Justificat,                                              
+                                          julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
+                                          Justificacions.Percentatge AS '%'
+                                          FROM Solucions
+                                          INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
+                                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                                          WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
                 End If
 
                 DA.SelectCommand = comm
@@ -282,7 +299,7 @@ Public Class Contractes
     End Sub
 
     Private Sub CheckJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckJustificat.CheckedChanged
-        OmpleSolucions(idEmpresaSeleccionada)
+        'OmpleSolucions(idEmpresaSeleccionada)
     End Sub
 
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
@@ -292,7 +309,7 @@ Public Class Contractes
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
         Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
         EstatJustificacio.ShowDialog()
-        OmpleSolucions(idEmpresaSeleccionada)
+        'OmpleSolucions(idEmpresaSeleccionada)
         EsborrarCampsSolucio()
     End Sub
     'Esborra la solució seleccionada
@@ -302,11 +319,11 @@ Public Class Contractes
 
         If resposta = vbYes Then
             Try
-                Dim conexion As New SqlConnection(cadena)
+                Dim conexion As New SQLiteConnection(cadena)
                 Dim Query As String
-                Dim strCommand As SqlCommand
+                Dim strCommand As SQLiteCommand
                 Query = "DELETE FROM Solucions WHERE id=" & id
-                strCommand = New SqlCommand(Query, conexion)
+                strCommand = New SQLiteCommand(Query, conexion)
                 conexion.Open()
                 strCommand.ExecuteNonQuery()
                 conexion.Close()
@@ -366,9 +383,9 @@ Public Class Contractes
 
         If ComprovaDadesSolucions() = False Then Exit Sub
 
-        Dim conexion As New SqlConnection(cadena)
+        Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
-        Dim strCommand As SqlCommand
+        Dim strCommand As SQLiteCommand
         Dim idSolucio As Integer = CB_TipusSolucio.SelectedValue
         Dim NoAcordTxt As String = NoAcord.Text
         Dim DataContracteTxt As String
@@ -376,8 +393,8 @@ Public Class Contractes
         Dim seleccio As Boolean
 
         seleccio = solucioSeleccionada
-        DataContracteTxt = Format(DataContracte.Value, "MM/dd/yyyy")
-        DataVencimentTxt = Format(DataContracte.Value.AddMonths(6), "MM/dd/yyyy")
+        DataContracteTxt = Format(DataContracte.Value, "yyyy-MM-dd")
+        DataVencimentTxt = Format(DataContracte.Value.AddMonths(6), "yyyy-MM-dd")
 
         If (seleccio = True) Then
 
@@ -400,7 +417,7 @@ Public Class Contractes
                             WHERE Id=" & idAfegir
 
         Else
-            Query = "INSERT INTO Solucions VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataVenciment,idEmpresa,Justificat) VALUES (" &
                                  idSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
@@ -410,7 +427,7 @@ Public Class Contractes
         End If
 
         Try
-            strCommand = New SqlCommand(Query, conexion)
+            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
             strCommand.ExecuteNonQuery()
             conexion.Close()
@@ -454,30 +471,30 @@ Public Class Contractes
         Return True
     End Function
     Private Sub insertaJustificacioBuida(idSolucio As Integer, idEmpresa As Integer)
-        Dim conexion As New SqlConnection(cadena)
+        Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
-        Dim strCommand As SqlCommand
+        Dim strCommand As SQLiteCommand
         Dim id As Integer
-        Try
-            Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
-            strCommand = New SqlCommand(Query, conexion)
+        'Try
+        Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
+            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
 
-            Dim lector As SqlDataReader = strCommand.ExecuteReader
+            Dim lector As SQLiteDataReader = strCommand.ExecuteReader
             If lector.Read Then
                 id = lector.GetValue("Id")
             End If
             lector.Close()
 
             Query = "INSERT INTO Justificacions (idSolucio) VALUES (" & id & ")"
-            strCommand = New SqlCommand(Query, conexion)
+            strCommand = New SQLiteCommand(Query, conexion)
             strCommand.ExecuteNonQuery()
 
             conexion.Close()
 
-        Catch ex As Exception
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
     Private Sub EstaLaSolucioSeleccionada(x As Boolean)
         If x = True Then
