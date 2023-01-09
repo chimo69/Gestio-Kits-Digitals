@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data.SQLite
 Imports System.Data
 Imports System.Runtime.CompilerServices
 
@@ -27,20 +28,27 @@ Public Class Contractes
     Private Sub actualitzaTaula()
 
         Dim conexion As New SqlConnection()
+        Dim conn As New SQLiteConnection("Data Source=\GestioKitsDB.db;Version=3;UseUTF8Encoding=True;")
 
         Try
-            conexion = New SqlConnection(cadena)
-            conexion.Open()
+            'conexion = New SqlConnection(cadena)
+            'conexion.Open()
+            conn.Open()
+            Dim da As New SQLiteDataAdapter("SELECT * FROM Empreses", conn)
+            Dim DT As New DataTable
+            da.Fill(DT)
+            DataEmpreses.DataSource = DT
 
-            If conexion.State = ConnectionState.Open Then
-                Dim DT As New DataTable
-                Dim DA As New SqlDataAdapter("SELECT * FROM Empreses", conexion)
-                DA.Fill(DT)
-                DataEmpreses.DataSource = DT
-                Dim colId As DataGridViewColumn = DataEmpreses.Columns(0)
-                colId.Visible = False
+            'If conexion.State = ConnectionState.Open Then
+            '    Dim DT As New DataTable
+            '    'Dim DA As New SqlDataAdapter("SELECT * FROM Empreses", conexion)
+            '    Dim da As New SQLiteDataAdapter("SELECT * FROM Empreses", conn)
+            '    da.Fill(DT)
+            '    DataEmpreses.DataSource = DT
+            '    Dim colId As DataGridViewColumn = DataEmpreses.Columns(0)
+            '    colId.Visible = False
 
-            End If
+            'End If
             conexion.Close()
 
         Catch ex As Exception

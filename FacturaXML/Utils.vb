@@ -1,4 +1,5 @@
-﻿Imports System.Data.SqlClient
+﻿'Imports System.Data.SqlClient
+Imports System.Data.SQLite
 Imports ADODB
 Module Utils
     Public cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\GestioKitsDB.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
