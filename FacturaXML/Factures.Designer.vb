@@ -78,6 +78,7 @@ Partial Class Factures
         Me.MenuEsborrarTot = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreFacturesXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreFacturesXMLToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Vigila = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -345,7 +346,7 @@ Partial Class Factures
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Location = New System.Drawing.Point(456, 129)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(388, 432)
+        Me.GroupBox2.Size = New System.Drawing.Size(388, 440)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Dades factura"
@@ -481,7 +482,7 @@ Partial Class Factures
         '
         'Btn_Guardar
         '
-        Me.Btn_Guardar.Location = New System.Drawing.Point(25, 526)
+        Me.Btn_Guardar.Location = New System.Drawing.Point(25, 533)
         Me.Btn_Guardar.Name = "Btn_Guardar"
         Me.Btn_Guardar.Size = New System.Drawing.Size(182, 36)
         Me.Btn_Guardar.TabIndex = 15
@@ -500,7 +501,7 @@ Partial Class Factures
         '
         'Btn_Visualitzar
         '
-        Me.Btn_Visualitzar.Location = New System.Drawing.Point(235, 526)
+        Me.Btn_Visualitzar.Location = New System.Drawing.Point(235, 533)
         Me.Btn_Visualitzar.Name = "Btn_Visualitzar"
         Me.Btn_Visualitzar.Size = New System.Drawing.Size(178, 36)
         Me.Btn_Visualitzar.TabIndex = 16
@@ -602,12 +603,25 @@ Partial Class Factures
         Me.SobreFacturesXMLToolStripMenuItem1.Size = New System.Drawing.Size(175, 22)
         Me.SobreFacturesXMLToolStripMenuItem1.Text = "Sobre FacturesXML"
         '
+        'Vigila
+        '
+        Me.Vigila.AutoSize = True
+        Me.Vigila.ForeColor = System.Drawing.Color.Red
+        Me.Vigila.Location = New System.Drawing.Point(138, 508)
+        Me.Vigila.Name = "Vigila"
+        Me.Vigila.Size = New System.Drawing.Size(175, 15)
+        Me.Vigila.TabIndex = 20
+        Me.Vigila.Text = "Vigila! Procés no acabat al 100%"
+        Me.Vigila.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Vigila.Visible = False
+        '
         'Factures
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(871, 574)
+        Me.ClientSize = New System.Drawing.Size(871, 582)
+        Me.Controls.Add(Me.Vigila)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Btn_Visualitzar)
         Me.Controls.Add(Me.PictureBox1)
@@ -691,4 +705,5 @@ Partial Class Factures
     Friend WithEvents CB_Empreses As ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents CB_Solucions As ComboBox
+    Friend WithEvents Vigila As Label
 End Class

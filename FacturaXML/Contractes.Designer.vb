@@ -269,13 +269,14 @@ Partial Class Contractes
         '
         Me.DataSolucions.AllowUserToAddRows = False
         Me.DataSolucions.AllowUserToDeleteRows = False
-        Me.DataSolucions.AllowUserToResizeRows = False
         Me.DataSolucions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+        Me.DataSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataSolucions.ColumnHeadersHeight = 30
         Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataSolucions.EnableHeadersVisualStyles = False
         Me.DataSolucions.Location = New System.Drawing.Point(1009, 65)
         Me.DataSolucions.MultiSelect = False

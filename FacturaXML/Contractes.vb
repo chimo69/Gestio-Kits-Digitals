@@ -134,36 +134,6 @@ Public Class Contractes
         idBorrar = row.Cells(0).Value
         esborrarEmpresa(idBorrar)
     End Sub
-
-    'Modifica els camps quan la selecció d'empresa canvia
-    Private Sub DataEmpreses_SelectionChanged(sender As Object, e As EventArgs) Handles DataEmpreses.SelectionChanged
-
-        If DataEmpreses.SelectedRows.Count > 0 Then
-            Dim index As Integer = DataEmpreses.CurrentRow.Index
-            Dim row As DataGridViewRow = DataEmpreses.Rows(index)
-
-            TitolEmpresa.Text = row.Cells(1).Value
-            Empresa.Text = row.Cells(1).Value
-            Nif.Text = row.Cells(2).Value
-            Direccio.Text = row.Cells(3).Value
-            CodiPostal.Text = row.Cells(4).Value
-            Ciutat.Text = row.Cells(5).Value
-            Provincia.Text = row.Cells(6).Value
-            Pais.Text = row.Cells(7).Value
-            Btn_afegir.Text = "Modificar empresa"
-            empresaSeleccionada = True
-            idEmpresaSeleccionada = row.Cells(0).Value
-            OmpleSolucions(idEmpresaSeleccionada)
-            EstaLaSolucioSeleccionada(False)
-            'If DataSolucions.RowCount > 0 Then
-            '    Btn_AfegirSolucio.Text = "Modificar solució"
-            'Else
-            '    Btn_AfegirSolucio.Text = "Afegir solució"
-            'End If
-        End If
-
-    End Sub
-
     Private Sub btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
         EsborraCampsEmpresa()
     End Sub
@@ -197,10 +167,7 @@ Public Class Contractes
             CB_TipusSolucio.DisplayMember = "Nom"
             CB_TipusSolucio.ValueMember = "Id"
             CB_TipusSolucio.Text = "Selecciona un tipus de solució"
-            'If DT_Solucions.Rows.Count = 0 Then
-            '    TitolSolucio.Text = "Sense solucions"
-            '    Btn_AfegirSolucio.Enabled = True
-            'End If
+
         End If
         conexion.Close()
     End Sub
@@ -211,34 +178,6 @@ Public Class Contractes
         DiesCaducitat.Text = dies.ToString
 
     End Sub
-    'Omple els camps amb els valors de la solució seleccionada
-    Private Sub DataSolucions_SelectionChanged(sender As Object, e As EventArgs) Handles DataSolucions.SelectionChanged
-
-        If DataSolucions.SelectedRows.Count > 0 Then
-
-            Dim index As Integer = DataSolucions.CurrentRow.Index
-            Dim row As DataGridViewRow = DataSolucions.Rows(index)
-            Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
-
-            EstaLaSolucioSeleccionada(True)
-            CB_TipusSolucio.Text = row.Cells(1).Value
-            NoAcord.Text = row.Cells(2).Value
-            DataContracte.Text = Format(row.Cells(3).Value, "Short Date")
-            DataVenciment.Text = Format(row.Cells(4).Value, "Short Date")
-            DiesCaducitat.Text = row.Cells("Dies").Value
-            solucioSeleccionada = True
-            idSolucioSeleccionada = row.Cells(0).Value
-            TitolSolucio.Text = row.Cells(1).Value
-            CheckEstaJustificat.Checked = row.Cells(5).Value
-            ProgressBar1.Value = row.Cells("%").Value
-
-        Else
-            EsborrarCampsSolucio()
-            EstaLaSolucioSeleccionada(False)
-        End If
-
-    End Sub
-
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
     End Sub
@@ -288,6 +227,7 @@ Public Class Contractes
                 If DT_Solucions.Rows.Count > 0 Then
                     DataSolucions.DataSource = DT_Solucions
                     TitolSolucio.Text = "Escull una solució"
+
                 Else
                     DataSolucions.DataSource = ""
                     TitolSolucio.Text = "Sense solucions"
@@ -383,32 +323,35 @@ Public Class Contractes
 
     Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
 
-        DataSolucions.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
-        DataSolucions.Columns("Nom").Width = 150
-        DataSolucions.Columns("Id").Visible = False
-        DataSolucions.Columns("Justificat").Visible = False
-        DataSolucions.Columns("Dies").Width = 50
-        DataSolucions.Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Dia Contracte").Width = 100
-        DataSolucions.Columns("Dia Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Dia Contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Dia Venciment").Width = 100
-        DataSolucions.Columns("Dia Venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Dia Venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("Contracte").Width = 100
-        DataSolucions.Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataSolucions.Columns("%").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        EsborrarCampsSolucio()
+        EstaLaSolucioSeleccionada(False)
 
         If DataSolucions.Rows.Count > 0 Then
+            DataSolucions.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+
+            DataSolucions.Columns("Nom").Width = 150
+            DataSolucions.Columns("Id").Visible = False
+            DataSolucions.Columns("Justificat").Visible = False
+            DataSolucions.Columns("Dies").Width = 50
+            DataSolucions.Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Dia Contracte").Width = 100
+            DataSolucions.Columns("Dia Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Dia Contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Dia Venciment").Width = 100
+            DataSolucions.Columns("Dia Venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Dia Venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("Contracte").Width = 100
+            DataSolucions.Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            DataSolucions.Columns("%").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
             For Each Fila As DataGridViewRow In DataSolucions.Rows
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
                 If Fila.Cells("Justificat").Value = True Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
             Next
         End If
-        EsborrarCampsSolucio()
-        EstaLaSolucioSeleccionada(False)
+
     End Sub
     'Afegeix o actualitza una solució
     Private Sub afegirSolucio()
@@ -543,5 +486,53 @@ Public Class Contractes
             Btn_AfegirSolucio.Enabled = True
         End If
     End Sub
+    'Modifica els camps quan la selecció d'empresa canvia
+    Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
+        If DataEmpreses.SelectedRows.Count > 0 Then
 
+            Dim index As Integer = DataEmpreses.CurrentRow.Index
+            Dim row As DataGridViewRow = DataEmpreses.Rows(index)
+
+            TitolEmpresa.Text = row.Cells(1).Value
+            Empresa.Text = row.Cells(1).Value
+            Nif.Text = row.Cells(2).Value
+            Direccio.Text = row.Cells(3).Value
+            CodiPostal.Text = row.Cells(4).Value
+            Ciutat.Text = row.Cells(5).Value
+            Provincia.Text = row.Cells(6).Value
+            Pais.Text = row.Cells(7).Value
+            Btn_afegir.Text = "Modificar empresa"
+            empresaSeleccionada = True
+            idEmpresaSeleccionada = row.Cells(0).Value
+            OmpleSolucions(idEmpresaSeleccionada)
+            EstaLaSolucioSeleccionada(False)
+
+        End If
+    End Sub
+
+    'Modifica els camps quan la selecció de solucio canvia
+    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
+        If DataSolucions.SelectedRows.Count > 0 Then
+
+            Dim index As Integer = DataSolucions.CurrentRow.Index
+            Dim row As DataGridViewRow = DataSolucions.Rows(index)
+            Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
+
+            EstaLaSolucioSeleccionada(True)
+            CB_TipusSolucio.Text = row.Cells(1).Value
+            NoAcord.Text = row.Cells(2).Value
+            DataContracte.Text = Format(row.Cells(3).Value, "Short Date")
+            DataVenciment.Text = Format(row.Cells(4).Value, "Short Date")
+            DiesCaducitat.Text = row.Cells("Dies").Value
+            solucioSeleccionada = True
+            idSolucioSeleccionada = row.Cells(0).Value
+            TitolSolucio.Text = row.Cells(1).Value
+            CheckEstaJustificat.Checked = row.Cells(5).Value
+            ProgressBar1.Value = row.Cells("%").Value
+
+        Else
+            EsborrarCampsSolucio()
+            EstaLaSolucioSeleccionada(False)
+        End If
+    End Sub
 End Class

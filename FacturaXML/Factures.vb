@@ -367,7 +367,7 @@ Public Class Factures
         EmpresaCodiPostal.Text = row.Item("CodiPostal").ToString
         EmpresaProvincia.Text = row.Item("Provincia").ToString
         EmpresaPais.Text = row.Item("Pais").ToString
-
+        Vigila.Visible = False
         CarregaSolucions(CB_Empreses.SelectedValue)
     End Sub
     Private Sub CB_Solucions_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Solucions.SelectionChangeCommitted
@@ -375,6 +375,12 @@ Public Class Factures
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
+        If row.Item("Percentatge") <> 100 Then
+            Vigila.Visible = True
+        Else
+            Vigila.Visible = False
+        End If
+
     End Sub
 
     Private Sub CarregaSolucions(id As Integer)
@@ -391,7 +397,8 @@ Public Class Factures
                                             Solucions.IdEmpresa,
                                             TipusSolucions.Nom,
                                             Solucions.Contracte,
-                                            Justificacions.TotalSolucio
+                                            Justificacions.TotalSolucio,
+                                            Justificacions.Percentatge
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  

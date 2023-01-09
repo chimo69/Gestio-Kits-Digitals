@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Database1.mdf" />
+    <None Remove="Database1_log.ldf" />
     <None Remove="dbo.Table.sql" />
     <None Remove="Resources\logo_telematic_21.png" />
     <None Remove="Resources\png-transparent-settings-gear-icon-gear-configuration-set-up-thumbnail.png" />
@@ -92,12 +94,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database1.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Database1_log.ldf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
