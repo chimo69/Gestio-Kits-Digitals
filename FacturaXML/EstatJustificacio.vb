@@ -212,7 +212,4 @@ Public Class EstatJustificacio
     Private Sub Btn_guardar_Click(sender As Object, e As EventArgs) Handles Btn_guardar.Click
         guardarDades()
     End Sub
-    Public Function StringDB(arg As String) As String
-        StringDB = "'" & Replace(arg, "'", "''") & "'"
-    End Function
 End Class

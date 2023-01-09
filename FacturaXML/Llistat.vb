@@ -1,12 +1,13 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class Llistat
-    Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
+
     Dim DT_Llistat As New DataTable
     Dim MostratActual As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
 
     Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
+
 
         DataLlistat.ClearSelection()
         DataLlistat.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue

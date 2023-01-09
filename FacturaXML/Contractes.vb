@@ -3,9 +3,6 @@ Imports System.Data
 Imports System.Runtime.CompilerServices
 
 Public Class Contractes
-
-    Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
-
     Dim empresaSeleccionada, solucioSeleccionada As Boolean
     Dim idEmpresaSeleccionada, idSolucioSeleccionada As Integer
     Dim DT_Empreses, DT_Solucions As New DataTable
@@ -137,10 +134,7 @@ Public Class Contractes
         idBorrar = row.Cells(0).Value
         esborrarEmpresa(idBorrar)
     End Sub
-    'Sustitueix comilles per comilles dobles per evitar errors
-    Public Function StringDB(arg As String) As String
-        StringDB = "'" & Replace(arg, "'", "''") & "'"
-    End Function
+
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_SelectionChanged(sender As Object, e As EventArgs) Handles DataEmpreses.SelectionChanged
 
@@ -171,7 +165,7 @@ Public Class Contractes
     End Sub
 
     Private Sub btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
-        esborraCampsEmpresa()
+        EsborraCampsEmpresa()
     End Sub
     Private Sub EsborraCampsEmpresa()
         DataEmpreses.ClearSelection()

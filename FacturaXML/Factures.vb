@@ -4,7 +4,6 @@ Imports System.Data
 
 
 Public Class Factures
-    Dim cadena As String = "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=""C:\Users\telematic\Documents\Antonio\KitDigital2\FacturaXML\Database1.mdf"";Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False"
     Dim DT_Empreses As New DataTable
     Dim DT_Solucions As New DataTable
     Public Sub New()
