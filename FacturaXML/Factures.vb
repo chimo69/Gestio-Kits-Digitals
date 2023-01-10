@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Data.SqlClient
 Imports System.Data
-
+Imports System.Data.SQLite
 
 Public Class Factures
     Dim DT_Empreses As New DataTable
@@ -336,13 +336,13 @@ Public Class Factures
     'Carrega les empreses per omplir el combobox
     Private Sub Factures_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            Dim conexion As New SqlConnection()
+            Dim conexion As New SQLiteConnection()
 
-            conexion = New SqlConnection(cadena)
+            conexion = New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA_Empreses As New SqlDataAdapter("SELECT * FROM Empreses ORDER BY Nom ASC", conexion)
+                Dim DA_Empreses As New SQLiteDataAdapter("SELECT * FROM Empreses ORDER BY Nom ASC", conexion)
                 DA_Empreses.Fill(DT_Empreses)
                 CB_Empreses.DataSource = DT_Empreses
                 CB_Empreses.DisplayMember = "Nom"
@@ -386,9 +386,9 @@ Public Class Factures
     Private Sub CarregaSolucions(id As Integer)
 
         Try
-            Dim conexion As New SqlConnection()
+            Dim conexion As New SQLiteConnection()
 
-            conexion = New SqlConnection(cadena)
+            conexion = New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
@@ -403,7 +403,7 @@ Public Class Factures
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
                                      WHERE idEmpresa=" & id
-                Dim DA_Solucions As New SqlDataAdapter(Sql, conexion)
+                Dim DA_Solucions As New SQLiteDataAdapter(Sql, conexion)
                 DA_Solucions.Fill(DT_Solucions)
                 CB_Solucions.DataSource = DT_Solucions
                 CB_Solucions.DisplayMember = "Nom"

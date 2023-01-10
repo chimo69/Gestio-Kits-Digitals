@@ -172,7 +172,7 @@ Partial Class EstatJustificacio
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(439, 64)
+        Me.GroupBox1.Location = New System.Drawing.Point(439, 75)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(340, 250)
         Me.GroupBox1.TabIndex = 10
@@ -265,7 +265,7 @@ Partial Class EstatJustificacio
         '
         'Btn_guardar
         '
-        Me.Btn_guardar.Location = New System.Drawing.Point(439, 372)
+        Me.Btn_guardar.Location = New System.Drawing.Point(439, 418)
         Me.Btn_guardar.Name = "Btn_guardar"
         Me.Btn_guardar.Size = New System.Drawing.Size(342, 46)
         Me.Btn_guardar.TabIndex = 11
@@ -274,7 +274,7 @@ Partial Class EstatJustificacio
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(25, 372)
+        Me.ProgressBar1.Location = New System.Drawing.Point(25, 418)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(393, 46)
         Me.ProgressBar1.TabIndex = 12
@@ -286,7 +286,7 @@ Partial Class EstatJustificacio
         Me.Completat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Completat.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Completat.ForeColor = System.Drawing.Color.White
-        Me.Completat.Location = New System.Drawing.Point(545, 328)
+        Me.Completat.Location = New System.Drawing.Point(545, 356)
         Me.Completat.Name = "Completat"
         Me.Completat.Size = New System.Drawing.Size(134, 30)
         Me.Completat.TabIndex = 13
@@ -299,7 +299,7 @@ Partial Class EstatJustificacio
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(808, 452)
+        Me.ClientSize = New System.Drawing.Size(808, 494)
         Me.Controls.Add(Me.Completat)
         Me.Controls.Add(Me.TeDada1)
         Me.Controls.Add(Me.TeWord)

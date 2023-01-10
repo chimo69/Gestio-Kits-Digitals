@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:FacturaXML Setup"
+"ProjectName" = "8:Gestió de Kits Digitals Setup"
 "LanguageId" = "3:3082"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:3082"
@@ -21,7 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
+        "MsmKey" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC9AC7ED041440F5AF60091AFED9D812"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -33,7 +39,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\FacturaXML Setup.msi"
+        "OutputFilename" = "8:Debug\\Gestió de Kits Digitals Setup.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -147,6 +153,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC9AC7ED041440F5AF60091AFED9D812"
+            {
+            "SourcePath" = "8:..\\FacturaXML\\bin\\Debug\\net6.0-windows\\GestioKitsDB.db"
+            "TargetName" = "8:GestioKitsDB.db"
+            "Tag" = "8:"
+            "Folder" = "8:_26E1D7CEF3C548479A94FC32259A97FB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -179,12 +205,23 @@
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_26E1D7CEF3C548479A94FC32259A97FB"
+                    {
+                    "Name" = "8:Database"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_4A66EE57044C42EAB1D449C122BD3D69"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -202,20 +239,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:FacturaXML Setup"
-        "ProductCode" = "8:{B68CEE38-29EE-4662-9985-B41704D2BBC6}"
-        "PackageCode" = "8:{840964F3-D89E-4DDA-AEA7-9BF7E8B4E459}"
+        "ProductName" = "8:Gestió de Kits Digitals"
+        "ProductCode" = "8:{15AE7D92-0195-43AF-927F-B2E957471744}"
+        "PackageCode" = "8:{DFEBE683-9374-4DA4-8B76-63067926CFE8}"
         "UpgradeCode" = "8:{9A946EC5-1B27-4664-9217-BC33B3DA64BD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:2.0.1"
         "Manufacturer" = "8:Telematic"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:FacturaXML Setup"
+        "Title" = "8:Gestió de Kits Digitals"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Antonio Rodriguez Sirgado"
         "Keywords" = "8:"
@@ -324,30 +361,30 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_549DA122096F43C388328909C9DD90A0"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_50769C8047F8479DAC69E3F14AA472A2"
             {
-            "Name" = "8:Gestió Kits Digitals"
+            "Name" = "8:Gestió de Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
-            "Folder" = "8:_210FB9F9DC5F41099F13CC942D7189E6"
+            "Target" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
+            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
             "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8055852F4F5645DDAA756B29739E59C7"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_67F51CA4FDDB454E8FA3B9C5D8E38E6B"
             {
-            "Name" = "8:Gestió Kits Digitals"
+            "Name" = "8:Gestió de Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_43D7E24C6B5F4E0E82D18FB3795EB76B"
-            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
+            "Target" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
+            "Folder" = "8:_210FB9F9DC5F41099F13CC942D7189E6"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
             "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
             "Feature" = "8:"
@@ -751,7 +788,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_43D7E24C6B5F4E0E82D18FB3795EB76B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3B5C6C5784C94174A98F680F4A6304D0"
             {
             "SourcePath" = "8:..\\FacturaXML\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"

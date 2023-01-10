@@ -103,7 +103,7 @@ Public Class Contractes
             If seleccio = False Then MsgBox("Empresa introduida correctament",, "Introduir empresa")
         Catch ex As Exception
             If seleccio = True Then MsgBox("No s'ha pogut modificar l'empresa",, "Modificar empresa")
-        If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
+            If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
         End Try
     End Sub
     'Esborra l'empresa seleccionada
@@ -195,18 +195,7 @@ Public Class Contractes
                 Dim comm As SQLiteCommand
 
                 If CheckJustificat.Checked = True Then
-                    'comm = New SQLiteCommand("SELECT Solucions.Id,
-                    '                          TipusSolucions.Nom,
-                    '                          Solucions.Contracte,
-                    '                          Solucions.DataContracte AS 'Dia contracte',
-                    '                          Solucions.DataVenciment AS 'Dia venciment',
-                    '                          Solucions.Justificat,                                              
-                    '                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
-                    '                          Justificacions.Percentatge AS '%'
-                    '                          FROM Solucions
-                    '                          INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
-                    '                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                    '                          WHERE idEmpresa=" & id, conexion)
+
                     comm = New SQLiteCommand("SELECT Solucions.Id,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,
@@ -220,18 +209,7 @@ Public Class Contractes
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
                                           WHERE idEmpresa=" & id, conexion)
                 Else
-                    'comm = New SQLiteCommand("SELECT Solucions.Id,
-                    '                          TipusSolucions.Nom,
-                    '                          Solucions.Contracte,
-                    '                          Solucions.DataContracte AS 'Dia Contracte',
-                    '                          Solucions.DataVenciment AS 'Dia Venciment',
-                    '                          Solucions.Justificat,                                              
-                    '                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
-                    '                          Justificacions.Percentatge AS '%'
-                    '                          FROM Solucions
-                    '                          INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
-                    '                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                    '                          WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
+
                     comm = New SQLiteCommand("SELECT Solucions.Id,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,
@@ -299,6 +277,7 @@ Public Class Contractes
     End Sub
 
     Private Sub CheckJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckJustificat.CheckedChanged
+
         'OmpleSolucions(idEmpresaSeleccionada)
     End Sub
 
@@ -309,7 +288,7 @@ Public Class Contractes
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
         Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
         EstatJustificacio.ShowDialog()
-        'OmpleSolucions(idEmpresaSeleccionada)
+        OmpleSolucions(idEmpresaSeleccionada)
         EsborrarCampsSolucio()
     End Sub
     'Esborra la solució seleccionada
@@ -373,7 +352,7 @@ Public Class Contractes
             For Each Fila As DataGridViewRow In DataSolucions.Rows
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
-                If Fila.Cells("Justificat").Value = True Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+                If Fila.Cells("Justificat").Value = 1 Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
             Next
         End If
 
@@ -437,13 +416,13 @@ Public Class Contractes
                 MsgBox("Solució modificada correctament",, "Modificar solució")
             End If
             If seleccio = False Then
-                MsgBox("Solució introduida correctament",, "Introduir solució")
+
                 insertaJustificacioBuida(idSolucio, idEmpresaSeleccionada)
+
             End If
             OmpleSolucions(idEmpresaSeleccionada)
         Catch ex As Exception
-            If seleccio = True Then MsgBox("No s'ha pogut modificar la solució",, "Modificar solució")
-            If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
+
         End Try
 
     End Sub
@@ -475,8 +454,11 @@ Public Class Contractes
         Dim Query As String
         Dim strCommand As SQLiteCommand
         Dim id As Integer
-        'Try
-        Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
+        Dim seleccio As Boolean
+        seleccio = solucioSeleccionada
+
+        Try
+            Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
             strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
 
@@ -486,16 +468,25 @@ Public Class Contractes
             End If
             lector.Close()
 
-            Query = "INSERT INTO Justificacions (idSolucio) VALUES (" & id & ")"
+            Query = "INSERT INTO Justificacions (IdSolucio) VALUES (" & id & ")"
             strCommand = New SQLiteCommand(Query, conexion)
             strCommand.ExecuteNonQuery()
 
             conexion.Close()
+            MsgBox("Solució introduida correctament",, "Introduir solució")
 
-        'Catch ex As Exception
+        Catch ex As Exception
+            If seleccio = True Then MsgBox("No s'ha pogut modificar la solució",, "Modificar solució")
+            If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
 
-        'End Try
+
+        End Try
     End Sub
+
+    Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
+        OmpleSolucions(idEmpresaSeleccionada)
+    End Sub
+
     Private Sub EstaLaSolucioSeleccionada(x As Boolean)
         If x = True Then
             Btn_EstatJustificacio.Enabled = True

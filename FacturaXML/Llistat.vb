@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Data.SQLite
 
 Public Class Llistat
 
@@ -46,7 +47,15 @@ Public Class Llistat
 
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
-                If Fila.Cells("Justificat").Value = True Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+
+                If Fila.Cells("Justificat").Value = 0 Then
+                    'Fila.Cells("Justificat").Value = "Si"
+                Else
+                    'Fila.Cells("Justificat").Value = False
+                    Fila.DefaultCellStyle.BackColor = Color.LightGreen
+                End If
+
+
 
                 If MostratActual = 0 Then
                     If IsNumeric(Fila.Cells("Id").Value) Then
@@ -108,16 +117,16 @@ Public Class Llistat
     'Carrega el llistat de solucions de la base de dades
     Public Sub CarregaLlistat(i As Integer)
         Try
-            Dim conexion As New SqlConnection()
+            Dim conexion As New SQLiteConnection()
             Dim Sql As String
             MostratActual = i
 
-            conexion = New SqlConnection(cadena)
+            conexion = New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SqlDataAdapter
-                Dim comm As SqlCommand
+                Dim DA As New SQLiteDataAdapter
+                Dim comm As SQLiteCommand
                 DT_Llistat.Clear()
 
                 If CB_JaPresentades.Checked = False Then
@@ -127,7 +136,7 @@ Public Class Llistat
                           Solucions.Contracte,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
-                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,
+                          julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                           Justificacions.Percentatge AS 'Estat justificació',
                           Solucions.Justificat                          
                           FROM Solucions
@@ -144,7 +153,7 @@ Public Class Llistat
                           Solucions.Contracte,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
-                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies, 
+                          julianday(Solucions.DataVenciment) - julianday(date())  AS Dies, 
                           Justificacions.Percentatge AS 'Estat justificació',
                           Solucions.Justificat
                           FROM Solucions
@@ -155,7 +164,7 @@ Public Class Llistat
                           ORDER BY Solucions.DataVenciment ASC"
                 End If
 
-                comm = New SqlCommand(Sql, conexion)
+                comm = New SQLiteCommand(Sql, conexion)
 
                 DA.SelectCommand = comm
                 DA.Fill(DT_Llistat)
@@ -164,22 +173,22 @@ Public Class Llistat
             End If
             conexion.Close()
         Catch ex As Exception
-            MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
+            'MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
         End Try
 
 
     End Sub
     Public Sub CarregaLlistat()
         Try
-            Dim conexion As New SqlConnection()
+            Dim conexion As New SQLiteConnection()
             Dim Sql As String
 
-            conexion = New SqlConnection(cadena)
+            conexion = New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SqlDataAdapter
-                Dim comm As SqlCommand
+                Dim DA As New SQLiteDataAdapter
+                Dim comm As SQLiteCommand
                 DT_Llistat.Clear()
 
                 If CB_JaPresentades.Checked = False Then
@@ -189,7 +198,7 @@ Public Class Llistat
                           Solucions.Contracte,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
-                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies,                           
+                          julianday(Solucions.DataVenciment) - julianday(date()) AS Dies,                           
                           Justificacions.percentatge AS 'Estat justificació',                          
                           Solucions.Justificat
                           FROM Solucions
@@ -205,7 +214,7 @@ Public Class Llistat
                           Solucions.Contracte,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
-                          DATEDIFF (day,getDate(),Solucions.DataVenciment) AS Dies, 
+                          julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
                           Justificacions.percentatge AS 'Estat justificació',
                           Solucions.Justificat
                           FROM Solucions
@@ -215,7 +224,7 @@ Public Class Llistat
                           ORDER BY Solucions.DataVenciment ASC"
                 End If
 
-                comm = New SqlCommand(Sql, conexion)
+                comm = New SQLiteCommand(Sql, conexion)
 
                 DA.SelectCommand = comm
                 DT_Llistat.Clear()

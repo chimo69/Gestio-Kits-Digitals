@@ -9,6 +9,8 @@
     <Authors>Antonio Rodríguez Sirgado</Authors>
     <Company>Telemàtic</Company>
     <ApplicationIcon>icono-factura2.ico</ApplicationIcon>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <AssemblyName>Gestió de Kits Digitals</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
