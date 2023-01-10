@@ -27,7 +27,6 @@ Public Class Contractes
     'Actualitza la taula amb dades de la Base de dades
     Private Sub actualitzaTaula()
 
-        'Dim conexion As New SqlConnection()
         Dim conexion As New SQLiteConnection()
 
         Try
@@ -221,7 +220,7 @@ Public Class Contractes
                                           FROM Solucions
                                           INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE (idEmpresa=" & id & " And Justificat=0)", conexion)
+                                          WHERE (idEmpresa=" & id & " And Justificat='No')", conexion)
                 End If
 
                 DA.SelectCommand = comm
@@ -352,7 +351,7 @@ Public Class Contractes
             For Each Fila As DataGridViewRow In DataSolucions.Rows
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
-                If Fila.Cells("Justificat").Value = 1 Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
             Next
         End If
 
@@ -375,17 +374,20 @@ Public Class Contractes
         DataContracteTxt = Format(DataContracte.Value, "yyyy-MM-dd")
         DataVencimentTxt = Format(DataContracte.Value.AddMonths(6), "yyyy-MM-dd")
 
+        Dim idAfegir As Integer
+        Dim Justificat As String
+        If CheckEstaJustificat.Checked = True Then
+            Justificat = "'Si'"
+        Else
+            Justificat = "'No'"
+        End If
         If (seleccio = True) Then
 
             Dim index As Integer = DataSolucions.CurrentCell.RowIndex
             Dim row As DataGridViewRow = DataSolucions.Rows(index)
-            Dim idAfegir, Justificat As Integer
+
             idAfegir = row.Cells(0).Value
-            If CheckEstaJustificat.Checked = True Then
-                Justificat = 1
-            Else
-                Justificat = 0
-            End If
+
 
             Query = "UPDATE Solucions SET
                             idSolucio=" & idSolucio & ", 
@@ -401,7 +403,8 @@ Public Class Contractes
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
                                  StringDB(DataVencimentTxt) & "," &
-                                 idEmpresaSeleccionada & ",0)"
+                                 idEmpresaSeleccionada & "," &
+                                 Justificat & ")"
 
         End If
 
@@ -469,7 +472,8 @@ Public Class Contractes
             lector.Close()
 
             Query = "INSERT INTO Justificacions (IdSolucio) VALUES (" & id & ")"
-            strCommand = New SQLiteCommand(Query, conexion)
+
+                strCommand = New SQLiteCommand(Query, conexion)
             strCommand.ExecuteNonQuery()
 
             conexion.Close()
@@ -543,7 +547,12 @@ Public Class Contractes
             solucioSeleccionada = True
             idSolucioSeleccionada = row.Cells(0).Value
             TitolSolucio.Text = row.Cells(1).Value
-            CheckEstaJustificat.Checked = row.Cells(5).Value
+            If row.Cells(5).Value = "Si" Then
+                CheckEstaJustificat.Checked = True
+            Else
+                CheckEstaJustificat.Checked = False
+            End If
+
             ProgressBar1.Value = row.Cells("%").Value
 
         Else

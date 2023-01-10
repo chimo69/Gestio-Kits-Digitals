@@ -39,16 +39,16 @@ Public Class EstatJustificacio
         Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
         If lector.Read() Then
-            FabricantSolucio.Text = lector.GetValue("FabricantSolucio")
-            TeWord.Checked = lector.GetValue("TeWord")
-            TeComprovant.Checked = lector.GetValue("TeComprovantPagament")
-            TeFactura.Checked = lector.GetValue("TeFacturaXML")
-            TeDada1.Checked = lector.GetValue("Dada1")
-            TeDada2.Checked = lector.GetValue("Dada2")
+            FabricantSolucio.Text = lector.GetString("FabricantSolucio")
+            TeWord.Checked = lector.GetBoolean("TeWord")
+            TeComprovant.Checked = lector.GetBoolean("TeComprovantPagament")
+            TeFactura.Checked = lector.GetBoolean("TeFacturaXML")
+            TeDada1.Checked = lector.GetBoolean("Dada1")
+            TeDada2.Checked = lector.GetBoolean("Dada2")
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
 
-        End If
-        lector.Close()
+            End If
+            lector.Close()
         conexion.Close()
 
         Select Case IdTipusSolucio
@@ -101,11 +101,11 @@ Public Class EstatJustificacio
         Try
             Query = "UPDATE Justificacions SET
                         Percentatge=" & Progress & ",
-                        TeWord='" & TeWord.Checked & "',
-                        TeComprovantPagament='" & TeComprovant.Checked & "',
-                        TeFacturaXML='" & TeFactura.Checked & "',
-                        Dada1='" & TeDada1.Checked & "',
-                        Dada2='" & TeDada2.Checked & "',
+                        TeWord='" & tornaBoolean(TeWord.Checked) & "',
+                        TeComprovantPagament='" & tornaBoolean(TeComprovant.Checked) & "',
+                        TeFacturaXML='" & tornaBoolean(TeFactura.Checked) & "',
+                        Dada1='" & tornaBoolean(TeDada1.Checked) & "',
+                        Dada2='" & tornaBoolean(TeDada2.Checked) & "',
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & "
                         
@@ -122,6 +122,13 @@ Public Class EstatJustificacio
         End Try
 
     End Sub
+    Private Function tornaBoolean(B As Boolean) As Integer
+        If B = True Then
+            Return 1
+        Else
+            Return 0
+        End If
+    End Function
 
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TotalSolucio.TextChanged, FabricantSolucio.TextChanged
 

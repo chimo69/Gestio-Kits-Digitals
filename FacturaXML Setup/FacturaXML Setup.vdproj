@@ -15,19 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0EF26AA473B2409C823775FEE7732B5C"
+        "MsmKey" = "8:_22BE77553E6044B2A821E757D2F6DEE1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
+        "MsmKey" = "8:_42AEB115CC4D4E2198B3979B56F349E5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_EC9AC7ED041440F5AF60091AFED9D812"
+        "MsmKey" = "8:_CC04B5FACEE04A0691095E2A68288984"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -133,10 +133,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0EF26AA473B2409C823775FEE7732B5C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42AEB115CC4D4E2198B3979B56F349E5"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\icono-factura2.ico"
-            "TargetName" = "8:icono-factura.ico"
+            "SourcePath" = "8:..\\FacturaXML\\icono-factura2.ico"
+            "TargetName" = "8:icono-factura2.ico"
             "Tag" = "8:"
             "Folder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
             "Condition" = "8:"
@@ -153,9 +153,9 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC9AC7ED041440F5AF60091AFED9D812"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CC04B5FACEE04A0691095E2A68288984"
             {
-            "SourcePath" = "8:..\\FacturaXML\\bin\\Debug\\net6.0-windows\\GestioKitsDB.db"
+            "SourcePath" = "8:..\\FacturaXML\\bin\\Debug\\net6.0-windows\\Database\\GestioKitsDB.db"
             "TargetName" = "8:GestioKitsDB.db"
             "Tag" = "8:"
             "Folder" = "8:_26E1D7CEF3C548479A94FC32259A97FB"
@@ -258,7 +258,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_0EF26AA473B2409C823775FEE7732B5C"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -361,32 +361,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_50769C8047F8479DAC69E3F14AA472A2"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6FDA78F1DDB843388B2A8C92C54E08E4"
             {
-            "Name" = "8:Gestió de Kits Digitals"
+            "Name" = "8:Gestió Kits Digitals"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
-            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
-            "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_67F51CA4FDDB454E8FA3B9C5D8E38E6B"
-            {
-            "Name" = "8:Gestió de Kits Digitals"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_3B5C6C5784C94174A98F680F4A6304D0"
+            "Target" = "8:_22BE77553E6044B2A821E757D2F6DEE1"
             "Folder" = "8:_210FB9F9DC5F41099F13CC942D7189E6"
             "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
-            "Icon" = "8:_0EF26AA473B2409C823775FEE7732B5C"
+            "Icon" = "8:_42AEB115CC4D4E2198B3979B56F349E5"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_929E4BF0D5374B9E9DF8BE1CEDD24655"
+            {
+            "Name" = "8:Gestió Kits Digitals"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_22BE77553E6044B2A821E757D2F6DEE1"
+            "Folder" = "8:_6A2E524AD9F84FDDAEBCAEC4CC163F9B"
+            "WorkingFolder" = "8:_F59A082B99D64ADB9325C01C8CD2F846"
+            "Icon" = "8:_42AEB115CC4D4E2198B3979B56F349E5"
             "Feature" = "8:"
             }
         }
@@ -788,7 +788,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3B5C6C5784C94174A98F680F4A6304D0"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_22BE77553E6044B2A821E757D2F6DEE1"
             {
             "SourcePath" = "8:..\\FacturaXML\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"

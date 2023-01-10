@@ -48,14 +48,7 @@ Public Class Llistat
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
 
-                If Fila.Cells("Justificat").Value = 0 Then
-                    'Fila.Cells("Justificat").Value = "Si"
-                Else
-                    'Fila.Cells("Justificat").Value = False
-                    Fila.DefaultCellStyle.BackColor = Color.LightGreen
-                End If
-
-
+                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
 
                 If MostratActual = 0 Then
                     If IsNumeric(Fila.Cells("Id").Value) Then
@@ -103,7 +96,7 @@ Public Class Llistat
                 End If
             Next
         End If
-        numeraSolucions()
+        NumeraSolucions()
     End Sub
 
     Public Sub New()
@@ -143,7 +136,7 @@ Public Class Llistat
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
                           INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio 
-                          WHERE Solucions.Justificat=0 AND Solucions.idSolucio=" & i & " 
+                          WHERE Solucions.Justificat='No' AND Solucions.idSolucio=" & i & " 
                           ORDER BY Solucions.DataVenciment ASC"
 
                 Else
@@ -205,7 +198,7 @@ Public Class Llistat
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
                           INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
-                          WHERE Solucions.Justificat=0 
+                          WHERE Solucions.Justificat='No' 
                           ORDER BY Solucions.DataVenciment ASC"
                 Else
                     Sql = "SELECT Empreses.Nom As Empresa,
@@ -240,7 +233,7 @@ Public Class Llistat
 
     End Sub
 
-    Private Sub numeraSolucions()
+    Private Sub NumeraSolucions()
         If MostratActual = 0 Then TB_totes.Text = DataLlistat.RowCount.ToString
         TB_SitioWeb.Text = SitioWeb.ToString
         TB_ComercioElectronico.Text = ComercioElectronico.ToString
@@ -261,7 +254,7 @@ Public Class Llistat
         End If
     End Sub
 
-    Private Sub tipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged,
+    Private Sub TipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged,
         RB_ComercioElectronico.CheckedChanged, RB_RedesSociales.CheckedChanged, RB_GestionClientes.CheckedChanged,
         RB_BusinessInteligence.CheckedChanged, RB_GestionProcesos.CheckedChanged, RB_FacturaElectronica.CheckedChanged,
         RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged
