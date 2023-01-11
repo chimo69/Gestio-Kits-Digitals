@@ -68,6 +68,8 @@ Partial Class Contractes
         Me.Btn_EstatJustificacio = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.TBObservacions = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -113,7 +115,7 @@ Partial Class Contractes
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataEmpreses.ShowEditingIcon = False
-        Me.DataEmpreses.Size = New System.Drawing.Size(628, 679)
+        Me.DataEmpreses.Size = New System.Drawing.Size(628, 757)
         Me.DataEmpreses.TabIndex = 0
         '
         'Label1
@@ -238,7 +240,7 @@ Partial Class Contractes
         'Btn_afegir
         '
         Me.Btn_afegir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Btn_afegir.Location = New System.Drawing.Point(31, 691)
+        Me.Btn_afegir.Location = New System.Drawing.Point(31, 769)
         Me.Btn_afegir.Name = "Btn_afegir"
         Me.Btn_afegir.Size = New System.Drawing.Size(148, 53)
         Me.Btn_afegir.TabIndex = 15
@@ -249,7 +251,7 @@ Partial Class Contractes
         '
         Me.Btn_esborrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Btn_esborrar.BackColor = System.Drawing.Color.IndianRed
-        Me.Btn_esborrar.Location = New System.Drawing.Point(193, 691)
+        Me.Btn_esborrar.Location = New System.Drawing.Point(193, 769)
         Me.Btn_esborrar.Name = "Btn_esborrar"
         Me.Btn_esborrar.Size = New System.Drawing.Size(148, 53)
         Me.Btn_esborrar.TabIndex = 16
@@ -269,6 +271,7 @@ Partial Class Contractes
         '
         Me.DataSolucions.AllowUserToAddRows = False
         Me.DataSolucions.AllowUserToDeleteRows = False
+        Me.DataSolucions.AllowUserToResizeRows = False
         Me.DataSolucions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -398,7 +401,7 @@ Partial Class Contractes
         'Btn_AfegirSolucio
         '
         Me.Btn_AfegirSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1289, 691)
+        Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1289, 769)
         Me.Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Me.Btn_AfegirSolucio.Size = New System.Drawing.Size(146, 53)
         Me.Btn_AfegirSolucio.TabIndex = 31
@@ -427,7 +430,7 @@ Partial Class Contractes
         'Btn_EsborrarSeleccioSolucio
         '
         Me.Btn_EsborrarSeleccioSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Btn_EsborrarSeleccioSolucio.Location = New System.Drawing.Point(1011, 691)
+        Me.Btn_EsborrarSeleccioSolucio.Location = New System.Drawing.Point(1011, 769)
         Me.Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Me.Btn_EsborrarSeleccioSolucio.Size = New System.Drawing.Size(146, 53)
         Me.Btn_EsborrarSeleccioSolucio.TabIndex = 34
@@ -438,7 +441,7 @@ Partial Class Contractes
         '
         Me.Btn_EsborrarSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_EsborrarSolucio.BackColor = System.Drawing.Color.IndianRed
-        Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1441, 691)
+        Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1441, 769)
         Me.Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Me.Btn_EsborrarSolucio.Size = New System.Drawing.Size(146, 53)
         Me.Btn_EsborrarSolucio.TabIndex = 35
@@ -480,9 +483,10 @@ Partial Class Contractes
         '
         Me.CheckJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckJustificat.AutoSize = True
+        Me.CheckJustificat.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.CheckJustificat.Checked = True
         Me.CheckJustificat.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckJustificat.Location = New System.Drawing.Point(1011, 580)
+        Me.CheckJustificat.Location = New System.Drawing.Point(1465, 403)
         Me.CheckJustificat.Name = "CheckJustificat"
         Me.CheckJustificat.Size = New System.Drawing.Size(120, 19)
         Me.CheckJustificat.TabIndex = 38
@@ -522,7 +526,7 @@ Partial Class Contractes
         'ProgressBar1
         '
         Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(1009, 646)
+        Me.ProgressBar1.Location = New System.Drawing.Point(1011, 732)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(576, 23)
         Me.ProgressBar1.TabIndex = 42
@@ -531,17 +535,38 @@ Partial Class Contractes
         '
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(1010, 624)
+        Me.Label15.Location = New System.Drawing.Point(1012, 710)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(146, 15)
         Me.Label15.TabIndex = 43
         Me.Label15.Text = "Percentatge de justificació"
         '
+        'TBObservacions
+        '
+        Me.TBObservacions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TBObservacions.Location = New System.Drawing.Point(1012, 589)
+        Me.TBObservacions.Multiline = True
+        Me.TBObservacions.Name = "TBObservacions"
+        Me.TBObservacions.Size = New System.Drawing.Size(573, 111)
+        Me.TBObservacions.TabIndex = 44
+        '
+        'Label16
+        '
+        Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(1009, 563)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(78, 15)
+        Me.Label16.TabIndex = 45
+        Me.Label16.Text = "Observacions"
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1607, 774)
+        Me.ClientSize = New System.Drawing.Size(1607, 852)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.TBObservacions)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Btn_EstatJustificacio)
@@ -585,7 +610,7 @@ Partial Class Contractes
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataEmpreses)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(1623, 665)
+        Me.MinimumSize = New System.Drawing.Size(1623, 891)
         Me.Name = "Contractes"
         Me.Text = "Contractes"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -638,4 +663,6 @@ Partial Class Contractes
     Friend WithEvents Btn_EstatJustificacio As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Label15 As Label
+    Friend WithEvents TBObservacions As TextBox
+    Friend WithEvents Label16 As Label
 End Class
