@@ -6,6 +6,20 @@ Public Class Llistat
     Dim DT_Llistat As New DataTable
     Dim MostratActual As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        CarregaLlistat()
+    End Sub
+    Private Sub DataLlistat_DoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataLlistat.CellDoubleClick
+        Dim idEmpresa As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdEmpresa").Value
+        Dim idSolucio As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdEmpresa").Value
+        Dim contractes As New Contractes(idEmpresa, idSolucio)
+        contractes.Show()
+    End Sub
 
     Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
 
@@ -26,8 +40,12 @@ Public Class Llistat
         DataLlistat.Columns("Estat justificació").Width = 100
         DataLlistat.Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Estat justificació").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Justificat").Width = 60
         DataLlistat.Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataLlistat.Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DataLlistat.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells)
+
 
         If MostratActual = 0 Then
             SitioWeb = 0
@@ -99,14 +117,7 @@ Public Class Llistat
         NumeraSolucions()
     End Sub
 
-    Public Sub New()
 
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        CarregaLlistat()
-    End Sub
     'Carrega el llistat de solucions de la base de dades
     Public Sub CarregaLlistat(i As Integer)
         Try
@@ -124,6 +135,7 @@ Public Class Llistat
 
                 If CB_JaPresentades.Checked = False Then
                     Sql = "SELECT Empreses.Nom As Empresa,
+                          Empreses.Id As IdEmpresa,  
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
@@ -131,7 +143,8 @@ Public Class Llistat
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                           Justificacions.Percentatge AS 'Estat justificació',
-                          Solucions.Justificat                          
+                          Solucions.Justificat,
+                          Solucions.Observacions  
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -141,6 +154,7 @@ Public Class Llistat
 
                 Else
                     Sql = "SELECT Empreses.Nom As Empresa,
+                          Empreses.Id As IdEmpresa,  
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
@@ -148,7 +162,8 @@ Public Class Llistat
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies, 
                           Justificacions.Percentatge AS 'Estat justificació',
-                          Solucions.Justificat
+                          Solucions.Justificat,
+                          Solucions.Observacions  
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -166,7 +181,7 @@ Public Class Llistat
             End If
             conexion.Close()
         Catch ex As Exception
-            'MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
+            MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
         End Try
 
 
@@ -186,6 +201,7 @@ Public Class Llistat
 
                 If CB_JaPresentades.Checked = False Then
                     Sql = "SELECT Empreses.Nom As Empresa,
+                          Empreses.Id  As IdEmpresa,  
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
@@ -193,7 +209,8 @@ Public Class Llistat
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies,                           
                           Justificacions.percentatge AS 'Estat justificació',                          
-                          Solucions.Justificat
+                          Solucions.Justificat,
+                          Solucions.Observacions  
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -202,6 +219,7 @@ Public Class Llistat
                           ORDER BY Solucions.DataVenciment ASC"
                 Else
                     Sql = "SELECT Empreses.Nom As Empresa,
+                          Empreses.Id As IdEmpresa,  
                           TipusSolucions.Id,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
@@ -209,7 +227,8 @@ Public Class Llistat
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
                           Justificacions.percentatge AS 'Estat justificació',
-                          Solucions.Justificat
+                          Solucions.Justificat,
+                          Solucions.Observacions  
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id                          

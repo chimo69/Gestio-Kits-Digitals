@@ -7,6 +7,8 @@ Public Class Contractes
     Dim empresaSeleccionada, solucioSeleccionada As Boolean
     Dim idEmpresaSeleccionada, idSolucioSeleccionada As Integer
     Dim DT_Empreses, DT_Solucions As New DataTable
+    Private idEmpresa As Integer
+    Private idSolucio As Integer
 
     Public Sub New()
 
@@ -16,8 +18,19 @@ Public Class Contractes
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         actualitzaTaula()
 
-        DataEmpreses.ClearSelection()
+    End Sub
 
+    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
+        Me.idEmpresa = idEmpresa
+        Me.idSolucio = idSolucio
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        actualitzaTaula()
+
+        DataEmpreses.ClearSelection()
     End Sub
 
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
@@ -38,9 +51,6 @@ Public Class Contractes
                 Dim DT As New DataTable
                 DA.Fill(DT)
                 DataEmpreses.DataSource = DT
-                Dim colId As DataGridViewColumn = DataEmpreses.Columns(0)
-                colId.Visible = False
-
             End If
             conexion.Close()
 
@@ -389,6 +399,16 @@ Public Class Contractes
         DataEmpreses.Columns("CodiPostal").Width = 70
         DataEmpreses.Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataEmpreses.Columns("Pais").Width = 100
+        DataEmpreses.Columns("Id").Visible = False
+
+        For Each Fila As DataGridViewRow In DataEmpreses.Rows
+            If Fila.Cells("Id").Value = idEmpresa Then
+                Fila.Selected = True
+                Dim click As New DataGridViewCellEventArgs(1, 1)
+                Exit For
+            End If
+        Next
+
     End Sub
 
     Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
@@ -553,8 +573,6 @@ Public Class Contractes
         Catch ex As Exception
             If seleccio = True Then MsgBox("No s'ha pogut modificar la solució",, "Modificar solució")
             If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
-
-
         End Try
     End Sub
 
@@ -581,24 +599,28 @@ Public Class Contractes
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
         If DataEmpreses.SelectedRows.Count > 0 Then
+            OmpleDadesEmpresa()
+        End If
+    End Sub
+    Private Sub OmpleDadesEmpresa()
+        Dim index As Integer = DataEmpreses.CurrentRow.Index
+        Dim row As DataGridViewRow = DataEmpreses.Rows(index)
 
-            Dim index As Integer = DataEmpreses.CurrentRow.Index
-            Dim row As DataGridViewRow = DataEmpreses.Rows(index)
+        TitolEmpresa.Text = row.Cells(1).Value
+        Empresa.Text = row.Cells(1).Value
+        Nif.Text = row.Cells(2).Value
+        Direccio.Text = row.Cells(3).Value
+        CodiPostal.Text = row.Cells(4).Value
+        Ciutat.Text = row.Cells(5).Value
+        Provincia.Text = row.Cells(6).Value
+        Pais.Text = row.Cells(7).Value
+        Btn_afegir.Text = "Modificar empresa"
+        empresaSeleccionada = True
 
-            TitolEmpresa.Text = row.Cells(1).Value
-            Empresa.Text = row.Cells(1).Value
-            Nif.Text = row.Cells(2).Value
-            Direccio.Text = row.Cells(3).Value
-            CodiPostal.Text = row.Cells(4).Value
-            Ciutat.Text = row.Cells(5).Value
-            Provincia.Text = row.Cells(6).Value
-            Pais.Text = row.Cells(7).Value
-            Btn_afegir.Text = "Modificar empresa"
-            empresaSeleccionada = True
+        If row.Cells(0).Value <> idEmpresaSeleccionada Then
             idEmpresaSeleccionada = row.Cells(0).Value
             OmpleSolucions(idEmpresaSeleccionada)
             EstaLaSolucioSeleccionada(False)
-
         End If
     End Sub
 
