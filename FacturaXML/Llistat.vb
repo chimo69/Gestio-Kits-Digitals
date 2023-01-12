@@ -16,7 +16,8 @@ Public Class Llistat
     End Sub
     Private Sub DataLlistat_DoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataLlistat.CellDoubleClick
         Dim idEmpresa As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdEmpresa").Value
-        Dim idSolucio As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdEmpresa").Value
+        Dim idSolucio As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdSolucio").Value
+
         Dim contractes As New Contractes(idEmpresa, idSolucio)
         contractes.Show()
     End Sub
@@ -26,7 +27,9 @@ Public Class Llistat
 
         DataLlistat.ClearSelection()
         DataLlistat.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
-        DataLlistat.Columns("Id").Visible = False
+        DataLlistat.Columns("IdSolucio").Visible = False
+        DataLlistat.Columns("IdEmpresa").Visible = False
+        DataLlistat.Columns("IdTipusSolucio").Visible = False
         DataLlistat.Columns("Data contracte").Width = 100
         DataLlistat.Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataLlistat.Columns("Data contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -69,44 +72,44 @@ Public Class Llistat
                 If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
 
                 If MostratActual = 0 Then
-                    If IsNumeric(Fila.Cells("Id").Value) Then
-                        If Fila.Cells("Id").Value = 1 Then
+                    If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
+                        If Fila.Cells("IdTipusSolucio").Value = 1 Then
                             SitioWeb += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 2 Then
+                        If Fila.Cells("IdSolucio").Value = 2 Then
                             ComercioElectronico += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 3 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 3 Then
                             RedesSociales += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 4 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 4 Then
                             Clientes += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 5 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 5 Then
                             Business += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 6 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 6 Then
                             Procesos += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 7 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 7 Then
                             Factura += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 8 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 8 Then
                             Oficina += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 9 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 9 Then
                             Comunicaciones += 1
 
                         End If
-                        If Fila.Cells("Id").Value = 10 Then
+                        If Fila.Cells("IdTipusSolucio").Value = 10 Then
                             Ciberseguridad += 1
 
                         End If
@@ -136,9 +139,10 @@ Public Class Llistat
                 If CB_JaPresentades.Checked = False Then
                     Sql = "SELECT Empreses.Nom As Empresa,
                           Empreses.Id As IdEmpresa,  
-                          TipusSolucions.Id,    
+                          TipusSolucions.Id As IdTipusSolucio,    
                           TipusSolucions.Nom As Solucio,
-                          Solucions.Contracte,
+                          Solucions.Id As IdSolucio,
+                          Solucions.Contracte,                          
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
@@ -155,9 +159,10 @@ Public Class Llistat
                 Else
                     Sql = "SELECT Empreses.Nom As Empresa,
                           Empreses.Id As IdEmpresa,  
-                          TipusSolucions.Id,    
+                          TipusSolucions.Id As IdTipusSolucio,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
+                          Solucions.Id As IdSolucio,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies, 
@@ -202,9 +207,10 @@ Public Class Llistat
                 If CB_JaPresentades.Checked = False Then
                     Sql = "SELECT Empreses.Nom As Empresa,
                           Empreses.Id  As IdEmpresa,  
-                          TipusSolucions.Id,    
+                          TipusSolucions.Id As IdTipusSolucio,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
+                          Solucions.Id As IdSolucio,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies,                           
@@ -220,9 +226,10 @@ Public Class Llistat
                 Else
                     Sql = "SELECT Empreses.Nom As Empresa,
                           Empreses.Id As IdEmpresa,  
-                          TipusSolucions.Id,    
+                          TipusSolucions.Id As IdTipusSolucio,    
                           TipusSolucions.Nom As Solucio,
                           Solucions.Contracte,
+                          Solucions.Id As IdSolucio,
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 

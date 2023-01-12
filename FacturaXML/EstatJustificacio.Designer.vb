@@ -109,9 +109,9 @@ Partial Class EstatJustificacio
         Me.TeComprovant.AutoSize = True
         Me.TeComprovant.Location = New System.Drawing.Point(25, 187)
         Me.TeComprovant.Name = "TeComprovant"
-        Me.TeComprovant.Size = New System.Drawing.Size(166, 19)
+        Me.TeComprovant.Size = New System.Drawing.Size(224, 19)
         Me.TeComprovant.TabIndex = 4
-        Me.TeComprovant.Text = "Comprovant de pagament"
+        Me.TeComprovant.Text = "Declaració responsable de cobrament"
         Me.TeComprovant.UseVisualStyleBackColor = True
         '
         'TeFactura
