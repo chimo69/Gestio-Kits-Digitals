@@ -19,35 +19,40 @@ Public Class Llistat
         Dim idSolucio As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdSolucio").Value
 
         Dim contractes As New Contractes(idEmpresa, idSolucio)
+        Me.Close()
         contractes.Show()
     End Sub
 
     Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
 
 
-        DataLlistat.ClearSelection()
-        DataLlistat.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
-        DataLlistat.Columns("IdSolucio").Visible = False
-        DataLlistat.Columns("IdEmpresa").Visible = False
-        DataLlistat.Columns("IdTipusSolucio").Visible = False
-        DataLlistat.Columns("Data contracte").Width = 100
-        DataLlistat.Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Data contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Data venciment").Width = 100
-        DataLlistat.Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Data venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Empresa").Width = 300
-        DataLlistat.Columns("Dies").Width = 100
-        DataLlistat.Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Estat justificació").Width = 100
-        DataLlistat.Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Estat justificació").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Justificat").Width = 60
-        DataLlistat.Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataLlistat.Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
-        DataLlistat.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells)
+        With DataLlistat
+            .ClearSelection()
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+            .Columns("IdSolucio").Visible = False
+            .Columns("IdEmpresa").Visible = False
+            .Columns("IdTipusSolucio").Visible = False
+
+            .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Data contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Data venciment").Width = 100
+            .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Data venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+
+            .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+            .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Estat justificació").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+            .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        End With
+
+        DataLlistat.AutoResizeColumns()
+        DataLlistat.AutoResizeRows()
 
 
         If MostratActual = 0 Then
