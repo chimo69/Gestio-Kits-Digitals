@@ -3,7 +3,7 @@
 Public Class Contractes
     Dim empresaSeleccionada, solucioSeleccionada As Boolean
     Dim idEmpresaSeleccionada, idSolucioSeleccionada As Integer
-    Dim DT_Empreses, DT_Solucions As New DataTable
+    Dim DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Dim vuelta As Integer = 0
     Private idEmpresa As Integer
     Private idSolucio As Integer
@@ -15,7 +15,7 @@ Public Class Contractes
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         actualitzaTaula()
-        DataEmpreses.ClearSelection()
+
     End Sub
 
     Public Sub New(idEmpresa As Integer, idSolucio As Integer)
@@ -27,8 +27,6 @@ Public Class Contractes
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         actualitzaTaula()
-
-
     End Sub
 
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
@@ -46,9 +44,8 @@ Public Class Contractes
 
             If conexion.State = ConnectionState.Open Then
                 Dim DA As New SQLiteDataAdapter("SELECT * FROM Empreses", conexion)
-                Dim DT As New DataTable
-                DA.Fill(DT)
-                DataEmpreses.DataSource = DT
+                DA.Fill(DT_Empreses)
+                DataEmpreses.DataSource = DT_Empreses
             End If
             conexion.Close()
 
@@ -230,8 +227,8 @@ Public Class Contractes
 
         If conexion.State = ConnectionState.Open Then
             Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
-            DA.Fill(DT_Empreses)
-            CB_TipusSolucio.DataSource = DT_Empreses
+            DA.Fill(DT_TipusSolucions)
+            CB_TipusSolucio.DataSource = DT_TipusSolucions
             CB_TipusSolucio.DisplayMember = "Nom"
             CB_TipusSolucio.ValueMember = "Id"
             CB_TipusSolucio.Text = "Selecciona un tipus de solució"
@@ -382,71 +379,61 @@ Public Class Contractes
         End If
 
     End Sub
-
+    'Donem format al llistat de empreses quan acaba de carregarse
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
-        If vuelta = 0 Then
-            EsborraCampsEmpresa()
-            EstaLaSolucioSeleccionada(False)
+
+        'If vuelta = 3 Then
+        EsborraCampsEmpresa()
+        EstaLaSolucioSeleccionada(False)
 
             With DataEmpreses
-                .ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
                 .Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
                 .Columns("Id").Visible = False
-            End With
-
-            DataEmpreses.AutoResizeColumns()
+            .AutoResizeColumns()
+            .ClearSelection()
+        End With
 
             For Each Fila As DataGridViewRow In DataEmpreses.Rows
                 If Fila.Cells("Id").Value = idEmpresa Then
-                    Dim row As DataGridViewRow = Fila
-                    row.Selected = True
+                    Fila.Selected = True
                     OmpleDadesEmpresa(Fila.Index)
                     Exit For
                 End If
             Next
-        End If
+        'End If
+
         vuelta = vuelta + 1
     End Sub
-
+    'Donem format al llistat de solucions quan acaba de carregarse
     Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
 
         EsborrarCampsSolucio()
         EstaLaSolucioSeleccionada(False)
 
-        If DataSolucions.Rows.Count > 0 Then
-            DataSolucions.ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+        With DataSolucions
+            .Columns("Id").Visible = False
+            .Columns("Justificat").Visible = False
+            .Columns("Observacions").Visible = False
+            .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Dia Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Dia Venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .AutoResizeColumns()
+        End With
 
-            With DataSolucions
-                .Columns("Id").Visible = False
-                .Columns("Justificat").Visible = False
-                .Columns("Observacions").Visible = False
-                .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Dia Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Dia Contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Dia Venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Dia Venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("%").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-            End With
+        For Each Fila As DataGridViewRow In DataSolucions.Rows
+            If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
+            If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
+            If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+        Next
 
-            DataSolucions.AutoResizeColumns()
-
-            For Each Fila As DataGridViewRow In DataSolucions.Rows
-                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
-                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
-                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
-            Next
-
-            For Each Fila As DataGridViewRow In DataSolucions.Rows
-                If Fila.Cells("Id").Value = idSolucio Then
-                    Dim row As DataGridViewRow = Fila
-                    row.Selected = True
-                    OmpleDadesSolucions(Fila.Index)
-                    Exit For
-                End If
-            Next
-        End If
+        For Each Fila As DataGridViewRow In DataSolucions.Rows
+            If Fila.Cells("Id").Value = idSolucio Then
+                Fila.Selected = True
+                OmpleDadesSolucions(Fila.Index)
+                Exit For
+            End If
+        Next
 
     End Sub
     'Afegeix o actualitza una solució
@@ -481,7 +468,6 @@ Public Class Contractes
             Dim row As DataGridViewRow = DataSolucions.Rows(index)
 
             idAfegir = row.Cells(0).Value
-
 
             Query = "UPDATE Solucions SET
                             idSolucio=" & idSolucio & ", 
@@ -523,8 +509,6 @@ Public Class Contractes
         End Try
 
     End Sub
-
-
     'Comproba que s'hagin introduit totes les dades
     Private Function ComprovaDadesSolucions() As Boolean
         If CB_TipusSolucio.Text = "Selecciona un tipus de solució" Then
@@ -546,6 +530,7 @@ Public Class Contractes
         End If
         Return True
     End Function
+    'Inserta una justificacio buida
     Private Sub insertaJustificacioBuida(idSolucio As Integer, idEmpresa As Integer)
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
@@ -578,12 +563,6 @@ Public Class Contractes
             If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
         End Try
     End Sub
-
-    Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
-        OmpleSolucions(idEmpresaSeleccionada)
-    End Sub
-
-
     Private Sub EstaLaSolucioSeleccionada(x As Boolean)
         If x = True Then
             Btn_EstatJustificacio.Enabled = True
@@ -601,7 +580,19 @@ Public Class Contractes
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
-        OmpleDadesEmpresa(DataEmpreses.CurrentRow.Index)
+        If DataEmpreses.SelectedRows.Count > 0 Then
+            OmpleDadesEmpresa(DataEmpreses.CurrentRow.Index)
+        End If
+    End Sub
+    'Modifica els camps quan la selecció de solucio canvia
+    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
+        If DataSolucions.SelectedRows.Count > 0 Then
+            OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
+            EstaLaSolucioSeleccionada(True)
+        End If
+    End Sub
+    Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
+        OmpleSolucions(idEmpresaSeleccionada)
     End Sub
     Private Sub OmpleDadesEmpresa(Index As Integer)
         Dim row As DataGridViewRow = DataEmpreses.Rows(Index)
@@ -618,19 +609,16 @@ Public Class Contractes
         empresaSeleccionada = True
         idEmpresa = 0
 
+        DataEmpreses.ClearSelection()
+        EsborraCampsEmpresa()
+        EstaLaSolucioSeleccionada(False)
+
         If row.Cells("Id").Value <> idEmpresaSeleccionada Then
             idEmpresaSeleccionada = row.Cells("Id").Value
             OmpleSolucions(idEmpresaSeleccionada)
             EstaLaSolucioSeleccionada(False)
         End If
 
-    End Sub
-    'Modifica els camps quan la selecció de solucio canvia
-    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
-
-        If DataSolucions.SelectedRows.Count > 0 Then
-            OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
-        End If
     End Sub
     Private Sub OmpleDadesSolucions(Index As Integer)
 

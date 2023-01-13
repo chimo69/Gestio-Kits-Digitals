@@ -28,26 +28,15 @@ Public Class Llistat
 
         With DataLlistat
             .ClearSelection()
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.CadetBlue
+
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
             .Columns("IdTipusSolucio").Visible = False
-
             .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Data contracte").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Data venciment").Width = 100
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Data venciment").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Dies").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-
             .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Estat justificació").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-
             .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Justificat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
         End With
 
@@ -71,10 +60,10 @@ Public Class Llistat
         If DataLlistat.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In DataLlistat.Rows
 
-                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
-                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
+                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
+                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
 
-                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
 
                 If MostratActual = 0 Then
                     If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then

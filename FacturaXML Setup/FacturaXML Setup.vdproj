@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_34068C6A1E664159A9117FF590251CA5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_42AEB115CC4D4E2198B3979B56F349E5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -133,26 +127,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_34068C6A1E664159A9117FF590251CA5"
-            {
-            "SourcePath" = "8:..\\FacturaXML\\bin\\Debug\\net6.0-windows\\Database\\GestioKitsDB.db"
-            "TargetName" = "8:GestioKitsDB.db"
-            "Tag" = "8:"
-            "Folder" = "8:_26E1D7CEF3C548479A94FC32259A97FB"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42AEB115CC4D4E2198B3979B56F349E5"
             {
             "SourcePath" = "8:..\\FacturaXML\\icono-factura2.ico"
