@@ -59,15 +59,16 @@ Partial Class EstatJustificacio
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Empresa)
         Me.Panel1.Location = New System.Drawing.Point(25, 25)
+        Me.Panel1.MaximumSize = New System.Drawing.Size(393, 36)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(95, 43)
+        Me.Panel1.Size = New System.Drawing.Size(95, 36)
         Me.Panel1.TabIndex = 0
         '
         'Empresa
         '
         Me.Empresa.AutoSize = True
         Me.Empresa.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Empresa.Location = New System.Drawing.Point(3, 9)
+        Me.Empresa.Location = New System.Drawing.Point(3, 4)
         Me.Empresa.Name = "Empresa"
         Me.Empresa.Size = New System.Drawing.Size(87, 25)
         Me.Empresa.TabIndex = 0

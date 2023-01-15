@@ -1,7 +1,4 @@
-﻿'Imports System.Data.SqlClient
-Imports System.Data.SQLite
-Imports ADODB
-Module Utils
+﻿Module Utils
     Public cadena As String = "Data Source=" & Application.StartupPath & "\Database\GestioKitsDB.db;Version=3;UseUTF8Encoding=True;"
     Public taronja As Color = Color.FromArgb(255, 195, 0)
     Public vermell As Color = Color.FromArgb(253, 88, 88)

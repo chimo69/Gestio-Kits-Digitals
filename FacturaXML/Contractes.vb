@@ -1,12 +1,9 @@
 ﻿Imports System.Data.SQLite
 
 Public Class Contractes
-    Dim empresaSeleccionada, solucioSeleccionada As Boolean
-    Dim idEmpresaSeleccionada, idSolucioSeleccionada As Integer
-    Dim DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
-    Dim vuelta As Integer = 0
-    Private idEmpresa As Integer
-    Private idSolucio As Integer
+    Private empresaSeleccionada, solucioSeleccionada As Boolean
+    Private idEmpresaSeleccionada, idSolucioSeleccionada As Integer
+    Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
 
     Public Sub New()
 
@@ -14,38 +11,37 @@ Public Class Contractes
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        actualitzaTaula()
+        ActualitzaEmpreses()
+
+        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
+        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DiesCaducitat.Text = dies.ToString
 
     End Sub
-
-    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
-        Me.idEmpresa = idEmpresa
-        Me.idSolucio = idSolucio
-
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        actualitzaTaula()
-    End Sub
-
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
-        inserirEmpresa()
+        InserirEmpresa()
     End Sub
 
     'Actualitza la taula amb dades de la Base de dades
-    Private Sub actualitzaTaula()
-
-        Dim conexion As New SQLiteConnection()
+    Private Sub ActualitzaEmpreses()
 
         Try
-            conexion = New SQLiteConnection(cadena)
+            Dim conexion As New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
                 Dim DA As New SQLiteDataAdapter("SELECT * FROM Empreses", conexion)
                 DA.Fill(DT_Empreses)
-                DataEmpreses.DataSource = DT_Empreses
+
+
+                If DT_Empreses.Rows.Count > 0 Then
+
+                    DataEmpreses.DataSource = DT_Empreses
+                    TitolEmpresa.Text = "SELECCIONA EMPRESA"
+                Else
+                    DataEmpreses.DataSource = Nothing
+                    TitolSolucio.Text = "SENSE EMPRESES"
+                End If
             End If
             conexion.Close()
 
@@ -55,7 +51,7 @@ Public Class Contractes
 
     End Sub
     'Introdueix una empresa nova
-    Private Sub inserirEmpresa()
+    Private Sub InserirEmpresa()
 
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
@@ -70,7 +66,7 @@ Public Class Contractes
         Dim seleccio As Boolean
         seleccio = empresaSeleccionada
 
-        If comprovaDadesEmpresa() = False Then Exit Sub
+        If ComprovaDadesEmpresa() = False Then Exit Sub
 
         If (seleccio = True) Then
 
@@ -103,7 +99,7 @@ Public Class Contractes
             conexion.Open()
             strCommand.ExecuteNonQuery()
             conexion.Close()
-            actualitzaTaula()
+            ActualitzaEmpreses()
 
             If seleccio = True Then MsgBox("Empresa modificada correctament",, "Modificar empresa")
             If seleccio = False Then MsgBox("Empresa introduida correctament",, "Introduir empresa")
@@ -112,7 +108,7 @@ Public Class Contractes
             If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
         End Try
     End Sub
-    Private Function comprovaDadesEmpresa() As Boolean
+    Private Function ComprovaDadesEmpresa() As Boolean
         If Empresa.Text = "" Then
             Empresa.Focus()
             MsgBox("Has de introduir el nom de l'empresa")
@@ -152,7 +148,7 @@ Public Class Contractes
 
     End Function
     'Esborra l'empresa seleccionada
-    Private Sub esborrarEmpresa(id As Integer)
+    Private Sub EsborrarEmpresa(id As Integer)
 
         Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta empresa?", vbYesNo, "Esborrar empresa")
 
@@ -170,7 +166,7 @@ Public Class Contractes
                 conexion.Open()
                 strCommand.ExecuteNonQuery()
                 conexion.Close()
-                actualitzaTaula()
+                ActualitzaEmpreses()
                 MsgBox("S'ha esborrat correctament l'empresa",, "Esborrar l'empresa")
             Catch ex As Exception
                 MsgBox("No s'ha pogut esborrar l'empresa",, "Esborrar l'empresa")
@@ -178,7 +174,7 @@ Public Class Contractes
         End If
 
     End Sub
-    Private Function ComprovaSiTeSolucions(id As Integer) As Boolean
+    Private Shared Function ComprovaSiTeSolucions(id As Integer) As Boolean
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
@@ -198,11 +194,10 @@ Public Class Contractes
     Private Sub Btn_esborrar_Click(sender As Object, e As EventArgs) Handles Btn_esborrar.Click
         Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
         Dim row As DataGridViewRow = DataEmpreses.Rows(index)
-        Dim idBorrar As Integer
-        idBorrar = row.Cells(0).Value
-        esborrarEmpresa(idBorrar)
+        Dim idBorrar As Integer = row.Cells("Id").Value
+        EsborrarEmpresa(idBorrar)
     End Sub
-    Private Sub btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
+    Private Sub Btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
         EsborraCampsEmpresa()
     End Sub
     Private Sub EsborraCampsEmpresa()
@@ -215,32 +210,35 @@ Public Class Contractes
         Provincia.Clear()
         Pais.Clear()
         Btn_afegir.Text = "Afegir empresa"
-        TitolEmpresa.Clear()
+        TitolEmpresa.Text = "Selecciona Empresa"
         empresaSeleccionada = False
-        DataSolucions.DataSource = ""
+        DataSolucions.DataSource = Nothing
         EstaLaSolucioSeleccionada(False)
     End Sub
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim conexion As New SQLiteConnection(cadena)
-        conexion.Open()
+        Try
+            Dim conexion As New SQLiteConnection(cadena)
+            conexion.Open()
 
-        If conexion.State = ConnectionState.Open Then
-            Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
-            DA.Fill(DT_TipusSolucions)
-            CB_TipusSolucio.DataSource = DT_TipusSolucions
-            CB_TipusSolucio.DisplayMember = "Nom"
-            CB_TipusSolucio.ValueMember = "Id"
-            CB_TipusSolucio.Text = "Selecciona un tipus de solució"
-        End If
-        conexion.Close()
+            If conexion.State = ConnectionState.Open Then
+                Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
+                DA.Fill(DT_TipusSolucions)
+                CB_TipusSolucio.DataSource = DT_TipusSolucions
+                CB_TipusSolucio.DisplayMember = "Nom"
+                CB_TipusSolucio.ValueMember = "Id"
+                CB_TipusSolucio.Text = "Selecciona un tipus de solució"
+            End If
+            conexion.Close()
+        Catch
+
+        End Try
     End Sub
 
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
         Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
         DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
         DiesCaducitat.Text = dies.ToString
-
     End Sub
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
@@ -296,10 +294,10 @@ Public Class Contractes
 
                 If DT_Solucions.Rows.Count > 0 Then
                     DataSolucions.DataSource = DT_Solucions
-                    TitolSolucio.Text = "Escull una solució"
+                    TitolSolucio.Text = "SELECCIONA UNA SOLUCIÓ"
                 Else
-                    DataSolucions.DataSource = ""
-                    TitolSolucio.Text = "Sense solucions"
+                    DataSolucions.DataSource = Nothing
+                    TitolSolucio.Text = "SENSE SOLUCIONS"
                 End If
 
             End If
@@ -315,7 +313,7 @@ Public Class Contractes
         Dim row As DataGridViewRow = DataSolucions.Rows(index)
         Dim idBorrar As Integer
         idBorrar = row.Cells("Id").Value
-        esborrarSolucio(idBorrar)
+        EsborrarSolucio(idBorrar)
     End Sub
 
     Private Sub EsborrarCampsSolucio()
@@ -337,10 +335,11 @@ Public Class Contractes
         DiesCaducitat.Text = dies.ToString
         EstaLaSolucioSeleccionada(False)
 
+
     End Sub
 
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
-        afegirSolucio()
+        AfegirSolucio()
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
@@ -350,7 +349,7 @@ Public Class Contractes
         EsborrarCampsSolucio()
     End Sub
     'Esborra la solució seleccionada
-    Private Sub esborrarSolucio(id As Integer)
+    Private Sub EsborrarSolucio(id As Integer)
 
         Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo, "Esborrar solució")
 
@@ -382,27 +381,16 @@ Public Class Contractes
     'Donem format al llistat de empreses quan acaba de carregarse
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
 
-        'If vuelta = 3 Then
-        EsborraCampsEmpresa()
+        'EsborraCampsEmpresa()
         EstaLaSolucioSeleccionada(False)
 
-            With DataEmpreses
-                .Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("Id").Visible = False
+        With DataEmpreses
+            .Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Id").Visible = False
             .AutoResizeColumns()
             .ClearSelection()
         End With
 
-            For Each Fila As DataGridViewRow In DataEmpreses.Rows
-                If Fila.Cells("Id").Value = idEmpresa Then
-                    Fila.Selected = True
-                    OmpleDadesEmpresa(Fila.Index)
-                    Exit For
-                End If
-            Next
-        'End If
-
-        vuelta = vuelta + 1
     End Sub
     'Donem format al llistat de solucions quan acaba de carregarse
     Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
@@ -427,17 +415,9 @@ Public Class Contractes
             If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
         Next
 
-        For Each Fila As DataGridViewRow In DataSolucions.Rows
-            If Fila.Cells("Id").Value = idSolucio Then
-                Fila.Selected = True
-                OmpleDadesSolucions(Fila.Index)
-                Exit For
-            End If
-        Next
-
     End Sub
     'Afegeix o actualitza una solució
-    Private Sub afegirSolucio()
+    Private Sub AfegirSolucio()
 
         If ComprovaDadesSolucions() = False Then Exit Sub
 
@@ -501,7 +481,7 @@ Public Class Contractes
                 MsgBox("Solució modificada correctament",, "Modificar solució")
             End If
             If seleccio = False Then
-                insertaJustificacioBuida(idSolucio, idEmpresaSeleccionada)
+                InsertaJustificacioBuida(idSolucio, idEmpresaSeleccionada)
             End If
             OmpleSolucions(idEmpresaSeleccionada)
         Catch ex As Exception
@@ -531,7 +511,7 @@ Public Class Contractes
         Return True
     End Function
     'Inserta una justificacio buida
-    Private Sub insertaJustificacioBuida(idSolucio As Integer, idEmpresa As Integer)
+    Private Sub InsertaJustificacioBuida(idSolucio As Integer, idEmpresa As Integer)
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
@@ -570,12 +550,14 @@ Public Class Contractes
             Btn_EsborrarSolucio.Enabled = True
             Btn_AfegirSolucio.Text = "Modificar solució"
             Btn_AfegirSolucio.Enabled = True
+            solucioSeleccionada = True
         Else
             Btn_EstatJustificacio.Enabled = False
             Btn_EsborrarSeleccioSolucio.Enabled = False
             Btn_EsborrarSolucio.Enabled = False
             Btn_AfegirSolucio.Text = "Afegir solució"
             Btn_AfegirSolucio.Enabled = True
+            solucioSeleccionada = False
         End If
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
@@ -592,7 +574,7 @@ Public Class Contractes
         End If
     End Sub
     Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
-        OmpleSolucions(idEmpresaSeleccionada)
+        If solucioSeleccionada = True Then OmpleSolucions(idEmpresaSeleccionada)
     End Sub
     Private Sub OmpleDadesEmpresa(Index As Integer)
         Dim row As DataGridViewRow = DataEmpreses.Rows(Index)
@@ -607,10 +589,7 @@ Public Class Contractes
         Pais.Text = row.Cells("Pais").Value
         Btn_afegir.Text = "Modificar empresa"
         empresaSeleccionada = True
-        idEmpresa = 0
 
-        DataEmpreses.ClearSelection()
-        EsborraCampsEmpresa()
         EstaLaSolucioSeleccionada(False)
 
         If row.Cells("Id").Value <> idEmpresaSeleccionada Then
@@ -634,7 +613,6 @@ Public Class Contractes
         idSolucioSeleccionada = row.Cells("Id").Value
         TitolSolucio.Text = row.Cells("Nom").Value
         TBObservacions.Text = row.Cells("Observacions").Value
-        idSolucio = 0
 
         If row.Cells("Justificat").Value = "Si" Then
             CheckEstaJustificat.Checked = True

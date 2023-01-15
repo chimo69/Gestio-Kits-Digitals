@@ -25,11 +25,11 @@ Public Class EstatJustificacio
         Empresa.Text = EmpresaRebuda
         Solucio.Text = SolucioRebuda
 
-        rebreDades()
+        RebreDades()
     End Sub
 
-    Private Sub rebreDades()
-        Dim conexion As New SqLiteConnection(cadena)
+    Private Sub RebreDades()
+        Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
 
@@ -47,8 +47,8 @@ Public Class EstatJustificacio
             TeDada2.Checked = lector.GetBoolean("Dada2")
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
 
-            End If
-            lector.Close()
+        End If
+        lector.Close()
         conexion.Close()
 
         Select Case IdTipusSolucio
@@ -63,16 +63,19 @@ Public Class EstatJustificacio
                 TeDada2.Text = ""
                 PercentatgeTeDada2 = 10
                 TeDada2.Visible = False
+                TeDada2.Checked = True
             Case 4, 5
                 TeDada1.Text = "Fichero log con los logs de login (inicio sesion) a la solución" & vbCrLf & "implantada en el que aparezcan los como mínimo (1,1,3)" & vbCrLf & "usuarios dados de alta según segmento (III,II,I)"
                 TeDada2.Text = ""
                 PercentatgeTeDada2 = 10
                 TeDada2.Visible = False
+                TeDada2.Checked = True
             Case 6
                 TeDada1.Text = "fichero con los logs de login (inicio de sesión) a la solución" & vbCrLf & "implantada en el que aparezcan los como mínimo (1, 3, 10)" & vbCrLf & "usuarios dados de alta según segmento (III, II, I)"
                 TeDada2.Text = ""
                 PercentatgeTeDada2 = 10
                 TeDada2.Visible = False
+                TeDada2.Checked = True
             Case 7
                 TeDada1.Text = ""
                 TeDada2.Text = ""
@@ -80,6 +83,8 @@ Public Class EstatJustificacio
                 PercentatgeTeDada2 = 10
                 TeDada1.Visible = False
                 TeDada2.Visible = False
+                TeDada1.Checked = True
+                TeDada2.Checked = True
             Case 8, 9
                 TeDada1.Text = "Fichero con los logs de login (inicio de sesión) a la solución" & vbCrLf & "implantada en el que aparezcan todos los usuarios dados" & vbCrLf & "de alta."
                 TeDada2.Text = ""
@@ -90,10 +95,11 @@ Public Class EstatJustificacio
                 TeDada2.Text = ""
                 PercentatgeTeDada2 = 10
                 TeDada2.Visible = False
+                TeDada2.Checked = True
         End Select
         ActualitzaProgresBar()
     End Sub
-    Private Sub guardarDades()
+    Private Sub GuardarDades()
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
@@ -101,11 +107,11 @@ Public Class EstatJustificacio
         Try
             Query = "UPDATE Justificacions SET
                         Percentatge=" & Progress & ",
-                        TeWord='" & tornaBoolean(TeWord.Checked) & "',
-                        TeComprovantPagament='" & tornaBoolean(TeComprovant.Checked) & "',
-                        TeFacturaXML='" & tornaBoolean(TeFactura.Checked) & "',
-                        Dada1='" & tornaBoolean(TeDada1.Checked) & "',
-                        Dada2='" & tornaBoolean(TeDada2.Checked) & "',
+                        TeWord='" & TornaBoolean(TeWord.Checked) & "',
+                        TeComprovantPagament='" & TornaBoolean(TeComprovant.Checked) & "',
+                        TeFacturaXML='" & TornaBoolean(TeFactura.Checked) & "',
+                        Dada1='" & TornaBoolean(TeDada1.Checked) & "',
+                        Dada2='" & TornaBoolean(TeDada2.Checked) & "',
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & "
                         
@@ -122,7 +128,7 @@ Public Class EstatJustificacio
         End Try
 
     End Sub
-    Private Function tornaBoolean(B As Boolean) As Integer
+    Private Shared Function TornaBoolean(B As Boolean) As Integer
         If B = True Then
             Return 1
         Else
@@ -184,7 +190,7 @@ Public Class EstatJustificacio
                 If TeFactura.Checked = True Then
                     PercentatgeTeFactura = 10
                 Else
-                    PercentatgeTefactura = 0
+                    PercentatgeTeFactura = 0
                 End If
                 Exit Select
             Case TeDada1.Name
@@ -218,6 +224,6 @@ Public Class EstatJustificacio
         End If
     End Sub
     Private Sub Btn_guardar_Click(sender As Object, e As EventArgs) Handles Btn_guardar.Click
-        guardarDades()
+        GuardarDades()
     End Sub
 End Class

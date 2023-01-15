@@ -1,29 +1,12 @@
-﻿Imports System.Data.SqlClient
-Imports System.Data.SQLite
+﻿Imports System.Data.SQLite
 
 Public Class Llistat
 
     Dim DT_Llistat As New DataTable
     Dim MostratActual As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
-    Public Sub New()
 
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        CarregaLlistat()
-    End Sub
-    Private Sub DataLlistat_DoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataLlistat.CellDoubleClick
-        Dim idEmpresa As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdEmpresa").Value
-        Dim idSolucio As Integer = DataLlistat.Rows(e.RowIndex).Cells("IdSolucio").Value
-
-        Dim contractes As New Contractes(idEmpresa, idSolucio)
-        Me.Close()
-        contractes.Show()
-    End Sub
-
-    Private Sub DataLlistat_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
+    Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
 
 
         With DataLlistat
@@ -38,11 +21,14 @@ Public Class Llistat
             .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+            .Columns("Word").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Comp. Pagament").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("XML").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Fabricant Solució").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("D1").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("D2").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
         End With
-
-        DataLlistat.AutoResizeColumns()
-        DataLlistat.AutoResizeRows()
-
 
         If MostratActual = 0 Then
             SitioWeb = 0
@@ -57,8 +43,127 @@ Public Class Llistat
             Ciberseguridad = 0
         End If
 
-        If DataLlistat.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In DataLlistat.Rows
+        'If DataLlistat.Rows.Count > 0 Then
+        '    For Each Fila As DataGridViewRow In DataLlistat.Rows
+
+        '        If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
+        '        If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
+
+        '        If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
+
+        '        If MostratActual = 0 Then
+        '            If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
+        '                If Fila.Cells("IdTipusSolucio").Value = 1 Then
+        '                    SitioWeb += 1
+
+        '                End If
+        '                If Fila.Cells("IdSolucio").Value = 2 Then
+        '                    ComercioElectronico += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 3 Then
+        '                    RedesSociales += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 4 Then
+        '                    Clientes += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 5 Then
+        '                    Business += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 6 Then
+        '                    Procesos += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 7 Then
+        '                    Factura += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 8 Then
+        '                    Oficina += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 9 Then
+        '                    Comunicaciones += 1
+
+        '                End If
+        '                If Fila.Cells("IdTipusSolucio").Value = 10 Then
+        '                    Ciberseguridad += 1
+
+        '                End If
+        '            End If
+        '        End If
+        '    Next
+        'End If
+        'NumeraSolucions()
+
+    End Sub
+
+    Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
+        Dim dgv As DataGridView = sender
+
+        If dgv.Columns(e.ColumnIndex).Name = "Word" Or dgv.Columns(e.ColumnIndex).Name = "Comp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "XML" Or dgv.Columns(e.ColumnIndex).Name = "D1" Or dgv.Columns(e.ColumnIndex).Name = "D2" Then
+            If e.Value = 1 Then
+                e.CellStyle.BackColor = verd
+                e.Value = ""
+            Else
+                e.CellStyle.BackColor = vermell
+                e.Value = ""
+            End If
+        End If
+        If dgv.Columns(e.ColumnIndex).Name = "Fabricant Solució" Then
+            If e.Value <> "" Then
+                e.CellStyle.BackColor = verd
+                e.Value = ""
+            Else
+                e.CellStyle.BackColor = vermell
+                e.Value = ""
+            End If
+
+        End If
+        Dim font As New Font("Calibri", 7, FontStyle.Regular)
+
+        With dgv
+            .Columns("Word").Width = 50
+            .Columns("Word").HeaderCell.Style.Font = font
+            .Columns("Comp. Pagament").Width = 50
+            .Columns("Comp. Pagament").HeaderCell.Style.Font = font
+            .Columns("XML").Width = 50
+            .Columns("XML").HeaderCell.Style.Font = font
+            .Columns("Fabricant Solució").Width = 50
+            .Columns("Fabricant Solució").HeaderCell.Style.Font = font
+            .Columns("D1").Width = 50
+            .Columns("D1").HeaderCell.Style.Font = font
+            .Columns("D2").Width = 50
+            .Columns("D2").HeaderCell.Style.Font = font
+        End With
+    End Sub
+
+    Public Sub New()
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        CarregaLlistat()
+
+    End Sub
+
+    Private Sub DataLlistat_DataBindingComplete(ByVal sender As Object, ByVal e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
+
+        Dim dgv As DataGridView = sender
+
+        With sender
+            .AutoResizeColumns()
+            .AutoResizeRows()
+            .ClearSelection()
+        End With
+
+
+        If dgv.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In dgv.Rows
 
                 If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
                 If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
@@ -112,6 +217,9 @@ Public Class Llistat
             Next
         End If
         NumeraSolucions()
+
+
+
     End Sub
 
 
@@ -140,9 +248,15 @@ Public Class Llistat
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
-                          Justificacions.Percentatge AS 'Estat justificació',
+                          Justificacions.Percentatge AS 'Estat justificació',                         
                           Solucions.Justificat,
-                          Solucions.Observacions  
+                          Solucions.Observacions,
+                          TeWord As 'Word',
+                          TeComprovantPagament As 'Comp. Pagament',
+                          TeFacturaXML AS 'XML',
+                          FabricantSolucio As 'Fabricant Solució',
+                          Dada1 as 'D1',
+                          Dada2 as 'D2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -160,9 +274,15 @@ Public Class Llistat
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies, 
-                          Justificacions.Percentatge AS 'Estat justificació',
+                          Justificacions.Percentatge AS 'Estat justificació',                          
                           Solucions.Justificat,
-                          Solucions.Observacions  
+                          Solucions.Observacions,
+                          TeWord As 'Word',
+                          TeComprovantPagament As 'Comp. Pagament',
+                          TeFacturaXML AS 'XML',
+                          FabricantSolucio As 'Fabricant Solució',
+                          Dada1 as 'D1',
+                          Dada2 as 'D2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -208,9 +328,15 @@ Public Class Llistat
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies,                           
-                          Justificacions.percentatge AS 'Estat justificació',                          
+                          Justificacions.percentatge AS 'Estat justificació',                                                    
                           Solucions.Justificat,
-                          Solucions.Observacions  
+                          Solucions.Observacions,
+                          TeWord As 'Word',
+                          TeComprovantPagament As 'Comp. Pagament',
+                          TeFacturaXML AS 'XML',
+                          FabricantSolucio As 'Fabricant Solució',
+                          Dada1 as 'D1',
+                          Dada2 as 'D2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -227,9 +353,15 @@ Public Class Llistat
                           Solucions.DataContracte AS 'Data contracte',
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
-                          Justificacions.percentatge AS 'Estat justificació',
+                          Justificacions.percentatge AS 'Estat justificació',                          
                           Solucions.Justificat,
-                          Solucions.Observacions  
+                          Solucions.Observacions,
+                          TeWord As 'Word',
+                          TeComprovantPagament As 'Comp. Pagament',
+                          TeFacturaXML AS 'XML',
+                          FabricantSolucio As 'Fabricant Solució',
+                          Dada1 as 'D1',
+                          Dada2 as 'D2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id                          
