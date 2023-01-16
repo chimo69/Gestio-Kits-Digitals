@@ -344,7 +344,7 @@ Public Class Contractes
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
         Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
-        EstatJustificacio.ShowDialog()
+        OpenSubFormDialog(EstatJustificacio)
         OmpleSolucions(idEmpresaSeleccionada)
         EsborrarCampsSolucio()
     End Sub
@@ -566,6 +566,22 @@ Public Class Contractes
             OmpleDadesEmpresa(DataEmpreses.CurrentRow.Index)
         End If
     End Sub
+
+    Private Sub CheckEstaJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEstaJustificat.CheckedChanged
+        If CheckEstaJustificat.Checked = True Then
+            verificat.Visible = True
+        Else
+            verificat.Visible = False
+        End If
+    End Sub
+
+    Private Sub DataSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataSolucions.CellFormatting
+        Dim dgv As DataGridView = sender
+        If dgv.Columns(e.ColumnIndex).Name = "Dies" Then
+            If e.Value < 0 Then e.Value = "Caducat"
+        End If
+    End Sub
+
     'Modifica els camps quan la selecció de solucio canvia
     Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
         If DataSolucions.SelectedRows.Count > 0 Then
@@ -574,7 +590,7 @@ Public Class Contractes
         End If
     End Sub
     Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
-        If solucioSeleccionada = True Then OmpleSolucions(idEmpresaSeleccionada)
+        If empresaSeleccionada = True Then OmpleSolucions(idEmpresaSeleccionada)
     End Sub
     Private Sub OmpleDadesEmpresa(Index As Integer)
         Dim row As DataGridViewRow = DataEmpreses.Rows(Index)
@@ -608,7 +624,11 @@ Public Class Contractes
         NoAcord.Text = row.Cells("Contracte").Value
         DataContracte.Text = Format(row.Cells("Dia contracte").Value, "Short Date")
         DataVenciment.Text = Format(row.Cells("Dia venciment").Value, "Short Date")
-        DiesCaducitat.Text = row.Cells("Dies").Value
+        If row.Cells("Dies").Value >= 0 Then
+            DiesCaducitat.Text = row.Cells("Dies").Value
+        Else
+            DiesCaducitat.Text = "Caducat"
+        End If
         solucioSeleccionada = True
         idSolucioSeleccionada = row.Cells("Id").Value
         TitolSolucio.Text = row.Cells("Nom").Value

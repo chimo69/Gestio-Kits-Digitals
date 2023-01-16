@@ -74,8 +74,10 @@ Partial Class Contractes
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TBObservacions = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.verificat = New System.Windows.Forms.PictureBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataEmpreses
@@ -414,11 +416,11 @@ Partial Class Contractes
         'DiesCaducitat
         '
         Me.DiesCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DiesCaducitat.Enabled = False
         Me.DiesCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.DiesCaducitat.Location = New System.Drawing.Point(1137, 481)
         Me.DiesCaducitat.Name = "DiesCaducitat"
-        Me.DiesCaducitat.Size = New System.Drawing.Size(56, 33)
+        Me.DiesCaducitat.ReadOnly = True
+        Me.DiesCaducitat.Size = New System.Drawing.Size(100, 33)
         Me.DiesCaducitat.TabIndex = 30
         Me.DiesCaducitat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -444,9 +446,9 @@ Partial Class Contractes
         'DataVenciment
         '
         Me.DataVenciment.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataVenciment.Enabled = False
         Me.DataVenciment.Location = New System.Drawing.Point(1137, 441)
         Me.DataVenciment.Name = "DataVenciment"
+        Me.DataVenciment.ReadOnly = True
         Me.DataVenciment.Size = New System.Drawing.Size(100, 23)
         Me.DataVenciment.TabIndex = 33
         Me.DataVenciment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -582,11 +584,26 @@ Partial Class Contractes
         Me.Label16.TabIndex = 45
         Me.Label16.Text = "Observacions"
         '
+        'verificat
+        '
+        Me.verificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.verificat.BackColor = System.Drawing.Color.Transparent
+        Me.verificat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.verificat.Image = Global.FacturaXML.My.Resources.Resources.verificado
+        Me.verificat.Location = New System.Drawing.Point(1180, 520)
+        Me.verificat.Name = "verificat"
+        Me.verificat.Size = New System.Drawing.Size(57, 58)
+        Me.verificat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.verificat.TabIndex = 46
+        Me.verificat.TabStop = False
+        Me.verificat.Visible = False
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1607, 852)
+        Me.Controls.Add(Me.verificat)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TBObservacions)
         Me.Controls.Add(Me.Label15)
@@ -638,6 +655,7 @@ Partial Class Contractes
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.verificat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -687,4 +705,5 @@ Partial Class Contractes
     Friend WithEvents Label15 As Label
     Friend WithEvents TBObservacions As TextBox
     Friend WithEvents Label16 As Label
+    Friend WithEvents verificat As PictureBox
 End Class

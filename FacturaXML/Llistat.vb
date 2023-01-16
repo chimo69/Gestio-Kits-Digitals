@@ -8,6 +8,21 @@ Public Class Llistat
 
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
 
+        Dim imgVerificat As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgWord As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgCompPagament As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgXML As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgFabSolucio As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgD1 As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgD2 As DataGridViewImageColumn = New DataGridViewImageColumn
+
+        imgVerificat.Name = "Verificat"
+        imgWord.Name = "Word"
+        imgCompPagament.Name = "Comp. Pagament"
+        imgXML.Name = "XML"
+        imgFabSolucio.Name = "Fabricant Solució"
+        imgD1.Name = "D1"
+        imgD2.Name = "D2"
 
         With DataLlistat
             .ClearSelection()
@@ -15,18 +30,28 @@ Public Class Llistat
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
             .Columns("IdTipusSolucio").Visible = False
+            .Columns("Justificat").Visible = False
+            .Columns("TWord").Visible = False
+            .Columns("TComp. Pagament").Visible = False
+            .Columns("TXML").Visible = False
+            .Columns("TFabricant Solució").Visible = False
+            .Columns("TD1").Visible = False
+            .Columns("TD2").Visible = False
             .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
-            .Columns("Word").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Comp. Pagament").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("XML").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Fabricant Solució").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("D1").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("D2").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+            .Columns.Add(imgVerificat)
+            .Columns.Add(imgWord)
+            .Columns.Add(imgCompPagament)
+            .Columns.Add(imgXML)
+            .Columns.Add(imgFabSolucio)
+            .Columns.Add(imgD1)
+            .Columns.Add(imgD2)
+            .Columns("Verificat").DisplayIndex = 0
 
         End With
 
@@ -43,85 +68,38 @@ Public Class Llistat
             Ciberseguridad = 0
         End If
 
-        'If DataLlistat.Rows.Count > 0 Then
-        '    For Each Fila As DataGridViewRow In DataLlistat.Rows
-
-        '        If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
-        '        If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
-
-        '        If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
-
-        '        If MostratActual = 0 Then
-        '            If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
-        '                If Fila.Cells("IdTipusSolucio").Value = 1 Then
-        '                    SitioWeb += 1
-
-        '                End If
-        '                If Fila.Cells("IdSolucio").Value = 2 Then
-        '                    ComercioElectronico += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 3 Then
-        '                    RedesSociales += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 4 Then
-        '                    Clientes += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 5 Then
-        '                    Business += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 6 Then
-        '                    Procesos += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 7 Then
-        '                    Factura += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 8 Then
-        '                    Oficina += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 9 Then
-        '                    Comunicaciones += 1
-
-        '                End If
-        '                If Fila.Cells("IdTipusSolucio").Value = 10 Then
-        '                    Ciberseguridad += 1
-
-        '                End If
-        '            End If
-        '        End If
-        '    Next
-        'End If
-        'NumeraSolucions()
 
     End Sub
 
     Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
         Dim dgv As DataGridView = sender
 
-        If dgv.Columns(e.ColumnIndex).Name = "Word" Or dgv.Columns(e.ColumnIndex).Name = "Comp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "XML" Or dgv.Columns(e.ColumnIndex).Name = "D1" Or dgv.Columns(e.ColumnIndex).Name = "D2" Then
+        If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
+
             If e.Value = 1 Then
-                e.CellStyle.BackColor = verd
-                e.Value = ""
+                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                e.CellStyle.BackColor = vermell
-                e.Value = ""
+                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
-        If dgv.Columns(e.ColumnIndex).Name = "Fabricant Solució" Then
+        If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
             If e.Value <> "" Then
-                e.CellStyle.BackColor = verd
-                e.Value = ""
+                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                e.CellStyle.BackColor = vermell
-                e.Value = ""
+                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
+        End If
 
+        If dgv.Columns(e.ColumnIndex).Name = "Justificat" Then
+            If e.Value = "Si" Then
+                dgv.Item(dgv.Columns("Verificat").Index, e.RowIndex).Value = My.Resources.verificado_petit
+            Else
+                dgv.Item(dgv.Columns("Verificat").Index, e.RowIndex).Value = My.Resources.sin_verificar_petit
+            End If
+        End If
+
+        If dgv.Columns(e.ColumnIndex).Name = "Dies" Then
+            If e.Value < 0 Then e.Value = "Caducat"
         End If
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
@@ -251,12 +229,12 @@ Public Class Llistat
                           Justificacions.Percentatge AS 'Estat justificació',                         
                           Solucions.Justificat,
                           Solucions.Observacions,
-                          TeWord As 'Word',
-                          TeComprovantPagament As 'Comp. Pagament',
-                          TeFacturaXML AS 'XML',
-                          FabricantSolucio As 'Fabricant Solució',
-                          Dada1 as 'D1',
-                          Dada2 as 'D2'
+                          TeWord As 'TWord',
+                          TeComprovantPagament As 'TComp. Pagament',
+                          TeFacturaXML AS 'TXML',
+                          FabricantSolucio As 'TFabricant Solució',
+                          Dada1 as 'TD1',
+                          Dada2 as 'TD2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -277,12 +255,12 @@ Public Class Llistat
                           Justificacions.Percentatge AS 'Estat justificació',                          
                           Solucions.Justificat,
                           Solucions.Observacions,
-                          TeWord As 'Word',
-                          TeComprovantPagament As 'Comp. Pagament',
-                          TeFacturaXML AS 'XML',
-                          FabricantSolucio As 'Fabricant Solució',
-                          Dada1 as 'D1',
-                          Dada2 as 'D2'
+                          TeWord As 'TWord',
+                          TeComprovantPagament As 'TComp. Pagament',
+                          TeFacturaXML AS 'TXML',
+                          FabricantSolucio As 'TFabricant Solució',
+                          Dada1 as 'TD1',
+                          Dada2 as 'TD2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -331,12 +309,12 @@ Public Class Llistat
                           Justificacions.percentatge AS 'Estat justificació',                                                    
                           Solucions.Justificat,
                           Solucions.Observacions,
-                          TeWord As 'Word',
-                          TeComprovantPagament As 'Comp. Pagament',
-                          TeFacturaXML AS 'XML',
-                          FabricantSolucio As 'Fabricant Solució',
-                          Dada1 as 'D1',
-                          Dada2 as 'D2'
+                          TeWord As 'TWord',
+                          TeComprovantPagament As 'TComp. Pagament',
+                          TeFacturaXML AS 'TXML',
+                          FabricantSolucio As 'TFabricant Solució',
+                          Dada1 as 'TD1',
+                          Dada2 as 'TD2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
@@ -356,12 +334,12 @@ Public Class Llistat
                           Justificacions.percentatge AS 'Estat justificació',                          
                           Solucions.Justificat,
                           Solucions.Observacions,
-                          TeWord As 'Word',
-                          TeComprovantPagament As 'Comp. Pagament',
-                          TeFacturaXML AS 'XML',
-                          FabricantSolucio As 'Fabricant Solució',
-                          Dada1 as 'D1',
-                          Dada2 as 'D2'
+                          TeWord As 'TWord',
+                          TeComprovantPagament As 'TComp. Pagament',
+                          TeFacturaXML AS 'TXML',
+                          FabricantSolucio As 'TFabricant Solució',
+                          Dada1 as 'TD1',
+                          Dada2 as 'TD2'
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id                          

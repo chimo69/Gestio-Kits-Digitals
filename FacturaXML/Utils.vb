@@ -9,4 +9,38 @@
         StringDB = "'" & Replace(arg, "'", "''") & "'"
     End Function
 
+    'Método para abrir el formulario una sola vez.
+    Public Function OpenSubForm(ByVal form As Form) As Boolean
+        'Chequeo si ya está abierto.
+        For Each f As Form In Application.OpenForms
+            'Si está abierto devuelvo False (no se puede abrir).
+            If f.Name = form.Name Then
+                Return False
+            End If
+        Next
+
+        'Si se llega a este punto es porque no está abierto.
+        'Abro el formulario.
+        form.Show()
+
+        'Indico apertura exitosa.
+        Return True
+    End Function
+    Public Function OpenSubFormDialog(ByVal form As Form) As Boolean
+        'Chequeo si ya está abierto.
+        For Each f As Form In Application.OpenForms
+            'Si está abierto devuelvo False (no se puede abrir).
+            If f.Name = form.Name Then
+                Return False
+            End If
+        Next
+
+        'Si se llega a este punto es porque no está abierto.
+        'Abro el formulario.
+        form.ShowDialog()
+
+        'Indico apertura exitosa.
+        Return True
+    End Function
+
 End Module

@@ -248,7 +248,7 @@ Public Class Factures
 
         PreparaArxiu()
         Dim vistaPrevia As New VistaPrevia(textoXML)
-        vistaPrevia.Show()
+        OpenSubForm(vistaPrevia)
 
     End Sub
 
@@ -279,7 +279,7 @@ Public Class Factures
                             CType(controlText, TextBox).Clear()
                         End If
                     Next
-
+                    CB_Solucions.DataSource = Nothing
                 End If
             End If
         Next
@@ -314,7 +314,7 @@ Public Class Factures
 
     Private Sub MenuDadesEmpresa_Click(sender As Object, e As EventArgs) Handles MenuDadesEmpresa.Click
         Dim dadesEmpresa As New DadesEmpresaConfig()
-        dadesEmpresa.Show()
+        OpenSubForm(dadesEmpresa)
     End Sub
     Private Sub MenuSortir_Click(sender As Object, e As EventArgs) Handles MenuSortir.Click
         Me.Close()
@@ -331,7 +331,7 @@ Public Class Factures
     End Sub
     Private Sub SobreFacturesXMLToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SobreFacturesXMLToolStripMenuItem1.Click
         Dim ASobreDe As New ASobreDe()
-        ASobreDe.Show()
+        OpenSubForm(ASobreDe)
     End Sub
     'Carrega les empreses per omplir el combobox
     Private Sub Factures_Load(sender As Object, e As EventArgs) Handles MyBase.Load
