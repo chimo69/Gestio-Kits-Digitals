@@ -6,15 +6,25 @@ Public Class Llistat
     Dim MostratActual As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
 
+    Private Sub DataLlistat_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataLlistat.CellDoubleClick
+        Dim dgv As DataGridView = sender
+        Dim idEmpresa As Integer = dgv.CurrentRow.Cells("IdEmpresa").Value
+        Dim idSolucio As Integer = dgv.CurrentRow.Cells("IdSolucio").Value
+
+        Dim Contractes As New Contractes(idEmpresa, idSolucio)
+        OpenSubForm(Contractes)
+    End Sub
+
+
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
 
-        Dim imgVerificat As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgWord As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgCompPagament As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgXML As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgFabSolucio As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgD1 As DataGridViewImageColumn = New DataGridViewImageColumn
-        Dim imgD2 As DataGridViewImageColumn = New DataGridViewImageColumn
+        Dim imgVerificat As New DataGridViewImageColumn
+        Dim imgWord As New DataGridViewImageColumn
+        Dim imgCompPagament As New DataGridViewImageColumn
+        Dim imgXML As New DataGridViewImageColumn
+        Dim imgFabSolucio As New DataGridViewImageColumn
+        Dim imgD1 As New DataGridViewImageColumn
+        Dim imgD2 As New DataGridViewImageColumn
 
         imgVerificat.Name = "Verificat"
         imgWord.Name = "Word"

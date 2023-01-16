@@ -4,6 +4,7 @@ Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
     Private idEmpresaSeleccionada, idSolucioSeleccionada As Integer
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
+    Private idEmpresaRebuda, idSolucioRebuda As Integer
 
     Public Sub New()
 
@@ -18,6 +19,22 @@ Public Class Contractes
         DiesCaducitat.Text = dies.ToString
 
     End Sub
+
+    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
+        Me.idEmpresaRebuda = idEmpresa
+        Me.idSolucioRebuda = idSolucio
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        ActualitzaEmpreses()
+
+        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
+        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DiesCaducitat.Text = dies.ToString
+    End Sub
+
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
         InserirEmpresa()
     End Sub
@@ -233,6 +250,23 @@ Public Class Contractes
         Catch
 
         End Try
+
+        For Each Fila As DataGridViewRow In DataEmpreses.Rows
+            If Fila.Cells("Id").Value = idEmpresaRebuda Then
+                OmpleDadesEmpresa(Fila.Index)
+                Fila.Selected = True
+                Exit For
+            End If
+        Next
+
+        For Each Fila As DataGridViewRow In DataSolucions.Rows
+            If Fila.Cells("Id").Value = idSolucioRebuda Then
+                OmpleDadesSolucions(Fila.Index)
+                Fila.Selected = True
+                Exit For
+            End If
+        Next
+
     End Sub
 
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
@@ -580,6 +614,10 @@ Public Class Contractes
         If dgv.Columns(e.ColumnIndex).Name = "Dies" Then
             If e.Value < 0 Then e.Value = "Caducat"
         End If
+    End Sub
+
+    Private Sub DataEmpreses_DataSourceChanged(sender As Object, e As EventArgs) Handles DataEmpreses.DataSourceChanged
+
     End Sub
 
     'Modifica els camps quan la selecció de solucio canvia
