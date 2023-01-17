@@ -52,6 +52,7 @@ Partial Class Llistat
         Me.TB_RedesSociales = New System.Windows.Forms.TextBox()
         Me.TB_ComercioElectronico = New System.Windows.Forms.TextBox()
         Me.TB_SitioWeb = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_TipusSolucions.SuspendLayout()
         Me.SuspendLayout()
@@ -393,11 +394,21 @@ Partial Class Llistat
         Me.TB_SitioWeb.TabIndex = 9
         Me.TB_SitioWeb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(218, 21)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(279, 15)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "(Doble click per accedir a les dades de cada solució)"
+        '
         'Llistat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1258, 525)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GB_TipusSolucions)
         Me.Controls.Add(Me.DataLlistat)
         Me.Controls.Add(Me.Label1)
@@ -441,4 +452,5 @@ Partial Class Llistat
     Friend WithEvents RB_OficinaVirtual As RadioButton
     Friend WithEvents RB_Ciberseguridad As RadioButton
     Friend WithEvents RB_ComunicacionesSeguras As RadioButton
+    Friend WithEvents Label2 As Label
 End Class

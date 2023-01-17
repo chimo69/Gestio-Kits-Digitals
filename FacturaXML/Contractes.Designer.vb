@@ -22,6 +22,7 @@ Partial Class Contractes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -75,6 +76,7 @@ Partial Class Contractes
         Me.TBObservacions = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.verificat = New System.Windows.Forms.PictureBox()
+        Me.ContextMenuEsborrar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -598,6 +600,11 @@ Partial Class Contractes
         Me.verificat.TabStop = False
         Me.verificat.Visible = False
         '
+        'ContextMenuEsborrar
+        '
+        Me.ContextMenuEsborrar.Name = "ContextMenuStrip1"
+        Me.ContextMenuEsborrar.Size = New System.Drawing.Size(61, 4)
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -706,4 +713,5 @@ Partial Class Contractes
     Friend WithEvents TBObservacions As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents verificat As PictureBox
+    Friend WithEvents ContextMenuEsborrar As ContextMenuStrip
 End Class

@@ -15,6 +15,10 @@ Public Class Llistat
         OpenSubForm(Contractes)
     End Sub
 
+    Private Sub Llistat_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        DataLlistat.AutoResizeColumns()
+        DataLlistat.AutoResizeRows()
+    End Sub
 
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
 
@@ -114,6 +118,7 @@ Public Class Llistat
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
         With dgv
+            .Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
             .Columns("Comp. Pagament").Width = 50
@@ -148,7 +153,6 @@ Public Class Llistat
             .AutoResizeRows()
             .ClearSelection()
         End With
-
 
         If dgv.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In dgv.Rows
@@ -205,8 +209,6 @@ Public Class Llistat
             Next
         End If
         NumeraSolucions()
-
-
 
     End Sub
 

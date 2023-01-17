@@ -415,7 +415,6 @@ Public Class Contractes
     'Donem format al llistat de empreses quan acaba de carregarse
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
 
-        'EsborraCampsEmpresa()
         EstaLaSolucioSeleccionada(False)
 
         With DataEmpreses
@@ -616,8 +615,65 @@ Public Class Contractes
         End If
     End Sub
 
-    Private Sub DataEmpreses_DataSourceChanged(sender As Object, e As EventArgs) Handles DataEmpreses.DataSourceChanged
+    Private Sub DataEmpreses_MouseClick(sender As Object, e As MouseEventArgs) Handles DataEmpreses.MouseClick
+        If e.Button = MouseButtons.Right Then
+            Dim menu = New System.Windows.Forms.ContextMenuStrip
+            Dim posicio = DataEmpreses.HitTest(e.X, e.Y).RowIndex
 
+            If posicio > -1 Then
+                menu.Items.Add("Esborrar empresa").Name = "Esborrar" & posicio
+            End If
+            menu.Show(DataEmpreses, e.X, e.Y)
+            OmpleDadesEmpresa(posicio)
+            DataEmpreses.Rows(posicio).Selected = True
+            AddHandler menu.ItemClicked, AddressOf menuClickDretEmpreses
+        End If
+    End Sub
+
+    Private Sub DataSolucions_MouseClick(sender As Object, e As MouseEventArgs) Handles DataSolucions.MouseClick
+        If e.Button = MouseButtons.Right Then
+            Dim menu = New System.Windows.Forms.ContextMenuStrip
+            Dim posicio = DataSolucions.HitTest(e.X, e.Y).RowIndex
+
+            If posicio > -1 Then
+                menu.Items.Add("Estat justificació").Name = "Estat" & posicio
+                menu.Items.Add("Esborrar solució").Name = "Esborrar" & posicio
+            End If
+            OmpleDadesSolucions(posicio)
+            DataSolucions.Rows(posicio).Selected = True
+            menu.Show(DataSolucions, e.X, e.Y)
+            AddHandler menu.ItemClicked, AddressOf menuClickDretSolucions
+        End If
+    End Sub
+
+    Private Sub menuClickDretSolucions(sender As Object, e As ToolStripItemClickedEventArgs)
+        Dim nom As String = e.ClickedItem.Name
+
+        If nom.Contains("Estat") Then
+            Dim RowBorrar As Integer = nom.Replace("Estat", "")
+            Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
+
+            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, IdSolucio, CB_TipusSolucio.SelectedValue)
+
+            OpenSubFormDialog(EstatJustificacio)
+            OmpleSolucions(idEmpresaSeleccionada)
+            EsborrarCampsSolucio()
+        End If
+        If nom.Contains("Esborrar") Then
+            Dim RowBorrar As Integer = nom.Replace("Esborrar", "")
+            Dim IdBorrar As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
+            EsborrarSolucio(IdBorrar)
+        End If
+    End Sub
+
+    Private Sub menuClickDretEmpreses(sender As Object, e As ToolStripItemClickedEventArgs)
+        Dim nom As String = e.ClickedItem.Name
+
+        If nom.Contains("Esborrar") Then
+            Dim RowBorrar As Integer = nom.Replace("Esborrar", "")
+            Dim IdBorrar As Integer = DataEmpreses.Rows(RowBorrar).Cells("Id").Value
+            EsborrarEmpresa(IdBorrar)
+        End If
     End Sub
 
     'Modifica els camps quan la selecció de solucio canvia
