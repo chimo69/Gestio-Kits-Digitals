@@ -1,7 +1,5 @@
-﻿Imports System.IO
-Imports System.Data.SqlClient
-Imports System.Data
-Imports System.Data.SQLite
+﻿Imports System.Data.SQLite
+Imports System.IO
 
 Public Class Factures
     Dim DT_Empreses As New DataTable

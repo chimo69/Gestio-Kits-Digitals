@@ -21,7 +21,7 @@ Public Class Llistat
     End Sub
 
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
-
+        Dim dgv As DataGridView = sender
         Dim imgVerificat As New DataGridViewImageColumn
         Dim imgWord As New DataGridViewImageColumn
         Dim imgCompPagament As New DataGridViewImageColumn
@@ -80,6 +80,56 @@ Public Class Llistat
             Oficina = 0
             Comunicaciones = 0
             Ciberseguridad = 0
+        End If
+
+        If dgv.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In dgv.Rows
+
+                If MostratActual = 0 Then
+                    If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
+                        If Fila.Cells("IdTipusSolucio").Value = 1 Then
+                            SitioWeb += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 2 Then
+                            ComercioElectronico += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 3 Then
+                            RedesSociales += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 4 Then
+                            Clientes += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 5 Then
+                            Business += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 6 Then
+                            Procesos += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 7 Then
+                            Factura += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 8 Then
+                            Oficina += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 9 Then
+                            Comunicaciones += 1
+
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 10 Then
+                            Ciberseguridad += 1
+
+                        End If
+                    End If
+                End If
+            Next
         End If
 
 
@@ -154,61 +204,17 @@ Public Class Llistat
             .ClearSelection()
         End With
 
-        If dgv.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In dgv.Rows
 
-                If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
-                If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
-
-                If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
-
-                If MostratActual = 0 Then
-                    If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
-                        If Fila.Cells("IdTipusSolucio").Value = 1 Then
-                            SitioWeb += 1
-
-                        End If
-                        If Fila.Cells("IdSolucio").Value = 2 Then
-                            ComercioElectronico += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 3 Then
-                            RedesSociales += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 4 Then
-                            Clientes += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 5 Then
-                            Business += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 6 Then
-                            Procesos += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 7 Then
-                            Factura += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 8 Then
-                            Oficina += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 9 Then
-                            Comunicaciones += 1
-
-                        End If
-                        If Fila.Cells("IdTipusSolucio").Value = 10 Then
-                            Ciberseguridad += 1
-
-                        End If
-                    End If
-                End If
-            Next
-        End If
         NumeraSolucions()
+
+        For Each Fila As DataGridViewRow In dgv.Rows
+            If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
+            If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
+
+            If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
+        Next
+
+
 
     End Sub
 
@@ -284,6 +290,7 @@ Public Class Llistat
                 comm = New SQLiteCommand(Sql, conexion)
 
                 DA.SelectCommand = comm
+                DT_Llistat.Clear()
                 DA.Fill(DT_Llistat)
                 DataLlistat.DataSource = DT_Llistat
 

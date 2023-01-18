@@ -36,7 +36,7 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
-        InserirEmpresa()
+        InserirEmpresa(idEmpresaSeleccionada)
     End Sub
 
     'Actualitza la taula amb dades de la Base de dades
@@ -48,11 +48,10 @@ Public Class Contractes
 
             If conexion.State = ConnectionState.Open Then
                 Dim DA As New SQLiteDataAdapter("SELECT * FROM Empreses", conexion)
+                DT_Empreses.Clear()
                 DA.Fill(DT_Empreses)
 
-
                 If DT_Empreses.Rows.Count > 0 Then
-
                     DataEmpreses.DataSource = DT_Empreses
                     TitolEmpresa.Text = "SELECCIONA EMPRESA"
                 Else
@@ -68,7 +67,7 @@ Public Class Contractes
 
     End Sub
     'Introdueix una empresa nova
-    Private Sub InserirEmpresa()
+    Private Sub InserirEmpresa(IdEmpresa As Integer)
 
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
@@ -87,10 +86,10 @@ Public Class Contractes
 
         If (seleccio = True) Then
 
-            Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
-            Dim row As DataGridViewRow = DataEmpreses.Rows(index)
-            Dim idBorrar As Integer
-            idBorrar = row.Cells(0).Value
+            'Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
+            'Dim row As DataGridViewRow = DataEmpreses.Rows(index)
+            'Dim idBorrar As Integer
+            'idBorrar = row.Cells(0).Value
             Query = "UPDATE Empreses SET 
                      Nom=" & StringDB(empresaTxt) &
                      ",Nif=" & StringDB(nifTxt) &
@@ -99,7 +98,7 @@ Public Class Contractes
                      ",Ciutat=" & StringDB(ciutatTxt) &
                      ",Provincia=" & StringDB(provinciaTxt) &
                      ",Pais=" & StringDB(paisTxt) &
-                     "WHERE Id=" & idBorrar
+                     "WHERE Id=" & IdEmpresa
         Else
             Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais) VALUES (" &
                     StringDB(empresaTxt) & "," &
@@ -369,11 +368,10 @@ Public Class Contractes
         DiesCaducitat.Text = dies.ToString
         EstaLaSolucioSeleccionada(False)
 
-
     End Sub
 
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
-        AfegirSolucio()
+        AfegirSolucio(idSolucioSeleccionada)
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
@@ -450,14 +448,14 @@ Public Class Contractes
 
     End Sub
     'Afegeix o actualitza una solució
-    Private Sub AfegirSolucio()
+    Private Sub AfegirSolucio(idSolucio As Integer)
 
         If ComprovaDadesSolucions() = False Then Exit Sub
 
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
-        Dim idSolucio As Integer = CB_TipusSolucio.SelectedValue
+        Dim idTipusSolucio As Integer = CB_TipusSolucio.SelectedValue
         Dim NoAcordTxt As String = NoAcord.Text
         Dim Observacions As String = TBObservacions.Text
         Dim DataContracteTxt As String
@@ -468,7 +466,7 @@ Public Class Contractes
         DataContracteTxt = Format(DataContracte.Value, "yyyy-MM-dd")
         DataVencimentTxt = Format(DataContracte.Value.AddMonths(6), "yyyy-MM-dd")
 
-        Dim idAfegir As Integer
+        'Dim idAfegir As Integer
         Dim Justificat As String
         If CheckEstaJustificat.Checked = True Then
             Justificat = "'Si'"
@@ -477,23 +475,23 @@ Public Class Contractes
         End If
         If (seleccio = True) Then
 
-            Dim index As Integer = DataSolucions.CurrentCell.RowIndex
-            Dim row As DataGridViewRow = DataSolucions.Rows(index)
+            'Dim index As Integer = DataSolucions.CurrentCell.RowIndex
+            'Dim row As DataGridViewRow = DataSolucions.Rows(Index)
 
-            idAfegir = row.Cells(0).Value
+            'idAfegir = row.Cells(0).Value
 
             Query = "UPDATE Solucions SET
-                            idSolucio=" & idSolucio & ", 
+                            idSolucio=" & idTipusSolucio & ", 
                             Contracte= " & StringDB(NoAcordTxt) & ",
                             DataContracte=" & StringDB(DataContracteTxt) & ",
                             DataVenciment=" & StringDB(DataVencimentTxt) & ", 
                             Justificat=" & Justificat & ",
                             Observacions=" & StringDB(Observacions) &
-                            "WHERE Id=" & idAfegir
+                            "WHERE Id=" & idSolucio
 
         Else
             Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataVenciment,idEmpresa,Justificat,Observacions) VALUES (" &
-                                 idSolucio & "," &
+                                 idTipusSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
                                  StringDB(DataVencimentTxt) & "," &
@@ -514,7 +512,7 @@ Public Class Contractes
                 MsgBox("Solució modificada correctament",, "Modificar solució")
             End If
             If seleccio = False Then
-                InsertaJustificacioBuida(idSolucio, idEmpresaSeleccionada)
+                InsertaJustificacioBuida(idTipusSolucio, idEmpresaSeleccionada)
             End If
             OmpleSolucions(idEmpresaSeleccionada)
         Catch ex As Exception
