@@ -20,5 +20,8 @@
     <Setting Name="Ciuat" Type="System.String" Scope="User">
       <Value Profile="(Default)">VILANOVA I LA GELTRU</Value>
     </Setting>
+    <Setting Name="DiesAvis" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

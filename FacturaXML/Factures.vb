@@ -13,6 +13,7 @@ Public Class Factures
 
 
     End Sub
+    'Controla els caracters que es poden introduir al textbox
     Private Sub CompruebaTipo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles FacturaImportSolucio.KeyPress, FacturaImportSubvencionat.KeyPress
         e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) And Not e.KeyChar = ","
     End Sub
@@ -380,7 +381,7 @@ Public Class Factures
         End If
 
     End Sub
-
+    'Carrega les dades de la solucio rebuda per Id de la empresa
     Private Sub CarregaSolucions(id As Integer)
 
         Try

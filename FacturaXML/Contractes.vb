@@ -614,7 +614,7 @@ Public Class Contractes
             If e.Value < 0 Then e.Value = "Caducat"
         End If
     End Sub
-
+    'Dispara l'event click sobre les empreses i comprova on es clica
     Private Sub DataEmpreses_MouseClick(sender As Object, e As MouseEventArgs) Handles DataEmpreses.MouseClick
         If e.Button = MouseButtons.Right Then
             Dim menu = New System.Windows.Forms.ContextMenuStrip
@@ -629,7 +629,7 @@ Public Class Contractes
             AddHandler menu.ItemClicked, AddressOf menuClickDretEmpreses
         End If
     End Sub
-
+    'Dispara l'event click sobre les solucions i comprova on es clica
     Private Sub DataSolucions_MouseClick(sender As Object, e As MouseEventArgs) Handles DataSolucions.MouseClick
         If e.Button = MouseButtons.Right Then
             Dim menu = New System.Windows.Forms.ContextMenuStrip
@@ -645,7 +645,7 @@ Public Class Contractes
             AddHandler menu.ItemClicked, AddressOf menuClickDretSolucions
         End If
     End Sub
-
+    'Mostra el menu de solucions al fer click dret sobre la solució
     Private Sub menuClickDretSolucions(sender As Object, e As ToolStripItemClickedEventArgs)
         Dim nom As String = e.ClickedItem.Name
 
@@ -665,7 +665,7 @@ Public Class Contractes
             EsborrarSolucio(IdBorrar)
         End If
     End Sub
-
+    'Mostra el menu d'empreses al fer click dret sobre l'empresa
     Private Sub menuClickDretEmpreses(sender As Object, e As ToolStripItemClickedEventArgs)
         Dim nom As String = e.ClickedItem.Name
 
@@ -709,6 +709,7 @@ Public Class Contractes
         End If
 
     End Sub
+    'Omple els camps de la solucio rebuda per posicio a la taula
     Private Sub OmpleDadesSolucions(Index As Integer)
 
         Dim row As DataGridViewRow = DataSolucions.Rows(Index)

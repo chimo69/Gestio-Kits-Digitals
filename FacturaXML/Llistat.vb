@@ -3,16 +3,41 @@
 Public Class Llistat
 
     Dim DT_Llistat As New DataTable
-    Dim MostratActual As Integer
+    Dim SolucioFiltre As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
+    Public Sub New()
 
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        SolucioFiltre = 0
+        CarregaLlistat()
+
+    End Sub
+    'Obre el formulari de contractes amb l'empresa i la solució ja seleccionades
     Private Sub DataLlistat_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataLlistat.CellDoubleClick
         Dim dgv As DataGridView = sender
         Dim idEmpresa As Integer = dgv.CurrentRow.Cells("IdEmpresa").Value
         Dim idSolucio As Integer = dgv.CurrentRow.Cells("IdSolucio").Value
-
         Dim Contractes As New Contractes(idEmpresa, idSolucio)
         OpenSubForm(Contractes)
+    End Sub
+
+    Private Sub contracte_TextChanged(sender As Object, e As EventArgs) Handles contracte.TextChanged
+        CarregaLlistat()
+    End Sub
+
+    Private Sub animacioText(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        If AdvertenciaCaducats.Visible = True Then
+            AdvertenciaCaducats.Visible = False
+        Else
+            AdvertenciaCaducats.Visible = True
+        End If
+    End Sub
+
+    Private Sub NomEmpresa_TextChanged(sender As Object, e As EventArgs) Handles nomEmpresa.TextChanged
+        CarregaLlistat()
     End Sub
 
     Private Sub Llistat_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
@@ -39,8 +64,7 @@ Public Class Llistat
         imgD2.Name = "D2"
 
         With DataLlistat
-            .ClearSelection()
-
+            '.ClearSelection()
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
             .Columns("IdTipusSolucio").Visible = False
@@ -69,7 +93,7 @@ Public Class Llistat
 
         End With
 
-        If MostratActual = 0 Then
+        If SolucioFiltre = 0 Then
             SitioWeb = 0
             ComercioElectronico = 0
             RedesSociales = 0
@@ -85,56 +109,44 @@ Public Class Llistat
         If dgv.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In dgv.Rows
 
-                If MostratActual = 0 Then
+                If SolucioFiltre = 0 Then
                     If IsNumeric(Fila.Cells("IdTipusSolucio").Value) Then
                         If Fila.Cells("IdTipusSolucio").Value = 1 Then
                             SitioWeb += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 2 Then
                             ComercioElectronico += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 3 Then
                             RedesSociales += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 4 Then
                             Clientes += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 5 Then
                             Business += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 6 Then
                             Procesos += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 7 Then
                             Factura += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 8 Then
                             Oficina += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 9 Then
                             Comunicaciones += 1
-
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 10 Then
                             Ciberseguridad += 1
-
                         End If
                     End If
                 End If
             Next
         End If
 
-
     End Sub
-
     Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
         Dim dgv As DataGridView = sender
 
@@ -182,18 +194,8 @@ Public Class Llistat
             .Columns("D2").Width = 50
             .Columns("D2").HeaderCell.Style.Font = font
         End With
-    End Sub
-
-    Public Sub New()
-
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        CarregaLlistat()
 
     End Sub
-
     Private Sub DataLlistat_DataBindingComplete(ByVal sender As Object, ByVal e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
 
         Dim dgv As DataGridView = sender
@@ -204,7 +206,6 @@ Public Class Llistat
             .ClearSelection()
         End With
 
-
         NumeraSolucions()
 
         For Each Fila As DataGridViewRow In dgv.Rows
@@ -214,17 +215,25 @@ Public Class Llistat
             If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
         Next
 
-
+        ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 
+        For Each Fila As DataGridViewRow In dgv.Rows
+            If Fila.Cells("Dies").Value < My.Settings.DiesAvis And Fila.Cells("Dies").Value > 0 Then
+                Timer1.Start()
+                Exit For
+            Else
+                Timer1.Stop()
+                AdvertenciaCaducats.Visible = False
+            End If
+        Next
 
     End Sub
-
-
     'Carrega el llistat de solucions de la base de dades
-    Public Sub CarregaLlistat(i As Integer)
+    Public Sub CarregaLlistat()
         Try
             Dim conexion As New SQLiteConnection()
             Dim Sql As String
-            MostratActual = i
+            Dim SqlFiltre As String
+            Dim SqlJustificats As String
 
             conexion = New SQLiteConnection(cadena)
             conexion.Open()
@@ -234,8 +243,18 @@ Public Class Llistat
                 Dim comm As SQLiteCommand
                 DT_Llistat.Clear()
 
+                If SolucioFiltre <> 0 Then
+                    SqlFiltre = "And (Solucions.idSolucio=" & SolucioFiltre & ")"
+                Else
+                    SqlFiltre = ""
+                End If
                 If CB_JaPresentades.Checked = False Then
-                    Sql = "SELECT Empreses.Nom As Empresa,
+                    SqlJustificats = "AND (Solucions.Justificat='No')"
+                Else
+                    SqlJustificats = ""
+                End If
+
+                Sql = "SELECT Empreses.Nom As Empresa,
                           Empreses.Id As IdEmpresa,  
                           TipusSolucions.Id As IdTipusSolucio,    
                           TipusSolucions.Nom As Solucio,
@@ -257,35 +276,8 @@ Public Class Llistat
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
                           INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio 
-                          WHERE Solucions.Justificat='No' AND Solucions.idSolucio=" & i & " 
+                          WHERE (Solucions.Contracte like '%" & contracte.Text & "%')" & SqlJustificats & " AND (Empreses.Nom like '%" & nomEmpresa.Text & "%')" & SqlFiltre & "  
                           ORDER BY Solucions.DataVenciment ASC"
-
-                Else
-                    Sql = "SELECT Empreses.Nom As Empresa,
-                          Empreses.Id As IdEmpresa,  
-                          TipusSolucions.Id As IdTipusSolucio,    
-                          TipusSolucions.Nom As Solucio,
-                          Solucions.Contracte,
-                          Solucions.Id As IdSolucio,
-                          Solucions.DataContracte AS 'Data contracte',
-                          Solucions.DataVenciment AS 'Data venciment',
-                          julianday(Solucions.DataVenciment) - julianday(date())  AS Dies, 
-                          Justificacions.Percentatge AS 'Estat justificació',                          
-                          Solucions.Justificat,
-                          Solucions.Observacions,
-                          TeWord As 'TWord',
-                          TeComprovantPagament As 'TComp. Pagament',
-                          TeFacturaXML AS 'TXML',
-                          FabricantSolucio As 'TFabricant Solució',
-                          Dada1 as 'TD1',
-                          Dada2 as 'TD2'
-                          FROM Solucions
-                          INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
-                          INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
-                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
-                          WHERE Solucions.idSolucio=" & i & "
-                          ORDER BY Solucions.DataVenciment ASC"
-                End If
 
                 comm = New SQLiteCommand(Sql, conexion)
 
@@ -297,93 +289,12 @@ Public Class Llistat
             End If
             conexion.Close()
         Catch ex As Exception
-            MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
-        End Try
-
-
-    End Sub
-    Public Sub CarregaLlistat()
-        Try
-            Dim conexion As New SQLiteConnection()
-            Dim Sql As String
-
-            conexion = New SQLiteConnection(cadena)
-            conexion.Open()
-
-            If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter
-                Dim comm As SQLiteCommand
-                DT_Llistat.Clear()
-
-                If CB_JaPresentades.Checked = False Then
-                    Sql = "SELECT Empreses.Nom As Empresa,
-                          Empreses.Id  As IdEmpresa,  
-                          TipusSolucions.Id As IdTipusSolucio,    
-                          TipusSolucions.Nom As Solucio,
-                          Solucions.Contracte,
-                          Solucions.Id As IdSolucio,
-                          Solucions.DataContracte AS 'Data contracte',
-                          Solucions.DataVenciment AS 'Data venciment',
-                          julianday(Solucions.DataVenciment) - julianday(date()) AS Dies,                           
-                          Justificacions.percentatge AS 'Estat justificació',                                                    
-                          Solucions.Justificat,
-                          Solucions.Observacions,
-                          TeWord As 'TWord',
-                          TeComprovantPagament As 'TComp. Pagament',
-                          TeFacturaXML AS 'TXML',
-                          FabricantSolucio As 'TFabricant Solució',
-                          Dada1 as 'TD1',
-                          Dada2 as 'TD2'
-                          FROM Solucions
-                          INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
-                          INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
-                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
-                          WHERE Solucions.Justificat='No' 
-                          ORDER BY Solucions.DataVenciment ASC"
-                Else
-                    Sql = "SELECT Empreses.Nom As Empresa,
-                          Empreses.Id As IdEmpresa,  
-                          TipusSolucions.Id As IdTipusSolucio,    
-                          TipusSolucions.Nom As Solucio,
-                          Solucions.Contracte,
-                          Solucions.Id As IdSolucio,
-                          Solucions.DataContracte AS 'Data contracte',
-                          Solucions.DataVenciment AS 'Data venciment',
-                          julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
-                          Justificacions.percentatge AS 'Estat justificació',                          
-                          Solucions.Justificat,
-                          Solucions.Observacions,
-                          TeWord As 'TWord',
-                          TeComprovantPagament As 'TComp. Pagament',
-                          TeFacturaXML AS 'TXML',
-                          FabricantSolucio As 'TFabricant Solució',
-                          Dada1 as 'TD1',
-                          Dada2 as 'TD2'
-                          FROM Solucions
-                          INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
-                          INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id                          
-                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio  
-                          ORDER BY Solucions.DataVenciment ASC"
-                End If
-
-                comm = New SQLiteCommand(Sql, conexion)
-
-                DA.SelectCommand = comm
-                DT_Llistat.Clear()
-                DA.Fill(DT_Llistat)
-                DataLlistat.DataSource = DT_Llistat
-
-            End If
-            conexion.Close()
-
-        Catch ex As Exception
-            MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
+            MsgBox("No s'han pogut carregar les solucions desde la base de dades", vbCritical, "Error")
         End Try
 
     End Sub
-
     Private Sub NumeraSolucions()
-        If MostratActual = 0 Then TB_totes.Text = DataLlistat.RowCount.ToString
+        If SolucioFiltre = 0 Then TB_totes.Text = DataLlistat.RowCount.ToString
         TB_SitioWeb.Text = SitioWeb.ToString
         TB_ComercioElectronico.Text = ComercioElectronico.ToString
         TB_RedesSociales.Text = RedesSociales.ToString
@@ -396,11 +307,7 @@ Public Class Llistat
         TB_Ciberseguridad.Text = Ciberseguridad.ToString
     End Sub
     Private Sub CB_JaPresentades_CheckedChanged(sender As Object, e As EventArgs) Handles CB_JaPresentades.CheckedChanged
-        If MostratActual <> 0 Then
-            CarregaLlistat(MostratActual)
-        Else
-            CarregaLlistat()
-        End If
+        CarregaLlistat()
     End Sub
 
     Private Sub TipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged,
@@ -409,31 +316,29 @@ Public Class Llistat
         RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged
 
         If RB_SitioWeb.Checked Then
-            CarregaLlistat(1)
+            SolucioFiltre = 1
         ElseIf RB_ComercioElectronico.Checked Then
-            CarregaLlistat(2)
+            SolucioFiltre = 2
         ElseIf RB_RedesSociales.Checked Then
-            CarregaLlistat(3)
+            SolucioFiltre = 3
         ElseIf RB_GestionClientes.Checked Then
-            CarregaLlistat(4)
+            SolucioFiltre = 4
         ElseIf RB_BusinessInteligence.Checked Then
-            CarregaLlistat(5)
+            SolucioFiltre = 5
         ElseIf RB_GestionProcesos.Checked Then
-            CarregaLlistat(6)
+            SolucioFiltre = 6
         ElseIf RB_FacturaElectronica.Checked Then
-            CarregaLlistat(7)
+            SolucioFiltre = 7
         ElseIf RB_OficinaVirtual.Checked Then
-            CarregaLlistat(8)
+            SolucioFiltre = 8
         ElseIf RB_ComunicacionesSeguras.Checked Then
-            CarregaLlistat(9)
+            SolucioFiltre = 9
         ElseIf RB_Ciberseguridad.Checked Then
-            CarregaLlistat(10)
+            SolucioFiltre = 10
         ElseIf RB_Totes.Checked Then
-            MostratActual = 0
-            CarregaLlistat()
-
+            SolucioFiltre = 0
         End If
-
+        CarregaLlistat()
     End Sub
 
 End Class

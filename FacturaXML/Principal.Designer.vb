@@ -32,8 +32,8 @@ Partial Class Principal
         Me.ArxiuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SortirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KitsDigitalsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LlistatTotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GestióDeKitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LlistatTotalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformacióDeSolucionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FacturesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CrearFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,6 +45,7 @@ Partial Class Principal
         Me.Btn_Factures = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.PreferenciesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
@@ -114,7 +115,7 @@ Partial Class Principal
         '
         'ArxiuToolStripMenuItem
         '
-        Me.ArxiuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortirToolStripMenuItem})
+        Me.ArxiuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreferenciesToolStripMenuItem, Me.SortirToolStripMenuItem})
         Me.ArxiuToolStripMenuItem.Name = "ArxiuToolStripMenuItem"
         Me.ArxiuToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
         Me.ArxiuToolStripMenuItem.Text = "Arxiu"
@@ -123,7 +124,7 @@ Partial Class Principal
         '
         Me.SortirToolStripMenuItem.Image = CType(resources.GetObject("SortirToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SortirToolStripMenuItem.Name = "SortirToolStripMenuItem"
-        Me.SortirToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
+        Me.SortirToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SortirToolStripMenuItem.Text = "Sortir"
         '
         'KitsDigitalsToolStripMenuItem
@@ -133,6 +134,13 @@ Partial Class Principal
         Me.KitsDigitalsToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
         Me.KitsDigitalsToolStripMenuItem.Text = "Kits Digitals"
         '
+        'GestióDeKitsToolStripMenuItem
+        '
+        Me.GestióDeKitsToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Gestio
+        Me.GestióDeKitsToolStripMenuItem.Name = "GestióDeKitsToolStripMenuItem"
+        Me.GestióDeKitsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.GestióDeKitsToolStripMenuItem.Text = "Gestió de Solucions"
+        '
         'LlistatTotalToolStripMenuItem
         '
         Me.LlistatTotalToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
@@ -140,13 +148,6 @@ Partial Class Principal
         Me.LlistatTotalToolStripMenuItem.Name = "LlistatTotalToolStripMenuItem"
         Me.LlistatTotalToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.LlistatTotalToolStripMenuItem.Text = "Llistat total"
-        '
-        'GestióDeKitsToolStripMenuItem
-        '
-        Me.GestióDeKitsToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Gestio
-        Me.GestióDeKitsToolStripMenuItem.Name = "GestióDeKitsToolStripMenuItem"
-        Me.GestióDeKitsToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
-        Me.GestióDeKitsToolStripMenuItem.Text = "Gestió de Solucions"
         '
         'InformacióDeSolucionsToolStripMenuItem
         '
@@ -166,14 +167,14 @@ Partial Class Principal
         '
         Me.CrearFacturaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Factures
         Me.CrearFacturaToolStripMenuItem.Name = "CrearFacturaToolStripMenuItem"
-        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CrearFacturaToolStripMenuItem.Text = "Crear factura"
         '
         'DadesEmpresaToolStripMenuItem
         '
         Me.DadesEmpresaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
         Me.DadesEmpresaToolStripMenuItem.Name = "DadesEmpresaToolStripMenuItem"
-        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DadesEmpresaToolStripMenuItem.Text = "Dades empresa"
         '
         'AjudaToolStripMenuItem
@@ -251,6 +252,13 @@ Partial Class Principal
         Me.Button2.TabIndex = 25
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'PreferenciesToolStripMenuItem
+        '
+        Me.PreferenciesToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
+        Me.PreferenciesToolStripMenuItem.Name = "PreferenciesToolStripMenuItem"
+        Me.PreferenciesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PreferenciesToolStripMenuItem.Text = "Preferencies"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -305,4 +313,5 @@ Partial Class Principal
     Friend WithEvents Label4 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents InformacióDeSolucionsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PreferenciesToolStripMenuItem As ToolStripMenuItem
 End Class

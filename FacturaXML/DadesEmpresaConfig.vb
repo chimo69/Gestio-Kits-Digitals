@@ -25,7 +25,7 @@ Public Class DadesEmpresaConfig
         My.Settings.Pais = TB_Pais.Text
 
         Me.Close()
-        MsgBox("Noves dades guardades",, "Configuració empresa")
+        MsgBox("Noves dades guardades", vbInformation, "Configuració empresa")
 
     End Sub
 

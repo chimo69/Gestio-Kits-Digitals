@@ -1,6 +1,4 @@
-﻿Imports System.Data.SqlClient
-Imports System.Runtime.CompilerServices
-Imports System.Data.SQLite
+﻿Imports System.Data.SQLite
 
 Public Class EstatJustificacio
 
@@ -27,7 +25,7 @@ Public Class EstatJustificacio
 
         RebreDades()
     End Sub
-
+    'Carrega les justificacions de la solucio seleccionada
     Private Sub RebreDades()
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
@@ -51,6 +49,7 @@ Public Class EstatJustificacio
         lector.Close()
         conexion.Close()
 
+        'Depenent del tipus de solucio les dades 1 i 2 tindran diferents textos
         Select Case IdTipusSolucio
             Case 1
                 TeDada1.Text = "Justificante de formalización de dominio" & vbCrLf & "(nuevo dominio si es segmento 1) PDF"
@@ -99,6 +98,7 @@ Public Class EstatJustificacio
         End Select
         ActualitzaProgresBar()
     End Sub
+    'Guardem els canvis a la base de dades
     Private Sub GuardarDades()
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
@@ -128,6 +128,7 @@ Public Class EstatJustificacio
         End Try
 
     End Sub
+    'Converteix boolean en integer
     Private Shared Function TornaBoolean(B As Boolean) As Integer
         If B = True Then
             Return 1
@@ -135,7 +136,7 @@ Public Class EstatJustificacio
             Return 0
         End If
     End Function
-
+    'Controla els canvis fets als textbox del grup 2
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles TotalSolucio.TextChanged, FabricantSolucio.TextChanged
 
         Select Case DirectCast(sender, TextBox).Name
@@ -170,6 +171,7 @@ Public Class EstatJustificacio
 
         ActualitzaProgresBar()
     End Sub
+    'Controla els canvis fets als textbox del grup 1
     Private Sub CheckBox_TextChanged(sender As Object, e As EventArgs) Handles TeComprovant.CheckedChanged, TeWord.CheckedChanged, TeFactura.CheckedChanged, TeDada1.CheckedChanged, TeDada2.CheckedChanged
         Select Case DirectCast(sender, CheckBox).Name
             Case TeComprovant.Name
@@ -210,10 +212,11 @@ Public Class EstatJustificacio
         End Select
         ActualitzaProgresBar()
     End Sub
-
+    'Controla els caracters que es poden introduir al textbox
     Private Sub TotalSolucio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TotalSolucio.KeyPress
         e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) And Not e.KeyChar = ","
     End Sub
+    'Actualitza la barra de progres amb els valors actuals
     Private Sub ActualitzaProgresBar()
         Progress = PorcentatgeDesglossament + PorcentatgeFabricantSolucio + PercentatgeTeComprovant + PercentatgeTeFactura + PercentatgeTeWord + PercentatgeTeDada1 + PercentatgeTeDada2
         ProgressBar1.Value = Progress

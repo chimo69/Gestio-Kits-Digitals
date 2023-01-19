@@ -22,6 +22,7 @@ Partial Class Llistat
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -53,6 +54,12 @@ Partial Class Llistat
         Me.TB_ComercioElectronico = New System.Windows.Forms.TextBox()
         Me.TB_SitioWeb = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.nomEmpresa = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.contracte = New System.Windows.Forms.TextBox()
+        Me.AdvertenciaCaducats = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_TipusSolucions.SuspendLayout()
         Me.SuspendLayout()
@@ -105,14 +112,14 @@ Partial Class Llistat
         Me.DataLlistat.RowTemplate.Height = 25
         Me.DataLlistat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataLlistat.ShowEditingIcon = False
-        Me.DataLlistat.Size = New System.Drawing.Size(996, 464)
+        Me.DataLlistat.Size = New System.Drawing.Size(996, 596)
         Me.DataLlistat.TabIndex = 3
         '
         'CB_JaPresentades
         '
         Me.CB_JaPresentades.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_JaPresentades.AutoSize = True
-        Me.CB_JaPresentades.Location = New System.Drawing.Point(28, 405)
+        Me.CB_JaPresentades.Location = New System.Drawing.Point(6, 405)
         Me.CB_JaPresentades.Name = "CB_JaPresentades"
         Me.CB_JaPresentades.Size = New System.Drawing.Size(198, 19)
         Me.CB_JaPresentades.TabIndex = 5
@@ -180,7 +187,7 @@ Partial Class Llistat
         Me.GB_TipusSolucions.Controls.Add(Me.RB_ComercioElectronico)
         Me.GB_TipusSolucions.Location = New System.Drawing.Point(1014, 49)
         Me.GB_TipusSolucions.Name = "GB_TipusSolucions"
-        Me.GB_TipusSolucions.Size = New System.Drawing.Size(232, 464)
+        Me.GB_TipusSolucions.Size = New System.Drawing.Size(232, 449)
         Me.GB_TipusSolucions.TabIndex = 9
         Me.GB_TipusSolucions.TabStop = False
         Me.GB_TipusSolucions.Text = "Tipus de solucions"
@@ -403,17 +410,76 @@ Partial Class Llistat
         Me.Label2.TabIndex = 10
         Me.Label2.Text = "(Doble click per accedir a les dades de cada solució)"
         '
+        'nomEmpresa
+        '
+        Me.nomEmpresa.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.nomEmpresa.Location = New System.Drawing.Point(1020, 552)
+        Me.nomEmpresa.Name = "nomEmpresa"
+        Me.nomEmpresa.Size = New System.Drawing.Size(220, 23)
+        Me.nomEmpresa.TabIndex = 11
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(1020, 534)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(110, 15)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Buscar per empresa"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(1020, 599)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(115, 15)
+        Me.Label4.TabIndex = 14
+        Me.Label4.Text = "Buscar per contracte"
+        '
+        'contracte
+        '
+        Me.contracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.contracte.Location = New System.Drawing.Point(1020, 617)
+        Me.contracte.Name = "contracte"
+        Me.contracte.Size = New System.Drawing.Size(220, 23)
+        Me.contracte.TabIndex = 13
+        '
+        'AdvertenciaCaducats
+        '
+        Me.AdvertenciaCaducats.AutoSize = True
+        Me.AdvertenciaCaducats.BackColor = System.Drawing.SystemColors.Control
+        Me.AdvertenciaCaducats.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.AdvertenciaCaducats.ForeColor = System.Drawing.Color.Red
+        Me.AdvertenciaCaducats.Location = New System.Drawing.Point(633, 10)
+        Me.AdvertenciaCaducats.Name = "AdvertenciaCaducats"
+        Me.AdvertenciaCaducats.Size = New System.Drawing.Size(375, 29)
+        Me.AdvertenciaCaducats.TabIndex = 15
+        Me.AdvertenciaCaducats.Text = "Atenció! Solucions apunt de caducar"
+        Me.AdvertenciaCaducats.Visible = False
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 1000
+        '
         'Llistat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1258, 525)
+        Me.ClientSize = New System.Drawing.Size(1258, 657)
+        Me.Controls.Add(Me.AdvertenciaCaducats)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.contracte)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.nomEmpresa)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GB_TipusSolucions)
         Me.Controls.Add(Me.DataLlistat)
         Me.Controls.Add(Me.Label1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(1274, 0)
+        Me.MinimumSize = New System.Drawing.Size(1274, 696)
         Me.Name = "Llistat"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Llistat"
@@ -453,4 +519,10 @@ Partial Class Llistat
     Friend WithEvents RB_Ciberseguridad As RadioButton
     Friend WithEvents RB_ComunicacionesSeguras As RadioButton
     Friend WithEvents Label2 As Label
+    Friend WithEvents nomEmpresa As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents contracte As TextBox
+    Friend WithEvents AdvertenciaCaducats As Label
+    Friend WithEvents Timer1 As Timer
 End Class

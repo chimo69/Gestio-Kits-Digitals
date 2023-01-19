@@ -65,4 +65,9 @@ Public Class Principal
         Dim Informacio As New Informacio
         OpenSubForm(Informacio)
     End Sub
+
+    Private Sub PreferenciesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreferenciesToolStripMenuItem.Click
+        Dim Preferencies As New Preferencies
+        OpenSubForm(Preferencies)
+    End Sub
 End Class
