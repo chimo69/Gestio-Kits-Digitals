@@ -20,6 +20,7 @@ Public Class Contractes
 
     End Sub
 
+    'Obrim Contractes amb la empresa i solucio seleccionades al llistat
     Public Sub New(idEmpresa As Integer, idSolucio As Integer)
         Me.idEmpresaRebuda = idEmpresa
         Me.idSolucioRebuda = idSolucio
@@ -62,7 +63,7 @@ Public Class Contractes
             conexion.Close()
 
         Catch ex As Exception
-            MsgBox("No s'ha pogut accedir a la base de dades",, "Error")
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
     End Sub
@@ -84,12 +85,9 @@ Public Class Contractes
 
         If ComprovaDadesEmpresa() = False Then Exit Sub
 
+        'Si hi ha una empresa seleccionada fara Update sino Insert
         If (seleccio = True) Then
 
-            'Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
-            'Dim row As DataGridViewRow = DataEmpreses.Rows(index)
-            'Dim idBorrar As Integer
-            'idBorrar = row.Cells(0).Value
             Query = "UPDATE Empreses SET 
                      Nom=" & StringDB(empresaTxt) &
                      ",Nif=" & StringDB(nifTxt) &
@@ -117,47 +115,48 @@ Public Class Contractes
             conexion.Close()
             ActualitzaEmpreses()
 
-            If seleccio = True Then MsgBox("Empresa modificada correctament",, "Modificar empresa")
-            If seleccio = False Then MsgBox("Empresa introduida correctament",, "Introduir empresa")
+            If seleccio = True Then MsgBox("Empresa modificada correctament", vbInformation, "Modificar empresa")
+            If seleccio = False Then MsgBox("Empresa introduida correctament", vbInformation, "Introduir empresa")
         Catch ex As Exception
-            If seleccio = True Then MsgBox("No s'ha pogut modificar l'empresa",, "Modificar empresa")
-            If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa",, "Introduir empresa")
+            If seleccio = True Then MsgBox("No s'ha pogut modificar l'empresa", vbCritical, "Modificar empresa")
+            If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa", vbCritical, "Introduir empresa")
         End Try
     End Sub
+    'Comprova que no faltin dades per introduir
     Private Function ComprovaDadesEmpresa() As Boolean
         If Empresa.Text = "" Then
             Empresa.Focus()
-            MsgBox("Has de introduir el nom de l'empresa")
+            MsgBox("Has de introduir el nom de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If Nif.Text = "" Then
             Nif.Focus()
-            MsgBox("Has de introduir el NIF de l'empresa")
+            MsgBox("Has de introduir el NIF de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If Direccio.Text = "" Then
             Direccio.Focus()
-            MsgBox("Has de introduir la direcció de l'empresa")
+            MsgBox("Has de introduir la direcció de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If CodiPostal.Text = "" Then
             CodiPostal.Focus()
-            MsgBox("Has de introduir el Codi Postal de l'empresa")
+            MsgBox("Has de introduir el Codi Postal de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If Ciutat.Text = "" Then
             Ciutat.Focus()
-            MsgBox("Has de introduir la ciutat de l'empresa")
+            MsgBox("Has de introduir la ciutat de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If Provincia.Text = "" Then
             Provincia.Focus()
-            MsgBox("Has de introduir la provincia de l'empresa")
+            MsgBox("Has de introduir la provincia de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         If Pais.Text = "" Then
             Pais.Focus()
-            MsgBox("Has de introduir el pais de l'empresa")
+            MsgBox("Has de introduir el pais de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
         Return True
@@ -183,39 +182,46 @@ Public Class Contractes
                 strCommand.ExecuteNonQuery()
                 conexion.Close()
                 ActualitzaEmpreses()
-                MsgBox("S'ha esborrat correctament l'empresa",, "Esborrar l'empresa")
+                MsgBox("S'ha esborrat correctament l'empresa", vbInformation, "Esborrar l'empresa")
             Catch ex As Exception
-                MsgBox("No s'ha pogut esborrar l'empresa",, "Esborrar l'empresa")
+                MsgBox("No s'ha pogut esborrar l'empresa", vbCritical, "Esborrar l'empresa")
             End Try
         End If
 
     End Sub
+    'Comprova si la empresa que es vol esborrar te solucions obertes
     Private Shared Function ComprovaSiTeSolucions(id As Integer) As Boolean
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
 
-        Query = "SELECT * FROM Solucions WHERE iDEmpresa=" & id
-        strCommand = New SQLiteCommand(Query, conexion)
-        conexion.Open()
-        Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+        Try
+            Query = "SELECT * FROM Solucions WHERE iDEmpresa=" & id
+            strCommand = New SQLiteCommand(Query, conexion)
+            conexion.Open()
+            Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-        If lector.HasRows Then
-            Return True
-        Else
-            Return False
-        End If
+            If lector.HasRows Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Esborrar l'empresa")
+        End Try
+        Return True
 
     End Function
-    Private Sub Btn_esborrar_Click(sender As Object, e As EventArgs) Handles Btn_esborrar.Click
+    Private Sub Btn_esborrarEmpresa_Click(sender As Object, e As EventArgs) Handles Btn_esborrarEmpresa.Click
         Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
         Dim row As DataGridViewRow = DataEmpreses.Rows(index)
         Dim idBorrar As Integer = row.Cells("Id").Value
         EsborrarEmpresa(idBorrar)
     End Sub
-    Private Sub Btn_esborrarSeleccio_Click(sender As Object, e As EventArgs) Handles btn_esborrarSeleccio.Click
+    Private Sub Btn_EsborrarSeleccioEmpresa_Click(sender As Object, e As EventArgs) Handles btn_EsborrarSeleccioEmpresa.Click
         EsborraCampsEmpresa()
     End Sub
+    'Esborra tots els camps d'empresa
     Private Sub EsborraCampsEmpresa()
         DataEmpreses.ClearSelection()
         Empresa.Clear()
@@ -250,6 +256,7 @@ Public Class Contractes
 
         End Try
 
+        'Si venim del form Llistat selecciona l'empresa
         For Each Fila As DataGridViewRow In DataEmpreses.Rows
             If Fila.Cells("Id").Value = idEmpresaRebuda Then
                 OmpleDadesEmpresa(Fila.Index)
@@ -258,6 +265,7 @@ Public Class Contractes
             End If
         Next
 
+        'Si venim del form Llistat selecciona la solució
         For Each Fila As DataGridViewRow In DataSolucions.Rows
             If Fila.Cells("Id").Value = idSolucioRebuda Then
                 OmpleDadesSolucions(Fila.Index)
@@ -267,7 +275,7 @@ Public Class Contractes
         Next
 
     End Sub
-
+    'Si varia el camp data actualitza els dies i el venciment
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
         Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
         DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
@@ -348,7 +356,7 @@ Public Class Contractes
         idBorrar = row.Cells("Id").Value
         EsborrarSolucio(idBorrar)
     End Sub
-
+    'Esborra tots els camps de la solució
     Private Sub EsborrarCampsSolucio()
 
         NoAcord.Clear()
@@ -383,7 +391,7 @@ Public Class Contractes
     'Esborra la solució seleccionada
     Private Sub EsborrarSolucio(id As Integer)
 
-        Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo, "Esborrar solució")
+        Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo + vbQuestion, "Esborrar solució")
 
         If resposta = vbYes Then
             Try
@@ -403,9 +411,9 @@ Public Class Contractes
 
                 conexion.Close()
                 OmpleSolucions(idEmpresaSeleccionada)
-                MsgBox("S'ha esborrat correctament la solució",, "Esborrar solució")
+                MsgBox("S'ha esborrat correctament la solució", vbInformation, "Esborrar solució")
             Catch ex As Exception
-                MsgBox("No s'ha pogut esborrar la solució ",, "Esborrar solució")
+                MsgBox("No s'ha pogut esborrar la solució ", vbCritical, "Esborrar solució")
             End Try
         End If
 
@@ -461,24 +469,18 @@ Public Class Contractes
         Dim DataContracteTxt As String
         Dim DataVencimentTxt As String
         Dim seleccio As Boolean
+        Dim Justificat As String
 
         seleccio = solucioSeleccionada
         DataContracteTxt = Format(DataContracte.Value, "yyyy-MM-dd")
         DataVencimentTxt = Format(DataContracte.Value.AddMonths(6), "yyyy-MM-dd")
 
-        'Dim idAfegir As Integer
-        Dim Justificat As String
         If CheckEstaJustificat.Checked = True Then
             Justificat = "'Si'"
         Else
             Justificat = "'No'"
         End If
         If (seleccio = True) Then
-
-            'Dim index As Integer = DataSolucions.CurrentCell.RowIndex
-            'Dim row As DataGridViewRow = DataSolucions.Rows(Index)
-
-            'idAfegir = row.Cells(0).Value
 
             Query = "UPDATE Solucions SET
                             idSolucio=" & idTipusSolucio & ", 
@@ -507,9 +509,8 @@ Public Class Contractes
             strCommand.ExecuteNonQuery()
             conexion.Close()
 
-
             If seleccio = True Then
-                MsgBox("Solució modificada correctament",, "Modificar solució")
+                MsgBox("Solució modificada correctament", vbInformation, "Modificar solució")
             End If
             If seleccio = False Then
                 InsertaJustificacioBuida(idTipusSolucio, idEmpresaSeleccionada)
@@ -524,16 +525,16 @@ Public Class Contractes
     Private Function ComprovaDadesSolucions() As Boolean
         If CB_TipusSolucio.Text = "Selecciona un tipus de solució" Then
             CB_TipusSolucio.Focus()
-            MsgBox("Has de introduir el tipus de solució")
+            MsgBox("Has de introduir el tipus de solució", vbCritical, "Dades de la solució")
             Return False
         End If
         If NoAcord.Text = "" Then
             NoAcord.Focus()
-            MsgBox("Has de introduir el nº d'acord")
+            MsgBox("Has de introduir el nº d'acord", vbCritical, "Dades de la solució")
             Return False
         End If
         If ProgressBar1.Value < 100 And CheckEstaJustificat.Checked = True Then
-            If MsgBox("¿Estas segur que ho vols donar per justificat sense tenir el proces al 100%?", vbYesNo + vbExclamation, "Introduir solució") = vbYes Then
+            If MsgBox("¿Estas segur que ho vols donar per justificat sense tenir el proces al 100%?", vbYesNo + vbQuestion, "Introduir solució") = vbYes Then
                 Return True
             Else
                 Return False
@@ -567,13 +568,14 @@ Public Class Contractes
             strCommand.ExecuteNonQuery()
 
             conexion.Close()
-            MsgBox("Solució introduida correctament",, "Introduir solució")
+            MsgBox("Solució introduida correctament", vbInformation, "Introduir solució")
 
         Catch ex As Exception
-            If seleccio = True Then MsgBox("No s'ha pogut modificar la solució",, "Modificar solució")
-            If seleccio = False Then MsgBox("No s'ha pogut introduir la solució",, "Introduir solució")
+            If seleccio = True Then MsgBox("No s'ha pogut modificar la solució", vbCritical, "Modificar solució")
+            If seleccio = False Then MsgBox("No s'ha pogut introduir la solució", vbCritical, "Introduir solució")
         End Try
     End Sub
+    'Activa o desactiva els camps de la solució depenent de si hi una seleccionada
     Private Sub EstaLaSolucioSeleccionada(x As Boolean)
         If x = True Then
             Btn_EstatJustificacio.Enabled = True

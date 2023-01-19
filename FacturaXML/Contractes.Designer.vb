@@ -23,13 +23,13 @@ Partial Class Contractes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Contractes))
         Me.DataEmpreses = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -47,8 +47,8 @@ Partial Class Contractes
         Me.Provincia = New System.Windows.Forms.TextBox()
         Me.Pais = New System.Windows.Forms.TextBox()
         Me.Btn_afegir = New System.Windows.Forms.Button()
-        Me.Btn_esborrar = New System.Windows.Forms.Button()
-        Me.btn_esborrarSeleccio = New System.Windows.Forms.Button()
+        Me.Btn_esborrarEmpresa = New System.Windows.Forms.Button()
+        Me.btn_EsborrarSeleccioEmpresa = New System.Windows.Forms.Button()
         Me.DataSolucions = New System.Windows.Forms.DataGridView()
         Me.Empreses = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -87,8 +87,8 @@ Partial Class Contractes
         Me.DataEmpreses.AllowUserToAddRows = False
         Me.DataEmpreses.AllowUserToDeleteRows = False
         Me.DataEmpreses.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataEmpreses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -96,14 +96,14 @@ Partial Class Contractes
         Me.DataEmpreses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataEmpreses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataEmpreses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataEmpreses.ColumnHeadersHeight = 30
         Me.DataEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataEmpreses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -112,18 +112,18 @@ Partial Class Contractes
         Me.DataEmpreses.MultiSelect = False
         Me.DataEmpreses.Name = "DataEmpreses"
         Me.DataEmpreses.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DataEmpreses.RowHeadersVisible = False
         Me.DataEmpreses.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle11
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataEmpreses.ShowEditingIcon = False
@@ -259,25 +259,25 @@ Partial Class Contractes
         Me.Btn_afegir.Text = "Afegir empresa"
         Me.Btn_afegir.UseVisualStyleBackColor = True
         '
-        'Btn_esborrar
+        'Btn_esborrarEmpresa
         '
-        Me.Btn_esborrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Btn_esborrar.BackColor = System.Drawing.Color.IndianRed
-        Me.Btn_esborrar.Location = New System.Drawing.Point(193, 769)
-        Me.Btn_esborrar.Name = "Btn_esborrar"
-        Me.Btn_esborrar.Size = New System.Drawing.Size(148, 53)
-        Me.Btn_esborrar.TabIndex = 16
-        Me.Btn_esborrar.Text = "Esborrar empresa"
-        Me.Btn_esborrar.UseVisualStyleBackColor = False
+        Me.Btn_esborrarEmpresa.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Btn_esborrarEmpresa.BackColor = System.Drawing.Color.IndianRed
+        Me.Btn_esborrarEmpresa.Location = New System.Drawing.Point(193, 769)
+        Me.Btn_esborrarEmpresa.Name = "Btn_esborrarEmpresa"
+        Me.Btn_esborrarEmpresa.Size = New System.Drawing.Size(148, 53)
+        Me.Btn_esborrarEmpresa.TabIndex = 16
+        Me.Btn_esborrarEmpresa.Text = "Esborrar empresa"
+        Me.Btn_esborrarEmpresa.UseVisualStyleBackColor = False
         '
-        'btn_esborrarSeleccio
+        'btn_EsborrarSeleccioEmpresa
         '
-        Me.btn_esborrarSeleccio.Location = New System.Drawing.Point(21, 372)
-        Me.btn_esborrarSeleccio.Name = "btn_esborrarSeleccio"
-        Me.btn_esborrarSeleccio.Size = New System.Drawing.Size(148, 54)
-        Me.btn_esborrarSeleccio.TabIndex = 17
-        Me.btn_esborrarSeleccio.Text = "Esborrar selecció"
-        Me.btn_esborrarSeleccio.UseVisualStyleBackColor = True
+        Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(21, 372)
+        Me.btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
+        Me.btn_EsborrarSeleccioEmpresa.Size = New System.Drawing.Size(148, 54)
+        Me.btn_EsborrarSeleccioEmpresa.TabIndex = 17
+        Me.btn_EsborrarSeleccioEmpresa.Text = "Esborrar selecció"
+        Me.btn_EsborrarSeleccioEmpresa.UseVisualStyleBackColor = True
         '
         'DataSolucions
         '
@@ -289,38 +289,38 @@ Partial Class Contractes
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DataSolucions.ColumnHeadersHeight = 30
         Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataSolucions.EnableHeadersVisualStyles = False
         Me.DataSolucions.Location = New System.Drawing.Point(1009, 65)
         Me.DataSolucions.MultiSelect = False
         Me.DataSolucions.Name = "DataSolucions"
         Me.DataSolucions.ReadOnly = True
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.DataSolucions.RowHeadersVisible = False
         Me.DataSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.DataSolucions.RowTemplate.Height = 25
@@ -637,8 +637,8 @@ Partial Class Contractes
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Empreses)
         Me.Controls.Add(Me.DataSolucions)
-        Me.Controls.Add(Me.btn_esborrarSeleccio)
-        Me.Controls.Add(Me.Btn_esborrar)
+        Me.Controls.Add(Me.btn_EsborrarSeleccioEmpresa)
+        Me.Controls.Add(Me.Btn_esborrarEmpresa)
         Me.Controls.Add(Me.Btn_afegir)
         Me.Controls.Add(Me.Pais)
         Me.Controls.Add(Me.Provincia)
@@ -684,8 +684,8 @@ Partial Class Contractes
     Friend WithEvents Provincia As TextBox
     Friend WithEvents Pais As TextBox
     Friend WithEvents Btn_afegir As Button
-    Friend WithEvents Btn_esborrar As Button
-    Friend WithEvents btn_esborrarSeleccio As Button
+    Friend WithEvents Btn_esborrarEmpresa As Button
+    Friend WithEvents btn_EsborrarSeleccioEmpresa As Button
     Friend WithEvents DataSolucions As DataGridView
     Friend WithEvents Empreses As Label
     Friend WithEvents Label8 As Label
