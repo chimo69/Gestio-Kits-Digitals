@@ -383,7 +383,7 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
-        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
+        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
         OpenSubFormDialog(EstatJustificacio)
         OmpleSolucions(idEmpresaSeleccionada)
         EsborrarCampsSolucio()
@@ -638,6 +638,7 @@ Public Class Contractes
             If posicio > -1 Then
                 menu.Items.Add("Estat justificació").Name = "Estat" & posicio
                 menu.Items.Add("Esborrar solució").Name = "Esborrar" & posicio
+                menu.Items.Add("Crear factura").Name = "Factura" & posicio
             End If
             OmpleDadesSolucions(posicio)
             DataSolucions.Rows(posicio).Selected = True
@@ -653,7 +654,7 @@ Public Class Contractes
             Dim RowBorrar As Integer = nom.Replace("Estat", "")
             Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
 
-            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, IdSolucio, CB_TipusSolucio.SelectedValue)
+            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, IdSolucio, CB_TipusSolucio.SelectedValue)
 
             OpenSubFormDialog(EstatJustificacio)
             OmpleSolucions(idEmpresaSeleccionada)
@@ -663,6 +664,14 @@ Public Class Contractes
             Dim RowBorrar As Integer = nom.Replace("Esborrar", "")
             Dim IdBorrar As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
             EsborrarSolucio(IdBorrar)
+        End If
+        If nom.Contains("Factura") Then
+            Dim RowBorrar As Integer = nom.Replace("Factura", "")
+            Dim IdBorrar As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
+            Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
+            Dim FacturaXML As New Factures(idEmpresaSeleccionada, IdSolucio)
+            OpenSubFormDialog(FacturaXML)
+
         End If
     End Sub
     'Mostra el menu d'empreses al fer click dret sobre l'empresa

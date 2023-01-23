@@ -79,6 +79,7 @@ Partial Class Factures
         Me.SobreFacturesXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreFacturesXMLToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Vigila = New System.Windows.Forms.Label()
+        Me.VigilaData = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -323,6 +324,7 @@ Partial Class Factures
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.VigilaData)
         Me.GroupBox2.Controls.Add(Me.Label20)
         Me.GroupBox2.Controls.Add(Me.FacturaNumero)
         Me.GroupBox2.Controls.Add(Me.CB_Solucions)
@@ -427,7 +429,7 @@ Partial Class Factures
         'FacturaSolucio
         '
         Me.FacturaSolucio.FormattingEnabled = True
-        Me.FacturaSolucio.Items.AddRange(New Object() {"Sitio web", "Comercio electrónico", "Gestión de redes sociales", "Gestión de clientes", "BI", "Gestión de procesos", "Factura electrónica", "Oficina virtual", "Comunicaciones seguras", "Ciberseguridad"})
+        Me.FacturaSolucio.Items.AddRange(New Object() {"Sitio web", "Comercio electrónico", "Gestión de redes sociales", "Gestión de clientes", "Business Inteligence", "Gestión de procesos", "Factura electrónica", "Oficina virtual", "Comunicaciones seguras", "Ciberseguridad"})
         Me.FacturaSolucio.Location = New System.Drawing.Point(196, 339)
         Me.FacturaSolucio.Name = "FacturaSolucio"
         Me.FacturaSolucio.Size = New System.Drawing.Size(171, 23)
@@ -615,6 +617,17 @@ Partial Class Factures
         Me.Vigila.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Vigila.Visible = False
         '
+        'VigilaData
+        '
+        Me.VigilaData.AutoSize = True
+        Me.VigilaData.ForeColor = System.Drawing.Color.Red
+        Me.VigilaData.Location = New System.Drawing.Point(147, 415)
+        Me.VigilaData.Name = "VigilaData"
+        Me.VigilaData.Size = New System.Drawing.Size(208, 15)
+        Me.VigilaData.TabIndex = 20
+        Me.VigilaData.Text = "Vigila! La data supera el temps permés"
+        Me.VigilaData.Visible = False
+        '
         'Factures
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -706,4 +719,5 @@ Partial Class Factures
     Friend WithEvents Label20 As Label
     Friend WithEvents CB_Solucions As ComboBox
     Friend WithEvents Vigila As Label
+    Friend WithEvents VigilaData As Label
 End Class

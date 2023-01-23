@@ -4,14 +4,25 @@ Imports System.IO
 Public Class Factures
     Dim DT_Empreses As New DataTable
     Dim DT_Solucions As New DataTable
+    Private idEmpresa As Integer
+    Private idSolucio As Integer
+    Private CarregarDades As Boolean
+
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        CarregarDades = True
 
+    End Sub
 
+    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
+        InitializeComponent()
+        Me.idEmpresa = idEmpresa
+        Me.idSolucio = idSolucio
+        CarregarDades = False
     End Sub
     'Controla els caracters que es poden introduir al textbox
     Private Sub CompruebaTipo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles FacturaImportSolucio.KeyPress, FacturaImportSubvencionat.KeyPress
@@ -258,8 +269,8 @@ Public Class Factures
     End Sub
     Private Sub EsborraDades(v As Integer)
 
-        '1 - Borra bloc factura
-        '2 - Borra bloc empresa
+        '1 - Borra bloc empresa
+        '2 - Borra bloc factura
         '3 - Borra tot
 
         For Each control As Windows.Forms.Control In Me.Controls
@@ -278,7 +289,7 @@ Public Class Factures
                             CType(controlText, TextBox).Clear()
                         End If
                     Next
-                    CB_Solucions.DataSource = Nothing
+                    'CB_Solucions.DataSource = Nothing
                 End If
             End If
         Next
@@ -334,30 +345,90 @@ Public Class Factures
     End Sub
     'Carrega les empreses per omplir el combobox
     Private Sub Factures_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Try
-            Dim conexion As New SQLiteConnection()
+        Dim SQL As String
+        Dim conexion As New SQLiteConnection()
+        Dim strCommand As SQLiteCommand
 
-            conexion = New SQLiteConnection(cadena)
-            conexion.Open()
+        conexion = New SQLiteConnection(cadena)
+        conexion.Open()
 
-            If conexion.State = ConnectionState.Open Then
-                Dim DA_Empreses As New SQLiteDataAdapter("SELECT * FROM Empreses ORDER BY Nom ASC", conexion)
-                DA_Empreses.Fill(DT_Empreses)
-                CB_Empreses.DataSource = DT_Empreses
-                CB_Empreses.DisplayMember = "Nom"
-                CB_Empreses.Text = "Selecciona una empresa"
-                CB_Empreses.ValueMember = "Id"
-            End If
+        If CarregarDades = True Then
+            SQL = "SELECT * FROM Empreses ORDER BY Nom ASC"
+            Try
+                If conexion.State = ConnectionState.Open Then
+                    Dim DA_Empreses As New SQLiteDataAdapter(SQL, conexion)
+                    DA_Empreses.Fill(DT_Empreses)
+                    CB_Empreses.DataSource = DT_Empreses
+                    CB_Empreses.DisplayMember = "Nom"
+                    CB_Empreses.Text = "Selecciona una empresa"
+                    CB_Empreses.ValueMember = "Id"
+                End If
 
-            conexion.Close()
-        Catch ex As Exception
-            MsgBox("No s'han pogut carregar les empreses desde la base de dades",, "Error")
-        End Try
+                conexion.Close()
+            Catch ex As Exception
+                MsgBox("No s'han pogut carregar les empreses desde la base de dades", vbCritical, "Error")
+            End Try
+        Else
+
+            CB_Empreses.Enabled = False
+            CB_Solucions.Enabled = False
+            FacturaSolucio.Enabled = False
+
+
+            Try
+                SQL = "SELECT * FROM Empreses WHERE Id=" & idEmpresa
+                strCommand = New SQLiteCommand(SQL, conexion)
+
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+
+                If lector.Read Then
+
+                    EmpresaNom.Text = lector.GetString("Nom")
+                    EmpresaNif.Text = lector.GetString("Nif")
+                    EmpresaCiutat.Text = lector.GetString("Ciutat")
+                    EmpresaDireccio.Text = lector.GetString("Direccio")
+                    EmpresaCodiPostal.Text = lector.GetString("CodiPostal")
+                    EmpresaProvincia.Text = lector.GetString("Provincia")
+                    EmpresaPais.Text = lector.GetString("Pais")
+                End If
+                lector.Close()
+
+                SQL = "SELECT Solucions.idSolucio,
+                                     Solucions.IdEmpresa,
+                                     TipusSolucions.Nom,
+                                     Solucions.Contracte,
+                                     Justificacions.TotalSolucio,
+                                     Justificacions.Percentatge
+                                     FROM Solucions
+                                     INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                     INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
+                                     WHERE idEmpresa=" & idEmpresa & " AND Solucions.Id=" & idSolucio
+
+                strCommand = New SQLiteCommand(SQL, conexion)
+                lector = strCommand.ExecuteReader
+
+                If lector.Read Then
+
+                    FacturaAcord.Text = lector.GetString("Contracte")
+                    FacturaSolucio.Text = lector.GetString("Nom")
+                    FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
+                    If lector.GetValue("Percentatge") <> 100 Then
+                        Vigila.Visible = True
+                    Else
+                        Vigila.Visible = False
+                    End If
+                End If
+
+            Catch ex As Exception
+                MsgBox("No s'han pogut carregar les dades", vbCritical, "Error")
+            End Try
+
+        End If
 
     End Sub
 
     Private Sub CB_Empreses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Empreses.SelectionChangeCommitted
-
+        EsborraDades(2)
         Dim row As DataRowView = DirectCast(CB_Empreses.SelectedItem, DataRowView)
         EmpresaNom.Text = row.Item("Nom").ToString
         EmpresaNif.Text = row.Item("Nif").ToString
@@ -371,6 +442,7 @@ Public Class Factures
     End Sub
     Private Sub CB_Solucions_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Solucions.SelectionChangeCommitted
         Dim row As DataRowView = DirectCast(CB_Solucions.SelectedItem, DataRowView)
+        EsborraDades(2)
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
@@ -417,5 +489,12 @@ Public Class Factures
 
     End Sub
 
+    Private Sub FacturaData_ValueChanged(sender As Object, e As EventArgs) Handles FacturaData.ValueChanged
+        If FacturaData.Value.AddMonths(3) < Date.Now Then
+            VigilaData.Visible = True
+        Else
+            VigilaData.Visible = False
+        End If
+    End Sub
 
 End Class

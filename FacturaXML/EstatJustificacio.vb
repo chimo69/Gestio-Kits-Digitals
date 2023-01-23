@@ -2,7 +2,7 @@
 
 Public Class EstatJustificacio
 
-    Dim Id, IdTipusSolucio As Integer
+    Dim IdSolucio, IdTipusSolucio, IdEmpresa As Integer
     Dim PorcentatgeDesglossament As Integer = 0
     Dim PorcentatgeFabricantSolucio As Integer = 0
     Dim PercentatgeTeComprovant As Integer = 0
@@ -12,13 +12,14 @@ Public Class EstatJustificacio
     Dim Progress As Integer
     Dim PercentatgeTeFactura As Integer = 0
 
-    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdRebut As Integer, IdTipusSolucioRebuda As Integer)
+    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        Id = IdRebut
+        IdEmpresa = IdEmpresaRebuda
+        IdSolucio = IdSolucioRebuda
         IdTipusSolucio = IdTipusSolucioRebuda
         Empresa.Text = EmpresaRebuda
         Solucio.Text = SolucioRebuda
@@ -31,7 +32,7 @@ Public Class EstatJustificacio
         Dim Query As String
         Dim strCommand As SQLiteCommand
 
-        Query = "SELECT * FROM Justificacions WHERE iDSolucio=" & Id
+        Query = "SELECT * FROM Justificacions WHERE iDSolucio=" & IdSolucio
         strCommand = New SQLiteCommand(Query, conexion)
         conexion.Open()
         Dim lector As SQLiteDataReader = strCommand.ExecuteReader
@@ -115,7 +116,7 @@ Public Class EstatJustificacio
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & "
                         
-                        WHERE iDSolucio=" & Id
+                        WHERE iDSolucio=" & IdSolucio
             strCommand = New SQLiteCommand(Query, conexion)
 
             conexion.Open()
@@ -226,6 +227,19 @@ Public Class EstatJustificacio
             Completat.Visible = False
         End If
     End Sub
+
+    Private Sub Btn_CreaFactura_Click(sender As Object, e As EventArgs) Handles Btn_CreaFactura.Click
+        Dim FacturaXML As New Factures(IdEmpresa, IdSolucio)
+        OpenSubFormDialog(FacturaXML)
+        Dim resp As Integer
+        resp = MsgBox("Activar FacturaXML com feta?", vbYesNo, "Crear factura")
+        If resp = vbYes Then
+            TeFactura.Checked = True
+        Else
+            TeFactura.Checked = False
+        End If
+    End Sub
+
     Private Sub Btn_guardar_Click(sender As Object, e As EventArgs) Handles Btn_guardar.Click
         GuardarDades()
     End Sub

@@ -48,6 +48,7 @@ Partial Class EstatJustificacio
         Me.Btn_guardar = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Completat = New System.Windows.Forms.Label()
+        Me.Btn_CreaFactura = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -295,12 +296,22 @@ Partial Class EstatJustificacio
         Me.Completat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Completat.Visible = False
         '
+        'Btn_CreaFactura
+        '
+        Me.Btn_CreaFactura.Location = New System.Drawing.Point(123, 229)
+        Me.Btn_CreaFactura.Name = "Btn_CreaFactura"
+        Me.Btn_CreaFactura.Size = New System.Drawing.Size(143, 30)
+        Me.Btn_CreaFactura.TabIndex = 14
+        Me.Btn_CreaFactura.Text = "Crear Factura XML"
+        Me.Btn_CreaFactura.UseVisualStyleBackColor = True
+        '
         'EstatJustificacio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(808, 494)
+        Me.Controls.Add(Me.Btn_CreaFactura)
         Me.Controls.Add(Me.Completat)
         Me.Controls.Add(Me.TeDada1)
         Me.Controls.Add(Me.TeWord)
@@ -356,4 +367,5 @@ Partial Class EstatJustificacio
     Friend WithEvents Btn_guardar As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Completat As Label
+    Friend WithEvents Btn_CreaFactura As Button
 End Class
