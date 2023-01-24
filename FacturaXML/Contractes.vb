@@ -15,7 +15,7 @@ Public Class Contractes
         ActualitzaEmpreses()
 
         Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
-        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DataFiAprovacio.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
         DiesCaducitat.Text = dies.ToString
 
     End Sub
@@ -32,7 +32,7 @@ Public Class Contractes
         ActualitzaEmpreses()
 
         Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
-        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DataFiAprovacio.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
         DiesCaducitat.Text = dies.ToString
     End Sub
 
@@ -275,12 +275,7 @@ Public Class Contractes
         Next
 
     End Sub
-    'Si varia el camp data actualitza els dies i el venciment
-    Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
-        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
-        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
-        DiesCaducitat.Text = dies.ToString
-    End Sub
+
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
     End Sub
@@ -361,18 +356,18 @@ Public Class Contractes
 
         NoAcord.Clear()
         DataContracte.Text = ""
-        DataVenciment.Text = ""
+        DataFiAprovacio.Text = ""
         DiesCaducitat.Clear()
         solucioSeleccionada = False
         TitolSolucio.Clear()
-        DataVenciment.Text = DataContracte.Value.Date.AddMonths(6)
+        DataFiAprovacio.Text = DataContracte.Value.Date.AddMonths(6)
         ProgressBar1.Value = 0
         TBObservacions.Clear()
         CheckEstaJustificat.Checked = False
         CB_TipusSolucio.Text = "Selecciona un tipus de solució"
         DataSolucions.ClearSelection()
         Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(6))
-        DataVenciment.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
+        DataFiAprovacio.Text = Format(DataContracte.Value.AddMonths(6).Date, "Short Date")
         DiesCaducitat.Text = dies.ToString
         EstaLaSolucioSeleccionada(False)
 
@@ -674,6 +669,45 @@ Public Class Contractes
 
         End If
     End Sub
+
+    Private Sub CB_DataContracte_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataContracte.CheckedChanged
+        If CB_DataContracte.Checked = True Then
+            DataContracte.Enabled = True
+        Else
+            DataContracte.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CB_PagamentIVA_CheckedChanged(sender As Object, e As EventArgs) Handles CB_PagamentIVA.CheckedChanged
+        If CB_PagamentIVA.Checked = True Then
+            DataPagament.Enabled = True
+        Else
+            DataPagament.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CB_DataAprovacio_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataAprovacio.CheckedChanged
+        If CB_DataAprovacio.Checked = True Then
+            DataAprovacio.Enabled = True
+        Else
+            DataAprovacio.Enabled = False
+        End If
+    End Sub
+    Private Sub DataAprovacio_ValueChanged(sender As Object, e As EventArgs) Handles DataAprovacio.ValueChanged
+        Dim dies = DateDiff(DateInterval.Day, Now, DataAprovacio.Value.AddMonths(6))
+        DataFiAprovacio.Text = Format(DataAprovacio.Value.AddMonths(6).Date, "Short Date")
+        DiesCaducitat.Text = dies.ToString
+    End Sub
+    'Si varia el camp data actualitza els dies i el venciment
+    Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
+        Dim dies = DateDiff(DateInterval.Day, Now, DataContracte.Value.AddMonths(3))
+        DataFiContracte.Text = Format(DataContracte.Value.AddMonths(3).Date, "Short Date")
+    End Sub
+    Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
+        Dim dies = DateDiff(DateInterval.Day, Now, DataPagament.Value.AddMonths(3))
+        DataFiPagament.Text = Format(DataAprovacio.Value.AddMonths(3).Date, "Short Date")
+    End Sub
+
     'Mostra el menu d'empreses al fer click dret sobre l'empresa
     Private Sub menuClickDretEmpreses(sender As Object, e As ToolStripItemClickedEventArgs)
         Dim nom As String = e.ClickedItem.Name
@@ -727,7 +761,7 @@ Public Class Contractes
         CB_TipusSolucio.Text = row.Cells("Nom").Value
         NoAcord.Text = row.Cells("Contracte").Value
         DataContracte.Text = Format(row.Cells("Dia contracte").Value, "Short Date")
-        DataVenciment.Text = Format(row.Cells("Dia venciment").Value, "Short Date")
+        DataFiAprovacio.Text = Format(row.Cells("Dia venciment").Value, "Short Date")
         If row.Cells("Dies").Value >= 0 Then
             DiesCaducitat.Text = row.Cells("Dies").Value
         Else
