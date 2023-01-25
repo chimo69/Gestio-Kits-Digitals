@@ -77,13 +77,13 @@ Partial Class Contractes
         Me.ContextMenuEsborrar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DataAprovacio = New System.Windows.Forms.DateTimePicker()
         Me.DataPagament = New System.Windows.Forms.DateTimePicker()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TitolAprovacio = New System.Windows.Forms.Label()
+        Me.TitolContracte = New System.Windows.Forms.Label()
         Me.DataFiContracte = New System.Windows.Forms.TextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TitolPagament = New System.Windows.Forms.Label()
         Me.DataFiPagament = New System.Windows.Forms.TextBox()
         Me.CB_DataContracte = New System.Windows.Forms.CheckBox()
-        Me.CB_PagamentIVA = New System.Windows.Forms.CheckBox()
+        Me.CB_DataPagamentIVA = New System.Windows.Forms.CheckBox()
         Me.CB_DataAprovacio = New System.Windows.Forms.CheckBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -135,7 +135,7 @@ Partial Class Contractes
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataEmpreses.ShowEditingIcon = False
-        Me.DataEmpreses.Size = New System.Drawing.Size(637, 883)
+        Me.DataEmpreses.Size = New System.Drawing.Size(620, 883)
         Me.DataEmpreses.TabIndex = 0
         '
         'Label1
@@ -388,6 +388,7 @@ Partial Class Contractes
         'CB_TipusSolucio
         '
         Me.CB_TipusSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CB_TipusSolucio.Enabled = False
         Me.CB_TipusSolucio.FormattingEnabled = True
         Me.CB_TipusSolucio.Location = New System.Drawing.Point(1139, 317)
         Me.CB_TipusSolucio.Name = "CB_TipusSolucio"
@@ -398,6 +399,7 @@ Partial Class Contractes
         '
         Me.NoAcord.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.NoAcord.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.NoAcord.Enabled = False
         Me.NoAcord.Location = New System.Drawing.Point(1139, 357)
         Me.NoAcord.Name = "NoAcord"
         Me.NoAcord.Size = New System.Drawing.Size(217, 23)
@@ -417,6 +419,7 @@ Partial Class Contractes
         'Btn_AfegirSolucio
         '
         Me.Btn_AfegirSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_AfegirSolucio.Enabled = False
         Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1323, 895)
         Me.Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Me.Btn_AfegirSolucio.Size = New System.Drawing.Size(146, 53)
@@ -447,6 +450,7 @@ Partial Class Contractes
         'Btn_EsborrarSeleccioSolucio
         '
         Me.Btn_EsborrarSeleccioSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EsborrarSeleccioSolucio.Enabled = False
         Me.Btn_EsborrarSeleccioSolucio.Location = New System.Drawing.Point(1007, 895)
         Me.Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Me.Btn_EsborrarSeleccioSolucio.Size = New System.Drawing.Size(146, 53)
@@ -458,6 +462,7 @@ Partial Class Contractes
         '
         Me.Btn_EsborrarSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_EsborrarSolucio.BackColor = System.Drawing.Color.IndianRed
+        Me.Btn_EsborrarSolucio.Enabled = False
         Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1475, 895)
         Me.Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Me.Btn_EsborrarSolucio.Size = New System.Drawing.Size(144, 53)
@@ -477,7 +482,7 @@ Partial Class Contractes
         Me.TitolEmpresa.Name = "TitolEmpresa"
         Me.TitolEmpresa.PlaceholderText = "Selecciona empresa"
         Me.TitolEmpresa.ReadOnly = True
-        Me.TitolEmpresa.Size = New System.Drawing.Size(637, 36)
+        Me.TitolEmpresa.Size = New System.Drawing.Size(620, 36)
         Me.TitolEmpresa.TabIndex = 36
         Me.TitolEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -522,6 +527,7 @@ Partial Class Contractes
         '
         Me.CheckEstaJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckEstaJustificat.AutoSize = True
+        Me.CheckEstaJustificat.Enabled = False
         Me.CheckEstaJustificat.Location = New System.Drawing.Point(1139, 606)
         Me.CheckEstaJustificat.Name = "CheckEstaJustificat"
         Me.CheckEstaJustificat.Size = New System.Drawing.Size(15, 14)
@@ -531,6 +537,7 @@ Partial Class Contractes
         'Btn_EstatJustificacio
         '
         Me.Btn_EstatJustificacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Btn_EstatJustificacio.Enabled = False
         Me.Btn_EstatJustificacio.Location = New System.Drawing.Point(1475, 317)
         Me.Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
         Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(146, 63)
@@ -560,6 +567,7 @@ Partial Class Contractes
         'TBObservacions
         '
         Me.TBObservacions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TBObservacions.Enabled = False
         Me.TBObservacions.Location = New System.Drawing.Point(1007, 681)
         Me.TBObservacions.Multiline = True
         Me.TBObservacions.Name = "TBObservacions"
@@ -615,25 +623,25 @@ Partial Class Contractes
         Me.DataPagament.Size = New System.Drawing.Size(111, 23)
         Me.DataPagament.TabIndex = 50
         '
-        'Label19
+        'TitolAprovacio
         '
-        Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(1269, 402)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(170, 15)
-        Me.Label19.TabIndex = 51
-        Me.Label19.Text = "6 mesos a partir d'aquesta data"
+        Me.TitolAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitolAprovacio.AutoSize = True
+        Me.TitolAprovacio.Location = New System.Drawing.Point(1269, 402)
+        Me.TitolAprovacio.Name = "TitolAprovacio"
+        Me.TitolAprovacio.Size = New System.Drawing.Size(170, 15)
+        Me.TitolAprovacio.TabIndex = 51
+        Me.TitolAprovacio.Text = "6 mesos a partir d'aquesta data"
         '
-        'Label20
+        'TitolContracte
         '
-        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(1269, 442)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(170, 15)
-        Me.Label20.TabIndex = 52
-        Me.Label20.Text = "3 mesos a partir d'aquesta data"
+        Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitolContracte.AutoSize = True
+        Me.TitolContracte.Location = New System.Drawing.Point(1269, 442)
+        Me.TitolContracte.Name = "TitolContracte"
+        Me.TitolContracte.Size = New System.Drawing.Size(170, 15)
+        Me.TitolContracte.TabIndex = 52
+        Me.TitolContracte.Text = "3 mesos a partir d'aquesta data"
         '
         'DataFiContracte
         '
@@ -645,15 +653,15 @@ Partial Class Contractes
         Me.DataFiContracte.TabIndex = 54
         Me.DataFiContracte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label21
+        'TitolPagament
         '
-        Me.Label21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(1269, 481)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(170, 15)
-        Me.Label21.TabIndex = 55
-        Me.Label21.Text = "3 mesos a partir d'aquesta data"
+        Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitolPagament.AutoSize = True
+        Me.TitolPagament.Location = New System.Drawing.Point(1269, 481)
+        Me.TitolPagament.Name = "TitolPagament"
+        Me.TitolPagament.Size = New System.Drawing.Size(170, 15)
+        Me.TitolPagament.TabIndex = 55
+        Me.TitolPagament.Text = "3 mesos a partir d'aquesta data"
         '
         'DataFiPagament
         '
@@ -669,6 +677,7 @@ Partial Class Contractes
         '
         Me.CB_DataContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataContracte.AutoSize = True
+        Me.CB_DataContracte.Enabled = False
         Me.CB_DataContracte.Location = New System.Drawing.Point(1007, 442)
         Me.CB_DataContracte.Name = "CB_DataContracte"
         Me.CB_DataContracte.Size = New System.Drawing.Size(105, 19)
@@ -676,21 +685,23 @@ Partial Class Contractes
         Me.CB_DataContracte.Text = "Data Contracte"
         Me.CB_DataContracte.UseVisualStyleBackColor = True
         '
-        'CB_PagamentIVA
+        'CB_DataPagamentIVA
         '
-        Me.CB_PagamentIVA.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CB_PagamentIVA.AutoSize = True
-        Me.CB_PagamentIVA.Location = New System.Drawing.Point(1007, 482)
-        Me.CB_PagamentIVA.Name = "CB_PagamentIVA"
-        Me.CB_PagamentIVA.Size = New System.Drawing.Size(127, 19)
-        Me.CB_PagamentIVA.TabIndex = 58
-        Me.CB_PagamentIVA.Text = "Data pagament IVA"
-        Me.CB_PagamentIVA.UseVisualStyleBackColor = True
+        Me.CB_DataPagamentIVA.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CB_DataPagamentIVA.AutoSize = True
+        Me.CB_DataPagamentIVA.Enabled = False
+        Me.CB_DataPagamentIVA.Location = New System.Drawing.Point(1007, 482)
+        Me.CB_DataPagamentIVA.Name = "CB_DataPagamentIVA"
+        Me.CB_DataPagamentIVA.Size = New System.Drawing.Size(127, 19)
+        Me.CB_DataPagamentIVA.TabIndex = 58
+        Me.CB_DataPagamentIVA.Text = "Data pagament IVA"
+        Me.CB_DataPagamentIVA.UseVisualStyleBackColor = True
         '
         'CB_DataAprovacio
         '
         Me.CB_DataAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataAprovacio.AutoSize = True
+        Me.CB_DataAprovacio.Enabled = False
         Me.CB_DataAprovacio.Location = New System.Drawing.Point(1007, 401)
         Me.CB_DataAprovacio.Name = "CB_DataAprovacio"
         Me.CB_DataAprovacio.Size = New System.Drawing.Size(107, 19)
@@ -704,13 +715,13 @@ Partial Class Contractes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 978)
         Me.Controls.Add(Me.CB_DataAprovacio)
-        Me.Controls.Add(Me.CB_PagamentIVA)
+        Me.Controls.Add(Me.CB_DataPagamentIVA)
         Me.Controls.Add(Me.CB_DataContracte)
         Me.Controls.Add(Me.DataFiPagament)
-        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.TitolPagament)
         Me.Controls.Add(Me.DataFiContracte)
-        Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.TitolContracte)
+        Me.Controls.Add(Me.TitolAprovacio)
         Me.Controls.Add(Me.DataPagament)
         Me.Controls.Add(Me.DataAprovacio)
         Me.Controls.Add(Me.verificat)
@@ -815,12 +826,12 @@ Partial Class Contractes
     Friend WithEvents ContextMenuEsborrar As ContextMenuStrip
     Friend WithEvents DataAprovacio As DateTimePicker
     Friend WithEvents DataPagament As DateTimePicker
-    Friend WithEvents Label19 As Label
-    Friend WithEvents Label20 As Label
+    Friend WithEvents TitolAprovacio As Label
+    Friend WithEvents TitolContracte As Label
     Friend WithEvents DataFiContracte As TextBox
-    Friend WithEvents Label21 As Label
+    Friend WithEvents TitolPagament As Label
     Friend WithEvents DataFiPagament As TextBox
     Friend WithEvents CB_DataContracte As CheckBox
-    Friend WithEvents CB_PagamentIVA As CheckBox
+    Friend WithEvents CB_DataPagamentIVA As CheckBox
     Friend WithEvents CB_DataAprovacio As CheckBox
 End Class
