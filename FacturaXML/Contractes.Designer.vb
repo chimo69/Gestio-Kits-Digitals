@@ -85,9 +85,15 @@ Partial Class Contractes
         Me.CB_DataContracte = New System.Windows.Forms.CheckBox()
         Me.CB_DataPagamentIVA = New System.Windows.Forms.CheckBox()
         Me.CB_DataAprovacio = New System.Windows.Forms.CheckBox()
+        Me.DataAprovacioOK = New System.Windows.Forms.PictureBox()
+        Me.DataContracteOK = New System.Windows.Forms.PictureBox()
+        Me.DataPagamentOK = New System.Windows.Forms.PictureBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataEmpreses
@@ -443,7 +449,7 @@ Partial Class Contractes
         Me.DataFiAprovacio.Location = New System.Drawing.Point(1475, 399)
         Me.DataFiAprovacio.Name = "DataFiAprovacio"
         Me.DataFiAprovacio.ReadOnly = True
-        Me.DataFiAprovacio.Size = New System.Drawing.Size(146, 23)
+        Me.DataFiAprovacio.Size = New System.Drawing.Size(116, 23)
         Me.DataFiAprovacio.TabIndex = 33
         Me.DataFiAprovacio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -627,21 +633,21 @@ Partial Class Contractes
         '
         Me.TitolAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolAprovacio.AutoSize = True
-        Me.TitolAprovacio.Location = New System.Drawing.Point(1269, 402)
+        Me.TitolAprovacio.Location = New System.Drawing.Point(1266, 402)
         Me.TitolAprovacio.Name = "TitolAprovacio"
-        Me.TitolAprovacio.Size = New System.Drawing.Size(170, 15)
+        Me.TitolAprovacio.Size = New System.Drawing.Size(191, 15)
         Me.TitolAprovacio.TabIndex = 51
-        Me.TitolAprovacio.Text = "6 mesos a partir d'aquesta data"
+        Me.TitolAprovacio.Text = "<-- 6 mesos a partir d'aquesta data"
         '
         'TitolContracte
         '
         Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolContracte.AutoSize = True
-        Me.TitolContracte.Location = New System.Drawing.Point(1269, 442)
+        Me.TitolContracte.Location = New System.Drawing.Point(1266, 442)
         Me.TitolContracte.Name = "TitolContracte"
-        Me.TitolContracte.Size = New System.Drawing.Size(170, 15)
+        Me.TitolContracte.Size = New System.Drawing.Size(191, 15)
         Me.TitolContracte.TabIndex = 52
-        Me.TitolContracte.Text = "3 mesos a partir d'aquesta data"
+        Me.TitolContracte.Text = "<-- 3 mesos a partir d'aquesta data"
         '
         'DataFiContracte
         '
@@ -649,7 +655,7 @@ Partial Class Contractes
         Me.DataFiContracte.Location = New System.Drawing.Point(1475, 438)
         Me.DataFiContracte.Name = "DataFiContracte"
         Me.DataFiContracte.ReadOnly = True
-        Me.DataFiContracte.Size = New System.Drawing.Size(146, 23)
+        Me.DataFiContracte.Size = New System.Drawing.Size(116, 23)
         Me.DataFiContracte.TabIndex = 54
         Me.DataFiContracte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -657,11 +663,11 @@ Partial Class Contractes
         '
         Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolPagament.AutoSize = True
-        Me.TitolPagament.Location = New System.Drawing.Point(1269, 481)
+        Me.TitolPagament.Location = New System.Drawing.Point(1266, 481)
         Me.TitolPagament.Name = "TitolPagament"
-        Me.TitolPagament.Size = New System.Drawing.Size(170, 15)
+        Me.TitolPagament.Size = New System.Drawing.Size(191, 15)
         Me.TitolPagament.TabIndex = 55
-        Me.TitolPagament.Text = "3 mesos a partir d'aquesta data"
+        Me.TitolPagament.Text = "<-- 3 mesos a partir d'aquesta data"
         '
         'DataFiPagament
         '
@@ -669,7 +675,7 @@ Partial Class Contractes
         Me.DataFiPagament.Location = New System.Drawing.Point(1475, 477)
         Me.DataFiPagament.Name = "DataFiPagament"
         Me.DataFiPagament.ReadOnly = True
-        Me.DataFiPagament.Size = New System.Drawing.Size(146, 23)
+        Me.DataFiPagament.Size = New System.Drawing.Size(116, 23)
         Me.DataFiPagament.TabIndex = 56
         Me.DataFiPagament.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -709,11 +715,50 @@ Partial Class Contractes
         Me.CB_DataAprovacio.Text = "Data Aprovació"
         Me.CB_DataAprovacio.UseVisualStyleBackColor = True
         '
+        'DataAprovacioOK
+        '
+        Me.DataAprovacioOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataAprovacioOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
+        Me.DataAprovacioOK.Location = New System.Drawing.Point(1597, 399)
+        Me.DataAprovacioOK.Name = "DataAprovacioOK"
+        Me.DataAprovacioOK.Size = New System.Drawing.Size(24, 23)
+        Me.DataAprovacioOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.DataAprovacioOK.TabIndex = 60
+        Me.DataAprovacioOK.TabStop = False
+        Me.DataAprovacioOK.Visible = False
+        '
+        'DataContracteOK
+        '
+        Me.DataContracteOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataContracteOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
+        Me.DataContracteOK.Location = New System.Drawing.Point(1597, 438)
+        Me.DataContracteOK.Name = "DataContracteOK"
+        Me.DataContracteOK.Size = New System.Drawing.Size(24, 24)
+        Me.DataContracteOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.DataContracteOK.TabIndex = 61
+        Me.DataContracteOK.TabStop = False
+        Me.DataContracteOK.Visible = False
+        '
+        'DataPagamentOK
+        '
+        Me.DataPagamentOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataPagamentOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
+        Me.DataPagamentOK.Location = New System.Drawing.Point(1597, 477)
+        Me.DataPagamentOK.Name = "DataPagamentOK"
+        Me.DataPagamentOK.Size = New System.Drawing.Size(24, 24)
+        Me.DataPagamentOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.DataPagamentOK.TabIndex = 62
+        Me.DataPagamentOK.TabStop = False
+        Me.DataPagamentOK.Visible = False
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 978)
+        Me.Controls.Add(Me.DataPagamentOK)
+        Me.Controls.Add(Me.DataContracteOK)
+        Me.Controls.Add(Me.DataAprovacioOK)
         Me.Controls.Add(Me.CB_DataAprovacio)
         Me.Controls.Add(Me.CB_DataPagamentIVA)
         Me.Controls.Add(Me.CB_DataContracte)
@@ -775,6 +820,9 @@ Partial Class Contractes
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -834,4 +882,7 @@ Partial Class Contractes
     Friend WithEvents CB_DataContracte As CheckBox
     Friend WithEvents CB_DataPagamentIVA As CheckBox
     Friend WithEvents CB_DataAprovacio As CheckBox
+    Friend WithEvents DataAprovacioOK As PictureBox
+    Friend WithEvents DataContracteOK As PictureBox
+    Friend WithEvents DataPagamentOK As PictureBox
 End Class
