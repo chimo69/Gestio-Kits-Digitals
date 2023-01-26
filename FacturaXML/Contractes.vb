@@ -365,8 +365,8 @@ Public Class Contractes
     Private Sub EsborrarCampsSolucio()
 
         'Linea Aprovacio
-        CB_DataAprovacio.Checked = False
         DataFiAprovacio.Text = ""
+        CB_DataAprovacio.Checked = False
         DataAprovacioOK.Visible = False
 
         'Linea Contracte
@@ -636,11 +636,13 @@ Public Class Contractes
             Btn_EsborrarSeleccioSolucio.Enabled = True
             Btn_EsborrarSolucio.Enabled = True
             Btn_AfegirSolucio.Text = "Modificar solució"
+            TBObservacions.Enabled = True
             solucioSeleccionada = True
         Else
             Btn_AfegirSolucio.Text = "Afegir solució"
             Btn_AfegirSolucio.Enabled = True
             Btn_EsborrarSolucio.Enabled = False
+            TBObservacions.Enabled = False
             solucioSeleccionada = False
         End If
     End Sub
@@ -784,7 +786,9 @@ Public Class Contractes
             MostraLinea(2, False)
             MostraLinea(3, False)
             CB_DataContracte.Enabled = False
+            CB_DataContracte.Checked = False
             CB_DataPagamentIVA.Enabled = False
+            CB_DataPagamentIVA.Checked = False
         End If
     End Sub
     Private Sub CB_DataContracte_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataContracte.CheckedChanged
@@ -795,6 +799,7 @@ Public Class Contractes
             MostraLinea(2, False)
             MostraLinea(3, False)
             CB_DataPagamentIVA.Enabled = False
+            CB_DataPagamentIVA.Checked = False
         End If
         MiraCaducitat()
     End Sub
@@ -813,26 +818,26 @@ Public Class Contractes
     End Sub
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
 
-        If Carregant = False Then
-            If DataContracte.Value <= DataAprovacio.Value Then
+        'If Carregant = False Then
+        If DataContracte.Value <= DataAprovacio.Value Then
                 'MsgBox("La data de contractació no pot ser anterior a la de aprovació", vbCritical, "Error")
                 'DataContracte.Value = Date.Now
             ElseIf DataContracte.Value >= DataAprovacio.Value.AddMonths(6) Then
-                MsgBox("La data de contractació supera la caducitat de l'aprovació", vbCritical, "Error")
-                DataContracte.Value = Date.Now
+                'MsgBox("La data de contractació supera la caducitat de l'aprovació", vbCritical, "Error")
+                'DataContracte.Value = Date.Now
             Else
                 DataFiContracte.Text = Format(DataContracte.Value.AddMonths(3).Date, "Short Date")
                 MiraCaducitat()
             End If
-        End If
+        'End If
     End Sub
     Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
         If DataPagament.Value < DataContracte.Value Then
-            MsgBox("La data de pagament no pot ser anterior a la de contractament", vbCritical, "Error")
-            DataPagament.Value = Date.Now
+            'MsgBox("La data de pagament no pot ser anterior a la de contractament", vbCritical, "Error")
+            'DataPagament.Value = Date.Now
         ElseIf DataPagament.Value > DataAprovacio.Value.AddMonths(6) Then
-            MsgBox("La data de pagament supera la caducitat de l'aprovació", vbCritical, "Error")
-            DataContracte.Value = Date.Now
+            'MsgBox("La data de pagament supera la caducitat de l'aprovació", vbCritical, "Error")
+            'DataContracte.Value = Date.Now
         Else
             DataFiPagament.Text = Format(DataPagament.Value.AddMonths(3).Date, "Short Date")
             MiraCaducitat()
@@ -867,27 +872,37 @@ Public Class Contractes
             End If
 
             'Controlem que data sera la de venciment
-            If CB_DataContracte.Checked = True Then
-                If CB_DataPagamentIVA.Checked = True Then
-                    If CaducitatAprovacio > CaducitatPagament Then
-                        DataVenciment = CaducitatPagament
-                    Else
-                        DataVenciment = CaducitatAprovacio
-                    End If
-                Else
-                    If CaducitatAprovacio > CaducitatContracte Then
-                        DataVenciment = CaducitatContracte
-                    Else
-                        DataVenciment = CaducitatAprovacio
-                    End If
-                End If
-            Else
-                DataVenciment = CaducitatAprovacio
-            End If
+            'If CB_DataContracte.Checked = True Then
+            '    If CB_DataPagamentIVA.Checked = True Then
+            '        If CaducitatAprovacio > CaducitatPagament Then
+            '            DataVenciment = CaducitatPagament
+            '        Else
+            '            DataVenciment = CaducitatAprovacio
+            '        End If
+            '    Else
+            '        If CaducitatAprovacio > CaducitatContracte Then
+            '            DataVenciment = CaducitatContracte
+            '        Else
+            '            DataVenciment = CaducitatAprovacio
+            '        End If
+            '    End If
+            'Else
+            '    DataVenciment = CaducitatAprovacio
+            'End If
+
+            If CB_DataAprovacio.Checked = True Then DataVenciment = CaducitatAprovacio
+            If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
+            If CB_DataPagamentIVA.Checked = True Then DataVenciment = CaducitatPagament
 
             dies = DateDiff(DateInterval.Day, Now, DataVenciment)
-            DiesCaducitat.Text = dies + 1.ToString
+            If dies >= 0 Then
+                DiesCaducitat.Text = dies.ToString
+            Else
+                DiesCaducitat.Text = "Caducat"
+            End If
+
             DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+
         End If
     End Sub
 
@@ -926,7 +941,6 @@ Public Class Contractes
         Btn_afegir.Text = "Modificar empresa"
         empresaSeleccionada = True
 
-
         EstaLaSolucioSeleccionada(False)
 
         If row.Cells("Id").Value <> idEmpresaSeleccionada Then
@@ -941,17 +955,8 @@ Public Class Contractes
 
         Dim row As DataGridViewRow = DataSolucions.Rows(Index)
 
-        EstaLaSolucioSeleccionada(True)
         CB_TipusSolucio.Text = row.Cells("Nom").Value
         NoAcord.Text = row.Cells("Contracte").Value
-
-        If row.Cells("Dies").Value >= 0 And row.Cells("Dies").Value < 36500 Then
-            DiesCaducitat.Text = row.Cells("Dies").Value
-        ElseIf row.Cells("Dies").Value > 365000 Then
-            DiesCaducitat.Text = "Pendent"
-        Else
-            DiesCaducitat.Text = "Caducat"
-        End If
 
         solucioSeleccionada = True
         idSolucioSeleccionada = row.Cells("Id").Value
@@ -989,6 +994,16 @@ Public Class Contractes
             DataPagament.Text = Date.Now
             CB_DataPagamentIVA.Checked = False
         End If
+
+        If row.Cells("Dies").Value >= 0 And row.Cells("Dies").Value < 365000 Then
+            DiesCaducitat.Text = row.Cells("Dies").Value
+        ElseIf row.Cells("Dies").Value > 365000 Then
+            DiesCaducitat.Text = "Pendent"
+        Else
+            DiesCaducitat.Text = "Caducat"
+        End If
+
+        EstaLaSolucioSeleccionada(True)
 
     End Sub
 End Class

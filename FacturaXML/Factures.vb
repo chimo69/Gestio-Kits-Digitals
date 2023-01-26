@@ -1,4 +1,5 @@
-﻿Imports System.Data.SQLite
+﻿Imports System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
+Imports System.Data.SQLite
 Imports System.IO
 
 Public Class Factures
@@ -289,7 +290,6 @@ Public Class Factures
                             CType(controlText, TextBox).Clear()
                         End If
                     Next
-                    'CB_Solucions.DataSource = Nothing
                 End If
             End If
         Next
@@ -397,6 +397,7 @@ Public Class Factures
                                      Solucions.IdEmpresa,
                                      TipusSolucions.Nom,
                                      Solucions.Contracte,
+                                     Solucions.DataPagament,   
                                      Justificacions.TotalSolucio,
                                      Justificacions.Percentatge
                                      FROM Solucions
@@ -412,6 +413,8 @@ Public Class Factures
                     FacturaAcord.Text = lector.GetString("Contracte")
                     FacturaSolucio.Text = lector.GetString("Nom")
                     FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
+                    FacturaData.Text = Format(lector.GetString("DataPagament"), "Short Date")
+
                     If lector.GetValue("Percentatge") <> 100 Then
                         Vigila.Visible = True
                     Else

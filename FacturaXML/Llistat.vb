@@ -209,10 +209,13 @@ Public Class Llistat
         NumeraSolucions()
 
         For Each Fila As DataGridViewRow In dgv.Rows
-            If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
-            If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
+            'If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
+            If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.Cells("Empresa").Style.BackColor = taronja
+            'If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
+            If Fila.Cells("Dies").Value <= 0 Then Fila.Cells("Empresa").Style.BackColor = vermell
+            'If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
+            If Fila.Cells("Justificat").Value = "Si" Then Fila.Cells("Empresa").Style.BackColor = verd
 
-            If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
         Next
 
         ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 
