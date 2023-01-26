@@ -88,6 +88,8 @@ Partial Class Contractes
         Me.DataAprovacioOK = New System.Windows.Forms.PictureBox()
         Me.DataContracteOK = New System.Windows.Forms.PictureBox()
         Me.DataPagamentOK = New System.Windows.Forms.PictureBox()
+        Me.DataCaducitat = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -436,12 +438,12 @@ Partial Class Contractes
         'DataContracte
         '
         Me.DataContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataContracte.Enabled = False
         Me.DataContracte.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DataContracte.Location = New System.Drawing.Point(1139, 439)
         Me.DataContracte.Name = "DataContracte"
         Me.DataContracte.Size = New System.Drawing.Size(111, 23)
         Me.DataContracte.TabIndex = 32
+        Me.DataContracte.Visible = False
         '
         'DataFiAprovacio
         '
@@ -452,6 +454,7 @@ Partial Class Contractes
         Me.DataFiAprovacio.Size = New System.Drawing.Size(116, 23)
         Me.DataFiAprovacio.TabIndex = 33
         Me.DataFiAprovacio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.DataFiAprovacio.Visible = False
         '
         'Btn_EsborrarSeleccioSolucio
         '
@@ -612,22 +615,22 @@ Partial Class Contractes
         'DataAprovacio
         '
         Me.DataAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataAprovacio.Enabled = False
         Me.DataAprovacio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DataAprovacio.Location = New System.Drawing.Point(1139, 399)
         Me.DataAprovacio.Name = "DataAprovacio"
         Me.DataAprovacio.Size = New System.Drawing.Size(111, 23)
         Me.DataAprovacio.TabIndex = 48
+        Me.DataAprovacio.Visible = False
         '
         'DataPagament
         '
         Me.DataPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataPagament.Enabled = False
         Me.DataPagament.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DataPagament.Location = New System.Drawing.Point(1139, 478)
         Me.DataPagament.Name = "DataPagament"
         Me.DataPagament.Size = New System.Drawing.Size(111, 23)
         Me.DataPagament.TabIndex = 50
+        Me.DataPagament.Visible = False
         '
         'TitolAprovacio
         '
@@ -638,6 +641,7 @@ Partial Class Contractes
         Me.TitolAprovacio.Size = New System.Drawing.Size(191, 15)
         Me.TitolAprovacio.TabIndex = 51
         Me.TitolAprovacio.Text = "<-- 6 mesos a partir d'aquesta data"
+        Me.TitolAprovacio.Visible = False
         '
         'TitolContracte
         '
@@ -648,6 +652,7 @@ Partial Class Contractes
         Me.TitolContracte.Size = New System.Drawing.Size(191, 15)
         Me.TitolContracte.TabIndex = 52
         Me.TitolContracte.Text = "<-- 3 mesos a partir d'aquesta data"
+        Me.TitolContracte.Visible = False
         '
         'DataFiContracte
         '
@@ -658,6 +663,7 @@ Partial Class Contractes
         Me.DataFiContracte.Size = New System.Drawing.Size(116, 23)
         Me.DataFiContracte.TabIndex = 54
         Me.DataFiContracte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.DataFiContracte.Visible = False
         '
         'TitolPagament
         '
@@ -668,6 +674,7 @@ Partial Class Contractes
         Me.TitolPagament.Size = New System.Drawing.Size(191, 15)
         Me.TitolPagament.TabIndex = 55
         Me.TitolPagament.Text = "<-- 3 mesos a partir d'aquesta data"
+        Me.TitolPagament.Visible = False
         '
         'DataFiPagament
         '
@@ -678,6 +685,7 @@ Partial Class Contractes
         Me.DataFiPagament.Size = New System.Drawing.Size(116, 23)
         Me.DataFiPagament.TabIndex = 56
         Me.DataFiPagament.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.DataFiPagament.Visible = False
         '
         'CB_DataContracte
         '
@@ -751,11 +759,34 @@ Partial Class Contractes
         Me.DataPagamentOK.TabStop = False
         Me.DataPagamentOK.Visible = False
         '
+        'DataCaducitat
+        '
+        Me.DataCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.DataCaducitat.Location = New System.Drawing.Point(1438, 556)
+        Me.DataCaducitat.Name = "DataCaducitat"
+        Me.DataCaducitat.ReadOnly = True
+        Me.DataCaducitat.Size = New System.Drawing.Size(180, 33)
+        Me.DataCaducitat.TabIndex = 63
+        Me.DataCaducitat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(1323, 562)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(83, 15)
+        Me.Label11.TabIndex = 64
+        Me.Label11.Text = "Data caducitat"
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 978)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.DataCaducitat)
         Me.Controls.Add(Me.DataPagamentOK)
         Me.Controls.Add(Me.DataContracteOK)
         Me.Controls.Add(Me.DataAprovacioOK)
@@ -885,4 +916,6 @@ Partial Class Contractes
     Friend WithEvents DataAprovacioOK As PictureBox
     Friend WithEvents DataContracteOK As PictureBox
     Friend WithEvents DataPagamentOK As PictureBox
+    Friend WithEvents DataCaducitat As TextBox
+    Friend WithEvents Label11 As Label
 End Class
