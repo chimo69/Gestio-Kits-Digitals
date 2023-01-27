@@ -515,7 +515,7 @@ Partial Class Contractes
         Me.CheckJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckJustificat.AutoSize = True
         Me.CheckJustificat.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckJustificat.Location = New System.Drawing.Point(1498, 641)
+        Me.CheckJustificat.Location = New System.Drawing.Point(1498, 623)
         Me.CheckJustificat.Name = "CheckJustificat"
         Me.CheckJustificat.Size = New System.Drawing.Size(120, 19)
         Me.CheckJustificat.TabIndex = 38
@@ -559,7 +559,7 @@ Partial Class Contractes
         Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(1007, 820)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(611, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(611, 40)
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.ProgressBar1.TabIndex = 42
         '
@@ -587,7 +587,7 @@ Partial Class Contractes
         '
         Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(1007, 636)
+        Me.Label16.Location = New System.Drawing.Point(1007, 663)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(78, 15)
         Me.Label16.TabIndex = 45
@@ -638,9 +638,8 @@ Partial Class Contractes
         Me.TitolAprovacio.AutoSize = True
         Me.TitolAprovacio.Location = New System.Drawing.Point(1266, 402)
         Me.TitolAprovacio.Name = "TitolAprovacio"
-        Me.TitolAprovacio.Size = New System.Drawing.Size(191, 15)
+        Me.TitolAprovacio.Size = New System.Drawing.Size(0, 15)
         Me.TitolAprovacio.TabIndex = 51
-        Me.TitolAprovacio.Text = "<-- 6 mesos a partir d'aquesta data"
         Me.TitolAprovacio.Visible = False
         '
         'TitolContracte
@@ -649,9 +648,8 @@ Partial Class Contractes
         Me.TitolContracte.AutoSize = True
         Me.TitolContracte.Location = New System.Drawing.Point(1266, 442)
         Me.TitolContracte.Name = "TitolContracte"
-        Me.TitolContracte.Size = New System.Drawing.Size(191, 15)
+        Me.TitolContracte.Size = New System.Drawing.Size(0, 15)
         Me.TitolContracte.TabIndex = 52
-        Me.TitolContracte.Text = "<-- 3 mesos a partir d'aquesta data"
         Me.TitolContracte.Visible = False
         '
         'DataFiContracte
@@ -671,9 +669,8 @@ Partial Class Contractes
         Me.TitolPagament.AutoSize = True
         Me.TitolPagament.Location = New System.Drawing.Point(1266, 481)
         Me.TitolPagament.Name = "TitolPagament"
-        Me.TitolPagament.Size = New System.Drawing.Size(191, 15)
+        Me.TitolPagament.Size = New System.Drawing.Size(0, 15)
         Me.TitolPagament.TabIndex = 55
-        Me.TitolPagament.Text = "<-- 3 mesos a partir d'aquesta data"
         Me.TitolPagament.Visible = False
         '
         'DataFiPagament

@@ -449,6 +449,7 @@ Public Class Factures
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
+        FacturaData.Value = row.Item("DataPagament")
         If row.Item("Percentatge") <> 100 Then
             Vigila.Visible = True
         Else
@@ -471,6 +472,7 @@ Public Class Factures
                                             Solucions.IdEmpresa,
                                             TipusSolucions.Nom,
                                             Solucions.Contracte,
+                                            Solucions.DataPagament,
                                             Justificacions.TotalSolucio,
                                             Justificacions.Percentatge
                                      FROM Solucions

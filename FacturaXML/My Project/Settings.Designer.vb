@@ -137,6 +137,42 @@ Namespace My
                 Me("DiesAvis") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("6")>  _
+        Public Property MesosAprovacio() As Integer
+            Get
+                Return CType(Me("MesosAprovacio"),Integer)
+            End Get
+            Set
+                Me("MesosAprovacio") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("3")>  _
+        Public Property MesosContractacio() As Integer
+            Get
+                Return CType(Me("MesosContractacio"),Integer)
+            End Get
+            Set
+                Me("MesosContractacio") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("3")>  _
+        Public Property MesosFactura() As Integer
+            Get
+                Return CType(Me("MesosFactura"),Integer)
+            End Get
+            Set
+                Me("MesosFactura") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
