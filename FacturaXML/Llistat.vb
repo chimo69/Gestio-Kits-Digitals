@@ -6,7 +6,8 @@ Public Class Llistat
     Dim SolucioFiltre As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
     Public Sub New()
-
+        MyBase.New
+        MyBase.DoubleBuffered = True
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
@@ -64,18 +65,19 @@ Public Class Llistat
         imgD2.Name = "D2"
 
         With DataLlistat
-            '.ClearSelection()
+            .ClearSelection()
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
-            .Columns("IdTipusSolucio").Visible = False
-            .Columns("Justificat").Visible = False
-            .Columns("TWord").Visible = False
-            .Columns("TComp. Pagament").Visible = False
-            .Columns("TXML").Visible = False
-            .Columns("TFabricant Solució").Visible = False
-            .Columns("TD1").Visible = False
-            .Columns("TD2").Visible = False
+        .Columns("IdTipusSolucio").Visible = False
+        .Columns("Justificat").Visible = False
+        .Columns("TWord").Visible = False
+        .Columns("TComp. Pagament").Visible = False
+        .Columns("TXML").Visible = False
+        .Columns("TFabricant Solució").Visible = False
+        .Columns("TD1").Visible = False
+        .Columns("TD2").Visible = False
             .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Data factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -153,16 +155,16 @@ Public Class Llistat
         If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
 
             If e.Value = 1 Then
-                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
         If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
             If e.Value <> "" Then
-                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
 
@@ -177,10 +179,19 @@ Public Class Llistat
         If dgv.Columns(e.ColumnIndex).Name = "Dies" Then
             If e.Value < 0 Then e.Value = "Caducat"
         End If
+
+        If dgv.Columns(e.ColumnIndex).Name = "Data factura" Then
+            If e.Value = "" Then e.Value = "Pendent"
+        End If
+        If dgv.Columns(e.ColumnIndex).Name = "Data contracte" Then
+            If e.Value = "" Then e.Value = "Pendent"
+        End If
+
+
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
         With dgv
-            .Columns("Verificat").Width = 50
+            '.Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
             .Columns("Comp. Pagament").Width = 50
@@ -215,7 +226,6 @@ Public Class Llistat
             If Fila.Cells("Dies").Value <= 0 Then Fila.Cells("Empresa").Style.BackColor = vermell
             'If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
             If Fila.Cells("Justificat").Value = "Si" Then Fila.Cells("Empresa").Style.BackColor = verd
-
         Next
 
         ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 
@@ -228,6 +238,17 @@ Public Class Llistat
                 AdvertenciaCaducats.Visible = False
             End If
         Next
+
+        'If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
+
+        '    If e.Value = 1 Then
+        '        'dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
+        '        dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = "X"
+        '    Else
+        '        'dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
+        '        dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = "-"
+        '    End If
+        'End If
 
     End Sub
     'Carrega el llistat de solucions de la base de dades
@@ -264,6 +285,7 @@ Public Class Llistat
                           Solucions.Id As IdSolucio,
                           Solucions.Contracte,                          
                           Solucions.DataContracte AS 'Data contracte',
+                          Solucions.DataFactura AS 'Data factura',              
                           Solucions.DataVenciment AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                           Justificacions.Percentatge AS 'Estat justificació',                         
@@ -292,7 +314,7 @@ Public Class Llistat
             End If
             conexion.Close()
         Catch ex As Exception
-            MsgBox("No s'han pogut carregar les solucions desde la base de dades", vbCritical, "Error")
+            MsgBox("No s'han pogut carregar les solucions desde la base de dades - " + ex.Message, vbCritical, "Error")
         End Try
 
     End Sub

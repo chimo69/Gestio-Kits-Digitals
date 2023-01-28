@@ -120,7 +120,7 @@ Public Class Factures
                     <PostCode>" & My.Settings.CodiPostal & "</PostCode>
                     <Town>" & My.Settings.Ciuat & "</Town>
                     <Province>" & My.Settings.Provincia & "</Province>
-                    <CountryCode>" & My.Settings.Pais & "</CountryCode>
+                    <CountryCode>ESP</CountryCode>
                 </AddressInSpain>
             </LegalEntity>
         </SellerParty>
@@ -397,7 +397,7 @@ Public Class Factures
                                      Solucions.IdEmpresa,
                                      TipusSolucions.Nom,
                                      Solucions.Contracte,
-                                     Solucions.DataPagament,   
+                                     Solucions.DataFactura,   
                                      Justificacions.TotalSolucio,
                                      Justificacions.Percentatge
                                      FROM Solucions
@@ -413,7 +413,7 @@ Public Class Factures
                     FacturaAcord.Text = lector.GetString("Contracte")
                     FacturaSolucio.Text = lector.GetString("Nom")
                     FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
-                    FacturaData.Text = Format(lector.GetString("DataPagament"), "Short Date")
+                    FacturaData.Text = Format(lector.GetString("DataFactura"), "Short Date")
 
                     If lector.GetValue("Percentatge") <> 100 Then
                         Vigila.Visible = True
@@ -449,7 +449,12 @@ Public Class Factures
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
-        FacturaData.Value = row.Item("DataPagament")
+        If row.Item("DataFactura") <> "" Then
+            FacturaData.Value = row.Item("DataFactura")
+        Else
+            FacturaData.Value = Now.Date
+        End If
+
         If row.Item("Percentatge") <> 100 Then
             Vigila.Visible = True
         Else
@@ -472,7 +477,7 @@ Public Class Factures
                                             Solucions.IdEmpresa,
                                             TipusSolucions.Nom,
                                             Solucions.Contracte,
-                                            Solucions.DataPagament,
+                                            Solucions.DataFactura,
                                             Justificacions.TotalSolucio,
                                             Justificacions.Percentatge
                                      FROM Solucions
@@ -492,14 +497,6 @@ Public Class Factures
             MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
         End Try
 
-    End Sub
-
-    Private Sub FacturaData_ValueChanged(sender As Object, e As EventArgs) Handles FacturaData.ValueChanged
-        If FacturaData.Value.AddMonths(3) < Date.Now Then
-            VigilaData.Visible = True
-        Else
-            VigilaData.Visible = False
-        End If
     End Sub
 
 End Class

@@ -50,7 +50,6 @@ Partial Class Contractes
         Me.Btn_esborrarEmpresa = New System.Windows.Forms.Button()
         Me.btn_EsborrarSeleccioEmpresa = New System.Windows.Forms.Button()
         Me.DataSolucions = New System.Windows.Forms.DataGridView()
-        Me.Empreses = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -90,12 +89,27 @@ Partial Class Contractes
         Me.DataPagamentOK = New System.Windows.Forms.PictureBox()
         Me.DataCaducitat = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.CB_DataFactura = New System.Windows.Forms.CheckBox()
+        Me.DataFactura = New System.Windows.Forms.DateTimePicker()
+        Me.DataFacturaOK = New System.Windows.Forms.PictureBox()
+        Me.DataFiFactura = New System.Windows.Forms.TextBox()
+        Me.TitolFactura = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.TB_DataAvui = New System.Windows.Forms.TextBox()
+        Me.TB_Hora = New System.Windows.Forms.TextBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataFacturaOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataEmpreses
@@ -149,7 +163,7 @@ Partial Class Contractes
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 73)
+        Me.Label1.Location = New System.Drawing.Point(13, 39)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 15)
         Me.Label1.TabIndex = 1
@@ -158,7 +172,7 @@ Partial Class Contractes
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(21, 115)
+        Me.Label2.Location = New System.Drawing.Point(13, 81)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(25, 15)
         Me.Label2.TabIndex = 2
@@ -167,7 +181,7 @@ Partial Class Contractes
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(21, 157)
+        Me.Label3.Location = New System.Drawing.Point(13, 123)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 15)
         Me.Label3.TabIndex = 3
@@ -176,7 +190,7 @@ Partial Class Contractes
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(21, 199)
+        Me.Label4.Location = New System.Drawing.Point(13, 165)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(67, 15)
         Me.Label4.TabIndex = 4
@@ -185,7 +199,7 @@ Partial Class Contractes
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(21, 241)
+        Me.Label5.Location = New System.Drawing.Point(13, 207)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(39, 15)
         Me.Label5.TabIndex = 5
@@ -194,7 +208,7 @@ Partial Class Contractes
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(21, 283)
+        Me.Label6.Location = New System.Drawing.Point(13, 249)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(56, 15)
         Me.Label6.TabIndex = 6
@@ -203,7 +217,7 @@ Partial Class Contractes
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(21, 325)
+        Me.Label7.Location = New System.Drawing.Point(13, 291)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(28, 15)
         Me.Label7.TabIndex = 7
@@ -212,15 +226,15 @@ Partial Class Contractes
         'Empresa
         '
         Me.Empresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Empresa.Location = New System.Drawing.Point(76, 65)
+        Me.Empresa.Location = New System.Drawing.Point(68, 31)
         Me.Empresa.Name = "Empresa"
-        Me.Empresa.Size = New System.Drawing.Size(255, 23)
+        Me.Empresa.Size = New System.Drawing.Size(225, 23)
         Me.Empresa.TabIndex = 8
         '
         'Nif
         '
         Me.Nif.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Nif.Location = New System.Drawing.Point(76, 107)
+        Me.Nif.Location = New System.Drawing.Point(68, 73)
         Me.Nif.Name = "Nif"
         Me.Nif.Size = New System.Drawing.Size(93, 23)
         Me.Nif.TabIndex = 9
@@ -228,15 +242,15 @@ Partial Class Contractes
         'Direccio
         '
         Me.Direccio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Direccio.Location = New System.Drawing.Point(76, 149)
+        Me.Direccio.Location = New System.Drawing.Point(68, 115)
         Me.Direccio.Name = "Direccio"
-        Me.Direccio.Size = New System.Drawing.Size(255, 23)
+        Me.Direccio.Size = New System.Drawing.Size(225, 23)
         Me.Direccio.TabIndex = 10
         '
         'CodiPostal
         '
         Me.CodiPostal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.CodiPostal.Location = New System.Drawing.Point(105, 191)
+        Me.CodiPostal.Location = New System.Drawing.Point(97, 157)
         Me.CodiPostal.Name = "CodiPostal"
         Me.CodiPostal.Size = New System.Drawing.Size(85, 23)
         Me.CodiPostal.TabIndex = 11
@@ -244,25 +258,25 @@ Partial Class Contractes
         'Ciutat
         '
         Me.Ciutat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Ciutat.Location = New System.Drawing.Point(76, 233)
+        Me.Ciutat.Location = New System.Drawing.Point(68, 199)
         Me.Ciutat.Name = "Ciutat"
-        Me.Ciutat.Size = New System.Drawing.Size(255, 23)
+        Me.Ciutat.Size = New System.Drawing.Size(225, 23)
         Me.Ciutat.TabIndex = 12
         '
         'Provincia
         '
         Me.Provincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Provincia.Location = New System.Drawing.Point(95, 275)
+        Me.Provincia.Location = New System.Drawing.Point(87, 241)
         Me.Provincia.Name = "Provincia"
-        Me.Provincia.Size = New System.Drawing.Size(236, 23)
+        Me.Provincia.Size = New System.Drawing.Size(206, 23)
         Me.Provincia.TabIndex = 13
         '
         'Pais
         '
         Me.Pais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.Pais.Location = New System.Drawing.Point(76, 317)
+        Me.Pais.Location = New System.Drawing.Point(68, 283)
         Me.Pais.Name = "Pais"
-        Me.Pais.Size = New System.Drawing.Size(255, 23)
+        Me.Pais.Size = New System.Drawing.Size(225, 23)
         Me.Pais.TabIndex = 14
         '
         'Btn_afegir
@@ -288,7 +302,7 @@ Partial Class Contractes
         '
         'btn_EsborrarSeleccioEmpresa
         '
-        Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(21, 372)
+        Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(31, 523)
         Me.btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
         Me.btn_EsborrarSeleccioEmpresa.Size = New System.Drawing.Size(148, 54)
         Me.btn_EsborrarSeleccioEmpresa.TabIndex = 17
@@ -344,15 +358,6 @@ Partial Class Contractes
         Me.DataSolucions.Size = New System.Drawing.Size(618, 233)
         Me.DataSolucions.TabIndex = 18
         '
-        'Empreses
-        '
-        Me.Empreses.AutoSize = True
-        Me.Empreses.Location = New System.Drawing.Point(21, 23)
-        Me.Empreses.Name = "Empreses"
-        Me.Empreses.Size = New System.Drawing.Size(57, 15)
-        Me.Empreses.TabIndex = 19
-        Me.Empreses.Text = "Empreses"
-        '
         'Label8
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -387,7 +392,7 @@ Partial Class Contractes
         '
         Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(1007, 562)
+        Me.Label13.Location = New System.Drawing.Point(1007, 570)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(81, 15)
         Me.Label13.TabIndex = 25
@@ -417,7 +422,7 @@ Partial Class Contractes
         '
         Me.DiesCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DiesCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.DiesCaducitat.Location = New System.Drawing.Point(1139, 556)
+        Me.DiesCaducitat.Location = New System.Drawing.Point(1139, 564)
         Me.DiesCaducitat.Name = "DiesCaducitat"
         Me.DiesCaducitat.ReadOnly = True
         Me.DiesCaducitat.Size = New System.Drawing.Size(111, 33)
@@ -428,7 +433,7 @@ Partial Class Contractes
         '
         Me.Btn_AfegirSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_AfegirSolucio.Enabled = False
-        Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1323, 895)
+        Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1325, 895)
         Me.Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Me.Btn_AfegirSolucio.Size = New System.Drawing.Size(146, 53)
         Me.Btn_AfegirSolucio.TabIndex = 31
@@ -439,7 +444,7 @@ Partial Class Contractes
         '
         Me.DataContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataContracte.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DataContracte.Location = New System.Drawing.Point(1139, 439)
+        Me.DataContracte.Location = New System.Drawing.Point(1139, 440)
         Me.DataContracte.Name = "DataContracte"
         Me.DataContracte.Size = New System.Drawing.Size(111, 23)
         Me.DataContracte.TabIndex = 32
@@ -448,7 +453,7 @@ Partial Class Contractes
         'DataFiAprovacio
         '
         Me.DataFiAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiAprovacio.Location = New System.Drawing.Point(1475, 399)
+        Me.DataFiAprovacio.Location = New System.Drawing.Point(1475, 401)
         Me.DataFiAprovacio.Name = "DataFiAprovacio"
         Me.DataFiAprovacio.ReadOnly = True
         Me.DataFiAprovacio.Size = New System.Drawing.Size(116, 23)
@@ -472,7 +477,7 @@ Partial Class Contractes
         Me.Btn_EsborrarSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_EsborrarSolucio.BackColor = System.Drawing.Color.IndianRed
         Me.Btn_EsborrarSolucio.Enabled = False
-        Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1475, 895)
+        Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1477, 895)
         Me.Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Me.Btn_EsborrarSolucio.Size = New System.Drawing.Size(144, 53)
         Me.Btn_EsborrarSolucio.TabIndex = 35
@@ -489,7 +494,7 @@ Partial Class Contractes
         Me.TitolEmpresa.Location = New System.Drawing.Point(360, 23)
         Me.TitolEmpresa.Multiline = True
         Me.TitolEmpresa.Name = "TitolEmpresa"
-        Me.TitolEmpresa.PlaceholderText = "Selecciona empresa"
+        Me.TitolEmpresa.PlaceholderText = "SELECCIONA EMPRESA"
         Me.TitolEmpresa.ReadOnly = True
         Me.TitolEmpresa.Size = New System.Drawing.Size(620, 36)
         Me.TitolEmpresa.TabIndex = 36
@@ -504,7 +509,7 @@ Partial Class Contractes
         Me.TitolSolucio.Location = New System.Drawing.Point(1003, 23)
         Me.TitolSolucio.Multiline = True
         Me.TitolSolucio.Name = "TitolSolucio"
-        Me.TitolSolucio.PlaceholderText = "Selecciona solució"
+        Me.TitolSolucio.PlaceholderText = "SELECCIONA SOLUCIÓ"
         Me.TitolSolucio.ReadOnly = True
         Me.TitolSolucio.Size = New System.Drawing.Size(618, 36)
         Me.TitolSolucio.TabIndex = 37
@@ -515,7 +520,7 @@ Partial Class Contractes
         Me.CheckJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckJustificat.AutoSize = True
         Me.CheckJustificat.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.CheckJustificat.Location = New System.Drawing.Point(1498, 623)
+        Me.CheckJustificat.Location = New System.Drawing.Point(1501, 630)
         Me.CheckJustificat.Name = "CheckJustificat"
         Me.CheckJustificat.Size = New System.Drawing.Size(120, 19)
         Me.CheckJustificat.TabIndex = 38
@@ -526,7 +531,7 @@ Partial Class Contractes
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(1007, 604)
+        Me.Label14.Location = New System.Drawing.Point(1007, 612)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(58, 15)
         Me.Label14.TabIndex = 39
@@ -537,7 +542,7 @@ Partial Class Contractes
         Me.CheckEstaJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckEstaJustificat.AutoSize = True
         Me.CheckEstaJustificat.Enabled = False
-        Me.CheckEstaJustificat.Location = New System.Drawing.Point(1139, 606)
+        Me.CheckEstaJustificat.Location = New System.Drawing.Point(1139, 614)
         Me.CheckEstaJustificat.Name = "CheckEstaJustificat"
         Me.CheckEstaJustificat.Size = New System.Drawing.Size(15, 14)
         Me.CheckEstaJustificat.TabIndex = 40
@@ -559,7 +564,7 @@ Partial Class Contractes
         Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(1007, 820)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(611, 40)
+        Me.ProgressBar1.Size = New System.Drawing.Size(614, 40)
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.ProgressBar1.TabIndex = 42
         '
@@ -580,7 +585,7 @@ Partial Class Contractes
         Me.TBObservacions.Location = New System.Drawing.Point(1007, 681)
         Me.TBObservacions.Multiline = True
         Me.TBObservacions.Name = "TBObservacions"
-        Me.TBObservacions.Size = New System.Drawing.Size(611, 111)
+        Me.TBObservacions.Size = New System.Drawing.Size(614, 111)
         Me.TBObservacions.TabIndex = 44
         '
         'Label16
@@ -599,7 +604,7 @@ Partial Class Contractes
         Me.verificat.BackColor = System.Drawing.Color.Transparent
         Me.verificat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.verificat.Image = Global.FacturaXML.My.Resources.Resources.verificado
-        Me.verificat.Location = New System.Drawing.Point(1193, 595)
+        Me.verificat.Location = New System.Drawing.Point(1193, 603)
         Me.verificat.Name = "verificat"
         Me.verificat.Size = New System.Drawing.Size(57, 58)
         Me.verificat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -616,7 +621,7 @@ Partial Class Contractes
         '
         Me.DataAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataAprovacio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DataAprovacio.Location = New System.Drawing.Point(1139, 399)
+        Me.DataAprovacio.Location = New System.Drawing.Point(1139, 401)
         Me.DataAprovacio.Name = "DataAprovacio"
         Me.DataAprovacio.Size = New System.Drawing.Size(111, 23)
         Me.DataAprovacio.TabIndex = 48
@@ -626,7 +631,7 @@ Partial Class Contractes
         '
         Me.DataPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataPagament.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DataPagament.Location = New System.Drawing.Point(1139, 478)
+        Me.DataPagament.Location = New System.Drawing.Point(1139, 523)
         Me.DataPagament.Name = "DataPagament"
         Me.DataPagament.Size = New System.Drawing.Size(111, 23)
         Me.DataPagament.TabIndex = 50
@@ -638,24 +643,26 @@ Partial Class Contractes
         Me.TitolAprovacio.AutoSize = True
         Me.TitolAprovacio.Location = New System.Drawing.Point(1266, 402)
         Me.TitolAprovacio.Name = "TitolAprovacio"
-        Me.TitolAprovacio.Size = New System.Drawing.Size(0, 15)
+        Me.TitolAprovacio.Size = New System.Drawing.Size(85, 15)
         Me.TitolAprovacio.TabIndex = 51
+        Me.TitolAprovacio.Text = "Info Aprovació"
         Me.TitolAprovacio.Visible = False
         '
         'TitolContracte
         '
         Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolContracte.AutoSize = True
-        Me.TitolContracte.Location = New System.Drawing.Point(1266, 442)
+        Me.TitolContracte.Location = New System.Drawing.Point(1266, 441)
         Me.TitolContracte.Name = "TitolContracte"
-        Me.TitolContracte.Size = New System.Drawing.Size(0, 15)
+        Me.TitolContracte.Size = New System.Drawing.Size(83, 15)
         Me.TitolContracte.TabIndex = 52
+        Me.TitolContracte.Text = "Info Contracte"
         Me.TitolContracte.Visible = False
         '
         'DataFiContracte
         '
         Me.DataFiContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiContracte.Location = New System.Drawing.Point(1475, 438)
+        Me.DataFiContracte.Location = New System.Drawing.Point(1475, 440)
         Me.DataFiContracte.Name = "DataFiContracte"
         Me.DataFiContracte.ReadOnly = True
         Me.DataFiContracte.Size = New System.Drawing.Size(116, 23)
@@ -667,16 +674,17 @@ Partial Class Contractes
         '
         Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolPagament.AutoSize = True
-        Me.TitolPagament.Location = New System.Drawing.Point(1266, 481)
+        Me.TitolPagament.Location = New System.Drawing.Point(1266, 524)
         Me.TitolPagament.Name = "TitolPagament"
-        Me.TitolPagament.Size = New System.Drawing.Size(0, 15)
+        Me.TitolPagament.Size = New System.Drawing.Size(85, 15)
         Me.TitolPagament.TabIndex = 55
+        Me.TitolPagament.Text = "Info Pagament"
         Me.TitolPagament.Visible = False
         '
         'DataFiPagament
         '
         Me.DataFiPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiPagament.Location = New System.Drawing.Point(1475, 477)
+        Me.DataFiPagament.Location = New System.Drawing.Point(1475, 523)
         Me.DataFiPagament.Name = "DataFiPagament"
         Me.DataFiPagament.ReadOnly = True
         Me.DataFiPagament.Size = New System.Drawing.Size(116, 23)
@@ -689,7 +697,7 @@ Partial Class Contractes
         Me.CB_DataContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataContracte.AutoSize = True
         Me.CB_DataContracte.Enabled = False
-        Me.CB_DataContracte.Location = New System.Drawing.Point(1007, 442)
+        Me.CB_DataContracte.Location = New System.Drawing.Point(1007, 440)
         Me.CB_DataContracte.Name = "CB_DataContracte"
         Me.CB_DataContracte.Size = New System.Drawing.Size(105, 19)
         Me.CB_DataContracte.TabIndex = 57
@@ -701,7 +709,7 @@ Partial Class Contractes
         Me.CB_DataPagamentIVA.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataPagamentIVA.AutoSize = True
         Me.CB_DataPagamentIVA.Enabled = False
-        Me.CB_DataPagamentIVA.Location = New System.Drawing.Point(1007, 482)
+        Me.CB_DataPagamentIVA.Location = New System.Drawing.Point(1007, 523)
         Me.CB_DataPagamentIVA.Name = "CB_DataPagamentIVA"
         Me.CB_DataPagamentIVA.Size = New System.Drawing.Size(127, 19)
         Me.CB_DataPagamentIVA.TabIndex = 58
@@ -724,7 +732,7 @@ Partial Class Contractes
         '
         Me.DataAprovacioOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataAprovacioOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataAprovacioOK.Location = New System.Drawing.Point(1597, 399)
+        Me.DataAprovacioOK.Location = New System.Drawing.Point(1597, 401)
         Me.DataAprovacioOK.Name = "DataAprovacioOK"
         Me.DataAprovacioOK.Size = New System.Drawing.Size(24, 23)
         Me.DataAprovacioOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -736,7 +744,7 @@ Partial Class Contractes
         '
         Me.DataContracteOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataContracteOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataContracteOK.Location = New System.Drawing.Point(1597, 438)
+        Me.DataContracteOK.Location = New System.Drawing.Point(1597, 440)
         Me.DataContracteOK.Name = "DataContracteOK"
         Me.DataContracteOK.Size = New System.Drawing.Size(24, 24)
         Me.DataContracteOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -748,7 +756,7 @@ Partial Class Contractes
         '
         Me.DataPagamentOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataPagamentOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataPagamentOK.Location = New System.Drawing.Point(1597, 477)
+        Me.DataPagamentOK.Location = New System.Drawing.Point(1597, 523)
         Me.DataPagamentOK.Name = "DataPagamentOK"
         Me.DataPagamentOK.Size = New System.Drawing.Size(24, 24)
         Me.DataPagamentOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -760,7 +768,7 @@ Partial Class Contractes
         '
         Me.DataCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.DataCaducitat.Location = New System.Drawing.Point(1438, 556)
+        Me.DataCaducitat.Location = New System.Drawing.Point(1441, 564)
         Me.DataCaducitat.Name = "DataCaducitat"
         Me.DataCaducitat.ReadOnly = True
         Me.DataCaducitat.Size = New System.Drawing.Size(180, 33)
@@ -771,21 +779,153 @@ Partial Class Contractes
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(1323, 562)
+        Me.Label11.Location = New System.Drawing.Point(1323, 570)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(83, 15)
         Me.Label11.TabIndex = 64
         Me.Label11.Text = "Data caducitat"
+        '
+        'CB_DataFactura
+        '
+        Me.CB_DataFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CB_DataFactura.AutoSize = True
+        Me.CB_DataFactura.Enabled = False
+        Me.CB_DataFactura.Location = New System.Drawing.Point(1007, 481)
+        Me.CB_DataFactura.Name = "CB_DataFactura"
+        Me.CB_DataFactura.Size = New System.Drawing.Size(90, 19)
+        Me.CB_DataFactura.TabIndex = 66
+        Me.CB_DataFactura.Text = "Data factura"
+        Me.CB_DataFactura.UseVisualStyleBackColor = True
+        '
+        'DataFactura
+        '
+        Me.DataFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataFactura.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DataFactura.Location = New System.Drawing.Point(1139, 481)
+        Me.DataFactura.Name = "DataFactura"
+        Me.DataFactura.Size = New System.Drawing.Size(111, 23)
+        Me.DataFactura.TabIndex = 65
+        Me.DataFactura.Visible = False
+        '
+        'DataFacturaOK
+        '
+        Me.DataFacturaOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataFacturaOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
+        Me.DataFacturaOK.Location = New System.Drawing.Point(1597, 482)
+        Me.DataFacturaOK.Name = "DataFacturaOK"
+        Me.DataFacturaOK.Size = New System.Drawing.Size(24, 24)
+        Me.DataFacturaOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.DataFacturaOK.TabIndex = 68
+        Me.DataFacturaOK.TabStop = False
+        Me.DataFacturaOK.Visible = False
+        '
+        'DataFiFactura
+        '
+        Me.DataFiFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DataFiFactura.Location = New System.Drawing.Point(1475, 481)
+        Me.DataFiFactura.Name = "DataFiFactura"
+        Me.DataFiFactura.ReadOnly = True
+        Me.DataFiFactura.Size = New System.Drawing.Size(116, 23)
+        Me.DataFiFactura.TabIndex = 67
+        Me.DataFiFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.DataFiFactura.Visible = False
+        '
+        'TitolFactura
+        '
+        Me.TitolFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitolFactura.AutoSize = True
+        Me.TitolFactura.Location = New System.Drawing.Point(1266, 482)
+        Me.TitolFactura.Name = "TitolFactura"
+        Me.TitolFactura.Size = New System.Drawing.Size(70, 15)
+        Me.TitolFactura.TabIndex = 69
+        Me.TitolFactura.Text = "Info Factura"
+        Me.TitolFactura.Visible = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
+        Me.PictureBox1.Location = New System.Drawing.Point(31, 23)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(204, 68)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 70
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Pequeño_
+        Me.PictureBox2.Location = New System.Drawing.Point(241, 23)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(100, 68)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 71
+        Me.PictureBox2.TabStop = False
+        '
+        'TB_DataAvui
+        '
+        Me.TB_DataAvui.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_DataAvui.Location = New System.Drawing.Point(31, 97)
+        Me.TB_DataAvui.Name = "TB_DataAvui"
+        Me.TB_DataAvui.ReadOnly = True
+        Me.TB_DataAvui.Size = New System.Drawing.Size(204, 25)
+        Me.TB_DataAvui.TabIndex = 72
+        Me.TB_DataAvui.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TB_Hora
+        '
+        Me.TB_Hora.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Hora.Location = New System.Drawing.Point(241, 97)
+        Me.TB_Hora.Name = "TB_Hora"
+        Me.TB_Hora.ReadOnly = True
+        Me.TB_Hora.Size = New System.Drawing.Size(100, 25)
+        Me.TB_Hora.TabIndex = 73
+        Me.TB_Hora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Timer1
+        '
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Empresa)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Nif)
+        Me.GroupBox1.Controls.Add(Me.Direccio)
+        Me.GroupBox1.Controls.Add(Me.CodiPostal)
+        Me.GroupBox1.Controls.Add(Me.Ciutat)
+        Me.GroupBox1.Controls.Add(Me.Provincia)
+        Me.GroupBox1.Controls.Add(Me.Pais)
+        Me.GroupBox1.Location = New System.Drawing.Point(31, 171)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(310, 335)
+        Me.GroupBox1.TabIndex = 74
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Dades de l'empresa"
         '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 978)
+        Me.Controls.Add(Me.TB_Hora)
+        Me.Controls.Add(Me.TB_DataAvui)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.TitolFactura)
+        Me.Controls.Add(Me.DataFacturaOK)
+        Me.Controls.Add(Me.DataFiFactura)
+        Me.Controls.Add(Me.CB_DataFactura)
+        Me.Controls.Add(Me.DataFactura)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.DataCaducitat)
         Me.Controls.Add(Me.DataPagamentOK)
         Me.Controls.Add(Me.DataContracteOK)
+        Me.Controls.Add(Me.btn_EsborrarSeleccioEmpresa)
         Me.Controls.Add(Me.DataAprovacioOK)
         Me.Controls.Add(Me.CB_DataAprovacio)
         Me.Controls.Add(Me.CB_DataPagamentIVA)
@@ -820,28 +960,13 @@ Partial Class Contractes
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.Empreses)
         Me.Controls.Add(Me.DataSolucions)
-        Me.Controls.Add(Me.btn_EsborrarSeleccioEmpresa)
         Me.Controls.Add(Me.Btn_esborrarEmpresa)
         Me.Controls.Add(Me.Btn_afegir)
-        Me.Controls.Add(Me.Pais)
-        Me.Controls.Add(Me.Provincia)
-        Me.Controls.Add(Me.Ciutat)
-        Me.Controls.Add(Me.CodiPostal)
-        Me.Controls.Add(Me.Direccio)
-        Me.Controls.Add(Me.Nif)
-        Me.Controls.Add(Me.Empresa)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataEmpreses)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(1623, 891)
+        Me.MinimumSize = New System.Drawing.Size(1657, 1017)
         Me.Name = "Contractes"
         Me.Text = "Contractes"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -851,6 +976,11 @@ Partial Class Contractes
         CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataFacturaOK, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -875,7 +1005,6 @@ Partial Class Contractes
     Friend WithEvents Btn_esborrarEmpresa As Button
     Friend WithEvents btn_EsborrarSeleccioEmpresa As Button
     Friend WithEvents DataSolucions As DataGridView
-    Friend WithEvents Empreses As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
@@ -915,4 +1044,15 @@ Partial Class Contractes
     Friend WithEvents DataPagamentOK As PictureBox
     Friend WithEvents DataCaducitat As TextBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents CB_DataFactura As CheckBox
+    Friend WithEvents DataFactura As DateTimePicker
+    Friend WithEvents DataFacturaOK As PictureBox
+    Friend WithEvents DataFiFactura As TextBox
+    Friend WithEvents TitolFactura As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents TB_DataAvui As TextBox
+    Friend WithEvents TB_Hora As TextBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents GroupBox1 As GroupBox
 End Class
