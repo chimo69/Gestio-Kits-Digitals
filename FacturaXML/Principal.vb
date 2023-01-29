@@ -70,4 +70,20 @@ Public Class Principal
         Dim Preferencies As New Preferencies
         OpenSubForm(Preferencies)
     End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start(New ProcessStartInfo("https://appkitdigital.idrconsulting.com/") With {.UseShellExecute = True})
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        Process.Start(New ProcessStartInfo("https://portal.gestion.sedepkd.red.gob.es/portal/espacioAD") With {.UseShellExecute = True})
+    End Sub
+
+    Private Sub IdrConsultingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IdrConsultingToolStripMenuItem.Click
+        Process.Start(New ProcessStartInfo("https://appkitdigital.idrconsulting.com/") With {.UseShellExecute = True})
+    End Sub
+
+    Private Sub EspacioDigitalizadorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EspacioDigitalizadorToolStripMenuItem.Click
+        Process.Start(New ProcessStartInfo("https://portal.gestion.sedepkd.red.gob.es/portal/espacioAD") With {.UseShellExecute = True})
+    End Sub
 End Class

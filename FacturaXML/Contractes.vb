@@ -16,11 +16,6 @@ Public Class Contractes
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        TitolAprovacio.Text = "<-- " & My.Settings.MesosAprovacio & " mesos a partir d'aquesta data"
-        TitolContracte.Text = "<-- " & My.Settings.MesosContractacio & " mesos a partir d'aquesta data"
-        TitolPagament.Text = "<-- Dins del periode de la factura"
-        TitolFactura.Text = "<-- " & My.Settings.MesosFactura & " mesos a partir d'aquesta data"
-
         ActualitzaEmpreses()
 
     End Sub
@@ -34,12 +29,53 @@ Public Class Contractes
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        ActualitzaEmpreses()
+
+    End Sub
+    'Carrega els tipus de solucions per omplir el combobox
+    Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Enabled = True
+        Try
+            Dim conexion As New SQLiteConnection(cadena)
+            conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+                Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
+                DA.Fill(DT_TipusSolucions)
+                CB_TipusSolucio.DataSource = DT_TipusSolucions
+                CB_TipusSolucio.DisplayMember = "Nom"
+                CB_TipusSolucio.ValueMember = "Id"
+                CB_TipusSolucio.Text = "Selecciona un tipus de solució"
+            End If
+            conexion.Close()
+        Catch
+
+        End Try
+
+        'Si venim del form Llistat selecciona l'empresa
+        For Each Fila As DataGridViewRow In DataEmpreses.Rows
+            If Fila.Cells("Id").Value = idEmpresaRebuda Then
+                OmpleDadesEmpresa(Fila.Index)
+                Fila.Selected = True
+                Exit For
+            End If
+        Next
+
+        'Si venim del form Llistat selecciona la solució
+        For Each Fila As DataGridViewRow In DataSolucions.Rows
+            If Fila.Cells("Id").Value = idSolucioRebuda Then
+                OmpleDadesSolucions(Fila.Index)
+                Fila.Selected = True
+                Exit For
+            End If
+        Next
+
+        CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
+
         TitolAprovacio.Text = "<-- " & My.Settings.MesosAprovacio & " mesos a partir d'aquesta data"
         TitolContracte.Text = "<-- " & My.Settings.MesosContractacio & " mesos a partir d'aquesta data"
         TitolPagament.Text = "<-- Dins del periode de la factura"
         TitolFactura.Text = "<-- " & My.Settings.MesosFactura & " mesos a partir d'aquesta data"
-
-        ActualitzaEmpreses()
 
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -256,48 +292,12 @@ Public Class Contractes
         Btn_afegir.Text = "Afegir empresa"
         TitolEmpresa.Text = "Selecciona Empresa"
         empresaSeleccionada = False
+        idEmpresaSeleccionada = 0
         DataSolucions.DataSource = Nothing
         EstaLaSolucioSeleccionada(False)
+        EsborrarCampsSolucio()
     End Sub
-    'Carrega els tipus de solucions per omplir el combobox
-    Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Enabled = True
-        Try
-            Dim conexion As New SQLiteConnection(cadena)
-            conexion.Open()
 
-            If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
-                DA.Fill(DT_TipusSolucions)
-                CB_TipusSolucio.DataSource = DT_TipusSolucions
-                CB_TipusSolucio.DisplayMember = "Nom"
-                CB_TipusSolucio.ValueMember = "Id"
-                CB_TipusSolucio.Text = "Selecciona un tipus de solució"
-            End If
-            conexion.Close()
-        Catch
-
-        End Try
-
-        'Si venim del form Llistat selecciona l'empresa
-        For Each Fila As DataGridViewRow In DataEmpreses.Rows
-            If Fila.Cells("Id").Value = idEmpresaRebuda Then
-                OmpleDadesEmpresa(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
-
-        'Si venim del form Llistat selecciona la solució
-        For Each Fila As DataGridViewRow In DataSolucions.Rows
-            If Fila.Cells("Id").Value = idSolucioRebuda Then
-                OmpleDadesSolucions(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
-
-    End Sub
 
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
@@ -677,7 +677,9 @@ Public Class Contractes
             Btn_AfegirSolucio.Text = "Modificar solució"
             TBObservacions.Enabled = True
             solucioSeleccionada = True
+
         Else
+            Btn_EstatJustificacio.Enabled = False
             Btn_AfegirSolucio.Text = "Afegir solució"
             Btn_AfegirSolucio.Enabled = True
             Btn_EsborrarSolucio.Enabled = False
@@ -690,7 +692,6 @@ Public Class Contractes
             CB_TipusSolucio.Enabled = True
             NoAcord.Enabled = True
             CB_DataAprovacio.Enabled = True
-            'CB_DataContracte.Enabled = False
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = True
             TBObservacions.Enabled = True
@@ -700,7 +701,6 @@ Public Class Contractes
             CB_TipusSolucio.Enabled = False
             NoAcord.Enabled = False
             CB_DataAprovacio.Enabled = False
-            'CB_DataContracte.Enabled = False
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = False
             Btn_EstatJustificacio.Enabled = False
@@ -988,7 +988,6 @@ Public Class Contractes
     Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
         If DataSolucions.SelectedRows.Count > 0 Then
             OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
-            EstaLaSolucioSeleccionada(True)
         End If
     End Sub
     Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
@@ -1013,8 +1012,9 @@ Public Class Contractes
         If row.Cells("Id").Value <> idEmpresaSeleccionada Then
             idEmpresaSeleccionada = row.Cells("Id").Value
             OmpleSolucions(idEmpresaSeleccionada)
-            'EstaLaSolucioSeleccionada(False)
         End If
+
+        EstaLaEmpresaSeleccionada(True)
 
     End Sub
     'Omple els camps de la solucio rebuda per posicio a la taula
@@ -1077,7 +1077,7 @@ Public Class Contractes
             DiesCaducitat.Text = "Caducat"
         End If
 
-        'EstaLaSolucioSeleccionada(True)
+        EstaLaSolucioSeleccionada(True)
 
     End Sub
 End Class

@@ -159,6 +159,7 @@ Partial Class Contractes
         Me.DataEmpreses.ShowEditingIcon = False
         Me.DataEmpreses.Size = New System.Drawing.Size(620, 883)
         Me.DataEmpreses.TabIndex = 0
+        Me.DataEmpreses.TabStop = False
         '
         'Label1
         '
@@ -229,7 +230,7 @@ Partial Class Contractes
         Me.Empresa.Location = New System.Drawing.Point(68, 31)
         Me.Empresa.Name = "Empresa"
         Me.Empresa.Size = New System.Drawing.Size(225, 23)
-        Me.Empresa.TabIndex = 8
+        Me.Empresa.TabIndex = 1
         '
         'Nif
         '
@@ -237,7 +238,7 @@ Partial Class Contractes
         Me.Nif.Location = New System.Drawing.Point(68, 73)
         Me.Nif.Name = "Nif"
         Me.Nif.Size = New System.Drawing.Size(93, 23)
-        Me.Nif.TabIndex = 9
+        Me.Nif.TabIndex = 2
         '
         'Direccio
         '
@@ -245,7 +246,8 @@ Partial Class Contractes
         Me.Direccio.Location = New System.Drawing.Point(68, 115)
         Me.Direccio.Name = "Direccio"
         Me.Direccio.Size = New System.Drawing.Size(225, 23)
-        Me.Direccio.TabIndex = 10
+        Me.Direccio.TabIndex = 3
+        Me.Direccio.Tag = ""
         '
         'CodiPostal
         '
@@ -253,7 +255,8 @@ Partial Class Contractes
         Me.CodiPostal.Location = New System.Drawing.Point(97, 157)
         Me.CodiPostal.Name = "CodiPostal"
         Me.CodiPostal.Size = New System.Drawing.Size(85, 23)
-        Me.CodiPostal.TabIndex = 11
+        Me.CodiPostal.TabIndex = 4
+        Me.CodiPostal.Tag = ""
         '
         'Ciutat
         '
@@ -261,7 +264,7 @@ Partial Class Contractes
         Me.Ciutat.Location = New System.Drawing.Point(68, 199)
         Me.Ciutat.Name = "Ciutat"
         Me.Ciutat.Size = New System.Drawing.Size(225, 23)
-        Me.Ciutat.TabIndex = 12
+        Me.Ciutat.TabIndex = 5
         '
         'Provincia
         '
@@ -269,7 +272,7 @@ Partial Class Contractes
         Me.Provincia.Location = New System.Drawing.Point(87, 241)
         Me.Provincia.Name = "Provincia"
         Me.Provincia.Size = New System.Drawing.Size(206, 23)
-        Me.Provincia.TabIndex = 13
+        Me.Provincia.TabIndex = 6
         '
         'Pais
         '
@@ -277,7 +280,7 @@ Partial Class Contractes
         Me.Pais.Location = New System.Drawing.Point(68, 283)
         Me.Pais.Name = "Pais"
         Me.Pais.Size = New System.Drawing.Size(225, 23)
-        Me.Pais.TabIndex = 14
+        Me.Pais.TabIndex = 7
         '
         'Btn_afegir
         '
@@ -285,7 +288,7 @@ Partial Class Contractes
         Me.Btn_afegir.Location = New System.Drawing.Point(31, 895)
         Me.Btn_afegir.Name = "Btn_afegir"
         Me.Btn_afegir.Size = New System.Drawing.Size(148, 53)
-        Me.Btn_afegir.TabIndex = 15
+        Me.Btn_afegir.TabIndex = 9
         Me.Btn_afegir.Text = "Afegir empresa"
         Me.Btn_afegir.UseVisualStyleBackColor = True
         '
@@ -296,7 +299,7 @@ Partial Class Contractes
         Me.Btn_esborrarEmpresa.Location = New System.Drawing.Point(193, 895)
         Me.Btn_esborrarEmpresa.Name = "Btn_esborrarEmpresa"
         Me.Btn_esborrarEmpresa.Size = New System.Drawing.Size(148, 53)
-        Me.Btn_esborrarEmpresa.TabIndex = 16
+        Me.Btn_esborrarEmpresa.TabIndex = 10
         Me.Btn_esborrarEmpresa.Text = "Esborrar empresa"
         Me.Btn_esborrarEmpresa.UseVisualStyleBackColor = False
         '
@@ -305,7 +308,7 @@ Partial Class Contractes
         Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(31, 523)
         Me.btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
         Me.btn_EsborrarSeleccioEmpresa.Size = New System.Drawing.Size(148, 54)
-        Me.btn_EsborrarSeleccioEmpresa.TabIndex = 17
+        Me.btn_EsborrarSeleccioEmpresa.TabIndex = 8
         Me.btn_EsborrarSeleccioEmpresa.Text = "Esborrar selecció"
         Me.btn_EsborrarSeleccioEmpresa.UseVisualStyleBackColor = True
         '
@@ -357,6 +360,7 @@ Partial Class Contractes
         Me.DataSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataSolucions.Size = New System.Drawing.Size(618, 233)
         Me.DataSolucions.TabIndex = 18
+        Me.DataSolucions.TabStop = False
         '
         'Label8
         '
@@ -406,7 +410,7 @@ Partial Class Contractes
         Me.CB_TipusSolucio.Location = New System.Drawing.Point(1139, 317)
         Me.CB_TipusSolucio.Name = "CB_TipusSolucio"
         Me.CB_TipusSolucio.Size = New System.Drawing.Size(287, 23)
-        Me.CB_TipusSolucio.TabIndex = 26
+        Me.CB_TipusSolucio.TabIndex = 11
         '
         'NoAcord
         '
@@ -416,7 +420,7 @@ Partial Class Contractes
         Me.NoAcord.Location = New System.Drawing.Point(1139, 357)
         Me.NoAcord.Name = "NoAcord"
         Me.NoAcord.Size = New System.Drawing.Size(217, 23)
-        Me.NoAcord.TabIndex = 27
+        Me.NoAcord.TabIndex = 12
         '
         'DiesCaducitat
         '
@@ -427,6 +431,7 @@ Partial Class Contractes
         Me.DiesCaducitat.ReadOnly = True
         Me.DiesCaducitat.Size = New System.Drawing.Size(111, 33)
         Me.DiesCaducitat.TabIndex = 30
+        Me.DiesCaducitat.TabStop = False
         Me.DiesCaducitat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Btn_AfegirSolucio
@@ -436,7 +441,7 @@ Partial Class Contractes
         Me.Btn_AfegirSolucio.Location = New System.Drawing.Point(1325, 895)
         Me.Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Me.Btn_AfegirSolucio.Size = New System.Drawing.Size(146, 53)
-        Me.Btn_AfegirSolucio.TabIndex = 31
+        Me.Btn_AfegirSolucio.TabIndex = 22
         Me.Btn_AfegirSolucio.Text = "Modificar solució"
         Me.Btn_AfegirSolucio.UseVisualStyleBackColor = True
         '
@@ -447,7 +452,7 @@ Partial Class Contractes
         Me.DataContracte.Location = New System.Drawing.Point(1139, 440)
         Me.DataContracte.Name = "DataContracte"
         Me.DataContracte.Size = New System.Drawing.Size(111, 23)
-        Me.DataContracte.TabIndex = 32
+        Me.DataContracte.TabIndex = 14
         Me.DataContracte.Visible = False
         '
         'DataFiAprovacio
@@ -468,7 +473,7 @@ Partial Class Contractes
         Me.Btn_EsborrarSeleccioSolucio.Location = New System.Drawing.Point(1007, 895)
         Me.Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Me.Btn_EsborrarSeleccioSolucio.Size = New System.Drawing.Size(146, 53)
-        Me.Btn_EsborrarSeleccioSolucio.TabIndex = 34
+        Me.Btn_EsborrarSeleccioSolucio.TabIndex = 21
         Me.Btn_EsborrarSeleccioSolucio.Text = "Esborrar selecció"
         Me.Btn_EsborrarSeleccioSolucio.UseVisualStyleBackColor = True
         '
@@ -480,7 +485,7 @@ Partial Class Contractes
         Me.Btn_EsborrarSolucio.Location = New System.Drawing.Point(1477, 895)
         Me.Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Me.Btn_EsborrarSolucio.Size = New System.Drawing.Size(144, 53)
-        Me.Btn_EsborrarSolucio.TabIndex = 35
+        Me.Btn_EsborrarSolucio.TabIndex = 23
         Me.Btn_EsborrarSolucio.Text = "Esborrar solució"
         Me.Btn_EsborrarSolucio.UseVisualStyleBackColor = False
         '
@@ -523,7 +528,7 @@ Partial Class Contractes
         Me.CheckJustificat.Location = New System.Drawing.Point(1501, 630)
         Me.CheckJustificat.Name = "CheckJustificat"
         Me.CheckJustificat.Size = New System.Drawing.Size(120, 19)
-        Me.CheckJustificat.TabIndex = 38
+        Me.CheckJustificat.TabIndex = 19
         Me.CheckJustificat.Text = "Mostrar justificats"
         Me.CheckJustificat.UseVisualStyleBackColor = True
         '
@@ -545,7 +550,7 @@ Partial Class Contractes
         Me.CheckEstaJustificat.Location = New System.Drawing.Point(1139, 614)
         Me.CheckEstaJustificat.Name = "CheckEstaJustificat"
         Me.CheckEstaJustificat.Size = New System.Drawing.Size(15, 14)
-        Me.CheckEstaJustificat.TabIndex = 40
+        Me.CheckEstaJustificat.TabIndex = 17
         Me.CheckEstaJustificat.UseVisualStyleBackColor = True
         '
         'Btn_EstatJustificacio
@@ -555,7 +560,7 @@ Partial Class Contractes
         Me.Btn_EstatJustificacio.Location = New System.Drawing.Point(1475, 317)
         Me.Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
         Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(146, 63)
-        Me.Btn_EstatJustificacio.TabIndex = 41
+        Me.Btn_EstatJustificacio.TabIndex = 18
         Me.Btn_EstatJustificacio.Text = "Veure estat de" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "justificació"
         Me.Btn_EstatJustificacio.UseVisualStyleBackColor = True
         '
@@ -586,7 +591,7 @@ Partial Class Contractes
         Me.TBObservacions.Multiline = True
         Me.TBObservacions.Name = "TBObservacions"
         Me.TBObservacions.Size = New System.Drawing.Size(614, 111)
-        Me.TBObservacions.TabIndex = 44
+        Me.TBObservacions.TabIndex = 20
         '
         'Label16
         '
@@ -624,7 +629,7 @@ Partial Class Contractes
         Me.DataAprovacio.Location = New System.Drawing.Point(1139, 401)
         Me.DataAprovacio.Name = "DataAprovacio"
         Me.DataAprovacio.Size = New System.Drawing.Size(111, 23)
-        Me.DataAprovacio.TabIndex = 48
+        Me.DataAprovacio.TabIndex = 13
         Me.DataAprovacio.Visible = False
         '
         'DataPagament
@@ -634,7 +639,7 @@ Partial Class Contractes
         Me.DataPagament.Location = New System.Drawing.Point(1139, 523)
         Me.DataPagament.Name = "DataPagament"
         Me.DataPagament.Size = New System.Drawing.Size(111, 23)
-        Me.DataPagament.TabIndex = 50
+        Me.DataPagament.TabIndex = 16
         Me.DataPagament.Visible = False
         '
         'TitolAprovacio
@@ -773,6 +778,7 @@ Partial Class Contractes
         Me.DataCaducitat.ReadOnly = True
         Me.DataCaducitat.Size = New System.Drawing.Size(180, 33)
         Me.DataCaducitat.TabIndex = 63
+        Me.DataCaducitat.TabStop = False
         Me.DataCaducitat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label11
@@ -804,7 +810,7 @@ Partial Class Contractes
         Me.DataFactura.Location = New System.Drawing.Point(1139, 481)
         Me.DataFactura.Name = "DataFactura"
         Me.DataFactura.Size = New System.Drawing.Size(111, 23)
-        Me.DataFactura.TabIndex = 65
+        Me.DataFactura.TabIndex = 15
         Me.DataFactura.Visible = False
         '
         'DataFacturaOK

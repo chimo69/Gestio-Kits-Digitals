@@ -30,6 +30,7 @@ Partial Class Principal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuPrincipal = New System.Windows.Forms.MenuStrip()
         Me.ArxiuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreferenciesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SortirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KitsDigitalsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GestióDeKitsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,7 +46,10 @@ Partial Class Principal
         Me.Btn_Factures = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.PreferenciesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.IdrConsultingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EspacioDigitalizadorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
@@ -120,11 +124,18 @@ Partial Class Principal
         Me.ArxiuToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
         Me.ArxiuToolStripMenuItem.Text = "Arxiu"
         '
+        'PreferenciesToolStripMenuItem
+        '
+        Me.PreferenciesToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
+        Me.PreferenciesToolStripMenuItem.Name = "PreferenciesToolStripMenuItem"
+        Me.PreferenciesToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
+        Me.PreferenciesToolStripMenuItem.Text = "Preferencies"
+        '
         'SortirToolStripMenuItem
         '
         Me.SortirToolStripMenuItem.Image = CType(resources.GetObject("SortirToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SortirToolStripMenuItem.Name = "SortirToolStripMenuItem"
-        Me.SortirToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SortirToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.SortirToolStripMenuItem.Text = "Sortir"
         '
         'KitsDigitalsToolStripMenuItem
@@ -167,19 +178,19 @@ Partial Class Principal
         '
         Me.CrearFacturaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.Factures
         Me.CrearFacturaToolStripMenuItem.Name = "CrearFacturaToolStripMenuItem"
-        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CrearFacturaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.CrearFacturaToolStripMenuItem.Text = "Crear factura"
         '
         'DadesEmpresaToolStripMenuItem
         '
         Me.DadesEmpresaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
         Me.DadesEmpresaToolStripMenuItem.Name = "DadesEmpresaToolStripMenuItem"
-        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DadesEmpresaToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
         Me.DadesEmpresaToolStripMenuItem.Text = "Dades empresa"
         '
         'AjudaToolStripMenuItem
         '
-        Me.AjudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SobreGestioDeKitsDigitalsToolStripMenuItem})
+        Me.AjudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SobreGestioDeKitsDigitalsToolStripMenuItem, Me.IdrConsultingToolStripMenuItem, Me.EspacioDigitalizadorToolStripMenuItem})
         Me.AjudaToolStripMenuItem.Name = "AjudaToolStripMenuItem"
         Me.AjudaToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.AjudaToolStripMenuItem.Text = "Ajuda"
@@ -252,19 +263,48 @@ Partial Class Principal
         Me.Button2.TabIndex = 25
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'PreferenciesToolStripMenuItem
+        'LinkLabel1
         '
-        Me.PreferenciesToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
-        Me.PreferenciesToolStripMenuItem.Name = "PreferenciesToolStripMenuItem"
-        Me.PreferenciesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.PreferenciesToolStripMenuItem.Text = "Preferencies"
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(608, 413)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(82, 15)
+        Me.LinkLabel1.TabIndex = 27
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Idr Consulting"
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.Location = New System.Drawing.Point(608, 444)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(115, 15)
+        Me.LinkLabel2.TabIndex = 28
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "Espacio digitalizador"
+        '
+        'IdrConsultingToolStripMenuItem
+        '
+        Me.IdrConsultingToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icons8_internet_25
+        Me.IdrConsultingToolStripMenuItem.Name = "IdrConsultingToolStripMenuItem"
+        Me.IdrConsultingToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.IdrConsultingToolStripMenuItem.Text = "Idr Consulting"
+        '
+        'EspacioDigitalizadorToolStripMenuItem
+        '
+        Me.EspacioDigitalizadorToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icons8_internet_25
+        Me.EspacioDigitalizadorToolStripMenuItem.Name = "EspacioDigitalizadorToolStripMenuItem"
+        Me.EspacioDigitalizadorToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.EspacioDigitalizadorToolStripMenuItem.Text = "Espacio digitalizador"
         '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(769, 450)
+        Me.ClientSize = New System.Drawing.Size(769, 491)
+        Me.Controls.Add(Me.LinkLabel2)
+        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
@@ -314,4 +354,8 @@ Partial Class Principal
     Friend WithEvents Button2 As Button
     Friend WithEvents InformacióDeSolucionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PreferenciesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents LinkLabel2 As LinkLabel
+    Friend WithEvents IdrConsultingToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EspacioDigitalizadorToolStripMenuItem As ToolStripMenuItem
 End Class

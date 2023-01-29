@@ -122,11 +122,11 @@ Partial Class Llistat
         '
         Me.CB_JaPresentades.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_JaPresentades.AutoSize = True
-        Me.CB_JaPresentades.Location = New System.Drawing.Point(6, 405)
+        Me.CB_JaPresentades.Location = New System.Drawing.Point(15, 405)
         Me.CB_JaPresentades.Name = "CB_JaPresentades"
-        Me.CB_JaPresentades.Size = New System.Drawing.Size(198, 19)
+        Me.CB_JaPresentades.Size = New System.Drawing.Size(189, 19)
         Me.CB_JaPresentades.TabIndex = 5
-        Me.CB_JaPresentades.Text = "Mostrar solucions ja presentades"
+        Me.CB_JaPresentades.Text = "Mostrar solucions ja aprovades"
         Me.CB_JaPresentades.UseVisualStyleBackColor = True
         '
         'RB_SitioWeb

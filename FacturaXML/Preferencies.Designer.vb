@@ -32,6 +32,8 @@ Partial Class Preferencies
         Me.Label3 = New System.Windows.Forms.Label()
         Me.MesosFactura = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.MostrarLlistatAprovades = New System.Windows.Forms.CheckBox()
+        Me.MostrarGestioAprovades = New System.Windows.Forms.CheckBox()
         CType(Me.DiesAvisCaducat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesosAprovacio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesosContractacio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,7 +51,7 @@ Partial Class Preferencies
         '
         'DiesAvisCaducat
         '
-        Me.DiesAvisCaducat.Location = New System.Drawing.Point(336, 32)
+        Me.DiesAvisCaducat.Location = New System.Drawing.Point(335, 38)
         Me.DiesAvisCaducat.Name = "DiesAvisCaducat"
         Me.DiesAvisCaducat.Size = New System.Drawing.Size(58, 23)
         Me.DiesAvisCaducat.TabIndex = 1
@@ -65,7 +67,7 @@ Partial Class Preferencies
         '
         'MesosAprovacio
         '
-        Me.MesosAprovacio.Location = New System.Drawing.Point(336, 74)
+        Me.MesosAprovacio.Location = New System.Drawing.Point(335, 83)
         Me.MesosAprovacio.Name = "MesosAprovacio"
         Me.MesosAprovacio.Size = New System.Drawing.Size(58, 23)
         Me.MesosAprovacio.TabIndex = 4
@@ -73,7 +75,7 @@ Partial Class Preferencies
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(27, 82)
+        Me.Label2.Location = New System.Drawing.Point(27, 85)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(191, 15)
         Me.Label2.TabIndex = 3
@@ -81,7 +83,7 @@ Partial Class Preferencies
         '
         'MesosContractacio
         '
-        Me.MesosContractacio.Location = New System.Drawing.Point(336, 118)
+        Me.MesosContractacio.Location = New System.Drawing.Point(335, 128)
         Me.MesosContractacio.Name = "MesosContractacio"
         Me.MesosContractacio.Size = New System.Drawing.Size(58, 23)
         Me.MesosContractacio.TabIndex = 6
@@ -89,7 +91,7 @@ Partial Class Preferencies
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(27, 126)
+        Me.Label3.Location = New System.Drawing.Point(27, 130)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(211, 15)
         Me.Label3.TabIndex = 5
@@ -97,7 +99,7 @@ Partial Class Preferencies
         '
         'MesosFactura
         '
-        Me.MesosFactura.Location = New System.Drawing.Point(336, 167)
+        Me.MesosFactura.Location = New System.Drawing.Point(335, 173)
         Me.MesosFactura.Name = "MesosFactura"
         Me.MesosFactura.Size = New System.Drawing.Size(58, 23)
         Me.MesosFactura.TabIndex = 8
@@ -111,12 +113,34 @@ Partial Class Preferencies
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Nº de mesos a partir de la emisió de la Factura"
         '
+        'MostrarLlistatAprovades
+        '
+        Me.MostrarLlistatAprovades.AutoSize = True
+        Me.MostrarLlistatAprovades.Location = New System.Drawing.Point(27, 225)
+        Me.MostrarLlistatAprovades.Name = "MostrarLlistatAprovades"
+        Me.MostrarLlistatAprovades.Size = New System.Drawing.Size(249, 19)
+        Me.MostrarLlistatAprovades.TabIndex = 9
+        Me.MostrarLlistatAprovades.Text = "Mostrar al llistat les solucions ja aprovades"
+        Me.MostrarLlistatAprovades.UseVisualStyleBackColor = True
+        '
+        'MostrarGestioAprovades
+        '
+        Me.MostrarGestioAprovades.AutoSize = True
+        Me.MostrarGestioAprovades.Location = New System.Drawing.Point(27, 268)
+        Me.MostrarGestioAprovades.Name = "MostrarGestioAprovades"
+        Me.MostrarGestioAprovades.Size = New System.Drawing.Size(262, 19)
+        Me.MostrarGestioAprovades.TabIndex = 10
+        Me.MostrarGestioAprovades.Text = "Mostrar a la gestió les solucions ja aprovades"
+        Me.MostrarGestioAprovades.UseVisualStyleBackColor = True
+        '
         'Preferencies
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(584, 379)
+        Me.Controls.Add(Me.MostrarGestioAprovades)
+        Me.Controls.Add(Me.MostrarLlistatAprovades)
         Me.Controls.Add(Me.MesosFactura)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.MesosContractacio)
@@ -150,4 +174,6 @@ Partial Class Preferencies
     Friend WithEvents Label3 As Label
     Friend WithEvents MesosFactura As NumericUpDown
     Friend WithEvents Label4 As Label
+    Friend WithEvents MostrarLlistatAprovades As CheckBox
+    Friend WithEvents MostrarGestioAprovades As CheckBox
 End Class

@@ -173,6 +173,30 @@ Namespace My
                 Me("MesosFactura") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property MostrarLlistatAprovades() As Boolean
+            Get
+                Return CType(Me("MostrarLlistatAprovades"),Boolean)
+            End Get
+            Set
+                Me("MostrarLlistatAprovades") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property MostrarGestioAprovades() As Boolean
+            Get
+                Return CType(Me("MostrarGestioAprovades"),Boolean)
+            End Get
+            Set
+                Me("MostrarGestioAprovades") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -13,6 +13,7 @@ Public Class Llistat
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         SolucioFiltre = 0
+        CB_JaPresentades.Checked = My.Settings.MostrarLlistatAprovades
         CarregaLlistat()
 
     End Sub

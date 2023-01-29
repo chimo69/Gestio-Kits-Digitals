@@ -253,20 +253,14 @@ Public Class Factures
             PreparaArxiu()
             CreaArxiu()
         End If
-
     End Sub
     Private Sub Visualitzar_Click(sender As Object, e As EventArgs) Handles Btn_Visualitzar.Click
-
         PreparaArxiu()
         Dim vistaPrevia As New VistaPrevia(textoXML)
         OpenSubForm(vistaPrevia)
-
     End Sub
-
     Private Sub Button3_Click(sender As Object, e As EventArgs)
-
         EsborraDades(3)
-
     End Sub
     Private Sub EsborraDades(v As Integer)
 
@@ -321,7 +315,6 @@ Public Class Factures
         Next
         Return True
     End Function
-
     Private Sub MenuDadesEmpresa_Click(sender As Object, e As EventArgs) Handles MenuDadesEmpresa.Click
         Dim dadesEmpresa As New DadesEmpresaConfig()
         OpenSubForm(dadesEmpresa)
@@ -335,7 +328,6 @@ Public Class Factures
     Private Sub EsborrarDadesEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsborrarDadesEmpresaToolStripMenuItem.Click
         EsborraDades(1)
     End Sub
-
     Private Sub EsborrarDadesFacturaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsborrarDadesFacturaToolStripMenuItem.Click
         EsborraDades(2)
     End Sub
@@ -479,7 +471,7 @@ Public Class Factures
                                             Solucions.Contracte,
                                             Solucions.DataFactura,
                                             Justificacions.TotalSolucio,
-                                            Justificacions.Percentatge
+                                            Justificacions.Percentatge                                            
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
