@@ -702,6 +702,7 @@ Partial Class Contractes
         Me.CB_DataContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataContracte.AutoSize = True
         Me.CB_DataContracte.Enabled = False
+        Me.CB_DataContracte.ForeColor = System.Drawing.SystemColors.ControlText
         Me.CB_DataContracte.Location = New System.Drawing.Point(1007, 440)
         Me.CB_DataContracte.Name = "CB_DataContracte"
         Me.CB_DataContracte.Size = New System.Drawing.Size(105, 19)

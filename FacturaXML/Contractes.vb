@@ -52,30 +52,43 @@ Public Class Contractes
 
         End Try
 
+        CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
+
         'Si venim del form Llistat selecciona l'empresa
-        For Each Fila As DataGridViewRow In DataEmpreses.Rows
-            If Fila.Cells("Id").Value = idEmpresaRebuda Then
-                OmpleDadesEmpresa(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
+        seleccionaFila(idEmpresaRebuda, 1)
 
         'Si venim del form Llistat selecciona la solució
-        For Each Fila As DataGridViewRow In DataSolucions.Rows
-            If Fila.Cells("Id").Value = idSolucioRebuda Then
-                OmpleDadesSolucions(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
-
-        CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
+        seleccionaFila(idSolucioRebuda, 2)
 
         TitolAprovacio.Text = "<-- " & My.Settings.MesosAprovacio & " mesos a partir d'aquesta data"
         TitolContracte.Text = "<-- " & My.Settings.MesosContractacio & " mesos a partir d'aquesta data"
         TitolPagament.Text = "<-- Dins del periode de la factura"
         TitolFactura.Text = "<-- " & My.Settings.MesosFactura & " mesos a partir d'aquesta data"
+
+    End Sub
+    Private Sub seleccionaFila(id As Integer, NoGrid As Integer)
+        ' 1 Data Empreses
+        ' 2 Data Solucions
+
+        Select Case NoGrid
+            Case 1
+                For Each Fila As DataGridViewRow In DataEmpreses.Rows
+                    If Fila.Cells("Id").Value = id Then
+                        OmpleDadesEmpresa(Fila.Index)
+                        Fila.Selected = True
+                        Exit For
+                    End If
+                Next
+            Case 2
+                For Each Fila As DataGridViewRow In DataSolucions.Rows
+                    If Fila.Cells("Id").Value = id Then
+                        OmpleDadesSolucions(Fila.Index)
+                        Fila.Selected = True
+                        Exit For
+                    End If
+                Next
+        End Select
+
 
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -171,13 +184,14 @@ Public Class Contractes
 
         EsborrarCampsSolucio()
 
-        For Each Fila As DataGridViewRow In DataEmpreses.Rows
-            If Fila.Cells("Id").Value = idEmpresaSeleccionada Then
-                OmpleDadesEmpresa(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
+        'For Each Fila As DataGridViewRow In DataEmpreses.Rows
+        '    If Fila.Cells("Id").Value = idEmpresaSeleccionada Then
+        '        OmpleDadesEmpresa(Fila.Index)
+        '        Fila.Selected = True
+        '        Exit For
+        '    End If
+        'Next
+        seleccionaFila(idEmpresaSeleccionada, 1)
     End Sub
     'Comprova que no faltin dades per introduir
     Private Function ComprovaDadesEmpresa() As Boolean
@@ -297,8 +311,6 @@ Public Class Contractes
         EstaLaSolucioSeleccionada(False)
         EsborrarCampsSolucio()
     End Sub
-
-
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
     End Sub
@@ -416,8 +428,6 @@ Public Class Contractes
         DataSolucions.ClearSelection()
         EstaLaSolucioSeleccionada(False)
 
-
-
     End Sub
 
     Private Sub Btn_AfegirSolucio_Click(sender As Object, e As EventArgs) Handles Btn_AfegirSolucio.Click
@@ -428,7 +438,7 @@ Public Class Contractes
         Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
         OpenSubFormDialog(EstatJustificacio)
         OmpleSolucions(idEmpresaSeleccionada)
-        EsborrarCampsSolucio()
+        seleccionaFila(idSolucioSeleccionada, 2)
     End Sub
     'Esborra la solució seleccionada
     Private Sub EsborrarSolucio(id As Integer)
@@ -605,13 +615,7 @@ Public Class Contractes
             MsgBox(ex.Message)
         End Try
 
-        For Each Fila As DataGridViewRow In DataSolucions.Rows
-            If Fila.Cells("Id").Value = idSolucioSeleccionada Then
-                OmpleDadesSolucions(Fila.Index)
-                Fila.Selected = True
-                Exit For
-            End If
-        Next
+        seleccionaFila(idSolucioSeleccionada, 2)
 
     End Sub
     'Comproba que s'hagin introduit totes les dades
@@ -887,27 +891,33 @@ Public Class Contractes
         MiraCaducitat()
     End Sub
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
-        If DataContracte.Value < DataAprovacio.Value.AddDays(-1) Or DataContracte.Value > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio).AddDays(1) Then
-            MsgBox("La data ha de estar compresa entre " + Format(DataAprovacio.Value, "Short Date") + " i " + Format(DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio), "Short Date"), vbCritical, "Error")
-            DataContracte.Value = Date.Now
+        If DataContracte.Value < DataAprovacio.Value Or DataContracte.Value > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
+            CB_DataContracte.ForeColor = Color.Red
+            MsgBox("La data ha de estar compresa entre " + Format(DataAprovacio.Value, "Short Date") + " i " + Format(DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio), "Short Date"), vbCritical, "Error a la Data de Contracte")
+        Else
+            CB_DataContracte.ForeColor = Color.Black
         End If
         DataFiContracte.Text = Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio).Date, "Short Date")
         MiraCaducitat()
     End Sub
     Private Sub DataFactura_ValueChanged(sender As Object, e As EventArgs) Handles DataFactura.ValueChanged
-        If DataFactura.Value < DataContracte.Value.AddDays(-1) Or DataFactura.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio).AddDays(1) Then
-            MsgBox("La data ha de estar compresa entre " + Format(DataContracte.Value, "Short Date") + " i " + Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio), "Short Date"), vbCritical, "Error")
-            DataContracte.Value = Date.Now
+        If DataFactura.Value < DataContracte.Value Or DataFactura.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
+            CB_DataFactura.ForeColor = Color.Red
+            MsgBox("La data ha de estar compresa entre " + Format(DataContracte.Value, "Short Date") + " i " + Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio), "Short Date"), vbCritical, "Error a la Data de Factura")
+        Else
+            CB_DataFactura.ForeColor = Color.Black
         End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         MiraCaducitat()
     End Sub
     Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
-        If DataPagament.Value > DataFactura.Value.AddMonths(My.Settings.MesosFactura).AddDays(1) Or DataPagament.Value < DataFactura.Value.AddDays(-1) Then
+        If DataPagament.Value > DataFactura.Value.AddMonths(My.Settings.MesosFactura) Or DataPagament.Value < DataFactura.Value Then
+            CB_DataPagamentIVA.ForeColor = Color.Red
             DataPagamentOK.Image = My.Resources.sin_verificar_petit
-            MsgBox("La data ha de estar compresa entre " + Format(DataFactura.Value, "Short Date") + " i " + Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura), "ShortDate"), vbCritical, "Error")
+            MsgBox("La data ha de estar compresa entre " + Format(DataFactura.Value, "Short Date") + " i " + Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura), "Short Date"), vbCritical, "Error a la Data de Pagament")
         Else
+            CB_DataPagamentIVA.ForeColor = Color.Black
             DataPagamentOK.Image = My.Resources.verificado_petit
         End If
     End Sub

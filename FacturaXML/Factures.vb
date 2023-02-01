@@ -284,6 +284,8 @@ Public Class Factures
                             CType(controlText, TextBox).Clear()
                         End If
                     Next
+                    CB_Solucions.Text = "Selecciona solució"
+                    CB_Solucions.DataSource = Nothing
                 End If
             End If
         Next

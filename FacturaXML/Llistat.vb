@@ -23,7 +23,14 @@ Public Class Llistat
         Dim idEmpresa As Integer = dgv.CurrentRow.Cells("IdEmpresa").Value
         Dim idSolucio As Integer = dgv.CurrentRow.Cells("IdSolucio").Value
         Dim Contractes As New Contractes(idEmpresa, idSolucio)
-        OpenSubForm(Contractes)
+        OpenSubFormDialog(Contractes)
+        CarregaLlistat()
+        For Each Fila As DataGridViewRow In DataLlistat.Rows
+            If Fila.Cells("IdSolucio").Value = idSolucio Then
+                Fila.Selected = True
+                Exit For
+            End If
+        Next
     End Sub
 
     Private Sub contracte_TextChanged(sender As Object, e As EventArgs) Handles contracte.TextChanged
@@ -192,7 +199,7 @@ Public Class Llistat
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
         With dgv
-            '.Columns("Verificat").Width = 50
+            .Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
             .Columns("Comp. Pagament").Width = 50
@@ -221,11 +228,9 @@ Public Class Llistat
         NumeraSolucions()
 
         For Each Fila As DataGridViewRow In dgv.Rows
-            'If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = taronja
+
             If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.Cells("Empresa").Style.BackColor = taronja
-            'If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = vermell
             If Fila.Cells("Dies").Value <= 0 Then Fila.Cells("Empresa").Style.BackColor = vermell
-            'If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = verd
             If Fila.Cells("Justificat").Value = "Si" Then Fila.Cells("Empresa").Style.BackColor = verd
         Next
 
@@ -239,17 +244,6 @@ Public Class Llistat
                 AdvertenciaCaducats.Visible = False
             End If
         Next
-
-        'If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
-
-        '    If e.Value = 1 Then
-        '        'dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.verificado_petit
-        '        dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = "X"
-        '    Else
-        '        'dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = My.Resources.sin_verificar_petit
-        '        dgv.Item(e.ColumnIndex - 18, e.RowIndex).Value = "-"
-        '    End If
-        'End If
 
     End Sub
     'Carrega el llistat de solucions de la base de dades

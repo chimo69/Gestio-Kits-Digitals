@@ -493,19 +493,19 @@
   <metadata name="MenuPrincipal.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="SobreGestioDeKitsDigitalsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAFtJREFUOE9j
-        oCXwAuLHUOwJEiAVgDRaAbE1ED8CCZAKQAaANNsAMVkGgJwN0gjCHiABuoL/SPgnELcAMckApBkEhID4
-        B4RJGoAZAALIbKLBSDcApAEbHnSAgQEA91QfmPC2Us8AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="SortirToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAHlJREFUOE9j
         oBZoA+KfQPyfCAxS1wLEKAAkKARhEgQgdT8gTAQAmUwKwFBPjAGLgNgBwmRogNJwQIwBNkD8EoidwDw0
         QKwXcBqCbgCIjw+DDOEGYjgACRIDiHYBNmALxBSFAcWxgAww1FOcEkFpm5S80AzEgwIwMAAAfj44UGbg
         JOgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="SobreGestioDeKitsDigitalsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAFtJREFUOE9j
+        oCXwAuLHUOwJEiAVgDRaAbE1ED8CCZAKQAaANNsAMVkGgJwN0gjCHiABuoL/SPgnELcAMckApBkEhID4
+        B4RJGoAZAALIbKLBSDcApAEbHnSAgQEA91QfmPC2Us8AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
