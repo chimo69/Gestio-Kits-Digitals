@@ -270,16 +270,6 @@ Public Class Factures
 
         For Each control As Windows.Forms.Control In Me.Controls
             If TypeOf control Is GroupBox Then
-                If v = 1 Or v = 3 Then
-                    For Each controlText As Windows.Forms.Control In Me.GroupBox1.Controls
-                        If TypeOf controlText Is TextBox Then
-                            CType(controlText, TextBox).Clear()
-                        End If
-                    Next
-                    CB_Empreses.Text = "Selecciona empresa"
-                    CB_Solucions.Text = ""
-                    CB_Solucions.DataSource = Nothing
-                End If
                 If v = 2 Or v = 3 Then
                     For Each controlText As Windows.Forms.Control In Me.GroupBox2.Controls
                         If TypeOf controlText Is TextBox Then
@@ -288,10 +278,27 @@ Public Class Factures
                     Next
                     CB_Solucions.Text = "Selecciona solució"
                 End If
+                If v = 1 Or v = 3 Then
+                    For Each controlText As Windows.Forms.Control In Me.GroupBox1.Controls
+                        If TypeOf controlText Is TextBox Then
+                            CType(controlText, TextBox).Clear()
+                        End If
+                    Next
+
+                End If
 
                 FacturaSolucio.Text = ""
             End If
         Next
+
+        If v = 2 Then
+            CB_Solucions.Text = "Selecciona solució"
+        End If
+        If v = 1 Or v = 3 Then
+            CB_Empreses.Text = "Selecciona empresa"
+            CB_Solucions.Text = ""
+            CB_Solucions.DataSource = Nothing
+        End If
     End Sub
     'Comprova que les dades introduides son correctes
     Private Function ComprovaDades() As Boolean
