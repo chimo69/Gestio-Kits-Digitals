@@ -273,10 +273,12 @@ Public Class Factures
                 If v = 1 Or v = 3 Then
                     For Each controlText As Windows.Forms.Control In Me.GroupBox1.Controls
                         If TypeOf controlText Is TextBox Then
-                            If controlText.Name <> "EmpresaPais" Then CType(controlText, TextBox).Clear()
+                            CType(controlText, TextBox).Clear()
                         End If
                     Next
                     CB_Empreses.Text = "Selecciona empresa"
+                    CB_Solucions.Text = ""
+                    CB_Solucions.DataSource = Nothing
                 End If
                 If v = 2 Or v = 3 Then
                     For Each controlText As Windows.Forms.Control In Me.GroupBox2.Controls
@@ -285,8 +287,9 @@ Public Class Factures
                         End If
                     Next
                     CB_Solucions.Text = "Selecciona solució"
-                    CB_Solucions.DataSource = Nothing
                 End If
+
+                FacturaSolucio.Text = ""
             End If
         Next
     End Sub
@@ -354,7 +357,7 @@ Public Class Factures
                     DA_Empreses.Fill(DT_Empreses)
                     CB_Empreses.DataSource = DT_Empreses
                     CB_Empreses.DisplayMember = "Nom"
-                    CB_Empreses.Text = "Selecciona una empresa"
+                    CB_Empreses.Text = "Selecciona empresa"
                     CB_Empreses.ValueMember = "Id"
                 End If
 
@@ -482,7 +485,7 @@ Public Class Factures
                 DA_Solucions.Fill(DT_Solucions)
                 CB_Solucions.DataSource = DT_Solucions
                 CB_Solucions.DisplayMember = "Nom"
-                CB_Solucions.Text = "Selecciona una solució"
+                CB_Solucions.Text = "Selecciona solució"
                 If DT_Solucions.Rows.Count = 0 Then CB_Solucions.Text = "No hi ha solucions"
             End If
 
