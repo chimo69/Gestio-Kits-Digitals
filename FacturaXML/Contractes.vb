@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SQLite
 Imports System.Linq.Expressions
 Imports System.Globalization
+Imports System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
 
 
 Public Class Contractes
@@ -334,6 +335,7 @@ Public Class Contractes
                 If CheckJustificat.Checked = True Then
 
                     comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          Solucions.IdSolucio,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,
                                           Solucions.DataAprovacio,                                          
@@ -344,7 +346,8 @@ Public Class Contractes
                                           Solucions.Justificat,                                              
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
-                                          Solucions.Observacions  
+                                          Solucions.Observacions,
+                                          Solucions.Quantitat   
                                           FROM Solucions
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
@@ -352,6 +355,7 @@ Public Class Contractes
                 Else
 
                     comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          Solucions.IdSolucio,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,
                                           Solucions.DataAprovacio,                                          
@@ -362,7 +366,8 @@ Public Class Contractes
                                           Solucions.Justificat,                                              
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
-                                          Solucions.Observacions
+                                          Solucions.Observacions,
+                                          Solucions.Quantitat 
                                           FROM Solucions
                                           INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
@@ -501,10 +506,12 @@ Public Class Contractes
 
         With DataSolucions
             .Columns("Id").Visible = False
+            .Columns("IdSolucio").Visible = False
             .Columns("Justificat").Visible = False
             .Columns("Observacions").Visible = False
             .Columns("DataAprovacio").Visible = False
             .Columns("DataPagament").Visible = False
+            .Columns("Quantitat").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -995,35 +1002,7 @@ Public Class Contractes
     End Sub
 
     Private Sub CB_TipusSolucio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_TipusSolucio.SelectionChangeCommitted
-        Select Case (CB_TipusSolucio.SelectedValue)
-            Case 8
-                InfoVariable.Visible = True
-                InfoVariableNum.Visible = True
-                infoMax.Visible = True
-                InfoVariable.Text = "Nº de usuaris"
-            Case 9
-                InfoVariable.Visible = True
-                InfoVariableNum.Visible = True
-                infoMax.Visible = True
-                InfoVariable.Text = "Nº de usuaris"
-            Case 10
-                InfoVariable.Visible = True
-                InfoVariableNum.Visible = True
-                infoMax.Visible = True
-                InfoVariable.Text = "Nº de dispositius"
-            Case Else
-                InfoVariable.Visible = False
-                InfoVariableNum.Visible = False
-                infoMax.Visible = False
-        End Select
-
-        If segmentEmpresaSeleccionada = 1 Then
-            infoMax.Text = "Màxim 48"
-        ElseIf segmentEmpresaSeleccionada = 2 Then
-            infoMax.Text = "Màxim 9"
-        ElseIf segmentEmpresaSeleccionada = 3 Then
-            infoMax.Text = "Màxim 2"
-        End If
+        GestionaInfo(CB_TipusSolucio.SelectedValue)
     End Sub
 
     'Mostra el menu d'empreses al fer click dret sobre l'empresa
@@ -1100,6 +1079,8 @@ Public Class Contractes
 
         ProgressBar1.Value = row.Cells("%").Value
 
+        GestionaInfo(row.Cells("IdSolucio").Value)
+
         If row.Cells("DataAprovacio").Value <> "" Then
             DataAprovacio.Text = Format(row.Cells("DataAprovacio").Value, "Short Date")
             CB_DataAprovacio.Checked = True
@@ -1141,6 +1122,37 @@ Public Class Contractes
         End If
 
         EstaLaSolucioSeleccionada(True)
+    End Sub
+    Private Sub GestionaInfo(i As Integer)
+        Select Case (i)
+            Case 8
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de usuaris"
 
+            Case 9
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de usuaris"
+            Case 10
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de dispositius"
+            Case Else
+                InfoVariable.Visible = False
+                InfoVariableNum.Visible = False
+                infoMax.Visible = False
+        End Select
+
+        If segmentEmpresaSeleccionada = 1 Then
+            infoMax.Text = "Màxim 48"
+        ElseIf segmentEmpresaSeleccionada = 2 Then
+            infoMax.Text = "Màxim 9"
+        ElseIf segmentEmpresaSeleccionada = 3 Then
+            infoMax.Text = "Màxim 2"
+        End If
     End Sub
 End Class
