@@ -5,7 +5,7 @@ Imports System.Globalization
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
-    Private idEmpresaSeleccionada, idSolucioSeleccionada As Integer
+    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada As Integer
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
     Private DataVenciment As Date
@@ -141,7 +141,12 @@ Public Class Contractes
         Dim provinciaTxt As String = Provincia.Text
         Dim paisTxt As String = Pais.Text
         Dim seleccio As Boolean
+        Dim segment As Integer
         seleccio = empresaSeleccionada
+
+        If RB_Segment1.Checked = True Then segment = 1
+        If RB_Segment2.Checked = True Then segment = 2
+        If RB_Segment3.Checked = True Then segment = 3
 
         If ComprovaDadesEmpresa() = False Then Exit Sub
 
@@ -156,16 +161,18 @@ Public Class Contractes
                      ",Ciutat=" & StringDB(ciutatTxt) &
                      ",Provincia=" & StringDB(provinciaTxt) &
                      ",Pais=" & StringDB(paisTxt) &
-                     "WHERE Id=" & IdEmpresa
+                     ",Segment=" & segment &
+                     " WHERE Id=" & IdEmpresa
         Else
-            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais) VALUES (" &
+            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais,Segment) VALUES (" &
                     StringDB(empresaTxt) & "," &
                     StringDB(nifTxt) & "," &
                     StringDB(direccioTxt) & "," &
                     StringDB(codiPostalTxt) & "," &
                     StringDB(ciutatTxt) & "," &
                     StringDB(provinciaTxt) & "," &
-                    StringDB(paisTxt) & ")"
+                    StringDB(paisTxt) & "," &
+                    segment & ")"
         End If
 
         Try
@@ -184,13 +191,6 @@ Public Class Contractes
 
         EsborrarCampsSolucio()
 
-        'For Each Fila As DataGridViewRow In DataEmpreses.Rows
-        '    If Fila.Cells("Id").Value = idEmpresaSeleccionada Then
-        '        OmpleDadesEmpresa(Fila.Index)
-        '        Fila.Selected = True
-        '        Exit For
-        '    End If
-        'Next
         seleccionaFila(idEmpresaSeleccionada, 1)
     End Sub
     'Comprova que no faltin dades per introduir
@@ -310,6 +310,10 @@ Public Class Contractes
         DataSolucions.DataSource = Nothing
         EstaLaSolucioSeleccionada(False)
         EsborrarCampsSolucio()
+
+        RB_Segment1.Checked = False
+        RB_Segment2.Checked = False
+        RB_Segment3.Checked = False
     End Sub
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
@@ -426,6 +430,9 @@ Public Class Contractes
         CheckEstaJustificat.Checked = False
         CB_TipusSolucio.Text = "Selecciona un tipus de solució"
         DataSolucions.ClearSelection()
+        infoMax.Visible = False
+        InfoVariable.Visible = False
+        InfoVariableNum.Visible = False
         EstaLaSolucioSeleccionada(False)
 
     End Sub
@@ -478,6 +485,7 @@ Public Class Contractes
 
         With DataEmpreses
             .Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Segment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Id").Visible = False
             .Columns("Direccio").Visible = False
             .AutoResizeColumns()
@@ -713,6 +721,9 @@ Public Class Contractes
             Btn_EsborrarSolucio.Enabled = False
             TBObservacions.Enabled = False
             Btn_esborrarEmpresa.Enabled = False
+            infoMax.Visible = False
+            InfoVariable.Visible = False
+            InfoVariableNum.Visible = False
         End If
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
@@ -983,6 +994,38 @@ Public Class Contractes
         DataPagament.Value = Date.Now
     End Sub
 
+    Private Sub CB_TipusSolucio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_TipusSolucio.SelectionChangeCommitted
+        Select Case (CB_TipusSolucio.SelectedValue)
+            Case 8
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de usuaris"
+            Case 9
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de usuaris"
+            Case 10
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de dispositius"
+            Case Else
+                InfoVariable.Visible = False
+                InfoVariableNum.Visible = False
+                infoMax.Visible = False
+        End Select
+
+        If segmentEmpresaSeleccionada = 1 Then
+            infoMax.Text = "Màxim 48"
+        ElseIf segmentEmpresaSeleccionada = 2 Then
+            infoMax.Text = "Màxim 9"
+        ElseIf segmentEmpresaSeleccionada = 3 Then
+            infoMax.Text = "Màxim 2"
+        End If
+    End Sub
+
     'Mostra el menu d'empreses al fer click dret sobre l'empresa
     Private Sub menuClickDretEmpreses(sender As Object, e As ToolStripItemClickedEventArgs)
         Dim nom As String = e.ClickedItem.Name
@@ -1016,6 +1059,7 @@ Public Class Contractes
         Pais.Text = row.Cells("Pais").Value
         Btn_afegir.Text = "Modificar empresa"
         empresaSeleccionada = True
+        segmentEmpresaSeleccionada = row.Cells("Segment").Value
 
         EstaLaSolucioSeleccionada(False)
 
@@ -1023,6 +1067,15 @@ Public Class Contractes
             idEmpresaSeleccionada = row.Cells("Id").Value
             OmpleSolucions(idEmpresaSeleccionada)
         End If
+
+        Select Case (row.Cells("Segment").Value)
+            Case 1
+                RB_Segment1.Checked = True
+            Case 2
+                RB_Segment2.Checked = True
+            Case 3
+                RB_Segment3.Checked = True
+        End Select
 
         EstaLaEmpresaSeleccionada(True)
 

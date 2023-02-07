@@ -86,6 +86,7 @@ Public Class Llistat
         .Columns("TD2").Visible = False
             .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Data pagament").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -163,16 +164,16 @@ Public Class Llistat
         If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
 
             If e.Value = 1 Then
-                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
         If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
             If e.Value <> "" Then
-                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 19, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
 
@@ -189,16 +190,35 @@ Public Class Llistat
         End If
 
         If dgv.Columns(e.ColumnIndex).Name = "Data factura" Then
-            If e.Value = "" Then e.Value = "Pendent"
+            If IsDBNull(e.Value) Then
+                e.Value = "Pendent"
+                e.CellStyle.BackColor = groc
+            End If
+
         End If
         If dgv.Columns(e.ColumnIndex).Name = "Data contracte" Then
-            If e.Value = "" Then e.Value = "Pendent"
+            If IsDBNull(e.Value) Then
+                e.Value = "Pendent"
+                e.CellStyle.BackColor = groc
+            End If
+        End If
+        If dgv.Columns(e.ColumnIndex).Name = "Data pagament" Then
+            If IsDBNull(e.Value) Then
+                e.Value = "Pendent"
+                e.CellStyle.BackColor = groc
+            End If
+
         End If
 
 
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
         With dgv
+            .Columns("Data contracte").Width = 80
+            .Columns("Data factura").Width = 80
+            .Columns("Data pagament").Width = 80
+            .Columns("Data venciment").Width = 80
+            .Columns("Estat justificació").Width = 50
             .Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
@@ -279,9 +299,10 @@ Public Class Llistat
                           TipusSolucions.Nom As Solucio,
                           Solucions.Id As IdSolucio,
                           Solucions.Contracte,                          
-                          Solucions.DataContracte AS 'Data contracte',
-                          Solucions.DataFactura AS 'Data factura',              
-                          Solucions.DataVenciment AS 'Data venciment',
+                          strftime('%d-%m-%Y',Solucions.DataContracte) AS 'Data contracte',
+                          strftime('%d-%m-%Y',Solucions.DataFactura) AS 'Data factura',
+                          strftime('%d-%m-%Y',Solucions.DataPagament) AS 'Data pagament',  
+                          strftime('%d-%m-%Y',Solucions.DataVenciment) AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                           Justificacions.Percentatge AS 'Estat justificació',                         
                           Solucions.Justificat,
