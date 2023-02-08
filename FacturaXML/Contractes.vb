@@ -1,12 +1,11 @@
 ﻿Imports System.Data.SQLite
-Imports System.Linq.Expressions
 Imports System.Globalization
-Imports System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder
-
+Imports System.Threading
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
     Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada As Integer
+    Private subvencioSolucioSeleccionada As Double
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
     Private DataVenciment As Date
@@ -25,6 +24,7 @@ Public Class Contractes
     Public Sub New(idEmpresa As Integer, idSolucio As Integer)
         Me.idEmpresaRebuda = idEmpresa
         Me.idSolucioRebuda = idSolucio
+
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -411,17 +411,14 @@ Public Class Contractes
         DataAprovacioOK.Visible = False
 
         'Linea Contracte
-
         CB_DataContracte.Checked = False
         DataContracteOK.Visible = False
 
         'Linea Factura
-
         CB_DataFactura.Checked = False
         DataFacturaOK.Visible = False
 
         'Linea Pagament
-
         CB_DataPagamentIVA.Checked = False
         DataPagamentOK.Visible = False
 
@@ -594,11 +591,12 @@ Public Class Contractes
                             DataPagament= " & StringDB(DataPagamentTxt) & ",
                             DataVenciment=" & StringDB(DataVencimentTxt) & ", 
                             Justificat=" & Justificat & ",
-                            Observacions=" & StringDB(Observacions) &
-                            "WHERE Id=" & idSolucio
+                            Observacions=" & StringDB(Observacions) & ",
+                            Quantitat=" & InfoVariableNum.Value &
+                            " WHERE Id=" & idSolucio
 
         Else
-            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataAprovacio,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,Observacions) VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataAprovacio,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataAprovacioTxt) & "," &
@@ -608,7 +606,8 @@ Public Class Contractes
                                  StringDB(DataVencimentTxt) & "," &
                                  idEmpresaSeleccionada & "," &
                                  Justificat & "," &
-                                 StringDB(Observacions) & ")"
+                                 StringDB(Observacions) & "," &
+                                 InfoVariableNum.Value & ")"
 
         End If
 
@@ -1016,6 +1015,15 @@ Public Class Contractes
         End If
     End Sub
 
+    Private Sub InfoVariableNum_ValueChanged(sender As Object, e As EventArgs) Handles InfoVariableNum.ValueChanged
+        InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
+    End Sub
+
+    Private Sub InfoVariableNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles InfoVariableNum.KeyPress
+        Dim sep As Char = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator)
+        If e.KeyChar = sep Then e.Handled = True
+    End Sub
+
     'Modifica els camps quan la selecció de solucio canvia
     Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
         If DataSolucions.SelectedRows.Count > 0 Then
@@ -1070,6 +1078,7 @@ Public Class Contractes
         idSolucioSeleccionada = row.Cells("Id").Value
         TitolSolucio.Text = row.Cells("Nom").Value
         TBObservacions.Text = row.Cells("Observacions").Value
+        InfoVariableNum.Value = row.Cells("Quantitat").Value
 
         If row.Cells("Justificat").Value = "Si" Then
             CheckEstaJustificat.Checked = True
@@ -1080,6 +1089,7 @@ Public Class Contractes
         ProgressBar1.Value = row.Cells("%").Value
 
         GestionaInfo(row.Cells("IdSolucio").Value)
+
 
         If row.Cells("DataAprovacio").Value <> "" Then
             DataAprovacio.Text = Format(row.Cells("DataAprovacio").Value, "Short Date")
@@ -1148,11 +1158,34 @@ Public Class Contractes
         End Select
 
         If segmentEmpresaSeleccionada = 1 Then
-            infoMax.Text = "Màxim 48"
+            infoMax.Text = "<-- Màxim 48"
+            InfoVariableNum.Maximum = 48
         ElseIf segmentEmpresaSeleccionada = 2 Then
-            infoMax.Text = "Màxim 9"
+            infoMax.Text = "<-- Màxim 9"
+            InfoVariableNum.Maximum = 9
         ElseIf segmentEmpresaSeleccionada = 3 Then
-            infoMax.Text = "Màxim 2"
+            infoMax.Text = "<-- Màxim 2"
+            InfoVariableNum.Maximum = 2
         End If
+        RebreSubvencio(segmentEmpresaSeleccionada)
+
+    End Sub
+    Private Sub RebreSubvencio(segment As Integer)
+        Dim conexion As New SQLiteConnection(cadena)
+        Dim Query As String
+        Dim strCommand As SQLiteCommand
+        Dim segmentString As String = "Segment" & segment
+
+        Query = "SELECT * FROM TipusSolucions WHERE Id=" & CB_TipusSolucio.SelectedValue
+        strCommand = New SQLiteCommand(Query, conexion)
+        conexion.Open()
+        Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+
+        If lector.Read() Then
+            subvencioSolucioSeleccionada = lector.GetValue(segmentString)
+            InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
+        End If
+        lector.Close()
+        conexion.Close()
     End Sub
 End Class

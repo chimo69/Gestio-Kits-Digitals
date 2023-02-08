@@ -107,6 +107,9 @@ Partial Class Contractes
         Me.InfoVariable = New System.Windows.Forms.Label()
         Me.InfoVariableNum = New System.Windows.Forms.NumericUpDown()
         Me.infoMax = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.InfoSubvencio = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -427,7 +430,7 @@ Partial Class Contractes
         Me.NoAcord.Enabled = False
         Me.NoAcord.Location = New System.Drawing.Point(1139, 385)
         Me.NoAcord.Name = "NoAcord"
-        Me.NoAcord.Size = New System.Drawing.Size(217, 23)
+        Me.NoAcord.Size = New System.Drawing.Size(200, 23)
         Me.NoAcord.TabIndex = 12
         '
         'DiesCaducitat
@@ -992,18 +995,54 @@ Partial Class Contractes
         '
         Me.infoMax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.infoMax.AutoSize = True
-        Me.infoMax.Location = New System.Drawing.Point(1206, 357)
+        Me.infoMax.Location = New System.Drawing.Point(1192, 355)
         Me.infoMax.Name = "infoMax"
         Me.infoMax.Size = New System.Drawing.Size(54, 15)
         Me.infoMax.TabIndex = 77
         Me.infoMax.Text = "Info max"
         Me.infoMax.Visible = False
         '
+        'Label17
+        '
+        Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(1277, 348)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(62, 30)
+        Me.Label17.TabIndex = 78
+        Me.Label17.Text = "Subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "teórica"
+        '
+        'InfoSubvencio
+        '
+        Me.InfoSubvencio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InfoSubvencio.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.InfoSubvencio.Location = New System.Drawing.Point(1345, 347)
+        Me.InfoSubvencio.Name = "InfoSubvencio"
+        Me.InfoSubvencio.ReadOnly = True
+        Me.InfoSubvencio.Size = New System.Drawing.Size(81, 33)
+        Me.InfoSubvencio.TabIndex = 79
+        Me.InfoSubvencio.TabStop = False
+        Me.InfoSubvencio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label18
+        '
+        Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label18.Location = New System.Drawing.Point(1432, 354)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(18, 20)
+        Me.Label18.TabIndex = 80
+        Me.Label18.Text = "€"
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 1025)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.InfoSubvencio)
+        Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.infoMax)
         Me.Controls.Add(Me.InfoVariableNum)
         Me.Controls.Add(Me.InfoVariable)
@@ -1158,4 +1197,7 @@ Partial Class Contractes
     Friend WithEvents InfoVariable As Label
     Friend WithEvents InfoVariableNum As NumericUpDown
     Friend WithEvents infoMax As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents InfoSubvencio As TextBox
+    Friend WithEvents Label18 As Label
 End Class

@@ -35,6 +35,11 @@ Partial Class EstatJustificacio
         Me.TeDada1 = New System.Windows.Forms.CheckBox()
         Me.TeDada2 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Suport = New System.Windows.Forms.TextBox()
         Me.Manteniment = New System.Windows.Forms.TextBox()
         Me.Formacio = New System.Windows.Forms.TextBox()
@@ -50,7 +55,9 @@ Partial Class EstatJustificacio
         Me.Completat = New System.Windows.Forms.Label()
         Me.Btn_CreaFactura = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label18 = New System.Windows.Forms.Label()
         Me.ImportSubvencionat = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -167,6 +174,11 @@ Partial Class EstatJustificacio
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Suport)
         Me.GroupBox1.Controls.Add(Me.Manteniment)
         Me.GroupBox1.Controls.Add(Me.Formacio)
@@ -183,6 +195,61 @@ Partial Class EstatJustificacio
         Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Desglossament Cost de la Solució"
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label11.Location = New System.Drawing.Point(249, 196)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(18, 20)
+        Me.Label11.TabIndex = 86
+        Me.Label11.Text = "€"
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label10.Location = New System.Drawing.Point(286, 151)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(18, 20)
+        Me.Label10.TabIndex = 85
+        Me.Label10.Text = "€"
+        '
+        'Label9
+        '
+        Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label9.Location = New System.Drawing.Point(212, 112)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(18, 20)
+        Me.Label9.TabIndex = 84
+        Me.Label9.Text = "€"
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label8.Location = New System.Drawing.Point(229, 70)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(18, 20)
+        Me.Label8.TabIndex = 83
+        Me.Label8.Text = "€"
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label7.Location = New System.Drawing.Point(229, 25)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(18, 20)
+        Me.Label7.TabIndex = 82
+        Me.Label7.Text = "€"
         '
         'Suport
         '
@@ -310,6 +377,8 @@ Partial Class EstatJustificacio
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label12)
+        Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.ImportSubvencionat)
         Me.GroupBox2.Location = New System.Drawing.Point(441, 334)
         Me.GroupBox2.Name = "GroupBox2"
@@ -318,14 +387,34 @@ Partial Class EstatJustificacio
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Import subvencionat"
         '
+        'Label18
+        '
+        Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label18.Location = New System.Drawing.Point(302, 48)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(18, 20)
+        Me.Label18.TabIndex = 81
+        Me.Label18.Text = "€"
+        '
         'ImportSubvencionat
         '
-        Me.ImportSubvencionat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ImportSubvencionat.Location = New System.Drawing.Point(168, 41)
+        Me.ImportSubvencionat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ImportSubvencionat.Location = New System.Drawing.Point(151, 41)
         Me.ImportSubvencionat.Name = "ImportSubvencionat"
-        Me.ImportSubvencionat.ReadOnly = True
         Me.ImportSubvencionat.Size = New System.Drawing.Size(145, 33)
         Me.ImportSubvencionat.TabIndex = 0
+        Me.ImportSubvencionat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(22, 42)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(123, 30)
+        Me.Label12.TabIndex = 87
+        Me.Label12.Text = "Import que apareixerà" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "a la factura XML"
         '
         'EstatJustificacio
         '
@@ -395,4 +484,11 @@ Partial Class EstatJustificacio
     Friend WithEvents Btn_CreaFactura As Button
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ImportSubvencionat As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label12 As Label
 End Class
