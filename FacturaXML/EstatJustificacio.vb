@@ -11,8 +11,9 @@ Public Class EstatJustificacio
     Dim PercentatgeTeDada2 As Integer = 0
     Dim Progress As Integer
     Dim PercentatgeTeFactura As Integer = 0
+    Dim Subvencio As String
 
-    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer)
+    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer, SubvencioRebuda As String)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -21,8 +22,10 @@ Public Class EstatJustificacio
         IdEmpresa = IdEmpresaRebuda
         IdSolucio = IdSolucioRebuda
         IdTipusSolucio = IdTipusSolucioRebuda
+        Subvencio = SubvencioRebuda
         Empresa.Text = EmpresaRebuda
         Solucio.Text = SolucioRebuda
+        ImportSubvencionat.Text = Subvencio
 
         RebreDades()
     End Sub
@@ -45,7 +48,7 @@ Public Class EstatJustificacio
             TeDada1.Checked = lector.GetBoolean("Dada1")
             TeDada2.Checked = lector.GetBoolean("Dada2")
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
-            ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+            If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
 
         End If
         lector.Close()
@@ -126,6 +129,7 @@ Public Class EstatJustificacio
             MsgBox("L'estat de justificació ha sigut actualitzat", vbInformation, "Justificació")
             Me.Close()
         Catch ex As Exception
+            conexion.Close()
             MsgBox("No s'ha pogut actualitzar l'estat", vbCritical, "Justificació")
         End Try
 

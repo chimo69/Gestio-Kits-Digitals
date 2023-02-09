@@ -422,6 +422,7 @@ Public Class Contractes
         CB_DataPagamentIVA.Checked = False
         DataPagamentOK.Visible = False
 
+        InfoSubvencio.Clear()
         NoAcord.Clear()
         DiesCaducitat.Clear()
         DataCaducitat.Clear()
@@ -444,7 +445,7 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
-        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue)
+        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text)
         OpenSubFormDialog(EstatJustificacio)
         OmpleSolucions(idEmpresaSeleccionada)
         seleccionaFila(idSolucioSeleccionada, 2)
@@ -743,8 +744,10 @@ Public Class Contractes
     Private Sub CheckEstaJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEstaJustificat.CheckedChanged
         If CheckEstaJustificat.Checked = True Then
             verificat.Visible = True
+            CB_PrimerPagament.Enabled = True
         Else
             verificat.Visible = False
+            CB_PrimerPagament.Enabled = False
         End If
     End Sub
 
@@ -804,7 +807,7 @@ Public Class Contractes
             Dim RowBorrar As Integer = nom.Replace("Estat", "")
             Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
 
-            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, IdSolucio, CB_TipusSolucio.SelectedValue)
+            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, IdSolucio, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text)
 
             OpenSubFormDialog(EstatJustificacio)
             OmpleSolucions(idEmpresaSeleccionada)
@@ -1022,6 +1025,24 @@ Public Class Contractes
     Private Sub InfoVariableNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles InfoVariableNum.KeyPress
         Dim sep As Char = Convert.ToChar(Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator)
         If e.KeyChar = sep Then e.Handled = True
+    End Sub
+
+    Private Sub CB_PrimerPagament_CheckedChanged(sender As Object, e As EventArgs) Handles CB_PrimerPagament.CheckedChanged
+        If CB_PrimerPagament.Checked = True Then
+            Pagat1.Visible = True
+            CB_SegonPagament.Enabled = True
+        Else
+            Pagat1.Visible = False
+            CB_SegonPagament.Enabled = False
+        End If
+    End Sub
+
+    Private Sub CB_SegonPagament_CheckedChanged(sender As Object, e As EventArgs) Handles CB_SegonPagament.CheckedChanged
+        If CB_SegonPagament.Checked = True Then
+            Pagat2.Visible = True
+        Else
+            Pagat2.Visible = False
+        End If
     End Sub
 
     'Modifica els camps quan la selecció de solucio canvia

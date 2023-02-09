@@ -65,7 +65,6 @@ Partial Class Contractes
         Me.TitolEmpresa = New System.Windows.Forms.TextBox()
         Me.TitolSolucio = New System.Windows.Forms.TextBox()
         Me.CheckJustificat = New System.Windows.Forms.CheckBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.CheckEstaJustificat = New System.Windows.Forms.CheckBox()
         Me.Btn_EstatJustificacio = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
@@ -110,6 +109,10 @@ Partial Class Contractes
         Me.Label17 = New System.Windows.Forms.Label()
         Me.InfoSubvencio = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.CB_PrimerPagament = New System.Windows.Forms.CheckBox()
+        Me.CB_SegonPagament = New System.Windows.Forms.CheckBox()
+        Me.Pagat1 = New System.Windows.Forms.PictureBox()
+        Me.Pagat2 = New System.Windows.Forms.PictureBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,6 +124,8 @@ Partial Class Contractes
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.InfoVariableNum, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Pagat1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Pagat2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataEmpreses
@@ -430,8 +435,9 @@ Partial Class Contractes
         Me.NoAcord.Enabled = False
         Me.NoAcord.Location = New System.Drawing.Point(1139, 385)
         Me.NoAcord.Name = "NoAcord"
-        Me.NoAcord.Size = New System.Drawing.Size(200, 23)
+        Me.NoAcord.Size = New System.Drawing.Size(111, 23)
         Me.NoAcord.TabIndex = 12
+        Me.NoAcord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'DiesCaducitat
         '
@@ -543,25 +549,16 @@ Partial Class Contractes
         Me.CheckJustificat.Text = "Mostrar justificats"
         Me.CheckJustificat.UseVisualStyleBackColor = True
         '
-        'Label14
-        '
-        Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(1007, 640)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(58, 15)
-        Me.Label14.TabIndex = 39
-        Me.Label14.Text = "Justificat?"
-        '
         'CheckEstaJustificat
         '
         Me.CheckEstaJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckEstaJustificat.AutoSize = True
         Me.CheckEstaJustificat.Enabled = False
-        Me.CheckEstaJustificat.Location = New System.Drawing.Point(1139, 642)
+        Me.CheckEstaJustificat.Location = New System.Drawing.Point(1007, 631)
         Me.CheckEstaJustificat.Name = "CheckEstaJustificat"
-        Me.CheckEstaJustificat.Size = New System.Drawing.Size(15, 14)
+        Me.CheckEstaJustificat.Size = New System.Drawing.Size(72, 19)
         Me.CheckEstaJustificat.TabIndex = 17
+        Me.CheckEstaJustificat.Text = "Justificat"
         Me.CheckEstaJustificat.UseVisualStyleBackColor = True
         '
         'Btn_EstatJustificacio
@@ -578,7 +575,7 @@ Partial Class Contractes
         'ProgressBar1
         '
         Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(1007, 848)
+        Me.ProgressBar1.Location = New System.Drawing.Point(1007, 877)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(614, 40)
         Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -588,7 +585,7 @@ Partial Class Contractes
         '
         Me.Label15.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(1007, 830)
+        Me.Label15.Location = New System.Drawing.Point(1007, 859)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(146, 15)
         Me.Label15.TabIndex = 43
@@ -598,7 +595,7 @@ Partial Class Contractes
         '
         Me.TBObservacions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TBObservacions.Enabled = False
-        Me.TBObservacions.Location = New System.Drawing.Point(1007, 709)
+        Me.TBObservacions.Location = New System.Drawing.Point(1007, 738)
         Me.TBObservacions.Multiline = True
         Me.TBObservacions.Name = "TBObservacions"
         Me.TBObservacions.Size = New System.Drawing.Size(614, 111)
@@ -608,7 +605,7 @@ Partial Class Contractes
         '
         Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(1007, 691)
+        Me.Label16.Location = New System.Drawing.Point(1007, 717)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(78, 15)
         Me.Label16.TabIndex = 45
@@ -620,7 +617,7 @@ Partial Class Contractes
         Me.verificat.BackColor = System.Drawing.Color.Transparent
         Me.verificat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.verificat.Image = Global.FacturaXML.My.Resources.Resources.verificado
-        Me.verificat.Location = New System.Drawing.Point(1193, 631)
+        Me.verificat.Location = New System.Drawing.Point(1139, 646)
         Me.verificat.Name = "verificat"
         Me.verificat.Size = New System.Drawing.Size(57, 58)
         Me.verificat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1035,11 +1032,67 @@ Partial Class Contractes
         Me.Label18.TabIndex = 80
         Me.Label18.Text = "€"
         '
+        'CB_PrimerPagament
+        '
+        Me.CB_PrimerPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CB_PrimerPagament.AutoSize = True
+        Me.CB_PrimerPagament.Enabled = False
+        Me.CB_PrimerPagament.Location = New System.Drawing.Point(1007, 658)
+        Me.CB_PrimerPagament.Name = "CB_PrimerPagament"
+        Me.CB_PrimerPagament.Size = New System.Drawing.Size(118, 19)
+        Me.CB_PrimerPagament.TabIndex = 81
+        Me.CB_PrimerPagament.Text = "Primer pagament"
+        Me.CB_PrimerPagament.UseVisualStyleBackColor = True
+        '
+        'CB_SegonPagament
+        '
+        Me.CB_SegonPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CB_SegonPagament.AutoSize = True
+        Me.CB_SegonPagament.Enabled = False
+        Me.CB_SegonPagament.Location = New System.Drawing.Point(1007, 685)
+        Me.CB_SegonPagament.Name = "CB_SegonPagament"
+        Me.CB_SegonPagament.Size = New System.Drawing.Size(116, 19)
+        Me.CB_SegonPagament.TabIndex = 82
+        Me.CB_SegonPagament.Text = "Segon pagament"
+        Me.CB_SegonPagament.UseVisualStyleBackColor = True
+        '
+        'Pagat1
+        '
+        Me.Pagat1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Pagat1.BackColor = System.Drawing.Color.Transparent
+        Me.Pagat1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Pagat1.Image = Global.FacturaXML.My.Resources.Resources.verificado
+        Me.Pagat1.Location = New System.Drawing.Point(1202, 646)
+        Me.Pagat1.Name = "Pagat1"
+        Me.Pagat1.Size = New System.Drawing.Size(57, 58)
+        Me.Pagat1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Pagat1.TabIndex = 83
+        Me.Pagat1.TabStop = False
+        Me.Pagat1.Visible = False
+        '
+        'Pagat2
+        '
+        Me.Pagat2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Pagat2.BackColor = System.Drawing.Color.Transparent
+        Me.Pagat2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Pagat2.Image = Global.FacturaXML.My.Resources.Resources.verificado
+        Me.Pagat2.Location = New System.Drawing.Point(1265, 646)
+        Me.Pagat2.Name = "Pagat2"
+        Me.Pagat2.Size = New System.Drawing.Size(57, 58)
+        Me.Pagat2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Pagat2.TabIndex = 84
+        Me.Pagat2.TabStop = False
+        Me.Pagat2.Visible = False
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 1025)
+        Me.Controls.Add(Me.Pagat2)
+        Me.Controls.Add(Me.Pagat1)
+        Me.Controls.Add(Me.CB_SegonPagament)
+        Me.Controls.Add(Me.CB_PrimerPagament)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.InfoSubvencio)
         Me.Controls.Add(Me.Label17)
@@ -1078,7 +1131,6 @@ Partial Class Contractes
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Btn_EstatJustificacio)
         Me.Controls.Add(Me.CheckEstaJustificat)
-        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.CheckJustificat)
         Me.Controls.Add(Me.TitolSolucio)
         Me.Controls.Add(Me.TitolEmpresa)
@@ -1116,6 +1168,8 @@ Partial Class Contractes
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.InfoVariableNum, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Pagat1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Pagat2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1155,7 +1209,6 @@ Partial Class Contractes
     Friend WithEvents TitolEmpresa As TextBox
     Friend WithEvents TitolSolucio As TextBox
     Friend WithEvents CheckJustificat As CheckBox
-    Friend WithEvents Label14 As Label
     Friend WithEvents CheckEstaJustificat As CheckBox
     Friend WithEvents Btn_EstatJustificacio As Button
     Friend WithEvents ProgressBar1 As ProgressBar
@@ -1200,4 +1253,8 @@ Partial Class Contractes
     Friend WithEvents Label17 As Label
     Friend WithEvents InfoSubvencio As TextBox
     Friend WithEvents Label18 As Label
+    Friend WithEvents CB_PrimerPagament As CheckBox
+    Friend WithEvents CB_SegonPagament As CheckBox
+    Friend WithEvents Pagat1 As PictureBox
+    Friend WithEvents Pagat2 As PictureBox
 End Class

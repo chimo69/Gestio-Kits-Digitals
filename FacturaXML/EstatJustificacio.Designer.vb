@@ -55,9 +55,9 @@ Partial Class EstatJustificacio
         Me.Completat = New System.Windows.Forms.Label()
         Me.Btn_CreaFactura = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.ImportSubvencionat = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -387,6 +387,15 @@ Partial Class EstatJustificacio
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Import subvencionat"
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(22, 35)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(105, 45)
+        Me.Label12.TabIndex = 87
+        Me.Label12.Text = "Import subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "que apareixerà a la" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "factura XML"
+        '
         'Label18
         '
         Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -406,15 +415,6 @@ Partial Class EstatJustificacio
         Me.ImportSubvencionat.Size = New System.Drawing.Size(145, 33)
         Me.ImportSubvencionat.TabIndex = 0
         Me.ImportSubvencionat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(22, 42)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(123, 30)
-        Me.Label12.TabIndex = 87
-        Me.Label12.Text = "Import que apareixerà" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "a la factura XML"
         '
         'EstatJustificacio
         '
