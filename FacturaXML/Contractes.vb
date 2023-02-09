@@ -343,7 +343,9 @@ Public Class Contractes
                                           Solucions.DataFactura AS 'Dia factura',
                                           Solucions.DataPagament,
                                           Solucions.DataVenciment AS 'Dia venciment',                                          
-                                          Solucions.Justificat,                                              
+                                          Solucions.Justificat,
+                                          Solucions.PrimerPagament,
+                                          Solucions.SegonPagament,
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
                                           Solucions.Observacions,
@@ -363,7 +365,9 @@ Public Class Contractes
                                           Solucions.DataFactura AS 'Dia factura',
                                           Solucions.DataPagament,
                                           Solucions.DataVenciment AS 'Dia venciment',
-                                          Solucions.Justificat,                                              
+                                          Solucions.Justificat,
+                                          Solucions.PrimerPagament,
+                                          Solucions.SegonPagament,  
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
                                           Solucions.Observacions,
@@ -381,7 +385,7 @@ Public Class Contractes
 
                 If DT_Solucions.Rows.Count > 0 Then
                     DataSolucions.DataSource = DT_Solucions
-                    TitolSolucio.Text = "SELECCIONA UNA SOLUCIÓ"
+                    TitolSolucio.Text = "SELECCIONA SOLUCIÓ"
                 Else
                     DataSolucions.DataSource = Nothing
                     TitolSolucio.Text = "SENSE SOLUCIONS"
@@ -436,6 +440,8 @@ Public Class Contractes
         infoMax.Visible = False
         InfoVariable.Visible = False
         InfoVariableNum.Visible = False
+        CB_PrimerPagament.Checked = False
+        CB_SegonPagament.Checked = False
         EstaLaSolucioSeleccionada(False)
 
     End Sub
@@ -510,6 +516,8 @@ Public Class Contractes
             .Columns("DataAprovacio").Visible = False
             .Columns("DataPagament").Visible = False
             .Columns("Quantitat").Visible = False
+            .Columns("PrimerPagament").Visible = False
+            .Columns("SegonPagament").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -592,12 +600,14 @@ Public Class Contractes
                             DataPagament= " & StringDB(DataPagamentTxt) & ",
                             DataVenciment=" & StringDB(DataVencimentTxt) & ", 
                             Justificat=" & Justificat & ",
+                            PrimerPagament=" & CB_PrimerPagament.Checked & ",
+                            SegonPagament=" & CB_SegonPagament.Checked & ",
                             Observacions=" & StringDB(Observacions) & ",
                             Quantitat=" & InfoVariableNum.Value &
                             " WHERE Id=" & idSolucio
 
         Else
-            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataAprovacio,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,Observacions,Quantitat) VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataAprovacio,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataAprovacioTxt) & "," &
@@ -607,6 +617,8 @@ Public Class Contractes
                                  StringDB(DataVencimentTxt) & "," &
                                  idEmpresaSeleccionada & "," &
                                  Justificat & "," &
+                                 CB_PrimerPagament.Checked & "," &
+                                 CB_SegonPagament.Checked & "," &
                                  StringDB(Observacions) & "," &
                                  InfoVariableNum.Value & ")"
 
@@ -748,6 +760,8 @@ Public Class Contractes
         Else
             verificat.Visible = False
             CB_PrimerPagament.Enabled = False
+            CB_PrimerPagament.Checked = False
+            CB_SegonPagament.Checked = False
         End If
     End Sub
 
@@ -1034,6 +1048,7 @@ Public Class Contractes
         Else
             Pagat1.Visible = False
             CB_SegonPagament.Enabled = False
+            CB_SegonPagament.Checked = False
         End If
     End Sub
 
@@ -1106,6 +1121,9 @@ Public Class Contractes
         Else
             CheckEstaJustificat.Checked = False
         End If
+
+        CB_PrimerPagament.Checked = row.Cells("PrimerPagament").Value
+        CB_SegonPagament.Checked = row.Cells("SegonPagament").Value
 
         ProgressBar1.Value = row.Cells("%").Value
 
