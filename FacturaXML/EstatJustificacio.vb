@@ -120,7 +120,7 @@ Public Class EstatJustificacio
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & ",
                         Subvencio=" & ImportSubvencionat.Text & ",
-                        Factura=" & Factura.Text & "
+                        Factura=" & StringDB(Factura.Text) & "
                          WHERE iDSolucio=" & IdSolucio
             strCommand = New SQLiteCommand(Query, conexion)
 
