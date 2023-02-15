@@ -48,8 +48,8 @@ Public Class EstatJustificacio
             TeDada1.Checked = lector.GetBoolean("Dada1")
             TeDada2.Checked = lector.GetBoolean("Dada2")
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
+            Factura.Text = lector.GetString("Factura")
             If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
-
         End If
         lector.Close()
         conexion.Close()
@@ -119,7 +119,8 @@ Public Class EstatJustificacio
                         Dada2='" & TornaBoolean(TeDada2.Checked) & "',
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & ",
-                        Subvencio=" & ImportSubvencionat.Text & "                       
+                        Subvencio=" & ImportSubvencionat.Text & ",
+                        Factura=" & Factura.Text & "
                          WHERE iDSolucio=" & IdSolucio
             strCommand = New SQLiteCommand(Query, conexion)
 

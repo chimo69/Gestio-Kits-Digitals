@@ -58,6 +58,8 @@ Partial Class EstatJustificacio
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.ImportSubvencionat = New System.Windows.Forms.TextBox()
+        Me.Factura = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -189,7 +191,7 @@ Partial Class EstatJustificacio
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(439, 75)
+        Me.GroupBox1.Location = New System.Drawing.Point(439, 103)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(340, 250)
         Me.GroupBox1.TabIndex = 10
@@ -337,7 +339,7 @@ Partial Class EstatJustificacio
         '
         'Btn_guardar
         '
-        Me.Btn_guardar.Location = New System.Drawing.Point(439, 494)
+        Me.Btn_guardar.Location = New System.Drawing.Point(439, 529)
         Me.Btn_guardar.Name = "Btn_guardar"
         Me.Btn_guardar.Size = New System.Drawing.Size(342, 46)
         Me.Btn_guardar.TabIndex = 11
@@ -346,7 +348,7 @@ Partial Class EstatJustificacio
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(25, 494)
+        Me.ProgressBar1.Location = New System.Drawing.Point(25, 529)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(393, 46)
         Me.ProgressBar1.TabIndex = 12
@@ -358,7 +360,7 @@ Partial Class EstatJustificacio
         Me.Completat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Completat.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Completat.ForeColor = System.Drawing.Color.White
-        Me.Completat.Location = New System.Drawing.Point(548, 450)
+        Me.Completat.Location = New System.Drawing.Point(545, 484)
         Me.Completat.Name = "Completat"
         Me.Completat.Size = New System.Drawing.Size(134, 30)
         Me.Completat.TabIndex = 13
@@ -380,7 +382,7 @@ Partial Class EstatJustificacio
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.ImportSubvencionat)
-        Me.GroupBox2.Location = New System.Drawing.Point(441, 334)
+        Me.GroupBox2.Location = New System.Drawing.Point(439, 368)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(340, 100)
         Me.GroupBox2.TabIndex = 15
@@ -416,12 +418,30 @@ Partial Class EstatJustificacio
         Me.ImportSubvencionat.TabIndex = 0
         Me.ImportSubvencionat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'Factura
+        '
+        Me.Factura.Location = New System.Drawing.Point(571, 57)
+        Me.Factura.Name = "Factura"
+        Me.Factura.Size = New System.Drawing.Size(208, 23)
+        Me.Factura.TabIndex = 17
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(519, 65)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(46, 15)
+        Me.Label13.TabIndex = 16
+        Me.Label13.Text = "Factura"
+        '
         'EstatJustificacio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(808, 567)
+        Me.ClientSize = New System.Drawing.Size(808, 594)
+        Me.Controls.Add(Me.Factura)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Btn_CreaFactura)
         Me.Controls.Add(Me.Completat)
@@ -491,4 +511,6 @@ Partial Class EstatJustificacio
     Friend WithEvents Label7 As Label
     Friend WithEvents Label18 As Label
     Friend WithEvents Label12 As Label
+    Friend WithEvents Factura As TextBox
+    Friend WithEvents Label13 As Label
 End Class

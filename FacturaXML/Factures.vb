@@ -404,7 +404,8 @@ Public Class Factures
                                      Solucions.DataFactura,   
                                      Justificacions.TotalSolucio,
                                      Justificacions.Percentatge,
-                                     Justificacions.Subvencio 
+                                     Justificacions.Subvencio,
+                                     Justificacions.Factura 
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
@@ -420,6 +421,7 @@ Public Class Factures
                     FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
                     FacturaData.Text = Format(lector.GetString("DataFactura"), "Short Date")
                     FacturaImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+                    FacturaNumero.Text = lector.GetString("Factura")
 
                     If lector.GetValue("Percentatge") <> 100 Then
                         Vigila.Visible = True
@@ -456,6 +458,7 @@ Public Class Factures
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
         FacturaImportSubvencionat.Text = row.Item("Subvencio").ToString
+        FacturaNumero.Text = row.Item("Factura")
         If row.Item("DataFactura") <> "" Then
             FacturaData.Value = row.Item("DataFactura")
         Else
@@ -487,7 +490,8 @@ Public Class Factures
                                             Solucions.DataFactura,
                                             Justificacions.TotalSolucio,
                                             Justificacions.Percentatge,
-                                            Justificacions.Subvencio 
+                                            Justificacions.Subvencio,
+                                            Justificacions.Factura 
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
