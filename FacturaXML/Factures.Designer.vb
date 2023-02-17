@@ -79,11 +79,40 @@ Partial Class Factures
         Me.SobreFacturesXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SobreFacturesXMLToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Vigila = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CopiarDataCobrament = New System.Windows.Forms.Button()
+        Me.CopiarImportAbonat = New System.Windows.Forms.Button()
+        Me.CopiarImportFactura = New System.Windows.Forms.Button()
+        Me.CopiarNoFactura = New System.Windows.Forms.Button()
+        Me.CopiarDataFactura = New System.Windows.Forms.Button()
+        Me.CopiarNoAcord = New System.Windows.Forms.Button()
+        Me.CopiarNif = New System.Windows.Forms.Button()
+        Me.CopiarRaoSocial = New System.Windows.Forms.Button()
+        Me.TB_DataFactura = New System.Windows.Forms.TextBox()
+        Me.TB_DataCobrament = New System.Windows.Forms.TextBox()
+        Me.TB_Nif = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.TB_Rao = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TB_NoFactura = New System.Windows.Forms.TextBox()
+        Me.TB_NoAcord = New System.Windows.Forms.TextBox()
+        Me.TB_ImportFactura = New System.Windows.Forms.TextBox()
+        Me.TB_ImportAbonat = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -344,7 +373,7 @@ Partial Class Factures
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Location = New System.Drawing.Point(456, 129)
+        Me.GroupBox2.Location = New System.Drawing.Point(440, 129)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(388, 440)
         Me.GroupBox2.TabIndex = 1
@@ -492,7 +521,7 @@ Partial Class Factures
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
-        Me.PictureBox1.Location = New System.Drawing.Point(25, 37)
+        Me.PictureBox1.Location = New System.Drawing.Point(221, 27)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(388, 64)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -511,7 +540,7 @@ Partial Class Factures
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
-        Me.PictureBox2.Location = New System.Drawing.Point(461, 37)
+        Me.PictureBox2.Location = New System.Drawing.Point(636, 27)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(383, 64)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -524,7 +553,7 @@ Partial Class Factures
         Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuArxiu, Me.MenuEditar, Me.SobreFacturesXMLToolStripMenuItem})
         Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(871, 24)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(1200, 24)
         Me.MenuPrincipal.TabIndex = 19
         Me.MenuPrincipal.Text = "MenuStrip1"
         '
@@ -615,12 +644,343 @@ Partial Class Factures
         Me.Vigila.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Vigila.Visible = False
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CopiarDataCobrament)
+        Me.GroupBox3.Controls.Add(Me.CopiarImportAbonat)
+        Me.GroupBox3.Controls.Add(Me.CopiarImportFactura)
+        Me.GroupBox3.Controls.Add(Me.CopiarNoFactura)
+        Me.GroupBox3.Controls.Add(Me.CopiarDataFactura)
+        Me.GroupBox3.Controls.Add(Me.CopiarNoAcord)
+        Me.GroupBox3.Controls.Add(Me.CopiarNif)
+        Me.GroupBox3.Controls.Add(Me.CopiarRaoSocial)
+        Me.GroupBox3.Controls.Add(Me.TB_DataFactura)
+        Me.GroupBox3.Controls.Add(Me.TB_DataCobrament)
+        Me.GroupBox3.Controls.Add(Me.TB_Nif)
+        Me.GroupBox3.Controls.Add(Me.Label26)
+        Me.GroupBox3.Controls.Add(Me.TB_Rao)
+        Me.GroupBox3.Controls.Add(Me.Label25)
+        Me.GroupBox3.Controls.Add(Me.Label21)
+        Me.GroupBox3.Controls.Add(Me.TB_NoFactura)
+        Me.GroupBox3.Controls.Add(Me.TB_NoAcord)
+        Me.GroupBox3.Controls.Add(Me.TB_ImportFactura)
+        Me.GroupBox3.Controls.Add(Me.TB_ImportAbonat)
+        Me.GroupBox3.Controls.Add(Me.Label22)
+        Me.GroupBox3.Controls.Add(Me.Label23)
+        Me.GroupBox3.Controls.Add(Me.Label24)
+        Me.GroupBox3.Controls.Add(Me.Label27)
+        Me.GroupBox3.Controls.Add(Me.Label28)
+        Me.GroupBox3.Controls.Add(Me.Label29)
+        Me.GroupBox3.Controls.Add(Me.Label31)
+        Me.GroupBox3.Controls.Add(Me.Label32)
+        Me.GroupBox3.Location = New System.Drawing.Point(853, 130)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(329, 440)
+        Me.GroupBox3.TabIndex = 21
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Declaració responsable de pagament"
+        '
+        'CopiarDataCobrament
+        '
+        Me.CopiarDataCobrament.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarDataCobrament.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarDataCobrament.FlatAppearance.BorderSize = 0
+        Me.CopiarDataCobrament.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarDataCobrament.Location = New System.Drawing.Point(287, 374)
+        Me.CopiarDataCobrament.Name = "CopiarDataCobrament"
+        Me.CopiarDataCobrament.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarDataCobrament.TabIndex = 39
+        Me.CopiarDataCobrament.UseVisualStyleBackColor = True
+        '
+        'CopiarImportAbonat
+        '
+        Me.CopiarImportAbonat.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarImportAbonat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarImportAbonat.FlatAppearance.BorderSize = 0
+        Me.CopiarImportAbonat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarImportAbonat.Location = New System.Drawing.Point(287, 326)
+        Me.CopiarImportAbonat.Name = "CopiarImportAbonat"
+        Me.CopiarImportAbonat.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarImportAbonat.TabIndex = 38
+        Me.CopiarImportAbonat.UseVisualStyleBackColor = True
+        '
+        'CopiarImportFactura
+        '
+        Me.CopiarImportFactura.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarImportFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarImportFactura.FlatAppearance.BorderSize = 0
+        Me.CopiarImportFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarImportFactura.Location = New System.Drawing.Point(287, 278)
+        Me.CopiarImportFactura.Name = "CopiarImportFactura"
+        Me.CopiarImportFactura.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarImportFactura.TabIndex = 37
+        Me.CopiarImportFactura.UseVisualStyleBackColor = True
+        '
+        'CopiarNoFactura
+        '
+        Me.CopiarNoFactura.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarNoFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarNoFactura.FlatAppearance.BorderSize = 0
+        Me.CopiarNoFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarNoFactura.Location = New System.Drawing.Point(287, 230)
+        Me.CopiarNoFactura.Name = "CopiarNoFactura"
+        Me.CopiarNoFactura.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarNoFactura.TabIndex = 36
+        Me.CopiarNoFactura.UseVisualStyleBackColor = True
+        '
+        'CopiarDataFactura
+        '
+        Me.CopiarDataFactura.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarDataFactura.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarDataFactura.FlatAppearance.BorderSize = 0
+        Me.CopiarDataFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarDataFactura.Location = New System.Drawing.Point(287, 182)
+        Me.CopiarDataFactura.Name = "CopiarDataFactura"
+        Me.CopiarDataFactura.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarDataFactura.TabIndex = 35
+        Me.CopiarDataFactura.UseVisualStyleBackColor = True
+        '
+        'CopiarNoAcord
+        '
+        Me.CopiarNoAcord.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarNoAcord.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarNoAcord.FlatAppearance.BorderSize = 0
+        Me.CopiarNoAcord.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarNoAcord.Location = New System.Drawing.Point(287, 134)
+        Me.CopiarNoAcord.Name = "CopiarNoAcord"
+        Me.CopiarNoAcord.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarNoAcord.TabIndex = 34
+        Me.CopiarNoAcord.UseVisualStyleBackColor = True
+        '
+        'CopiarNif
+        '
+        Me.CopiarNif.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarNif.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarNif.FlatAppearance.BorderSize = 0
+        Me.CopiarNif.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarNif.Location = New System.Drawing.Point(287, 85)
+        Me.CopiarNif.Name = "CopiarNif"
+        Me.CopiarNif.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarNif.TabIndex = 33
+        Me.CopiarNif.UseVisualStyleBackColor = True
+        '
+        'CopiarRaoSocial
+        '
+        Me.CopiarRaoSocial.BackgroundImage = Global.FacturaXML.My.Resources.Resources.icono_copiar
+        Me.CopiarRaoSocial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CopiarRaoSocial.FlatAppearance.BorderSize = 0
+        Me.CopiarRaoSocial.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CopiarRaoSocial.Location = New System.Drawing.Point(287, 38)
+        Me.CopiarRaoSocial.Name = "CopiarRaoSocial"
+        Me.CopiarRaoSocial.Size = New System.Drawing.Size(23, 23)
+        Me.CopiarRaoSocial.TabIndex = 32
+        Me.CopiarRaoSocial.UseVisualStyleBackColor = True
+        '
+        'TB_DataFactura
+        '
+        Me.TB_DataFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_DataFactura.Enabled = False
+        Me.TB_DataFactura.Location = New System.Drawing.Point(130, 182)
+        Me.TB_DataFactura.Name = "TB_DataFactura"
+        Me.TB_DataFactura.ReadOnly = True
+        Me.TB_DataFactura.Size = New System.Drawing.Size(151, 23)
+        Me.TB_DataFactura.TabIndex = 22
+        Me.TB_DataFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_DataCobrament
+        '
+        Me.TB_DataCobrament.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_DataCobrament.Enabled = False
+        Me.TB_DataCobrament.Location = New System.Drawing.Point(130, 374)
+        Me.TB_DataCobrament.Name = "TB_DataCobrament"
+        Me.TB_DataCobrament.ReadOnly = True
+        Me.TB_DataCobrament.Size = New System.Drawing.Size(151, 23)
+        Me.TB_DataCobrament.TabIndex = 21
+        Me.TB_DataCobrament.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_Nif
+        '
+        Me.TB_Nif.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_Nif.Enabled = False
+        Me.TB_Nif.Location = New System.Drawing.Point(189, 86)
+        Me.TB_Nif.Name = "TB_Nif"
+        Me.TB_Nif.ReadOnly = True
+        Me.TB_Nif.Size = New System.Drawing.Size(92, 23)
+        Me.TB_Nif.TabIndex = 20
+        Me.TB_Nif.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label26.Location = New System.Drawing.Point(30, 90)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(83, 15)
+        Me.Label26.TabIndex = 19
+        Me.Label26.Text = "NIF Beneficiari"
+        '
+        'TB_Rao
+        '
+        Me.TB_Rao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_Rao.Enabled = False
+        Me.TB_Rao.Location = New System.Drawing.Point(154, 38)
+        Me.TB_Rao.Name = "TB_Rao"
+        Me.TB_Rao.ReadOnly = True
+        Me.TB_Rao.Size = New System.Drawing.Size(127, 23)
+        Me.TB_Rao.TabIndex = 16
+        Me.TB_Rao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label25.Location = New System.Drawing.Point(30, 41)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(118, 15)
+        Me.Label25.TabIndex = 17
+        Me.Label25.Text = "Raó social Beneficiari"
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label21.Location = New System.Drawing.Point(30, 384)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(92, 15)
+        Me.Label21.TabIndex = 15
+        Me.Label21.Text = "Data cobrament"
+        '
+        'TB_NoFactura
+        '
+        Me.TB_NoFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_NoFactura.Enabled = False
+        Me.TB_NoFactura.Location = New System.Drawing.Point(189, 230)
+        Me.TB_NoFactura.Name = "TB_NoFactura"
+        Me.TB_NoFactura.ReadOnly = True
+        Me.TB_NoFactura.Size = New System.Drawing.Size(92, 23)
+        Me.TB_NoFactura.TabIndex = 1
+        Me.TB_NoFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_NoAcord
+        '
+        Me.TB_NoAcord.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_NoAcord.Enabled = False
+        Me.TB_NoAcord.Location = New System.Drawing.Point(189, 134)
+        Me.TB_NoAcord.Name = "TB_NoAcord"
+        Me.TB_NoAcord.ReadOnly = True
+        Me.TB_NoAcord.Size = New System.Drawing.Size(92, 23)
+        Me.TB_NoAcord.TabIndex = 2
+        Me.TB_NoAcord.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_ImportFactura
+        '
+        Me.TB_ImportFactura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_ImportFactura.Enabled = False
+        Me.TB_ImportFactura.Location = New System.Drawing.Point(130, 278)
+        Me.TB_ImportFactura.Name = "TB_ImportFactura"
+        Me.TB_ImportFactura.ReadOnly = True
+        Me.TB_ImportFactura.Size = New System.Drawing.Size(151, 23)
+        Me.TB_ImportFactura.TabIndex = 3
+        Me.TB_ImportFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_ImportAbonat
+        '
+        Me.TB_ImportAbonat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.TB_ImportAbonat.Enabled = False
+        Me.TB_ImportAbonat.Location = New System.Drawing.Point(130, 326)
+        Me.TB_ImportAbonat.Name = "TB_ImportAbonat"
+        Me.TB_ImportAbonat.ReadOnly = True
+        Me.TB_ImportAbonat.Size = New System.Drawing.Size(151, 23)
+        Me.TB_ImportAbonat.TabIndex = 4
+        Me.TB_ImportAbonat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label22.Location = New System.Drawing.Point(30, 139)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(56, 15)
+        Me.Label22.TabIndex = 13
+        Me.Label22.Text = "Nº Acord"
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label23.Location = New System.Drawing.Point(30, 188)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(71, 15)
+        Me.Label23.TabIndex = 11
+        Me.Label23.Text = "Data factura"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label24.Location = New System.Drawing.Point(30, 286)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(83, 15)
+        Me.Label24.TabIndex = 9
+        Me.Label24.Text = "Import factura"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label27.Location = New System.Drawing.Point(27, -134)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(76, 15)
+        Me.Label27.TabIndex = 2
+        Me.Label27.Text = "Tipus solució"
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label28.Location = New System.Drawing.Point(30, 237)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(63, 15)
+        Me.Label28.TabIndex = 8
+        Me.Label28.Text = "Nº Factura"
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label29.Location = New System.Drawing.Point(27, -89)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(56, 15)
+        Me.Label29.TabIndex = 3
+        Me.Label29.Text = "Nº Acord"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label31.Location = New System.Drawing.Point(27, -44)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(72, 15)
+        Me.Label31.TabIndex = 5
+        Me.Label31.Text = "Cost solució"
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label32.Location = New System.Drawing.Point(30, 335)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(83, 15)
+        Me.Label32.TabIndex = 6
+        Me.Label32.Text = "Import abonat"
+        '
         'Factures
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(871, 582)
+        Me.ClientSize = New System.Drawing.Size(1200, 582)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Vigila)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Btn_Visualitzar)
@@ -643,6 +1003,8 @@ Partial Class Factures
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuPrincipal.ResumeLayout(False)
         Me.MenuPrincipal.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -706,4 +1068,32 @@ Partial Class Factures
     Friend WithEvents Label20 As Label
     Friend WithEvents CB_Solucions As ComboBox
     Friend WithEvents Vigila As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents TB_DataFactura As TextBox
+    Friend WithEvents TB_DataCobrament As TextBox
+    Friend WithEvents TB_Nif As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents TB_Rao As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents TB_NoFactura As TextBox
+    Friend WithEvents TB_NoAcord As TextBox
+    Friend WithEvents TB_ImportFactura As TextBox
+    Friend WithEvents TB_ImportAbonat As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label32 As Label
+    Friend WithEvents CopiarRaoSocial As Button
+    Friend WithEvents CopiarDataCobrament As Button
+    Friend WithEvents CopiarImportAbonat As Button
+    Friend WithEvents CopiarImportFactura As Button
+    Friend WithEvents CopiarNoFactura As Button
+    Friend WithEvents CopiarDataFactura As Button
+    Friend WithEvents CopiarNoAcord As Button
+    Friend WithEvents CopiarNif As Button
 End Class

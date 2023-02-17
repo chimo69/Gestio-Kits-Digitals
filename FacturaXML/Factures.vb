@@ -46,6 +46,7 @@ Public Class Factures
             FacturaImportIVA.Text = "0"
         End If
 
+        TB_ImportFactura.Text = FacturaImportSolucio.Text
     End Sub
     'Prepara l'arxiu per a ser guardat o mostrat
     Private Sub PreparaArxiu()
@@ -277,6 +278,9 @@ Public Class Factures
                         End If
                     Next
                     CB_Solucions.Text = "Selecciona solució"
+                    TB_DataCobrament.Clear()
+                    TB_DataFactura.Clear()
+                    FacturaData.Value = Date.Now
                 End If
                 If v = 1 Or v = 3 Then
                     For Each controlText As Windows.Forms.Control In Me.GroupBox1.Controls
@@ -288,6 +292,7 @@ Public Class Factures
                 End If
 
                 FacturaSolucio.Text = ""
+
             End If
         Next
 
@@ -401,7 +406,8 @@ Public Class Factures
                                      Solucions.IdEmpresa,
                                      TipusSolucions.Nom,
                                      Solucions.Contracte,
-                                     Solucions.DataFactura,   
+                                     Solucions.DataFactura,
+                                     Solucions.DataPagament,
                                      Justificacions.TotalSolucio,
                                      Justificacions.Percentatge,
                                      Justificacions.Subvencio,
@@ -420,6 +426,7 @@ Public Class Factures
                     FacturaSolucio.Text = lector.GetString("Nom")
                     FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
                     FacturaData.Text = Format(lector.GetString("DataFactura"), "Short Date")
+                    TB_DataCobrament.Text = Format(lector.GetString("DataPagament"), "Short Date")
                     FacturaImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
                     FacturaNumero.Text = lector.GetString("Factura")
 
@@ -459,6 +466,8 @@ Public Class Factures
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
         FacturaImportSubvencionat.Text = row.Item("Subvencio").ToString
         FacturaNumero.Text = row.Item("Factura")
+        TB_DataCobrament.Text = Format(row.Item("DataPagament"), "short date")
+
         If row.Item("DataFactura") <> "" Then
             FacturaData.Value = row.Item("DataFactura")
         Else
@@ -488,6 +497,7 @@ Public Class Factures
                                             TipusSolucions.Nom,
                                             Solucions.Contracte,
                                             Solucions.DataFactura,
+                                            Solucions.DataPagament,
                                             Justificacions.TotalSolucio,
                                             Justificacions.Percentatge,
                                             Justificacions.Subvencio,
@@ -511,4 +521,62 @@ Public Class Factures
 
     End Sub
 
+    Private Sub EmpresaNom_TextChanged(sender As Object, e As EventArgs) Handles EmpresaNom.TextChanged
+        TB_Rao.Text = EmpresaNom.Text
+    End Sub
+
+    Private Sub EmpresaNif_TextChanged(sender As Object, e As EventArgs) Handles EmpresaNif.TextChanged
+        TB_Nif.Text = EmpresaNif.Text
+    End Sub
+
+    Private Sub CopiarRaoSocial_Click(sender As Object, e As EventArgs) Handles CopiarRaoSocial.Click
+        If TB_Rao.Text <> "" Then My.Computer.Clipboard.SetText(TB_Rao.Text)
+    End Sub
+
+    Private Sub CopiarNif_Click(sender As Object, e As EventArgs) Handles CopiarNif.Click
+        If TB_Nif.Text <> "" Then My.Computer.Clipboard.SetText(TB_Nif.Text)
+    End Sub
+
+    Private Sub CopiarNoAcord_Click(sender As Object, e As EventArgs) Handles CopiarNoAcord.Click
+        If TB_NoAcord.Text <> "" Then My.Computer.Clipboard.SetText(TB_NoAcord.Text)
+    End Sub
+
+    Private Sub CopiarDataFactura_Click(sender As Object, e As EventArgs) Handles CopiarDataFactura.Click
+        If TB_DataFactura.Text <> "" Then My.Computer.Clipboard.SetText(TB_DataFactura.Text)
+    End Sub
+
+    Private Sub CopiarNoFactura_Click(sender As Object, e As EventArgs) Handles CopiarNoFactura.Click
+        If TB_NoFactura.Text <> "" Then My.Computer.Clipboard.SetText(TB_NoFactura.Text)
+    End Sub
+
+    Private Sub CopiarImportFactura_Click(sender As Object, e As EventArgs) Handles CopiarImportFactura.Click
+        If TB_ImportFactura.Text <> "" Then My.Computer.Clipboard.SetText(TB_ImportFactura.Text)
+    End Sub
+
+    Private Sub CopiarImportAbonat_Click(sender As Object, e As EventArgs) Handles CopiarImportAbonat.Click
+        If TB_ImportAbonat.Text <> "" Then My.Computer.Clipboard.SetText(TB_ImportAbonat.Text)
+    End Sub
+
+    Private Sub CopiarDataCobrament_Click(sender As Object, e As EventArgs) Handles CopiarDataCobrament.Click
+        If TB_DataCobrament.Text <> "" Then My.Computer.Clipboard.SetText(TB_DataCobrament.Text)
+    End Sub
+
+    Private Sub FacturaAcord_TextChanged(sender As Object, e As EventArgs) Handles FacturaAcord.TextChanged
+        TB_NoAcord.Text = FacturaAcord.Text
+    End Sub
+
+    Private Sub FacturaData_ValueChanged(sender As Object, e As EventArgs) Handles FacturaData.ValueChanged
+        TB_DataFactura.Text = Format(FacturaData.Value.Date, "dd/MM/yyyy")
+    End Sub
+
+    Private Sub FacturaNumero_TextChanged(sender As Object, e As EventArgs) Handles FacturaNumero.TextChanged
+        TB_NoFactura.Text = FacturaNumero.Text
+    End Sub
+
+    Private Sub FacturaImportIVA_TextChanged(sender As Object, e As EventArgs) Handles FacturaImportIVA.TextChanged
+        TB_ImportAbonat.Text = FacturaImportIVA.Text
+    End Sub
+    Private Sub animacioText(ByVal sender As System.Object, ByVal e As System.EventArgs) 
+
+    End Sub
 End Class

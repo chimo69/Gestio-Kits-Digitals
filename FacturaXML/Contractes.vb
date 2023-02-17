@@ -686,7 +686,7 @@ Public Class Contractes
             End If
             lector.Close()
 
-            Query = "INSERT INTO Justificacions (IdSolucio) VALUES (" & id & ")"
+            Query = "INSERT INTO Justificacions (IdSolucio,Subvencio) VALUES (" & id & "," & InfoSubvencio.Text & ")"
 
             strCommand = New SQLiteCommand(Query, conexion)
             strCommand.ExecuteNonQuery()
