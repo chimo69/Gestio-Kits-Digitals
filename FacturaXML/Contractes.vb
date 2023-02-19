@@ -348,6 +348,7 @@ Public Class Contractes
                                           Solucions.SegonPagament,
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
+                                          Justificacions.Estat,
                                           Solucions.Observacions,
                                           Solucions.Quantitat   
                                           FROM Solucions
@@ -370,6 +371,7 @@ Public Class Contractes
                                           Solucions.SegonPagament,  
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
                                           Justificacions.Percentatge AS '%',
+                                          Justificacions.Estat,
                                           Solucions.Observacions,
                                           Solucions.Quantitat 
                                           FROM Solucions
@@ -443,6 +445,22 @@ Public Class Contractes
         CB_PrimerPagament.Checked = False
         CB_SegonPagament.Checked = False
         EstaLaSolucioSeleccionada(False)
+
+        ' Formatejem estats
+        TB_Proces0.Enabled = False
+        TB_Proces0.BackColor = SystemColors.Control
+        TB_Proces1.Enabled = False
+        TB_Proces1.BackColor = SystemColors.Control
+        TB_Proces2.Enabled = False
+        TB_Proces2.BackColor = SystemColors.Control
+        TB_Proces3.Enabled = False
+        TB_Proces3.BackColor = SystemColors.Control
+        TB_Proces4.Enabled = False
+        TB_Proces4.BackColor = SystemColors.Control
+        TB_Proces5.Enabled = False
+        TB_Proces5.BackColor = SystemColors.Control
+        TB_Proces6.Enabled = False
+        TB_Proces6.BackColor = SystemColors.Control
 
     End Sub
 
@@ -518,6 +536,7 @@ Public Class Contractes
             .Columns("Quantitat").Visible = False
             .Columns("PrimerPagament").Visible = False
             .Columns("SegonPagament").Visible = False
+            .Columns("Estat").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -1169,6 +1188,46 @@ Public Class Contractes
         Else
             DiesCaducitat.Text = "Caducat"
         End If
+
+        ' Formatejem estats
+        TB_Proces0.Enabled = False
+        TB_Proces0.BackColor = SystemColors.Control
+        TB_Proces1.Enabled = False
+        TB_Proces1.BackColor = SystemColors.Control
+        TB_Proces2.Enabled = False
+        TB_Proces2.BackColor = SystemColors.Control
+        TB_Proces3.Enabled = False
+        TB_Proces3.BackColor = SystemColors.Control
+        TB_Proces4.Enabled = False
+        TB_Proces4.BackColor = SystemColors.Control
+        TB_Proces5.Enabled = False
+        TB_Proces5.BackColor = SystemColors.Control
+        TB_Proces6.Enabled = False
+        TB_Proces6.BackColor = SystemColors.Control
+
+        Select Case row.Cells("Estat").Value
+            Case 0
+                TB_Proces0.Enabled = True
+                TB_Proces0.BackColor = verdClar
+            Case 1
+                TB_Proces1.Enabled = True
+                TB_Proces1.BackColor = verdClar
+            Case 2
+                TB_Proces2.Enabled = True
+                TB_Proces2.BackColor = verdClar
+            Case 3
+                TB_Proces3.Enabled = True
+                TB_Proces3.BackColor = verdClar
+            Case 4
+                TB_Proces4.Enabled = True
+                TB_Proces4.BackColor = verdClar
+            Case 5
+                TB_Proces5.Enabled = True
+                TB_Proces5.BackColor = verdClar
+            Case 6
+                TB_Proces6.Enabled = True
+                TB_Proces6.BackColor = verdClar
+        End Select
 
         EstaLaSolucioSeleccionada(True)
     End Sub

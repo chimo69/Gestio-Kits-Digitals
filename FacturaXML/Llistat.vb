@@ -76,22 +76,22 @@ Public Class Llistat
             .ClearSelection()
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
-        .Columns("IdTipusSolucio").Visible = False
-        .Columns("Justificat").Visible = False
-        .Columns("TWord").Visible = False
-        .Columns("TComp. Pagament").Visible = False
-        .Columns("TXML").Visible = False
-        .Columns("TFabricant Solució").Visible = False
-        .Columns("TD1").Visible = False
-        .Columns("TD2").Visible = False
+            .Columns("IdTipusSolucio").Visible = False
+            .Columns("Justificat").Visible = False
+            .Columns("TWord").Visible = False
+            .Columns("TComp. Pagament").Visible = False
+            .Columns("TXML").Visible = False
+            .Columns("TFabricant Solució").Visible = False
+            .Columns("TD1").Visible = False
+            .Columns("TD2").Visible = False
             .Columns("Data contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data pagament").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Estat justificació").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+            .Columns("Estat").DefaultCellStyle.WrapMode = DataGridViewTriState.True
 
             .Columns.Add(imgVerificat)
             .Columns.Add(imgWord)
@@ -218,7 +218,6 @@ Public Class Llistat
             .Columns("Data factura").Width = 80
             .Columns("Data pagament").Width = 80
             .Columns("Data venciment").Width = 80
-            .Columns("Estat justificació").Width = 50
             .Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
@@ -304,7 +303,7 @@ Public Class Llistat
                           strftime('%d-%m-%Y',Solucions.DataPagament) AS 'Data pagament',  
                           strftime('%d-%m-%Y',Solucions.DataVenciment) AS 'Data venciment',
                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
-                          Justificacions.Percentatge AS 'Estat justificació',                         
+                          TipusEstats.NomEstat AS 'Estat',                         
                           Solucions.Justificat,
                           Solucions.Observacions,
                           TeWord As 'TWord',
@@ -316,7 +315,8 @@ Public Class Llistat
                           FROM Solucions
                           INNER JOIN Empreses ON Solucions.idEmpresa=Empreses.Id
                           INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
-                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio 
+                          INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio
+                          INNER JOIN TipusEstats ON Justificacions.Estat=TipusEstats.id
                           WHERE (Solucions.Contracte like '%" & contracte.Text & "%')" & SqlJustificats & " AND (Empreses.Nom like '%" & nomEmpresa.Text & "%')" & SqlFiltre & "  
                           ORDER BY Solucions.DataVenciment ASC"
 

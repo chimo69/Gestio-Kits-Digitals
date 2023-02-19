@@ -3,6 +3,7 @@
     Public taronja As Color = Color.FromArgb(255, 197, 128)
     Public vermell As Color = Color.FromArgb(255, 128, 128)
     Public verd As Color = Color.FromArgb(164, 255, 150)
+    Public verdClar As Color = Color.FromArgb(192, 255, 192)
     Public groc As Color = Color.FromArgb(252, 255, 168)
 
     'Sustitueix cometes per cometes dobles per evitar errors

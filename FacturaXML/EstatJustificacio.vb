@@ -50,6 +50,23 @@ Public Class EstatJustificacio
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
             Factura.Text = lector.GetString("Factura")
             If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+
+            Select Case (lector.GetValue("Estat"))
+                Case 0
+                    RB_Proces0.Checked = True
+                Case 1
+                    RB_Proces1.Checked = True
+                Case 2
+                    RB_Proces2.Checked = True
+                Case 3
+                    RB_Proces3.Checked = True
+                Case 4
+                    RB_Proces4.Checked = True
+                Case 5
+                    RB_Proces5.Checked = True
+                Case 6
+                    RB_Proces6.Checked = True
+            End Select
         End If
         lector.Close()
         conexion.Close()
@@ -108,6 +125,15 @@ Public Class EstatJustificacio
         Dim conexion As New SQLiteConnection(cadena)
         Dim Query As String
         Dim strCommand As SQLiteCommand
+        Dim estat As Integer
+
+        If RB_Proces0.Checked = True Then estat = 0
+        If RB_Proces1.Checked = True Then estat = 1
+        If RB_Proces2.Checked = True Then estat = 2
+        If RB_Proces3.Checked = True Then estat = 3
+        If RB_Proces4.Checked = True Then estat = 4
+        If RB_Proces5.Checked = True Then estat = 5
+        If RB_Proces6.Checked = True Then estat = 6
 
         Try
             Query = "UPDATE Justificacions SET
@@ -120,7 +146,8 @@ Public Class EstatJustificacio
                         TotalSolucio=" & CDbl(TotalSolucio.Text) & ",
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & ",
                         Subvencio=" & ImportSubvencionat.Text & ",
-                        Factura=" & StringDB(Factura.Text) & "
+                        Factura=" & StringDB(Factura.Text) & ",
+                        Estat=" & estat & "
                          WHERE iDSolucio=" & IdSolucio
             strCommand = New SQLiteCommand(Query, conexion)
 

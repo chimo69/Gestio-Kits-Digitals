@@ -60,10 +60,19 @@ Partial Class EstatJustificacio
         Me.ImportSubvencionat = New System.Windows.Forms.TextBox()
         Me.Factura = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.RB_Proces0 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces6 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces5 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces4 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces3 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces2 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces1 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -339,18 +348,18 @@ Partial Class EstatJustificacio
         '
         'Btn_guardar
         '
-        Me.Btn_guardar.Location = New System.Drawing.Point(439, 529)
+        Me.Btn_guardar.Location = New System.Drawing.Point(796, 368)
         Me.Btn_guardar.Name = "Btn_guardar"
-        Me.Btn_guardar.Size = New System.Drawing.Size(342, 46)
+        Me.Btn_guardar.Size = New System.Drawing.Size(268, 91)
         Me.Btn_guardar.TabIndex = 11
         Me.Btn_guardar.Text = "Guardar"
         Me.Btn_guardar.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(25, 529)
+        Me.ProgressBar1.Location = New System.Drawing.Point(25, 430)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(393, 46)
+        Me.ProgressBar1.Size = New System.Drawing.Size(393, 29)
         Me.ProgressBar1.TabIndex = 12
         '
         'Completat
@@ -360,11 +369,11 @@ Partial Class EstatJustificacio
         Me.Completat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Completat.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Completat.ForeColor = System.Drawing.Color.White
-        Me.Completat.Location = New System.Drawing.Point(545, 484)
+        Me.Completat.Location = New System.Drawing.Point(847, 25)
         Me.Completat.Name = "Completat"
-        Me.Completat.Size = New System.Drawing.Size(134, 30)
+        Me.Completat.Size = New System.Drawing.Size(182, 60)
         Me.Completat.TabIndex = 13
-        Me.Completat.Text = "COMPLETAT"
+        Me.Completat.Text = "DOCUMENTACIÓ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "COMPLETADA"
         Me.Completat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Completat.Visible = False
         '
@@ -382,7 +391,7 @@ Partial Class EstatJustificacio
         Me.GroupBox2.Controls.Add(Me.Label12)
         Me.GroupBox2.Controls.Add(Me.Label18)
         Me.GroupBox2.Controls.Add(Me.ImportSubvencionat)
-        Me.GroupBox2.Location = New System.Drawing.Point(439, 368)
+        Me.GroupBox2.Location = New System.Drawing.Point(439, 359)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(340, 100)
         Me.GroupBox2.TabIndex = 15
@@ -434,12 +443,106 @@ Partial Class EstatJustificacio
         Me.Label13.TabIndex = 16
         Me.Label13.Text = "Factura"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.RB_Proces0)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces6)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces5)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces4)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces3)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces2)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces1)
+        Me.GroupBox3.Location = New System.Drawing.Point(796, 103)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(268, 250)
+        Me.GroupBox3.TabIndex = 18
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Procés de justificació"
+        '
+        'RB_Proces0
+        '
+        Me.RB_Proces0.AutoSize = True
+        Me.RB_Proces0.Location = New System.Drawing.Point(17, 31)
+        Me.RB_Proces0.Name = "RB_Proces0"
+        Me.RB_Proces0.Size = New System.Drawing.Size(156, 19)
+        Me.RB_Proces0.TabIndex = 6
+        Me.RB_Proces0.TabStop = True
+        Me.RB_Proces0.Text = "Preparant documentació"
+        Me.RB_Proces0.UseVisualStyleBackColor = True
+        '
+        'RB_Proces6
+        '
+        Me.RB_Proces6.AutoSize = True
+        Me.RB_Proces6.Location = New System.Drawing.Point(17, 176)
+        Me.RB_Proces6.Name = "RB_Proces6"
+        Me.RB_Proces6.Size = New System.Drawing.Size(64, 19)
+        Me.RB_Proces6.TabIndex = 5
+        Me.RB_Proces6.TabStop = True
+        Me.RB_Proces6.Text = "Pagada"
+        Me.RB_Proces6.UseVisualStyleBackColor = True
+        '
+        'RB_Proces5
+        '
+        Me.RB_Proces5.AutoSize = True
+        Me.RB_Proces5.Location = New System.Drawing.Point(17, 152)
+        Me.RB_Proces5.Name = "RB_Proces5"
+        Me.RB_Proces5.Size = New System.Drawing.Size(146, 19)
+        Me.RB_Proces5.TabIndex = 4
+        Me.RB_Proces5.TabStop = True
+        Me.RB_Proces5.Text = "Validada per pagament"
+        Me.RB_Proces5.UseVisualStyleBackColor = True
+        '
+        'RB_Proces4
+        '
+        Me.RB_Proces4.AutoSize = True
+        Me.RB_Proces4.Location = New System.Drawing.Point(17, 128)
+        Me.RB_Proces4.Name = "RB_Proces4"
+        Me.RB_Proces4.Size = New System.Drawing.Size(149, 19)
+        Me.RB_Proces4.TabIndex = 3
+        Me.RB_Proces4.TabStop = True
+        Me.RB_Proces4.Text = "Termini d'esmena obert"
+        Me.RB_Proces4.UseVisualStyleBackColor = True
+        '
+        'RB_Proces3
+        '
+        Me.RB_Proces3.AutoSize = True
+        Me.RB_Proces3.Location = New System.Drawing.Point(17, 104)
+        Me.RB_Proces3.Name = "RB_Proces3"
+        Me.RB_Proces3.Size = New System.Drawing.Size(83, 19)
+        Me.RB_Proces3.TabIndex = 2
+        Me.RB_Proces3.TabStop = True
+        Me.RB_Proces3.Text = "Presentada"
+        Me.RB_Proces3.UseVisualStyleBackColor = True
+        '
+        'RB_Proces2
+        '
+        Me.RB_Proces2.AutoSize = True
+        Me.RB_Proces2.Location = New System.Drawing.Point(17, 80)
+        Me.RB_Proces2.Name = "RB_Proces2"
+        Me.RB_Proces2.Size = New System.Drawing.Size(77, 19)
+        Me.RB_Proces2.TabIndex = 1
+        Me.RB_Proces2.TabStop = True
+        Me.RB_Proces2.Text = "Esborrany"
+        Me.RB_Proces2.UseVisualStyleBackColor = True
+        '
+        'RB_Proces1
+        '
+        Me.RB_Proces1.AutoSize = True
+        Me.RB_Proces1.Location = New System.Drawing.Point(17, 56)
+        Me.RB_Proces1.Name = "RB_Proces1"
+        Me.RB_Proces1.Size = New System.Drawing.Size(66, 19)
+        Me.RB_Proces1.TabIndex = 0
+        Me.RB_Proces1.TabStop = True
+        Me.RB_Proces1.Text = "Enviada"
+        Me.RB_Proces1.UseVisualStyleBackColor = True
+        '
         'EstatJustificacio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(808, 594)
+        Me.ClientSize = New System.Drawing.Size(1076, 478)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Factura)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.GroupBox2)
@@ -471,6 +574,8 @@ Partial Class EstatJustificacio
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -513,4 +618,12 @@ Partial Class EstatJustificacio
     Friend WithEvents Label12 As Label
     Friend WithEvents Factura As TextBox
     Friend WithEvents Label13 As Label
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents RB_Proces5 As RadioButton
+    Friend WithEvents RB_Proces4 As RadioButton
+    Friend WithEvents RB_Proces3 As RadioButton
+    Friend WithEvents RB_Proces2 As RadioButton
+    Friend WithEvents RB_Proces1 As RadioButton
+    Friend WithEvents RB_Proces6 As RadioButton
+    Friend WithEvents RB_Proces0 As RadioButton
 End Class
