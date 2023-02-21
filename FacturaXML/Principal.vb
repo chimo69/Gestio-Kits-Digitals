@@ -86,4 +86,9 @@ Public Class Principal
     Private Sub EspacioDigitalizadorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EspacioDigitalizadorToolStripMenuItem.Click
         Process.Start(New ProcessStartInfo("https://portal.gestion.sedepkd.red.gob.es/portal/espacioAD") With {.UseShellExecute = True})
     End Sub
+
+    Private Sub Btn_Extres_Click(sender As Object, e As EventArgs) Handles Btn_Extres.Click
+        Dim Extres As New Extras
+        OpenSubForm(Extres)
+    End Sub
 End Class

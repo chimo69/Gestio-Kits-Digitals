@@ -50,6 +50,7 @@ Partial Class Principal
         Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.Btn_Extres = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
@@ -297,12 +298,22 @@ Partial Class Principal
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "Espacio digitalizador"
         '
+        'Btn_Extres
+        '
+        Me.Btn_Extres.Location = New System.Drawing.Point(92, 443)
+        Me.Btn_Extres.Name = "Btn_Extres"
+        Me.Btn_Extres.Size = New System.Drawing.Size(75, 23)
+        Me.Btn_Extres.TabIndex = 29
+        Me.Btn_Extres.Text = "Extres"
+        Me.Btn_Extres.UseVisualStyleBackColor = True
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(769, 491)
+        Me.Controls.Add(Me.Btn_Extres)
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
@@ -357,4 +368,5 @@ Partial Class Principal
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents IdrConsultingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EspacioDigitalizadorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Btn_Extres As Button
 End Class
