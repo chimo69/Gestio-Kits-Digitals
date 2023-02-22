@@ -136,7 +136,7 @@ Public Class EstatJustificacio
         If RB_Proces2.Checked = True Then estat = 2
         If RB_Proces3.Checked = True Then
             estat = 3
-            txtDataPresentacio = Format(DataPresentacio.Value, "yyyy-MM-dd")
+            txtDataPresentacio = StringDB(Format(DataPresentacio.Value, "yyyy-MM-dd"))
             sqltxt = ", DataPresentacio=" & txtDataPresentacio + " "
         Else
             sqltxt = ""
@@ -164,13 +164,12 @@ Public Class EstatJustificacio
 
             conexion.Open()
             strCommand.ExecuteNonQuery()
-            conexion.Close()
             MsgBox("L'estat de justificació ha sigut actualitzat", vbInformation, "Justificació")
+            conexion.Close()
             Me.Close()
         Catch ex As Exception
+            MsgBox("No s'ha pogut actualitzar l'estat ", vbCritical, "Justificació")
             conexion.Close()
-            MsgBox(Query)
-            'MsgBox("No s'ha pogut actualitzar l'estat " + ex.Message, vbCritical, "Justificació")
         End Try
 
     End Sub

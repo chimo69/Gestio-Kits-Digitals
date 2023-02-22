@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SQLite
 
 Public Class Extras
-    Private DT_Extres, DT_Empreses, DT_ExtresGeneral As New DataTable
+    Private DT_Extres, DT_Empreses, DT_ExtresGeneral, DT_EstatSolucions As New DataTable
+    Private TotalEmpresaValor, TotalGeneralValor As Double
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
@@ -14,7 +15,6 @@ Public Class Extras
 
         Dim SQL As String
         Dim conexion As New SQLiteConnection()
-        Dim strCommand As SQLiteCommand
 
         conexion = New SQLiteConnection(cadena)
         conexion.Open()
@@ -36,7 +36,6 @@ Public Class Extras
         End Try
 
         Try
-
             If conexion.State = ConnectionState.Open Then
                 Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.Nom, sum(Justificacions.Subvencio) as Subvencions from Solucions
                                                  INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
@@ -56,25 +55,67 @@ Public Class Extras
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
+        Try
+            If conexion.State = ConnectionState.Open Then
+                Dim DA As New SQLiteDataAdapter("SELECT TipusEstats.NomEstat as 'Estat', count(Justificacions.Estat) as 'Quantitat' from Justificacions                                               
+                                                 INNER JOIN TipusEstats ON TipusEstats.Id=Justificacions.Estat                                                 
+                                                 GROUP by Justificacions.Estat", conexion)
+                DT_EstatSolucions.Clear()
+                DA.Fill(DT_EstatSolucions)
+
+                If DT_EstatSolucions.Rows.Count > 0 Then
+                    DataEstatSolucions.DataSource = DT_EstatSolucions
+                Else
+                    DataEstatSolucions.DataSource = Nothing
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
+        End Try
+
         conexion.Close()
+
     End Sub
 
     Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtresGeneral.CellFormatting
         DataExtresGeneral.Columns("Nom").Width = 150
     End Sub
 
+    Private Sub DataExtres_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtres.DataBindingComplete
+
+        If DataExtres.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In DataExtres.Rows
+                If Fila IsNot Nothing Then
+                    TotalEmpresaValor += Fila.Cells("Subvencions").Value
+                End If
+            Next
+        End If
+
+        TotalEmpresa.Text = Format(TotalEmpresaValor, "#,##0.00 €")
+    End Sub
+
+    Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEstatSolucions.CellFormatting
+        DataEstatSolucions.Columns("Estat").Width = 150
+    End Sub
+
+    Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtresGeneral.DataBindingComplete
+        If DataExtresGeneral.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In DataExtresGeneral.Rows
+                If Fila IsNot Nothing Then
+                    TotalGeneralValor = TotalGeneralValor + Fila.Cells("Subvencions").Value
+                End If
+            Next
+        End If
+        TotalGeneral.Text = Format(TotalGeneralValor, "#,##0.00 €")
+    End Sub
+
     Private Sub DataExtres_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtres.CellFormatting
         DataExtres.Columns("Nom").Width = 150
     End Sub
-    Private Sub DataExtres_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtres.DataSourceChanged
-        'DataExtres.Columns("Subvencio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-    End Sub
-
-    Private Sub DataExtresGeneral_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtresGeneral.DataSourceChanged
-        'DataExtresGeneral.Columns("Subvencio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-    End Sub
 
     Private Sub CB_Empreses_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Empreses.SelectionChangeCommitted
+        TotalEmpresaValor = 0
         CarregaDades(CB_Empreses.SelectedValue)
     End Sub
 
@@ -103,5 +144,6 @@ Public Class Extras
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
+
     End Sub
 End Class

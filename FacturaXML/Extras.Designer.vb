@@ -28,9 +28,16 @@ Partial Class Extras
         Me.DataExtresGeneral = New System.Windows.Forms.DataGridView()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TotalEmpresa = New System.Windows.Forms.TextBox()
+        Me.TotalGeneral = New System.Windows.Forms.TextBox()
+        Me.DataEstatSolucions = New System.Windows.Forms.DataGridView()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataExtres, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataExtresGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.DataEstatSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataExtres
@@ -110,11 +117,77 @@ Partial Class Extras
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "SITUACIÓ GENERAL"
         '
+        'TotalEmpresa
+        '
+        Me.TotalEmpresa.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TotalEmpresa.Location = New System.Drawing.Point(26, 331)
+        Me.TotalEmpresa.Name = "TotalEmpresa"
+        Me.TotalEmpresa.Size = New System.Drawing.Size(248, 29)
+        Me.TotalEmpresa.TabIndex = 4
+        Me.TotalEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TotalGeneral
+        '
+        Me.TotalGeneral.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TotalGeneral.Location = New System.Drawing.Point(304, 331)
+        Me.TotalGeneral.Name = "TotalGeneral"
+        Me.TotalGeneral.Size = New System.Drawing.Size(248, 29)
+        Me.TotalGeneral.TabIndex = 5
+        Me.TotalGeneral.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'DataEstatSolucions
+        '
+        Me.DataEstatSolucions.AllowUserToAddRows = False
+        Me.DataEstatSolucions.AllowUserToDeleteRows = False
+        Me.DataEstatSolucions.AllowUserToResizeColumns = False
+        Me.DataEstatSolucions.AllowUserToResizeRows = False
+        Me.DataEstatSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataEstatSolucions.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DataEstatSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataEstatSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataEstatSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataEstatSolucions.Location = New System.Drawing.Point(582, 74)
+        Me.DataEstatSolucions.MultiSelect = False
+        Me.DataEstatSolucions.Name = "DataEstatSolucions"
+        Me.DataEstatSolucions.ReadOnly = True
+        Me.DataEstatSolucions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataEstatSolucions.RowHeadersVisible = False
+        Me.DataEstatSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.DataEstatSolucions.RowTemplate.Height = 25
+        Me.DataEstatSolucions.ScrollBars = System.Windows.Forms.ScrollBars.None
+        Me.DataEstatSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataEstatSolucions.ShowEditingIcon = False
+        Me.DataEstatSolucions.Size = New System.Drawing.Size(248, 251)
+        Me.DataEstatSolucions.TabIndex = 6
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Location = New System.Drawing.Point(582, 45)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(248, 23)
+        Me.Panel2.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(74, 3)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(85, 15)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Estat solucions"
+        '
         'Extras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(858, 450)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.DataEstatSolucions)
+        Me.Controls.Add(Me.TotalGeneral)
+        Me.Controls.Add(Me.TotalEmpresa)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.DataExtresGeneral)
         Me.Controls.Add(Me.CB_Empreses)
@@ -126,7 +199,11 @@ Partial Class Extras
         CType(Me.DataExtresGeneral, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.DataEstatSolucions, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -135,4 +212,9 @@ Partial Class Extras
     Friend WithEvents DataExtresGeneral As DataGridView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents TotalEmpresa As TextBox
+    Friend WithEvents TotalGeneral As TextBox
+    Friend WithEvents DataEstatSolucions As DataGridView
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label2 As Label
 End Class

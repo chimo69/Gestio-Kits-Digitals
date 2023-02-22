@@ -300,13 +300,12 @@ Partial Class Principal
         '
         'Btn_Extres
         '
-        Me.Btn_Extres.Location = New System.Drawing.Point(92, 443)
+        Me.Btn_Extres.Location = New System.Drawing.Point(409, 413)
         Me.Btn_Extres.Name = "Btn_Extres"
-        Me.Btn_Extres.Size = New System.Drawing.Size(75, 23)
+        Me.Btn_Extres.Size = New System.Drawing.Size(151, 46)
         Me.Btn_Extres.TabIndex = 29
-        Me.Btn_Extres.Text = "Extres"
+        Me.Btn_Extres.Text = "Informes"
         Me.Btn_Extres.UseVisualStyleBackColor = True
-        Me.Btn_Extres.Visible = False
         '
         'Principal
         '

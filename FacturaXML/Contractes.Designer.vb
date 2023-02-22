@@ -667,22 +667,26 @@ Partial Class Contractes
         '
         Me.TitolAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolAprovacio.AutoSize = True
-        Me.TitolAprovacio.Location = New System.Drawing.Point(1265, 386)
+        Me.TitolAprovacio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TitolAprovacio.Location = New System.Drawing.Point(1290, 385)
         Me.TitolAprovacio.Name = "TitolAprovacio"
-        Me.TitolAprovacio.Size = New System.Drawing.Size(85, 15)
+        Me.TitolAprovacio.Size = New System.Drawing.Size(75, 13)
         Me.TitolAprovacio.TabIndex = 51
-        Me.TitolAprovacio.Text = "Info Aprovació" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.TitolAprovacio.Text = "Info aprovació"
+        Me.TitolAprovacio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.TitolAprovacio.Visible = False
         '
         'TitolContracte
         '
         Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolContracte.AutoSize = True
-        Me.TitolContracte.Location = New System.Drawing.Point(1265, 425)
+        Me.TitolContracte.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TitolContracte.Location = New System.Drawing.Point(1290, 424)
         Me.TitolContracte.Name = "TitolContracte"
-        Me.TitolContracte.Size = New System.Drawing.Size(83, 15)
+        Me.TitolContracte.Size = New System.Drawing.Size(74, 13)
         Me.TitolContracte.TabIndex = 52
         Me.TitolContracte.Text = "Info Contracte"
+        Me.TitolContracte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.TitolContracte.Visible = False
         '
         'DataFiContracte
@@ -700,11 +704,13 @@ Partial Class Contractes
         '
         Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolPagament.AutoSize = True
-        Me.TitolPagament.Location = New System.Drawing.Point(1265, 505)
+        Me.TitolPagament.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TitolPagament.Location = New System.Drawing.Point(1290, 505)
         Me.TitolPagament.Name = "TitolPagament"
-        Me.TitolPagament.Size = New System.Drawing.Size(85, 15)
+        Me.TitolPagament.Size = New System.Drawing.Size(76, 13)
         Me.TitolPagament.TabIndex = 55
         Me.TitolPagament.Text = "Info Pagament"
+        Me.TitolPagament.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.TitolPagament.Visible = False
         '
         'DataFiPagament
@@ -862,11 +868,13 @@ Partial Class Contractes
         '
         Me.TitolFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolFactura.AutoSize = True
-        Me.TitolFactura.Location = New System.Drawing.Point(1265, 466)
+        Me.TitolFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TitolFactura.Location = New System.Drawing.Point(1290, 465)
         Me.TitolFactura.Name = "TitolFactura"
-        Me.TitolFactura.Size = New System.Drawing.Size(70, 15)
+        Me.TitolFactura.Size = New System.Drawing.Size(64, 13)
         Me.TitolFactura.TabIndex = 69
         Me.TitolFactura.Text = "Info Factura"
+        Me.TitolFactura.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.TitolFactura.Visible = False
         '
         'PictureBox1
