@@ -49,26 +49,28 @@ Public Class EstatJustificacio
             TeDada2.Checked = lector.GetBoolean("Dada2")
             TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
             Factura.Text = lector.GetString("Factura")
+            If lector.GetString("DataPresentacio") <> "" Then DataPresentacio.Value = lector.GetString("DataPresentacio")
+
             If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
 
             Select Case (lector.GetValue("Estat"))
-                Case 0
-                    RB_Proces0.Checked = True
-                Case 1
-                    RB_Proces1.Checked = True
-                Case 2
-                    RB_Proces2.Checked = True
-                Case 3
-                    RB_Proces3.Checked = True
-                Case 4
-                    RB_Proces4.Checked = True
-                Case 5
-                    RB_Proces5.Checked = True
-                Case 6
-                    RB_Proces6.Checked = True
-            End Select
-        End If
-        lector.Close()
+                    Case 0
+                        RB_Proces0.Checked = True
+                    Case 1
+                        RB_Proces1.Checked = True
+                    Case 2
+                        RB_Proces2.Checked = True
+                    Case 3
+                        RB_Proces3.Checked = True
+                    Case 4
+                        RB_Proces4.Checked = True
+                    Case 5
+                        RB_Proces5.Checked = True
+                    Case 6
+                        RB_Proces6.Checked = True
+                End Select
+            End If
+            lector.Close()
         conexion.Close()
 
         'Depenent del tipus de solucio les dades 1 i 2 tindran diferents textos
@@ -126,14 +128,23 @@ Public Class EstatJustificacio
         Dim Query As String
         Dim strCommand As SQLiteCommand
         Dim estat As Integer
+        Dim txtDataPresentacio As String
+        Dim sqltxt As String
 
         If RB_Proces0.Checked = True Then estat = 0
         If RB_Proces1.Checked = True Then estat = 1
         If RB_Proces2.Checked = True Then estat = 2
-        If RB_Proces3.Checked = True Then estat = 3
+        If RB_Proces3.Checked = True Then
+            estat = 3
+            txtDataPresentacio = Format(DataPresentacio.Value, "yyyy-MM-dd")
+            sqltxt = ", DataPresentacio=" & txtDataPresentacio + " "
+        Else
+            sqltxt = ""
+        End If
         If RB_Proces4.Checked = True Then estat = 4
         If RB_Proces5.Checked = True Then estat = 5
         If RB_Proces6.Checked = True Then estat = 6
+
 
         Try
             Query = "UPDATE Justificacions SET
@@ -147,8 +158,8 @@ Public Class EstatJustificacio
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & ",
                         Subvencio=" & ImportSubvencionat.Text & ",
                         Factura=" & StringDB(Factura.Text) & ",
-                        Estat=" & estat & "
-                         WHERE iDSolucio=" & IdSolucio
+                        Estat=" & estat & sqltxt & "
+                        WHERE iDSolucio=" & IdSolucio
             strCommand = New SQLiteCommand(Query, conexion)
 
             conexion.Open()
@@ -158,7 +169,8 @@ Public Class EstatJustificacio
             Me.Close()
         Catch ex As Exception
             conexion.Close()
-            MsgBox("No s'ha pogut actualitzar l'estat", vbCritical, "Justificació")
+            MsgBox(Query)
+            'MsgBox("No s'ha pogut actualitzar l'estat " + ex.Message, vbCritical, "Justificació")
         End Try
 
     End Sub
@@ -258,6 +270,16 @@ Public Class EstatJustificacio
             Completat.Visible = True
         Else
             Completat.Visible = False
+        End If
+    End Sub
+
+    Private Sub RB_Proces3_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Proces3.CheckedChanged
+        If RB_Proces3.Checked = True Then
+            DataPresentacio.Visible = True
+            TitolDataPresentacio.Visible = True
+        Else
+            DataPresentacio.Visible = False
+            TitolDataPresentacio.Visible = False
         End If
     End Sub
 

@@ -306,6 +306,7 @@ Partial Class Principal
         Me.Btn_Extres.TabIndex = 29
         Me.Btn_Extres.Text = "Extres"
         Me.Btn_Extres.UseVisualStyleBackColor = True
+        Me.Btn_Extres.Visible = False
         '
         'Principal
         '

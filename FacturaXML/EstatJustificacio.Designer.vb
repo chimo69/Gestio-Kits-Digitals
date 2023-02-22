@@ -68,6 +68,8 @@ Partial Class EstatJustificacio
         Me.RB_Proces3 = New System.Windows.Forms.RadioButton()
         Me.RB_Proces2 = New System.Windows.Forms.RadioButton()
         Me.RB_Proces1 = New System.Windows.Forms.RadioButton()
+        Me.DataPresentacio = New System.Windows.Forms.DateTimePicker()
+        Me.TitolDataPresentacio = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -454,7 +456,7 @@ Partial Class EstatJustificacio
         Me.GroupBox3.Controls.Add(Me.RB_Proces1)
         Me.GroupBox3.Location = New System.Drawing.Point(796, 103)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(268, 250)
+        Me.GroupBox3.Size = New System.Drawing.Size(268, 201)
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Procés de justificació"
@@ -462,7 +464,7 @@ Partial Class EstatJustificacio
         'RB_Proces0
         '
         Me.RB_Proces0.AutoSize = True
-        Me.RB_Proces0.Location = New System.Drawing.Point(17, 31)
+        Me.RB_Proces0.Location = New System.Drawing.Point(17, 24)
         Me.RB_Proces0.Name = "RB_Proces0"
         Me.RB_Proces0.Size = New System.Drawing.Size(156, 19)
         Me.RB_Proces0.TabIndex = 6
@@ -473,7 +475,7 @@ Partial Class EstatJustificacio
         'RB_Proces6
         '
         Me.RB_Proces6.AutoSize = True
-        Me.RB_Proces6.Location = New System.Drawing.Point(17, 176)
+        Me.RB_Proces6.Location = New System.Drawing.Point(17, 169)
         Me.RB_Proces6.Name = "RB_Proces6"
         Me.RB_Proces6.Size = New System.Drawing.Size(64, 19)
         Me.RB_Proces6.TabIndex = 5
@@ -484,7 +486,7 @@ Partial Class EstatJustificacio
         'RB_Proces5
         '
         Me.RB_Proces5.AutoSize = True
-        Me.RB_Proces5.Location = New System.Drawing.Point(17, 152)
+        Me.RB_Proces5.Location = New System.Drawing.Point(17, 145)
         Me.RB_Proces5.Name = "RB_Proces5"
         Me.RB_Proces5.Size = New System.Drawing.Size(146, 19)
         Me.RB_Proces5.TabIndex = 4
@@ -495,7 +497,7 @@ Partial Class EstatJustificacio
         'RB_Proces4
         '
         Me.RB_Proces4.AutoSize = True
-        Me.RB_Proces4.Location = New System.Drawing.Point(17, 128)
+        Me.RB_Proces4.Location = New System.Drawing.Point(17, 121)
         Me.RB_Proces4.Name = "RB_Proces4"
         Me.RB_Proces4.Size = New System.Drawing.Size(149, 19)
         Me.RB_Proces4.TabIndex = 3
@@ -506,7 +508,7 @@ Partial Class EstatJustificacio
         'RB_Proces3
         '
         Me.RB_Proces3.AutoSize = True
-        Me.RB_Proces3.Location = New System.Drawing.Point(17, 104)
+        Me.RB_Proces3.Location = New System.Drawing.Point(17, 97)
         Me.RB_Proces3.Name = "RB_Proces3"
         Me.RB_Proces3.Size = New System.Drawing.Size(83, 19)
         Me.RB_Proces3.TabIndex = 2
@@ -517,7 +519,7 @@ Partial Class EstatJustificacio
         'RB_Proces2
         '
         Me.RB_Proces2.AutoSize = True
-        Me.RB_Proces2.Location = New System.Drawing.Point(17, 80)
+        Me.RB_Proces2.Location = New System.Drawing.Point(17, 73)
         Me.RB_Proces2.Name = "RB_Proces2"
         Me.RB_Proces2.Size = New System.Drawing.Size(77, 19)
         Me.RB_Proces2.TabIndex = 1
@@ -528,7 +530,7 @@ Partial Class EstatJustificacio
         'RB_Proces1
         '
         Me.RB_Proces1.AutoSize = True
-        Me.RB_Proces1.Location = New System.Drawing.Point(17, 56)
+        Me.RB_Proces1.Location = New System.Drawing.Point(17, 49)
         Me.RB_Proces1.Name = "RB_Proces1"
         Me.RB_Proces1.Size = New System.Drawing.Size(66, 19)
         Me.RB_Proces1.TabIndex = 0
@@ -536,12 +538,32 @@ Partial Class EstatJustificacio
         Me.RB_Proces1.Text = "Enviada"
         Me.RB_Proces1.UseVisualStyleBackColor = True
         '
+        'DataPresentacio
+        '
+        Me.DataPresentacio.Location = New System.Drawing.Point(796, 334)
+        Me.DataPresentacio.Name = "DataPresentacio"
+        Me.DataPresentacio.Size = New System.Drawing.Size(268, 23)
+        Me.DataPresentacio.TabIndex = 19
+        Me.DataPresentacio.Visible = False
+        '
+        'TitolDataPresentacio
+        '
+        Me.TitolDataPresentacio.AutoSize = True
+        Me.TitolDataPresentacio.Location = New System.Drawing.Point(795, 315)
+        Me.TitolDataPresentacio.Name = "TitolDataPresentacio"
+        Me.TitolDataPresentacio.Size = New System.Drawing.Size(167, 15)
+        Me.TitolDataPresentacio.TabIndex = 20
+        Me.TitolDataPresentacio.Text = "Introdueix data de presentació"
+        Me.TitolDataPresentacio.Visible = False
+        '
         'EstatJustificacio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1076, 478)
+        Me.Controls.Add(Me.TitolDataPresentacio)
+        Me.Controls.Add(Me.DataPresentacio)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Factura)
         Me.Controls.Add(Me.Label13)
@@ -626,4 +648,6 @@ Partial Class EstatJustificacio
     Friend WithEvents RB_Proces1 As RadioButton
     Friend WithEvents RB_Proces6 As RadioButton
     Friend WithEvents RB_Proces0 As RadioButton
+    Friend WithEvents DataPresentacio As DateTimePicker
+    Friend WithEvents TitolDataPresentacio As Label
 End Class

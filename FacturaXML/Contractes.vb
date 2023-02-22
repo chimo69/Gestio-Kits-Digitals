@@ -61,10 +61,10 @@ Public Class Contractes
         'Si venim del form Llistat selecciona la solució
         seleccionaFila(idSolucioRebuda, 2)
 
-        TitolAprovacio.Text = "<-- " & My.Settings.MesosAprovacio & " mesos a partir d'aquesta data"
-        TitolContracte.Text = "<-- " & My.Settings.MesosContractacio & " mesos a partir d'aquesta data"
-        TitolPagament.Text = "<-- Dins del periode de la factura"
-        TitolFactura.Text = "<-- " & My.Settings.MesosFactura & " mesos a partir d'aquesta data"
+        TitolAprovacio.Text = "<-- " & My.Settings.MesosAprovacio & " mesos per fer contracte"
+        TitolContracte.Text = "<-- " & My.Settings.MesosContractacio & " mesos per emetre factura" + vbCrLf + " i cobrarla"
+        TitolPagament.Text = "<-- Dins del mateix periode que" + vbCrLf + " la factura"
+        TitolFactura.Text = "<-- " & My.Settings.MesosFactura & " mesos per fer justificació"
 
     End Sub
     Private Sub seleccionaFila(id As Integer, NoGrid As Integer)
@@ -963,16 +963,28 @@ Public Class Contractes
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         MiraCaducitat()
+
     End Sub
     Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
-        If DataPagament.Value > DataFactura.Value.AddMonths(My.Settings.MesosFactura) Or DataPagament.Value < DataFactura.Value Then
+        'If DataPagament.Value > DataFactura.Value.AddMonths(My.Settings.MesosFactura) Or DataPagament.Value < DataFactura.Value Then
+        '    CB_DataPagamentIVA.ForeColor = Color.Red
+        '    DataPagamentOK.Image = My.Resources.sin_verificar_petit
+        '    MsgBox("La data ha de estar compresa entre " + Format(DataFactura.Value, "Short Date") + " i " + Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura), "Short Date"), vbCritical, "Error a la Data de Pagament")
+        'Else
+        '    CB_DataPagamentIVA.ForeColor = Color.Black
+        '    DataPagamentOK.Image = My.Resources.verificado_petit
+        'End If
+        If DataPagament.Value < DataContracte.Value Or DataPagament.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
             CB_DataPagamentIVA.ForeColor = Color.Red
+            MsgBox("La data ha de estar compresa entre " + Format(DataContracte.Value, "Short Date") + " i " + Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio), "Short Date"), vbCritical, "Error a la Data de Pagament")
             DataPagamentOK.Image = My.Resources.sin_verificar_petit
-            MsgBox("La data ha de estar compresa entre " + Format(DataFactura.Value, "Short Date") + " i " + Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura), "Short Date"), vbCritical, "Error a la Data de Pagament")
         Else
             CB_DataPagamentIVA.ForeColor = Color.Black
             DataPagamentOK.Image = My.Resources.verificado_petit
         End If
+        DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+        DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+
     End Sub
 
     Private Sub MiraCaducitat()
@@ -984,6 +996,8 @@ Public Class Contractes
         Dim CaducitatPagament As Date = DataPagament.Value.AddMonths(My.Settings.MesosFactura)
 
         'Mostem icones de ok o ko
+
+
         If DateDiff(DateInterval.Day, Now, CaducitatAprovacio) <= 0 Then
             DataAprovacioOK.Image = My.Resources.sin_verificar_petit
         Else

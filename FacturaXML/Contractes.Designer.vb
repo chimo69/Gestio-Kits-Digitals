@@ -671,7 +671,7 @@ Partial Class Contractes
         Me.TitolAprovacio.Name = "TitolAprovacio"
         Me.TitolAprovacio.Size = New System.Drawing.Size(85, 15)
         Me.TitolAprovacio.TabIndex = 51
-        Me.TitolAprovacio.Text = "Info Aprovació"
+        Me.TitolAprovacio.Text = "Info Aprovació" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.TitolAprovacio.Visible = False
         '
         'TitolContracte
@@ -700,7 +700,7 @@ Partial Class Contractes
         '
         Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolPagament.AutoSize = True
-        Me.TitolPagament.Location = New System.Drawing.Point(1265, 508)
+        Me.TitolPagament.Location = New System.Drawing.Point(1265, 505)
         Me.TitolPagament.Name = "TitolPagament"
         Me.TitolPagament.Size = New System.Drawing.Size(85, 15)
         Me.TitolPagament.TabIndex = 55
@@ -1150,11 +1150,11 @@ Partial Class Contractes
         Me.TB_Proces0.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces0.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces0.Enabled = False
-        Me.TB_Proces0.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces0.Location = New System.Drawing.Point(76, 22)
         Me.TB_Proces0.Name = "TB_Proces0"
         Me.TB_Proces0.ReadOnly = True
-        Me.TB_Proces0.Size = New System.Drawing.Size(195, 21)
+        Me.TB_Proces0.Size = New System.Drawing.Size(195, 22)
         Me.TB_Proces0.TabIndex = 6
         Me.TB_Proces0.Text = "Preparant documentació"
         Me.TB_Proces0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1164,11 +1164,11 @@ Partial Class Contractes
         Me.TB_Proces4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces4.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces4.Enabled = False
-        Me.TB_Proces4.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces4.Location = New System.Drawing.Point(76, 49)
         Me.TB_Proces4.Name = "TB_Proces4"
         Me.TB_Proces4.ReadOnly = True
-        Me.TB_Proces4.Size = New System.Drawing.Size(199, 21)
+        Me.TB_Proces4.Size = New System.Drawing.Size(199, 22)
         Me.TB_Proces4.TabIndex = 5
         Me.TB_Proces4.Text = "Termini d'esmena obert"
         Me.TB_Proces4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1178,11 +1178,11 @@ Partial Class Contractes
         Me.TB_Proces6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces6.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces6.Enabled = False
-        Me.TB_Proces6.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces6.Location = New System.Drawing.Point(476, 49)
         Me.TB_Proces6.Name = "TB_Proces6"
         Me.TB_Proces6.ReadOnly = True
-        Me.TB_Proces6.Size = New System.Drawing.Size(69, 21)
+        Me.TB_Proces6.Size = New System.Drawing.Size(69, 22)
         Me.TB_Proces6.TabIndex = 4
         Me.TB_Proces6.Text = "Pagada"
         Me.TB_Proces6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1192,11 +1192,11 @@ Partial Class Contractes
         Me.TB_Proces5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces5.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces5.Enabled = False
-        Me.TB_Proces5.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces5.Location = New System.Drawing.Point(281, 49)
         Me.TB_Proces5.Name = "TB_Proces5"
         Me.TB_Proces5.ReadOnly = True
-        Me.TB_Proces5.Size = New System.Drawing.Size(189, 21)
+        Me.TB_Proces5.Size = New System.Drawing.Size(189, 22)
         Me.TB_Proces5.TabIndex = 3
         Me.TB_Proces5.Text = "Validada per pagament"
         Me.TB_Proces5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1206,11 +1206,11 @@ Partial Class Contractes
         Me.TB_Proces3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces3.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces3.Enabled = False
-        Me.TB_Proces3.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces3.Location = New System.Drawing.Point(447, 22)
         Me.TB_Proces3.Name = "TB_Proces3"
         Me.TB_Proces3.ReadOnly = True
-        Me.TB_Proces3.Size = New System.Drawing.Size(98, 21)
+        Me.TB_Proces3.Size = New System.Drawing.Size(98, 22)
         Me.TB_Proces3.TabIndex = 2
         Me.TB_Proces3.Text = "Presentada"
         Me.TB_Proces3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1220,11 +1220,11 @@ Partial Class Contractes
         Me.TB_Proces2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces2.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces2.Enabled = False
-        Me.TB_Proces2.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces2.Location = New System.Drawing.Point(350, 22)
         Me.TB_Proces2.Name = "TB_Proces2"
         Me.TB_Proces2.ReadOnly = True
-        Me.TB_Proces2.Size = New System.Drawing.Size(91, 21)
+        Me.TB_Proces2.Size = New System.Drawing.Size(91, 22)
         Me.TB_Proces2.TabIndex = 1
         Me.TB_Proces2.Text = "Esborrany"
         Me.TB_Proces2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1234,11 +1234,11 @@ Partial Class Contractes
         Me.TB_Proces1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces1.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces1.Enabled = False
-        Me.TB_Proces1.Font = New System.Drawing.Font("OCR A Extended", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TB_Proces1.Location = New System.Drawing.Point(277, 22)
         Me.TB_Proces1.Name = "TB_Proces1"
         Me.TB_Proces1.ReadOnly = True
-        Me.TB_Proces1.Size = New System.Drawing.Size(67, 21)
+        Me.TB_Proces1.Size = New System.Drawing.Size(67, 22)
         Me.TB_Proces1.TabIndex = 0
         Me.TB_Proces1.Text = "Enviada"
         Me.TB_Proces1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
