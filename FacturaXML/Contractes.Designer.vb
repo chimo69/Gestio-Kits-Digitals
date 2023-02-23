@@ -78,8 +78,6 @@ Partial Class Contractes
         Me.TitolAprovacio = New System.Windows.Forms.Label()
         Me.TitolContracte = New System.Windows.Forms.Label()
         Me.DataFiContracte = New System.Windows.Forms.TextBox()
-        Me.TitolPagament = New System.Windows.Forms.Label()
-        Me.DataFiPagament = New System.Windows.Forms.TextBox()
         Me.CB_DataContracte = New System.Windows.Forms.CheckBox()
         Me.CB_DataPagamentIVA = New System.Windows.Forms.CheckBox()
         Me.CB_DataAprovacio = New System.Windows.Forms.CheckBox()
@@ -488,7 +486,7 @@ Partial Class Contractes
         'DataFiAprovacio
         '
         Me.DataFiAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiAprovacio.Location = New System.Drawing.Point(1474, 385)
+        Me.DataFiAprovacio.Location = New System.Drawing.Point(1503, 390)
         Me.DataFiAprovacio.Name = "DataFiAprovacio"
         Me.DataFiAprovacio.ReadOnly = True
         Me.DataFiAprovacio.Size = New System.Drawing.Size(116, 23)
@@ -668,7 +666,7 @@ Partial Class Contractes
         Me.TitolAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolAprovacio.AutoSize = True
         Me.TitolAprovacio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolAprovacio.Location = New System.Drawing.Point(1290, 385)
+        Me.TitolAprovacio.Location = New System.Drawing.Point(1325, 390)
         Me.TitolAprovacio.Name = "TitolAprovacio"
         Me.TitolAprovacio.Size = New System.Drawing.Size(75, 13)
         Me.TitolAprovacio.TabIndex = 51
@@ -681,7 +679,7 @@ Partial Class Contractes
         Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolContracte.AutoSize = True
         Me.TitolContracte.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolContracte.Location = New System.Drawing.Point(1290, 424)
+        Me.TitolContracte.Location = New System.Drawing.Point(1325, 438)
         Me.TitolContracte.Name = "TitolContracte"
         Me.TitolContracte.Size = New System.Drawing.Size(74, 13)
         Me.TitolContracte.TabIndex = 52
@@ -692,37 +690,13 @@ Partial Class Contractes
         'DataFiContracte
         '
         Me.DataFiContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiContracte.Location = New System.Drawing.Point(1474, 424)
+        Me.DataFiContracte.Location = New System.Drawing.Point(1503, 438)
         Me.DataFiContracte.Name = "DataFiContracte"
         Me.DataFiContracte.ReadOnly = True
         Me.DataFiContracte.Size = New System.Drawing.Size(116, 23)
         Me.DataFiContracte.TabIndex = 54
         Me.DataFiContracte.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.DataFiContracte.Visible = False
-        '
-        'TitolPagament
-        '
-        Me.TitolPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitolPagament.AutoSize = True
-        Me.TitolPagament.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolPagament.Location = New System.Drawing.Point(1290, 505)
-        Me.TitolPagament.Name = "TitolPagament"
-        Me.TitolPagament.Size = New System.Drawing.Size(76, 13)
-        Me.TitolPagament.TabIndex = 55
-        Me.TitolPagament.Text = "Info Pagament"
-        Me.TitolPagament.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.TitolPagament.Visible = False
-        '
-        'DataFiPagament
-        '
-        Me.DataFiPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiPagament.Location = New System.Drawing.Point(1474, 507)
-        Me.DataFiPagament.Name = "DataFiPagament"
-        Me.DataFiPagament.ReadOnly = True
-        Me.DataFiPagament.Size = New System.Drawing.Size(116, 23)
-        Me.DataFiPagament.TabIndex = 56
-        Me.DataFiPagament.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.DataFiPagament.Visible = False
         '
         'CB_DataContracte
         '
@@ -765,7 +739,7 @@ Partial Class Contractes
         '
         Me.DataAprovacioOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataAprovacioOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataAprovacioOK.Location = New System.Drawing.Point(1596, 385)
+        Me.DataAprovacioOK.Location = New System.Drawing.Point(1260, 384)
         Me.DataAprovacioOK.Name = "DataAprovacioOK"
         Me.DataAprovacioOK.Size = New System.Drawing.Size(24, 23)
         Me.DataAprovacioOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -777,7 +751,7 @@ Partial Class Contractes
         '
         Me.DataContracteOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataContracteOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataContracteOK.Location = New System.Drawing.Point(1596, 424)
+        Me.DataContracteOK.Location = New System.Drawing.Point(1260, 423)
         Me.DataContracteOK.Name = "DataContracteOK"
         Me.DataContracteOK.Size = New System.Drawing.Size(24, 24)
         Me.DataContracteOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -789,7 +763,7 @@ Partial Class Contractes
         '
         Me.DataPagamentOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataPagamentOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataPagamentOK.Location = New System.Drawing.Point(1596, 507)
+        Me.DataPagamentOK.Location = New System.Drawing.Point(1260, 506)
         Me.DataPagamentOK.Name = "DataPagamentOK"
         Me.DataPagamentOK.Size = New System.Drawing.Size(24, 24)
         Me.DataPagamentOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -845,7 +819,7 @@ Partial Class Contractes
         '
         Me.DataFacturaOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataFacturaOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataFacturaOK.Location = New System.Drawing.Point(1596, 466)
+        Me.DataFacturaOK.Location = New System.Drawing.Point(1260, 465)
         Me.DataFacturaOK.Name = "DataFacturaOK"
         Me.DataFacturaOK.Size = New System.Drawing.Size(24, 24)
         Me.DataFacturaOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -856,10 +830,10 @@ Partial Class Contractes
         'DataFiFactura
         '
         Me.DataFiFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiFactura.Location = New System.Drawing.Point(1474, 465)
+        Me.DataFiFactura.Location = New System.Drawing.Point(1503, 486)
         Me.DataFiFactura.Name = "DataFiFactura"
         Me.DataFiFactura.ReadOnly = True
-        Me.DataFiFactura.Size = New System.Drawing.Size(116, 23)
+        Me.DataFiFactura.Size = New System.Drawing.Size(117, 23)
         Me.DataFiFactura.TabIndex = 67
         Me.DataFiFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.DataFiFactura.Visible = False
@@ -869,7 +843,7 @@ Partial Class Contractes
         Me.TitolFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolFactura.AutoSize = True
         Me.TitolFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolFactura.Location = New System.Drawing.Point(1290, 465)
+        Me.TitolFactura.Location = New System.Drawing.Point(1325, 486)
         Me.TitolFactura.Name = "TitolFactura"
         Me.TitolFactura.Size = New System.Drawing.Size(64, 13)
         Me.TitolFactura.TabIndex = 69
@@ -1281,8 +1255,6 @@ Partial Class Contractes
         Me.Controls.Add(Me.CB_DataAprovacio)
         Me.Controls.Add(Me.CB_DataPagamentIVA)
         Me.Controls.Add(Me.CB_DataContracte)
-        Me.Controls.Add(Me.DataFiPagament)
-        Me.Controls.Add(Me.TitolPagament)
         Me.Controls.Add(Me.DataFiContracte)
         Me.Controls.Add(Me.TitolContracte)
         Me.Controls.Add(Me.TitolAprovacio)
@@ -1387,8 +1359,6 @@ Partial Class Contractes
     Friend WithEvents TitolAprovacio As Label
     Friend WithEvents TitolContracte As Label
     Friend WithEvents DataFiContracte As TextBox
-    Friend WithEvents TitolPagament As Label
-    Friend WithEvents DataFiPagament As TextBox
     Friend WithEvents CB_DataContracte As CheckBox
     Friend WithEvents CB_DataPagamentIVA As CheckBox
     Friend WithEvents CB_DataAprovacio As CheckBox

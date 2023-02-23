@@ -65,7 +65,7 @@ Public Class Contractes
         TitolAprovacio.Text = "Data màxima per contractació," + vbCrLf + "factura, pagament i justificació --> "
         TitolContracte.Text = "Data màxima per emetre" + vbCrLf + "factura i cobrarla -->"
         TitolFactura.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
-        TitolPagament.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
+        'TitolPagament.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
 
     End Sub
     Private Sub seleccionaFila(id As Integer, NoGrid As Integer)
@@ -884,8 +884,8 @@ Public Class Contractes
             Case 4
                 DataPagament.Visible = mostrar
                 DataPagamentOK.Visible = mostrar
-                DataFiPagament.Visible = mostrar
-                TitolPagament.Visible = mostrar
+                'DataFiPagament.Visible = mostrar
+                'TitolPagament.Visible = mostrar
         End Select
     End Sub
     Private Sub CB_DataAprovacio_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataAprovacio.CheckedChanged
@@ -965,7 +965,7 @@ Public Class Contractes
             CB_DataFactura.ForeColor = Color.Black
         End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
-        DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+        ' DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         MiraCaducitat()
 
     End Sub
@@ -979,7 +979,7 @@ Public Class Contractes
             'DataPagamentOK.Image = My.Resources.verificado_petit
         End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
-        DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+        'DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
         MiraCaducitat()
     End Sub
 
