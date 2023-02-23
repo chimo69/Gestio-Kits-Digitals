@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SQLite
 Imports System.Globalization
 Imports System.Threading
+Imports FacturaXML.My
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
@@ -62,7 +63,6 @@ Public Class Contractes
         'Si venim del form Llistat selecciona la solució
         seleccionaFila(idSolucioRebuda, 2)
 
-        TitolAprovacio.Text = "Data màxima per contractació," + vbCrLf + "factura, pagament i justificació --> "
         TitolContracte.Text = "Data màxima per emetre" + vbCrLf + "factura i cobrarla -->"
         TitolFactura.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
         'TitolPagament.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
@@ -417,7 +417,6 @@ Public Class Contractes
 
         'Linea Aprovacio
         CB_DataAprovacio.Checked = False
-        DataAprovacioOK.Visible = False
 
         'Linea Contracte
         CB_DataContracte.Checked = False
@@ -868,9 +867,6 @@ Public Class Contractes
         Select Case linea
             Case 1
                 DataAprovacio.Visible = mostrar
-                DataAprovacioOK.Visible = mostrar
-                TitolAprovacio.Visible = mostrar
-                DataFiAprovacio.Visible = mostrar
             Case 2
                 DataContracte.Visible = mostrar
                 DataContracteOK.Visible = mostrar
@@ -884,8 +880,6 @@ Public Class Contractes
             Case 4
                 DataPagament.Visible = mostrar
                 DataPagamentOK.Visible = mostrar
-                'DataFiPagament.Visible = mostrar
-                'TitolPagament.Visible = mostrar
         End Select
     End Sub
     Private Sub CB_DataAprovacio_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataAprovacio.CheckedChanged
@@ -908,7 +902,6 @@ Public Class Contractes
         End If
     End Sub
     Private Sub CB_DataContracte_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataContracte.CheckedChanged
-
         If CB_DataContracte.Checked = True Then
             MostraLinea(2, True)
             CB_DataFactura.Enabled = True
@@ -933,6 +926,7 @@ Public Class Contractes
             CB_DataPagamentIVA.Enabled = False
             CB_DataPagamentIVA.Checked = False
         End If
+
         MiraCaducitat()
     End Sub
     Private Sub CB_PagamentIVA_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataPagamentIVA.CheckedChanged
@@ -943,121 +937,93 @@ Public Class Contractes
         End If
         MiraCaducitat()
     End Sub
-    Private Sub DataAprovacio_ValueChanged(sender As Object, e As EventArgs) Handles DataAprovacio.ValueChanged
-        DataFiAprovacio.Text = Format(DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio).Date, "Short Date")
-        MiraCaducitat()
-    End Sub
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
-        If DataContracte.Value < DataAprovacio.Value Or DataContracte.Value > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
+        If DataContracte.Value.Date < DataAprovacio.Value Or DataContracte.Value.Date > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
             CB_DataContracte.ForeColor = Color.Red
-            MsgBox("La data ha de estar compresa entre " + Format(DataAprovacio.Value, "Short Date") + " i " + Format(DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio), "Short Date"), vbCritical, "Error a la Data de Contracte")
+
         Else
-            CB_DataContracte.ForeColor = Color.Black
+                CB_DataContracte.ForeColor = Color.Black
         End If
         DataFiContracte.Text = Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio).Date, "Short Date")
         MiraCaducitat()
     End Sub
     Private Sub DataFactura_ValueChanged(sender As Object, e As EventArgs) Handles DataFactura.ValueChanged
-        If DataFactura.Value < DataContracte.Value Or DataFactura.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
-            CB_DataFactura.ForeColor = Color.Red
-            MsgBox("La data ha de estar compresa entre " + Format(DataContracte.Value, "Short Date") + " i " + Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio), "Short Date"), vbCritical, "Error a la Data de Factura")
+
+        If DataFactura.Value.Date < DataContracte.Value Or DataFactura.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
+                CB_DataFactura.ForeColor = Color.Red
+
         Else
-            CB_DataFactura.ForeColor = Color.Black
-        End If
-        DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
-        ' DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+                CB_DataFactura.ForeColor = Color.Black
+            End If
+            DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+
         MiraCaducitat()
 
     End Sub
     Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
-        If DataPagament.Value < DataContracte.Value Or DataPagament.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
+
+        If DataPagament.Value.Date < DataContracte.Value Or DataPagament.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
             CB_DataPagamentIVA.ForeColor = Color.Red
-            MsgBox("La data ha de estar compresa entre " + Format(DataContracte.Value, "Short Date") + " i " + Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio), "Short Date"), vbCritical, "Error a la Data de Pagament")
-            'DataPagamentOK.Image = My.Resources.sin_verificar_petit
+
         Else
-            CB_DataPagamentIVA.ForeColor = Color.Black
-            'DataPagamentOK.Image = My.Resources.verificado_petit
+                CB_DataPagamentIVA.ForeColor = Color.Black
+
         End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
-        'DataFiPagament.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+
         MiraCaducitat()
     End Sub
 
     Private Sub MiraCaducitat()
 
         Dim dies As Integer
-        Dim CaducitatAprovacio As Date = DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio)
+
         Dim CaducitatContracte As Date = DataContracte.Value.AddMonths(My.Settings.MesosContractacio)
         Dim CaducitatFactura As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
-        Dim CaducitatPagament As Date = DataPagament.Value.AddMonths(My.Settings.MesosFactura)
+        Dim CaducitatPagament As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
+        Dim CaducitatJustificacio As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
+
+        Dim DataToCheck As Date
 
         'Mostem icones de ok o ko
 
         ' Comproven si les date d'aprovacio son correctes
-        If DataPresentacio = "" Then
-            If DateDiff(DateInterval.Day, Now, CaducitatAprovacio) < 0 Then
-                DataAprovacioOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataAprovacioOK.Image = My.Resources.verificado_petit
-            End If
-        Else
 
-            If DateDiff(DateInterval.Day, CDate(DataPresentacio), CaducitatAprovacio) < 0 Then
-                MsgBox(DateDiff(DateInterval.Day, CDate(DataPresentacio), CaducitatAprovacio))
-                DataAprovacioOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataAprovacioOK.Image = My.Resources.verificado_petit
-            End If
+        If DataPresentacio = "" Then
+            DataToCheck = Date.Now
+        Else
+            DataToCheck = CDate(DataPresentacio)
         End If
 
         ' Comprovem si les dates de contractació son correctes
-        If DataPresentacio = "" Then
+
+        If DataFactura.Checked = True Then
+            DataContracteOK.Image = My.Resources.verificado_petit
+        Else
             If DateDiff(DateInterval.Day, Now, CaducitatContracte) < 0 Then
                 DataContracteOK.Image = My.Resources.sin_verificar_petit
             Else
                 DataContracteOK.Image = My.Resources.verificado_petit
             End If
-        Else
-            If DataContracte.Value < DataAprovacio.Value Or DataContracte.Value > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
-                DataContracteOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataContracteOK.Image = My.Resources.verificado_petit
-            End If
         End If
 
+
         ' Comprovem si les dates de la factura son correctes
-        If DataPresentacio = "" Then
-            If DateDiff(DateInterval.Day, Now, CaducitatFactura) < 0 Then
-                DataFacturaOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataFacturaOK.Image = My.Resources.verificado_petit
-            End If
+
+        If DataFactura.Value > CaducitatContracte Then
+            DataFacturaOK.Image = My.Resources.sin_verificar_petit
         Else
-            If DataFactura.Value < DataContracte.Value Or DataFactura.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
-                DataFacturaOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataFacturaOK.Image = My.Resources.verificado_petit
-            End If
+            DataFacturaOK.Image = My.Resources.verificado_petit
         End If
 
         'Comprovem si les dates del pagament son correctes
 
-        If DataPresentacio = "" Then
-            If DateDiff(DateInterval.Day, Now, CaducitatPagament) < 0 Then
-                DataPagamentOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataPagamentOK.Image = My.Resources.verificado_petit
-            End If
+        If DataPagament.Value.Date > CaducitatContracte Then
+            DataPagamentOK.Image = My.Resources.sin_verificar_petit
         Else
-            If DataPagament.Value < DataContracte.Value Or DataPagament.Value > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
-                DataPagamentOK.Image = My.Resources.sin_verificar_petit
-            Else
-                DataPagamentOK.Image = My.Resources.verificado_petit
-            End If
+            DataPagamentOK.Image = My.Resources.verificado_petit
         End If
 
-
-        If CB_DataAprovacio.Checked = True Then DataVenciment = CaducitatAprovacio
         If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
         If CB_DataFactura.Checked = True Then DataVenciment = CaducitatFactura
 
@@ -1184,6 +1150,7 @@ Public Class Contractes
 
         CB_TipusSolucio.Text = row.Cells("Nom").Value
         NoAcord.Text = row.Cells("Contracte").Value
+        GestionaInfo(row.Cells("IdSolucio").Value)
 
         idSolucioSeleccionada = row.Cells("Id").Value
         TitolSolucio.Text = row.Cells("Nom").Value
@@ -1202,9 +1169,6 @@ Public Class Contractes
         CB_SegonPagament.Checked = row.Cells("SegonPagament").Value
 
         ProgressBar1.Value = row.Cells("%").Value
-
-        GestionaInfo(row.Cells("IdSolucio").Value)
-
 
         If row.Cells("DataAprovacio").Value <> "" Then
             DataAprovacio.Text = Format(row.Cells("DataAprovacio").Value, "Short Date")
@@ -1312,16 +1276,8 @@ Public Class Contractes
                 infoMax.Visible = False
         End Select
 
-        If segmentEmpresaSeleccionada = 1 Then
-            infoMax.Text = "<-- Màxim 48"
-            InfoVariableNum.Maximum = 48
-        ElseIf segmentEmpresaSeleccionada = 2 Then
-            infoMax.Text = "<-- Màxim 9"
-            InfoVariableNum.Maximum = 9
-        ElseIf segmentEmpresaSeleccionada = 3 Then
-            infoMax.Text = "<-- Màxim 2"
-            InfoVariableNum.Maximum = 2
-        End If
+
+
         RebreSubvencio(segmentEmpresaSeleccionada)
 
     End Sub
@@ -1342,5 +1298,15 @@ Public Class Contractes
         End If
         lector.Close()
         conexion.Close()
+        If segmentEmpresaSeleccionada = 1 Then
+            infoMax.Text = "<-- Màxim 48"
+            InfoVariableNum.Maximum = 48
+        ElseIf segmentEmpresaSeleccionada = 2 Then
+            infoMax.Text = "<-- Màxim 9"
+            InfoVariableNum.Maximum = 9
+        ElseIf segmentEmpresaSeleccionada = 3 Then
+            infoMax.Text = "<-- Màxim 2"
+            InfoVariableNum.Maximum = 2
+        End If
     End Sub
 End Class

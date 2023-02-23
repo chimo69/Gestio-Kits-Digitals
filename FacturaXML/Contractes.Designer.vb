@@ -59,7 +59,6 @@ Partial Class Contractes
         Me.DiesCaducitat = New System.Windows.Forms.TextBox()
         Me.Btn_AfegirSolucio = New System.Windows.Forms.Button()
         Me.DataContracte = New System.Windows.Forms.DateTimePicker()
-        Me.DataFiAprovacio = New System.Windows.Forms.TextBox()
         Me.Btn_EsborrarSeleccioSolucio = New System.Windows.Forms.Button()
         Me.Btn_EsborrarSolucio = New System.Windows.Forms.Button()
         Me.TitolEmpresa = New System.Windows.Forms.TextBox()
@@ -75,13 +74,11 @@ Partial Class Contractes
         Me.ContextMenuEsborrar = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DataAprovacio = New System.Windows.Forms.DateTimePicker()
         Me.DataPagament = New System.Windows.Forms.DateTimePicker()
-        Me.TitolAprovacio = New System.Windows.Forms.Label()
         Me.TitolContracte = New System.Windows.Forms.Label()
         Me.DataFiContracte = New System.Windows.Forms.TextBox()
         Me.CB_DataContracte = New System.Windows.Forms.CheckBox()
         Me.CB_DataPagamentIVA = New System.Windows.Forms.CheckBox()
         Me.CB_DataAprovacio = New System.Windows.Forms.CheckBox()
-        Me.DataAprovacioOK = New System.Windows.Forms.PictureBox()
         Me.DataContracteOK = New System.Windows.Forms.PictureBox()
         Me.DataPagamentOK = New System.Windows.Forms.PictureBox()
         Me.DataCaducitat = New System.Windows.Forms.TextBox()
@@ -124,7 +121,6 @@ Partial Class Contractes
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataFacturaOK, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -483,17 +479,6 @@ Partial Class Contractes
         Me.DataContracte.TabIndex = 14
         Me.DataContracte.Visible = False
         '
-        'DataFiAprovacio
-        '
-        Me.DataFiAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiAprovacio.Location = New System.Drawing.Point(1503, 390)
-        Me.DataFiAprovacio.Name = "DataFiAprovacio"
-        Me.DataFiAprovacio.ReadOnly = True
-        Me.DataFiAprovacio.Size = New System.Drawing.Size(116, 23)
-        Me.DataFiAprovacio.TabIndex = 33
-        Me.DataFiAprovacio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.DataFiAprovacio.Visible = False
-        '
         'Btn_EsborrarSeleccioSolucio
         '
         Me.Btn_EsborrarSeleccioSolucio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -661,25 +646,12 @@ Partial Class Contractes
         Me.DataPagament.TabIndex = 16
         Me.DataPagament.Visible = False
         '
-        'TitolAprovacio
-        '
-        Me.TitolAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitolAprovacio.AutoSize = True
-        Me.TitolAprovacio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolAprovacio.Location = New System.Drawing.Point(1325, 390)
-        Me.TitolAprovacio.Name = "TitolAprovacio"
-        Me.TitolAprovacio.Size = New System.Drawing.Size(75, 13)
-        Me.TitolAprovacio.TabIndex = 51
-        Me.TitolAprovacio.Text = "Info aprovació"
-        Me.TitolAprovacio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.TitolAprovacio.Visible = False
-        '
         'TitolContracte
         '
         Me.TitolContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolContracte.AutoSize = True
         Me.TitolContracte.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolContracte.Location = New System.Drawing.Point(1325, 438)
+        Me.TitolContracte.Location = New System.Drawing.Point(1325, 424)
         Me.TitolContracte.Name = "TitolContracte"
         Me.TitolContracte.Size = New System.Drawing.Size(74, 13)
         Me.TitolContracte.TabIndex = 52
@@ -690,7 +662,7 @@ Partial Class Contractes
         'DataFiContracte
         '
         Me.DataFiContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiContracte.Location = New System.Drawing.Point(1503, 438)
+        Me.DataFiContracte.Location = New System.Drawing.Point(1503, 424)
         Me.DataFiContracte.Name = "DataFiContracte"
         Me.DataFiContracte.ReadOnly = True
         Me.DataFiContracte.Size = New System.Drawing.Size(116, 23)
@@ -734,18 +706,6 @@ Partial Class Contractes
         Me.CB_DataAprovacio.TabIndex = 59
         Me.CB_DataAprovacio.Text = "Data Aprovació"
         Me.CB_DataAprovacio.UseVisualStyleBackColor = True
-        '
-        'DataAprovacioOK
-        '
-        Me.DataAprovacioOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataAprovacioOK.Image = Global.FacturaXML.My.Resources.Resources.verificado_petit
-        Me.DataAprovacioOK.Location = New System.Drawing.Point(1260, 384)
-        Me.DataAprovacioOK.Name = "DataAprovacioOK"
-        Me.DataAprovacioOK.Size = New System.Drawing.Size(24, 23)
-        Me.DataAprovacioOK.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.DataAprovacioOK.TabIndex = 60
-        Me.DataAprovacioOK.TabStop = False
-        Me.DataAprovacioOK.Visible = False
         '
         'DataContracteOK
         '
@@ -830,7 +790,7 @@ Partial Class Contractes
         'DataFiFactura
         '
         Me.DataFiFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiFactura.Location = New System.Drawing.Point(1503, 486)
+        Me.DataFiFactura.Location = New System.Drawing.Point(1502, 466)
         Me.DataFiFactura.Name = "DataFiFactura"
         Me.DataFiFactura.ReadOnly = True
         Me.DataFiFactura.Size = New System.Drawing.Size(117, 23)
@@ -843,7 +803,7 @@ Partial Class Contractes
         Me.TitolFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TitolFactura.AutoSize = True
         Me.TitolFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TitolFactura.Location = New System.Drawing.Point(1325, 486)
+        Me.TitolFactura.Location = New System.Drawing.Point(1324, 466)
         Me.TitolFactura.Name = "TitolFactura"
         Me.TitolFactura.Size = New System.Drawing.Size(64, 13)
         Me.TitolFactura.TabIndex = 69
@@ -1251,13 +1211,11 @@ Partial Class Contractes
         Me.Controls.Add(Me.DataPagamentOK)
         Me.Controls.Add(Me.DataContracteOK)
         Me.Controls.Add(Me.btn_EsborrarSeleccioEmpresa)
-        Me.Controls.Add(Me.DataAprovacioOK)
         Me.Controls.Add(Me.CB_DataAprovacio)
         Me.Controls.Add(Me.CB_DataPagamentIVA)
         Me.Controls.Add(Me.CB_DataContracte)
         Me.Controls.Add(Me.DataFiContracte)
         Me.Controls.Add(Me.TitolContracte)
-        Me.Controls.Add(Me.TitolAprovacio)
         Me.Controls.Add(Me.DataPagament)
         Me.Controls.Add(Me.DataAprovacio)
         Me.Controls.Add(Me.Label16)
@@ -1269,7 +1227,6 @@ Partial Class Contractes
         Me.Controls.Add(Me.TitolEmpresa)
         Me.Controls.Add(Me.Btn_EsborrarSolucio)
         Me.Controls.Add(Me.Btn_EsborrarSeleccioSolucio)
-        Me.Controls.Add(Me.DataFiAprovacio)
         Me.Controls.Add(Me.DataContracte)
         Me.Controls.Add(Me.Btn_AfegirSolucio)
         Me.Controls.Add(Me.NoAcord)
@@ -1290,7 +1247,6 @@ Partial Class Contractes
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataAprovacioOK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataContracteOK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataPagamentOK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataFacturaOK, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1340,7 +1296,6 @@ Partial Class Contractes
     Friend WithEvents DiesCaducitat As TextBox
     Friend WithEvents Btn_AfegirSolucio As Button
     Friend WithEvents DataContracte As DateTimePicker
-    Friend WithEvents DataFiAprovacio As TextBox
     Friend WithEvents Btn_EsborrarSeleccioSolucio As Button
     Friend WithEvents Btn_EsborrarSolucio As Button
     Friend WithEvents TitolEmpresa As TextBox
@@ -1356,13 +1311,11 @@ Partial Class Contractes
     Friend WithEvents ContextMenuEsborrar As ContextMenuStrip
     Friend WithEvents DataAprovacio As DateTimePicker
     Friend WithEvents DataPagament As DateTimePicker
-    Friend WithEvents TitolAprovacio As Label
     Friend WithEvents TitolContracte As Label
     Friend WithEvents DataFiContracte As TextBox
     Friend WithEvents CB_DataContracte As CheckBox
     Friend WithEvents CB_DataPagamentIVA As CheckBox
     Friend WithEvents CB_DataAprovacio As CheckBox
-    Friend WithEvents DataAprovacioOK As PictureBox
     Friend WithEvents DataContracteOK As PictureBox
     Friend WithEvents DataPagamentOK As PictureBox
     Friend WithEvents DataCaducitat As TextBox
