@@ -70,11 +70,15 @@ Partial Class EstatJustificacio
         Me.RB_Proces1 = New System.Windows.Forms.RadioButton()
         Me.DataPresentacio = New System.Windows.Forms.DateTimePicker()
         Me.TitolDataPresentacio = New System.Windows.Forms.Label()
+        Me.PanelCompletat = New System.Windows.Forms.Panel()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.PanelCompletat.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -122,7 +126,7 @@ Partial Class EstatJustificacio
         'TeWord
         '
         Me.TeWord.AutoSize = True
-        Me.TeWord.Location = New System.Drawing.Point(25, 138)
+        Me.TeWord.Location = New System.Drawing.Point(15, 31)
         Me.TeWord.Name = "TeWord"
         Me.TeWord.Size = New System.Drawing.Size(189, 19)
         Me.TeWord.TabIndex = 3
@@ -132,7 +136,7 @@ Partial Class EstatJustificacio
         'TeComprovant
         '
         Me.TeComprovant.AutoSize = True
-        Me.TeComprovant.Location = New System.Drawing.Point(25, 187)
+        Me.TeComprovant.Location = New System.Drawing.Point(15, 74)
         Me.TeComprovant.Name = "TeComprovant"
         Me.TeComprovant.Size = New System.Drawing.Size(224, 19)
         Me.TeComprovant.TabIndex = 4
@@ -142,7 +146,7 @@ Partial Class EstatJustificacio
         'TeFactura
         '
         Me.TeFactura.AutoSize = True
-        Me.TeFactura.Location = New System.Drawing.Point(25, 236)
+        Me.TeFactura.Location = New System.Drawing.Point(15, 117)
         Me.TeFactura.Name = "TeFactura"
         Me.TeFactura.Size = New System.Drawing.Size(92, 19)
         Me.TeFactura.TabIndex = 5
@@ -168,7 +172,7 @@ Partial Class EstatJustificacio
         'TeDada1
         '
         Me.TeDada1.AutoSize = True
-        Me.TeDada1.Location = New System.Drawing.Point(25, 285)
+        Me.TeDada1.Location = New System.Drawing.Point(15, 160)
         Me.TeDada1.Name = "TeDada1"
         Me.TeDada1.Size = New System.Drawing.Size(62, 19)
         Me.TeDada1.TabIndex = 8
@@ -178,7 +182,7 @@ Partial Class EstatJustificacio
         'TeDada2
         '
         Me.TeDada2.AutoSize = True
-        Me.TeDada2.Location = New System.Drawing.Point(25, 334)
+        Me.TeDada2.Location = New System.Drawing.Point(15, 203)
         Me.TeDada2.Name = "TeDada2"
         Me.TeDada2.Size = New System.Drawing.Size(62, 19)
         Me.TeDada2.TabIndex = 9
@@ -369,19 +373,18 @@ Partial Class EstatJustificacio
         Me.Completat.AutoSize = True
         Me.Completat.BackColor = System.Drawing.Color.Lime
         Me.Completat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Completat.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Completat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Completat.ForeColor = System.Drawing.Color.White
-        Me.Completat.Location = New System.Drawing.Point(847, 25)
+        Me.Completat.Location = New System.Drawing.Point(55, 2)
         Me.Completat.Name = "Completat"
-        Me.Completat.Size = New System.Drawing.Size(182, 60)
+        Me.Completat.Size = New System.Drawing.Size(164, 50)
         Me.Completat.TabIndex = 13
         Me.Completat.Text = "DOCUMENTACIÓ" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "COMPLETADA"
         Me.Completat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Completat.Visible = False
         '
         'Btn_CreaFactura
         '
-        Me.Btn_CreaFactura.Location = New System.Drawing.Point(123, 229)
+        Me.Btn_CreaFactura.Location = New System.Drawing.Point(126, 110)
         Me.Btn_CreaFactura.Name = "Btn_CreaFactura"
         Me.Btn_CreaFactura.Size = New System.Drawing.Size(143, 30)
         Me.Btn_CreaFactura.TabIndex = 14
@@ -556,27 +559,48 @@ Partial Class EstatJustificacio
         Me.TitolDataPresentacio.Text = "Introdueix data de presentació"
         Me.TitolDataPresentacio.Visible = False
         '
+        'PanelCompletat
+        '
+        Me.PanelCompletat.BackColor = System.Drawing.Color.Lime
+        Me.PanelCompletat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelCompletat.Controls.Add(Me.Completat)
+        Me.PanelCompletat.Location = New System.Drawing.Point(796, 25)
+        Me.PanelCompletat.Name = "PanelCompletat"
+        Me.PanelCompletat.Size = New System.Drawing.Size(268, 55)
+        Me.PanelCompletat.TabIndex = 21
+        Me.PanelCompletat.Visible = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.TeWord)
+        Me.GroupBox4.Controls.Add(Me.TeComprovant)
+        Me.GroupBox4.Controls.Add(Me.TeFactura)
+        Me.GroupBox4.Controls.Add(Me.TeDada1)
+        Me.GroupBox4.Controls.Add(Me.Btn_CreaFactura)
+        Me.GroupBox4.Controls.Add(Me.TeDada2)
+        Me.GroupBox4.Location = New System.Drawing.Point(25, 136)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(393, 288)
+        Me.GroupBox4.TabIndex = 22
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Document Word"
+        '
         'EstatJustificacio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1076, 478)
+        Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.PanelCompletat)
         Me.Controls.Add(Me.TitolDataPresentacio)
         Me.Controls.Add(Me.DataPresentacio)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Factura)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.Btn_CreaFactura)
-        Me.Controls.Add(Me.Completat)
-        Me.Controls.Add(Me.TeDada1)
-        Me.Controls.Add(Me.TeWord)
-        Me.Controls.Add(Me.TeComprovant)
         Me.Controls.Add(Me.ProgressBar1)
-        Me.Controls.Add(Me.TeFactura)
         Me.Controls.Add(Me.Btn_guardar)
-        Me.Controls.Add(Me.TeDada2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.FabricantSolucio)
         Me.Controls.Add(Me.Label1)
@@ -598,6 +622,10 @@ Partial Class EstatJustificacio
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.PanelCompletat.ResumeLayout(False)
+        Me.PanelCompletat.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -650,4 +678,6 @@ Partial Class EstatJustificacio
     Friend WithEvents RB_Proces0 As RadioButton
     Friend WithEvents DataPresentacio As DateTimePicker
     Friend WithEvents TitolDataPresentacio As Label
+    Friend WithEvents PanelCompletat As Panel
+    Friend WithEvents GroupBox4 As GroupBox
 End Class

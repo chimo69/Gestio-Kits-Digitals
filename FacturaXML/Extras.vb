@@ -28,7 +28,6 @@ Public Class Extras
                 CB_Empreses.DisplayMember = "Nom"
                 CB_Empreses.Text = "Selecciona empresa"
                 CB_Empreses.ValueMember = "Id"
-
             End If
 
         Catch ex As Exception
@@ -120,8 +119,8 @@ Public Class Extras
     End Sub
 
     Private Sub CarregaDades(idEmpresa As Integer)
+        Dim conexion As New SQLiteConnection(cadena)
         Try
-            Dim conexion As New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
@@ -139,11 +138,9 @@ Public Class Extras
                     DataExtres.DataSource = Nothing
                 End If
             End If
-            conexion.Close()
-
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
-
+        conexion.Close()
     End Sub
 End Class

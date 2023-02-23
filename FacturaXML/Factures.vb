@@ -373,36 +373,38 @@ Public Class Factures
                     CB_Empreses.ValueMember = "Id"
                 End If
 
-                conexion.Close()
             Catch ex As Exception
                 MsgBox("No s'han pogut carregar les empreses desde la base de dades", vbCritical, "Error")
             End Try
+            conexion.Close()
         Else
-
             CB_Empreses.Enabled = False
             CB_Solucions.Enabled = False
             FacturaSolucio.Enabled = False
 
 
             Try
-                SQL = "SELECT * FROM Empreses WHERE Id=" & idEmpresa
-                strCommand = New SQLiteCommand(SQL, conexion)
 
-                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+                If conexion.State = ConnectionState.Open Then
+                    SQL = "SELECT * FROM Empreses WHERE Id=" & idEmpresa
 
-                If lector.Read Then
+                    strCommand = New SQLiteCommand(SQL, conexion)
 
-                    EmpresaNom.Text = lector.GetString("Nom")
-                    EmpresaNif.Text = lector.GetString("Nif")
-                    EmpresaCiutat.Text = lector.GetString("Ciutat")
-                    EmpresaDireccio.Text = lector.GetString("Direccio")
-                    EmpresaCodiPostal.Text = lector.GetString("CodiPostal")
-                    EmpresaProvincia.Text = lector.GetString("Provincia")
-                    EmpresaPais.Text = lector.GetString("Pais")
-                End If
-                lector.Close()
+                    Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-                SQL = "SELECT Solucions.idSolucio,
+                    If lector.Read Then
+
+                        EmpresaNom.Text = lector.GetString("Nom")
+                        EmpresaNif.Text = lector.GetString("Nif")
+                        EmpresaCiutat.Text = lector.GetString("Ciutat")
+                        EmpresaDireccio.Text = lector.GetString("Direccio")
+                        EmpresaCodiPostal.Text = lector.GetString("CodiPostal")
+                        EmpresaProvincia.Text = lector.GetString("Provincia")
+                        EmpresaPais.Text = lector.GetString("Pais")
+                    End If
+                    lector.Close()
+
+                    SQL = "SELECT Solucions.idSolucio,
                                      Solucions.IdEmpresa,
                                      TipusSolucions.Nom,
                                      Solucions.Contracte,
@@ -417,30 +419,30 @@ Public Class Factures
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
                                      WHERE idEmpresa=" & idEmpresa & " AND Solucions.Id=" & idSolucio
 
-                strCommand = New SQLiteCommand(SQL, conexion)
-                lector = strCommand.ExecuteReader
+                    strCommand = New SQLiteCommand(SQL, conexion)
+                    lector = strCommand.ExecuteReader
 
-                If lector.Read Then
+                    If lector.Read Then
 
-                    FacturaAcord.Text = lector.GetString("Contracte")
-                    FacturaSolucio.Text = lector.GetString("Nom")
-                    FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
-                    FacturaData.Text = Format(lector.GetString("DataFactura"), "Short Date")
-                    TB_DataCobrament.Text = Format(lector.GetString("DataPagament"), "Short Date")
-                    FacturaImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
-                    FacturaNumero.Text = lector.GetString("Factura")
+                        FacturaAcord.Text = lector.GetString("Contracte")
+                        FacturaSolucio.Text = lector.GetString("Nom")
+                        FacturaImportSolucio.Text = lector.GetValue("TotalSolucio")
+                        FacturaData.Text = Format(lector.GetString("DataFactura"), "Short Date")
+                        TB_DataCobrament.Text = Format(lector.GetString("DataPagament"), "Short Date")
+                        FacturaImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+                        FacturaNumero.Text = lector.GetString("Factura")
 
-                    If lector.GetValue("Percentatge") <> 100 Then
-                        Vigila.Visible = True
-                    Else
-                        Vigila.Visible = False
+                        If lector.GetValue("Percentatge") <> 100 Then
+                            Vigila.Visible = True
+                        Else
+                            Vigila.Visible = False
+                        End If
                     End If
                 End If
-
             Catch ex As Exception
                 MsgBox("No s'han pogut carregar les dades", vbCritical, "Error")
             End Try
-
+            conexion.Close()
         End If
 
     End Sub
@@ -484,9 +486,8 @@ Public Class Factures
     'Carrega les dades de la solucio rebuda per Id de la empresa
     Private Sub CarregaSolucions(id As Integer)
 
+        Dim conexion As New SQLiteConnection()
         Try
-            Dim conexion As New SQLiteConnection()
-
             conexion = New SQLiteConnection(cadena)
             conexion.Open()
 
@@ -514,11 +515,10 @@ Public Class Factures
                 If DT_Solucions.Rows.Count = 0 Then CB_Solucions.Text = "No hi ha solucions"
             End If
 
-            conexion.Close()
         Catch ex As Exception
             MsgBox("No s'han pogut carregar les solucions desde la base de dades",, "Error")
         End Try
-
+        conexion.Close()
     End Sub
 
     Private Sub EmpresaNom_TextChanged(sender As Object, e As EventArgs) Handles EmpresaNom.TextChanged

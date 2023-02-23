@@ -35,43 +35,51 @@ Public Class EstatJustificacio
         Dim Query As String
         Dim strCommand As SQLiteCommand
 
-        Query = "SELECT * FROM Justificacions WHERE iDSolucio=" & IdSolucio
-        strCommand = New SQLiteCommand(Query, conexion)
         conexion.Open()
-        Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-        If lector.Read() Then
-            FabricantSolucio.Text = lector.GetString("FabricantSolucio")
-            TeWord.Checked = lector.GetBoolean("TeWord")
-            TeComprovant.Checked = lector.GetBoolean("TeComprovantPagament")
-            TeFactura.Checked = lector.GetBoolean("TeFacturaXML")
-            TeDada1.Checked = lector.GetBoolean("Dada1")
-            TeDada2.Checked = lector.GetBoolean("Dada2")
-            TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
-            Factura.Text = lector.GetString("Factura")
-            If lector.GetString("DataPresentacio") <> "" Then DataPresentacio.Value = lector.GetString("DataPresentacio")
+        If conexion.State = ConnectionState.Open Then
+            Try
+                Query = "SELECT * FROM Justificacions WHERE iDSolucio=" & IdSolucio
+                strCommand = New SQLiteCommand(Query, conexion)
 
-            If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-            Select Case (lector.GetValue("Estat"))
-                    Case 0
-                        RB_Proces0.Checked = True
-                    Case 1
-                        RB_Proces1.Checked = True
-                    Case 2
-                        RB_Proces2.Checked = True
-                    Case 3
-                        RB_Proces3.Checked = True
-                    Case 4
-                        RB_Proces4.Checked = True
-                    Case 5
-                        RB_Proces5.Checked = True
-                    Case 6
-                        RB_Proces6.Checked = True
-                End Select
-            End If
-            lector.Close()
-        conexion.Close()
+                If lector.Read() Then
+                    FabricantSolucio.Text = lector.GetString("FabricantSolucio")
+                    TeWord.Checked = lector.GetBoolean("TeWord")
+                    TeComprovant.Checked = lector.GetBoolean("TeComprovantPagament")
+                    TeFactura.Checked = lector.GetBoolean("TeFacturaXML")
+                    TeDada1.Checked = lector.GetBoolean("Dada1")
+                    TeDada2.Checked = lector.GetBoolean("Dada2")
+                    TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
+                    Factura.Text = lector.GetString("Factura")
+                    If lector.GetString("DataPresentacio") <> "" Then DataPresentacio.Value = lector.GetString("DataPresentacio")
+
+                    If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
+
+                    Select Case (lector.GetValue("Estat"))
+                        Case 0
+                            RB_Proces0.Checked = True
+                        Case 1
+                            RB_Proces1.Checked = True
+                        Case 2
+                            RB_Proces2.Checked = True
+                        Case 3
+                            RB_Proces3.Checked = True
+                        Case 4
+                            RB_Proces4.Checked = True
+                        Case 5
+                            RB_Proces5.Checked = True
+                        Case 6
+                            RB_Proces6.Checked = True
+                    End Select
+                End If
+                lector.Close()
+            Catch ex As Exception
+
+            End Try
+            conexion.Close()
+        End If
 
         'Depenent del tipus de solucio les dades 1 i 2 tindran diferents textos
         Select Case IdTipusSolucio
@@ -147,7 +155,10 @@ Public Class EstatJustificacio
 
 
         Try
-            Query = "UPDATE Justificacions SET
+            conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+                Query = "UPDATE Justificacions SET
                         Percentatge=" & Progress & ",
                         TeWord='" & TornaBoolean(TeWord.Checked) & "',
                         TeComprovantPagament='" & TornaBoolean(TeComprovant.Checked) & "',
@@ -160,18 +171,16 @@ Public Class EstatJustificacio
                         Factura=" & StringDB(Factura.Text) & ",
                         Estat=" & estat & sqltxt & "
                         WHERE iDSolucio=" & IdSolucio
-            strCommand = New SQLiteCommand(Query, conexion)
-
-            conexion.Open()
-            strCommand.ExecuteNonQuery()
-            MsgBox("L'estat de justificació ha sigut actualitzat", vbInformation, "Justificació")
-            conexion.Close()
-            Me.Close()
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+                MsgBox("L'estat de justificació ha sigut actualitzat", vbInformation, "Justificació")
+                Me.Close()
+            End If
         Catch ex As Exception
             MsgBox("No s'ha pogut actualitzar l'estat ", vbCritical, "Justificació")
-            conexion.Close()
-        End Try
 
+        End Try
+        conexion.Close()
     End Sub
     'Converteix boolean en integer
     Private Shared Function TornaBoolean(B As Boolean) As Integer
@@ -266,9 +275,9 @@ Public Class EstatJustificacio
         Progress = PorcentatgeDesglossament + PorcentatgeFabricantSolucio + PercentatgeTeComprovant + PercentatgeTeFactura + PercentatgeTeWord + PercentatgeTeDada1 + PercentatgeTeDada2
         ProgressBar1.Value = Progress
         If Progress = 100 Then
-            Completat.Visible = True
+            PanelCompletat.Visible = True
         Else
-            Completat.Visible = False
+            PanelCompletat.Visible = False
         End If
     End Sub
 

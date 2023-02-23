@@ -27,7 +27,6 @@ Public Class Contractes
         Me.idEmpresaRebuda = idEmpresa
         Me.idSolucioRebuda = idSolucio
 
-
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
@@ -38,8 +37,9 @@ Public Class Contractes
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
+        Dim conexion As New SQLiteConnection(cadena)
         Try
-            Dim conexion As New SQLiteConnection(cadena)
+
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
@@ -50,10 +50,12 @@ Public Class Contractes
                 CB_TipusSolucio.ValueMember = "Id"
                 CB_TipusSolucio.Text = "Selecciona un tipus de solució"
             End If
-            conexion.Close()
-        Catch
 
+        Catch
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
+
+        conexion.Close()
 
         CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
 
@@ -62,10 +64,6 @@ Public Class Contractes
 
         'Si venim del form Llistat selecciona la solució
         seleccionaFila(idSolucioRebuda, 2)
-
-        TitolContracte.Text = "Data màxima per emetre" + vbCrLf + "factura i cobrarla -->"
-        TitolFactura.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
-        'TitolPagament.Text = "Data màxima per fer" + vbCrLf + "la justificació -->"
 
     End Sub
     Private Sub seleccionaFila(id As Integer, NoGrid As Integer)
@@ -105,8 +103,8 @@ Public Class Contractes
     'Actualitza la taula amb dades de la Base de dades
     Private Sub ActualitzaEmpreses()
 
+        Dim conexion As New SQLiteConnection(cadena)
         Try
-            Dim conexion As New SQLiteConnection(cadena)
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
@@ -122,11 +120,11 @@ Public Class Contractes
                     TitolSolucio.Text = "SENSE EMPRESES"
                 End If
             End If
-            conexion.Close()
-
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
+
+        conexion.Close()
 
     End Sub
     'Introdueix una empresa nova
@@ -177,11 +175,15 @@ Public Class Contractes
                     segment & ")"
         End If
 
+
         Try
             strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
-            strCommand.ExecuteNonQuery()
-            conexion.Close()
+
+            If conexion.State = ConnectionState.Open Then
+                strCommand.ExecuteNonQuery()
+            End If
+
             ActualitzaEmpreses()
 
             If seleccio = True Then MsgBox("Empresa modificada correctament", , "Modificar empresa")
@@ -190,6 +192,7 @@ Public Class Contractes
             If seleccio = True Then MsgBox("No s'ha pogut modificar l'empresa", vbCritical, "Modificar empresa")
             If seleccio = False Then MsgBox("No s'ha pogut introduir l'empresa", vbCritical, "Introduir empresa")
         End Try
+        conexion.Close()
 
         EsborrarCampsSolucio()
 
@@ -239,27 +242,31 @@ Public Class Contractes
     Private Sub EsborrarEmpresa(id As Integer)
 
         Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta empresa?", vbYesNo, "Esborrar empresa")
+        Dim conexion As New SQLiteConnection(cadena)
 
         If resposta = vbYes Then
             If ComprovaSiTeSolucions(id) = True Then
                 MsgBox("No es pot esborrar una empresa amb solucions obertes", vbCritical, "Esborrar empresa")
                 Exit Sub
             End If
+
             Try
-                Dim conexion As New SQLiteConnection(cadena)
-                Dim Query As String
-                Dim strCommand As SQLiteCommand
-                Query = "DELETE FROM Empreses WHERE id=" & id
-                strCommand = New SQLiteCommand(Query, conexion)
                 conexion.Open()
-                strCommand.ExecuteNonQuery()
-                conexion.Close()
+                If conexion.State = ConnectionState.Open Then
+                    Dim Query As String
+                    Dim strCommand As SQLiteCommand
+                    Query = "DELETE FROM Empreses WHERE id=" & id
+                    strCommand = New SQLiteCommand(Query, conexion)
+                    strCommand.ExecuteNonQuery()
+                End If
                 ActualitzaEmpreses()
                 MsgBox("S'ha esborrat correctament l'empresa",, "Esborrar l'empresa")
             Catch ex As Exception
                 MsgBox("No s'ha pogut esborrar l'empresa", vbCritical, "Esborrar l'empresa")
             End Try
         End If
+
+        conexion.Close()
 
     End Sub
     'Comprova si la empresa que es vol esborrar te solucions obertes
@@ -269,21 +276,25 @@ Public Class Contractes
         Dim strCommand As SQLiteCommand
 
         Try
-            Query = "SELECT * FROM Solucions WHERE iDEmpresa=" & id
-            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
-            Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-            If lector.HasRows Then
-                Return True
-            Else
-                Return False
+            If conexion.State = ConnectionState.Open Then
+                Query = "SELECT * FROM Solucions WHERE iDEmpresa=" & id
+                strCommand = New SQLiteCommand(Query, conexion)
+
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+
+                If lector.HasRows Then
+                    Return True
+                Else
+                    Return False
+                End If
             End If
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Esborrar l'empresa")
         End Try
+        conexion.Close()
         Return True
-
     End Function
     Private Sub Btn_esborrarEmpresa_Click(sender As Object, e As EventArgs) Handles Btn_esborrarEmpresa.Click
         Dim index As Integer = DataEmpreses.CurrentCell.RowIndex
@@ -397,12 +408,11 @@ Public Class Contractes
                 End If
 
             End If
-            conexion.Close()
-        Catch ex As Exception
 
+        Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades" & ex.Message, vbCritical, "Error")
         End Try
-
+        conexion.Close()
     End Sub
 
     Private Sub Btn_EsborrarSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSolucio.Click
@@ -480,29 +490,32 @@ Public Class Contractes
     Private Sub EsborrarSolucio(id As Integer)
 
         Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo + vbQuestion, "Esborrar solució")
+        Dim conexion As New SQLiteConnection(cadena)
 
         If resposta = vbYes Then
             Try
-                Dim conexion As New SQLiteConnection(cadena)
-                Dim Query As String
-                Dim strCommand As SQLiteCommand
-                ' Esborrem solucio
-                Query = "DELETE FROM Solucions WHERE id=" & id
-                strCommand = New SQLiteCommand(Query, conexion)
                 conexion.Open()
-                strCommand.ExecuteNonQuery()
+                If conexion.State = ConnectionState.Open Then
+                    Dim Query As String
+                    Dim strCommand As SQLiteCommand
+                    ' Esborrem solucio
+                    Query = "DELETE FROM Solucions WHERE id=" & id
+                    strCommand = New SQLiteCommand(Query, conexion)
 
-                'Esborrem Justificacions
-                Query = "DELETE FROM Justificacions WHERE IdSolucio=" & id
-                strCommand = New SQLiteCommand(Query, conexion)
-                strCommand.ExecuteNonQuery()
+                    strCommand.ExecuteNonQuery()
 
-                conexion.Close()
+                    'Esborrem Justificacions
+                    Query = "DELETE FROM Justificacions WHERE IdSolucio=" & id
+                    strCommand = New SQLiteCommand(Query, conexion)
+                    strCommand.ExecuteNonQuery()
+                End If
+
                 OmpleSolucions(idEmpresaSeleccionada)
                 MsgBox("S'ha esborrat correctament la solució", , "Esborrar solució")
             Catch ex As Exception
                 MsgBox("No s'ha pogut esborrar la solució ", vbCritical, "Esborrar solució")
             End Try
+            conexion.Close()
         End If
 
     End Sub
@@ -545,7 +558,10 @@ Public Class Contractes
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .AutoResizeColumns()
+            .Columns("Nom").Width = 150
+            .Columns("Contracte").Width = 100
+            .Columns("%").Width = 30
+            .Columns("Dies").Width = 70
         End With
 
         For Each Fila As DataGridViewRow In DataSolucions.Rows
@@ -647,10 +663,11 @@ Public Class Contractes
         End If
 
         Try
-            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
-            strCommand.ExecuteNonQuery()
-            conexion.Close()
+            If conexion.State = ConnectionState.Open Then
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+            End If
 
             If seleccio = True Then
                 MsgBox("Solució modificada correctament",, "Modificar solució")
@@ -663,7 +680,7 @@ Public Class Contractes
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
+        conexion.Close()
         seleccionaFila(idSolucioSeleccionada, 2)
 
     End Sub
@@ -698,28 +715,31 @@ Public Class Contractes
         seleccio = solucioSeleccionada
 
         Try
-            Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
-            strCommand = New SQLiteCommand(Query, conexion)
             conexion.Open()
 
-            Dim lector As SQLiteDataReader = strCommand.ExecuteReader
-            If lector.Read Then
-                id = lector.GetValue("Id")
+            If conexion.State = ConnectionState.Open Then
+                Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
+                strCommand = New SQLiteCommand(Query, conexion)
+
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+                If lector.Read Then
+                    id = lector.GetValue("Id")
+                End If
+                lector.Close()
+
+                Query = "INSERT INTO Justificacions (IdSolucio,Subvencio) VALUES (" & id & "," & InfoSubvencio.Text & ")"
+
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+
+                MsgBox("Solució introduida correctament",, "Introduir solució")
             End If
-            lector.Close()
-
-            Query = "INSERT INTO Justificacions (IdSolucio,Subvencio) VALUES (" & id & "," & InfoSubvencio.Text & ")"
-
-            strCommand = New SQLiteCommand(Query, conexion)
-            strCommand.ExecuteNonQuery()
-
-            conexion.Close()
-            MsgBox("Solució introduida correctament",, "Introduir solució")
-
         Catch ex As Exception
             If seleccio = True Then MsgBox("No s'ha pogut modificar la solució", vbCritical, "Modificar solució")
             If seleccio = False Then MsgBox("No s'ha pogut introduir la solució", vbCritical, "Introduir solució")
         End Try
+
+        conexion.Close()
     End Sub
     'Activa o desactiva els camps de la solució depenent de si hi una seleccionada
     Private Sub EstaLaSolucioSeleccionada(x As Boolean)
@@ -942,7 +962,7 @@ Public Class Contractes
             CB_DataContracte.ForeColor = Color.Red
 
         Else
-                CB_DataContracte.ForeColor = Color.Black
+            CB_DataContracte.ForeColor = Color.Black
         End If
         DataFiContracte.Text = Format(DataContracte.Value.AddMonths(My.Settings.MesosContractacio).Date, "Short Date")
         MiraCaducitat()
@@ -950,12 +970,12 @@ Public Class Contractes
     Private Sub DataFactura_ValueChanged(sender As Object, e As EventArgs) Handles DataFactura.ValueChanged
 
         If DataFactura.Value.Date < DataContracte.Value Or DataFactura.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
-                CB_DataFactura.ForeColor = Color.Red
+            CB_DataFactura.ForeColor = Color.Red
 
         Else
-                CB_DataFactura.ForeColor = Color.Black
-            End If
-            DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+            CB_DataFactura.ForeColor = Color.Black
+        End If
+        DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
 
         MiraCaducitat()
 
@@ -964,10 +984,8 @@ Public Class Contractes
 
         If DataPagament.Value.Date < DataContracte.Value Or DataPagament.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
             CB_DataPagamentIVA.ForeColor = Color.Red
-
         Else
-                CB_DataPagamentIVA.ForeColor = Color.Black
-
+            CB_DataPagamentIVA.ForeColor = Color.Black
         End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
 
@@ -987,7 +1005,7 @@ Public Class Contractes
 
         'Mostem icones de ok o ko
 
-        ' Comproven si les date d'aprovacio son correctes
+        ' Comprovem si les date d'aprovacio son correctes
 
         If DataPresentacio = "" Then
             DataToCheck = Date.Now
@@ -1287,17 +1305,29 @@ Public Class Contractes
         Dim strCommand As SQLiteCommand
         Dim segmentString As String = "Segment" & segment
 
-        Query = "SELECT * FROM TipusSolucions WHERE Id=" & CB_TipusSolucio.SelectedValue
-        strCommand = New SQLiteCommand(Query, conexion)
-        conexion.Open()
-        Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-        If lector.Read() Then
-            subvencioSolucioSeleccionada = lector.GetValue(segmentString)
-            InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
+        conexion.Open()
+
+        If conexion.State = ConnectionState.Open Then
+            Query = "SELECT * FROM TipusSolucions WHERE Id=" & CB_TipusSolucio.SelectedValue
+
+            Try
+                strCommand = New SQLiteCommand(Query, conexion)
+
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+
+                If lector.Read() Then
+                    subvencioSolucioSeleccionada = lector.GetValue(segmentString)
+                    InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
+                End If
+                lector.Close()
+            Catch ex As Exception
+
+            End Try
+
+            conexion.Close()
         End If
-        lector.Close()
-        conexion.Close()
+
         If segmentEmpresaSeleccionada = 1 Then
             infoMax.Text = "<-- Màxim 48"
             InfoVariableNum.Maximum = 48
@@ -1308,5 +1338,9 @@ Public Class Contractes
             infoMax.Text = "<-- Màxim 2"
             InfoVariableNum.Maximum = 2
         End If
+    End Sub
+
+    Private Sub DataEmpreses_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataEmpreses.CellContentClick
+
     End Sub
 End Class
