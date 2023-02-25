@@ -177,7 +177,7 @@ Public Class EstatJustificacio
                 Me.Close()
             End If
         Catch ex As Exception
-            MsgBox("No s'ha pogut actualitzar l'estat ", vbCritical, "Justificació")
+            MsgBox("No s'ha pogut actualitzar l'estat " + ex.Message, vbCritical, "Justificació")
 
         End Try
         conexion.Close()

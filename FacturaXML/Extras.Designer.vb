@@ -26,9 +26,9 @@ Partial Class Extras
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Extras))
         DataExtres = New DataGridView()
-        CB_Empreses = New ComboBox()
         DataExtresGeneral = New DataGridView()
         Panel1 = New Panel()
         Label1 = New Label()
@@ -37,11 +37,15 @@ Partial Class Extras
         DataEstatSolucions = New DataGridView()
         Panel2 = New Panel()
         Label2 = New Label()
+        CercaEmpreses = New DataGridView()
+        TextCerca = New TextBox()
+        TB_Empresa = New TextBox()
         CType(DataExtres, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataExtresGeneral, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(DataEstatSolucions, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
+        CType(CercaEmpreses, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' DataExtres
@@ -50,12 +54,15 @@ Partial Class Extras
         DataExtres.AllowUserToDeleteRows = False
         DataExtres.AllowUserToResizeColumns = False
         DataExtres.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataExtres.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         DataExtres.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataExtres.BackgroundColor = SystemColors.Control
         DataExtres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
         DataExtres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataExtres.EditMode = DataGridViewEditMode.EditProgrammatically
-        DataExtres.Location = New Point(26, 74)
+        DataExtres.Enabled = False
+        DataExtres.Location = New Point(374, 74)
         DataExtres.MultiSelect = False
         DataExtres.Name = "DataExtres"
         DataExtres.ReadOnly = True
@@ -68,14 +75,7 @@ Partial Class Extras
         DataExtres.ShowEditingIcon = False
         DataExtres.Size = New Size(248, 251)
         DataExtres.TabIndex = 0
-        ' 
-        ' CB_Empreses
-        ' 
-        CB_Empreses.FormattingEnabled = True
-        CB_Empreses.Location = New Point(26, 45)
-        CB_Empreses.Name = "CB_Empreses"
-        CB_Empreses.Size = New Size(248, 23)
-        CB_Empreses.TabIndex = 1
+        DataExtres.TabStop = False
         ' 
         ' DataExtresGeneral
         ' 
@@ -83,22 +83,23 @@ Partial Class Extras
         DataExtresGeneral.AllowUserToDeleteRows = False
         DataExtresGeneral.AllowUserToResizeColumns = False
         DataExtresGeneral.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        DataExtresGeneral.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataExtresGeneral.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         DataExtresGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataExtresGeneral.BackgroundColor = SystemColors.Control
         DataExtresGeneral.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = Color.MediumSlateBlue
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.MediumSlateBlue
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataExtresGeneral.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.MediumSlateBlue
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = Color.MediumSlateBlue
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
+        DataExtresGeneral.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         DataExtresGeneral.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataExtresGeneral.EditMode = DataGridViewEditMode.EditProgrammatically
-        DataExtresGeneral.Location = New Point(304, 74)
+        DataExtresGeneral.Enabled = False
+        DataExtresGeneral.Location = New Point(653, 74)
         DataExtresGeneral.MultiSelect = False
         DataExtresGeneral.Name = "DataExtresGeneral"
         DataExtresGeneral.ReadOnly = True
@@ -111,13 +112,14 @@ Partial Class Extras
         DataExtresGeneral.ShowEditingIcon = False
         DataExtresGeneral.Size = New Size(248, 251)
         DataExtresGeneral.TabIndex = 2
+        DataExtresGeneral.TabStop = False
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = SystemColors.ActiveBorder
         Panel1.BorderStyle = BorderStyle.FixedSingle
         Panel1.Controls.Add(Label1)
-        Panel1.Location = New Point(304, 45)
+        Panel1.Location = New Point(653, 45)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(248, 23)
         Panel1.TabIndex = 3
@@ -133,17 +135,20 @@ Partial Class Extras
         ' TotalEmpresa
         ' 
         TotalEmpresa.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        TotalEmpresa.Location = New Point(26, 331)
+        TotalEmpresa.Location = New Point(374, 331)
         TotalEmpresa.Name = "TotalEmpresa"
+        TotalEmpresa.ReadOnly = True
         TotalEmpresa.Size = New Size(248, 29)
         TotalEmpresa.TabIndex = 4
+        TotalEmpresa.TabStop = False
         TotalEmpresa.TextAlign = HorizontalAlignment.Center
         ' 
         ' TotalGeneral
         ' 
         TotalGeneral.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        TotalGeneral.Location = New Point(304, 331)
+        TotalGeneral.Location = New Point(653, 331)
         TotalGeneral.Name = "TotalGeneral"
+        TotalGeneral.ReadOnly = True
         TotalGeneral.Size = New Size(248, 29)
         TotalGeneral.TabIndex = 5
         TotalGeneral.TextAlign = HorizontalAlignment.Center
@@ -154,22 +159,23 @@ Partial Class Extras
         DataEstatSolucions.AllowUserToDeleteRows = False
         DataEstatSolucions.AllowUserToResizeColumns = False
         DataEstatSolucions.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        DataEstatSolucions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataEstatSolucions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         DataEstatSolucions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataEstatSolucions.BackgroundColor = SystemColors.Control
         DataEstatSolucions.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.MediumSlateBlue
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        DataEstatSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.MediumSlateBlue
+        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        DataEstatSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         DataEstatSolucions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         DataEstatSolucions.EditMode = DataGridViewEditMode.EditProgrammatically
-        DataEstatSolucions.Location = New Point(582, 74)
+        DataEstatSolucions.Enabled = False
+        DataEstatSolucions.Location = New Point(932, 74)
         DataEstatSolucions.MultiSelect = False
         DataEstatSolucions.Name = "DataEstatSolucions"
         DataEstatSolucions.ReadOnly = True
@@ -182,13 +188,14 @@ Partial Class Extras
         DataEstatSolucions.ShowEditingIcon = False
         DataEstatSolucions.Size = New Size(248, 251)
         DataEstatSolucions.TabIndex = 6
+        DataEstatSolucions.TabStop = False
         ' 
         ' Panel2
         ' 
         Panel2.BackColor = SystemColors.ActiveBorder
         Panel2.BorderStyle = BorderStyle.FixedSingle
         Panel2.Controls.Add(Label2)
-        Panel2.Location = New Point(582, 45)
+        Panel2.Location = New Point(932, 46)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(248, 23)
         Panel2.TabIndex = 4
@@ -201,19 +208,66 @@ Partial Class Extras
         Label2.Size = New Size(104, 15)
         Label2.TabIndex = 0
         Label2.Text = "ESTAT SOLUCIONS"' 
+        ' CercaEmpreses
+        ' 
+        CercaEmpreses.AllowUserToAddRows = False
+        CercaEmpreses.AllowUserToDeleteRows = False
+        CercaEmpreses.AllowUserToResizeColumns = False
+        CercaEmpreses.AllowUserToResizeRows = False
+        CercaEmpreses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        CercaEmpreses.BackgroundColor = SystemColors.Control
+        CercaEmpreses.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        CercaEmpreses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        CercaEmpreses.EditMode = DataGridViewEditMode.EditProgrammatically
+        CercaEmpreses.Location = New Point(29, 74)
+        CercaEmpreses.MultiSelect = False
+        CercaEmpreses.Name = "CercaEmpreses"
+        CercaEmpreses.ReadOnly = True
+        CercaEmpreses.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        CercaEmpreses.RowHeadersVisible = False
+        CercaEmpreses.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        CercaEmpreses.RowTemplate.Height = 25
+        CercaEmpreses.ScrollBars = ScrollBars.Vertical
+        CercaEmpreses.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        CercaEmpreses.ShowEditingIcon = False
+        CercaEmpreses.Size = New Size(315, 492)
+        CercaEmpreses.TabIndex = 7
+        CercaEmpreses.TabStop = False
+        ' 
+        ' TextCerca
+        ' 
+        TextCerca.Location = New Point(29, 46)
+        TextCerca.Name = "TextCerca"
+        TextCerca.PlaceholderText = "Cerca empresa"
+        TextCerca.Size = New Size(315, 23)
+        TextCerca.TabIndex = 1
+        ' 
+        ' TB_Empresa
+        ' 
+        TB_Empresa.BackColor = Color.Silver
+        TB_Empresa.BorderStyle = BorderStyle.FixedSingle
+        TB_Empresa.Location = New Point(374, 45)
+        TB_Empresa.Name = "TB_Empresa"
+        TB_Empresa.ReadOnly = True
+        TB_Empresa.Size = New Size(248, 23)
+        TB_Empresa.TabIndex = 9
+        TB_Empresa.TextAlign = HorizontalAlignment.Center
+        ' 
         ' Extras
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoSizeMode = AutoSizeMode.GrowAndShrink
-        ClientSize = New Size(858, 450)
+        ClientSize = New Size(1210, 602)
+        Controls.Add(TB_Empresa)
+        Controls.Add(TextCerca)
+        Controls.Add(CercaEmpreses)
         Controls.Add(Panel2)
         Controls.Add(DataEstatSolucions)
         Controls.Add(TotalGeneral)
         Controls.Add(TotalEmpresa)
         Controls.Add(Panel1)
         Controls.Add(DataExtresGeneral)
-        Controls.Add(CB_Empreses)
         Controls.Add(DataExtres)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
         MaximizeBox = False
@@ -227,12 +281,12 @@ Partial Class Extras
         CType(DataEstatSolucions, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
+        CType(CercaEmpreses, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents DataExtres As DataGridView
-    Friend WithEvents CB_Empreses As ComboBox
     Friend WithEvents DataExtresGeneral As DataGridView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
@@ -241,4 +295,7 @@ Partial Class Extras
     Friend WithEvents DataEstatSolucions As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
+    Friend WithEvents CercaEmpreses As DataGridView
+    Friend WithEvents TextCerca As TextBox
+    Friend WithEvents TB_Empresa As TextBox
 End Class

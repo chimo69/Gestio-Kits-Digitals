@@ -376,7 +376,7 @@ Public Class Factures
             Catch ex As Exception
                 MsgBox("No s'han pogut carregar les empreses desde la base de dades", vbCritical, "Error")
             End Try
-            conexion.Close()
+
         Else
             CB_Empreses.Enabled = False
             CB_Solucions.Enabled = False
@@ -438,13 +438,14 @@ Public Class Factures
                             Vigila.Visible = False
                         End If
                     End If
+                    lector.Close()
                 End If
             Catch ex As Exception
                 MsgBox("No s'han pogut carregar les dades", vbCritical, "Error")
             End Try
-            conexion.Close()
-        End If
 
+        End If
+        conexion.Close()
     End Sub
 
     Private Sub CB_Empreses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Empreses.SelectionChangeCommitted
