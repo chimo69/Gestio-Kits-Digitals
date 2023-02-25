@@ -187,7 +187,11 @@ Public Class Extras
     End Sub
 
     Private Sub CercaEmpreses_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles CercaEmpreses.CellClick
-        TB_Empresa.Text = CercaEmpreses.Rows(e.RowIndex).Cells("Nom").Value
-        CarregaDades(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+        If e.RowIndex >= 0 Then
+            TB_Empresa.Text = CercaEmpreses.Rows(e.RowIndex).Cells("Nom").Value
+            CarregaDades(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+        End If
     End Sub
+
+
 End Class
