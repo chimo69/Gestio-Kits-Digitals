@@ -3,6 +3,7 @@
 Public Class Extras
     Private DT_Extres, DT_ExtresGeneral, DT_EstatSolucions, DT_CercaEmpreses As New DataTable
     Private TotalEmpresaValor, TotalGeneralValor As Double
+    Private TotalSolucionsValor As Integer
     Public Sub New()
 
         ' Esta llamada es exigida por el diseñador.
@@ -17,9 +18,10 @@ Public Class Extras
 
         conexion.Open()
 
+        ' Columna de Soluciones general
         Try
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
+                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució',  count(Justificacions.id) as Quantitat, sum(Justificacions.Subvencio) as Subvencions from Solucions
                                                  INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
                                                  INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio                                                 
                                                  GROUP by TipusSolucions.Nom", conexion)
@@ -37,9 +39,10 @@ Public Class Extras
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
+        ' Columna de quantitat de estats
         Try
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusEstats.NomEstat as 'Estat', count(Justificacions.Estat) as 'Quantitat' from Justificacions                                               
+                Dim DA As New SQLiteDataAdapter("SELECT TipusEstats.NomEstat as 'Estat', count(Justificacions.Estat) as Quantitat from Justificacions                                               
                                                  INNER JOIN TipusEstats ON TipusEstats.Id=Justificacions.Estat                                                 
                                                  GROUP by Justificacions.Estat", conexion)
                 DT_EstatSolucions.Clear()
@@ -56,6 +59,7 @@ Public Class Extras
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
+        ' Columna Empreses
         Try
             If conexion.State = ConnectionState.Open Then
                 Dim DA As New SQLiteDataAdapter("SELECT id,nom from empreses", conexion)
@@ -78,11 +82,16 @@ Public Class Extras
     End Sub
 
     Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtresGeneral.CellFormatting
-        'DataExtresGeneral.Columns("Nom").Width = 150
+        Dim dgv As DataGridView = sender
+        dgv.Columns("Solució").Width = 150
+        dgv.Columns("Subvencions").Width = 80
+        dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
 
     Private Sub DataExtres_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtres.DataBindingComplete
         TotalEmpresaValor = 0
+
         If DataExtres.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In DataExtres.Rows
                 If Fila IsNot Nothing Then
@@ -91,29 +100,125 @@ Public Class Extras
             Next
         End If
 
+        PB_SitioWeb.Value = 0
+        PB_ComercioElectronico.Value = 0
+        PB_RedesSociales.Value = 0
+        PB_Clientes.Value = 0
+        PB_BI.Value = 0
+        PB_GestionProcesos.Value = 0
+        PB_FacturaElectronica.Value = 0
+        PB_OficinaVirtual.Value = 0
+        PB_ComunicacionesSeguras.Value = 0
+        PB_Ciberseguridad.Value = 0
+
+        If DataExtres.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In DataExtres.Rows
+                If Fila IsNot Nothing Then
+                    Dim percentatge As Double = (Fila.Cells("Subvencions").Value * 100) / TotalEmpresaValor
+                    Select Case (Fila.Cells("id")).Value
+                        Case 1
+                            PB_SitioWeb.Value = percentatge
+                        Case 2
+                            PB_ComercioElectronico.Value = percentatge
+                        Case 3
+                            PB_RedesSociales.Value = percentatge
+                        Case 4
+                            PB_Clientes.Value = percentatge
+                        Case 5
+                            PB_BI.Value = percentatge
+                        Case 6
+                            PB_GestionProcesos.Value = percentatge
+                        Case 7
+                            PB_FacturaElectronica.Value = percentatge
+                        Case 8
+                            PB_OficinaVirtual.Value = percentatge
+                        Case 9
+                            PB_ComunicacionesSeguras.Value = percentatge
+                        Case 10
+                            PB_Ciberseguridad.Value = percentatge
+                    End Select
+                End If
+            Next
+        End If
+
         TotalEmpresa.Text = Format(TotalEmpresaValor, "#,##0.00 €")
+        DataExtres.Columns("Id").Visible = False
         DataExtres.ClearSelection()
     End Sub
 
     Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEstatSolucions.CellFormatting
-        DataEstatSolucions.Columns("Estat").Width = 150
+        Dim dgv As DataGridView = sender
+        dgv.Columns("Estat").Width = 150
+        dgv.Columns("Quantitat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
 
     Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtresGeneral.DataBindingComplete
-        If DataExtresGeneral.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In DataExtresGeneral.Rows
+        Dim dgv As DataGridView = sender
+        dgv.Columns("Id").Visible = False
+        TotalSolucionsValor = 0
+        TotalGeneralValor = 0
+        If dgv.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In dgv.Rows
                 If Fila IsNot Nothing Then
                     TotalGeneralValor += Fila.Cells("Subvencions").Value
+                    TotalSolucionsValor += Fila.Cells("Quantitat").Value
                 End If
             Next
         End If
+
+        PB_SitioWebG.Value = 0
+        PB_ComercioElectronicoG.Value = 0
+        PB_RedesSocialesG.Value = 0
+        PB_ClientesG.Value = 0
+        PB_BIG.Value = 0
+        PB_ProcesosG.Value = 0
+        PB_FacturaElectronicaG.Value = 0
+        PB_OficinaVirtual.Value = 0
+        PB_ComunicacionesSeguras.Value = 0
+        PB_Ciberseguridad.Value = 0
+
+        If dgv.Rows.Count > 0 Then
+            For Each Fila As DataGridViewRow In dgv.Rows
+                If Fila IsNot Nothing Then
+                    Dim percentatge As Double = (Fila.Cells("Subvencions").Value * 100) / TotalGeneralValor
+                    Select Case (Fila.Cells("Id")).Value
+                        Case 1
+                            PB_SitioWebG.Value = percentatge
+                        Case 2
+                            PB_ComercioElectronicoG.Value = percentatge
+                        Case 3
+                            PB_RedesSocialesG.Value = percentatge
+                        Case 4
+                            PB_ClientesG.Value = percentatge
+                        Case 5
+                            PB_BIG.Value = percentatge
+                        Case 6
+                            PB_ProcesosG.Value = percentatge
+                        Case 7
+                            PB_FacturaElectronicaG.Value = percentatge
+                        Case 8
+                            PB_OficinaVirtualG.Value = percentatge
+                        Case 9
+                            PB_ComunicacionesSegurasG.Value = percentatge
+                        Case 10
+                            PB_CiberseguridadG.Value = percentatge
+                    End Select
+                End If
+            Next
+        End If
+
+
         TotalGeneral.Text = Format(TotalGeneralValor, "#,##0.00 €")
         DataExtresGeneral.ClearSelection()
+        TotalSolucions.Text = TotalSolucionsValor.ToString
     End Sub
 
     Private Sub DataExtres_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtres.CellFormatting
         Dim dgv As DataGridView = sender
         dgv.Columns("Solució").Width = 150
+        dgv.Columns("Subvencions").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight
+        dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
 
     Private Sub CarregaDades(idEmpresa As Integer)
@@ -122,7 +227,7 @@ Public Class Extras
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
+                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
                                                  INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
                                                  INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio
                                                  WHERE Solucions.idEmpresa=" & idEmpresa & " 

@@ -160,8 +160,6 @@ Public Class Llistat
     End Sub
     Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
         Dim dgv As DataGridView = sender
-        'dgv.Columns("").Width = 100
-
         If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
 
             If e.Value = 1 Then
@@ -218,10 +216,6 @@ Public Class Llistat
             .Columns("Empresa").Width = 230
             .Columns("Solucio").Width = 150
             .Columns("Contracte").Width = 100
-            '.Columns("Data contracte").Width = 80
-            '.Columns("Data factura").Width = 80
-            '.Columns("Data pagament").Width = 80
-            '.Columns("Data venciment").Width = 80
             .Columns("Verificat").Width = 50
             .Columns("Word").Width = 50
             .Columns("Word").HeaderCell.Style.Font = font
