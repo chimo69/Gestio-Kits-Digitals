@@ -223,6 +223,36 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property semafor_taronja() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("semafor_taronja", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property semafor_verd() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("semafor_verd", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property semafor_vermell() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("semafor_vermell", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property sin_verificar_petit() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("sin_verificar_petit", resourceCulture)

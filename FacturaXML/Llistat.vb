@@ -316,6 +316,7 @@ Public Class Llistat
                           INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio
                           INNER JOIN TipusEstats ON Justificacions.Estat=TipusEstats.id
                           WHERE (Solucions.Contracte like '%" & contracte.Text & "%')" & SqlJustificats & " AND (Empreses.Nom like '%" & nomEmpresa.Text & "%')" & SqlFiltre & "  
+                                                      
                           ORDER BY Solucions.DataVenciment ASC"
 
                 comm = New SQLiteCommand(Sql, conexion)
