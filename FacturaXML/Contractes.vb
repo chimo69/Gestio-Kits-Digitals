@@ -389,6 +389,7 @@ Public Class Contractes
                                           Justificacions.Percentatge AS '%',
                                           Justificacions.Estat,
                                           Justificacions.DataPresentacio,
+                                          Justificacions.Subvencio, 
                                           Solucions.Observacions,
                                           Solucions.Quantitat   
                                           FROM Solucions
@@ -412,6 +413,7 @@ Public Class Contractes
                                           Justificacions.Percentatge AS '%',
                                           Justificacions.Estat,
                                           Justificacions.DataPresentacio,
+                                          Justificacions.Subvencio, 
                                           Solucions.Observacions,
                                           Solucions.Quantitat 
                                           FROM Solucions
@@ -464,6 +466,7 @@ Public Class Contractes
         DataPagamentOK.Visible = False
 
         InfoSubvencio.Clear()
+        InfoSubvencioReal.Clear()
         NoAcord.Clear()
         DiesCaducitat.Clear()
         DataCaducitat.Clear()
@@ -581,6 +584,7 @@ Public Class Contractes
             .Columns("SegonPagament").Visible = False
             .Columns("Estat").Visible = False
             .Columns("DataPresentacio").Visible = False
+            .Columns("Subvencio").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -1285,6 +1289,8 @@ Public Class Contractes
             DiesCaducitat.Text = "Caducat"
         End If
 
+        InfoSubvencioReal.Text = row.Cells("Subvencio").Value.ToString
+
         ' Formatejem estats
         TB_Proces0.Enabled = False
         TB_Proces0.BackColor = SystemColors.Control
@@ -1385,13 +1391,13 @@ Public Class Contractes
         End If
 
         If segmentEmpresaSeleccionada = 1 Then
-            infoMax.Text = "<-- Màxim 48"
+            infoMax.Text = "Màxim 48"
             InfoVariableNum.Maximum = 48
         ElseIf segmentEmpresaSeleccionada = 2 Then
-            infoMax.Text = "<-- Màxim 9"
+            infoMax.Text = "Màxim 9"
             InfoVariableNum.Maximum = 9
         ElseIf segmentEmpresaSeleccionada = 3 Then
-            infoMax.Text = "<-- Màxim 2"
+            infoMax.Text = "Màxim 2"
             InfoVariableNum.Maximum = 2
         End If
     End Sub
