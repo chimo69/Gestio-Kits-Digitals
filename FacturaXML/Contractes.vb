@@ -499,6 +499,10 @@ Public Class Contractes
         TB_Proces5.BackColor = SystemColors.Control
         TB_Proces6.Enabled = False
         TB_Proces6.BackColor = SystemColors.Control
+        TB_Proces7.Enabled = False
+        TB_Proces7.BackColor = SystemColors.Control
+        TB_Proces8.Enabled = False
+        TB_Proces8.BackColor = SystemColors.Control
 
     End Sub
 
@@ -670,7 +674,7 @@ Public Class Contractes
                             " WHERE Id=" & idSolucio
 
         Else
-            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
@@ -1306,6 +1310,10 @@ Public Class Contractes
         TB_Proces5.BackColor = SystemColors.Control
         TB_Proces6.Enabled = False
         TB_Proces6.BackColor = SystemColors.Control
+        TB_Proces7.Enabled = False
+        TB_Proces7.BackColor = SystemColors.Control
+        TB_Proces8.Enabled = False
+        TB_Proces8.BackColor = SystemColors.Control
 
         Select Case row.Cells("Estat").Value
             Case 0
@@ -1329,6 +1337,12 @@ Public Class Contractes
             Case 6
                 TB_Proces6.Enabled = True
                 TB_Proces6.BackColor = verdClar
+            Case 7
+                TB_Proces7.Enabled = True
+                TB_Proces7.BackColor = verdClar
+            Case 8
+                TB_Proces8.Enabled = True
+                TB_Proces8.BackColor = verdClar
         End Select
 
         EstaLaSolucioSeleccionada(True)
@@ -1357,8 +1371,6 @@ Public Class Contractes
                 infoMax.Visible = False
         End Select
 
-
-
         RebreSubvencio(segmentEmpresaSeleccionada)
 
     End Sub
@@ -1378,11 +1390,13 @@ Public Class Contractes
 
                 Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
+
                 If lector.Read() Then
                     subvencioSolucioSeleccionada = lector.GetValue(segmentString)
                     InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
                 End If
                 lector.Close()
+
             Catch ex As Exception
 
             End Try

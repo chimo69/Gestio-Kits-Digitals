@@ -23,13 +23,13 @@ Partial Class Contractes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Contractes))
         Me.DataEmpreses = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -113,6 +113,8 @@ Partial Class Contractes
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TB_Proces7 = New System.Windows.Forms.TextBox()
+        Me.TB_Proces8 = New System.Windows.Forms.TextBox()
         Me.TB_Proces0 = New System.Windows.Forms.TextBox()
         Me.TB_Proces4 = New System.Windows.Forms.TextBox()
         Me.TB_Proces6 = New System.Windows.Forms.TextBox()
@@ -123,6 +125,9 @@ Partial Class Contractes
         Me.DataFiConcessio = New System.Windows.Forms.TextBox()
         Me.TitolAprovacio = New System.Windows.Forms.Label()
         Me.DataConcessioOK = New System.Windows.Forms.PictureBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.InfoSubvencioReal = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,8 +151,8 @@ Partial Class Contractes
         Me.DataEmpreses.AllowUserToAddRows = False
         Me.DataEmpreses.AllowUserToDeleteRows = False
         Me.DataEmpreses.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataEmpreses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -155,14 +160,14 @@ Partial Class Contractes
         Me.DataEmpreses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataEmpreses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataEmpreses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DataEmpreses.ColumnHeadersHeight = 30
         Me.DataEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataEmpreses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -171,18 +176,18 @@ Partial Class Contractes
         Me.DataEmpreses.MultiSelect = False
         Me.DataEmpreses.Name = "DataEmpreses"
         Me.DataEmpreses.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
         Me.DataEmpreses.RowHeadersVisible = False
         Me.DataEmpreses.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle11
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataEmpreses.ShowEditingIcon = False
@@ -351,38 +356,38 @@ Partial Class Contractes
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DataSolucions.ColumnHeadersHeight = 30
         Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataSolucions.EnableHeadersVisualStyles = False
         Me.DataSolucions.Location = New System.Drawing.Point(930, 65)
         Me.DataSolucions.MultiSelect = False
         Me.DataSolucions.Name = "DataSolucions"
         Me.DataSolucions.ReadOnly = True
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.DataSolucions.RowHeadersVisible = False
         Me.DataSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.DataSolucions.RowTemplate.Height = 25
@@ -567,9 +572,9 @@ Partial Class Contractes
         '
         Me.Btn_EstatJustificacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Btn_EstatJustificacio.Enabled = False
-        Me.Btn_EstatJustificacio.Location = New System.Drawing.Point(1474, 273)
+        Me.Btn_EstatJustificacio.Location = New System.Drawing.Point(1500, 273)
         Me.Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
-        Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(147, 63)
+        Me.Btn_EstatJustificacio.Size = New System.Drawing.Size(121, 63)
         Me.Btn_EstatJustificacio.TabIndex = 18
         Me.Btn_EstatJustificacio.Text = "Veure estat de" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "justificació"
         Me.Btn_EstatJustificacio.UseVisualStyleBackColor = True
@@ -659,7 +664,7 @@ Partial Class Contractes
         Me.TitolContracte.AutoSize = True
         Me.TitolContracte.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TitolContracte.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.TitolContracte.Location = New System.Drawing.Point(1294, 410)
+        Me.TitolContracte.Location = New System.Drawing.Point(1285, 421)
         Me.TitolContracte.Name = "TitolContracte"
         Me.TitolContracte.Size = New System.Drawing.Size(206, 13)
         Me.TitolContracte.TabIndex = 52
@@ -670,7 +675,7 @@ Partial Class Contractes
         'DataFiContracte
         '
         Me.DataFiContracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiContracte.Location = New System.Drawing.Point(1503, 406)
+        Me.DataFiContracte.Location = New System.Drawing.Point(1500, 413)
         Me.DataFiContracte.Name = "DataFiContracte"
         Me.DataFiContracte.ReadOnly = True
         Me.DataFiContracte.Size = New System.Drawing.Size(118, 23)
@@ -798,7 +803,7 @@ Partial Class Contractes
         'DataFiFactura
         '
         Me.DataFiFactura.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiFactura.Location = New System.Drawing.Point(1503, 437)
+        Me.DataFiFactura.Location = New System.Drawing.Point(1500, 444)
         Me.DataFiFactura.Name = "DataFiFactura"
         Me.DataFiFactura.ReadOnly = True
         Me.DataFiFactura.Size = New System.Drawing.Size(118, 23)
@@ -812,7 +817,7 @@ Partial Class Contractes
         Me.TitolFactura.AutoSize = True
         Me.TitolFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TitolFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.TitolFactura.Location = New System.Drawing.Point(1336, 443)
+        Me.TitolFactura.Location = New System.Drawing.Point(1327, 454)
         Me.TitolFactura.Name = "TitolFactura"
         Me.TitolFactura.Size = New System.Drawing.Size(164, 13)
         Me.TitolFactura.TabIndex = 69
@@ -885,7 +890,7 @@ Partial Class Contractes
         Me.GroupBox1.Controls.Add(Me.Ciutat)
         Me.GroupBox1.Controls.Add(Me.Provincia)
         Me.GroupBox1.Controls.Add(Me.Pais)
-        Me.GroupBox1.Location = New System.Drawing.Point(31, 128)
+        Me.GroupBox1.Location = New System.Drawing.Point(28, 128)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(310, 458)
         Me.GroupBox1.TabIndex = 74
@@ -968,9 +973,11 @@ Partial Class Contractes
         '
         Me.InfoVariableNum.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InfoVariableNum.Location = New System.Drawing.Point(1079, 307)
+        Me.InfoVariableNum.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.InfoVariableNum.Name = "InfoVariableNum"
         Me.InfoVariableNum.Size = New System.Drawing.Size(47, 23)
         Me.InfoVariableNum.TabIndex = 76
+        Me.InfoVariableNum.Value = New Decimal(New Integer() {1, 0, 0, 0})
         Me.InfoVariableNum.Visible = False
         '
         'infoMax
@@ -988,7 +995,7 @@ Partial Class Contractes
         '
         Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(1217, 304)
+        Me.Label17.Location = New System.Drawing.Point(1288, 300)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(62, 30)
         Me.Label17.TabIndex = 78
@@ -998,7 +1005,7 @@ Partial Class Contractes
         '
         Me.InfoSubvencio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InfoSubvencio.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.InfoSubvencio.Location = New System.Drawing.Point(1285, 303)
+        Me.InfoSubvencio.Location = New System.Drawing.Point(1288, 331)
         Me.InfoSubvencio.Name = "InfoSubvencio"
         Me.InfoSubvencio.ReadOnly = True
         Me.InfoSubvencio.Size = New System.Drawing.Size(81, 33)
@@ -1011,7 +1018,7 @@ Partial Class Contractes
         Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label18.Location = New System.Drawing.Point(1372, 310)
+        Me.Label18.Location = New System.Drawing.Point(1371, 338)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(18, 20)
         Me.Label18.TabIndex = 80
@@ -1102,6 +1109,8 @@ Partial Class Contractes
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox2.Controls.Add(Me.TB_Proces7)
+        Me.GroupBox2.Controls.Add(Me.TB_Proces8)
         Me.GroupBox2.Controls.Add(Me.TB_Proces0)
         Me.GroupBox2.Controls.Add(Me.TB_Proces4)
         Me.GroupBox2.Controls.Add(Me.TB_Proces6)
@@ -1116,13 +1125,41 @@ Partial Class Contractes
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Procés de justificació"
         '
+        'TB_Proces7
+        '
+        Me.TB_Proces7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TB_Proces7.BackColor = System.Drawing.SystemColors.Control
+        Me.TB_Proces7.Enabled = False
+        Me.TB_Proces7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces7.Location = New System.Drawing.Point(215, 50)
+        Me.TB_Proces7.Name = "TB_Proces7"
+        Me.TB_Proces7.ReadOnly = True
+        Me.TB_Proces7.Size = New System.Drawing.Size(192, 22)
+        Me.TB_Proces7.TabIndex = 8
+        Me.TB_Proces7.Text = "Finalitzat termini esmena"
+        Me.TB_Proces7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TB_Proces8
+        '
+        Me.TB_Proces8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TB_Proces8.BackColor = System.Drawing.SystemColors.Control
+        Me.TB_Proces8.Enabled = False
+        Me.TB_Proces8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Proces8.Location = New System.Drawing.Point(10, 50)
+        Me.TB_Proces8.Name = "TB_Proces8"
+        Me.TB_Proces8.ReadOnly = True
+        Me.TB_Proces8.Size = New System.Drawing.Size(199, 22)
+        Me.TB_Proces8.TabIndex = 7
+        Me.TB_Proces8.Text = "Esmena incorrecta"
+        Me.TB_Proces8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_Proces0
         '
         Me.TB_Proces0.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Proces0.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces0.Enabled = False
         Me.TB_Proces0.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces0.Location = New System.Drawing.Point(149, 22)
+        Me.TB_Proces0.Location = New System.Drawing.Point(10, 22)
         Me.TB_Proces0.Name = "TB_Proces0"
         Me.TB_Proces0.ReadOnly = True
         Me.TB_Proces0.Size = New System.Drawing.Size(195, 22)
@@ -1136,10 +1173,10 @@ Partial Class Contractes
         Me.TB_Proces4.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces4.Enabled = False
         Me.TB_Proces4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces4.Location = New System.Drawing.Point(149, 49)
+        Me.TB_Proces4.Location = New System.Drawing.Point(485, 22)
         Me.TB_Proces4.Name = "TB_Proces4"
         Me.TB_Proces4.ReadOnly = True
-        Me.TB_Proces4.Size = New System.Drawing.Size(199, 22)
+        Me.TB_Proces4.Size = New System.Drawing.Size(192, 22)
         Me.TB_Proces4.TabIndex = 5
         Me.TB_Proces4.Text = "Termini d'esmena obert"
         Me.TB_Proces4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1150,7 +1187,7 @@ Partial Class Contractes
         Me.TB_Proces6.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces6.Enabled = False
         Me.TB_Proces6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces6.Location = New System.Drawing.Point(549, 49)
+        Me.TB_Proces6.Location = New System.Drawing.Point(609, 50)
         Me.TB_Proces6.Name = "TB_Proces6"
         Me.TB_Proces6.ReadOnly = True
         Me.TB_Proces6.Size = New System.Drawing.Size(69, 22)
@@ -1164,7 +1201,7 @@ Partial Class Contractes
         Me.TB_Proces5.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces5.Enabled = False
         Me.TB_Proces5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces5.Location = New System.Drawing.Point(354, 49)
+        Me.TB_Proces5.Location = New System.Drawing.Point(413, 50)
         Me.TB_Proces5.Name = "TB_Proces5"
         Me.TB_Proces5.ReadOnly = True
         Me.TB_Proces5.Size = New System.Drawing.Size(189, 22)
@@ -1178,7 +1215,7 @@ Partial Class Contractes
         Me.TB_Proces3.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces3.Enabled = False
         Me.TB_Proces3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces3.Location = New System.Drawing.Point(520, 22)
+        Me.TB_Proces3.Location = New System.Drawing.Point(381, 22)
         Me.TB_Proces3.Name = "TB_Proces3"
         Me.TB_Proces3.ReadOnly = True
         Me.TB_Proces3.Size = New System.Drawing.Size(98, 22)
@@ -1192,7 +1229,7 @@ Partial Class Contractes
         Me.TB_Proces2.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces2.Enabled = False
         Me.TB_Proces2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces2.Location = New System.Drawing.Point(423, 22)
+        Me.TB_Proces2.Location = New System.Drawing.Point(284, 22)
         Me.TB_Proces2.Name = "TB_Proces2"
         Me.TB_Proces2.ReadOnly = True
         Me.TB_Proces2.Size = New System.Drawing.Size(91, 22)
@@ -1206,7 +1243,7 @@ Partial Class Contractes
         Me.TB_Proces1.BackColor = System.Drawing.SystemColors.Control
         Me.TB_Proces1.Enabled = False
         Me.TB_Proces1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Proces1.Location = New System.Drawing.Point(350, 22)
+        Me.TB_Proces1.Location = New System.Drawing.Point(211, 22)
         Me.TB_Proces1.Name = "TB_Proces1"
         Me.TB_Proces1.ReadOnly = True
         Me.TB_Proces1.Size = New System.Drawing.Size(67, 22)
@@ -1217,7 +1254,7 @@ Partial Class Contractes
         'DataFiConcessio
         '
         Me.DataFiConcessio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataFiConcessio.Location = New System.Drawing.Point(1503, 374)
+        Me.DataFiConcessio.Location = New System.Drawing.Point(1500, 381)
         Me.DataFiConcessio.Name = "DataFiConcessio"
         Me.DataFiConcessio.ReadOnly = True
         Me.DataFiConcessio.Size = New System.Drawing.Size(118, 23)
@@ -1231,7 +1268,7 @@ Partial Class Contractes
         Me.TitolAprovacio.AutoSize = True
         Me.TitolAprovacio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TitolAprovacio.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.TitolAprovacio.Location = New System.Drawing.Point(1323, 378)
+        Me.TitolAprovacio.Location = New System.Drawing.Point(1314, 389)
         Me.TitolAprovacio.Name = "TitolAprovacio"
         Me.TitolAprovacio.Size = New System.Drawing.Size(176, 13)
         Me.TitolAprovacio.TabIndex = 88
@@ -1251,11 +1288,47 @@ Partial Class Contractes
         Me.DataConcessioOK.TabStop = False
         Me.DataConcessioOK.Visible = False
         '
+        'Label14
+        '
+        Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label14.Location = New System.Drawing.Point(1474, 338)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(18, 20)
+        Me.Label14.TabIndex = 93
+        Me.Label14.Text = "€"
+        '
+        'InfoSubvencioReal
+        '
+        Me.InfoSubvencioReal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.InfoSubvencioReal.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.InfoSubvencioReal.Location = New System.Drawing.Point(1390, 331)
+        Me.InfoSubvencioReal.Name = "InfoSubvencioReal"
+        Me.InfoSubvencioReal.ReadOnly = True
+        Me.InfoSubvencioReal.Size = New System.Drawing.Size(81, 33)
+        Me.InfoSubvencioReal.TabIndex = 92
+        Me.InfoSubvencioReal.TabStop = False
+        Me.InfoSubvencioReal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label19
+        '
+        Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(1390, 300)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(62, 30)
+        Me.Label19.TabIndex = 91
+        Me.Label19.Text = "Subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " real"
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 952)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.InfoSubvencioReal)
+        Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.DataConcessioOK)
         Me.Controls.Add(Me.DataFiConcessio)
         Me.Controls.Add(Me.TitolAprovacio)
@@ -1430,4 +1503,9 @@ Partial Class Contractes
     Friend WithEvents DataFiConcessio As TextBox
     Friend WithEvents TitolAprovacio As Label
     Friend WithEvents DataConcessioOK As PictureBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents InfoSubvencioReal As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TB_Proces8 As TextBox
+    Friend WithEvents TB_Proces7 As TextBox
 End Class
