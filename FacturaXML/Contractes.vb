@@ -720,7 +720,7 @@ Public Class Contractes
 
         End If
 
-        Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
+
 
         Try
             conexion.Open()
@@ -731,10 +731,12 @@ Public Class Contractes
         Catch ex As Exception
 
         End Try
-        conexion.Close()
+
+
+        Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
 
         Try
-            conexion.Open()
+
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()
