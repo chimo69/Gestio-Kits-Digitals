@@ -50,6 +50,9 @@ Partial Class Principal
         Me.Button2 = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Btn_Empreses = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Btn_Extres = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +65,7 @@ Partial Class Principal
         Me.Btn_Contractes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Btn_Contractes.FlatAppearance.BorderSize = 0
         Me.Btn_Contractes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_Contractes.Location = New System.Drawing.Point(225, 216)
+        Me.Btn_Contractes.Location = New System.Drawing.Point(225, 152)
         Me.Btn_Contractes.Name = "Btn_Contractes"
         Me.Btn_Contractes.Size = New System.Drawing.Size(130, 124)
         Me.Btn_Contractes.TabIndex = 1
@@ -92,7 +95,7 @@ Partial Class Principal
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(65, 343)
+        Me.Label1.Location = New System.Drawing.Point(65, 279)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(81, 25)
         Me.Label1.TabIndex = 20
@@ -102,7 +105,7 @@ Partial Class Principal
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(232, 343)
+        Me.Label2.Location = New System.Drawing.Point(232, 279)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(117, 50)
         Me.Label2.TabIndex = 21
@@ -114,7 +117,7 @@ Partial Class Principal
         Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArxiuToolStripMenuItem, Me.KitsDigitalsToolStripMenuItem, Me.FacturesToolStripMenuItem, Me.AjudaToolStripMenuItem})
         Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(769, 24)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(763, 24)
         Me.MenuPrincipal.TabIndex = 22
         Me.MenuPrincipal.Text = "MenuStrip1"
         '
@@ -221,11 +224,11 @@ Partial Class Principal
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(416, 343)
+        Me.Label3.Location = New System.Drawing.Point(429, 292)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(117, 50)
+        Me.Label3.Size = New System.Drawing.Size(93, 25)
         Me.Label3.TabIndex = 24
-        Me.Label3.Text = "Llistat" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "de solucions"
+        Me.Label3.Text = "Solucions"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button1
@@ -234,7 +237,7 @@ Partial Class Principal
         Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(409, 216)
+        Me.Button1.Location = New System.Drawing.Point(409, 152)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(130, 124)
         Me.Button1.TabIndex = 23
@@ -248,7 +251,7 @@ Partial Class Principal
         Me.Btn_Factures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Factures.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_Factures.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Btn_Factures.Location = New System.Drawing.Point(39, 216)
+        Me.Btn_Factures.Location = New System.Drawing.Point(39, 152)
         Me.Btn_Factures.Name = "Btn_Factures"
         Me.Btn_Factures.Size = New System.Drawing.Size(132, 124)
         Me.Btn_Factures.TabIndex = 0
@@ -259,7 +262,7 @@ Partial Class Principal
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(600, 343)
+        Me.Label4.Location = New System.Drawing.Point(405, 474)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(117, 50)
         Me.Label4.TabIndex = 26
@@ -272,7 +275,7 @@ Partial Class Principal
         Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Button2.FlatAppearance.BorderSize = 0
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(593, 216)
+        Me.Button2.Location = New System.Drawing.Point(392, 347)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(130, 124)
         Me.Button2.TabIndex = 25
@@ -281,7 +284,7 @@ Partial Class Principal
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(608, 413)
+        Me.LinkLabel1.Location = New System.Drawing.Point(537, 388)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(82, 15)
         Me.LinkLabel1.TabIndex = 27
@@ -291,20 +294,57 @@ Partial Class Principal
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(608, 444)
+        Me.LinkLabel2.Location = New System.Drawing.Point(537, 419)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(115, 15)
         Me.LinkLabel2.TabIndex = 28
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "Espacio digitalizador"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(609, 292)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(92, 25)
+        Me.Label5.TabIndex = 31
+        Me.Label5.Text = "Empreses"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Btn_Empreses
+        '
+        Me.Btn_Empreses.BackgroundImage = Global.FacturaXML.My.Resources.Resources.empresa
+        Me.Btn_Empreses.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Btn_Empreses.FlatAppearance.BorderSize = 0
+        Me.Btn_Empreses.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Empreses.Location = New System.Drawing.Point(587, 152)
+        Me.Btn_Empreses.Name = "Btn_Empreses"
+        Me.Btn_Empreses.Size = New System.Drawing.Size(130, 124)
+        Me.Btn_Empreses.TabIndex = 30
+        Me.Btn_Empreses.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(224, 487)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(86, 25)
+        Me.Label6.TabIndex = 33
+        Me.Label6.Text = "Informes"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Btn_Extres
         '
-        Me.Btn_Extres.Location = New System.Drawing.Point(409, 413)
+        Me.Btn_Extres.BackgroundImage = Global.FacturaXML.My.Resources.Resources.informe_financiero
+        Me.Btn_Extres.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Btn_Extres.FlatAppearance.BorderSize = 0
+        Me.Btn_Extres.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Extres.Location = New System.Drawing.Point(202, 347)
         Me.Btn_Extres.Name = "Btn_Extres"
-        Me.Btn_Extres.Size = New System.Drawing.Size(151, 46)
-        Me.Btn_Extres.TabIndex = 29
-        Me.Btn_Extres.Text = "Informes"
+        Me.Btn_Extres.Size = New System.Drawing.Size(130, 124)
+        Me.Btn_Extres.TabIndex = 32
         Me.Btn_Extres.UseVisualStyleBackColor = True
         '
         'Principal
@@ -312,8 +352,11 @@ Partial Class Principal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(769, 491)
+        Me.ClientSize = New System.Drawing.Size(763, 552)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Btn_Extres)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Btn_Empreses)
         Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
@@ -368,5 +411,8 @@ Partial Class Principal
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents IdrConsultingToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EspacioDigitalizadorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Btn_Empreses As Button
+    Friend WithEvents Label6 As Label
     Friend WithEvents Btn_Extres As Button
 End Class

@@ -23,13 +23,13 @@ Partial Class Contractes
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Contractes))
         Me.DataEmpreses = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -94,8 +94,6 @@ Partial Class Contractes
         Me.TB_Hora = New System.Windows.Forms.TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataConcessio = New System.Windows.Forms.DateTimePicker()
-        Me.CB_DataConcessio = New System.Windows.Forms.CheckBox()
         Me.RB_Segment3 = New System.Windows.Forms.RadioButton()
         Me.RB_Segment2 = New System.Windows.Forms.RadioButton()
         Me.RB_Segment1 = New System.Windows.Forms.RadioButton()
@@ -128,6 +126,16 @@ Partial Class Contractes
         Me.Label14 = New System.Windows.Forms.Label()
         Me.InfoSubvencioReal = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TB_ImportBono = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.TB_CodiBono = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TB_CaducitatConcessio = New System.Windows.Forms.TextBox()
+        Me.DataConcessio = New System.Windows.Forms.DateTimePicker()
+        Me.CB_DataConcessio = New System.Windows.Forms.CheckBox()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,6 +152,7 @@ Partial Class Contractes
         Me.Panel2.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataConcessioOK, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataEmpreses
@@ -151,8 +160,8 @@ Partial Class Contractes
         Me.DataEmpreses.AllowUserToAddRows = False
         Me.DataEmpreses.AllowUserToDeleteRows = False
         Me.DataEmpreses.AllowUserToResizeRows = False
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataEmpreses.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataEmpreses.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -160,14 +169,14 @@ Partial Class Contractes
         Me.DataEmpreses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataEmpreses.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataEmpreses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataEmpreses.ColumnHeadersHeight = 30
         Me.DataEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DataEmpreses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -176,18 +185,18 @@ Partial Class Contractes
         Me.DataEmpreses.MultiSelect = False
         Me.DataEmpreses.Name = "DataEmpreses"
         Me.DataEmpreses.ReadOnly = True
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataEmpreses.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataEmpreses.RowHeadersVisible = False
         Me.DataEmpreses.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.DataEmpreses.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataEmpreses.ShowEditingIcon = False
@@ -339,7 +348,7 @@ Partial Class Contractes
         '
         'btn_EsborrarSeleccioEmpresa
         '
-        Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(31, 612)
+        Me.btn_EsborrarSeleccioEmpresa.Location = New System.Drawing.Point(31, 769)
         Me.btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
         Me.btn_EsborrarSeleccioEmpresa.Size = New System.Drawing.Size(148, 54)
         Me.btn_EsborrarSeleccioEmpresa.TabIndex = 8
@@ -356,38 +365,38 @@ Partial Class Contractes
         Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DataSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataSolucions.ColumnHeadersHeight = 30
         Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataSolucions.EnableHeadersVisualStyles = False
         Me.DataSolucions.Location = New System.Drawing.Point(930, 65)
         Me.DataSolucions.MultiSelect = False
         Me.DataSolucions.Name = "DataSolucions"
         Me.DataSolucions.ReadOnly = True
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataSolucions.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataSolucions.RowHeadersVisible = False
         Me.DataSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
         Me.DataSolucions.RowTemplate.Height = 25
@@ -870,8 +879,6 @@ Partial Class Contractes
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.DataConcessio)
-        Me.GroupBox1.Controls.Add(Me.CB_DataConcessio)
         Me.GroupBox1.Controls.Add(Me.RB_Segment3)
         Me.GroupBox1.Controls.Add(Me.RB_Segment2)
         Me.GroupBox1.Controls.Add(Me.RB_Segment1)
@@ -892,29 +899,10 @@ Partial Class Contractes
         Me.GroupBox1.Controls.Add(Me.Pais)
         Me.GroupBox1.Location = New System.Drawing.Point(28, 128)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(310, 458)
+        Me.GroupBox1.Size = New System.Drawing.Size(310, 424)
         Me.GroupBox1.TabIndex = 74
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dades de l'empresa"
-        '
-        'DataConcessio
-        '
-        Me.DataConcessio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DataConcessio.Location = New System.Drawing.Point(162, 423)
-        Me.DataConcessio.Name = "DataConcessio"
-        Me.DataConcessio.Size = New System.Drawing.Size(131, 23)
-        Me.DataConcessio.TabIndex = 88
-        Me.DataConcessio.Visible = False
-        '
-        'CB_DataConcessio
-        '
-        Me.CB_DataConcessio.AutoSize = True
-        Me.CB_DataConcessio.Location = New System.Drawing.Point(13, 424)
-        Me.CB_DataConcessio.Name = "CB_DataConcessio"
-        Me.CB_DataConcessio.Size = New System.Drawing.Size(105, 19)
-        Me.CB_DataConcessio.TabIndex = 59
-        Me.CB_DataConcessio.Text = "Data concessió"
-        Me.CB_DataConcessio.UseVisualStyleBackColor = True
         '
         'RB_Segment3
         '
@@ -1321,11 +1309,111 @@ Partial Class Contractes
         Me.Label19.TabIndex = 91
         Me.Label19.Text = "Subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " real"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label23)
+        Me.GroupBox3.Controls.Add(Me.TB_ImportBono)
+        Me.GroupBox3.Controls.Add(Me.Label22)
+        Me.GroupBox3.Controls.Add(Me.TB_CodiBono)
+        Me.GroupBox3.Controls.Add(Me.Label21)
+        Me.GroupBox3.Controls.Add(Me.Label20)
+        Me.GroupBox3.Controls.Add(Me.TB_CaducitatConcessio)
+        Me.GroupBox3.Controls.Add(Me.DataConcessio)
+        Me.GroupBox3.Controls.Add(Me.CB_DataConcessio)
+        Me.GroupBox3.Location = New System.Drawing.Point(28, 564)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(313, 189)
+        Me.GroupBox3.TabIndex = 94
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Dades concessió"
+        '
+        'Label23
+        '
+        Me.Label23.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label23.Location = New System.Drawing.Point(191, 135)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(18, 20)
+        Me.Label23.TabIndex = 102
+        Me.Label23.Text = "€"
+        '
+        'TB_ImportBono
+        '
+        Me.TB_ImportBono.Location = New System.Drawing.Point(85, 132)
+        Me.TB_ImportBono.Name = "TB_ImportBono"
+        Me.TB_ImportBono.Size = New System.Drawing.Size(100, 23)
+        Me.TB_ImportBono.TabIndex = 103
+        Me.TB_ImportBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(16, 135)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(43, 15)
+        Me.Label22.TabIndex = 101
+        Me.Label22.Text = "Import"
+        '
+        'TB_CodiBono
+        '
+        Me.TB_CodiBono.Location = New System.Drawing.Point(85, 99)
+        Me.TB_CodiBono.Name = "TB_CodiBono"
+        Me.TB_CodiBono.Size = New System.Drawing.Size(211, 23)
+        Me.TB_CodiBono.TabIndex = 100
+        Me.TB_CodiBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(16, 102)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(63, 15)
+        Me.Label21.TabIndex = 99
+        Me.Label21.Text = "Codi Bono"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(31, 66)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(113, 15)
+        Me.Label20.TabIndex = 98
+        Me.Label20.Text = "Caducitat concessió"
+        '
+        'TB_CaducitatConcessio
+        '
+        Me.TB_CaducitatConcessio.Location = New System.Drawing.Point(165, 63)
+        Me.TB_CaducitatConcessio.Name = "TB_CaducitatConcessio"
+        Me.TB_CaducitatConcessio.ReadOnly = True
+        Me.TB_CaducitatConcessio.Size = New System.Drawing.Size(131, 23)
+        Me.TB_CaducitatConcessio.TabIndex = 97
+        '
+        'DataConcessio
+        '
+        Me.DataConcessio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DataConcessio.Location = New System.Drawing.Point(165, 34)
+        Me.DataConcessio.Name = "DataConcessio"
+        Me.DataConcessio.Size = New System.Drawing.Size(131, 23)
+        Me.DataConcessio.TabIndex = 96
+        Me.DataConcessio.Visible = False
+        '
+        'CB_DataConcessio
+        '
+        Me.CB_DataConcessio.AutoSize = True
+        Me.CB_DataConcessio.Location = New System.Drawing.Point(16, 35)
+        Me.CB_DataConcessio.Name = "CB_DataConcessio"
+        Me.CB_DataConcessio.Size = New System.Drawing.Size(105, 19)
+        Me.CB_DataConcessio.TabIndex = 95
+        Me.CB_DataConcessio.Text = "Data concessió"
+        Me.CB_DataConcessio.UseVisualStyleBackColor = True
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1641, 952)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.InfoSubvencioReal)
         Me.Controls.Add(Me.Label19)
@@ -1406,6 +1494,8 @@ Partial Class Contractes
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.DataConcessioOK, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1498,8 +1588,6 @@ Partial Class Contractes
     Friend WithEvents TB_Proces5 As TextBox
     Friend WithEvents TB_Proces3 As TextBox
     Friend WithEvents TB_Proces0 As TextBox
-    Friend WithEvents DataConcessio As DateTimePicker
-    Friend WithEvents CB_DataConcessio As CheckBox
     Friend WithEvents DataFiConcessio As TextBox
     Friend WithEvents TitolAprovacio As Label
     Friend WithEvents DataConcessioOK As PictureBox
@@ -1508,4 +1596,14 @@ Partial Class Contractes
     Friend WithEvents Label19 As Label
     Friend WithEvents TB_Proces8 As TextBox
     Friend WithEvents TB_Proces7 As TextBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents TB_ImportBono As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents TB_CodiBono As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TB_CaducitatConcessio As TextBox
+    Friend WithEvents DataConcessio As DateTimePicker
+    Friend WithEvents CB_DataConcessio As CheckBox
 End Class

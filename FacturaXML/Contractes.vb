@@ -5,7 +5,7 @@ Imports FacturaXML.My
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
-    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada As Integer
+    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada, teContractes As Integer
     Private subvencioSolucioSeleccionada As Double
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
@@ -117,7 +117,10 @@ Public Class Contractes
                                                         provincia,
                                                         pais,
                                                         segment,                                                        
-                                                        strftime('%d-%m-%Y',DataConcessio) AS 'Concessió'
+                                                        strftime('%d-%m-%Y',DataConcessio) AS 'Concessió',
+                                                        CodiBono,
+                                                        Import,
+                                                        Contractes
                                                         FROM Empreses
                                                         ORDER BY DataConcessio ASC", conexion)
                 DT_Empreses.Clear()
@@ -151,19 +154,30 @@ Public Class Contractes
         Dim ciutatTxt As String = Ciutat.Text
         Dim provinciaTxt As String = Provincia.Text
         Dim paisTxt As String = Pais.Text
+        Dim codiBonoTxt As String = TB_CodiBono.Text
         Dim dataConcessioTxt As String
+        Dim dataFiConcessioTxt As String
         Dim seleccio As Boolean
         Dim segment As Integer
+        Dim import As Double
         seleccio = empresaSeleccionada
 
         If RB_Segment1.Checked = True Then segment = 1
         If RB_Segment2.Checked = True Then segment = 2
         If RB_Segment3.Checked = True Then segment = 3
 
+        If TB_ImportBono.Text = "" Then
+            import = 0
+        Else
+            import = CDbl(TB_ImportBono.Text)
+        End If
+
         If CB_DataConcessio.Checked = True Then
             dataConcessioTxt = Format(DataConcessio.Value, "yyyy-MM-dd")
+            dataFiConcessioTxt = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio), "yyyy-MM-dd")
         Else
             dataConcessioTxt = ""
+            dataFiConcessioTxt = ""
         End If
         If ComprovaDadesEmpresa() = False Then Exit Sub
 
@@ -180,9 +194,11 @@ Public Class Contractes
                      ",Pais=" & StringDB(paisTxt) &
                      ",Segment=" & segment &
                      ",DataConcessio=" & StringDB(dataConcessioTxt) &
+                     ",DataCaducitat=" & StringDB(dataFiConcessioTxt) &
+                     ",Import=" & CDbl(TB_ImportBono.Text) &
                      " WHERE Id=" & IdEmpresa
         Else
-            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais,Segment,DataConcessio) VALUES (" &
+            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais,Segment,DataConcessio,DataCaducitat,CodiBono,Import) VALUES (" &
                     StringDB(empresaTxt) & "," &
                     StringDB(nifTxt) & "," &
                     StringDB(direccioTxt) & "," &
@@ -191,7 +207,10 @@ Public Class Contractes
                     StringDB(provinciaTxt) & "," &
                     StringDB(paisTxt) & "," &
                     segment & "," &
-                    StringDB(dataConcessioTxt) & ")"
+                    StringDB(dataConcessioTxt) & "," &
+                    StringDB(dataFiConcessioTxt) & "," &
+                    StringDB(codiBonoTxt) & "," &
+                    import & ")"
         End If
 
 
@@ -255,6 +274,12 @@ Public Class Contractes
             MsgBox("Has de introduir el pais de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
+
+        If RB_Segment1.Checked = False And RB_Segment2.Checked = False And RB_Segment3.Checked = False Then
+            MsgBox("Has de escollir el segment de l'empresa", vbCritical, "Dades de empresa")
+            Return False
+        End If
+
         Return True
 
     End Function
@@ -323,12 +348,13 @@ Public Class Contractes
         EsborrarEmpresa(idBorrar)
     End Sub
     Private Sub Btn_EsborrarSeleccioEmpresa_Click(sender As Object, e As EventArgs) Handles btn_EsborrarSeleccioEmpresa.Click
+        DataEmpreses.ClearSelection()
         EsborraCampsEmpresa()
         EstaLaEmpresaSeleccionada(False)
     End Sub
     'Esborra tots els camps d'empresa
     Private Sub EsborraCampsEmpresa()
-        DataEmpreses.ClearSelection()
+
         Empresa.Clear()
         Nif.Clear()
         Direccio.Clear()
@@ -336,6 +362,9 @@ Public Class Contractes
         Ciutat.Clear()
         Provincia.Clear()
         Pais.Clear()
+        TB_CodiBono.Clear()
+        TB_ImportBono.Clear()
+        TB_CaducitatConcessio.Clear()
         Btn_afegir.Text = "Afegir empresa"
         TitolEmpresa.Text = "Selecciona Empresa"
         empresaSeleccionada = False
@@ -549,9 +578,7 @@ Public Class Contractes
         End If
 
     End Sub
-    Private Sub DataEmpreses_DataSourceChanged(sender As Object, e As EventArgs) Handles DataEmpreses.DataSourceChanged
 
-    End Sub
     'Donem format al llistat de empreses quan acaba de carregarse
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
 
@@ -566,6 +593,9 @@ Public Class Contractes
             .Columns("Direccio").Visible = False
             .Columns("Pais").Visible = False
             .Columns("CodiPostal").Visible = False
+            .Columns("CodiBono").Visible = False
+            .Columns("Import").Visible = False
+            .Columns("Contractes").Visible = False
             .AutoResizeColumns()
             .ClearSelection()
         End With
@@ -690,6 +720,19 @@ Public Class Contractes
 
         End If
 
+        Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
+
+        Try
+            conexion.Open()
+            If conexion.State = ConnectionState.Open Then
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+            End If
+        Catch ex As Exception
+
+        End Try
+        conexion.Close()
+
         Try
             conexion.Open()
             If conexion.State = ConnectionState.Open Then
@@ -709,6 +752,7 @@ Public Class Contractes
             MsgBox(ex.Message)
         End Try
         conexion.Close()
+
         seleccionaFila(idSolucioSeleccionada, 2)
 
     End Sub
@@ -818,6 +862,8 @@ Public Class Contractes
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
         If DataEmpreses.SelectedRows.Count > 0 Then
+            teContractes = DataEmpreses.CurrentRow.Cells("Contractes").Value
+            EsborraCampsEmpresa()
             OmpleDadesEmpresa(DataEmpreses.CurrentRow.Index)
             EstaLaEmpresaSeleccionada(True)
             MiraCaducitat()
@@ -995,7 +1041,6 @@ Public Class Contractes
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
         If DataContracte.Value.Date < DataAprovacio.Value Or DataContracte.Value.Date > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
             CB_DataContracte.ForeColor = Color.Red
-
         Else
             CB_DataContracte.ForeColor = Color.Black
         End If
@@ -1006,7 +1051,6 @@ Public Class Contractes
 
         If DataFactura.Value.Date < DataContracte.Value Or DataFactura.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
             CB_DataFactura.ForeColor = Color.Red
-
         Else
             CB_DataFactura.ForeColor = Color.Black
         End If
@@ -1029,7 +1073,7 @@ Public Class Contractes
 
     Private Sub MiraCaducitat()
 
-        Dim dies As Integer
+        Dim dies As Integer = 0
 
         Dim CaducitatContracte As Date = DataContracte.Value.AddMonths(My.Settings.MesosContractacio)
         Dim CaducitatFactura As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
@@ -1078,15 +1122,16 @@ Public Class Contractes
         End If
 
         ' Comprovem si les dates de la concessio son correctes
+
         If CB_DataConcessio.Checked = True Then
-            If CB_DataContracte.Checked = False Then
+            If DataSolucions.RowCount > 0 Then
+                DataConcessioOK.Image = My.Resources.verificado_petit
+            Else
                 If DateDiff(DateInterval.Day, Now, CaducitatConcessio) < 0 Then
                     DataConcessioOK.Image = My.Resources.sin_verificar_petit
                 Else
                     DataConcessioOK.Image = My.Resources.verificado_petit
                 End If
-            Else
-                DataConcessioOK.Image = My.Resources.verificado_petit
             End If
             DataVenciment = CaducitatConcessio
         End If
@@ -1096,13 +1141,55 @@ Public Class Contractes
 
         dies = DateDiff(DateInterval.Day, Now, DataVenciment)
 
-        If dies >= 0 Then
-            DiesCaducitat.Text = dies.ToString
+
+        If solucioSeleccionada Then
+            If CB_DataConcessio.Checked = True Then
+                If dies >= 0 Then
+                    DiesCaducitat.Text = dies.ToString
+                    DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                Else
+                    DiesCaducitat.Text = "Caducat"
+                    DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                End If
+            Else
+                DiesCaducitat.Text = ""
+                DataCaducitat.Text = ""
+            End If
         Else
-            DiesCaducitat.Text = "Caducat"
+            If teContractes = 1 Then
+                DiesCaducitat.Text = ""
+                DataCaducitat.Text = ""
+            Else
+                If CB_DataConcessio.Checked = True Then
+                    If dies >= 0 Then
+                        DiesCaducitat.Text = dies.ToString
+                        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                    Else
+                        DiesCaducitat.Text = "Caducat"
+                        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                    End If
+                Else
+                    DiesCaducitat.Text = ""
+                    DataCaducitat.Text = ""
+                End If
+            End If
         End If
 
-        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+
+
+
+        'If dies >= 0 Then
+        '    DiesCaducitat.Text = dies.ToString
+        '    DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+        'Else
+        '    If teContractes = 0 Then
+        '        DiesCaducitat.Text = ""
+        '        DataCaducitat.Text = ""
+        '    Else
+        '        DiesCaducitat.Text = "Caducat"
+        '        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+        '    End If
+        'End If
 
     End Sub
 
@@ -1166,7 +1253,7 @@ Public Class Contractes
         End If
     End Sub
 
-    Private Sub CB_DataConcessio_Click(sender As Object, e As EventArgs) Handles CB_DataConcessio.Click
+    Private Sub CB_DataConcessio_Click(sender As Object, e As EventArgs)
         If CB_DataConcessio.Checked = True Then
             DataConcessio.Value = Date.Now
             DataConcessio.Visible = True
@@ -1184,6 +1271,7 @@ Public Class Contractes
     Private Sub DataConcessio_ValueChanged(sender As Object, e As EventArgs) Handles DataConcessio.ValueChanged
         DataAprovacio.Value = DataConcessio.Value
         DataFiConcessio.Text = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio).Date, "Short Date")
+        TB_CaducitatConcessio.Text = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio).Date, "Short Date")
     End Sub
 
     Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
@@ -1208,6 +1296,8 @@ Public Class Contractes
             CB_DataConcessio.Checked = True
             CB_DataAprovacio.Checked = True
             DataConcessio.Text = Format(row.Cells("Concessió").Value, "Short Date")
+            TB_ImportBono.Text = row.Cells("Import").Value
+            TB_CodiBono.Text = row.Cells("CodiBono").Value
             DataConcessio.Visible = True
         Else
             CB_DataConcessio.Checked = False

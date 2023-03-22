@@ -91,4 +91,9 @@ Public Class Principal
         Dim Extres As New Extras
         OpenSubForm(Extres)
     End Sub
+
+    Private Sub Btn_Empreses_Click(sender As Object, e As EventArgs) Handles Btn_Empreses.Click
+        Dim Empreses As New Empreses
+        OpenSubForm(Empreses)
+    End Sub
 End Class
