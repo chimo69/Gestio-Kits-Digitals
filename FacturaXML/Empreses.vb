@@ -56,9 +56,10 @@ Public Class Empreses
                                       CodiBono,
                                       Import,
                                       Contractes
-                                      FROM Empreses WHERE " & columnaSeleccionada.HeaderText & " LIKE '%" & TextABuscar & "%' AND Contractes = 0" & MostraContactes & "
+                                      FROM Empreses WHERE " & columnaSeleccionada.HeaderText & " LIKE '%" & TextABuscar & "%' AND (Contractes = 0" & MostraContactes & ") 
                                       ORDER BY DataCaducitat ASC"
                     End If
+
                     Dim comm As New SQLiteCommand(Sql, conexion)
                     Dim adapter As New SQLiteDataAdapter(comm)
                     adapter.Fill(DT_Llistat)
