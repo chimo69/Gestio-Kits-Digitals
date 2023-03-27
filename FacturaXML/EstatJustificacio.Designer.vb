@@ -72,6 +72,8 @@ Partial Class EstatJustificacio
         Me.TitolDataPresentacio = New System.Windows.Forms.Label()
         Me.PanelCompletat = New System.Windows.Forms.Panel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.RB_Proces7 = New System.Windows.Forms.RadioButton()
+        Me.RB_Proces8 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.Panel.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -354,9 +356,9 @@ Partial Class EstatJustificacio
         '
         'Btn_guardar
         '
-        Me.Btn_guardar.Location = New System.Drawing.Point(796, 368)
+        Me.Btn_guardar.Location = New System.Drawing.Point(796, 407)
         Me.Btn_guardar.Name = "Btn_guardar"
-        Me.Btn_guardar.Size = New System.Drawing.Size(268, 91)
+        Me.Btn_guardar.Size = New System.Drawing.Size(268, 52)
         Me.Btn_guardar.TabIndex = 11
         Me.Btn_guardar.Text = "Guardar"
         Me.Btn_guardar.UseVisualStyleBackColor = True
@@ -450,6 +452,8 @@ Partial Class EstatJustificacio
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.RB_Proces8)
+        Me.GroupBox3.Controls.Add(Me.RB_Proces7)
         Me.GroupBox3.Controls.Add(Me.RB_Proces0)
         Me.GroupBox3.Controls.Add(Me.RB_Proces6)
         Me.GroupBox3.Controls.Add(Me.RB_Proces5)
@@ -459,7 +463,7 @@ Partial Class EstatJustificacio
         Me.GroupBox3.Controls.Add(Me.RB_Proces1)
         Me.GroupBox3.Location = New System.Drawing.Point(796, 103)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(268, 201)
+        Me.GroupBox3.Size = New System.Drawing.Size(268, 250)
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Procés de justificació"
@@ -478,7 +482,7 @@ Partial Class EstatJustificacio
         'RB_Proces6
         '
         Me.RB_Proces6.AutoSize = True
-        Me.RB_Proces6.Location = New System.Drawing.Point(17, 169)
+        Me.RB_Proces6.Location = New System.Drawing.Point(17, 216)
         Me.RB_Proces6.Name = "RB_Proces6"
         Me.RB_Proces6.Size = New System.Drawing.Size(64, 19)
         Me.RB_Proces6.TabIndex = 5
@@ -489,7 +493,7 @@ Partial Class EstatJustificacio
         'RB_Proces5
         '
         Me.RB_Proces5.AutoSize = True
-        Me.RB_Proces5.Location = New System.Drawing.Point(17, 145)
+        Me.RB_Proces5.Location = New System.Drawing.Point(17, 192)
         Me.RB_Proces5.Name = "RB_Proces5"
         Me.RB_Proces5.Size = New System.Drawing.Size(146, 19)
         Me.RB_Proces5.TabIndex = 4
@@ -500,7 +504,7 @@ Partial Class EstatJustificacio
         'RB_Proces4
         '
         Me.RB_Proces4.AutoSize = True
-        Me.RB_Proces4.Location = New System.Drawing.Point(17, 121)
+        Me.RB_Proces4.Location = New System.Drawing.Point(17, 120)
         Me.RB_Proces4.Name = "RB_Proces4"
         Me.RB_Proces4.Size = New System.Drawing.Size(149, 19)
         Me.RB_Proces4.TabIndex = 3
@@ -511,7 +515,7 @@ Partial Class EstatJustificacio
         'RB_Proces3
         '
         Me.RB_Proces3.AutoSize = True
-        Me.RB_Proces3.Location = New System.Drawing.Point(17, 97)
+        Me.RB_Proces3.Location = New System.Drawing.Point(17, 96)
         Me.RB_Proces3.Name = "RB_Proces3"
         Me.RB_Proces3.Size = New System.Drawing.Size(83, 19)
         Me.RB_Proces3.TabIndex = 2
@@ -522,7 +526,7 @@ Partial Class EstatJustificacio
         'RB_Proces2
         '
         Me.RB_Proces2.AutoSize = True
-        Me.RB_Proces2.Location = New System.Drawing.Point(17, 73)
+        Me.RB_Proces2.Location = New System.Drawing.Point(17, 72)
         Me.RB_Proces2.Name = "RB_Proces2"
         Me.RB_Proces2.Size = New System.Drawing.Size(77, 19)
         Me.RB_Proces2.TabIndex = 1
@@ -533,7 +537,7 @@ Partial Class EstatJustificacio
         'RB_Proces1
         '
         Me.RB_Proces1.AutoSize = True
-        Me.RB_Proces1.Location = New System.Drawing.Point(17, 49)
+        Me.RB_Proces1.Location = New System.Drawing.Point(17, 48)
         Me.RB_Proces1.Name = "RB_Proces1"
         Me.RB_Proces1.Size = New System.Drawing.Size(66, 19)
         Me.RB_Proces1.TabIndex = 0
@@ -543,7 +547,7 @@ Partial Class EstatJustificacio
         '
         'DataPresentacio
         '
-        Me.DataPresentacio.Location = New System.Drawing.Point(796, 334)
+        Me.DataPresentacio.Location = New System.Drawing.Point(796, 378)
         Me.DataPresentacio.Name = "DataPresentacio"
         Me.DataPresentacio.Size = New System.Drawing.Size(268, 23)
         Me.DataPresentacio.TabIndex = 19
@@ -552,7 +556,7 @@ Partial Class EstatJustificacio
         'TitolDataPresentacio
         '
         Me.TitolDataPresentacio.AutoSize = True
-        Me.TitolDataPresentacio.Location = New System.Drawing.Point(795, 315)
+        Me.TitolDataPresentacio.Location = New System.Drawing.Point(795, 359)
         Me.TitolDataPresentacio.Name = "TitolDataPresentacio"
         Me.TitolDataPresentacio.Size = New System.Drawing.Size(167, 15)
         Me.TitolDataPresentacio.TabIndex = 20
@@ -584,6 +588,28 @@ Partial Class EstatJustificacio
         Me.GroupBox4.TabIndex = 22
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Document Word"
+        '
+        'RB_Proces7
+        '
+        Me.RB_Proces7.AutoSize = True
+        Me.RB_Proces7.Location = New System.Drawing.Point(17, 144)
+        Me.RB_Proces7.Name = "RB_Proces7"
+        Me.RB_Proces7.Size = New System.Drawing.Size(167, 19)
+        Me.RB_Proces7.TabIndex = 7
+        Me.RB_Proces7.TabStop = True
+        Me.RB_Proces7.Text = "Finalitzat termini d'esmena"
+        Me.RB_Proces7.UseVisualStyleBackColor = True
+        '
+        'RB_Proces8
+        '
+        Me.RB_Proces8.AutoSize = True
+        Me.RB_Proces8.Location = New System.Drawing.Point(17, 168)
+        Me.RB_Proces8.Name = "RB_Proces8"
+        Me.RB_Proces8.Size = New System.Drawing.Size(122, 19)
+        Me.RB_Proces8.TabIndex = 8
+        Me.RB_Proces8.TabStop = True
+        Me.RB_Proces8.Text = "Esmena incorrecta"
+        Me.RB_Proces8.UseVisualStyleBackColor = True
         '
         'EstatJustificacio
         '
@@ -680,4 +706,6 @@ Partial Class EstatJustificacio
     Friend WithEvents TitolDataPresentacio As Label
     Friend WithEvents PanelCompletat As Panel
     Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents RB_Proces8 As RadioButton
+    Friend WithEvents RB_Proces7 As RadioButton
 End Class

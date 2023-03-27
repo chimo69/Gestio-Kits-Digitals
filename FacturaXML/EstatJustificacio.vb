@@ -72,6 +72,10 @@ Public Class EstatJustificacio
                             RB_Proces5.Checked = True
                         Case 6
                             RB_Proces6.Checked = True
+                        Case 7
+                            RB_Proces7.Checked = True
+                        Case 8
+                            RB_Proces8.Checked = True
                     End Select
                 End If
                 lector.Close()
@@ -152,6 +156,8 @@ Public Class EstatJustificacio
         If RB_Proces4.Checked = True Then estat = 4
         If RB_Proces5.Checked = True Then estat = 5
         If RB_Proces6.Checked = True Then estat = 6
+        If RB_Proces7.Checked = True Then estat = 7
+        If RB_Proces8.Checked = True Then estat = 8
 
 
         Try
