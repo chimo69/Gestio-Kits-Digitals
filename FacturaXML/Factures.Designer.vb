@@ -65,19 +65,11 @@ Partial Class Factures
         Me.Btn_Guardar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Btn_Visualitzar = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.MenuPrincipal = New System.Windows.Forms.MenuStrip()
-        Me.MenuArxiu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuDadesEmpresa = New System.Windows.Forms.ToolStripMenuItem()
-        Me.XToolStripMenuItem = New System.Windows.Forms.ToolStripSeparator()
-        Me.GuardarFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MenuSortir = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuEditar = New System.Windows.Forms.ToolStripMenuItem()
         Me.EsborrarDadesFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EsborrarDadesEmpresaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuEsborrarTot = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SobreFacturesXMLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SobreFacturesXMLToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Vigila = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.CopiarDataCobrament = New System.Windows.Forms.Button()
@@ -107,12 +99,25 @@ Partial Class Factures
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label32 = New System.Windows.Forms.Label()
+        Me.PanelLogotips = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PanelBotons = New System.Windows.Forms.Panel()
+        Me.PanelDadesEmpresa = New System.Windows.Forms.Panel()
+        Me.PanelDeclaracio = New System.Windows.Forms.Panel()
+        Me.PanelDadesFactura = New System.Windows.Forms.Panel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuPrincipal.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.PanelLogotips.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelBotons.SuspendLayout()
+        Me.PanelDadesEmpresa.SuspendLayout()
+        Me.PanelDeclaracio.SuspendLayout()
+        Me.PanelDadesFactura.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label2
@@ -139,7 +144,7 @@ Partial Class Factures
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(26, 255)
+        Me.Label4.Location = New System.Drawing.Point(8, 249)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(78, 15)
         Me.Label4.TabIndex = 4
@@ -159,7 +164,7 @@ Partial Class Factures
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(26, 209)
+        Me.Label6.Location = New System.Drawing.Point(8, 203)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(49, 15)
         Me.Label6.TabIndex = 6
@@ -169,7 +174,7 @@ Partial Class Factures
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(26, 301)
+        Me.Label7.Location = New System.Drawing.Point(8, 295)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(117, 15)
         Me.Label7.TabIndex = 7
@@ -179,7 +184,7 @@ Partial Class Factures
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.Location = New System.Drawing.Point(26, 83)
+        Me.Label8.Location = New System.Drawing.Point(8, 77)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(63, 15)
         Me.Label8.TabIndex = 8
@@ -203,9 +208,10 @@ Partial Class Factures
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Location = New System.Drawing.Point(25, 129)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox1.Location = New System.Drawing.Point(10, 10)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(388, 368)
+        Me.GroupBox1.Size = New System.Drawing.Size(348, 427)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dades Empresa"
@@ -213,7 +219,7 @@ Partial Class Factures
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(26, 36)
+        Me.Label1.Location = New System.Drawing.Point(11, 32)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 15)
         Me.Label1.TabIndex = 17
@@ -222,7 +228,7 @@ Partial Class Factures
         'CB_Empreses
         '
         Me.CB_Empreses.FormattingEnabled = True
-        Me.CB_Empreses.Location = New System.Drawing.Point(113, 28)
+        Me.CB_Empreses.Location = New System.Drawing.Point(92, 32)
         Me.CB_Empreses.Name = "CB_Empreses"
         Me.CB_Empreses.Size = New System.Drawing.Size(242, 23)
         Me.CB_Empreses.TabIndex = 16
@@ -230,7 +236,7 @@ Partial Class Factures
         'EmpresaNom
         '
         Me.EmpresaNom.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaNom.Location = New System.Drawing.Point(113, 68)
+        Me.EmpresaNom.Location = New System.Drawing.Point(92, 72)
         Me.EmpresaNom.Name = "EmpresaNom"
         Me.EmpresaNom.Size = New System.Drawing.Size(242, 23)
         Me.EmpresaNom.TabIndex = 9
@@ -238,7 +244,7 @@ Partial Class Factures
         'EmpresaNif
         '
         Me.EmpresaNif.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaNif.Location = New System.Drawing.Point(113, 108)
+        Me.EmpresaNif.Location = New System.Drawing.Point(92, 112)
         Me.EmpresaNif.MaxLength = 9
         Me.EmpresaNif.Name = "EmpresaNif"
         Me.EmpresaNif.Size = New System.Drawing.Size(100, 23)
@@ -247,7 +253,7 @@ Partial Class Factures
         'EmpresaDireccio
         '
         Me.EmpresaDireccio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaDireccio.Location = New System.Drawing.Point(113, 148)
+        Me.EmpresaDireccio.Location = New System.Drawing.Point(92, 152)
         Me.EmpresaDireccio.Name = "EmpresaDireccio"
         Me.EmpresaDireccio.Size = New System.Drawing.Size(242, 23)
         Me.EmpresaDireccio.TabIndex = 11
@@ -255,7 +261,7 @@ Partial Class Factures
         'EmpresaCodiPostal
         '
         Me.EmpresaCodiPostal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaCodiPostal.Location = New System.Drawing.Point(113, 188)
+        Me.EmpresaCodiPostal.Location = New System.Drawing.Point(92, 192)
         Me.EmpresaCodiPostal.MaxLength = 5
         Me.EmpresaCodiPostal.Name = "EmpresaCodiPostal"
         Me.EmpresaCodiPostal.Size = New System.Drawing.Size(100, 23)
@@ -264,7 +270,7 @@ Partial Class Factures
         'EmpresaCiutat
         '
         Me.EmpresaCiutat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaCiutat.Location = New System.Drawing.Point(113, 228)
+        Me.EmpresaCiutat.Location = New System.Drawing.Point(92, 232)
         Me.EmpresaCiutat.Name = "EmpresaCiutat"
         Me.EmpresaCiutat.Size = New System.Drawing.Size(242, 23)
         Me.EmpresaCiutat.TabIndex = 13
@@ -272,7 +278,7 @@ Partial Class Factures
         'EmpresaProvincia
         '
         Me.EmpresaProvincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.EmpresaProvincia.Location = New System.Drawing.Point(113, 268)
+        Me.EmpresaProvincia.Location = New System.Drawing.Point(92, 272)
         Me.EmpresaProvincia.Name = "EmpresaProvincia"
         Me.EmpresaProvincia.Size = New System.Drawing.Size(242, 23)
         Me.EmpresaProvincia.TabIndex = 14
@@ -281,7 +287,7 @@ Partial Class Factures
         '
         Me.EmpresaPais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.EmpresaPais.Enabled = False
-        Me.EmpresaPais.Location = New System.Drawing.Point(113, 308)
+        Me.EmpresaPais.Location = New System.Drawing.Point(92, 312)
         Me.EmpresaPais.Name = "EmpresaPais"
         Me.EmpresaPais.Size = New System.Drawing.Size(242, 23)
         Me.EmpresaPais.TabIndex = 15
@@ -290,7 +296,7 @@ Partial Class Factures
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(26, 116)
+        Me.Label15.Location = New System.Drawing.Point(11, 115)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(25, 15)
         Me.Label15.TabIndex = 6
@@ -299,7 +305,7 @@ Partial Class Factures
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(26, 316)
+        Me.Label14.Location = New System.Drawing.Point(11, 315)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(28, 15)
         Me.Label14.TabIndex = 5
@@ -308,7 +314,7 @@ Partial Class Factures
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(26, 276)
+        Me.Label13.Location = New System.Drawing.Point(11, 275)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(56, 15)
         Me.Label13.TabIndex = 4
@@ -317,7 +323,7 @@ Partial Class Factures
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(26, 236)
+        Me.Label12.Location = New System.Drawing.Point(11, 235)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(39, 15)
         Me.Label12.TabIndex = 3
@@ -326,7 +332,7 @@ Partial Class Factures
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(26, 196)
+        Me.Label11.Location = New System.Drawing.Point(11, 195)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(67, 15)
         Me.Label11.TabIndex = 2
@@ -335,7 +341,7 @@ Partial Class Factures
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(26, 156)
+        Me.Label10.Location = New System.Drawing.Point(11, 155)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(50, 15)
         Me.Label10.TabIndex = 1
@@ -344,7 +350,7 @@ Partial Class Factures
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(26, 76)
+        Me.Label9.Location = New System.Drawing.Point(11, 75)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(34, 15)
         Me.Label9.TabIndex = 0
@@ -373,9 +379,10 @@ Partial Class Factures
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Location = New System.Drawing.Point(440, 129)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox2.Location = New System.Drawing.Point(10, 10)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(388, 440)
+        Me.GroupBox2.Size = New System.Drawing.Size(360, 427)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Dades factura"
@@ -383,7 +390,7 @@ Partial Class Factures
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(26, 41)
+        Me.Label20.Location = New System.Drawing.Point(8, 35)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(67, 15)
         Me.Label20.TabIndex = 19
@@ -392,7 +399,7 @@ Partial Class Factures
         'FacturaNumero
         '
         Me.FacturaNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.FacturaNumero.Location = New System.Drawing.Point(275, 75)
+        Me.FacturaNumero.Location = New System.Drawing.Point(257, 69)
         Me.FacturaNumero.Name = "FacturaNumero"
         Me.FacturaNumero.Size = New System.Drawing.Size(92, 23)
         Me.FacturaNumero.TabIndex = 1
@@ -401,7 +408,7 @@ Partial Class Factures
         'CB_Solucions
         '
         Me.CB_Solucions.FormattingEnabled = True
-        Me.CB_Solucions.Location = New System.Drawing.Point(125, 33)
+        Me.CB_Solucions.Location = New System.Drawing.Point(107, 27)
         Me.CB_Solucions.Name = "CB_Solucions"
         Me.CB_Solucions.Size = New System.Drawing.Size(242, 23)
         Me.CB_Solucions.TabIndex = 18
@@ -409,7 +416,7 @@ Partial Class Factures
         'FacturaAcord
         '
         Me.FacturaAcord.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.FacturaAcord.Location = New System.Drawing.Point(275, 114)
+        Me.FacturaAcord.Location = New System.Drawing.Point(257, 108)
         Me.FacturaAcord.Name = "FacturaAcord"
         Me.FacturaAcord.Size = New System.Drawing.Size(92, 23)
         Me.FacturaAcord.TabIndex = 2
@@ -418,7 +425,7 @@ Partial Class Factures
         'FacturaImportSolucio
         '
         Me.FacturaImportSolucio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.FacturaImportSolucio.Location = New System.Drawing.Point(216, 155)
+        Me.FacturaImportSolucio.Location = New System.Drawing.Point(198, 149)
         Me.FacturaImportSolucio.Name = "FacturaImportSolucio"
         Me.FacturaImportSolucio.Size = New System.Drawing.Size(151, 23)
         Me.FacturaImportSolucio.TabIndex = 3
@@ -428,7 +435,7 @@ Partial Class Factures
         '
         Me.FacturaImportIVA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.FacturaImportIVA.Enabled = False
-        Me.FacturaImportIVA.Location = New System.Drawing.Point(216, 201)
+        Me.FacturaImportIVA.Location = New System.Drawing.Point(198, 195)
         Me.FacturaImportIVA.Name = "FacturaImportIVA"
         Me.FacturaImportIVA.Size = New System.Drawing.Size(151, 23)
         Me.FacturaImportIVA.TabIndex = 4
@@ -438,7 +445,7 @@ Partial Class Factures
         '
         Me.FacturaImportTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.FacturaImportTotal.Enabled = False
-        Me.FacturaImportTotal.Location = New System.Drawing.Point(216, 247)
+        Me.FacturaImportTotal.Location = New System.Drawing.Point(198, 241)
         Me.FacturaImportTotal.Name = "FacturaImportTotal"
         Me.FacturaImportTotal.Size = New System.Drawing.Size(151, 23)
         Me.FacturaImportTotal.TabIndex = 5
@@ -447,7 +454,7 @@ Partial Class Factures
         'FacturaImportSubvencionat
         '
         Me.FacturaImportSubvencionat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.FacturaImportSubvencionat.Location = New System.Drawing.Point(236, 293)
+        Me.FacturaImportSubvencionat.Location = New System.Drawing.Point(218, 287)
         Me.FacturaImportSubvencionat.Name = "FacturaImportSubvencionat"
         Me.FacturaImportSubvencionat.Size = New System.Drawing.Size(131, 23)
         Me.FacturaImportSubvencionat.TabIndex = 6
@@ -457,14 +464,14 @@ Partial Class Factures
         '
         Me.FacturaSolucio.FormattingEnabled = True
         Me.FacturaSolucio.Items.AddRange(New Object() {"Sitio web", "Comercio electrónico", "Gestión de redes sociales", "Gestión de clientes", "Business Inteligence", "Gestión de procesos", "Factura electrónica", "Oficina virtual", "Comunicaciones seguras", "Ciberseguridad"})
-        Me.FacturaSolucio.Location = New System.Drawing.Point(196, 339)
+        Me.FacturaSolucio.Location = New System.Drawing.Point(178, 333)
         Me.FacturaSolucio.Name = "FacturaSolucio"
         Me.FacturaSolucio.Size = New System.Drawing.Size(171, 23)
         Me.FacturaSolucio.TabIndex = 7
         '
         'FacturaData
         '
-        Me.FacturaData.Location = New System.Drawing.Point(136, 385)
+        Me.FacturaData.Location = New System.Drawing.Point(118, 379)
         Me.FacturaData.Name = "FacturaData"
         Me.FacturaData.Size = New System.Drawing.Size(231, 23)
         Me.FacturaData.TabIndex = 8
@@ -473,7 +480,7 @@ Partial Class Factures
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label19.Location = New System.Drawing.Point(26, 122)
+        Me.Label19.Location = New System.Drawing.Point(8, 116)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(56, 15)
         Me.Label19.TabIndex = 13
@@ -483,7 +490,7 @@ Partial Class Factures
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label18.Location = New System.Drawing.Point(26, 393)
+        Me.Label18.Location = New System.Drawing.Point(8, 387)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(71, 15)
         Me.Label18.TabIndex = 11
@@ -493,7 +500,7 @@ Partial Class Factures
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label16.Location = New System.Drawing.Point(26, 163)
+        Me.Label16.Location = New System.Drawing.Point(8, 157)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 15)
         Me.Label16.TabIndex = 9
@@ -503,7 +510,7 @@ Partial Class Factures
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label17.Location = New System.Drawing.Point(26, 347)
+        Me.Label17.Location = New System.Drawing.Point(8, 341)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(126, 15)
         Me.Label17.TabIndex = 10
@@ -511,84 +518,46 @@ Partial Class Factures
         '
         'Btn_Guardar
         '
-        Me.Btn_Guardar.Location = New System.Drawing.Point(25, 533)
+        Me.Btn_Guardar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Btn_Guardar.Location = New System.Drawing.Point(863, 10)
+        Me.Btn_Guardar.Margin = New System.Windows.Forms.Padding(20)
         Me.Btn_Guardar.Name = "Btn_Guardar"
-        Me.Btn_Guardar.Size = New System.Drawing.Size(182, 36)
+        Me.Btn_Guardar.Size = New System.Drawing.Size(182, 32)
         Me.Btn_Guardar.TabIndex = 15
         Me.Btn_Guardar.Text = "Guardar arxiu  Factura XML"
         Me.Btn_Guardar.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
+        Me.PictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
-        Me.PictureBox1.Location = New System.Drawing.Point(221, 27)
+        Me.PictureBox1.Location = New System.Drawing.Point(615, 6)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(388, 64)
+        Me.PictureBox1.Size = New System.Drawing.Size(225, 52)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
         'Btn_Visualitzar
         '
-        Me.Btn_Visualitzar.Location = New System.Drawing.Point(235, 533)
+        Me.Btn_Visualitzar.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Btn_Visualitzar.Location = New System.Drawing.Point(668, 10)
+        Me.Btn_Visualitzar.Margin = New System.Windows.Forms.Padding(20)
         Me.Btn_Visualitzar.Name = "Btn_Visualitzar"
-        Me.Btn_Visualitzar.Size = New System.Drawing.Size(178, 36)
+        Me.Btn_Visualitzar.Size = New System.Drawing.Size(178, 32)
         Me.Btn_Visualitzar.TabIndex = 16
         Me.Btn_Visualitzar.Text = "Visualitzar Factura XML"
         Me.Btn_Visualitzar.UseVisualStyleBackColor = True
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
-        Me.PictureBox2.Location = New System.Drawing.Point(636, 27)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(383, 64)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 18
-        Me.PictureBox2.TabStop = False
-        '
         'MenuPrincipal
         '
         Me.MenuPrincipal.BackColor = System.Drawing.SystemColors.Control
-        Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuArxiu, Me.MenuEditar, Me.SobreFacturesXMLToolStripMenuItem})
-        Me.MenuPrincipal.Location = New System.Drawing.Point(0, 0)
+        Me.MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuEditar})
+        Me.MenuPrincipal.Location = New System.Drawing.Point(20, 0)
         Me.MenuPrincipal.Name = "MenuPrincipal"
-        Me.MenuPrincipal.Size = New System.Drawing.Size(1200, 24)
+        Me.MenuPrincipal.Size = New System.Drawing.Size(1618, 24)
         Me.MenuPrincipal.TabIndex = 19
         Me.MenuPrincipal.Text = "MenuStrip1"
-        '
-        'MenuArxiu
-        '
-        Me.MenuArxiu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuDadesEmpresa, Me.XToolStripMenuItem, Me.GuardarFacturaToolStripMenuItem, Me.MenuSortir})
-        Me.MenuArxiu.Name = "MenuArxiu"
-        Me.MenuArxiu.Size = New System.Drawing.Size(47, 20)
-        Me.MenuArxiu.Text = "Arxiu"
-        '
-        'MenuDadesEmpresa
-        '
-        Me.MenuDadesEmpresa.Image = Global.FacturaXML.My.Resources.Resources.icono_ajustes
-        Me.MenuDadesEmpresa.Name = "MenuDadesEmpresa"
-        Me.MenuDadesEmpresa.Size = New System.Drawing.Size(158, 22)
-        Me.MenuDadesEmpresa.Text = "Dades empresa"
-        '
-        'XToolStripMenuItem
-        '
-        Me.XToolStripMenuItem.Name = "XToolStripMenuItem"
-        Me.XToolStripMenuItem.Size = New System.Drawing.Size(155, 6)
-        '
-        'GuardarFacturaToolStripMenuItem
-        '
-        Me.GuardarFacturaToolStripMenuItem.Image = Global.FacturaXML.My.Resources.Resources.icono_guardar
-        Me.GuardarFacturaToolStripMenuItem.Name = "GuardarFacturaToolStripMenuItem"
-        Me.GuardarFacturaToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
-        Me.GuardarFacturaToolStripMenuItem.Text = "Guardar Factura"
-        '
-        'MenuSortir
-        '
-        Me.MenuSortir.Image = Global.FacturaXML.My.Resources.Resources.icono_salir
-        Me.MenuSortir.Name = "MenuSortir"
-        Me.MenuSortir.Size = New System.Drawing.Size(158, 22)
-        Me.MenuSortir.Text = "Sortir"
         '
         'MenuEditar
         '
@@ -618,25 +587,12 @@ Partial Class Factures
         Me.MenuEsborrarTot.Size = New System.Drawing.Size(199, 22)
         Me.MenuEsborrarTot.Text = "Esborrar tot"
         '
-        'SobreFacturesXMLToolStripMenuItem
-        '
-        Me.SobreFacturesXMLToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SobreFacturesXMLToolStripMenuItem1})
-        Me.SobreFacturesXMLToolStripMenuItem.Name = "SobreFacturesXMLToolStripMenuItem"
-        Me.SobreFacturesXMLToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
-        Me.SobreFacturesXMLToolStripMenuItem.Text = "Ajuda"
-        '
-        'SobreFacturesXMLToolStripMenuItem1
-        '
-        Me.SobreFacturesXMLToolStripMenuItem1.Image = Global.FacturaXML.My.Resources.Resources.icono_ayuda
-        Me.SobreFacturesXMLToolStripMenuItem1.Name = "SobreFacturesXMLToolStripMenuItem1"
-        Me.SobreFacturesXMLToolStripMenuItem1.Size = New System.Drawing.Size(175, 22)
-        Me.SobreFacturesXMLToolStripMenuItem1.Text = "Sobre FacturesXML"
-        '
         'Vigila
         '
+        Me.Vigila.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Vigila.AutoSize = True
         Me.Vigila.ForeColor = System.Drawing.Color.Red
-        Me.Vigila.Location = New System.Drawing.Point(138, 508)
+        Me.Vigila.Location = New System.Drawing.Point(772, 48)
         Me.Vigila.Name = "Vigila"
         Me.Vigila.Size = New System.Drawing.Size(175, 15)
         Me.Vigila.TabIndex = 20
@@ -673,9 +629,10 @@ Partial Class Factures
         Me.GroupBox3.Controls.Add(Me.Label29)
         Me.GroupBox3.Controls.Add(Me.Label31)
         Me.GroupBox3.Controls.Add(Me.Label32)
-        Me.GroupBox3.Location = New System.Drawing.Point(853, 130)
+        Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox3.Location = New System.Drawing.Point(10, 10)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(329, 440)
+        Me.GroupBox3.Size = New System.Drawing.Size(320, 427)
         Me.GroupBox3.TabIndex = 21
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Declaració responsable de pagament"
@@ -974,37 +931,115 @@ Partial Class Factures
         Me.Label32.TabIndex = 6
         Me.Label32.Text = "Import abonat"
         '
+        'PanelLogotips
+        '
+        Me.PanelLogotips.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelLogotips.Controls.Add(Me.PictureBox2)
+        Me.PanelLogotips.Controls.Add(Me.PictureBox1)
+        Me.PanelLogotips.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelLogotips.Location = New System.Drawing.Point(20, 24)
+        Me.PanelLogotips.Name = "PanelLogotips"
+        Me.PanelLogotips.Size = New System.Drawing.Size(1618, 68)
+        Me.PanelLogotips.TabIndex = 22
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
+        Me.PictureBox2.Location = New System.Drawing.Point(846, 16)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(226, 32)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 19
+        Me.PictureBox2.TabStop = False
+        '
+        'PanelBotons
+        '
+        Me.PanelBotons.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelBotons.Controls.Add(Me.Btn_Guardar)
+        Me.PanelBotons.Controls.Add(Me.Btn_Visualitzar)
+        Me.PanelBotons.Controls.Add(Me.Vigila)
+        Me.PanelBotons.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelBotons.Location = New System.Drawing.Point(20, 833)
+        Me.PanelBotons.Name = "PanelBotons"
+        Me.PanelBotons.Size = New System.Drawing.Size(1618, 72)
+        Me.PanelBotons.TabIndex = 24
+        '
+        'PanelDadesEmpresa
+        '
+        Me.PanelDadesEmpresa.Controls.Add(Me.GroupBox1)
+        Me.PanelDadesEmpresa.Location = New System.Drawing.Point(3, 6)
+        Me.PanelDadesEmpresa.Name = "PanelDadesEmpresa"
+        Me.PanelDadesEmpresa.Padding = New System.Windows.Forms.Padding(10)
+        Me.PanelDadesEmpresa.Size = New System.Drawing.Size(368, 447)
+        Me.PanelDadesEmpresa.TabIndex = 25
+        '
+        'PanelDeclaracio
+        '
+        Me.PanelDeclaracio.Controls.Add(Me.GroupBox3)
+        Me.PanelDeclaracio.Location = New System.Drawing.Point(760, 6)
+        Me.PanelDeclaracio.Name = "PanelDeclaracio"
+        Me.PanelDeclaracio.Padding = New System.Windows.Forms.Padding(10)
+        Me.PanelDeclaracio.Size = New System.Drawing.Size(340, 447)
+        Me.PanelDeclaracio.TabIndex = 26
+        '
+        'PanelDadesFactura
+        '
+        Me.PanelDadesFactura.Controls.Add(Me.GroupBox2)
+        Me.PanelDadesFactura.Location = New System.Drawing.Point(374, 6)
+        Me.PanelDadesFactura.Name = "PanelDadesFactura"
+        Me.PanelDadesFactura.Padding = New System.Windows.Forms.Padding(10)
+        Me.PanelDadesFactura.Size = New System.Drawing.Size(380, 447)
+        Me.PanelDadesFactura.TabIndex = 27
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.AutoSize = True
+        Me.Panel1.Controls.Add(Me.PanelDadesEmpresa)
+        Me.Panel1.Controls.Add(Me.PanelDeclaracio)
+        Me.Panel1.Controls.Add(Me.PanelDadesFactura)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(20, 92)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1618, 741)
+        Me.Panel1.TabIndex = 28
+        '
         'Factures
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1200, 582)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.Vigila)
-        Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.Btn_Visualitzar)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Btn_Guardar)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.AutoScroll = True
+        Me.ClientSize = New System.Drawing.Size(1658, 925)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PanelBotons)
+        Me.Controls.Add(Me.PanelLogotips)
         Me.Controls.Add(Me.MenuPrincipal)
+        Me.DoubleBuffered = True
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuPrincipal
         Me.MaximizeBox = False
         Me.Name = "Factures"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Padding = New System.Windows.Forms.Padding(20, 0, 20, 20)
         Me.Text = "Factures XML"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuPrincipal.ResumeLayout(False)
         Me.MenuPrincipal.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.PanelLogotips.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelBotons.ResumeLayout(False)
+        Me.PanelBotons.PerformLayout()
+        Me.PanelDadesEmpresa.ResumeLayout(False)
+        Me.PanelDeclaracio.ResumeLayout(False)
+        Me.PanelDadesFactura.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1047,22 +1082,13 @@ Partial Class Factures
     Friend WithEvents Btn_Visualitzar As Button
     Friend WithEvents FacturaAcord As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents MenuPrincipal As MenuStrip
-    Friend WithEvents MenuArxiu As ToolStripMenuItem
-    Friend WithEvents MenuDadesEmpresa As ToolStripMenuItem
-    Friend WithEvents MenuSortir As ToolStripMenuItem
-    Friend WithEvents XToolStripMenuItem As ToolStripSeparator
-    Friend WithEvents GuardarFacturaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MenuEditar As ToolStripMenuItem
     Friend WithEvents MenuEsborrarTot As ToolStripMenuItem
     Friend WithEvents EsborrarDadesFacturaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EsborrarDadesEmpresaToolStripMenuItem As ToolStripMenuItem
 
     Dim textoXML As New System.Text.StringBuilder()
-
-    Friend WithEvents SobreFacturesXMLToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SobreFacturesXMLToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents Label1 As Label
     Friend WithEvents CB_Empreses As ComboBox
     Friend WithEvents Label20 As Label
@@ -1096,4 +1122,11 @@ Partial Class Factures
     Friend WithEvents CopiarDataFactura As Button
     Friend WithEvents CopiarNoAcord As Button
     Friend WithEvents CopiarNif As Button
+    Friend WithEvents PanelLogotips As Panel
+    Friend WithEvents PanelBotons As Panel
+    Friend WithEvents PanelDadesEmpresa As Panel
+    Friend WithEvents PanelDeclaracio As Panel
+    Friend WithEvents PanelDadesFactura As Panel
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

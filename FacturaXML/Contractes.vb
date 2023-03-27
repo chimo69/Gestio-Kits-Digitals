@@ -1,42 +1,32 @@
 ﻿Imports System.Data.SQLite
 Imports System.Globalization
 Imports System.Threading
+Imports System.Windows.Forms.DataVisualization.Charting
 Imports FacturaXML.My
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
-    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada As Integer
+    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada, teContractes As Integer
     Private subvencioSolucioSeleccionada As Double
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
     Private DataVenciment As Date
     Private DataPresentacio As String
 
-    Public Sub New()
+    Private Sub Contractes_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        Debug.WriteLine("Activated Contractes")
+        'Si venim del form Llistat selecciona l'empresa
+        'seleccionaFila(idEmpresaSeleccionadaUtils, 1)
 
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        ActualitzaEmpreses()
-
-    End Sub
-
-    'Obrim Contractes amb la empresa i solucio seleccionades al llistat
-    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
-        Me.idEmpresaRebuda = idEmpresa
-        Me.idSolucioRebuda = idSolucio
-
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        ActualitzaEmpreses()
+        'Si venim del form Llistat selecciona la solució
+        ' seleccionaFila(idSolucioSeleccionadaUtils, 2)
 
     End Sub
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Enabled = True
+
+        ActualitzaEmpreses()
+
         Dim conexion As New SQLiteConnection(cadena)
         Try
 
@@ -58,13 +48,20 @@ Public Class Contractes
         conexion.Close()
 
         CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
-
-        'Si venim del form Llistat selecciona l'empresa
-        seleccionaFila(idEmpresaRebuda, 1)
-
-        'Si venim del form Llistat selecciona la solució
-        seleccionaFila(idSolucioRebuda, 2)
-
+    End Sub
+    Private Sub clickEmpreses(row As Integer)
+        If DataEmpreses.SelectedRows.Count > 0 Then
+            teContractes = DataEmpreses.Rows(row).Cells("Contractes").Value
+            EsborraCampsEmpresa()
+            OmpleDadesEmpresa(row)
+            EstaLaEmpresaSeleccionada(True)
+            MiraCaducitat()
+        End If
+    End Sub
+    Private Sub clickSolucioins(row As Integer)
+        If DataSolucions.SelectedRows.Count > 0 Then
+            OmpleDadesSolucions(row)
+        End If
     End Sub
     Private Sub seleccionaFila(id As Integer, NoGrid As Integer)
         ' 1 Data Empreses
@@ -74,28 +71,25 @@ Public Class Contractes
             Case 1
                 For Each Fila As DataGridViewRow In DataEmpreses.Rows
                     If Fila.Cells("Id").Value = id Then
-                        OmpleDadesEmpresa(Fila.Index)
                         Fila.Selected = True
+                        clickEmpreses(Fila.Index)
                         Exit For
                     End If
                 Next
+                idEmpresaSeleccionadaUtils = 0
             Case 2
                 For Each Fila As DataGridViewRow In DataSolucions.Rows
                     If Fila.Cells("Id").Value = id Then
-                        OmpleDadesSolucions(Fila.Index)
                         Fila.Selected = True
+                        clickSolucioins(Fila.Index)
                         Exit For
                     End If
                 Next
+                idSolucioSeleccionadaUtils=0
         End Select
 
+    End Sub
 
-    End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim catData As CultureInfo = New CultureInfo("ca-Es")
-        TB_DataAvui.Text = DateTime.Now.ToLongDateString
-        TB_Hora.Text = DateTime.Now.ToLongTimeString
-    End Sub
     Private Sub Btn_afegir_Click(sender As Object, e As EventArgs) Handles Btn_afegir.Click
         InserirEmpresa(idEmpresaSeleccionada)
     End Sub
@@ -103,29 +97,48 @@ Public Class Contractes
     'Actualitza la taula amb dades de la Base de dades
     Private Sub ActualitzaEmpreses()
 
+        DataEmpreses.Enabled = False
         Dim conexion As New SQLiteConnection(cadena)
         Try
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT * FROM Empreses", conexion)
-                DT_Empreses.Clear()
-                DA.Fill(DT_Empreses)
+                Dim Query As String = "SELECT id,
+                                                        nom,
+                                                        nif,
+                                                        direccio,
+                                                        codipostal,
+                                                        Ciutat,
+                                                        provincia,
+                                                        pais,
+                                                        segment,                                                        
+                                                        strftime('%d-%m-%Y',DataConcessio) AS 'Concessió',
+                                                        CodiBono,
+                                                        Import,
+                                                        Contractes
+                                                        FROM Empreses
+                                                        ORDER BY nom ASC"
 
-                If DT_Empreses.Rows.Count > 0 Then
-                    DataEmpreses.DataSource = DT_Empreses
+                Dim adapter As New SQLiteDataAdapter(Query, conexion)
+                Dim dataset As New DataSet()
+
+                adapter.Fill(dataset, "Empreses")
+
+                If dataset.Tables("Empreses").Rows.Count > 0 Then
+                    DataEmpreses.DataSource = dataset.Tables("Empreses")
                     TitolEmpresa.Text = "SELECCIONA EMPRESA"
                 Else
                     DataEmpreses.DataSource = Nothing
                     TitolSolucio.Text = "SENSE EMPRESES"
                 End If
+
             End If
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
         End Try
 
         conexion.Close()
-
+        DataEmpreses.Enabled = True
     End Sub
     'Introdueix una empresa nova
     Private Sub InserirEmpresa(IdEmpresa As Integer)
@@ -140,14 +153,31 @@ Public Class Contractes
         Dim ciutatTxt As String = Ciutat.Text
         Dim provinciaTxt As String = Provincia.Text
         Dim paisTxt As String = Pais.Text
+        Dim codiBonoTxt As String = TB_CodiBono.Text
+        Dim dataConcessioTxt As String
+        Dim dataFiConcessioTxt As String
         Dim seleccio As Boolean
         Dim segment As Integer
+        Dim import As Double
         seleccio = empresaSeleccionada
 
         If RB_Segment1.Checked = True Then segment = 1
         If RB_Segment2.Checked = True Then segment = 2
         If RB_Segment3.Checked = True Then segment = 3
 
+        If TB_ImportBono.Text = "" Then
+            import = 0
+        Else
+            import = CDbl(TB_ImportBono.Text)
+        End If
+
+        If CB_DataConcessio.Checked = True Then
+            dataConcessioTxt = Format(DataConcessio.Value, "yyyy-MM-dd")
+            dataFiConcessioTxt = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio), "yyyy-MM-dd")
+        Else
+            dataConcessioTxt = ""
+            dataFiConcessioTxt = ""
+        End If
         If ComprovaDadesEmpresa() = False Then Exit Sub
 
         'Si hi ha una empresa seleccionada fara Update sino Insert
@@ -162,9 +192,12 @@ Public Class Contractes
                      ",Provincia=" & StringDB(provinciaTxt) &
                      ",Pais=" & StringDB(paisTxt) &
                      ",Segment=" & segment &
+                     ",DataConcessio=" & StringDB(dataConcessioTxt) &
+                     ",DataCaducitat=" & StringDB(dataFiConcessioTxt) &
+                     ",Import=" & CDbl(TB_ImportBono.Text) &
                      " WHERE Id=" & IdEmpresa
         Else
-            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais,Segment) VALUES (" &
+            Query = "INSERT INTO Empreses (Nom,Nif,Direccio,CodiPostal,Ciutat,Provincia,Pais,Segment,DataConcessio,DataCaducitat,CodiBono,Import) VALUES (" &
                     StringDB(empresaTxt) & "," &
                     StringDB(nifTxt) & "," &
                     StringDB(direccioTxt) & "," &
@@ -172,7 +205,11 @@ Public Class Contractes
                     StringDB(ciutatTxt) & "," &
                     StringDB(provinciaTxt) & "," &
                     StringDB(paisTxt) & "," &
-                    segment & ")"
+                    segment & "," &
+                    StringDB(dataConcessioTxt) & "," &
+                    StringDB(dataFiConcessioTxt) & "," &
+                    StringDB(codiBonoTxt) & "," &
+                    import & ")"
         End If
 
 
@@ -194,9 +231,9 @@ Public Class Contractes
         End Try
         conexion.Close()
 
+        EsborraCampsEmpresa()
         EsborrarCampsSolucio()
 
-        seleccionaFila(idEmpresaSeleccionada, 1)
     End Sub
     'Comprova que no faltin dades per introduir
     Private Function ComprovaDadesEmpresa() As Boolean
@@ -235,6 +272,12 @@ Public Class Contractes
             MsgBox("Has de introduir el pais de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
+
+        If RB_Segment1.Checked = False And RB_Segment2.Checked = False And RB_Segment3.Checked = False Then
+            MsgBox("Has de escollir el segment de l'empresa", vbCritical, "Dades de empresa")
+            Return False
+        End If
+
         Return True
 
     End Function
@@ -303,12 +346,13 @@ Public Class Contractes
         EsborrarEmpresa(idBorrar)
     End Sub
     Private Sub Btn_EsborrarSeleccioEmpresa_Click(sender As Object, e As EventArgs) Handles btn_EsborrarSeleccioEmpresa.Click
+        DataEmpreses.ClearSelection()
         EsborraCampsEmpresa()
         EstaLaEmpresaSeleccionada(False)
     End Sub
     'Esborra tots els camps d'empresa
     Private Sub EsborraCampsEmpresa()
-        DataEmpreses.ClearSelection()
+
         Empresa.Clear()
         Nif.Clear()
         Direccio.Clear()
@@ -316,17 +360,28 @@ Public Class Contractes
         Ciutat.Clear()
         Provincia.Clear()
         Pais.Clear()
+        TB_CodiBono.Clear()
+        TB_ImportBono.Clear()
+        TB_CaducitatConcessio.Clear()
         Btn_afegir.Text = "Afegir empresa"
         TitolEmpresa.Text = "Selecciona Empresa"
         empresaSeleccionada = False
         idEmpresaSeleccionada = 0
         DataSolucions.DataSource = Nothing
+        CB_DataConcessio.Checked = False
+        CB_DataAprovacio.Checked = False
+        DataConcessioOK.Visible = False
+        DataFiConcessio.Visible = False
+        DataConcessio.Visible = False
+        DataAprovacio.Visible = False
+        TitolAprovacio.Visible = False
         EstaLaSolucioSeleccionada(False)
         EsborrarCampsSolucio()
 
         RB_Segment1.Checked = False
         RB_Segment2.Checked = False
         RB_Segment3.Checked = False
+
     End Sub
     Private Sub Btn_EsborrarSeleccioSolucio_Click(sender As Object, e As EventArgs) Handles Btn_EsborrarSeleccioSolucio.Click
         EsborrarCampsSolucio()
@@ -349,8 +404,7 @@ Public Class Contractes
                     comm = New SQLiteCommand("SELECT Solucions.Id,
                                           Solucions.IdSolucio,
                                           TipusSolucions.Nom,
-                                          Solucions.Contracte,
-                                          Solucions.DataAprovacio,                                          
+                                          Solucions.Contracte,                                          
                                           Solucions.DataContracte AS 'Dia contracte',
                                           Solucions.DataFactura AS 'Dia factura',
                                           Solucions.DataPagament,
@@ -362,6 +416,7 @@ Public Class Contractes
                                           Justificacions.Percentatge AS '%',
                                           Justificacions.Estat,
                                           Justificacions.DataPresentacio,
+                                          Justificacions.Subvencio, 
                                           Solucions.Observacions,
                                           Solucions.Quantitat   
                                           FROM Solucions
@@ -373,8 +428,7 @@ Public Class Contractes
                     comm = New SQLiteCommand("SELECT Solucions.Id,
                                           Solucions.IdSolucio,
                                           TipusSolucions.Nom,
-                                          Solucions.Contracte,
-                                          Solucions.DataAprovacio,                                          
+                                          Solucions.Contracte,                                          
                                           Solucions.DataContracte AS 'Dia contracte',
                                           Solucions.DataFactura AS 'Dia factura',
                                           Solucions.DataPagament,
@@ -386,6 +440,7 @@ Public Class Contractes
                                           Justificacions.Percentatge AS '%',
                                           Justificacions.Estat,
                                           Justificacions.DataPresentacio,
+                                          Justificacions.Subvencio, 
                                           Solucions.Observacions,
                                           Solucions.Quantitat 
                                           FROM Solucions
@@ -425,9 +480,6 @@ Public Class Contractes
     'Esborra tots els camps de la solució
     Private Sub EsborrarCampsSolucio()
 
-        'Linea Aprovacio
-        CB_DataAprovacio.Checked = False
-
         'Linea Contracte
         CB_DataContracte.Checked = False
         DataContracteOK.Visible = False
@@ -441,6 +493,7 @@ Public Class Contractes
         DataPagamentOK.Visible = False
 
         InfoSubvencio.Clear()
+        InfoSubvencioReal.Clear()
         NoAcord.Clear()
         DiesCaducitat.Clear()
         DataCaducitat.Clear()
@@ -473,6 +526,10 @@ Public Class Contractes
         TB_Proces5.BackColor = SystemColors.Control
         TB_Proces6.Enabled = False
         TB_Proces6.BackColor = SystemColors.Control
+        TB_Proces7.Enabled = False
+        TB_Proces7.BackColor = SystemColors.Control
+        TB_Proces8.Enabled = False
+        TB_Proces8.BackColor = SystemColors.Control
 
     End Sub
 
@@ -519,25 +576,31 @@ Public Class Contractes
         End If
 
     End Sub
+
     'Donem format al llistat de empreses quan acaba de carregarse
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
-
+        Debug.WriteLine("DataBindingComplete de Empreses")
         EstaLaSolucioSeleccionada(False)
         EstaLaEmpresaSeleccionada(False)
 
         With DataEmpreses
             .Columns("CodiPostal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Segment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Concessió").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Id").Visible = False
             .Columns("Direccio").Visible = False
+            .Columns("Pais").Visible = False
+            .Columns("CodiPostal").Visible = False
+            .Columns("CodiBono").Visible = False
+            .Columns("Import").Visible = False
+            .Columns("Contractes").Visible = False
             .AutoResizeColumns()
-            .ClearSelection()
         End With
 
     End Sub
     'Donem format al llistat de solucions quan acaba de carregarse
     Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
-
+        Debug.WriteLine("DataBindingComplete de Solucions")
         EsborrarCampsSolucio()
         EstaLaSolucioSeleccionada(False)
 
@@ -546,13 +609,13 @@ Public Class Contractes
             .Columns("IdSolucio").Visible = False
             .Columns("Justificat").Visible = False
             .Columns("Observacions").Visible = False
-            .Columns("DataAprovacio").Visible = False
             .Columns("DataPagament").Visible = False
             .Columns("Quantitat").Visible = False
             .Columns("PrimerPagament").Visible = False
             .Columns("SegonPagament").Visible = False
             .Columns("Estat").Visible = False
             .Columns("DataPresentacio").Visible = False
+            .Columns("Subvencio").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -582,18 +645,12 @@ Public Class Contractes
         Dim idTipusSolucio As Integer = CB_TipusSolucio.SelectedValue
         Dim NoAcordTxt As String = NoAcord.Text
         Dim Observacions As String = TBObservacions.Text
-        Dim DataAprovacioTxt, DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt As String
+        Dim DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt As String
         Dim seleccio As Boolean
         Dim Justificat As String
         Dim checks As Integer = 0
 
         seleccio = solucioSeleccionada
-        If CB_DataAprovacio.Checked = True Then
-            DataAprovacioTxt = Format(DataAprovacio.Value, "yyyy-MM-dd")
-        Else
-            DataAprovacioTxt = ""
-            checks += 1
-        End If
 
         If CB_DataContracte.Checked = True Then
             DataContracteTxt = Format(DataContracte.Value, "yyyy-MM-dd")
@@ -616,7 +673,7 @@ Public Class Contractes
             checks += 1
         End If
 
-        If checks <> 4 Then
+        If checks <> 3 Then
             DataVencimentTxt = Format(DataVenciment, "yyyy-MM-dd")
         Else
             DataVencimentTxt = Format(Date.Now.AddYears(1000), "yyyy-MM-dd")
@@ -631,8 +688,7 @@ Public Class Contractes
 
             Query = "UPDATE Solucions SET
                             idSolucio=" & idTipusSolucio & ", 
-                            Contracte= " & StringDB(NoAcordTxt) & ",
-                            DataAprovacio= " & StringDB(DataAprovacioTxt) & ",
+                            Contracte= " & StringDB(NoAcordTxt) & ",                            
                             DataContracte=" & StringDB(DataContracteTxt) & ",
                             DataFactura= " & StringDB(DataFacturaTxt) & ",
                             DataPagament= " & StringDB(DataPagamentTxt) & ",
@@ -645,10 +701,9 @@ Public Class Contractes
                             " WHERE Id=" & idSolucio
 
         Else
-            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataAprovacio,DataContracte,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  StringDB(NoAcordTxt) & "," &
-                                 StringDB(DataAprovacioTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
                                  StringDB(DataFacturaTxt) & "," &
                                  StringDB(DataPagamentTxt) & "," &
@@ -662,7 +717,18 @@ Public Class Contractes
 
         End If
 
+
+
         Try
+        
+            If conexion.State = ConnectionState.Open Then
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+            End If
+
+
+            Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
+
             conexion.Open()
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
@@ -681,7 +747,8 @@ Public Class Contractes
             MsgBox(ex.Message)
         End Try
         conexion.Close()
-        seleccionaFila(idSolucioSeleccionada, 2)
+
+        'seleccionaFila(idSolucioSeleccionada, 2)
 
     End Sub
     'Comproba que s'hagin introduit totes les dades
@@ -764,7 +831,7 @@ Public Class Contractes
         If x = True Then
             CB_TipusSolucio.Enabled = True
             NoAcord.Enabled = True
-            CB_DataAprovacio.Enabled = True
+
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = True
             TBObservacions.Enabled = True
@@ -773,7 +840,7 @@ Public Class Contractes
         Else
             CB_TipusSolucio.Enabled = False
             NoAcord.Enabled = False
-            CB_DataAprovacio.Enabled = False
+
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = False
             Btn_EstatJustificacio.Enabled = False
@@ -789,13 +856,20 @@ Public Class Contractes
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
+        MostraDadesEmpresaSeleccionada()
+    End Sub
+    Private Sub MostraDadesEmpresaSeleccionada()
         If DataEmpreses.SelectedRows.Count > 0 Then
+            teContractes = DataEmpreses.CurrentRow.Cells("Contractes").Value
+            EsborraCampsEmpresa()
             OmpleDadesEmpresa(DataEmpreses.CurrentRow.Index)
             EstaLaEmpresaSeleccionada(True)
+            MiraCaducitat()
         End If
     End Sub
 
     Private Sub CheckEstaJustificat_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEstaJustificat.CheckedChanged
+
         If CheckEstaJustificat.Checked = True Then
             verificat.Visible = True
             CB_PrimerPagament.Enabled = True
@@ -808,6 +882,7 @@ Public Class Contractes
     End Sub
 
     Private Sub DataSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataSolucions.CellFormatting
+
         Dim dgv As DataGridView = sender
         If dgv.Columns(e.ColumnIndex).Name = "Dies" Then
             If e.Value < 0 Then
@@ -878,8 +953,12 @@ Public Class Contractes
             Dim RowBorrar As Integer = nom.Replace("Factura", "")
             Dim IdBorrar As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
             Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
-            Dim FacturaXML As New Factures(idEmpresaSeleccionada, IdSolucio)
-            OpenSubFormDialog(FacturaXML)
+            'Dim FacturaXML As New Factures(idEmpresaSeleccionada, IdSolucio)
+            'OpenSubFormDialog(FacturaXML)
+            idEmpresaSeleccionadaUtils = idEmpresaSeleccionada
+            idSolucioSeleccionadaUtils = IdSolucio
+            Debug.WriteLine(idEmpresaSeleccionada & " - " & idSolucioSeleccionadaUtils)
+            Inici.MostraForm(ffactu)
 
         End If
     End Sub
@@ -903,11 +982,13 @@ Public Class Contractes
         End Select
     End Sub
     Private Sub CB_DataAprovacio_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataAprovacio.CheckedChanged
+
         If CB_DataAprovacio.Checked = True Then
             MostraLinea(1, True)
-            DataAprovacio.Enabled = True
-            CB_DataAprovacio.Enabled = True
             CB_DataContracte.Enabled = True
+            TitolAprovacio.Visible = True
+            DataFiConcessio.Visible = True
+            DataConcessioOK.Visible = True
         Else
             MostraLinea(1, False)
             MostraLinea(2, False)
@@ -919,7 +1000,11 @@ Public Class Contractes
             CB_DataFactura.Checked = False
             CB_DataPagamentIVA.Enabled = False
             CB_DataPagamentIVA.Checked = False
+            TitolAprovacio.Visible = False
+            DataFiConcessio.Visible = False
+            DataConcessioOK.Visible = False
         End If
+
     End Sub
     Private Sub CB_DataContracte_CheckedChanged(sender As Object, e As EventArgs) Handles CB_DataContracte.CheckedChanged
         If CB_DataContracte.Checked = True Then
@@ -960,7 +1045,6 @@ Public Class Contractes
     Private Sub DataContracte_ValueChanged(sender As Object, e As EventArgs) Handles DataContracte.ValueChanged
         If DataContracte.Value.Date < DataAprovacio.Value Or DataContracte.Value.Date > DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio) Then
             CB_DataContracte.ForeColor = Color.Red
-
         Else
             CB_DataContracte.ForeColor = Color.Black
         End If
@@ -971,7 +1055,6 @@ Public Class Contractes
 
         If DataFactura.Value.Date < DataContracte.Value Or DataFactura.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
             CB_DataFactura.ForeColor = Color.Red
-
         Else
             CB_DataFactura.ForeColor = Color.Black
         End If
@@ -994,12 +1077,13 @@ Public Class Contractes
 
     Private Sub MiraCaducitat()
 
-        Dim dies As Integer
+        Dim dies As Integer = 0
 
         Dim CaducitatContracte As Date = DataContracte.Value.AddMonths(My.Settings.MesosContractacio)
         Dim CaducitatFactura As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
         Dim CaducitatPagament As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
         Dim CaducitatJustificacio As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
+        Dim CaducitatConcessio As Date = DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio)
 
         Dim DataToCheck As Date
 
@@ -1025,7 +1109,6 @@ Public Class Contractes
             End If
         End If
 
-
         ' Comprovem si les dates de la factura son correctes
 
         If DataFactura.Value > CaducitatContracte Then
@@ -1042,27 +1125,60 @@ Public Class Contractes
             DataPagamentOK.Image = My.Resources.verificado_petit
         End If
 
+        ' Comprovem si les dates de la concessio son correctes
+
+        If CB_DataConcessio.Checked = True Then
+            If DataSolucions.RowCount > 0 Then
+                DataConcessioOK.Image = My.Resources.verificado_petit
+            Else
+                If DateDiff(DateInterval.Day, Now, CaducitatConcessio) < 0 Then
+                    DataConcessioOK.Image = My.Resources.sin_verificar_petit
+                Else
+                    DataConcessioOK.Image = My.Resources.verificado_petit
+                End If
+            End If
+            DataVenciment = CaducitatConcessio
+        End If
+
         If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
         If CB_DataFactura.Checked = True Then DataVenciment = CaducitatFactura
 
         dies = DateDiff(DateInterval.Day, Now, DataVenciment)
 
-        If dies >= 0 Then
-            DiesCaducitat.Text = dies.ToString
+
+        If solucioSeleccionada Then
+            If CB_DataConcessio.Checked = True Then
+                If dies >= 0 Then
+                    DiesCaducitat.Text = dies.ToString
+                    DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                Else
+                    DiesCaducitat.Text = "Caducat"
+                    DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                End If
+            Else
+                DiesCaducitat.Text = ""
+                DataCaducitat.Text = ""
+            End If
         Else
-            DiesCaducitat.Text = "Caducat"
+            If teContractes = 1 Then
+                DiesCaducitat.Text = ""
+                DataCaducitat.Text = ""
+            Else
+                If CB_DataConcessio.Checked = True Then
+                    If dies >= 0 Then
+                        DiesCaducitat.Text = dies.ToString
+                        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                    Else
+                        DiesCaducitat.Text = "Caducat"
+                        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
+                    End If
+                Else
+                    DiesCaducitat.Text = ""
+                    DataCaducitat.Text = ""
+                End If
+            End If
         End If
 
-        DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
-
-    End Sub
-
-    Private Sub CB_DataAprovacio_Click(sender As Object, e As EventArgs) Handles CB_DataAprovacio.Click
-        DataAprovacio.Value = Date.Now
-        If CB_DataAprovacio.Checked = False Then
-            DiesCaducitat.Clear()
-            DataCaducitat.Clear()
-        End If
     End Sub
 
     Private Sub CB_DataContracte_Click(sender As Object, e As EventArgs) Handles CB_DataContracte.Click
@@ -1124,6 +1240,33 @@ Public Class Contractes
             OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
         End If
     End Sub
+
+    Private Sub Contractes_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        seleccionaFila(idEmpresaSeleccionadaUtils, 1)
+        seleccionaFila(idSolucioSeleccionadaUtils, 2)
+    End Sub
+
+    Private Sub CB_DataConcessio_Click(sender As Object, e As EventArgs)
+        If CB_DataConcessio.Checked = True Then
+            DataConcessio.Value = Date.Now
+            DataConcessio.Visible = True
+            CB_DataAprovacio.Checked = True
+            TitolAprovacio.Visible = True
+            DataFiConcessio.Visible = True
+        Else
+            TitolAprovacio.Visible = False
+            DataConcessio.Visible = False
+            CB_DataAprovacio.Checked = False
+            DataFiConcessio.Visible = False
+        End If
+    End Sub
+
+    Private Sub DataConcessio_ValueChanged(sender As Object, e As EventArgs) Handles DataConcessio.ValueChanged
+        DataAprovacio.Value = DataConcessio.Value
+        DataFiConcessio.Text = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio).Date, "Short Date")
+        TB_CaducitatConcessio.Text = Format(DataConcessio.Value.AddMonths(My.Settings.MesosAprovacio).Date, "Short Date")
+    End Sub
+
     Private Sub CheckJustificat_Click(sender As Object, e As EventArgs) Handles CheckJustificat.Click
         If empresaSeleccionada = True Then OmpleSolucions(idEmpresaSeleccionada)
     End Sub
@@ -1141,6 +1284,19 @@ Public Class Contractes
         Btn_afegir.Text = "Modificar empresa"
         empresaSeleccionada = True
         segmentEmpresaSeleccionada = row.Cells("Segment").Value
+
+        If Not IsDBNull(row.Cells("Concessió").Value) Then
+            CB_DataConcessio.Checked = True
+            CB_DataAprovacio.Checked = True
+            DataConcessio.Text = Format(row.Cells("Concessió").Value, "Short Date")
+            TB_ImportBono.Text = row.Cells("Import").Value
+            TB_CodiBono.Text = row.Cells("CodiBono").Value
+            DataConcessio.Visible = True
+        Else
+            CB_DataConcessio.Checked = False
+            DataConcessio.Visible = False
+            CB_DataAprovacio.Checked = False
+        End If
 
         EstaLaSolucioSeleccionada(False)
 
@@ -1188,14 +1344,6 @@ Public Class Contractes
 
         ProgressBar1.Value = row.Cells("%").Value
 
-        If row.Cells("DataAprovacio").Value <> "" Then
-            DataAprovacio.Text = Format(row.Cells("DataAprovacio").Value, "Short Date")
-            CB_DataAprovacio.Checked = True
-        Else
-            DataAprovacio.Value = Date.Now
-            CB_DataAprovacio.Checked = False
-        End If
-
         If row.Cells("Dia contracte").Value <> "" Then
             DataContracte.Text = Format(row.Cells("Dia contracte").Value, "Short Date")
             CB_DataContracte.Checked = True
@@ -1228,6 +1376,8 @@ Public Class Contractes
             DiesCaducitat.Text = "Caducat"
         End If
 
+        InfoSubvencioReal.Text = row.Cells("Subvencio").Value.ToString
+
         ' Formatejem estats
         TB_Proces0.Enabled = False
         TB_Proces0.BackColor = SystemColors.Control
@@ -1243,6 +1393,10 @@ Public Class Contractes
         TB_Proces5.BackColor = SystemColors.Control
         TB_Proces6.Enabled = False
         TB_Proces6.BackColor = SystemColors.Control
+        TB_Proces7.Enabled = False
+        TB_Proces7.BackColor = SystemColors.Control
+        TB_Proces8.Enabled = False
+        TB_Proces8.BackColor = SystemColors.Control
 
         Select Case row.Cells("Estat").Value
             Case 0
@@ -1266,6 +1420,12 @@ Public Class Contractes
             Case 6
                 TB_Proces6.Enabled = True
                 TB_Proces6.BackColor = verdClar
+            Case 7
+                TB_Proces7.Enabled = True
+                TB_Proces7.BackColor = verdClar
+            Case 8
+                TB_Proces8.Enabled = True
+                TB_Proces8.BackColor = verdClar
         End Select
 
         EstaLaSolucioSeleccionada(True)
@@ -1294,8 +1454,6 @@ Public Class Contractes
                 infoMax.Visible = False
         End Select
 
-
-
         RebreSubvencio(segmentEmpresaSeleccionada)
 
     End Sub
@@ -1304,7 +1462,6 @@ Public Class Contractes
         Dim Query As String
         Dim strCommand As SQLiteCommand
         Dim segmentString As String = "Segment" & segment
-
 
         conexion.Open()
 
@@ -1316,11 +1473,13 @@ Public Class Contractes
 
                 Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
+
                 If lector.Read() Then
                     subvencioSolucioSeleccionada = lector.GetValue(segmentString)
                     InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
                 End If
                 lector.Close()
+
             Catch ex As Exception
 
             End Try
@@ -1329,18 +1488,16 @@ Public Class Contractes
         End If
 
         If segmentEmpresaSeleccionada = 1 Then
-            infoMax.Text = "<-- Màxim 48"
+            infoMax.Text = "Màxim 48"
             InfoVariableNum.Maximum = 48
         ElseIf segmentEmpresaSeleccionada = 2 Then
-            infoMax.Text = "<-- Màxim 9"
+            infoMax.Text = "Màxim 9"
             InfoVariableNum.Maximum = 9
         ElseIf segmentEmpresaSeleccionada = 3 Then
-            infoMax.Text = "<-- Màxim 2"
+            infoMax.Text = "Màxim 2"
             InfoVariableNum.Maximum = 2
         End If
     End Sub
 
-    Private Sub DataEmpreses_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataEmpreses.CellContentClick
 
-    End Sub
 End Class

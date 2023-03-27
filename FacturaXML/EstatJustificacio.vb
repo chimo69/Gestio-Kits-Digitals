@@ -292,15 +292,15 @@ Public Class EstatJustificacio
     End Sub
 
     Private Sub Btn_CreaFactura_Click(sender As Object, e As EventArgs) Handles Btn_CreaFactura.Click
-        Dim FacturaXML As New Factures(IdEmpresa, IdSolucio)
-        OpenSubFormDialog(FacturaXML)
-        Dim resp As Integer
-        resp = MsgBox("Activar FacturaXML com feta?", vbYesNo, "Crear factura")
-        If resp = vbYes Then
-            TeFactura.Checked = True
-        Else
-            TeFactura.Checked = False
-        End If
+        'Dim FacturaXML As New Factures(IdEmpresa, IdSolucio)
+        'OpenSubFormDialog(FacturaXML)
+        'Dim resp As Integer
+        'resp = MsgBox("Activar FacturaXML com feta?", vbYesNo, "Crear factura")
+        'If resp = vbYes Then
+        '    TeFactura.Checked = True
+        'Else
+        '    TeFactura.Checked = False
+        'End If
     End Sub
 
     Private Sub Btn_guardar_Click(sender As Object, e As EventArgs) Handles Btn_guardar.Click

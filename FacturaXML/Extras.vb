@@ -4,14 +4,7 @@ Public Class Extras
     Private DT_Extres, DT_ExtresGeneral, DT_EstatSolucions, DT_CercaEmpreses As New DataTable
     Private TotalEmpresaValor, TotalGeneralValor As Double
     Private TotalSolucionsValor As Integer
-    Public Sub New()
 
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
-    End Sub
     Private Sub Extras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim conexion As New SQLiteConnection(cadena)

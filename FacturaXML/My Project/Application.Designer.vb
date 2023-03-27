@@ -33,7 +33,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.FacturaXML.Principal
+            Me.MainForm = Global.FacturaXML.Inici
         End Sub
     End Class
 End Namespace

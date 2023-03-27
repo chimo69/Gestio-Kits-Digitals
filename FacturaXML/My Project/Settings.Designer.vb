@@ -197,6 +197,30 @@ Namespace My
                 Me("MostrarGestioAprovades") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("30")>  _
+        Public Property DiesConcessio() As Integer
+            Get
+                Return CType(Me("DiesConcessio"),Integer)
+            End Get
+            Set
+                Me("DiesConcessio") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property MostrarEmpresesConcessio() As Boolean
+            Get
+                Return CType(Me("MostrarEmpresesConcessio"),Boolean)
+            End Get
+            Set
+                Me("MostrarEmpresesConcessio") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

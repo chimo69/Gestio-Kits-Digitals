@@ -9,22 +9,6 @@ Public Class Factures
     Private idSolucio As Integer
     Private CarregarDades As Boolean
 
-    Public Sub New()
-
-        ' Esta llamada es exigida por el diseñador.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        CarregarDades = True
-
-    End Sub
-
-    Public Sub New(idEmpresa As Integer, idSolucio As Integer)
-        InitializeComponent()
-        Me.idEmpresa = idEmpresa
-        Me.idSolucio = idSolucio
-        CarregarDades = False
-    End Sub
     'Controla els caracters que es poden introduir al textbox
     Private Sub CompruebaTipo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles FacturaImportSolucio.KeyPress, FacturaImportSubvencionat.KeyPress
         e.Handled = Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) And Not e.KeyChar = ","
@@ -332,26 +316,7 @@ Public Class Factures
         Next
         Return True
     End Function
-    Private Sub MenuDadesEmpresa_Click(sender As Object, e As EventArgs) Handles MenuDadesEmpresa.Click
-        Dim dadesEmpresa As New DadesEmpresaConfig()
-        OpenSubForm(dadesEmpresa)
-    End Sub
-    Private Sub MenuSortir_Click(sender As Object, e As EventArgs) Handles MenuSortir.Click
-        Me.Close()
-    End Sub
-    Private Sub MenuEsborrarTot_Click(sender As Object, e As EventArgs) Handles MenuEsborrarTot.Click
-        EsborraDades(3)
-    End Sub
-    Private Sub EsborrarDadesEmpresaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsborrarDadesEmpresaToolStripMenuItem.Click
-        EsborraDades(1)
-    End Sub
-    Private Sub EsborrarDadesFacturaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsborrarDadesFacturaToolStripMenuItem.Click
-        EsborraDades(2)
-    End Sub
-    Private Sub SobreFacturesXMLToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SobreFacturesXMLToolStripMenuItem1.Click
-        Dim ASobreDe As New ASobreDe()
-        OpenSubForm(ASobreDe)
-    End Sub
+
     'Carrega les empreses per omplir el combobox
     Private Sub Factures_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim SQL As String
@@ -360,6 +325,13 @@ Public Class Factures
 
         conexion = New SQLiteConnection(cadena)
         conexion.Open()
+
+        Debug.WriteLine(idEmpresaSeleccionadaUtils & " - " & idSolucioSeleccionadaUtils)
+        If idEmpresaSeleccionadaUtils <> 0 Then
+            CarregarDades = False
+        Else
+            CarregarDades = True
+        End If
 
         If CarregarDades = True Then
             SQL = "SELECT * FROM Empreses ORDER BY Nom ASC"
@@ -446,6 +418,9 @@ Public Class Factures
 
         End If
         conexion.Close()
+
+        idSolucioSeleccionadaUtils = 0
+        idEmpresaSeleccionadaUtils = 0
     End Sub
 
     Private Sub CB_Empreses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Empreses.SelectionChangeCommitted
@@ -576,8 +551,5 @@ Public Class Factures
 
     Private Sub FacturaImportIVA_TextChanged(sender As Object, e As EventArgs) Handles FacturaImportIVA.TextChanged
         TB_ImportAbonat.Text = FacturaImportIVA.Text
-    End Sub
-    Private Sub animacioText(ByVal sender As System.Object, ByVal e As System.EventArgs) 
-
     End Sub
 End Class
