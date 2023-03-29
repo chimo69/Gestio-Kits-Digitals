@@ -838,6 +838,7 @@ Partial Class Contractes
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.SystemColors.ControlLight
         Me.GroupBox1.Controls.Add(Me.RB_Segment3)
         Me.GroupBox1.Controls.Add(Me.RB_Segment2)
         Me.GroupBox1.Controls.Add(Me.RB_Segment1)
@@ -858,7 +859,7 @@ Partial Class Contractes
         Me.GroupBox1.Controls.Add(Me.Pais)
         Me.GroupBox1.Location = New System.Drawing.Point(28, 23)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(310, 424)
+        Me.GroupBox1.Size = New System.Drawing.Size(313, 424)
         Me.GroupBox1.TabIndex = 74
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dades de l'empresa"
@@ -1270,6 +1271,7 @@ Partial Class Contractes
         '
         'GroupBox3
         '
+        Me.GroupBox3.BackColor = System.Drawing.SystemColors.ControlLight
         Me.GroupBox3.Controls.Add(Me.Label23)
         Me.GroupBox3.Controls.Add(Me.TB_ImportBono)
         Me.GroupBox3.Controls.Add(Me.Label22)

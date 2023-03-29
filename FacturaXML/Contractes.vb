@@ -1,8 +1,5 @@
 ﻿Imports System.Data.SQLite
-Imports System.Globalization
 Imports System.Threading
-Imports System.Windows.Forms.DataVisualization.Charting
-Imports FacturaXML.My
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
@@ -15,12 +12,6 @@ Public Class Contractes
 
     Private Sub Contractes_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         Debug.WriteLine("Activated Contractes")
-        'Si venim del form Llistat selecciona l'empresa
-        'seleccionaFila(idEmpresaSeleccionadaUtils, 1)
-
-        'Si venim del form Llistat selecciona la solució
-        ' seleccionaFila(idSolucioSeleccionadaUtils, 2)
-
     End Sub
     'Carrega els tipus de solucions per omplir el combobox
     Private Sub Contractes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -955,9 +946,9 @@ Public Class Contractes
             Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
             'Dim FacturaXML As New Factures(idEmpresaSeleccionada, IdSolucio)
             'OpenSubFormDialog(FacturaXML)
-            idEmpresaSeleccionadaUtils = idEmpresaSeleccionada
-            idSolucioSeleccionadaUtils = IdSolucio
-            Debug.WriteLine(idEmpresaSeleccionada & " - " & idSolucioSeleccionadaUtils)
+            idEmpresaFactura = idEmpresaSeleccionada
+            idSolucioFactura = IdSolucio
+            Debug.WriteLine(idEmpresaFactura & " - " & idSolucioFactura)
             Inici.MostraForm(ffactu)
 
         End If

@@ -86,6 +86,7 @@ Partial Class Inici
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.btn_Menu, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelContenedor.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanelCabecera
@@ -326,6 +327,8 @@ Partial Class Inici
         '
         'PanelMenu
         '
+        Me.PanelMenu.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PanelMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(46, Byte), Integer), CType(CType(59, Byte), Integer))
         Me.PanelMenu.Controls.Add(Me.Panel11)
         Me.PanelMenu.Controls.Add(Me.Btn_Empreses)
@@ -341,8 +344,7 @@ Partial Class Inici
         Me.PanelMenu.Controls.Add(Me.Btn_factures)
         Me.PanelMenu.Controls.Add(Me.btn_Menu)
         Me.PanelMenu.Controls.Add(Me.Btn_gestio)
-        Me.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PanelMenu.Location = New System.Drawing.Point(0, 40)
+        Me.PanelMenu.Location = New System.Drawing.Point(0, 0)
         Me.PanelMenu.Name = "PanelMenu"
         Me.PanelMenu.Size = New System.Drawing.Size(60, 563)
         Me.PanelMenu.TabIndex = 1
@@ -608,10 +610,12 @@ Partial Class Inici
         'PanelContenedor
         '
         Me.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelContenedor.Controls.Add(Me.PanelMenu)
         Me.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelContenedor.Location = New System.Drawing.Point(60, 40)
+        Me.PanelContenedor.Location = New System.Drawing.Point(0, 40)
         Me.PanelContenedor.Name = "PanelContenedor"
-        Me.PanelContenedor.Size = New System.Drawing.Size(1167, 563)
+        Me.PanelContenedor.Padding = New System.Windows.Forms.Padding(60, 0, 0, 0)
+        Me.PanelContenedor.Size = New System.Drawing.Size(1227, 563)
         Me.PanelContenedor.TabIndex = 2
         '
         'Inici
@@ -621,7 +625,6 @@ Partial Class Inici
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1227, 603)
         Me.Controls.Add(Me.PanelContenedor)
-        Me.Controls.Add(Me.PanelMenu)
         Me.Controls.Add(Me.PanelCabecera)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -652,6 +655,7 @@ Partial Class Inici
         Me.Panel3.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         CType(Me.btn_Menu, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelContenedor.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

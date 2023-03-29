@@ -11,8 +11,11 @@
     Public formActual As Form
     Public FormsList As New List(Of Form)
 
-    Public idEmpresaSeleccionadaUtils As Integer = 0
-    Public idSolucioSeleccionadaUtils As Integer = 0
+    Public idEmpresaSeleccionadaUtils As Integer
+    Public idSolucioSeleccionadaUtils As Integer
+
+    Public idEmpresaFactura As Integer
+    Public idSolucioFactura As Integer
 
     'Sustitueix cometes per cometes dobles per evitar errors
     Public Function StringDB(arg As String) As String

@@ -25,10 +25,13 @@ Partial Class Empreses
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Empreses))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.DataEmpreses = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DataSolucions = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TB_BonusRestant = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -38,7 +41,6 @@ Partial Class Empreses
         Me.TB_BonusConcedit = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PB_BonusConsumit = New System.Windows.Forms.ProgressBar()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Lbl_SitioWeb = New System.Windows.Forms.Label()
         Me.Lbl_Comercio = New System.Windows.Forms.Label()
@@ -69,6 +71,7 @@ Partial Class Empreses
         Me.SplitContainer1.SuspendLayout()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,13 +133,14 @@ Partial Class Empreses
         Me.DataEmpreses.RowHeadersVisible = False
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.ShowEditingIcon = False
-        Me.DataEmpreses.Size = New System.Drawing.Size(821, 841)
+        Me.DataEmpreses.Size = New System.Drawing.Size(809, 841)
         Me.DataEmpreses.TabIndex = 9
         '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.DataSolucions)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.TB_BonusRestant)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -146,19 +150,50 @@ Partial Class Empreses
         Me.GroupBox1.Controls.Add(Me.TB_BonusConcedit)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.PB_BonusConsumit)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 178)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(786, 92)
+        Me.GroupBox1.Size = New System.Drawing.Size(786, 209)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Subvencions"
+        '
+        'DataSolucions
+        '
+        Me.DataSolucions.AllowUserToAddRows = False
+        Me.DataSolucions.AllowUserToDeleteRows = False
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataSolucions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.DataSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataSolucions.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DataSolucions.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataSolucions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal
+        Me.DataSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataSolucions.ColumnHeadersVisible = False
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataSolucions.Location = New System.Drawing.Point(6, 22)
+        Me.DataSolucions.Name = "DataSolucions"
+        Me.DataSolucions.ReadOnly = True
+        Me.DataSolucions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
+        Me.DataSolucions.RowHeadersVisible = False
+        Me.DataSolucions.RowTemplate.Height = 25
+        Me.DataSolucions.ScrollBars = System.Windows.Forms.ScrollBars.None
+        Me.DataSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataSolucions.ShowEditingIcon = False
+        Me.DataSolucions.Size = New System.Drawing.Size(381, 181)
+        Me.DataSolucions.TabIndex = 27
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(530, 19)
+        Me.Label5.Location = New System.Drawing.Point(597, 98)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(18, 20)
         Me.Label5.TabIndex = 108
@@ -166,19 +201,21 @@ Partial Class Empreses
         '
         'TB_BonusRestant
         '
-        Me.TB_BonusRestant.Location = New System.Drawing.Point(461, 18)
+        Me.TB_BonusRestant.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusRestant.Location = New System.Drawing.Point(528, 96)
         Me.TB_BonusRestant.Name = "TB_BonusRestant"
         Me.TB_BonusRestant.ReadOnly = True
-        Me.TB_BonusRestant.Size = New System.Drawing.Size(63, 23)
+        Me.TB_BonusRestant.Size = New System.Drawing.Size(63, 29)
         Me.TB_BonusRestant.TabIndex = 107
         Me.TB_BonusRestant.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(383, 22)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(393, 98)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(79, 15)
+        Me.Label6.Size = New System.Drawing.Size(110, 21)
         Me.Label6.TabIndex = 106
         Me.Label6.Text = "Bonus restant"
         '
@@ -186,7 +223,7 @@ Partial Class Empreses
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(359, 19)
+        Me.Label4.Location = New System.Drawing.Point(597, 59)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(18, 20)
         Me.Label4.TabIndex = 105
@@ -194,10 +231,11 @@ Partial Class Empreses
         '
         'TB_BonusConsumit
         '
-        Me.TB_BonusConsumit.Location = New System.Drawing.Point(290, 18)
+        Me.TB_BonusConsumit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusConsumit.Location = New System.Drawing.Point(528, 57)
         Me.TB_BonusConsumit.Name = "TB_BonusConsumit"
         Me.TB_BonusConsumit.ReadOnly = True
-        Me.TB_BonusConsumit.Size = New System.Drawing.Size(63, 23)
+        Me.TB_BonusConsumit.Size = New System.Drawing.Size(63, 29)
         Me.TB_BonusConsumit.TabIndex = 104
         Me.TB_BonusConsumit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -205,7 +243,7 @@ Partial Class Empreses
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.Location = New System.Drawing.Point(170, 19)
+        Me.Label23.Location = New System.Drawing.Point(597, 20)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(18, 20)
         Me.Label23.TabIndex = 103
@@ -213,39 +251,33 @@ Partial Class Empreses
         '
         'TB_BonusConcedit
         '
-        Me.TB_BonusConcedit.Location = New System.Drawing.Point(101, 18)
+        Me.TB_BonusConcedit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusConcedit.Location = New System.Drawing.Point(528, 18)
         Me.TB_BonusConcedit.Name = "TB_BonusConcedit"
         Me.TB_BonusConcedit.ReadOnly = True
-        Me.TB_BonusConcedit.Size = New System.Drawing.Size(63, 23)
+        Me.TB_BonusConcedit.Size = New System.Drawing.Size(63, 29)
         Me.TB_BonusConcedit.TabIndex = 3
         Me.TB_BonusConcedit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(191, 22)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label3.Location = New System.Drawing.Point(393, 59)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(93, 15)
+        Me.Label3.Size = New System.Drawing.Size(126, 21)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Bonus consumit"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 22)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(393, 20)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 15)
+        Me.Label2.Size = New System.Drawing.Size(123, 21)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Bonus concedit"
-        '
-        'PB_BonusConsumit
-        '
-        Me.PB_BonusConsumit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PB_BonusConsumit.Location = New System.Drawing.Point(6, 50)
-        Me.PB_BonusConsumit.Name = "PB_BonusConsumit"
-        Me.PB_BonusConsumit.Size = New System.Drawing.Size(770, 23)
-        Me.PB_BonusConsumit.TabIndex = 0
         '
         'FlowLayoutPanel1
         '
@@ -553,6 +585,7 @@ Partial Class Empreses
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -592,7 +625,6 @@ Partial Class Empreses
     Friend WithEvents TB_BonusConcedit As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents PB_BonusConsumit As ProgressBar
     Friend WithEvents Label23 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents TB_BonusConsumit As TextBox
@@ -602,4 +634,5 @@ Partial Class Empreses
     Friend WithEvents Label8 As Label
     Friend WithEvents TB_Segment As TextBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents DataSolucions As DataGridView
 End Class

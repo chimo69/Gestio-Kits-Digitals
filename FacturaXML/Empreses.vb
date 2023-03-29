@@ -3,7 +3,7 @@ Imports System.Data.SQLite
 Imports System.Diagnostics.Contracts
 
 Public Class Empreses
-    Private DT_Llistat As New DataTable
+    Private DT_Llistat, DT_Solucions As New DataTable
     Private columnaSeleccionada As DataGridViewColumn
     Private columnaIndexSeleccionada As Integer
 
@@ -230,13 +230,29 @@ Public Class Empreses
                         End If
                         TB_BonusConsumit.Text = consumit.ToString
                         TB_BonusRestant.Text = (concedit - consumit).ToString
-                        PB_BonusConsumit.Maximum = concedit
-                        PB_BonusConsumit.Value = consumit
                     End If
-
-
-
                     lector.Close()
+
+                End If
+            End Using
+
+            Using conexion As New SQLiteConnection(cadena)
+
+                conexion.Open()
+
+                If conexion.State = ConnectionState.Open Then
+                    Dim Sql As String = "SELECT TipusSolucions.Nom, Justificacions.Subvencio                                          
+                                          FROM Solucions
+                                          INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                                          WHERE idEmpresa=" & idEmpresa
+
+                    Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
+                    Dim adapter As New SQLiteDataAdapter(strCommand)
+                    DT_Solucions.Clear()
+                    adapter.Fill(DT_Solucions)
+                    DataSolucions.DataSource = DT_Solucions
+                    DataSolucions.ClearSelection()
 
                 End If
             End Using
@@ -259,9 +275,17 @@ Public Class Empreses
         Lbl_Ciberseguridad.BackColor = SystemColors.Control
     End Sub
 
+    Private Sub DataSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataSolucions.DataBindingComplete
+        Dim dgv As DataGridView = sender
+        With dgv
+            .Columns("Subvencio").DefaultCellStyle.Format = "C"
+            .Columns("Subvencio").DefaultCellStyle.FormatProvider = New System.Globalization.CultureInfo("es-ES")
+            .Columns("Subvencio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        End With
+    End Sub
+
     Private Sub CB_MostrarContractes_CheckedChanged(sender As Object, e As EventArgs) Handles CB_MostrarContractes.CheckedChanged
         CarregaEmpreses(TextABuscar.Text)
     End Sub
-
 
 End Class
