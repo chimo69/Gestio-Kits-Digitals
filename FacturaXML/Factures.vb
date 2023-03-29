@@ -357,50 +357,79 @@ Public Class Factures
         Dim vistaPrevia As New VistaPrevia(textoXML)
         OpenSubForm(vistaPrevia)
     End Sub
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
-        EsborraDades(3)
-    End Sub
     Private Sub EsborraDades(v As Integer)
 
-        '1 - Borra bloc empresa
-        '2 - Borra bloc factura
-        '3 - Borra tot
-
-        For Each control As Windows.Forms.Control In Me.Controls
-            If TypeOf control Is GroupBox Then
-                If v = 2 Or v = 3 Then
-                    For Each controlText As Windows.Forms.Control In Me.GroupBox2.Controls
-                        If TypeOf controlText Is TextBox Then
-                            CType(controlText, TextBox).Clear()
-                        End If
-                    Next
-                    CB_Solucions.Text = "Selecciona solució"
-                    TB_DataCobrament.Clear()
-                    TB_DataFactura.Clear()
-                    FacturaData.Value = Date.Now
-                End If
-                If v = 1 Or v = 3 Then
-                    For Each controlText As Windows.Forms.Control In Me.GroupBox1.Controls
-                        If TypeOf controlText Is TextBox Then
-                            CType(controlText, TextBox).Clear()
-                        End If
-                    Next
-
-                End If
-
+        Select Case v
+            'Bloc empresa
+            Case 1 ' Esborrar tot
+                CB_Empreses.Text = "Selecciona empresa"
+                EmpresaNom.Clear()
+                EmpresaNif.Clear()
+                EmpresaDireccio.Clear()
+                EmpresaCodiPostal.Clear()
+                EmpresaCiutat.Clear()
+                EmpresaProvincia.Clear()
+                EmpresaPais.Clear()
+                'Bloc solucio
+                CB_Solucions.Text = ""
+                CB_Solucions.DataSource = Nothing
+                FacturaNumero.Clear()
+                FacturaAcord.Clear()
+                FacturaImportSolucio.Clear()
+                FacturaImportIVA.Clear()
+                FacturaImportTotal.Clear()
+                FacturaImportSubvencionat.Clear()
                 FacturaSolucio.Text = ""
+                FacturaData.Value = Date.Now
+                'Bloc declaració
+                TB_DataCobrament.Clear()
+                TB_DataFactura.Clear()
+                TB_Rao.Clear()
+                TB_Nif.Clear()
+                TB_NoAcord.Clear()
+                TB_NoFactura.Clear()
+                TB_ImportFactura.Clear()
+                TB_ImportAbonat.Clear()
+            Case 2 ' Empresa seleccionada
+                'Bloc solucio
+                CB_Solucions.Text = ""
+                CB_Solucions.DataSource = Nothing
+                FacturaNumero.Clear()
+                FacturaAcord.Clear()
+                FacturaImportSolucio.Clear()
+                FacturaImportIVA.Clear()
+                FacturaImportTotal.Clear()
+                FacturaImportSubvencionat.Clear()
+                FacturaSolucio.Text = ""
+                FacturaData.Value = Date.Now
+                'Bloc declaració
+                TB_DataCobrament.Clear()
+                TB_DataFactura.Clear()
+                TB_Rao.Clear()
+                TB_Nif.Clear()
+                TB_NoAcord.Clear()
+                TB_NoFactura.Clear()
+                TB_ImportFactura.Clear()
+                TB_ImportAbonat.Clear()
+            Case 3 'Solucio seleccionada
+                'Bloc Factura
+                FacturaNumero.Clear()
+                FacturaAcord.Clear()
+                FacturaImportSolucio.Clear()
+                FacturaImportIVA.Clear()
+                FacturaImportTotal.Clear()
+                FacturaImportSubvencionat.Clear()
+                FacturaSolucio.Text = ""
+                FacturaData.Value = Date.Now
+                'Bloc declaració
+                TB_DataCobrament.Clear()
+                TB_DataFactura.Clear()
+                TB_NoAcord.Clear()
+                TB_NoFactura.Clear()
+                TB_ImportFactura.Clear()
+                TB_ImportAbonat.Clear()
+        End Select
 
-            End If
-        Next
-
-        If v = 2 Then
-            CB_Solucions.Text = "Selecciona solució"
-        End If
-        If v = 1 Or v = 3 Then
-            CB_Empreses.Text = "Selecciona empresa"
-            CB_Solucions.Text = ""
-            CB_Solucions.DataSource = Nothing
-        End If
     End Sub
     'Comprova que les dades introduides son correctes
     Private Function ComprovaDades() As Boolean
@@ -447,7 +476,7 @@ Public Class Factures
     End Sub
     Private Sub CB_Solucions_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Solucions.SelectionChangeCommitted
         Dim row As DataRowView = DirectCast(CB_Solucions.SelectedItem, DataRowView)
-        EsborraDades(2)
+        EsborraDades(3)
         FacturaAcord.Text = row.Item("Contracte").ToString
         FacturaSolucio.Text = row.Item("Nom").ToString
         FacturaImportSolucio.Text = row.Item("TotalSolucio")
@@ -562,5 +591,7 @@ Public Class Factures
         TB_ImportAbonat.Text = FacturaImportIVA.Text
     End Sub
 
-
+    Private Sub Btn_EsborraDades_Click(sender As Object, e As EventArgs) Handles Btn_EsborraDades.Click
+        EsborraDades(1)
+    End Sub
 End Class

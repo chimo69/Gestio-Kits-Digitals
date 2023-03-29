@@ -30,17 +30,22 @@ Partial Class Empreses
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Empreses))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.DataEmpreses = New System.Windows.Forms.DataGridView()
+        Me.Lbl_ProxCad = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TB_ProxCad = New System.Windows.Forms.TextBox()
+        Me.TB_Caducades = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataSolucions = New System.Windows.Forms.DataGridView()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TB_BonusRestant = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TB_BonusConsumit = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TB_BonusConcedit = New System.Windows.Forms.TextBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TB_BonusConcedit = New System.Windows.Forms.TextBox()
+        Me.TB_BonusRestant = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TB_BonusConsumit = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.DataSolucions = New System.Windows.Forms.DataGridView()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Lbl_SitioWeb = New System.Windows.Forms.Label()
         Me.Lbl_Comercio = New System.Windows.Forms.Label()
@@ -71,6 +76,7 @@ Partial Class Empreses
         Me.SplitContainer1.SuspendLayout()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.Panel4.SuspendLayout()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -91,6 +97,10 @@ Partial Class Empreses
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Lbl_ProxCad)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label9)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.TB_ProxCad)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.TB_Caducades)
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.FlowLayoutPanel1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel1)
@@ -128,6 +138,7 @@ Partial Class Empreses
         Me.DataEmpreses.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataEmpreses.EnableHeadersVisualStyles = False
         Me.DataEmpreses.Location = New System.Drawing.Point(26, 6)
+        Me.DataEmpreses.MultiSelect = False
         Me.DataEmpreses.Name = "DataEmpreses"
         Me.DataEmpreses.ReadOnly = True
         Me.DataEmpreses.RowHeadersVisible = False
@@ -136,26 +147,167 @@ Partial Class Empreses
         Me.DataEmpreses.Size = New System.Drawing.Size(809, 841)
         Me.DataEmpreses.TabIndex = 9
         '
+        'Lbl_ProxCad
+        '
+        Me.Lbl_ProxCad.AutoSize = True
+        Me.Lbl_ProxCad.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Lbl_ProxCad.Location = New System.Drawing.Point(68, 466)
+        Me.Lbl_ProxCad.Name = "Lbl_ProxCad"
+        Me.Lbl_ProxCad.Size = New System.Drawing.Size(182, 21)
+        Me.Lbl_ProxCad.TabIndex = 30
+        Me.Lbl_ProxCad.Text = "Empreses que caducaran"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label9.Location = New System.Drawing.Point(68, 428)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(396, 21)
+        Me.Label9.TabIndex = 29
+        Me.Label9.Text = "Empreses que ja van caducar sense signar cap contracte"
+        '
+        'TB_ProxCad
+        '
+        Me.TB_ProxCad.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_ProxCad.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ProxCad.Location = New System.Drawing.Point(6, 460)
+        Me.TB_ProxCad.Name = "TB_ProxCad"
+        Me.TB_ProxCad.Size = New System.Drawing.Size(56, 32)
+        Me.TB_ProxCad.TabIndex = 28
+        Me.TB_ProxCad.Text = "0"
+        Me.TB_ProxCad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TB_Caducades
+        '
+        Me.TB_Caducades.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Caducades.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Caducades.Location = New System.Drawing.Point(6, 422)
+        Me.TB_Caducades.Name = "TB_Caducades"
+        Me.TB_Caducades.Size = New System.Drawing.Size(56, 32)
+        Me.TB_Caducades.TabIndex = 27
+        Me.TB_Caducades.Text = "0"
+        Me.TB_Caducades.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Panel4)
         Me.GroupBox1.Controls.Add(Me.DataSolucions)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TB_BonusRestant)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TB_BonusConsumit)
-        Me.GroupBox1.Controls.Add(Me.Label23)
-        Me.GroupBox1.Controls.Add(Me.TB_BonusConcedit)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 178)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(786, 209)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Subvencions"
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Label3)
+        Me.Panel4.Controls.Add(Me.Label2)
+        Me.Panel4.Controls.Add(Me.Label5)
+        Me.Panel4.Controls.Add(Me.TB_BonusConcedit)
+        Me.Panel4.Controls.Add(Me.TB_BonusRestant)
+        Me.Panel4.Controls.Add(Me.Label23)
+        Me.Panel4.Controls.Add(Me.Label6)
+        Me.Panel4.Controls.Add(Me.TB_BonusConsumit)
+        Me.Panel4.Controls.Add(Me.Label4)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel4.Location = New System.Drawing.Point(384, 19)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(295, 187)
+        Me.Panel4.TabIndex = 109
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label3.Location = New System.Drawing.Point(56, 84)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(126, 21)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Bonus consumit"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(56, 45)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(123, 21)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Bonus concedit"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(260, 123)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(18, 20)
+        Me.Label5.TabIndex = 108
+        Me.Label5.Text = "€"
+        '
+        'TB_BonusConcedit
+        '
+        Me.TB_BonusConcedit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusConcedit.Location = New System.Drawing.Point(191, 43)
+        Me.TB_BonusConcedit.Name = "TB_BonusConcedit"
+        Me.TB_BonusConcedit.ReadOnly = True
+        Me.TB_BonusConcedit.Size = New System.Drawing.Size(63, 29)
+        Me.TB_BonusConcedit.TabIndex = 3
+        Me.TB_BonusConcedit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'TB_BonusRestant
+        '
+        Me.TB_BonusRestant.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusRestant.Location = New System.Drawing.Point(191, 121)
+        Me.TB_BonusRestant.Name = "TB_BonusRestant"
+        Me.TB_BonusRestant.ReadOnly = True
+        Me.TB_BonusRestant.Size = New System.Drawing.Size(63, 29)
+        Me.TB_BonusRestant.TabIndex = 107
+        Me.TB_BonusRestant.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label23.Location = New System.Drawing.Point(260, 45)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(18, 20)
+        Me.Label23.TabIndex = 103
+        Me.Label23.Text = "€"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(56, 123)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(110, 21)
+        Me.Label6.TabIndex = 106
+        Me.Label6.Text = "Bonus restant"
+        '
+        'TB_BonusConsumit
+        '
+        Me.TB_BonusConsumit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusConsumit.Location = New System.Drawing.Point(191, 82)
+        Me.TB_BonusConsumit.Name = "TB_BonusConsumit"
+        Me.TB_BonusConsumit.ReadOnly = True
+        Me.TB_BonusConsumit.Size = New System.Drawing.Size(63, 29)
+        Me.TB_BonusConsumit.TabIndex = 104
+        Me.TB_BonusConsumit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Location = New System.Drawing.Point(260, 84)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(18, 20)
+        Me.Label4.TabIndex = 105
+        Me.Label4.Text = "€"
         '
         'DataSolucions
         '
@@ -177,7 +329,8 @@ Partial Class Empreses
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataSolucions.DefaultCellStyle = DataGridViewCellStyle5
-        Me.DataSolucions.Location = New System.Drawing.Point(6, 22)
+        Me.DataSolucions.Dock = System.Windows.Forms.DockStyle.Left
+        Me.DataSolucions.Location = New System.Drawing.Point(3, 19)
         Me.DataSolucions.Name = "DataSolucions"
         Me.DataSolucions.ReadOnly = True
         Me.DataSolucions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken
@@ -186,98 +339,9 @@ Partial Class Empreses
         Me.DataSolucions.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.DataSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataSolucions.ShowEditingIcon = False
-        Me.DataSolucions.Size = New System.Drawing.Size(381, 181)
+        Me.DataSolucions.Size = New System.Drawing.Size(381, 187)
         Me.DataSolucions.TabIndex = 27
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(597, 98)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(18, 20)
-        Me.Label5.TabIndex = 108
-        Me.Label5.Text = "€"
-        '
-        'TB_BonusRestant
-        '
-        Me.TB_BonusRestant.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BonusRestant.Location = New System.Drawing.Point(528, 96)
-        Me.TB_BonusRestant.Name = "TB_BonusRestant"
-        Me.TB_BonusRestant.ReadOnly = True
-        Me.TB_BonusRestant.Size = New System.Drawing.Size(63, 29)
-        Me.TB_BonusRestant.TabIndex = 107
-        Me.TB_BonusRestant.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(393, 98)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(110, 21)
-        Me.Label6.TabIndex = 106
-        Me.Label6.Text = "Bonus restant"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(597, 59)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(18, 20)
-        Me.Label4.TabIndex = 105
-        Me.Label4.Text = "€"
-        '
-        'TB_BonusConsumit
-        '
-        Me.TB_BonusConsumit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BonusConsumit.Location = New System.Drawing.Point(528, 57)
-        Me.TB_BonusConsumit.Name = "TB_BonusConsumit"
-        Me.TB_BonusConsumit.ReadOnly = True
-        Me.TB_BonusConsumit.Size = New System.Drawing.Size(63, 29)
-        Me.TB_BonusConsumit.TabIndex = 104
-        Me.TB_BonusConsumit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label23.Location = New System.Drawing.Point(597, 20)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(18, 20)
-        Me.Label23.TabIndex = 103
-        Me.Label23.Text = "€"
-        '
-        'TB_BonusConcedit
-        '
-        Me.TB_BonusConcedit.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BonusConcedit.Location = New System.Drawing.Point(528, 18)
-        Me.TB_BonusConcedit.Name = "TB_BonusConcedit"
-        Me.TB_BonusConcedit.ReadOnly = True
-        Me.TB_BonusConcedit.Size = New System.Drawing.Size(63, 29)
-        Me.TB_BonusConcedit.TabIndex = 3
-        Me.TB_BonusConcedit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(393, 59)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(126, 21)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Bonus consumit"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(393, 20)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(123, 21)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Bonus concedit"
+        Me.DataSolucions.Visible = False
         '
         'FlowLayoutPanel1
         '
@@ -580,11 +644,13 @@ Partial Class Empreses
         Me.Text = "Empreses"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.PerformLayout()
@@ -635,4 +701,9 @@ Partial Class Empreses
     Friend WithEvents TB_Segment As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents DataSolucions As DataGridView
+    Friend WithEvents Lbl_ProxCad As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TB_ProxCad As TextBox
+    Friend WithEvents TB_Caducades As TextBox
+    Friend WithEvents Panel4 As Panel
 End Class

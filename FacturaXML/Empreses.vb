@@ -6,12 +6,16 @@ Public Class Empreses
     Private DT_Llistat, DT_Solucions As New DataTable
     Private columnaSeleccionada As DataGridViewColumn
     Private columnaIndexSeleccionada As Integer
+    Private EmpresesTaronja, EmpresesVermell As Integer
 
 
     Private Sub Empreses_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CB_MostrarContractes.Checked = My.Settings.MostrarEmpresesConcessio
         CarregaEmpreses("")
         columnaIndexSeleccionada = 0
+        TB_Caducades.BackColor = vermell
+        TB_ProxCad.BackColor = taronja
+        Lbl_ProxCad.Text = "Empreses que caducaran en menys de " & My.Settings.DiesConcessio & " dies"
     End Sub
     Private Sub CarregaEmpreses(TextABuscar As String)
         Try
@@ -75,7 +79,6 @@ Public Class Empreses
 
         mostraInfoEmpresa(DataEmpreses.Rows(e.RowIndex).Cells("Id").Value)
 
-
     End Sub
 
     Private Sub TextABuscar_TextChanged(sender As Object, e As EventArgs) Handles TextABuscar.TextChanged
@@ -98,6 +101,23 @@ Public Class Empreses
             .Columns("Segment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("CodiBono").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
+
+        For Each Fila As DataGridViewRow In DataEmpreses.Rows
+
+            If Fila.Cells("DataCaducitat").Value <> "" Then
+                If DateDiff(DateInterval.Day, Date.Now.Date, Fila.Cells("DataCaducitat").Value) <= My.Settings.DiesConcessio And Fila.Cells("Contractes").Value = 0 Then
+                    EmpresesTaronja += 1
+                End If
+
+                If Fila.Cells("DataCaducitat").Value < Date.Now.Date And Fila.Cells("Contractes").Value = 0 Then
+                    EmpresesVermell += 1
+                End If
+            End If
+        Next
+
+        TB_Caducades.Text = EmpresesVermell
+        TB_ProxCad.Text = EmpresesTaronja - EmpresesVermell
+
     End Sub
 
     Private Sub Btn_SenseFiltre_Click(sender As Object, e As EventArgs) Handles Btn_SenseFiltre.Click
@@ -119,12 +139,13 @@ Public Class Empreses
                 .Columns("Import").Width = 75
             End With
 
-        For Each Fila As DataGridViewRow In dgv.Rows
+        For Each Fila As DataGridViewRow In DataEmpreses.Rows
 
             If Fila.Cells("DataCaducitat").Value <> "" Then
                 If DateDiff(DateInterval.Day, Date.Now.Date, Fila.Cells("DataCaducitat").Value) <= My.Settings.DiesConcessio And Fila.Cells("Contractes").Value = 0 Then
                     Fila.Cells("Nom").Style.BackColor = taronja
                     Fila.Cells("Nif").Style.BackColor = taronja
+
                 End If
 
                 If Fila.Cells("DataCaducitat").Value < Date.Now.Date And Fila.Cells("Contractes").Value = 0 Then
@@ -253,6 +274,11 @@ Public Class Empreses
                     adapter.Fill(DT_Solucions)
                     DataSolucions.DataSource = DT_Solucions
                     DataSolucions.ClearSelection()
+                    If DataSolucions.RowCount = 0 Then
+                        DataSolucions.Visible = False
+                    Else
+                        DataSolucions.Visible = True
+                    End If
 
                 End If
             End Using
@@ -283,7 +309,6 @@ Public Class Empreses
             .Columns("Subvencio").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         End With
     End Sub
-
     Private Sub CB_MostrarContractes_CheckedChanged(sender As Object, e As EventArgs) Handles CB_MostrarContractes.CheckedChanged
         CarregaEmpreses(TextABuscar.Text)
     End Sub

@@ -75,11 +75,11 @@ Public Class Extras
     End Sub
 
     Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtresGeneral.CellFormatting
+
         Dim dgv As DataGridView = sender
-        dgv.Columns("Solució").Width = 150
-        dgv.Columns("Subvencions").Width = 80
-        dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        If dgv.RowCount > 0 Then
+            dgv.Columns("Solució").Width = 150
+        End If
     End Sub
 
     Private Sub DataExtres_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtres.DataBindingComplete
@@ -141,9 +141,11 @@ Public Class Extras
 
     Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEstatSolucions.CellFormatting
         Dim dgv As DataGridView = sender
-        dgv.Columns("Estat").Width = 150
-        dgv.Columns("Quantitat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-        dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        If dgv.RowCount > 0 Then
+            dgv.Columns("Estat").Width = 150
+            dgv.Columns("Quantitat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        End If
     End Sub
 
     Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtresGeneral.DataBindingComplete
@@ -210,8 +212,6 @@ Public Class Extras
     Private Sub DataExtres_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtres.CellFormatting
         Dim dgv As DataGridView = sender
         dgv.Columns("Solució").Width = 150
-        dgv.Columns("Subvencions").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight
-        dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
     End Sub
 
     Private Sub CarregaDades(idEmpresa As Integer)
@@ -239,6 +239,27 @@ Public Class Extras
         End Try
         conexion.Close()
 
+    End Sub
+
+    Private Sub DataExtres_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtres.DataSourceChanged
+        Dim dgv As DataGridView = sender
+        If dgv.RowCount > 0 Then
+            dgv.Columns("Subvencions").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
+            dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dgv.Columns("Subvencions").DefaultCellStyle.Format = "C"
+            dgv.Columns("Subvencions").DefaultCellStyle.FormatProvider = New System.Globalization.CultureInfo("es-ES")
+        End If
+
+    End Sub
+
+    Private Sub DataExtresGeneral_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtresGeneral.DataSourceChanged
+        Dim dgv As DataGridView = sender
+        If dgv.RowCount > 0 Then
+            dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            dgv.Columns("Subvencions").DefaultCellStyle.Format = "C"
+            dgv.Columns("Subvencions").DefaultCellStyle.FormatProvider = New System.Globalization.CultureInfo("es-ES")
+            dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        End If
     End Sub
 
     Private Sub TextCerca_TextChanged(sender As Object, e As EventArgs) Handles TextCerca.TextChanged
@@ -272,9 +293,7 @@ Public Class Extras
         DataEstatSolucions.ClearSelection()
     End Sub
 
-    Private Sub CercaEmpreses_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles CercaEmpreses.CellFormatting
 
-    End Sub
 
     Private Sub CercaEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles CercaEmpreses.DataBindingComplete
         CercaEmpreses.Columns("Id").Visible = False

@@ -298,6 +298,12 @@ Public Class EstatJustificacio
     End Sub
 
     Private Sub Btn_CreaFactura_Click(sender As Object, e As EventArgs) Handles Btn_CreaFactura.Click
+        Me.Close()
+        idEmpresaFactura = IdEmpresa
+        idSolucioFactura = IdSolucio
+        Inici.MostraForm(ffactu)
+
+
         'Dim FacturaXML As New Factures(IdEmpresa, IdSolucio)
         'OpenSubFormDialog(FacturaXML)
         'Dim resp As Integer

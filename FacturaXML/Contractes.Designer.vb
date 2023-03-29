@@ -441,7 +441,7 @@ Partial Class Contractes
         '
         Me.Label13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(50, 15)
+        Me.Label13.Location = New System.Drawing.Point(52, 15)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(81, 15)
         Me.Label13.TabIndex = 25
@@ -472,7 +472,7 @@ Partial Class Contractes
         '
         Me.DiesCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DiesCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.DiesCaducitat.Location = New System.Drawing.Point(176, 8)
+        Me.DiesCaducitat.Location = New System.Drawing.Point(178, 8)
         Me.DiesCaducitat.Name = "DiesCaducitat"
         Me.DiesCaducitat.ReadOnly = True
         Me.DiesCaducitat.Size = New System.Drawing.Size(112, 33)
@@ -572,7 +572,7 @@ Partial Class Contractes
         Me.CheckEstaJustificat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CheckEstaJustificat.AutoSize = True
         Me.CheckEstaJustificat.Enabled = False
-        Me.CheckEstaJustificat.Location = New System.Drawing.Point(15, 5)
+        Me.CheckEstaJustificat.Location = New System.Drawing.Point(17, 5)
         Me.CheckEstaJustificat.Name = "CheckEstaJustificat"
         Me.CheckEstaJustificat.Size = New System.Drawing.Size(72, 19)
         Me.CheckEstaJustificat.TabIndex = 17
@@ -635,7 +635,7 @@ Partial Class Contractes
         Me.verificat.BackColor = System.Drawing.Color.Transparent
         Me.verificat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.verificat.Image = Global.FacturaXML.My.Resources.Resources.verificado
-        Me.verificat.Location = New System.Drawing.Point(169, 11)
+        Me.verificat.Location = New System.Drawing.Point(171, 11)
         Me.verificat.Name = "verificat"
         Me.verificat.Size = New System.Drawing.Size(57, 58)
         Me.verificat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -759,7 +759,7 @@ Partial Class Contractes
         '
         Me.DataCaducitat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataCaducitat.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.DataCaducitat.Location = New System.Drawing.Point(477, 7)
+        Me.DataCaducitat.Location = New System.Drawing.Point(479, 7)
         Me.DataCaducitat.Name = "DataCaducitat"
         Me.DataCaducitat.ReadOnly = True
         Me.DataCaducitat.Size = New System.Drawing.Size(180, 33)
@@ -771,7 +771,7 @@ Partial Class Contractes
         '
         Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(381, 15)
+        Me.Label11.Location = New System.Drawing.Point(383, 15)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(83, 15)
         Me.Label11.TabIndex = 64
@@ -977,7 +977,7 @@ Partial Class Contractes
         Me.CB_PrimerPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_PrimerPagament.AutoSize = True
         Me.CB_PrimerPagament.Enabled = False
-        Me.CB_PrimerPagament.Location = New System.Drawing.Point(15, 32)
+        Me.CB_PrimerPagament.Location = New System.Drawing.Point(17, 32)
         Me.CB_PrimerPagament.Name = "CB_PrimerPagament"
         Me.CB_PrimerPagament.Size = New System.Drawing.Size(118, 19)
         Me.CB_PrimerPagament.TabIndex = 81
@@ -989,7 +989,7 @@ Partial Class Contractes
         Me.CB_SegonPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_SegonPagament.AutoSize = True
         Me.CB_SegonPagament.Enabled = False
-        Me.CB_SegonPagament.Location = New System.Drawing.Point(15, 59)
+        Me.CB_SegonPagament.Location = New System.Drawing.Point(17, 59)
         Me.CB_SegonPagament.Name = "CB_SegonPagament"
         Me.CB_SegonPagament.Size = New System.Drawing.Size(116, 19)
         Me.CB_SegonPagament.TabIndex = 82
@@ -1002,7 +1002,7 @@ Partial Class Contractes
         Me.Pagat1.BackColor = System.Drawing.Color.Transparent
         Me.Pagat1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Pagat1.Image = Global.FacturaXML.My.Resources.Resources.icons8_euro_banknote_96
-        Me.Pagat1.Location = New System.Drawing.Point(232, 11)
+        Me.Pagat1.Location = New System.Drawing.Point(234, 11)
         Me.Pagat1.Name = "Pagat1"
         Me.Pagat1.Size = New System.Drawing.Size(57, 58)
         Me.Pagat1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1016,7 +1016,7 @@ Partial Class Contractes
         Me.Pagat2.BackColor = System.Drawing.Color.Transparent
         Me.Pagat2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.Pagat2.Image = Global.FacturaXML.My.Resources.Resources.icons8_euro_banknote_96
-        Me.Pagat2.Location = New System.Drawing.Point(295, 11)
+        Me.Pagat2.Location = New System.Drawing.Point(297, 11)
         Me.Pagat2.Name = "Pagat2"
         Me.Pagat2.Size = New System.Drawing.Size(57, 58)
         Me.Pagat2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -1028,7 +1028,6 @@ Partial Class Contractes
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightGray
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.CheckEstaJustificat)
         Me.Panel1.Controls.Add(Me.verificat)
         Me.Panel1.Controls.Add(Me.Pagat2)
@@ -1044,7 +1043,6 @@ Partial Class Contractes
         '
         Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BackColor = System.Drawing.Color.Pink
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.DataCaducitat)
         Me.Panel2.Controls.Add(Me.Label13)
         Me.Panel2.Controls.Add(Me.DiesCaducitat)
