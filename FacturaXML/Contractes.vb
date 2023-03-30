@@ -711,16 +711,14 @@ Public Class Contractes
 
 
         Try
-        
+            conexion.Open()
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()
             End If
 
-
             Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
 
-            conexion.Open()
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()

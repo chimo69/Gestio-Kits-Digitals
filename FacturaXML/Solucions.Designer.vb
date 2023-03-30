@@ -23,11 +23,12 @@ Partial Class Solucions
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Btn_actualitzar = New System.Windows.Forms.Button()
         Me.AdvertenciaCaducats = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -73,6 +74,7 @@ Partial Class Solucions
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Btn_actualitzar)
         Me.Panel1.Controls.Add(Me.AdvertenciaCaducats)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
@@ -81,6 +83,19 @@ Partial Class Solucions
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1631, 53)
         Me.Panel1.TabIndex = 0
+        '
+        'Btn_actualitzar
+        '
+        Me.Btn_actualitzar.BackColor = System.Drawing.SystemColors.Control
+        Me.Btn_actualitzar.BackgroundImage = Global.FacturaXML.My.Resources.Resources.recargar1
+        Me.Btn_actualitzar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Btn_actualitzar.FlatAppearance.BorderSize = 0
+        Me.Btn_actualitzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_actualitzar.Location = New System.Drawing.Point(513, 7)
+        Me.Btn_actualitzar.Name = "Btn_actualitzar"
+        Me.Btn_actualitzar.Size = New System.Drawing.Size(40, 40)
+        Me.Btn_actualitzar.TabIndex = 20
+        Me.Btn_actualitzar.UseVisualStyleBackColor = False
         '
         'AdvertenciaCaducats
         '
@@ -143,26 +158,26 @@ Partial Class Solucions
         Me.DataLlistat.AllowUserToAddRows = False
         Me.DataLlistat.AllowUserToDeleteRows = False
         Me.DataLlistat.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.Gray
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataLlistat.ColumnHeadersHeight = 40
         Me.DataLlistat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataLlistat.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataLlistat.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataLlistat.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataLlistat.EnableHeadersVisualStyles = False
         Me.DataLlistat.Location = New System.Drawing.Point(20, 0)
@@ -170,8 +185,8 @@ Partial Class Solucions
         Me.DataLlistat.Name = "DataLlistat"
         Me.DataLlistat.ReadOnly = True
         Me.DataLlistat.RowHeadersVisible = False
-        DataGridViewCellStyle4.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
-        Me.DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
+        Me.DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DataLlistat.RowTemplate.Height = 25
         Me.DataLlistat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataLlistat.ShowEditingIcon = False
@@ -565,4 +580,5 @@ Partial Class Solucions
     Friend WithEvents RB_RedesSociales As RadioButton
     Friend WithEvents RB_ComercioElectronico As RadioButton
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Btn_actualitzar As Button
 End Class

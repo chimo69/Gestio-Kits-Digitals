@@ -87,6 +87,9 @@ Partial Class Extras
         Me.PB_ComercioElectronicoG = New System.Windows.Forms.ProgressBar()
         Me.PB_SitioWebG = New System.Windows.Forms.ProgressBar()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label23 = New System.Windows.Forms.Label()
         CType(Me.DataExtres, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataExtresGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -95,6 +98,8 @@ Partial Class Extras
         CType(Me.CercaEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataExtres
@@ -120,7 +125,7 @@ Partial Class Extras
         Me.DataExtres.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataExtres.Enabled = False
         Me.DataExtres.EnableHeadersVisualStyles = False
-        Me.DataExtres.Location = New System.Drawing.Point(357, 43)
+        Me.DataExtres.Location = New System.Drawing.Point(539, 43)
         Me.DataExtres.MultiSelect = False
         Me.DataExtres.Name = "DataExtres"
         Me.DataExtres.ReadOnly = True
@@ -166,7 +171,7 @@ Partial Class Extras
         Me.DataExtresGeneral.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataExtresGeneral.Enabled = False
         Me.DataExtresGeneral.EnableHeadersVisualStyles = False
-        Me.DataExtresGeneral.Location = New System.Drawing.Point(636, 43)
+        Me.DataExtresGeneral.Location = New System.Drawing.Point(818, 43)
         Me.DataExtresGeneral.MultiSelect = False
         Me.DataExtresGeneral.Name = "DataExtresGeneral"
         Me.DataExtresGeneral.ReadOnly = True
@@ -186,7 +191,7 @@ Partial Class Extras
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(636, 14)
+        Me.Panel1.Location = New System.Drawing.Point(818, 14)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(300, 23)
         Me.Panel1.TabIndex = 3
@@ -203,7 +208,7 @@ Partial Class Extras
         'TotalEmpresa
         '
         Me.TotalEmpresa.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TotalEmpresa.Location = New System.Drawing.Point(357, 300)
+        Me.TotalEmpresa.Location = New System.Drawing.Point(539, 300)
         Me.TotalEmpresa.Name = "TotalEmpresa"
         Me.TotalEmpresa.ReadOnly = True
         Me.TotalEmpresa.Size = New System.Drawing.Size(248, 29)
@@ -214,7 +219,7 @@ Partial Class Extras
         'TotalGeneral
         '
         Me.TotalGeneral.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TotalGeneral.Location = New System.Drawing.Point(711, 300)
+        Me.TotalGeneral.Location = New System.Drawing.Point(893, 300)
         Me.TotalGeneral.Name = "TotalGeneral"
         Me.TotalGeneral.ReadOnly = True
         Me.TotalGeneral.Size = New System.Drawing.Size(225, 29)
@@ -244,7 +249,7 @@ Partial Class Extras
         Me.DataEstatSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataEstatSolucions.Enabled = False
         Me.DataEstatSolucions.EnableHeadersVisualStyles = False
-        Me.DataEstatSolucions.Location = New System.Drawing.Point(964, 43)
+        Me.DataEstatSolucions.Location = New System.Drawing.Point(1146, 43)
         Me.DataEstatSolucions.MultiSelect = False
         Me.DataEstatSolucions.Name = "DataEstatSolucions"
         Me.DataEstatSolucions.ReadOnly = True
@@ -264,7 +269,7 @@ Partial Class Extras
         Me.Panel2.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(964, 14)
+        Me.Panel2.Location = New System.Drawing.Point(1146, 14)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(248, 23)
         Me.Panel2.TabIndex = 4
@@ -319,7 +324,7 @@ Partial Class Extras
         Me.CercaEmpreses.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.CercaEmpreses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.CercaEmpreses.ShowEditingIcon = False
-        Me.CercaEmpreses.Size = New System.Drawing.Size(315, 496)
+        Me.CercaEmpreses.Size = New System.Drawing.Size(315, 708)
         Me.CercaEmpreses.TabIndex = 1
         '
         'TextCerca
@@ -335,7 +340,7 @@ Partial Class Extras
         '
         Me.TB_Empresa.BackColor = System.Drawing.Color.Silver
         Me.TB_Empresa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TB_Empresa.Location = New System.Drawing.Point(357, 14)
+        Me.TB_Empresa.Location = New System.Drawing.Point(539, 14)
         Me.TB_Empresa.Name = "TB_Empresa"
         Me.TB_Empresa.ReadOnly = True
         Me.TB_Empresa.Size = New System.Drawing.Size(248, 23)
@@ -345,7 +350,7 @@ Partial Class Extras
         'TotalSolucions
         '
         Me.TotalSolucions.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TotalSolucions.Location = New System.Drawing.Point(636, 300)
+        Me.TotalSolucions.Location = New System.Drawing.Point(818, 300)
         Me.TotalSolucions.Name = "TotalSolucions"
         Me.TotalSolucions.ReadOnly = True
         Me.TotalSolucions.Size = New System.Drawing.Size(69, 29)
@@ -355,7 +360,7 @@ Partial Class Extras
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
-        Me.PictureBox1.Location = New System.Drawing.Point(959, 357)
+        Me.PictureBox1.Location = New System.Drawing.Point(1141, 357)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(253, 95)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -364,7 +369,7 @@ Partial Class Extras
         '
         'PB_SitioWeb
         '
-        Me.PB_SitioWeb.Location = New System.Drawing.Point(505, 335)
+        Me.PB_SitioWeb.Location = New System.Drawing.Point(687, 335)
         Me.PB_SitioWeb.Name = "PB_SitioWeb"
         Me.PB_SitioWeb.Size = New System.Drawing.Size(100, 15)
         Me.PB_SitioWeb.Step = 1
@@ -372,7 +377,7 @@ Partial Class Extras
         '
         'PB_ComercioElectronico
         '
-        Me.PB_ComercioElectronico.Location = New System.Drawing.Point(505, 356)
+        Me.PB_ComercioElectronico.Location = New System.Drawing.Point(687, 356)
         Me.PB_ComercioElectronico.Name = "PB_ComercioElectronico"
         Me.PB_ComercioElectronico.Size = New System.Drawing.Size(100, 15)
         Me.PB_ComercioElectronico.Step = 1
@@ -381,7 +386,7 @@ Partial Class Extras
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(357, 335)
+        Me.Label3.Location = New System.Drawing.Point(539, 335)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(57, 15)
         Me.Label3.TabIndex = 15
@@ -390,7 +395,7 @@ Partial Class Extras
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(357, 356)
+        Me.Label4.Location = New System.Drawing.Point(539, 356)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(121, 15)
         Me.Label4.TabIndex = 16
@@ -399,7 +404,7 @@ Partial Class Extras
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(357, 398)
+        Me.Label5.Location = New System.Drawing.Point(539, 398)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(106, 15)
         Me.Label5.TabIndex = 18
@@ -408,7 +413,7 @@ Partial Class Extras
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(357, 377)
+        Me.Label6.Location = New System.Drawing.Point(539, 377)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(138, 15)
         Me.Label6.TabIndex = 17
@@ -416,7 +421,7 @@ Partial Class Extras
         '
         'PB_Clientes
         '
-        Me.PB_Clientes.Location = New System.Drawing.Point(505, 398)
+        Me.PB_Clientes.Location = New System.Drawing.Point(687, 398)
         Me.PB_Clientes.Name = "PB_Clientes"
         Me.PB_Clientes.Size = New System.Drawing.Size(100, 15)
         Me.PB_Clientes.Step = 1
@@ -424,7 +429,7 @@ Partial Class Extras
         '
         'PB_RedesSociales
         '
-        Me.PB_RedesSociales.Location = New System.Drawing.Point(505, 377)
+        Me.PB_RedesSociales.Location = New System.Drawing.Point(687, 377)
         Me.PB_RedesSociales.Name = "PB_RedesSociales"
         Me.PB_RedesSociales.Size = New System.Drawing.Size(100, 15)
         Me.PB_RedesSociales.Step = 1
@@ -432,7 +437,7 @@ Partial Class Extras
         '
         'PB_OficinaVirtual
         '
-        Me.PB_OficinaVirtual.Location = New System.Drawing.Point(505, 482)
+        Me.PB_OficinaVirtual.Location = New System.Drawing.Point(687, 482)
         Me.PB_OficinaVirtual.Name = "PB_OficinaVirtual"
         Me.PB_OficinaVirtual.Size = New System.Drawing.Size(100, 15)
         Me.PB_OficinaVirtual.Step = 1
@@ -440,7 +445,7 @@ Partial Class Extras
         '
         'PB_FacturaElectronica
         '
-        Me.PB_FacturaElectronica.Location = New System.Drawing.Point(505, 461)
+        Me.PB_FacturaElectronica.Location = New System.Drawing.Point(687, 461)
         Me.PB_FacturaElectronica.Name = "PB_FacturaElectronica"
         Me.PB_FacturaElectronica.Size = New System.Drawing.Size(100, 15)
         Me.PB_FacturaElectronica.Step = 1
@@ -448,7 +453,7 @@ Partial Class Extras
         '
         'PB_GestionProcesos
         '
-        Me.PB_GestionProcesos.Location = New System.Drawing.Point(505, 440)
+        Me.PB_GestionProcesos.Location = New System.Drawing.Point(687, 440)
         Me.PB_GestionProcesos.Name = "PB_GestionProcesos"
         Me.PB_GestionProcesos.Size = New System.Drawing.Size(100, 15)
         Me.PB_GestionProcesos.Step = 1
@@ -456,7 +461,7 @@ Partial Class Extras
         '
         'PB_BI
         '
-        Me.PB_BI.Location = New System.Drawing.Point(505, 419)
+        Me.PB_BI.Location = New System.Drawing.Point(687, 419)
         Me.PB_BI.Name = "PB_BI"
         Me.PB_BI.Size = New System.Drawing.Size(100, 15)
         Me.PB_BI.Step = 1
@@ -464,7 +469,7 @@ Partial Class Extras
         '
         'PB_Ciberseguridad
         '
-        Me.PB_Ciberseguridad.Location = New System.Drawing.Point(505, 524)
+        Me.PB_Ciberseguridad.Location = New System.Drawing.Point(687, 524)
         Me.PB_Ciberseguridad.Name = "PB_Ciberseguridad"
         Me.PB_Ciberseguridad.Size = New System.Drawing.Size(100, 15)
         Me.PB_Ciberseguridad.Step = 1
@@ -472,7 +477,7 @@ Partial Class Extras
         '
         'PB_ComunicacionesSeguras
         '
-        Me.PB_ComunicacionesSeguras.Location = New System.Drawing.Point(505, 503)
+        Me.PB_ComunicacionesSeguras.Location = New System.Drawing.Point(687, 503)
         Me.PB_ComunicacionesSeguras.Name = "PB_ComunicacionesSeguras"
         Me.PB_ComunicacionesSeguras.Size = New System.Drawing.Size(100, 15)
         Me.PB_ComunicacionesSeguras.Step = 1
@@ -481,7 +486,7 @@ Partial Class Extras
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(357, 503)
+        Me.Label7.Location = New System.Drawing.Point(539, 503)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(140, 15)
         Me.Label7.TabIndex = 30
@@ -490,7 +495,7 @@ Partial Class Extras
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(357, 482)
+        Me.Label8.Location = New System.Drawing.Point(539, 482)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(82, 15)
         Me.Label8.TabIndex = 29
@@ -499,7 +504,7 @@ Partial Class Extras
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(357, 440)
+        Me.Label9.Location = New System.Drawing.Point(539, 440)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(113, 15)
         Me.Label9.TabIndex = 28
@@ -508,7 +513,7 @@ Partial Class Extras
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(357, 419)
+        Me.Label10.Location = New System.Drawing.Point(539, 419)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(113, 15)
         Me.Label10.TabIndex = 27
@@ -517,7 +522,7 @@ Partial Class Extras
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(357, 461)
+        Me.Label11.Location = New System.Drawing.Point(539, 461)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(107, 15)
         Me.Label11.TabIndex = 31
@@ -526,7 +531,7 @@ Partial Class Extras
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(357, 524)
+        Me.Label12.Location = New System.Drawing.Point(539, 524)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(87, 15)
         Me.Label12.TabIndex = 32
@@ -535,7 +540,7 @@ Partial Class Extras
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(636, 524)
+        Me.Label13.Location = New System.Drawing.Point(818, 524)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(87, 15)
         Me.Label13.TabIndex = 52
@@ -544,7 +549,7 @@ Partial Class Extras
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(636, 461)
+        Me.Label14.Location = New System.Drawing.Point(818, 461)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(107, 15)
         Me.Label14.TabIndex = 51
@@ -553,7 +558,7 @@ Partial Class Extras
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(636, 503)
+        Me.Label15.Location = New System.Drawing.Point(818, 503)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(140, 15)
         Me.Label15.TabIndex = 50
@@ -562,7 +567,7 @@ Partial Class Extras
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(636, 482)
+        Me.Label16.Location = New System.Drawing.Point(818, 482)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(82, 15)
         Me.Label16.TabIndex = 49
@@ -571,7 +576,7 @@ Partial Class Extras
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(636, 440)
+        Me.Label17.Location = New System.Drawing.Point(818, 440)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(113, 15)
         Me.Label17.TabIndex = 48
@@ -580,7 +585,7 @@ Partial Class Extras
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(636, 419)
+        Me.Label18.Location = New System.Drawing.Point(818, 419)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(113, 15)
         Me.Label18.TabIndex = 47
@@ -588,56 +593,56 @@ Partial Class Extras
         '
         'PB_CiberseguridadG
         '
-        Me.PB_CiberseguridadG.Location = New System.Drawing.Point(786, 524)
+        Me.PB_CiberseguridadG.Location = New System.Drawing.Point(968, 524)
         Me.PB_CiberseguridadG.Name = "PB_CiberseguridadG"
         Me.PB_CiberseguridadG.Size = New System.Drawing.Size(150, 15)
         Me.PB_CiberseguridadG.TabIndex = 46
         '
         'PB_ComunicacionesSegurasG
         '
-        Me.PB_ComunicacionesSegurasG.Location = New System.Drawing.Point(786, 503)
+        Me.PB_ComunicacionesSegurasG.Location = New System.Drawing.Point(968, 503)
         Me.PB_ComunicacionesSegurasG.Name = "PB_ComunicacionesSegurasG"
         Me.PB_ComunicacionesSegurasG.Size = New System.Drawing.Size(150, 15)
         Me.PB_ComunicacionesSegurasG.TabIndex = 45
         '
         'PB_OficinaVirtualG
         '
-        Me.PB_OficinaVirtualG.Location = New System.Drawing.Point(786, 482)
+        Me.PB_OficinaVirtualG.Location = New System.Drawing.Point(968, 482)
         Me.PB_OficinaVirtualG.Name = "PB_OficinaVirtualG"
         Me.PB_OficinaVirtualG.Size = New System.Drawing.Size(150, 15)
         Me.PB_OficinaVirtualG.TabIndex = 44
         '
         'PB_FacturaElectronicaG
         '
-        Me.PB_FacturaElectronicaG.Location = New System.Drawing.Point(786, 461)
+        Me.PB_FacturaElectronicaG.Location = New System.Drawing.Point(968, 461)
         Me.PB_FacturaElectronicaG.Name = "PB_FacturaElectronicaG"
         Me.PB_FacturaElectronicaG.Size = New System.Drawing.Size(150, 15)
         Me.PB_FacturaElectronicaG.TabIndex = 43
         '
         'PB_ProcesosG
         '
-        Me.PB_ProcesosG.Location = New System.Drawing.Point(786, 440)
+        Me.PB_ProcesosG.Location = New System.Drawing.Point(968, 440)
         Me.PB_ProcesosG.Name = "PB_ProcesosG"
         Me.PB_ProcesosG.Size = New System.Drawing.Size(150, 15)
         Me.PB_ProcesosG.TabIndex = 42
         '
         'PB_BIG
         '
-        Me.PB_BIG.Location = New System.Drawing.Point(786, 419)
+        Me.PB_BIG.Location = New System.Drawing.Point(968, 419)
         Me.PB_BIG.Name = "PB_BIG"
         Me.PB_BIG.Size = New System.Drawing.Size(150, 15)
         Me.PB_BIG.TabIndex = 41
         '
         'PB_ClientesG
         '
-        Me.PB_ClientesG.Location = New System.Drawing.Point(786, 398)
+        Me.PB_ClientesG.Location = New System.Drawing.Point(968, 398)
         Me.PB_ClientesG.Name = "PB_ClientesG"
         Me.PB_ClientesG.Size = New System.Drawing.Size(150, 15)
         Me.PB_ClientesG.TabIndex = 40
         '
         'PB_RedesSocialesG
         '
-        Me.PB_RedesSocialesG.Location = New System.Drawing.Point(786, 377)
+        Me.PB_RedesSocialesG.Location = New System.Drawing.Point(968, 377)
         Me.PB_RedesSocialesG.Name = "PB_RedesSocialesG"
         Me.PB_RedesSocialesG.Size = New System.Drawing.Size(150, 15)
         Me.PB_RedesSocialesG.TabIndex = 39
@@ -645,7 +650,7 @@ Partial Class Extras
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(636, 398)
+        Me.Label19.Location = New System.Drawing.Point(818, 398)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(106, 15)
         Me.Label19.TabIndex = 38
@@ -654,7 +659,7 @@ Partial Class Extras
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(636, 377)
+        Me.Label20.Location = New System.Drawing.Point(818, 377)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(138, 15)
         Me.Label20.TabIndex = 37
@@ -663,7 +668,7 @@ Partial Class Extras
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(636, 356)
+        Me.Label21.Location = New System.Drawing.Point(818, 356)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(121, 15)
         Me.Label21.TabIndex = 36
@@ -672,7 +677,7 @@ Partial Class Extras
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(636, 335)
+        Me.Label22.Location = New System.Drawing.Point(818, 335)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(57, 15)
         Me.Label22.TabIndex = 35
@@ -680,14 +685,14 @@ Partial Class Extras
         '
         'PB_ComercioElectronicoG
         '
-        Me.PB_ComercioElectronicoG.Location = New System.Drawing.Point(786, 356)
+        Me.PB_ComercioElectronicoG.Location = New System.Drawing.Point(968, 356)
         Me.PB_ComercioElectronicoG.Name = "PB_ComercioElectronicoG"
         Me.PB_ComercioElectronicoG.Size = New System.Drawing.Size(150, 15)
         Me.PB_ComercioElectronicoG.TabIndex = 34
         '
         'PB_SitioWebG
         '
-        Me.PB_SitioWebG.Location = New System.Drawing.Point(786, 335)
+        Me.PB_SitioWebG.Location = New System.Drawing.Point(968, 335)
         Me.PB_SitioWebG.Name = "PB_SitioWebG"
         Me.PB_SitioWebG.Size = New System.Drawing.Size(150, 15)
         Me.PB_SitioWebG.TabIndex = 33
@@ -695,19 +700,49 @@ Partial Class Extras
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
-        Me.PictureBox2.Location = New System.Drawing.Point(959, 458)
+        Me.PictureBox2.Location = New System.Drawing.Point(1141, 458)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(253, 50)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox2.TabIndex = 53
         Me.PictureBox2.TabStop = False
         '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel3)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(333, 14)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(200, 737)
+        Me.FlowLayoutPanel1.TabIndex = 54
+        Me.FlowLayoutPanel1.Visible = False
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.Label23)
+        Me.Panel3.Location = New System.Drawing.Point(3, 3)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(100, 100)
+        Me.Panel3.TabIndex = 0
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(3, 72)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(57, 15)
+        Me.Label23.TabIndex = 0
+        Me.Label23.Text = "Sitio Web"
+        Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Extras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1229, 558)
+        Me.ClientSize = New System.Drawing.Size(1643, 770)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
@@ -778,6 +813,9 @@ Partial Class Extras
         CType(Me.CercaEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -838,4 +876,7 @@ Partial Class Extras
     Friend WithEvents PB_ComercioElectronicoG As ProgressBar
     Friend WithEvents PB_SitioWebG As ProgressBar
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label23 As Label
 End Class

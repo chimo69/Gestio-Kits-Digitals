@@ -37,8 +37,12 @@ Public Class Solucions
         End If
     End Sub
 
-    Private Sub SplitContainer1_Panel2_Paint(sender As Object, e As PaintEventArgs)
+    Private Sub Btn_actualitzar_Click(sender As Object, e As EventArgs) Handles Btn_actualitzar.Click
+        CarregaLlistat()
+    End Sub
 
+    Private Sub Solucions_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        CarregaLlistat()
     End Sub
 
     Private Sub NomEmpresa_TextChanged(sender As Object, e As EventArgs) Handles nomEmpresa.TextChanged
