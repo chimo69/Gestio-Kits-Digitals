@@ -4,6 +4,7 @@ Public Class Extras
     Private DT_Extres, DT_ExtresGeneral, DT_EstatSolucions, DT_CercaEmpreses As New DataTable
     Private TotalEmpresaValor, TotalGeneralValor As Double
     Private TotalSolucionsValor As Integer
+    Private resultats As New List(Of Object())
 
     Private Sub Extras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -72,6 +73,118 @@ Public Class Extras
 
         conexion.Close()
 
+    End Sub
+    Private Sub CarregaSolucionsEmpresa(idEmpresa As Integer)
+        Dim conexion As New SQLiteConnection(cadena)
+        Try
+            conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+                Dim query As String = "SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
+                                                 INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
+                                                 INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio
+                                                 WHERE Solucions.idEmpresa=" & idEmpresa & " 
+                                                 GROUP by TipusSolucions.Nom"
+                Dim cmd As New SQLiteCommand(query, conexion)
+                Dim reader As SQLiteDataReader = cmd.ExecuteReader
+
+                While reader.Read()
+                    Dim values(reader.FieldCount - 1) As Object
+                    reader.GetValues(values)
+                    resultats.Add(values)
+                End While
+
+                reader.Close()
+                conexion.Close()
+
+                If resultats.Count > 0 Then
+                    ompleDadesSolucionsEmpresa()
+                    TB_Empresa.Visible = True
+                    Panel_SolucionsEmpresa.Visible = True
+                Else
+                    Panel_SolucionsEmpresa.Visible = False
+                End If
+
+            End If
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
+        End Try
+        conexion.Close()
+    End Sub
+    Private Sub ompleDadesSolucionsEmpresa()
+
+        Panel_SitioWeb.Visible = False
+        TB_SitioWeb_num.Text = "0"
+        TB_SitioWeb_Sub.Clear()
+
+        Panel_ComercioElectronico.Visible = False
+        TB_ComercioElectronico_num.Text = "0"
+        TB_ComercioElectronico_Sub.Clear()
+
+        Panel_BI.Visible = False
+        TB_BI_num.Text = "0"
+        TB_BI_Sub.Clear()
+
+        Panel_GestionProcesos.Visible = False
+        TB_GestionProcesos_num.Text = "0"
+        TB_GestionProcesos_Sub.Clear()
+
+        Panel_FacturaElectronica.Visible = False
+        TB_FacturaElectronica_num.Text = "0"
+        TB_FacturaElectronica_Sub.Clear()
+
+        Panel_OficinaVirtual.Visible = False
+        TB_OficinaVirtual_num.Text = "0"
+        TB_OficinaVirtual_Sub.Clear()
+
+        Panel_ComunicacionesSeguras.Visible = False
+        TB_ComunicacionesSeguras_num.Text = "0"
+        TB_ComunicacionesSeguras_Sub.Clear()
+
+        Panel_Ciberseguridad.Visible = False
+        TB_Ciberseguridad_num.Text = "0"
+        TB_Ciberseguridad_Sub.Clear()
+
+        For Each result As Object In resultats
+            Select Case result(0)
+                Case 1
+                    TB_SitioWeb_num.Text = "1"
+                    TB_SitioWeb_Sub.Text = result(2).ToString + "€"
+                    Panel_SitioWeb.Visible = True
+                Case 2
+                    TB_ComercioElectronico_num.Text = "1"
+                    TB_ComercioElectronico_Sub.Text = result(2).ToString + "€"
+                    Panel_ComercioElectronico.Visible = True
+                Case 3
+                Case 4
+                Case 5
+                    TB_BI_num.Text = "1"
+                    TB_BI_Sub.Text = result(2).ToString + "€"
+                    Panel_BI.Visible = True
+                Case 6
+                    TB_GestionProcesos_num.Text = "1"
+                    TB_GestionProcesos_Sub.Text = result(2).ToString + "€"
+                    Panel_GestionProcesos.Visible = True
+                Case 7
+                    TB_FacturaElectronica_num.Text = "1"
+                    TB_FacturaElectronica_Sub.Text = result(2).ToString + "€"
+                    Panel_FacturaElectronica.Visible = True
+                Case 8
+                    TB_OficinaVirtual_num.Text = "1"
+                    TB_OficinaVirtual_Sub.Text = result(2).ToString + "€"
+                    Panel_OficinaVirtual.Visible = True
+                Case 9
+                    TB_ComunicacionesSeguras_num.Text = "1"
+                    TB_ComunicacionesSeguras_Sub.Text = result(2).ToString + "€"
+                    Panel_ComunicacionesSeguras.Visible = True
+                Case 10
+                    TB_Ciberseguridad_num.Text = "1"
+                    TB_Ciberseguridad_Sub.Text = result(2).ToString + "€"
+                    Panel_Ciberseguridad.Visible = True
+            End Select
+        Next
+
+        resultats.Clear()
     End Sub
 
     Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtresGeneral.CellFormatting
@@ -262,6 +375,7 @@ Public Class Extras
         End If
     End Sub
 
+
     Private Sub TextCerca_TextChanged(sender As Object, e As EventArgs) Handles TextCerca.TextChanged
         Dim txtCerca As String = TextCerca.Text
         Dim conexion As New SQLiteConnection(cadena)
@@ -306,7 +420,8 @@ Public Class Extras
     Private Sub CercaEmpreses_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles CercaEmpreses.CellClick
         If e.RowIndex >= 0 Then
             TB_Empresa.Text = CercaEmpreses.Rows(e.RowIndex).Cells("Nom").Value
-            CarregaDades(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+            'carregaDades(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+            CarregaSolucionsEmpresa(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
         End If
     End Sub
 
