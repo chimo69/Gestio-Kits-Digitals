@@ -80,9 +80,10 @@ Public Class Extras
             conexion.Open()
 
             If conexion.State = ConnectionState.Open Then
-                Dim query As String = "SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
+                Dim query As String = "SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions, TipusEstats.NomEstat, Justificacions.Estat from Solucions
                                                  INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
                                                  INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio
+											     INNER JOIN TipusEstats ON TipusEstats.ID=Justificacions.Estat
                                                  WHERE Solucions.idEmpresa=" & idEmpresa & " 
                                                  GROUP by TipusSolucions.Nom"
                 Dim cmd As New SQLiteCommand(query, conexion)
@@ -114,72 +115,84 @@ Public Class Extras
     Private Sub ompleDadesSolucionsEmpresa()
 
         Panel_SitioWeb.Visible = False
-        TB_SitioWeb_num.Text = "0"
         TB_SitioWeb_Sub.Clear()
 
         Panel_ComercioElectronico.Visible = False
-        TB_ComercioElectronico_num.Text = "0"
         TB_ComercioElectronico_Sub.Clear()
 
         Panel_BI.Visible = False
-        TB_BI_num.Text = "0"
         TB_BI_Sub.Clear()
 
         Panel_GestionProcesos.Visible = False
-        TB_GestionProcesos_num.Text = "0"
         TB_GestionProcesos_Sub.Clear()
 
         Panel_FacturaElectronica.Visible = False
-        TB_FacturaElectronica_num.Text = "0"
+
         TB_FacturaElectronica_Sub.Clear()
 
         Panel_OficinaVirtual.Visible = False
-        TB_OficinaVirtual_num.Text = "0"
+
         TB_OficinaVirtual_Sub.Clear()
 
         Panel_ComunicacionesSeguras.Visible = False
-        TB_ComunicacionesSeguras_num.Text = "0"
+
         TB_ComunicacionesSeguras_Sub.Clear()
 
         Panel_Ciberseguridad.Visible = False
-        TB_Ciberseguridad_num.Text = "0"
+
         TB_Ciberseguridad_Sub.Clear()
 
         For Each result As Object In resultats
             Select Case result(0)
                 Case 1
-                    TB_SitioWeb_num.Text = "1"
                     TB_SitioWeb_Sub.Text = result(2).ToString + "€"
+                    TB_SitioWeb_Estat.Text = result(3).ToString.ToUpper
                     Panel_SitioWeb.Visible = True
+                    If result(4) = 4 Or result(3) = 8 Then
+                        TB_SitioWeb_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 6 Or result(5) = 8 Then
+                        TB_SitioWeb_Estat.BackColor = vermell
+                    End If
+
                 Case 2
-                    TB_ComercioElectronico_num.Text = "1"
                     TB_ComercioElectronico_Sub.Text = result(2).ToString + "€"
+                    TB_ComercioElectronico_Estat.Text = result(3).ToString.ToUpper
                     Panel_ComercioElectronico.Visible = True
+                    If result(4) = 4 Or result(3) = 8 Then
+                        TB_ComercioElectronico_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 6 Or result(5) = 8 Then
+                        TB_ComercioElectronico_Estat.BackColor = vermell
+                    End If
                 Case 3
                 Case 4
                 Case 5
-                    TB_BI_num.Text = "1"
                     TB_BI_Sub.Text = result(2).ToString + "€"
+                    TB_BI_Estat.Text = result(3).ToString.ToUpper
                     Panel_BI.Visible = True
                 Case 6
-                    TB_GestionProcesos_num.Text = "1"
+
                     TB_GestionProcesos_Sub.Text = result(2).ToString + "€"
+                    TB_GestionProcesos_Estat.Text = result(3).ToString.ToUpper
                     Panel_GestionProcesos.Visible = True
                 Case 7
-                    TB_FacturaElectronica_num.Text = "1"
+
                     TB_FacturaElectronica_Sub.Text = result(2).ToString + "€"
+                    TB_FacturaElectronica_Estat.Text = result(3).ToString.ToUpper
                     Panel_FacturaElectronica.Visible = True
                 Case 8
-                    TB_OficinaVirtual_num.Text = "1"
+
                     TB_OficinaVirtual_Sub.Text = result(2).ToString + "€"
+                    TB_OficinaVirtual_Estat.Text = result(3).ToString.ToUpper
                     Panel_OficinaVirtual.Visible = True
                 Case 9
-                    TB_ComunicacionesSeguras_num.Text = "1"
                     TB_ComunicacionesSeguras_Sub.Text = result(2).ToString + "€"
+                    TB_ComunicacionesSeguras_Estat.Text = result(3).ToString.ToUpper
                     Panel_ComunicacionesSeguras.Visible = True
                 Case 10
-                    TB_Ciberseguridad_num.Text = "1"
                     TB_Ciberseguridad_Sub.Text = result(2).ToString + "€"
+                    TB_Ciberseguridad_Estat.Text = result(3).ToString.ToUpper
                     Panel_Ciberseguridad.Visible = True
             End Select
         Next

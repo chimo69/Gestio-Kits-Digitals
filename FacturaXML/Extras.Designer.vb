@@ -86,51 +86,85 @@ Partial Class Extras
         Me.Panel_SolucionsEmpresa = New System.Windows.Forms.FlowLayoutPanel()
         Me.TB_Empresa = New System.Windows.Forms.TextBox()
         Me.Panel_SitioWeb = New System.Windows.Forms.Panel()
+        Me.TB_SitioWeb_Estat = New System.Windows.Forms.TextBox()
         Me.TB_SitioWeb_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_SitioWeb_num = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Panel_ComercioElectronico = New System.Windows.Forms.Panel()
+        Me.TB_ComercioElectronico_Estat = New System.Windows.Forms.TextBox()
         Me.TB_ComercioElectronico_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_ComercioElectronico_num = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Panel_BI = New System.Windows.Forms.Panel()
+        Me.TB_BI_Estat = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.TB_BI_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_BI_num = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Panel_GestionProcesos = New System.Windows.Forms.Panel()
+        Me.TB_GestionProcesos_Estat = New System.Windows.Forms.TextBox()
         Me.TB_GestionProcesos_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_GestionProcesos_num = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Panel_FacturaElectronica = New System.Windows.Forms.Panel()
+        Me.TB_FacturaElectronica_Estat = New System.Windows.Forms.TextBox()
         Me.TB_FacturaElectronica_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_FacturaElectronica_num = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Panel_OficinaVirtual = New System.Windows.Forms.Panel()
+        Me.TB_OficinaVirtual_Estat = New System.Windows.Forms.TextBox()
         Me.TB_OficinaVirtual_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_OficinaVirtual_num = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Panel_ComunicacionesSeguras = New System.Windows.Forms.Panel()
+        Me.TB_ComunicacionesSeguras_Estat = New System.Windows.Forms.TextBox()
         Me.TB_ComunicacionesSeguras_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_ComunicacionesSeguras_num = New System.Windows.Forms.TextBox()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Panel_Ciberseguridad = New System.Windows.Forms.Panel()
+        Me.TB_Ciberseguridad_Estat = New System.Windows.Forms.TextBox()
         Me.TB_Ciberseguridad_Sub = New System.Windows.Forms.TextBox()
-        Me.TB_Ciberseguridad_num = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.TotalEmpresa = New System.Windows.Forms.TextBox()
         Me.CercaEmpreses = New System.Windows.Forms.DataGridView()
         Me.TextCerca = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TextBox10 = New System.Windows.Forms.TextBox()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.TextBox20 = New System.Windows.Forms.TextBox()
+        Me.TextBox21 = New System.Windows.Forms.TextBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Panel7 = New System.Windows.Forms.Panel()
+        Me.TextBox22 = New System.Windows.Forms.TextBox()
+        Me.TextBox23 = New System.Windows.Forms.TextBox()
+        Me.TextBox24 = New System.Windows.Forms.TextBox()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.TextBox25 = New System.Windows.Forms.TextBox()
+        Me.TextBox26 = New System.Windows.Forms.TextBox()
+        Me.TextBox27 = New System.Windows.Forms.TextBox()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.TextBox28 = New System.Windows.Forms.TextBox()
+        Me.TextBox29 = New System.Windows.Forms.TextBox()
+        Me.TextBox30 = New System.Windows.Forms.TextBox()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.TextBox31 = New System.Windows.Forms.TextBox()
+        Me.TextBox32 = New System.Windows.Forms.TextBox()
+        Me.TextBox33 = New System.Windows.Forms.TextBox()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.TextBox34 = New System.Windows.Forms.TextBox()
         CType(Me.DataExtres, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataExtresGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -148,7 +182,15 @@ Partial Class Extras
         Me.Panel_ComunicacionesSeguras.SuspendLayout()
         Me.Panel_Ciberseguridad.SuspendLayout()
         CType(Me.CercaEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
+        Me.Panel7.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel9.SuspendLayout()
+        Me.Panel10.SuspendLayout()
         Me.SuspendLayout()
         '
         'DataExtres
@@ -719,42 +761,41 @@ Partial Class Extras
         'Panel_SitioWeb
         '
         Me.Panel_SitioWeb.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_SitioWeb.Controls.Add(Me.TextBox1)
+        Me.Panel_SitioWeb.Controls.Add(Me.TB_SitioWeb_Estat)
         Me.Panel_SitioWeb.Controls.Add(Me.TB_SitioWeb_Sub)
-        Me.Panel_SitioWeb.Controls.Add(Me.TB_SitioWeb_num)
         Me.Panel_SitioWeb.Controls.Add(Me.Label23)
         Me.Panel_SitioWeb.Location = New System.Drawing.Point(8, 37)
         Me.Panel_SitioWeb.Name = "Panel_SitioWeb"
-        Me.Panel_SitioWeb.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_SitioWeb.Size = New System.Drawing.Size(100, 128)
         Me.Panel_SitioWeb.TabIndex = 0
         Me.Panel_SitioWeb.Visible = False
         '
+        'TB_SitioWeb_Estat
+        '
+        Me.TB_SitioWeb_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_SitioWeb_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_SitioWeb_Estat.Multiline = True
+        Me.TB_SitioWeb_Estat.Name = "TB_SitioWeb_Estat"
+        Me.TB_SitioWeb_Estat.ReadOnly = True
+        Me.TB_SitioWeb_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_SitioWeb_Estat.TabIndex = 3
+        Me.TB_SitioWeb_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_SitioWeb_Sub
         '
-        Me.TB_SitioWeb_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_SitioWeb_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_SitioWeb_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_SitioWeb_Sub.Name = "TB_SitioWeb_Sub"
         Me.TB_SitioWeb_Sub.ReadOnly = True
-        Me.TB_SitioWeb_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_SitioWeb_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_SitioWeb_Sub.TabIndex = 2
         Me.TB_SitioWeb_Sub.Text = "100000€"
         Me.TB_SitioWeb_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_SitioWeb_num
-        '
-        Me.TB_SitioWeb_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_SitioWeb_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_SitioWeb_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_SitioWeb_num.Location = New System.Drawing.Point(3, 3)
-        Me.TB_SitioWeb_num.Name = "TB_SitioWeb_num"
-        Me.TB_SitioWeb_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_SitioWeb_num.TabIndex = 1
-        Me.TB_SitioWeb_num.Text = "0"
-        Me.TB_SitioWeb_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(22, 49)
+        Me.Label23.Location = New System.Drawing.Point(22, 12)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(57, 15)
         Me.Label23.TabIndex = 0
@@ -764,42 +805,41 @@ Partial Class Extras
         'Panel_ComercioElectronico
         '
         Me.Panel_ComercioElectronico.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_ComercioElectronico.Controls.Add(Me.TextBox2)
+        Me.Panel_ComercioElectronico.Controls.Add(Me.TB_ComercioElectronico_Estat)
         Me.Panel_ComercioElectronico.Controls.Add(Me.TB_ComercioElectronico_Sub)
-        Me.Panel_ComercioElectronico.Controls.Add(Me.TB_ComercioElectronico_num)
         Me.Panel_ComercioElectronico.Controls.Add(Me.Label24)
         Me.Panel_ComercioElectronico.Location = New System.Drawing.Point(114, 37)
         Me.Panel_ComercioElectronico.Name = "Panel_ComercioElectronico"
-        Me.Panel_ComercioElectronico.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_ComercioElectronico.Size = New System.Drawing.Size(100, 128)
         Me.Panel_ComercioElectronico.TabIndex = 1
         Me.Panel_ComercioElectronico.Visible = False
         '
+        'TB_ComercioElectronico_Estat
+        '
+        Me.TB_ComercioElectronico_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ComercioElectronico_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_ComercioElectronico_Estat.Multiline = True
+        Me.TB_ComercioElectronico_Estat.Name = "TB_ComercioElectronico_Estat"
+        Me.TB_ComercioElectronico_Estat.ReadOnly = True
+        Me.TB_ComercioElectronico_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_ComercioElectronico_Estat.TabIndex = 4
+        Me.TB_ComercioElectronico_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_ComercioElectronico_Sub
         '
-        Me.TB_ComercioElectronico_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_ComercioElectronico_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ComercioElectronico_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_ComercioElectronico_Sub.Name = "TB_ComercioElectronico_Sub"
         Me.TB_ComercioElectronico_Sub.ReadOnly = True
-        Me.TB_ComercioElectronico_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_ComercioElectronico_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_ComercioElectronico_Sub.TabIndex = 2
         Me.TB_ComercioElectronico_Sub.Text = "100000€"
         Me.TB_ComercioElectronico_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_ComercioElectronico_num
-        '
-        Me.TB_ComercioElectronico_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_ComercioElectronico_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_ComercioElectronico_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComercioElectronico_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_ComercioElectronico_num.Name = "TB_ComercioElectronico_num"
-        Me.TB_ComercioElectronico_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_ComercioElectronico_num.TabIndex = 1
-        Me.TB_ComercioElectronico_num.Text = "0"
-        Me.TB_ComercioElectronico_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(18, 41)
+        Me.Label24.Location = New System.Drawing.Point(16, 5)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(66, 30)
         Me.Label24.TabIndex = 0
@@ -809,21 +849,31 @@ Partial Class Extras
         'Panel_BI
         '
         Me.Panel_BI.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_BI.Controls.Add(Me.TextBox3)
+        Me.Panel_BI.Controls.Add(Me.TB_BI_Estat)
         Me.Panel_BI.Controls.Add(Me.Label28)
         Me.Panel_BI.Controls.Add(Me.TB_BI_Sub)
-        Me.Panel_BI.Controls.Add(Me.TB_BI_num)
         Me.Panel_BI.Controls.Add(Me.Label25)
-        Me.Panel_BI.Location = New System.Drawing.Point(8, 168)
+        Me.Panel_BI.Location = New System.Drawing.Point(8, 171)
         Me.Panel_BI.Name = "Panel_BI"
-        Me.Panel_BI.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_BI.Size = New System.Drawing.Size(100, 128)
         Me.Panel_BI.TabIndex = 2
         Me.Panel_BI.Visible = False
+        '
+        'TB_BI_Estat
+        '
+        Me.TB_BI_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BI_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_BI_Estat.Multiline = True
+        Me.TB_BI_Estat.Name = "TB_BI_Estat"
+        Me.TB_BI_Estat.ReadOnly = True
+        Me.TB_BI_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_BI_Estat.TabIndex = 4
+        Me.TB_BI_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(17, 41)
+        Me.Label28.Location = New System.Drawing.Point(15, 5)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(68, 30)
         Me.Label28.TabIndex = 3
@@ -832,25 +882,14 @@ Partial Class Extras
         '
         'TB_BI_Sub
         '
-        Me.TB_BI_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_BI_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BI_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_BI_Sub.Name = "TB_BI_Sub"
         Me.TB_BI_Sub.ReadOnly = True
-        Me.TB_BI_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_BI_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_BI_Sub.TabIndex = 2
         Me.TB_BI_Sub.Text = "100000€"
         Me.TB_BI_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_BI_num
-        '
-        Me.TB_BI_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_BI_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_BI_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BI_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_BI_num.Name = "TB_BI_num"
-        Me.TB_BI_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_BI_num.TabIndex = 1
-        Me.TB_BI_num.Text = "0"
-        Me.TB_BI_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label25
         '
@@ -864,42 +903,41 @@ Partial Class Extras
         'Panel_GestionProcesos
         '
         Me.Panel_GestionProcesos.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_GestionProcesos.Controls.Add(Me.TextBox4)
+        Me.Panel_GestionProcesos.Controls.Add(Me.TB_GestionProcesos_Estat)
         Me.Panel_GestionProcesos.Controls.Add(Me.TB_GestionProcesos_Sub)
-        Me.Panel_GestionProcesos.Controls.Add(Me.TB_GestionProcesos_num)
         Me.Panel_GestionProcesos.Controls.Add(Me.Label26)
-        Me.Panel_GestionProcesos.Location = New System.Drawing.Point(114, 168)
+        Me.Panel_GestionProcesos.Location = New System.Drawing.Point(114, 171)
         Me.Panel_GestionProcesos.Name = "Panel_GestionProcesos"
-        Me.Panel_GestionProcesos.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_GestionProcesos.Size = New System.Drawing.Size(100, 128)
         Me.Panel_GestionProcesos.TabIndex = 3
         Me.Panel_GestionProcesos.Visible = False
         '
+        'TB_GestionProcesos_Estat
+        '
+        Me.TB_GestionProcesos_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_GestionProcesos_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_GestionProcesos_Estat.Multiline = True
+        Me.TB_GestionProcesos_Estat.Name = "TB_GestionProcesos_Estat"
+        Me.TB_GestionProcesos_Estat.ReadOnly = True
+        Me.TB_GestionProcesos_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_GestionProcesos_Estat.TabIndex = 4
+        Me.TB_GestionProcesos_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_GestionProcesos_Sub
         '
-        Me.TB_GestionProcesos_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_GestionProcesos_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_GestionProcesos_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_GestionProcesos_Sub.Name = "TB_GestionProcesos_Sub"
         Me.TB_GestionProcesos_Sub.ReadOnly = True
-        Me.TB_GestionProcesos_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_GestionProcesos_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_GestionProcesos_Sub.TabIndex = 2
         Me.TB_GestionProcesos_Sub.Text = "100000€"
         Me.TB_GestionProcesos_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_GestionProcesos_num
-        '
-        Me.TB_GestionProcesos_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_GestionProcesos_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_GestionProcesos_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_GestionProcesos_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_GestionProcesos_num.Name = "TB_GestionProcesos_num"
-        Me.TB_GestionProcesos_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_GestionProcesos_num.TabIndex = 1
-        Me.TB_GestionProcesos_num.Text = "0"
-        Me.TB_GestionProcesos_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(22, 42)
+        Me.Label26.Location = New System.Drawing.Point(22, 5)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(54, 30)
         Me.Label26.TabIndex = 0
@@ -909,42 +947,41 @@ Partial Class Extras
         'Panel_FacturaElectronica
         '
         Me.Panel_FacturaElectronica.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_FacturaElectronica.Controls.Add(Me.TextBox5)
+        Me.Panel_FacturaElectronica.Controls.Add(Me.TB_FacturaElectronica_Estat)
         Me.Panel_FacturaElectronica.Controls.Add(Me.TB_FacturaElectronica_Sub)
-        Me.Panel_FacturaElectronica.Controls.Add(Me.TB_FacturaElectronica_num)
         Me.Panel_FacturaElectronica.Controls.Add(Me.Label27)
-        Me.Panel_FacturaElectronica.Location = New System.Drawing.Point(8, 299)
+        Me.Panel_FacturaElectronica.Location = New System.Drawing.Point(8, 305)
         Me.Panel_FacturaElectronica.Name = "Panel_FacturaElectronica"
-        Me.Panel_FacturaElectronica.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_FacturaElectronica.Size = New System.Drawing.Size(100, 128)
         Me.Panel_FacturaElectronica.TabIndex = 4
         Me.Panel_FacturaElectronica.Visible = False
         '
+        'TB_FacturaElectronica_Estat
+        '
+        Me.TB_FacturaElectronica_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_FacturaElectronica_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_FacturaElectronica_Estat.Multiline = True
+        Me.TB_FacturaElectronica_Estat.Name = "TB_FacturaElectronica_Estat"
+        Me.TB_FacturaElectronica_Estat.ReadOnly = True
+        Me.TB_FacturaElectronica_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_FacturaElectronica_Estat.TabIndex = 4
+        Me.TB_FacturaElectronica_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_FacturaElectronica_Sub
         '
-        Me.TB_FacturaElectronica_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_FacturaElectronica_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_FacturaElectronica_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_FacturaElectronica_Sub.Name = "TB_FacturaElectronica_Sub"
         Me.TB_FacturaElectronica_Sub.ReadOnly = True
-        Me.TB_FacturaElectronica_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_FacturaElectronica_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_FacturaElectronica_Sub.TabIndex = 2
         Me.TB_FacturaElectronica_Sub.Text = "100000€"
         Me.TB_FacturaElectronica_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_FacturaElectronica_num
-        '
-        Me.TB_FacturaElectronica_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_FacturaElectronica_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_FacturaElectronica_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_FacturaElectronica_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_FacturaElectronica_num.Name = "TB_FacturaElectronica_num"
-        Me.TB_FacturaElectronica_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_FacturaElectronica_num.TabIndex = 1
-        Me.TB_FacturaElectronica_num.Text = "0"
-        Me.TB_FacturaElectronica_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(18, 42)
+        Me.Label27.Location = New System.Drawing.Point(18, 5)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(65, 30)
         Me.Label27.TabIndex = 0
@@ -954,42 +991,41 @@ Partial Class Extras
         'Panel_OficinaVirtual
         '
         Me.Panel_OficinaVirtual.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_OficinaVirtual.Controls.Add(Me.TextBox6)
+        Me.Panel_OficinaVirtual.Controls.Add(Me.TB_OficinaVirtual_Estat)
         Me.Panel_OficinaVirtual.Controls.Add(Me.TB_OficinaVirtual_Sub)
-        Me.Panel_OficinaVirtual.Controls.Add(Me.TB_OficinaVirtual_num)
         Me.Panel_OficinaVirtual.Controls.Add(Me.Label30)
-        Me.Panel_OficinaVirtual.Location = New System.Drawing.Point(114, 299)
+        Me.Panel_OficinaVirtual.Location = New System.Drawing.Point(114, 305)
         Me.Panel_OficinaVirtual.Name = "Panel_OficinaVirtual"
-        Me.Panel_OficinaVirtual.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_OficinaVirtual.Size = New System.Drawing.Size(100, 128)
         Me.Panel_OficinaVirtual.TabIndex = 7
         Me.Panel_OficinaVirtual.Visible = False
         '
+        'TB_OficinaVirtual_Estat
+        '
+        Me.TB_OficinaVirtual_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_OficinaVirtual_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_OficinaVirtual_Estat.Multiline = True
+        Me.TB_OficinaVirtual_Estat.Name = "TB_OficinaVirtual_Estat"
+        Me.TB_OficinaVirtual_Estat.ReadOnly = True
+        Me.TB_OficinaVirtual_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_OficinaVirtual_Estat.TabIndex = 4
+        Me.TB_OficinaVirtual_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_OficinaVirtual_Sub
         '
-        Me.TB_OficinaVirtual_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_OficinaVirtual_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_OficinaVirtual_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_OficinaVirtual_Sub.Name = "TB_OficinaVirtual_Sub"
         Me.TB_OficinaVirtual_Sub.ReadOnly = True
-        Me.TB_OficinaVirtual_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_OficinaVirtual_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_OficinaVirtual_Sub.TabIndex = 2
         Me.TB_OficinaVirtual_Sub.Text = "100000€"
         Me.TB_OficinaVirtual_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_OficinaVirtual_num
-        '
-        Me.TB_OficinaVirtual_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_OficinaVirtual_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_OficinaVirtual_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_OficinaVirtual_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_OficinaVirtual_num.Name = "TB_OficinaVirtual_num"
-        Me.TB_OficinaVirtual_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_OficinaVirtual_num.TabIndex = 1
-        Me.TB_OficinaVirtual_num.Text = "0"
-        Me.TB_OficinaVirtual_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(27, 43)
+        Me.Label30.Location = New System.Drawing.Point(27, 5)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(45, 30)
         Me.Label30.TabIndex = 0
@@ -999,42 +1035,41 @@ Partial Class Extras
         'Panel_ComunicacionesSeguras
         '
         Me.Panel_ComunicacionesSeguras.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_ComunicacionesSeguras.Controls.Add(Me.TextBox7)
+        Me.Panel_ComunicacionesSeguras.Controls.Add(Me.TB_ComunicacionesSeguras_Estat)
         Me.Panel_ComunicacionesSeguras.Controls.Add(Me.TB_ComunicacionesSeguras_Sub)
-        Me.Panel_ComunicacionesSeguras.Controls.Add(Me.TB_ComunicacionesSeguras_num)
         Me.Panel_ComunicacionesSeguras.Controls.Add(Me.Label31)
-        Me.Panel_ComunicacionesSeguras.Location = New System.Drawing.Point(8, 430)
+        Me.Panel_ComunicacionesSeguras.Location = New System.Drawing.Point(8, 439)
         Me.Panel_ComunicacionesSeguras.Name = "Panel_ComunicacionesSeguras"
-        Me.Panel_ComunicacionesSeguras.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_ComunicacionesSeguras.Size = New System.Drawing.Size(100, 128)
         Me.Panel_ComunicacionesSeguras.TabIndex = 8
         Me.Panel_ComunicacionesSeguras.Visible = False
         '
+        'TB_ComunicacionesSeguras_Estat
+        '
+        Me.TB_ComunicacionesSeguras_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ComunicacionesSeguras_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_ComunicacionesSeguras_Estat.Multiline = True
+        Me.TB_ComunicacionesSeguras_Estat.Name = "TB_ComunicacionesSeguras_Estat"
+        Me.TB_ComunicacionesSeguras_Estat.ReadOnly = True
+        Me.TB_ComunicacionesSeguras_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_ComunicacionesSeguras_Estat.TabIndex = 4
+        Me.TB_ComunicacionesSeguras_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_ComunicacionesSeguras_Sub
         '
-        Me.TB_ComunicacionesSeguras_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_ComunicacionesSeguras_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ComunicacionesSeguras_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_ComunicacionesSeguras_Sub.Name = "TB_ComunicacionesSeguras_Sub"
         Me.TB_ComunicacionesSeguras_Sub.ReadOnly = True
-        Me.TB_ComunicacionesSeguras_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_ComunicacionesSeguras_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_ComunicacionesSeguras_Sub.TabIndex = 2
         Me.TB_ComunicacionesSeguras_Sub.Text = "100000€"
         Me.TB_ComunicacionesSeguras_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_ComunicacionesSeguras_num
-        '
-        Me.TB_ComunicacionesSeguras_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_ComunicacionesSeguras_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_ComunicacionesSeguras_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComunicacionesSeguras_num.Location = New System.Drawing.Point(3, 1)
-        Me.TB_ComunicacionesSeguras_num.Name = "TB_ComunicacionesSeguras_num"
-        Me.TB_ComunicacionesSeguras_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_ComunicacionesSeguras_num.TabIndex = 1
-        Me.TB_ComunicacionesSeguras_num.Text = "0"
-        Me.TB_ComunicacionesSeguras_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(2, 41)
+        Me.Label31.Location = New System.Drawing.Point(1, 5)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(96, 30)
         Me.Label31.TabIndex = 0
@@ -1044,42 +1079,41 @@ Partial Class Extras
         'Panel_Ciberseguridad
         '
         Me.Panel_Ciberseguridad.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Panel_Ciberseguridad.Controls.Add(Me.TextBox8)
+        Me.Panel_Ciberseguridad.Controls.Add(Me.TB_Ciberseguridad_Estat)
         Me.Panel_Ciberseguridad.Controls.Add(Me.TB_Ciberseguridad_Sub)
-        Me.Panel_Ciberseguridad.Controls.Add(Me.TB_Ciberseguridad_num)
         Me.Panel_Ciberseguridad.Controls.Add(Me.Label32)
-        Me.Panel_Ciberseguridad.Location = New System.Drawing.Point(114, 430)
+        Me.Panel_Ciberseguridad.Location = New System.Drawing.Point(114, 439)
         Me.Panel_Ciberseguridad.Name = "Panel_Ciberseguridad"
-        Me.Panel_Ciberseguridad.Size = New System.Drawing.Size(100, 125)
+        Me.Panel_Ciberseguridad.Size = New System.Drawing.Size(100, 128)
         Me.Panel_Ciberseguridad.TabIndex = 9
         Me.Panel_Ciberseguridad.Visible = False
         '
+        'TB_Ciberseguridad_Estat
+        '
+        Me.TB_Ciberseguridad_Estat.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Ciberseguridad_Estat.Location = New System.Drawing.Point(3, 73)
+        Me.TB_Ciberseguridad_Estat.Multiline = True
+        Me.TB_Ciberseguridad_Estat.Name = "TB_Ciberseguridad_Estat"
+        Me.TB_Ciberseguridad_Estat.ReadOnly = True
+        Me.TB_Ciberseguridad_Estat.Size = New System.Drawing.Size(94, 50)
+        Me.TB_Ciberseguridad_Estat.TabIndex = 4
+        Me.TB_Ciberseguridad_Estat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'TB_Ciberseguridad_Sub
         '
-        Me.TB_Ciberseguridad_Sub.Location = New System.Drawing.Point(3, 74)
+        Me.TB_Ciberseguridad_Sub.Font = New System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Ciberseguridad_Sub.Location = New System.Drawing.Point(3, 40)
         Me.TB_Ciberseguridad_Sub.Name = "TB_Ciberseguridad_Sub"
         Me.TB_Ciberseguridad_Sub.ReadOnly = True
-        Me.TB_Ciberseguridad_Sub.Size = New System.Drawing.Size(94, 23)
+        Me.TB_Ciberseguridad_Sub.Size = New System.Drawing.Size(94, 30)
         Me.TB_Ciberseguridad_Sub.TabIndex = 2
         Me.TB_Ciberseguridad_Sub.Text = "100000€"
         Me.TB_Ciberseguridad_Sub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TB_Ciberseguridad_num
-        '
-        Me.TB_Ciberseguridad_num.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TB_Ciberseguridad_num.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TB_Ciberseguridad_num.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Ciberseguridad_num.Location = New System.Drawing.Point(3, 3)
-        Me.TB_Ciberseguridad_num.Name = "TB_Ciberseguridad_num"
-        Me.TB_Ciberseguridad_num.Size = New System.Drawing.Size(94, 43)
-        Me.TB_Ciberseguridad_num.TabIndex = 1
-        Me.TB_Ciberseguridad_num.Text = "0"
-        Me.TB_Ciberseguridad_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(6, 49)
+        Me.Label32.Location = New System.Drawing.Point(6, 5)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(87, 15)
         Me.Label32.TabIndex = 0
@@ -1089,7 +1123,7 @@ Partial Class Extras
         'TotalEmpresa
         '
         Me.TotalEmpresa.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TotalEmpresa.Location = New System.Drawing.Point(8, 561)
+        Me.TotalEmpresa.Location = New System.Drawing.Point(8, 573)
         Me.TotalEmpresa.Name = "TotalEmpresa"
         Me.TotalEmpresa.ReadOnly = True
         Me.TotalEmpresa.Size = New System.Drawing.Size(206, 29)
@@ -1150,103 +1184,502 @@ Partial Class Extras
         Me.TextCerca.TabIndex = 2
         Me.TextCerca.TabStop = False
         '
-        'TextBox1
+        'FlowLayoutPanel1
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Source Code Pro", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox1.Location = New System.Drawing.Point(3, 98)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(94, 21)
-        Me.TextBox1.TabIndex = 3
-        Me.TextBox1.Text = "Pendent"
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.FlowLayoutPanel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Controls.Add(Me.TextBox9)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel3)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel4)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel5)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel6)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel7)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel8)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel9)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Panel10)
+        Me.FlowLayoutPanel1.Controls.Add(Me.TextBox34)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(580, 12)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Padding = New System.Windows.Forms.Padding(5)
+        Me.FlowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(225, 636)
+        Me.FlowLayoutPanel1.TabIndex = 58
+        Me.FlowLayoutPanel1.Visible = False
         '
-        'TextBox2
+        'TextBox9
         '
-        Me.TextBox2.Location = New System.Drawing.Point(3, 98)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox2.TabIndex = 4
-        Me.TextBox2.Text = "100000€"
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox3.TabIndex = 4
-        Me.TextBox3.Text = "100000€"
-        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox4.TabIndex = 4
-        Me.TextBox4.Text = "100000€"
-        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox5.TabIndex = 4
-        Me.TextBox5.Text = "100000€"
-        Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
-        Me.TextBox6.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox6.TabIndex = 4
-        Me.TextBox6.Text = "100000€"
-        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.ReadOnly = True
-        Me.TextBox7.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox7.TabIndex = 4
-        Me.TextBox7.Text = "100000€"
-        Me.TextBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Location = New System.Drawing.Point(3, 99)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.ReadOnly = True
-        Me.TextBox8.Size = New System.Drawing.Size(94, 23)
-        Me.TextBox8.TabIndex = 4
-        Me.TextBox8.Text = "100000€"
-        Me.TextBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBox9.BackColor = System.Drawing.Color.Silver
+        Me.TextBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox9.Location = New System.Drawing.Point(8, 8)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.ReadOnly = True
+        Me.TextBox9.Size = New System.Drawing.Size(206, 23)
+        Me.TextBox9.TabIndex = 9
+        Me.TextBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBox9.Visible = False
         '
         'Panel3
         '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.TextBox10)
+        Me.Panel3.Controls.Add(Me.TextBox11)
+        Me.Panel3.Controls.Add(Me.TextBox12)
         Me.Panel3.Controls.Add(Me.Label29)
-        Me.Panel3.Location = New System.Drawing.Point(613, 418)
+        Me.Panel3.Location = New System.Drawing.Point(8, 37)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(103, 100)
-        Me.Panel3.TabIndex = 58
+        Me.Panel3.Size = New System.Drawing.Size(100, 125)
+        Me.Panel3.TabIndex = 0
+        Me.Panel3.Visible = False
+        '
+        'TextBox10
+        '
+        Me.TextBox10.Font = New System.Drawing.Font("Source Code Pro", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox10.Location = New System.Drawing.Point(3, 98)
+        Me.TextBox10.Name = "TextBox10"
+        Me.TextBox10.ReadOnly = True
+        Me.TextBox10.Size = New System.Drawing.Size(94, 21)
+        Me.TextBox10.TabIndex = 3
+        Me.TextBox10.Text = "Pendent"
+        Me.TextBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.ReadOnly = True
+        Me.TextBox11.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox11.TabIndex = 2
+        Me.TextBox11.Text = "100000€"
+        Me.TextBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox12
+        '
+        Me.TextBox12.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox12.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox12.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox12.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox12.TabIndex = 1
+        Me.TextBox12.Text = "0"
+        Me.TextBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(31, 41)
+        Me.Label29.Location = New System.Drawing.Point(22, 49)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(47, 15)
+        Me.Label29.Size = New System.Drawing.Size(57, 15)
         Me.Label29.TabIndex = 0
-        Me.Label29.Text = "Label29"
+        Me.Label29.Text = "Sitio Web"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel4
+        '
+        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel4.Controls.Add(Me.TextBox13)
+        Me.Panel4.Controls.Add(Me.TextBox14)
+        Me.Panel4.Controls.Add(Me.TextBox15)
+        Me.Panel4.Controls.Add(Me.Label33)
+        Me.Panel4.Location = New System.Drawing.Point(114, 37)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(100, 125)
+        Me.Panel4.TabIndex = 1
+        Me.Panel4.Visible = False
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(3, 98)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.ReadOnly = True
+        Me.TextBox13.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox13.TabIndex = 4
+        Me.TextBox13.Text = "100000€"
+        Me.TextBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox14
+        '
+        Me.TextBox14.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox14.Name = "TextBox14"
+        Me.TextBox14.ReadOnly = True
+        Me.TextBox14.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox14.TabIndex = 2
+        Me.TextBox14.Text = "100000€"
+        Me.TextBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox15
+        '
+        Me.TextBox15.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox15.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox15.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox15.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox15.TabIndex = 1
+        Me.TextBox15.Text = "0"
+        Me.TextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(18, 41)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(66, 30)
+        Me.Label33.TabIndex = 0
+        Me.Label33.Text = "Comercio" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "electrónico" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel5.Controls.Add(Me.TextBox16)
+        Me.Panel5.Controls.Add(Me.Label34)
+        Me.Panel5.Controls.Add(Me.TextBox17)
+        Me.Panel5.Controls.Add(Me.TextBox18)
+        Me.Panel5.Controls.Add(Me.Label35)
+        Me.Panel5.Location = New System.Drawing.Point(8, 168)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(100, 125)
+        Me.Panel5.TabIndex = 2
+        Me.Panel5.Visible = False
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.ReadOnly = True
+        Me.TextBox16.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox16.TabIndex = 4
+        Me.TextBox16.Text = "100000€"
+        Me.TextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(17, 41)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(68, 30)
+        Me.Label34.TabIndex = 3
+        Me.Label34.Text = "Business" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Intelligence"
+        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.ReadOnly = True
+        Me.TextBox17.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox17.TabIndex = 2
+        Me.TextBox17.Text = "100000€"
+        Me.TextBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox18
+        '
+        Me.TextBox18.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox18.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox18.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox18.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox18.TabIndex = 1
+        Me.TextBox18.Text = "0"
+        Me.TextBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(22, 49)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(0, 15)
+        Me.Label35.TabIndex = 0
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel6
+        '
+        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel6.Controls.Add(Me.TextBox19)
+        Me.Panel6.Controls.Add(Me.TextBox20)
+        Me.Panel6.Controls.Add(Me.TextBox21)
+        Me.Panel6.Controls.Add(Me.Label36)
+        Me.Panel6.Location = New System.Drawing.Point(114, 168)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(100, 125)
+        Me.Panel6.TabIndex = 3
+        Me.Panel6.Visible = False
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.ReadOnly = True
+        Me.TextBox19.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox19.TabIndex = 4
+        Me.TextBox19.Text = "100000€"
+        Me.TextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox20
+        '
+        Me.TextBox20.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox20.Name = "TextBox20"
+        Me.TextBox20.ReadOnly = True
+        Me.TextBox20.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox20.TabIndex = 2
+        Me.TextBox20.Text = "100000€"
+        Me.TextBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox21
+        '
+        Me.TextBox21.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox21.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox21.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox21.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox21.Name = "TextBox21"
+        Me.TextBox21.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox21.TabIndex = 1
+        Me.TextBox21.Text = "0"
+        Me.TextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(22, 42)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(54, 30)
+        Me.Label36.TabIndex = 0
+        Me.Label36.Text = "Gestión" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Procesos"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel7
+        '
+        Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel7.Controls.Add(Me.TextBox22)
+        Me.Panel7.Controls.Add(Me.TextBox23)
+        Me.Panel7.Controls.Add(Me.TextBox24)
+        Me.Panel7.Controls.Add(Me.Label37)
+        Me.Panel7.Location = New System.Drawing.Point(8, 299)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(100, 125)
+        Me.Panel7.TabIndex = 4
+        Me.Panel7.Visible = False
+        '
+        'TextBox22
+        '
+        Me.TextBox22.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox22.Name = "TextBox22"
+        Me.TextBox22.ReadOnly = True
+        Me.TextBox22.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox22.TabIndex = 4
+        Me.TextBox22.Text = "100000€"
+        Me.TextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox23
+        '
+        Me.TextBox23.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox23.Name = "TextBox23"
+        Me.TextBox23.ReadOnly = True
+        Me.TextBox23.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox23.TabIndex = 2
+        Me.TextBox23.Text = "100000€"
+        Me.TextBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox24
+        '
+        Me.TextBox24.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox24.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox24.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox24.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox24.Name = "TextBox24"
+        Me.TextBox24.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox24.TabIndex = 1
+        Me.TextBox24.Text = "0"
+        Me.TextBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(18, 42)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(65, 30)
+        Me.Label37.TabIndex = 0
+        Me.Label37.Text = "Factura" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "electrónica"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel8.Controls.Add(Me.TextBox25)
+        Me.Panel8.Controls.Add(Me.TextBox26)
+        Me.Panel8.Controls.Add(Me.TextBox27)
+        Me.Panel8.Controls.Add(Me.Label38)
+        Me.Panel8.Location = New System.Drawing.Point(114, 299)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(100, 125)
+        Me.Panel8.TabIndex = 7
+        Me.Panel8.Visible = False
+        '
+        'TextBox25
+        '
+        Me.TextBox25.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox25.Name = "TextBox25"
+        Me.TextBox25.ReadOnly = True
+        Me.TextBox25.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox25.TabIndex = 4
+        Me.TextBox25.Text = "100000€"
+        Me.TextBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox26
+        '
+        Me.TextBox26.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox26.Name = "TextBox26"
+        Me.TextBox26.ReadOnly = True
+        Me.TextBox26.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox26.TabIndex = 2
+        Me.TextBox26.Text = "100000€"
+        Me.TextBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox27
+        '
+        Me.TextBox27.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox27.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox27.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox27.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox27.Name = "TextBox27"
+        Me.TextBox27.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox27.TabIndex = 1
+        Me.TextBox27.Text = "0"
+        Me.TextBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(27, 43)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(45, 30)
+        Me.Label38.TabIndex = 0
+        Me.Label38.Text = "Oficina" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "virtual"
+        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel9.Controls.Add(Me.TextBox28)
+        Me.Panel9.Controls.Add(Me.TextBox29)
+        Me.Panel9.Controls.Add(Me.TextBox30)
+        Me.Panel9.Controls.Add(Me.Label39)
+        Me.Panel9.Location = New System.Drawing.Point(8, 430)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(100, 125)
+        Me.Panel9.TabIndex = 8
+        Me.Panel9.Visible = False
+        '
+        'TextBox28
+        '
+        Me.TextBox28.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox28.Name = "TextBox28"
+        Me.TextBox28.ReadOnly = True
+        Me.TextBox28.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox28.TabIndex = 4
+        Me.TextBox28.Text = "100000€"
+        Me.TextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox29
+        '
+        Me.TextBox29.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox29.Name = "TextBox29"
+        Me.TextBox29.ReadOnly = True
+        Me.TextBox29.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox29.TabIndex = 2
+        Me.TextBox29.Text = "100000€"
+        Me.TextBox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox30
+        '
+        Me.TextBox30.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox30.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox30.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox30.Location = New System.Drawing.Point(3, 1)
+        Me.TextBox30.Name = "TextBox30"
+        Me.TextBox30.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox30.TabIndex = 1
+        Me.TextBox30.Text = "0"
+        Me.TextBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(2, 41)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(96, 30)
+        Me.Label39.TabIndex = 0
+        Me.Label39.Text = "Comunicaciones" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "seguras"
+        Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel10
+        '
+        Me.Panel10.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel10.Controls.Add(Me.TextBox31)
+        Me.Panel10.Controls.Add(Me.TextBox32)
+        Me.Panel10.Controls.Add(Me.TextBox33)
+        Me.Panel10.Controls.Add(Me.Label40)
+        Me.Panel10.Location = New System.Drawing.Point(114, 430)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(100, 125)
+        Me.Panel10.TabIndex = 9
+        Me.Panel10.Visible = False
+        '
+        'TextBox31
+        '
+        Me.TextBox31.Location = New System.Drawing.Point(3, 99)
+        Me.TextBox31.Name = "TextBox31"
+        Me.TextBox31.ReadOnly = True
+        Me.TextBox31.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox31.TabIndex = 4
+        Me.TextBox31.Text = "100000€"
+        Me.TextBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox32
+        '
+        Me.TextBox32.Location = New System.Drawing.Point(3, 74)
+        Me.TextBox32.Name = "TextBox32"
+        Me.TextBox32.ReadOnly = True
+        Me.TextBox32.Size = New System.Drawing.Size(94, 23)
+        Me.TextBox32.TabIndex = 2
+        Me.TextBox32.Text = "100000€"
+        Me.TextBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox33
+        '
+        Me.TextBox33.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TextBox33.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox33.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox33.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox33.Name = "TextBox33"
+        Me.TextBox33.Size = New System.Drawing.Size(94, 43)
+        Me.TextBox33.TabIndex = 1
+        Me.TextBox33.Text = "0"
+        Me.TextBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(6, 49)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(87, 15)
+        Me.Label40.TabIndex = 0
+        Me.Label40.Text = "Ciberseguridad"
+        Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TextBox34
+        '
+        Me.TextBox34.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TextBox34.Location = New System.Drawing.Point(8, 561)
+        Me.TextBox34.Name = "TextBox34"
+        Me.TextBox34.ReadOnly = True
+        Me.TextBox34.Size = New System.Drawing.Size(206, 29)
+        Me.TextBox34.TabIndex = 4
+        Me.TextBox34.TabStop = False
+        Me.TextBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Extras
         '
@@ -1254,7 +1687,7 @@ Partial Class Extras
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1643, 668)
-        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.CercaEmpreses)
         Me.Controls.Add(Me.TextCerca)
         Me.Controls.Add(Me.Panel_SolucionsEmpresa)
@@ -1342,8 +1775,24 @@ Partial Class Extras
         Me.Panel_Ciberseguridad.ResumeLayout(False)
         Me.Panel_Ciberseguridad.PerformLayout()
         CType(Me.CercaEmpreses, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
+        Me.Panel10.ResumeLayout(False)
+        Me.Panel10.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1404,48 +1853,82 @@ Partial Class Extras
     Friend WithEvents TB_Empresa As TextBox
     Friend WithEvents Panel_SitioWeb As Panel
     Friend WithEvents TB_SitioWeb_Sub As TextBox
-    Friend WithEvents TB_SitioWeb_num As TextBox
     Friend WithEvents Label23 As Label
     Friend WithEvents Panel_ComercioElectronico As Panel
     Friend WithEvents TB_ComercioElectronico_Sub As TextBox
-    Friend WithEvents TB_ComercioElectronico_num As TextBox
     Friend WithEvents Label24 As Label
     Friend WithEvents Panel_BI As Panel
     Friend WithEvents Label28 As Label
     Friend WithEvents TB_BI_Sub As TextBox
-    Friend WithEvents TB_BI_num As TextBox
     Friend WithEvents Label25 As Label
     Friend WithEvents Panel_GestionProcesos As Panel
     Friend WithEvents TB_GestionProcesos_Sub As TextBox
-    Friend WithEvents TB_GestionProcesos_num As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents Panel_FacturaElectronica As Panel
     Friend WithEvents TB_FacturaElectronica_Sub As TextBox
-    Friend WithEvents TB_FacturaElectronica_num As TextBox
     Friend WithEvents Label27 As Label
     Friend WithEvents Panel_OficinaVirtual As Panel
     Friend WithEvents TB_OficinaVirtual_Sub As TextBox
-    Friend WithEvents TB_OficinaVirtual_num As TextBox
     Friend WithEvents Label30 As Label
     Friend WithEvents Panel_ComunicacionesSeguras As Panel
     Friend WithEvents TB_ComunicacionesSeguras_Sub As TextBox
-    Friend WithEvents TB_ComunicacionesSeguras_num As TextBox
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel_Ciberseguridad As Panel
     Friend WithEvents TB_Ciberseguridad_Sub As TextBox
-    Friend WithEvents TB_Ciberseguridad_num As TextBox
     Friend WithEvents Label32 As Label
     Friend WithEvents TotalEmpresa As TextBox
     Friend WithEvents CercaEmpreses As DataGridView
     Friend WithEvents TextCerca As TextBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TB_SitioWeb_Estat As TextBox
+    Friend WithEvents TB_ComercioElectronico_Estat As TextBox
+    Friend WithEvents TB_BI_Estat As TextBox
+    Friend WithEvents TB_GestionProcesos_Estat As TextBox
+    Friend WithEvents TB_FacturaElectronica_Estat As TextBox
+    Friend WithEvents TB_OficinaVirtual_Estat As TextBox
+    Friend WithEvents TB_ComunicacionesSeguras_Estat As TextBox
+    Friend WithEvents TB_Ciberseguridad_Estat As TextBox
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents TextBox9 As TextBox
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents TextBox10 As TextBox
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents TextBox12 As TextBox
     Friend WithEvents Label29 As Label
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents TextBox15 As TextBox
+    Friend WithEvents Label33 As Label
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents TextBox16 As TextBox
+    Friend WithEvents Label34 As Label
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents TextBox20 As TextBox
+    Friend WithEvents TextBox21 As TextBox
+    Friend WithEvents Label36 As Label
+    Friend WithEvents Panel7 As Panel
+    Friend WithEvents TextBox22 As TextBox
+    Friend WithEvents TextBox23 As TextBox
+    Friend WithEvents TextBox24 As TextBox
+    Friend WithEvents Label37 As Label
+    Friend WithEvents Panel8 As Panel
+    Friend WithEvents TextBox25 As TextBox
+    Friend WithEvents TextBox26 As TextBox
+    Friend WithEvents TextBox27 As TextBox
+    Friend WithEvents Label38 As Label
+    Friend WithEvents Panel9 As Panel
+    Friend WithEvents TextBox28 As TextBox
+    Friend WithEvents TextBox29 As TextBox
+    Friend WithEvents TextBox30 As TextBox
+    Friend WithEvents Label39 As Label
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents TextBox31 As TextBox
+    Friend WithEvents TextBox32 As TextBox
+    Friend WithEvents TextBox33 As TextBox
+    Friend WithEvents Label40 As Label
+    Friend WithEvents TextBox34 As TextBox
 End Class
