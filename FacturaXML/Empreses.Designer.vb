@@ -531,7 +531,7 @@ Partial Class Empreses
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.empresa
+        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.Icono_Empresa
         Me.PictureBox1.Location = New System.Drawing.Point(8, 15)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(69, 43)

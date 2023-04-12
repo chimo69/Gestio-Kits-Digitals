@@ -153,7 +153,7 @@ Partial Class Inici
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic_blanco
+        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.Logo_Telematic_blanco
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(108, 40)
@@ -376,7 +376,7 @@ Partial Class Inici
         Me.Btn_Empreses.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Empreses.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_Empreses.ForeColor = System.Drawing.Color.White
-        Me.Btn_Empreses.Image = Global.FacturaXML.My.Resources.Resources.icons8_planificación_de_recursos_empresariales_50
+        Me.Btn_Empreses.Image = Global.FacturaXML.My.Resources.Resources.Icono_Empresas
         Me.Btn_Empreses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_Empreses.Location = New System.Drawing.Point(3, 280)
         Me.Btn_Empreses.Name = "Btn_Empreses"
@@ -393,7 +393,7 @@ Partial Class Inici
         Me.Btn_config.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(99, Byte), Integer))
         Me.Btn_config.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
         Me.Btn_config.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_config.Image = Global.FacturaXML.My.Resources.Resources.icons8_opciones_para_ordenar_501
+        Me.Btn_config.Image = Global.FacturaXML.My.Resources.Resources.Icono_Ajustes
         Me.Btn_config.Location = New System.Drawing.Point(0, 506)
         Me.Btn_config.Name = "Btn_config"
         Me.Btn_config.Padding = New System.Windows.Forms.Padding(0, 0, 0, 5)
@@ -428,7 +428,7 @@ Partial Class Inici
         Me.Btn_informes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_informes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_informes.ForeColor = System.Drawing.Color.White
-        Me.Btn_informes.Image = Global.FacturaXML.My.Resources.Resources.icons8_gráfico_combinado_50
+        Me.Btn_informes.Image = Global.FacturaXML.My.Resources.Resources.Icono_Estadisticas
         Me.Btn_informes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_informes.Location = New System.Drawing.Point(3, 432)
         Me.Btn_informes.Name = "Btn_informes"
@@ -465,7 +465,7 @@ Partial Class Inici
         Me.Btn_informacio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_informacio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_informacio.ForeColor = System.Drawing.Color.White
-        Me.Btn_informacio.Image = Global.FacturaXML.My.Resources.Resources.icons8_información_50
+        Me.Btn_informacio.Image = Global.FacturaXML.My.Resources.Resources.Icono_Informacion
         Me.Btn_informacio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_informacio.Location = New System.Drawing.Point(3, 356)
         Me.Btn_informacio.Name = "Btn_informacio"
@@ -502,7 +502,7 @@ Partial Class Inici
         Me.Btn_llistat.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_llistat.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_llistat.ForeColor = System.Drawing.Color.White
-        Me.Btn_llistat.Image = Global.FacturaXML.My.Resources.Resources.icons8_lista_de_quehaceres_50
+        Me.Btn_llistat.Image = Global.FacturaXML.My.Resources.Resources.Icono_Informes
         Me.Btn_llistat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_llistat.Location = New System.Drawing.Point(3, 204)
         Me.Btn_llistat.Name = "Btn_llistat"
@@ -555,7 +555,7 @@ Partial Class Inici
         Me.Btn_factures.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_factures.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_factures.ForeColor = System.Drawing.Color.White
-        Me.Btn_factures.Image = Global.FacturaXML.My.Resources.Resources.icons8_documentos_50
+        Me.Btn_factures.Image = Global.FacturaXML.My.Resources.Resources.Icono_Facturas
         Me.Btn_factures.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_factures.Location = New System.Drawing.Point(3, 52)
         Me.Btn_factures.Name = "Btn_factures"
@@ -568,7 +568,7 @@ Partial Class Inici
         'btn_Menu
         '
         Me.btn_Menu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_Menu.Image = Global.FacturaXML.My.Resources.Resources.Mobile_Menu_Icon
+        Me.btn_Menu.Image = Global.FacturaXML.My.Resources.Resources.Icono_Abrir_Menu
         Me.btn_Menu.Location = New System.Drawing.Point(6, 2)
         Me.btn_Menu.Name = "btn_Menu"
         Me.btn_Menu.Size = New System.Drawing.Size(49, 33)
@@ -586,7 +586,7 @@ Partial Class Inici
         Me.Btn_gestio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_gestio.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Btn_gestio.ForeColor = System.Drawing.Color.White
-        Me.Btn_gestio.Image = Global.FacturaXML.My.Resources.Resources.icons8_la_mejora_de_procesos_50
+        Me.Btn_gestio.Image = Global.FacturaXML.My.Resources.Resources.Icono_Soluciones
         Me.Btn_gestio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Btn_gestio.Location = New System.Drawing.Point(3, 128)
         Me.Btn_gestio.Name = "Btn_gestio"

@@ -4,34 +4,14 @@ Public Class Extras
     Private DT_Extres, DT_ExtresGeneral, DT_EstatSolucions, DT_CercaEmpreses As New DataTable
     Private TotalEmpresaValor, TotalGeneralValor As Double
     Private TotalSolucionsValor As Integer
-    Private resultats As New List(Of Object())
+    Private resultatsPerEmpresa As New List(Of Object())
+    Private resultatsTotals As New List(Of Object())
 
     Private Sub Extras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim conexion As New SQLiteConnection(cadena)
 
         conexion.Open()
-
-        ' Columna de Soluciones general
-        Try
-            If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució',  count(Justificacions.id) as Quantitat, sum(Justificacions.Subvencio) as Subvencions from Solucions
-                                                 INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
-                                                 INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio                                                 
-                                                 GROUP by TipusSolucions.Nom", conexion)
-                DT_ExtresGeneral.Clear()
-                DA.Fill(DT_ExtresGeneral)
-
-                If DT_ExtresGeneral.Rows.Count > 0 Then
-                    DataExtresGeneral.DataSource = DT_ExtresGeneral
-                Else
-                    DataExtresGeneral.DataSource = Nothing
-                End If
-            End If
-
-        Catch ex As Exception
-            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
-        End Try
 
         ' Columna de quantitat de estats
         Try
@@ -73,6 +53,8 @@ Public Class Extras
 
         conexion.Close()
 
+        CarregaSolucionsTotes()
+
     End Sub
     Private Sub CarregaSolucionsEmpresa(idEmpresa As Integer)
         Dim conexion As New SQLiteConnection(cadena)
@@ -92,15 +74,14 @@ Public Class Extras
                 While reader.Read()
                     Dim values(reader.FieldCount - 1) As Object
                     reader.GetValues(values)
-                    resultats.Add(values)
+                    resultatsPerEmpresa.Add(values)
                 End While
 
                 reader.Close()
                 conexion.Close()
 
-                If resultats.Count > 0 Then
+                If resultatsPerEmpresa.Count > 0 Then
                     ompleDadesSolucionsEmpresa()
-                    TB_Empresa.Visible = True
                     Panel_SolucionsEmpresa.Visible = True
                 Else
                     Panel_SolucionsEmpresa.Visible = False
@@ -112,157 +93,209 @@ Public Class Extras
         End Try
         conexion.Close()
     End Sub
-    Private Sub ompleDadesSolucionsEmpresa()
+    Private Sub CarregaSolucionsTotes()
+        Dim conexion As New SQLiteConnection(cadena)
+        Try
+            conexion.Open()
 
-        Panel_SitioWeb.Visible = False
-        TB_SitioWeb_Sub.Clear()
+            If conexion.State = ConnectionState.Open Then
+                Dim query As String = "SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució',  count(Justificacions.id) as Quantitat, sum(Justificacions.Subvencio) as Subvencions from Solucions
+                                                 INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
+                                                 INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio                                                 
+                                                 GROUP by TipusSolucions.Nom"
+                Dim cmd As New SQLiteCommand(query, conexion)
+                Dim reader As SQLiteDataReader = cmd.ExecuteReader
 
-        Panel_ComercioElectronico.Visible = False
-        TB_ComercioElectronico_Sub.Clear()
+                While reader.Read()
+                    Dim values(reader.FieldCount - 1) As Object
+                    reader.GetValues(values)
+                    resultatsTotals.Add(values)
+                End While
 
-        Panel_BI.Visible = False
-        TB_BI_Sub.Clear()
+                reader.Close()
+                conexion.Close()
 
-        Panel_GestionProcesos.Visible = False
-        TB_GestionProcesos_Sub.Clear()
+                If resultatsTotals.Count > 0 Then
+                    ompleDadesSolucionsTotes()
+                End If
 
-        Panel_FacturaElectronica.Visible = False
+            End If
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
+        End Try
+        conexion.Close()
+    End Sub
+    Private Sub ompleDadesSolucionsTotes()
 
-        TB_FacturaElectronica_Sub.Clear()
+        Dim TotalEmpreses As Double = 0
 
-        Panel_OficinaVirtual.Visible = False
+        TB_SitioWeb_TotalNum.Text = "0"
+        TB_Ciberseguridad_TotalNum.Text = "0"
+        TB_BI_TotalNum.Text = "0"
+        TB_GestionProcesos_TotalNum.Text = "0"
+        TB_FacturaElectronica_TotalNum.Text = "0"
+        TB_OficinaVirtual_TotalNum.Text = "0"
+        TB_ComunicacionesSeguras_TotalNum.Text = "0"
+        TB_Ciberseguridad_TotalNum.Text = "0"
 
-        TB_OficinaVirtual_Sub.Clear()
-
-        Panel_ComunicacionesSeguras.Visible = False
-
-        TB_ComunicacionesSeguras_Sub.Clear()
-
-        Panel_Ciberseguridad.Visible = False
-
-        TB_Ciberseguridad_Sub.Clear()
-
-        For Each result As Object In resultats
+        For Each result As Object In resultatsTotals
+            TotalEmpreses += result(3)
             Select Case result(0)
                 Case 1
-                    TB_SitioWeb_Sub.Text = result(2).ToString + "€"
+                    TB_SitioWeb_TotalNum.Text = result(2)
+                    TB_SitioWeb_SubTotal.Text = result(3).ToString + " €"
+                Case 2
+                    TB_ComercioElectronico_TotalNum.Text = result(2)
+                    TB_ComercioElectronico_SubTotal.Text = result(3).ToString + " €"
+                Case 3, 4
+                Case 5
+                    TB_BI_TotalNum.Text = result(2)
+                    TB_BI_SubTotal.Text = result(3).ToString + " €"
+                Case 6
+                    TB_GestionProcesos_TotalNum.Text = result(2)
+                    TB_GestionProcesos_SubTotal.Text = result(3).ToString + " €"
+                Case 7
+                    TB_FacturaElectronica_TotalNum.Text = result(2)
+                    TB_FacturaElectronica_SubTotal.Text = result(3).ToString + " €"
+                Case 8
+                    TB_OficinaVirtual_TotalNum.Text = result(2)
+                    TB_OficinaVirtual_SubTotal.Text = result(3).ToString + " €"
+                Case 9
+                    TB_ComunicacionesSeguras_TotalNum.Text = result(2)
+                    TB_ComunicacionesSeguras_SubTotal.Text = result(3).ToString + " €"
+                Case 10
+                    TB_Ciberseguridad_TotalNum.Text = result(2)
+                    TB_Ciberseguridad_SubTotal.Text = result(3).ToString + " €"
+            End Select
+        Next
+        TB_SubTotal.Text = TotalEmpreses.ToString("C0", New Globalization.CultureInfo("es-ES"))
+        resultatsTotals.Clear()
+    End Sub
+
+    Private Sub ompleDadesSolucionsEmpresa()
+        Dim TotalEmpresaSeleccionada As Double = 0
+
+        Panel_SitioWeb.Visible = False
+        Panel_ComercioElectronico.Visible = False
+        Panel_BI.Visible = False
+        Panel_GestionProcesos.Visible = False
+        Panel_FacturaElectronica.Visible = False
+        Panel_OficinaVirtual.Visible = False
+        Panel_ComunicacionesSeguras.Visible = False
+        Panel_Ciberseguridad.Visible = False
+
+        TB_SitioWeb_Estat.BackColor = SystemColors.Control
+        TB_ComercioElectronico_Estat.BackColor = SystemColors.Control
+        TB_BI_Estat.BackColor = SystemColors.Control
+        TB_GestionProcesos_Estat.BackColor = SystemColors.Control
+        TB_FacturaElectronica_Estat.BackColor = SystemColors.Control
+        TB_FacturaElectronica_Estat.BackColor = SystemColors.Control
+        TB_OficinaVirtual_Estat.BackColor = SystemColors.Control
+        TB_OficinaVirtual_Estat.BackColor = SystemColors.Control
+        TB_Ciberseguridad_Estat.BackColor = SystemColors.Control
+
+        For Each result As Object In resultatsPerEmpresa
+
+            TotalEmpresaSeleccionada += result(2)
+
+            Select Case result(0)
+                Case 1
+                    TB_SitioWeb_Sub.Text = result(2).ToString + " €"
                     TB_SitioWeb_Estat.Text = result(3).ToString.ToUpper
                     Panel_SitioWeb.Visible = True
-                    If result(4) = 4 Or result(3) = 8 Then
+                    If result(4) = 4 Or result(4).ToString = 8 Then
                         TB_SitioWeb_Estat.BackColor = vermell
                     End If
-                    If result(4) = 6 Or result(5) = 8 Then
-                        TB_SitioWeb_Estat.BackColor = vermell
+                    If result(4) = 3 Or result(4) = 6 Then
+                        TB_SitioWeb_Estat.BackColor = verd
                     End If
 
                 Case 2
-                    TB_ComercioElectronico_Sub.Text = result(2).ToString + "€"
+                    TB_ComercioElectronico_Sub.Text = result(2).ToString + " €"
                     TB_ComercioElectronico_Estat.Text = result(3).ToString.ToUpper
                     Panel_ComercioElectronico.Visible = True
-                    If result(4) = 4 Or result(3) = 8 Then
+                    If result(4) = 4 Or result(4) = 8 Then
                         TB_ComercioElectronico_Estat.BackColor = vermell
                     End If
-                    If result(4) = 6 Or result(5) = 8 Then
-                        TB_ComercioElectronico_Estat.BackColor = vermell
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_ComercioElectronico_Estat.BackColor = verd
                     End If
                 Case 3
                 Case 4
                 Case 5
-                    TB_BI_Sub.Text = result(2).ToString + "€"
+                    TB_BI_Sub.Text = result(2).ToString + " €"
                     TB_BI_Estat.Text = result(3).ToString.ToUpper
                     Panel_BI.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_BI_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_BI_Estat.BackColor = verd
+                    End If
                 Case 6
 
-                    TB_GestionProcesos_Sub.Text = result(2).ToString + "€"
+                    TB_GestionProcesos_Sub.Text = result(2).ToString + " €"
                     TB_GestionProcesos_Estat.Text = result(3).ToString.ToUpper
                     Panel_GestionProcesos.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_GestionProcesos_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_GestionProcesos_Estat.BackColor = verd
+                    End If
                 Case 7
-
-                    TB_FacturaElectronica_Sub.Text = result(2).ToString + "€"
+                    TB_FacturaElectronica_Sub.Text = result(2).ToString + " €"
                     TB_FacturaElectronica_Estat.Text = result(3).ToString.ToUpper
                     Panel_FacturaElectronica.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_FacturaElectronica_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_FacturaElectronica_Estat.BackColor = verd
+                    End If
                 Case 8
-
-                    TB_OficinaVirtual_Sub.Text = result(2).ToString + "€"
+                    TB_OficinaVirtual_Sub.Text = result(2).ToString + " €"
                     TB_OficinaVirtual_Estat.Text = result(3).ToString.ToUpper
                     Panel_OficinaVirtual.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_OficinaVirtual_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_OficinaVirtual_Estat.BackColor = verd
+                    End If
                 Case 9
-                    TB_ComunicacionesSeguras_Sub.Text = result(2).ToString + "€"
+                    TB_ComunicacionesSeguras_Sub.Text = result(2).ToString + " €"
                     TB_ComunicacionesSeguras_Estat.Text = result(3).ToString.ToUpper
                     Panel_ComunicacionesSeguras.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_ComunicacionesSeguras_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_ComunicacionesSeguras_Estat.BackColor = verd
+                    End If
                 Case 10
-                    TB_Ciberseguridad_Sub.Text = result(2).ToString + "€"
+                    TB_Ciberseguridad_Sub.Text = result(2).ToString + " €"
                     TB_Ciberseguridad_Estat.Text = result(3).ToString.ToUpper
                     Panel_Ciberseguridad.Visible = True
+                    If result(4) = 4 Or result(4).ToString = 8 Then
+                        TB_Ciberseguridad_Estat.BackColor = vermell
+                    End If
+                    If result(4) = 5 Or result(4) = 6 Then
+                        TB_Ciberseguridad_Estat.BackColor = verd
+                    End If
             End Select
         Next
 
-        resultats.Clear()
+        TB_SubTotalEmpresa.Text = TotalEmpresaSeleccionada.ToString("C0", New Globalization.CultureInfo("es-ES"))
+        resultatsPerEmpresa.Clear()
     End Sub
 
-    Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtresGeneral.CellFormatting
+    Private Sub DataExtresGeneral_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs)
 
         Dim dgv As DataGridView = sender
         If dgv.RowCount > 0 Then
             dgv.Columns("Solució").Width = 150
         End If
-    End Sub
-
-    Private Sub DataExtres_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtres.DataBindingComplete
-        TotalEmpresaValor = 0
-
-        If DataExtres.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In DataExtres.Rows
-                If Fila IsNot Nothing Then
-                    TotalEmpresaValor += Fila.Cells("Subvencions").Value
-                End If
-            Next
-        End If
-
-        PB_SitioWeb.Value = 0
-        PB_ComercioElectronico.Value = 0
-        PB_RedesSociales.Value = 0
-        PB_Clientes.Value = 0
-        PB_BI.Value = 0
-        PB_GestionProcesos.Value = 0
-        PB_FacturaElectronica.Value = 0
-        PB_OficinaVirtual.Value = 0
-        PB_ComunicacionesSeguras.Value = 0
-        PB_Ciberseguridad.Value = 0
-
-        If DataExtres.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In DataExtres.Rows
-                If Fila IsNot Nothing Then
-                    Dim percentatge As Double = (Fila.Cells("Subvencions").Value * 100) / TotalEmpresaValor
-                    Select Case (Fila.Cells("id")).Value
-                        Case 1
-                            PB_SitioWeb.Value = percentatge
-                        Case 2
-                            PB_ComercioElectronico.Value = percentatge
-                        Case 3
-                            PB_RedesSociales.Value = percentatge
-                        Case 4
-                            PB_Clientes.Value = percentatge
-                        Case 5
-                            PB_BI.Value = percentatge
-                        Case 6
-                            PB_GestionProcesos.Value = percentatge
-                        Case 7
-                            PB_FacturaElectronica.Value = percentatge
-                        Case 8
-                            PB_OficinaVirtual.Value = percentatge
-                        Case 9
-                            PB_ComunicacionesSeguras.Value = percentatge
-                        Case 10
-                            PB_Ciberseguridad.Value = percentatge
-                    End Select
-                End If
-            Next
-        End If
-
-        TotalEmpresa.Text = Format(TotalEmpresaValor, "#,##0.00 €")
-        DataExtres.Columns("Id").Visible = False
-        DataExtres.ClearSelection()
     End Sub
 
     Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEstatSolucions.CellFormatting
@@ -274,11 +307,17 @@ Public Class Extras
         End If
     End Sub
 
-    Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataExtresGeneral.DataBindingComplete
+    Private Sub DataEstatSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEstatSolucions.DataBindingComplete
+        DataEstatSolucions.ClearSelection()
+    End Sub
+
+    Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
         Dim dgv As DataGridView = sender
+
         dgv.Columns("Id").Visible = False
         TotalSolucionsValor = 0
         TotalGeneralValor = 0
+
         If dgv.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In dgv.Rows
                 If Fila IsNot Nothing Then
@@ -287,107 +326,7 @@ Public Class Extras
                 End If
             Next
         End If
-
-        PB_SitioWebG.Value = 0
-        PB_ComercioElectronicoG.Value = 0
-        PB_RedesSocialesG.Value = 0
-        PB_ClientesG.Value = 0
-        PB_BIG.Value = 0
-        PB_ProcesosG.Value = 0
-        PB_FacturaElectronicaG.Value = 0
-        PB_OficinaVirtual.Value = 0
-        PB_ComunicacionesSeguras.Value = 0
-        PB_Ciberseguridad.Value = 0
-
-        If dgv.Rows.Count > 0 Then
-            For Each Fila As DataGridViewRow In dgv.Rows
-                If Fila IsNot Nothing Then
-                    Dim percentatge As Double = (Fila.Cells("Subvencions").Value * 100) / TotalGeneralValor
-                    Select Case (Fila.Cells("Id")).Value
-                        Case 1
-                            PB_SitioWebG.Value = percentatge
-                        Case 2
-                            PB_ComercioElectronicoG.Value = percentatge
-                        Case 3
-                            PB_RedesSocialesG.Value = percentatge
-                        Case 4
-                            PB_ClientesG.Value = percentatge
-                        Case 5
-                            PB_BIG.Value = percentatge
-                        Case 6
-                            PB_ProcesosG.Value = percentatge
-                        Case 7
-                            PB_FacturaElectronicaG.Value = percentatge
-                        Case 8
-                            PB_OficinaVirtualG.Value = percentatge
-                        Case 9
-                            PB_ComunicacionesSegurasG.Value = percentatge
-                        Case 10
-                            PB_CiberseguridadG.Value = percentatge
-                    End Select
-                End If
-            Next
-        End If
-
-
-        TotalGeneral.Text = Format(TotalGeneralValor, "#,##0.00 €")
-        DataExtresGeneral.ClearSelection()
-        TotalSolucions.Text = TotalSolucionsValor.ToString
     End Sub
-
-    Private Sub DataExtres_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataExtres.CellFormatting
-        Dim dgv As DataGridView = sender
-        dgv.Columns("Solució").Width = 150
-    End Sub
-
-    Private Sub CarregaDades(idEmpresa As Integer)
-        Dim conexion As New SQLiteConnection(cadena)
-        Try
-            conexion.Open()
-
-            If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusSolucions.id, TipusSolucions.Nom as 'Solució', sum(Justificacions.Subvencio) as Subvencions from Solucions
-                                                 INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.IdSolucio
-                                                 INNER JOIN Justificacions ON Solucions.Id=Justificacions.IdSolucio
-                                                 WHERE Solucions.idEmpresa=" & idEmpresa & " 
-                                                 GROUP by TipusSolucions.Nom", conexion)
-                DT_Extres.Clear()
-                DA.Fill(DT_Extres)
-
-                If DT_Extres.Rows.Count > 0 Then
-                    DataExtres.DataSource = DT_Extres
-                Else
-                    DataExtres.DataSource = Nothing
-                End If
-            End If
-        Catch ex As Exception
-            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
-        End Try
-        conexion.Close()
-
-    End Sub
-
-    Private Sub DataExtres_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtres.DataSourceChanged
-        Dim dgv As DataGridView = sender
-        If dgv.RowCount > 0 Then
-            dgv.Columns("Subvencions").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
-            dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            dgv.Columns("Subvencions").DefaultCellStyle.Format = "C"
-            dgv.Columns("Subvencions").DefaultCellStyle.FormatProvider = New System.Globalization.CultureInfo("es-ES")
-        End If
-
-    End Sub
-
-    Private Sub DataExtresGeneral_DataSourceChanged(sender As Object, e As EventArgs) Handles DataExtresGeneral.DataSourceChanged
-        Dim dgv As DataGridView = sender
-        If dgv.RowCount > 0 Then
-            dgv.Columns("Subvencions").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-            dgv.Columns("Subvencions").DefaultCellStyle.Format = "C"
-            dgv.Columns("Subvencions").DefaultCellStyle.FormatProvider = New System.Globalization.CultureInfo("es-ES")
-            dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-        End If
-    End Sub
-
 
     Private Sub TextCerca_TextChanged(sender As Object, e As EventArgs) Handles TextCerca.TextChanged
         Dim txtCerca As String = TextCerca.Text
@@ -416,27 +355,19 @@ Public Class Extras
 
     End Sub
 
-    Private Sub DataEstatSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEstatSolucions.DataBindingComplete
-        DataEstatSolucions.ClearSelection()
-    End Sub
-
-
-
     Private Sub CercaEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles CercaEmpreses.DataBindingComplete
         CercaEmpreses.Columns("Id").Visible = False
         If DT_CercaEmpreses.Rows.Count > 0 Then
-            TB_Empresa.Text = CercaEmpreses.Rows(0).Cells("Nom").Value
-            CarregaDades(CercaEmpreses.Rows(0).Cells("Id").Value)
+            TB_EmpresaSeleccionada.Text = CercaEmpreses.Rows(0).Cells("Nom").Value
+            CarregaSolucionsEmpresa(CercaEmpreses.Rows(0).Cells("Id").Value)
         End If
     End Sub
 
     Private Sub CercaEmpreses_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles CercaEmpreses.CellClick
         If e.RowIndex >= 0 Then
-            TB_Empresa.Text = CercaEmpreses.Rows(e.RowIndex).Cells("Nom").Value
-            'carregaDades(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+            TB_EmpresaSeleccionada.Text = CercaEmpreses.CurrentRow.Cells("Nom").Value
             CarregaSolucionsEmpresa(CercaEmpreses.Rows(e.RowIndex).Cells("Id").Value)
         End If
     End Sub
-
 
 End Class

@@ -55,6 +55,7 @@ Partial Class Preferencies
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.DiesAvisCaducat, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesosAprovacio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MesosContractacio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,6 +66,7 @@ Partial Class Preferencies
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -346,6 +348,7 @@ Partial Class Preferencies
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.PictureBox2)
         Me.TabPage3.Controls.Add(Me.Label12)
         Me.TabPage3.Controls.Add(Me.PictureBox1)
         Me.TabPage3.Location = New System.Drawing.Point(4, 24)
@@ -360,7 +363,7 @@ Partial Class Preferencies
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label12.Location = New System.Drawing.Point(75, 229)
+        Me.Label12.Location = New System.Drawing.Point(76, 257)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(267, 17)
         Me.Label12.TabIndex = 3
@@ -369,12 +372,22 @@ Partial Class Preferencies
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
-        Me.PictureBox1.Location = New System.Drawing.Point(58, 70)
+        Me.PictureBox1.Location = New System.Drawing.Point(56, 31)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(300, 137)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
+        Me.PictureBox2.Location = New System.Drawing.Point(56, 174)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(300, 50)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox2.TabIndex = 4
+        Me.PictureBox2.TabStop = False
         '
         'Preferencies
         '
@@ -403,6 +416,7 @@ Partial Class Preferencies
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -439,4 +453,5 @@ Partial Class Preferencies
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents Label12 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
 End Class

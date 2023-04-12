@@ -125,7 +125,7 @@ Public Class Empreses
     End Sub
 
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
-        Debug.Write("DataBindingComplete" & vbCrLf)
+        Debug.WriteLine("DataBindingComplete")
         Dim dgv As DataGridView = sender
 
             With dgv

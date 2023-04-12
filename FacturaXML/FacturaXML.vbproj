@@ -17,22 +17,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="Informacio.ca-ES.resx" />
     <EmbeddedResource Remove="Strings.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--<None Remove="Database1.mdf" />
-    <None Remove="Database1_log.ldf" />-->
-    <None Remove="Database1.mdf" />
-    <None Remove="Database1_log.ldf" />
-    <None Remove="dbo.Empreses.sql" />
-    <None Remove="dbo.InsertTipus.sql" />
-    <None Remove="dbo.Justificacions.sql" />
-    <None Remove="dbo.Solucions.sql" />
-    <None Remove="dbo.Table.sql" />
-    <None Remove="dbo.TipusSolucions.sql" />
-    <None Remove="Resources\logo_telematic_21.png" />
-    <None Remove="Resources\png-transparent-settings-gear-icon-gear-configuration-set-up-thumbnail.png" />
-  </ItemGroup>
+  </ItemGroup>  
 
   <ItemGroup>
     <COMReference Include="ADODB">
@@ -53,8 +38,7 @@
   <ItemGroup>
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
-    <Import Include="System.Windows.Forms" />
-    <Import Include="System.Windows.Forms.DataVisualization.Charting" />
+    <Import Include="System.Windows.Forms" />   
   </ItemGroup>
 
   <ItemGroup>
