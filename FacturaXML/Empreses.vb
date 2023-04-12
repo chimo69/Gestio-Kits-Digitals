@@ -75,9 +75,10 @@ Public Class Empreses
             columnaSeleccionada = DataEmpreses.Columns(e.ColumnIndex)
             columnaIndexSeleccionada = e.ColumnIndex
             TB_CampSeleccionat.Text = columnaSeleccionada.HeaderText
+            mostraInfoEmpresa(DataEmpreses.Rows(e.RowIndex).Cells("Id").Value)
         End If
 
-        mostraInfoEmpresa(DataEmpreses.Rows(e.RowIndex).Cells("Id").Value)
+
 
     End Sub
 
