@@ -1063,11 +1063,11 @@ Public Class Contractes
     End Sub
     Private Sub DataPagament_ValueChanged(sender As Object, e As EventArgs) Handles DataPagament.ValueChanged
 
-        If DataPagament.Value.Date < DataContracte.Value Or DataPagament.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
-            CB_DataPagamentIVA.ForeColor = Color.Red
-        Else
-            CB_DataPagamentIVA.ForeColor = Color.Black
-        End If
+        'If DataPagament.Value.Date < DataContracte.Value Or DataPagament.Value.Date > DataContracte.Value.AddMonths(My.Settings.MesosContractacio) Then
+        '    CB_DataPagamentIVA.ForeColor = Color.Red
+        'Else
+        '    CB_DataPagamentIVA.ForeColor = Color.Black
+        'End If
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
 
         MiraCaducitat()
