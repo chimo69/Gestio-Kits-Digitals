@@ -104,8 +104,8 @@ Partial Class Empreses
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.FlowLayoutPanel1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Panel1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1658, 877)
-        Me.SplitContainer1.SplitterDistance = 850
+        Me.SplitContainer1.Size = New System.Drawing.Size(1660, 877)
+        Me.SplitContainer1.SplitterDistance = 851
         Me.SplitContainer1.TabIndex = 9
         '
         'DataEmpreses
@@ -144,7 +144,7 @@ Partial Class Empreses
         Me.DataEmpreses.RowHeadersVisible = False
         Me.DataEmpreses.RowTemplate.Height = 25
         Me.DataEmpreses.ShowEditingIcon = False
-        Me.DataEmpreses.Size = New System.Drawing.Size(809, 841)
+        Me.DataEmpreses.Size = New System.Drawing.Size(810, 841)
         Me.DataEmpreses.TabIndex = 9
         '
         'Lbl_ProxCad
@@ -197,7 +197,7 @@ Partial Class Empreses
         Me.GroupBox1.Controls.Add(Me.DataSolucions)
         Me.GroupBox1.Location = New System.Drawing.Point(6, 178)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(786, 209)
+        Me.GroupBox1.Size = New System.Drawing.Size(787, 209)
         Me.GroupBox1.TabIndex = 26
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Subvencions"
@@ -213,8 +213,8 @@ Partial Class Empreses
         Me.Panel4.Controls.Add(Me.Label6)
         Me.Panel4.Controls.Add(Me.TB_BonusConsumit)
         Me.Panel4.Controls.Add(Me.Label4)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel4.Location = New System.Drawing.Point(384, 19)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.Location = New System.Drawing.Point(489, 19)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(295, 187)
         Me.Panel4.TabIndex = 109
@@ -339,7 +339,7 @@ Partial Class Empreses
         Me.DataSolucions.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.DataSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataSolucions.ShowEditingIcon = False
-        Me.DataSolucions.Size = New System.Drawing.Size(381, 187)
+        Me.DataSolucions.Size = New System.Drawing.Size(319, 187)
         Me.DataSolucions.TabIndex = 27
         Me.DataSolucions.Visible = False
         '
@@ -357,7 +357,7 @@ Partial Class Empreses
         Me.FlowLayoutPanel1.Controls.Add(Me.Lbl_Ciberseguridad)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 83)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(789, 89)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(790, 89)
         Me.FlowLayoutPanel1.TabIndex = 25
         '
         'Lbl_SitioWeb
@@ -480,14 +480,14 @@ Partial Class Empreses
         Me.Panel1.Controls.Add(Me.Lbl_Direccio)
         Me.Panel1.Location = New System.Drawing.Point(3, 6)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(789, 71)
+        Me.Panel1.Size = New System.Drawing.Size(790, 71)
         Me.Panel1.TabIndex = 16
         '
         'Label8
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(657, 5)
+        Me.Label8.Location = New System.Drawing.Point(658, 5)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(54, 15)
         Me.Label8.TabIndex = 20
@@ -498,7 +498,7 @@ Partial Class Empreses
         Me.TB_Segment.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_Segment.BackColor = System.Drawing.SystemColors.ControlLight
         Me.TB_Segment.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Segment.Location = New System.Drawing.Point(667, 20)
+        Me.TB_Segment.Location = New System.Drawing.Point(668, 20)
         Me.TB_Segment.Name = "TB_Segment"
         Me.TB_Segment.ReadOnly = True
         Me.TB_Segment.Size = New System.Drawing.Size(34, 43)
@@ -510,7 +510,7 @@ Partial Class Empreses
         '
         Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(712, 5)
+        Me.Label7.Location = New System.Drawing.Point(713, 5)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(64, 15)
         Me.Label7.TabIndex = 18
@@ -521,7 +521,7 @@ Partial Class Empreses
         Me.TB_NumeroSolucions.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TB_NumeroSolucions.BackColor = System.Drawing.SystemColors.ControlLight
         Me.TB_NumeroSolucions.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.TB_NumeroSolucions.Location = New System.Drawing.Point(727, 20)
+        Me.TB_NumeroSolucions.Location = New System.Drawing.Point(728, 20)
         Me.TB_NumeroSolucions.Name = "TB_NumeroSolucions"
         Me.TB_NumeroSolucions.ReadOnly = True
         Me.TB_NumeroSolucions.Size = New System.Drawing.Size(34, 43)
@@ -608,7 +608,7 @@ Partial Class Empreses
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1658, 48)
+        Me.Panel2.Size = New System.Drawing.Size(1660, 48)
         Me.Panel2.TabIndex = 10
         '
         'CB_MostrarContractes
@@ -627,14 +627,16 @@ Partial Class Empreses
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(0, 48)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1658, 877)
+        Me.Panel3.Size = New System.Drawing.Size(1660, 877)
         Me.Panel3.TabIndex = 11
         '
         'Empreses
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1658, 925)
+        Me.AutoScroll = True
+        Me.AutoScrollMinSize = New System.Drawing.Size(1450, 925)
+        Me.ClientSize = New System.Drawing.Size(1660, 925)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.DoubleBuffered = True

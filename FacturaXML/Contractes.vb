@@ -1367,27 +1367,33 @@ Public Class Contractes
         ProgressBar1.Value = row.Cells("%").Value
 
         If Not IsDBNull(row.Cells("Dia contracte").Value) Then
-            DataContracte.Text = Format(row.Cells("Dia contracte").Value, "Short Date")
-            CB_DataContracte.Checked = True
-        Else
-            DataContracte.Text = Date.Now
-            CB_DataContracte.Checked = False
+            If row.Cells("Dia contracte").Value <> "" Then
+                DataContracte.Text = Format(row.Cells("Dia contracte").Value, "Short Date")
+                CB_DataContracte.Checked = True
+            Else
+                DataContracte.Text = Date.Now
+                CB_DataContracte.Checked = False
+            End If
         End If
 
         If Not IsDBNull(row.Cells("Dia factura").Value) Then
-            DataFactura.Text = Format(row.Cells("Dia factura").Value, "Short Date")
-            CB_DataFactura.Checked = True
-        Else
-            DataFactura.Text = Date.Now
-            CB_DataFactura.Checked = False
+            If row.Cells("Dia factura").Value <> "" Then
+                DataFactura.Text = Format(row.Cells("Dia factura").Value, "Short Date")
+                CB_DataFactura.Checked = True
+            Else
+                DataFactura.Text = Date.Now
+                CB_DataFactura.Checked = False
+            End If
         End If
 
         If Not IsDBNull(row.Cells("DataPagament").Value) Then
-            DataPagament.Text = Format(row.Cells("DataPagament").Value, "Short Date")
-            CB_DataPagamentIVA.Checked = True
-        Else
-            DataPagament.Text = Date.Now
-            CB_DataPagamentIVA.Checked = False
+            If row.Cells("DataPagament").Value <> "" Then
+                DataPagament.Text = Format(row.Cells("DataPagament").Value, "Short Date")
+                CB_DataPagamentIVA.Checked = True
+            Else
+                DataPagament.Text = Date.Now
+                CB_DataPagamentIVA.Checked = False
+            End If
         End If
 
         InfoSubvencioReal.Text = row.Cells("Subvencio").Value.ToString
