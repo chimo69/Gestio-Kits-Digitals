@@ -6,32 +6,13 @@ Public Class Extras
     Private TotalSolucionsValor As Integer
     Private resultatsPerEmpresa As New List(Of Object())
     Private resultatsTotals As New List(Of Object())
+    Private resultatsEstatsTotals As New List(Of Object())
 
     Private Sub Extras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim conexion As New SQLiteConnection(cadena)
 
         conexion.Open()
-
-        ' Columna de quantitat de estats
-        Try
-            If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT TipusEstats.NomEstat as 'Estat', count(Justificacions.Estat) as Quantitat from Justificacions                                               
-                                                 INNER JOIN TipusEstats ON TipusEstats.Id=Justificacions.Estat                                                 
-                                                 GROUP by Justificacions.Estat", conexion)
-                DT_EstatSolucions.Clear()
-                DA.Fill(DT_EstatSolucions)
-
-                If DT_EstatSolucions.Rows.Count > 0 Then
-                    DataEstatSolucions.DataSource = DT_EstatSolucions
-                Else
-                    DataEstatSolucions.DataSource = Nothing
-                End If
-            End If
-
-        Catch ex As Exception
-            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
-        End Try
 
         ' Columna Empreses
         Try
@@ -54,6 +35,7 @@ Public Class Extras
         conexion.Close()
 
         CarregaSolucionsTotes()
+        CarregaEstatsTotes()
 
     End Sub
     Private Sub CarregaSolucionsEmpresa(idEmpresa As Integer)
@@ -125,6 +107,38 @@ Public Class Extras
         End Try
         conexion.Close()
     End Sub
+
+    Private Sub CarregaEstatsTotes()
+        Dim conexion As New SQLiteConnection(cadena)
+        Try
+            conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+                Dim query As String = "SELECT TipusEstats.Id, count(Justificacions.Estat) from Justificacions                                               
+                                                 INNER JOIN TipusEstats ON TipusEstats.Id=Justificacions.Estat                                                 
+                                                 GROUP by Justificacions.Estat"
+                Dim cmd As New SQLiteCommand(query, conexion)
+                Dim reader As SQLiteDataReader = cmd.ExecuteReader
+
+                While reader.Read()
+                    Dim values(reader.FieldCount - 1) As Object
+                    reader.GetValues(values)
+                    resultatsEstatsTotals.Add(values)
+                End While
+
+                reader.Close()
+                conexion.Close()
+
+                If resultatsEstatsTotals.Count > 0 Then
+                    ompleDadesSolucionsEstatTotes()
+                End If
+
+            End If
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
+        End Try
+        conexion.Close()
+    End Sub
     Private Sub ompleDadesSolucionsTotes()
 
         Dim TotalEmpreses As Double = 0
@@ -170,6 +184,43 @@ Public Class Extras
         Next
         TB_SubTotal.Text = TotalEmpreses.ToString("C0", New Globalization.CultureInfo("es-ES"))
         resultatsTotals.Clear()
+    End Sub
+    Private Sub ompleDadesSolucionsEstatTotes()
+
+        TB_Preparant.Text = "0"
+        TB_Enviada.Text = "0"
+        TB_Esborrany.Text = "0"
+        TB_Presentada.Text = "0"
+        TB_EsmenaObert.Text = "0"
+        TB_ValidadaPagament.Text = "0"
+        TB_Pagada.Text = "0"
+        TB_FinalitzadaEsmena.Text = "0"
+        TB_EsmenaIncorrecta.Text = "0"
+
+        For Each result As Object In resultatsEstatsTotals
+            Debug.WriteLine(result(0) & " - " & result(1))
+            Select Case result(0)
+                Case 0
+                    TB_Preparant.Text = result(1)
+                Case 1
+                    TB_Enviada.Text = result(1)
+                Case 2
+                    TB_Esborrany.Text = result(1)
+                Case 3
+                    TB_Presentada.Text = result(1)
+                Case 4
+                    TB_EsmenaObert.Text = result(1)
+                Case 5
+                    TB_ValidadaPagament.Text = result(1)
+                Case 6
+                    TB_Pagada.Text = result(1)
+                Case 7
+                    TB_FinalitzadaEsmena.Text = result(1)
+                Case 8
+                    TB_EsmenaIncorrecta.Text = result(1)
+            End Select
+        Next
+
     End Sub
 
     Private Sub ompleDadesSolucionsEmpresa()
@@ -298,17 +349,13 @@ Public Class Extras
         End If
     End Sub
 
-    Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataEstatSolucions.CellFormatting
+    Private Sub DataEstatSolucions_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs)
         Dim dgv As DataGridView = sender
         If dgv.RowCount > 0 Then
             dgv.Columns("Estat").Width = 150
             dgv.Columns("Quantitat").HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter
             dgv.Columns("Quantitat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End If
-    End Sub
-
-    Private Sub DataEstatSolucions_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEstatSolucions.DataBindingComplete
-        DataEstatSolucions.ClearSelection()
     End Sub
 
     Private Sub DataExtresGeneral_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)

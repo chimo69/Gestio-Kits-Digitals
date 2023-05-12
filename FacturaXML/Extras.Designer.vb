@@ -24,10 +24,7 @@ Partial Class Extras
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Extras))
-        Me.DataEstatSolucions = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel_SolucionsEmpresa = New System.Windows.Forms.FlowLayoutPanel()
@@ -109,7 +106,35 @@ Partial Class Extras
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel11 = New System.Windows.Forms.Panel()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        CType(Me.DataEstatSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.TB_Preparant = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel13 = New System.Windows.Forms.Panel()
+        Me.TB_Enviada = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TB_Esborrany = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.TB_Presentada = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.TB_EsmenaObert = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.TB_ValidadaPagament = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.TB_Pagada = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Panel19 = New System.Windows.Forms.Panel()
+        Me.TB_FinalitzadaEsmena = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.TB_EsmenaIncorrecta = New System.Windows.Forms.TextBox()
+        Me.TB = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel_SolucionsEmpresa.SuspendLayout()
         Me.Panel_SitioWeb.SuspendLayout()
@@ -133,45 +158,17 @@ Partial Class Extras
         Me.Panel1.SuspendLayout()
         Me.Panel11.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FlowLayoutPanel2.SuspendLayout()
+        Me.Panel12.SuspendLayout()
+        Me.Panel13.SuspendLayout()
+        Me.Panel14.SuspendLayout()
+        Me.Panel15.SuspendLayout()
+        Me.Panel16.SuspendLayout()
+        Me.Panel17.SuspendLayout()
+        Me.Panel18.SuspendLayout()
+        Me.Panel19.SuspendLayout()
+        Me.Panel20.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'DataEstatSolucions
-        '
-        Me.DataEstatSolucions.AllowUserToAddRows = False
-        Me.DataEstatSolucions.AllowUserToDeleteRows = False
-        Me.DataEstatSolucions.AllowUserToResizeColumns = False
-        Me.DataEstatSolucions.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataEstatSolucions.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataEstatSolucions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataEstatSolucions.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.DataEstatSolucions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataEstatSolucions.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.DataEstatSolucions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataEstatSolucions.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataEstatSolucions.Enabled = False
-        Me.DataEstatSolucions.EnableHeadersVisualStyles = False
-        Me.DataEstatSolucions.Location = New System.Drawing.Point(888, 70)
-        Me.DataEstatSolucions.MultiSelect = False
-        Me.DataEstatSolucions.Name = "DataEstatSolucions"
-        Me.DataEstatSolucions.ReadOnly = True
-        Me.DataEstatSolucions.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DataEstatSolucions.RowHeadersVisible = False
-        Me.DataEstatSolucions.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataEstatSolucions.RowTemplate.Height = 25
-        Me.DataEstatSolucions.ScrollBars = System.Windows.Forms.ScrollBars.None
-        Me.DataEstatSolucions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataEstatSolucions.ShowEditingIcon = False
-        Me.DataEstatSolucions.Size = New System.Drawing.Size(248, 251)
-        Me.DataEstatSolucions.TabIndex = 6
-        Me.DataEstatSolucions.TabStop = False
         '
         'Panel2
         '
@@ -180,7 +177,7 @@ Partial Class Extras
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Location = New System.Drawing.Point(888, 41)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(248, 23)
+        Me.Panel2.Size = New System.Drawing.Size(234, 23)
         Me.Panel2.TabIndex = 4
         '
         'Label2
@@ -610,23 +607,23 @@ Partial Class Extras
         Me.CercaEmpreses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.CercaEmpreses.BackgroundColor = System.Drawing.SystemColors.Control
         Me.CercaEmpreses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.CercaEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.CercaEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.CercaEmpreses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CercaEmpreses.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.CercaEmpreses.DefaultCellStyle = DataGridViewCellStyle2
         Me.CercaEmpreses.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.CercaEmpreses.EnableHeadersVisualStyles = False
         Me.CercaEmpreses.Location = New System.Drawing.Point(12, 41)
@@ -1095,19 +1092,329 @@ Partial Class Extras
         Me.Panel11.Controls.Add(Me.Label42)
         Me.Panel11.Location = New System.Drawing.Point(630, 12)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(506, 23)
+        Me.Panel11.Size = New System.Drawing.Size(492, 23)
         Me.Panel11.TabIndex = 63
         '
         'PictureBox3
         '
         Me.PictureBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox3.Image = Global.FacturaXML.My.Resources.Resources.Icono_Estadisticas_2
-        Me.PictureBox3.Location = New System.Drawing.Point(1168, 10)
+        Me.PictureBox3.Location = New System.Drawing.Point(1459, 10)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(111, 75)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox3.TabIndex = 64
         Me.PictureBox3.TabStop = False
+        '
+        'FlowLayoutPanel2
+        '
+        Me.FlowLayoutPanel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel12)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel13)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel14)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel15)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel16)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel17)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel18)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel19)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Panel20)
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(888, 70)
+        Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
+        Me.FlowLayoutPanel2.Padding = New System.Windows.Forms.Padding(5)
+        Me.FlowLayoutPanel2.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(234, 656)
+        Me.FlowLayoutPanel2.TabIndex = 65
+        '
+        'Panel12
+        '
+        Me.Panel12.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel12.Controls.Add(Me.TB_Preparant)
+        Me.Panel12.Controls.Add(Me.Label1)
+        Me.Panel12.Location = New System.Drawing.Point(8, 8)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(100, 100)
+        Me.Panel12.TabIndex = 0
+        '
+        'TB_Preparant
+        '
+        Me.TB_Preparant.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_Preparant.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Preparant.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Preparant.Location = New System.Drawing.Point(3, 3)
+        Me.TB_Preparant.Name = "TB_Preparant"
+        Me.TB_Preparant.Size = New System.Drawing.Size(94, 43)
+        Me.TB_Preparant.TabIndex = 1
+        Me.TB_Preparant.Text = "0"
+        Me.TB_Preparant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(0, 59)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(97, 15)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Preparant" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "documentació"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel13
+        '
+        Me.Panel13.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel13.Controls.Add(Me.TB_Enviada)
+        Me.Panel13.Controls.Add(Me.Label3)
+        Me.Panel13.Location = New System.Drawing.Point(114, 8)
+        Me.Panel13.Name = "Panel13"
+        Me.Panel13.Size = New System.Drawing.Size(100, 100)
+        Me.Panel13.TabIndex = 1
+        '
+        'TB_Enviada
+        '
+        Me.TB_Enviada.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_Enviada.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Enviada.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Enviada.Location = New System.Drawing.Point(3, 1)
+        Me.TB_Enviada.Name = "TB_Enviada"
+        Me.TB_Enviada.Size = New System.Drawing.Size(94, 43)
+        Me.TB_Enviada.TabIndex = 1
+        Me.TB_Enviada.Text = "0"
+        Me.TB_Enviada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label3
+        '
+        Me.Label3.Location = New System.Drawing.Point(0, 51)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(100, 30)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Enviada"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel14
+        '
+        Me.Panel14.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel14.Controls.Add(Me.Label4)
+        Me.Panel14.Controls.Add(Me.TB_Esborrany)
+        Me.Panel14.Controls.Add(Me.Label5)
+        Me.Panel14.Location = New System.Drawing.Point(8, 114)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(100, 100)
+        Me.Panel14.TabIndex = 2
+        '
+        'Label4
+        '
+        Me.Label4.Location = New System.Drawing.Point(17, 52)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(68, 30)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "Esborrany"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TB_Esborrany
+        '
+        Me.TB_Esborrany.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_Esborrany.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Esborrany.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Esborrany.Location = New System.Drawing.Point(3, 1)
+        Me.TB_Esborrany.Name = "TB_Esborrany"
+        Me.TB_Esborrany.Size = New System.Drawing.Size(94, 43)
+        Me.TB_Esborrany.TabIndex = 1
+        Me.TB_Esborrany.Text = "0"
+        Me.TB_Esborrany.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(22, 49)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(0, 15)
+        Me.Label5.TabIndex = 0
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel15
+        '
+        Me.Panel15.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel15.Controls.Add(Me.TB_Presentada)
+        Me.Panel15.Controls.Add(Me.Label6)
+        Me.Panel15.Location = New System.Drawing.Point(114, 114)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(100, 100)
+        Me.Panel15.TabIndex = 3
+        '
+        'TB_Presentada
+        '
+        Me.TB_Presentada.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_Presentada.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Presentada.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Presentada.Location = New System.Drawing.Point(3, 1)
+        Me.TB_Presentada.Name = "TB_Presentada"
+        Me.TB_Presentada.Size = New System.Drawing.Size(94, 43)
+        Me.TB_Presentada.TabIndex = 1
+        Me.TB_Presentada.Text = "0"
+        Me.TB_Presentada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label6
+        '
+        Me.Label6.Location = New System.Drawing.Point(0, 53)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(100, 30)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "Presentada"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel16
+        '
+        Me.Panel16.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel16.Controls.Add(Me.TB_EsmenaObert)
+        Me.Panel16.Controls.Add(Me.Label7)
+        Me.Panel16.Location = New System.Drawing.Point(8, 220)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(100, 100)
+        Me.Panel16.TabIndex = 4
+        '
+        'TB_EsmenaObert
+        '
+        Me.TB_EsmenaObert.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_EsmenaObert.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_EsmenaObert.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_EsmenaObert.Location = New System.Drawing.Point(3, 1)
+        Me.TB_EsmenaObert.Name = "TB_EsmenaObert"
+        Me.TB_EsmenaObert.Size = New System.Drawing.Size(94, 43)
+        Me.TB_EsmenaObert.TabIndex = 1
+        Me.TB_EsmenaObert.Text = "0"
+        Me.TB_EsmenaObert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label7
+        '
+        Me.Label7.Location = New System.Drawing.Point(17, 44)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(65, 49)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Termini d'" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "esmena " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "obert"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel17
+        '
+        Me.Panel17.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel17.Controls.Add(Me.TB_ValidadaPagament)
+        Me.Panel17.Controls.Add(Me.Label8)
+        Me.Panel17.Location = New System.Drawing.Point(114, 220)
+        Me.Panel17.Name = "Panel17"
+        Me.Panel17.Size = New System.Drawing.Size(100, 100)
+        Me.Panel17.TabIndex = 7
+        '
+        'TB_ValidadaPagament
+        '
+        Me.TB_ValidadaPagament.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_ValidadaPagament.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_ValidadaPagament.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_ValidadaPagament.Location = New System.Drawing.Point(3, 1)
+        Me.TB_ValidadaPagament.Name = "TB_ValidadaPagament"
+        Me.TB_ValidadaPagament.Size = New System.Drawing.Size(94, 43)
+        Me.TB_ValidadaPagament.TabIndex = 1
+        Me.TB_ValidadaPagament.Text = "0"
+        Me.TB_ValidadaPagament.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label8
+        '
+        Me.Label8.Location = New System.Drawing.Point(0, 50)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(100, 30)
+        Me.Label8.TabIndex = 0
+        Me.Label8.Text = "Validada per" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "pagament"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel18
+        '
+        Me.Panel18.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel18.Controls.Add(Me.TB_Pagada)
+        Me.Panel18.Controls.Add(Me.Label9)
+        Me.Panel18.Location = New System.Drawing.Point(8, 326)
+        Me.Panel18.Name = "Panel18"
+        Me.Panel18.Size = New System.Drawing.Size(100, 100)
+        Me.Panel18.TabIndex = 8
+        '
+        'TB_Pagada
+        '
+        Me.TB_Pagada.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_Pagada.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_Pagada.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_Pagada.Location = New System.Drawing.Point(3, 1)
+        Me.TB_Pagada.Name = "TB_Pagada"
+        Me.TB_Pagada.Size = New System.Drawing.Size(94, 43)
+        Me.TB_Pagada.TabIndex = 1
+        Me.TB_Pagada.Text = "0"
+        Me.TB_Pagada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(2, 50)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(96, 30)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "Pagada"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel19
+        '
+        Me.Panel19.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel19.Controls.Add(Me.TB_FinalitzadaEsmena)
+        Me.Panel19.Controls.Add(Me.Label10)
+        Me.Panel19.Location = New System.Drawing.Point(114, 326)
+        Me.Panel19.Name = "Panel19"
+        Me.Panel19.Size = New System.Drawing.Size(100, 100)
+        Me.Panel19.TabIndex = 9
+        '
+        'TB_FinalitzadaEsmena
+        '
+        Me.TB_FinalitzadaEsmena.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_FinalitzadaEsmena.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_FinalitzadaEsmena.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_FinalitzadaEsmena.Location = New System.Drawing.Point(3, 3)
+        Me.TB_FinalitzadaEsmena.Name = "TB_FinalitzadaEsmena"
+        Me.TB_FinalitzadaEsmena.Size = New System.Drawing.Size(94, 43)
+        Me.TB_FinalitzadaEsmena.TabIndex = 1
+        Me.TB_FinalitzadaEsmena.Text = "0"
+        Me.TB_FinalitzadaEsmena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label10
+        '
+        Me.Label10.Location = New System.Drawing.Point(0, 48)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(100, 46)
+        Me.Label10.TabIndex = 0
+        Me.Label10.Text = "Finalitzat" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "termini d'" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "esmena"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Panel20
+        '
+        Me.Panel20.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Panel20.Controls.Add(Me.TB_EsmenaIncorrecta)
+        Me.Panel20.Controls.Add(Me.TB)
+        Me.Panel20.Location = New System.Drawing.Point(8, 432)
+        Me.Panel20.Name = "Panel20"
+        Me.Panel20.Size = New System.Drawing.Size(100, 100)
+        Me.Panel20.TabIndex = 10
+        '
+        'TB_EsmenaIncorrecta
+        '
+        Me.TB_EsmenaIncorrecta.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.TB_EsmenaIncorrecta.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TB_EsmenaIncorrecta.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_EsmenaIncorrecta.Location = New System.Drawing.Point(3, 3)
+        Me.TB_EsmenaIncorrecta.Name = "TB_EsmenaIncorrecta"
+        Me.TB_EsmenaIncorrecta.Size = New System.Drawing.Size(94, 43)
+        Me.TB_EsmenaIncorrecta.TabIndex = 1
+        Me.TB_EsmenaIncorrecta.Text = "0"
+        Me.TB_EsmenaIncorrecta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TB
+        '
+        Me.TB.Location = New System.Drawing.Point(0, 48)
+        Me.TB.Name = "TB"
+        Me.TB.Size = New System.Drawing.Size(100, 46)
+        Me.TB.TabIndex = 0
+        Me.TB.Text = "Esmena" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Incorrecta"
+        Me.TB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Extras
         '
@@ -1116,17 +1423,17 @@ Partial Class Extras
         Me.AutoScroll = True
         Me.AutoScrollMinSize = New System.Drawing.Size(1167, 738)
         Me.ClientSize = New System.Drawing.Size(1291, 738)
+        Me.Controls.Add(Me.FlowLayoutPanel2)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.Panel11)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TB_EmpresaSeleccionada)
         Me.Controls.Add(Me.FlowLayoutPanel1)
-        Me.Controls.Add(Me.CercaEmpreses)
         Me.Controls.Add(Me.TextCerca)
         Me.Controls.Add(Me.Panel_SolucionsEmpresa)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.DataEstatSolucions)
+        Me.Controls.Add(Me.CercaEmpreses)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1134,7 +1441,6 @@ Partial Class Extras
         Me.Name = "Extras"
         Me.ShowInTaskbar = False
         Me.Text = "Informes"
-        CType(Me.DataEstatSolucions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel_SolucionsEmpresa.ResumeLayout(False)
@@ -1179,11 +1485,29 @@ Partial Class Extras
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel2.ResumeLayout(False)
+        Me.Panel12.ResumeLayout(False)
+        Me.Panel12.PerformLayout()
+        Me.Panel13.ResumeLayout(False)
+        Me.Panel13.PerformLayout()
+        Me.Panel14.ResumeLayout(False)
+        Me.Panel14.PerformLayout()
+        Me.Panel15.ResumeLayout(False)
+        Me.Panel15.PerformLayout()
+        Me.Panel16.ResumeLayout(False)
+        Me.Panel16.PerformLayout()
+        Me.Panel17.ResumeLayout(False)
+        Me.Panel17.PerformLayout()
+        Me.Panel18.ResumeLayout(False)
+        Me.Panel18.PerformLayout()
+        Me.Panel19.ResumeLayout(False)
+        Me.Panel19.PerformLayout()
+        Me.Panel20.ResumeLayout(False)
+        Me.Panel20.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DataEstatSolucions As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents Panel_SolucionsEmpresa As FlowLayoutPanel
@@ -1265,4 +1589,33 @@ Partial Class Extras
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel11 As Panel
     Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
+    Friend WithEvents Panel12 As Panel
+    Friend WithEvents TB_Preparant As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Panel13 As Panel
+    Friend WithEvents TB_Enviada As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Panel14 As Panel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TB_Esborrany As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Panel15 As Panel
+    Friend WithEvents TB_Presentada As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Panel16 As Panel
+    Friend WithEvents TB_EsmenaObert As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Panel17 As Panel
+    Friend WithEvents TB_ValidadaPagament As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Panel18 As Panel
+    Friend WithEvents TB_Pagada As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Panel19 As Panel
+    Friend WithEvents TB_FinalitzadaEsmena As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Panel20 As Panel
+    Friend WithEvents TB_EsmenaIncorrecta As TextBox
+    Friend WithEvents TB As Label
 End Class

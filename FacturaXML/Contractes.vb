@@ -403,6 +403,7 @@ Public Class Contractes
     Private Sub OmpleSolucions(id As Integer)
 
         Dim conexion As New SQLiteConnection(cadena)
+        Dim concedit, consumit As Double
 
         Try
 
@@ -477,6 +478,35 @@ Public Class Contractes
 
             End If
 
+            'Using conexion As New SQLiteConnection(cadena)
+
+            'conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+                Dim Sql As String = "SELECT sum(Justificacions.Subvencio) as Consumit                                          
+                                          FROM Solucions
+                                          INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
+                                          INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
+                                          WHERE idEmpresa=" & id
+
+                Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
+                    Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+
+                    If lector.Read Then
+                        If Not IsDBNull(lector.GetValue("Consumit")) Then
+                            consumit = lector.GetValue("Consumit")
+                        Else
+                            consumit = 0
+                        End If
+
+                    concedit = TB_ImportBono.Text
+                    TB_BonusRestant.Text = (concedit - consumit).ToString
+                End If
+                    lector.Close()
+
+                End If
+
+
         Catch ex As Exception
             MsgBox("No s'ha pogut accedir a la base de dades" & ex.Message, vbCritical, "Error")
         End Try
@@ -520,6 +550,7 @@ Public Class Contractes
         infoMax.Visible = False
         InfoVariable.Visible = False
         InfoVariableNum.Visible = False
+        InfoVariableNum.Value = 1
         CB_PrimerPagament.Checked = False
         CB_SegonPagament.Checked = False
         EstaLaSolucioSeleccionada(False)
@@ -864,9 +895,10 @@ Public Class Contractes
         End If
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
-    Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
+    Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click, DataEmpreses.KeyDown
         MostraDadesEmpresaSeleccionada()
     End Sub
+
     Private Sub MostraDadesEmpresaSeleccionada()
         If DataEmpreses.SelectedRows.Count > 0 Then
             teContractes = DataEmpreses.CurrentRow.Cells("Contractes").Value
@@ -1238,7 +1270,7 @@ Public Class Contractes
     End Sub
 
     'Modifica els camps quan la selecció de solucio canvia
-    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
+    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click, DataSolucions.KeyDown
         If DataSolucions.SelectedRows.Count > 0 Then
             OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
             MiraCaducitat()
@@ -1267,6 +1299,8 @@ Public Class Contractes
         EstaLaEmpresaSeleccionada(False)
         EstaLaSolucioSeleccionada(False)
     End Sub
+
+
 
     Private Sub CB_DataConcessio_Click(sender As Object, e As EventArgs) Handles CB_DataConcessio.Click
         If CB_DataConcessio.Checked = True Then
@@ -1451,6 +1485,7 @@ Public Class Contractes
         EstaLaSolucioSeleccionada(True)
     End Sub
     Private Sub GestionaInfo(i As Integer)
+        InfoVariableNum.Value = 1
         Select Case (i)
             Case 8
                 InfoVariable.Visible = True

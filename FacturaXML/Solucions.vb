@@ -3,8 +3,9 @@
 Public Class Solucions
 
     Dim DT_Llistat As New DataTable
-    Dim SolucioFiltre As Integer
+    Dim SolucioFiltre, SolucioFiltreEstat As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
+    Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta As Integer
     Public Sub New()
         MyBase.New
         MyBase.DoubleBuffered = True
@@ -13,6 +14,7 @@ Public Class Solucions
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         SolucioFiltre = 0
+        SolucioFiltreEstat = -1
         CB_JaPresentades.Checked = My.Settings.MostrarLlistatAprovades
         CarregaLlistat()
 
@@ -77,6 +79,7 @@ Public Class Solucions
             .Columns("IdSolucio").Visible = False
             .Columns("IdEmpresa").Visible = False
             .Columns("IdTipusSolucio").Visible = False
+            .Columns("IdEstat").Visible = False
             .Columns("Justificat").Visible = False
             .Columns("TWord").Visible = False
             .Columns("TComp. Pagament").Visible = False
@@ -117,6 +120,18 @@ Public Class Solucions
             Ciberseguridad = 0
         End If
 
+        If SolucioFiltreEstat = -1 Then
+            Preparant = 0
+            Enviada = 0
+            Esborrany = 0
+            Presentada = 0
+            EsmenaObert = 0
+            ValidadaPagament = 0
+            Pagada = 0
+            FinalitzatEsmena = 0
+            EsmenaIncorrecta = 0
+        End If
+
         If dgv.Rows.Count > 0 Then
             For Each Fila As DataGridViewRow In dgv.Rows
 
@@ -154,6 +169,38 @@ Public Class Solucions
                         End If
                     End If
                 End If
+
+                If SolucioFiltreEstat = -1 Then
+                    If IsNumeric(Fila.Cells("IdEstat").Value) Then
+                        If Fila.Cells("IdEstat").Value = 0 Then
+                            Preparant += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 1 Then
+                            Enviada += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 2 Then
+                            Esborrany += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 3 Then
+                            Presentada += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 4 Then
+                            EsmenaObert += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 5 Then
+                            ValidadaPagament += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 6 Then
+                            Pagada += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 7 Then
+                            FinalitzatEsmena += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 8 Then
+                            EsmenaIncorrecta += 1
+                        End If
+                    End If
+                End If
             Next
         End If
 
@@ -163,16 +210,16 @@ Public Class Solucions
         If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
 
             If e.Value = 1 Then
-                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
         If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
             If e.Value <> "" Then
-                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.verificado_petit
+                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
             Else
-                dgv.Item(e.ColumnIndex - 20, e.RowIndex).Value = My.Resources.sin_verificar_petit
+                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
             End If
         End If
 
@@ -274,10 +321,15 @@ Public Class Solucions
     Public Sub CarregaLlistat()
         Try
             Dim SqlFiltre As String = ""
+            Dim SqlFiltreStats As String = ""
             Dim SqlJustificats As String = ""
 
             If SolucioFiltre <> 0 Then
                 SqlFiltre = "AND (Solucions.idSolucio=" & SolucioFiltre & ")"
+            End If
+
+            If SolucioFiltreEstat <> -1 Then
+                SqlFiltreStats = "AND (Justificacions.estat=" & SolucioFiltreEstat & ")"
             End If
 
             If CB_JaPresentades.Checked = False Then
@@ -290,13 +342,14 @@ Public Class Solucions
                    TipusSolucions.Id AS IdTipusSolucio,    
                    TipusSolucions.Nom AS Solucio,
                    Solucions.Id AS IdSolucio,
-                   Solucions.Contracte,                          
+                   Solucions.Contracte,                
                    strftime('%d-%m-%Y',Solucions.DataContracte) AS 'Data contracte',
                    strftime('%d-%m-%Y',Solucions.DataFactura) AS 'Data factura',
                    strftime('%d-%m-%Y',Solucions.DataPagament) AS 'Data pagament',  
                    strftime('%d-%m-%Y',Solucions.DataVenciment) AS 'Data venciment',
                    julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
-                   TipusEstats.NomEstat AS 'Estat',                         
+                   TipusEstats.NomEstat AS 'Estat',
+                   TipusEstats.Id as 'IdEstat', 
                    Solucions.Justificat,
                    Solucions.Observacions,
                    TeWord AS 'TWord',
@@ -310,7 +363,9 @@ Public Class Solucions
             INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
             INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio
             INNER JOIN TipusEstats ON Justificacions.Estat=TipusEstats.id
-            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & "ORDER BY Solucions.DataVenciment ASC"
+            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & SqlFiltreStats & "ORDER BY Solucions.DataVenciment ASC"
+
+            Debug.WriteLine(Sql)
 
             Using conexion As New SQLiteConnection(cadena),
               comm As New SQLiteCommand(Sql, conexion),
@@ -340,6 +395,17 @@ Public Class Solucions
         TB_OficinaVirtual.Text = Oficina.ToString
         TB_ComunicacionesSeguras.Text = Comunicaciones.ToString
         TB_Ciberseguridad.Text = Ciberseguridad.ToString
+
+        If SolucioFiltreEstat = -1 Then TB_TotsEstats.Text = DataLlistat.RowCount.ToString
+        TB_PreparantDocumentacio.Text = Preparant.ToString
+        TB_Enviada.Text = Enviada.ToString
+        TB_Esborrany.Text = Esborrany.ToString
+        TB_Presentada.Text = Presentada.ToString
+        TB_EsmenaObert.Text = EsmenaObert.ToString
+        TB_ValidadaPagament.Text = ValidadaPagament.ToString
+        TB_Pagada.Text = Pagada.ToString
+        TB_FinalitzadaEsmena.Text = FinalitzatEsmena.ToString
+        TB_EsmenaIncorrecta.Text = EsmenaIncorrecta.ToString
     End Sub
     Private Sub CB_JaPresentades_CheckedChanged(sender As Object, e As EventArgs) Handles CB_JaPresentades.CheckedChanged
         CarregaLlistat()
@@ -374,6 +440,35 @@ Public Class Solucions
             SolucioFiltre = 0
         End If
         CarregaLlistat()
+    End Sub
+
+    Private Sub TipusEstats_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Enviada.CheckedChanged, RB_PreparantDocumentacio.CheckedChanged,
+            RB_Esborrany.CheckedChanged, RB_Presentada.CheckedChanged, RB_EsmenaObert.CheckedChanged, RB_ValidadaPagament.CheckedChanged,
+            RB_Pagada.CheckedChanged, RB_FinalitzadaEsmena.CheckedChanged, RB_EsmenaIncorrecta.CheckedChanged, RB_TotsEstats.CheckedChanged
+
+        If RB_Enviada.Checked Then
+            SolucioFiltreEstat = 1
+        ElseIf RB_PreparantDocumentacio.Checked Then
+            SolucioFiltreEstat = 0
+        ElseIf RB_Esborrany.Checked Then
+            SolucioFiltreEstat = 2
+        ElseIf RB_Presentada.Checked Then
+            SolucioFiltreEstat = 3
+        ElseIf RB_EsmenaObert.Checked Then
+            SolucioFiltreEstat = 4
+        ElseIf RB_ValidadaPagament.Checked Then
+            SolucioFiltreEstat = 5
+        ElseIf RB_Pagada.Checked Then
+            SolucioFiltreEstat = 6
+        ElseIf RB_FinalitzadaEsmena.Checked Then
+            SolucioFiltreEstat = 7
+        ElseIf RB_EsmenaIncorrecta.Checked Then
+            SolucioFiltreEstat = 8
+        ElseIf RB_TotsEstats.Checked Then
+            SolucioFiltreEstat = -1
+        End If
+        CarregaLlistat()
+
     End Sub
 
 End Class

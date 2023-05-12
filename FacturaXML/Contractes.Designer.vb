@@ -133,6 +133,9 @@ Partial Class Contractes
         Me.CB_DataConcessio = New System.Windows.Forms.CheckBox()
         Me.TB_CercaEmpreses = New System.Windows.Forms.TextBox()
         Me.PB_EliminaFiltre = New System.Windows.Forms.PictureBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.TB_BonusRestant = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
         CType(Me.DataEmpreses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSolucions, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.verificat, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -455,7 +458,7 @@ Partial Class Contractes
         Me.CB_TipusSolucio.FormattingEnabled = True
         Me.CB_TipusSolucio.Location = New System.Drawing.Point(1103, 273)
         Me.CB_TipusSolucio.Name = "CB_TipusSolucio"
-        Me.CB_TipusSolucio.Size = New System.Drawing.Size(287, 23)
+        Me.CB_TipusSolucio.Size = New System.Drawing.Size(290, 23)
         Me.CB_TipusSolucio.TabIndex = 11
         '
         'NoAcord
@@ -725,11 +728,11 @@ Partial Class Contractes
         Me.CB_DataAprovacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CB_DataAprovacio.AutoSize = True
         Me.CB_DataAprovacio.Enabled = False
-        Me.CB_DataAprovacio.Location = New System.Drawing.Point(954, 375)
+        Me.CB_DataAprovacio.Location = New System.Drawing.Point(954, 377)
         Me.CB_DataAprovacio.Name = "CB_DataAprovacio"
-        Me.CB_DataAprovacio.Size = New System.Drawing.Size(107, 19)
+        Me.CB_DataAprovacio.Size = New System.Drawing.Size(138, 19)
         Me.CB_DataAprovacio.TabIndex = 59
-        Me.CB_DataAprovacio.Text = "Data Concessió"
+        Me.CB_DataAprovacio.Text = "Data Concessió Bono"
         Me.CB_DataAprovacio.UseVisualStyleBackColor = True
         '
         'DataContracteOK
@@ -944,11 +947,11 @@ Partial Class Contractes
         '
         Me.Label17.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(1312, 300)
+        Me.Label17.Location = New System.Drawing.Point(1309, 313)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(62, 30)
+        Me.Label17.Size = New System.Drawing.Size(101, 15)
         Me.Label17.TabIndex = 78
-        Me.Label17.Text = "Subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "teórica"
+        Me.Label17.Text = "Subvenció teórica"
         '
         'InfoSubvencio
         '
@@ -1262,11 +1265,11 @@ Partial Class Contractes
         '
         Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(1414, 300)
+        Me.Label19.Location = New System.Drawing.Point(1411, 313)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(62, 30)
+        Me.Label19.Size = New System.Drawing.Size(84, 15)
         Me.Label19.TabIndex = 91
-        Me.Label19.Text = "Subvenció" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " real"
+        Me.Label19.Text = "Subvenció real"
         '
         'GroupBox3
         '
@@ -1285,7 +1288,7 @@ Partial Class Contractes
         Me.GroupBox3.Size = New System.Drawing.Size(313, 189)
         Me.GroupBox3.TabIndex = 94
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Dades concessió"
+        Me.GroupBox3.Text = "Dades concessió bono"
         '
         'Label23
         '
@@ -1311,9 +1314,9 @@ Partial Class Contractes
         Me.Label22.AutoSize = True
         Me.Label22.Location = New System.Drawing.Point(16, 135)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(43, 15)
+        Me.Label22.Size = New System.Drawing.Size(55, 15)
         Me.Label22.TabIndex = 101
-        Me.Label22.Text = "Import"
+        Me.Label22.Text = "Concedit"
         '
         'TB_CodiBono
         '
@@ -1385,6 +1388,39 @@ Partial Class Contractes
         Me.PB_EliminaFiltre.TabIndex = 96
         Me.PB_EliminaFiltre.TabStop = False
         '
+        'Label24
+        '
+        Me.Label24.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label24.Location = New System.Drawing.Point(1498, 273)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(18, 20)
+        Me.Label24.TabIndex = 98
+        Me.Label24.Text = "€"
+        '
+        'TB_BonusRestant
+        '
+        Me.TB_BonusRestant.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TB_BonusRestant.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.TB_BonusRestant.Location = New System.Drawing.Point(1414, 272)
+        Me.TB_BonusRestant.Name = "TB_BonusRestant"
+        Me.TB_BonusRestant.ReadOnly = True
+        Me.TB_BonusRestant.Size = New System.Drawing.Size(81, 29)
+        Me.TB_BonusRestant.TabIndex = 97
+        Me.TB_BonusRestant.TabStop = False
+        Me.TB_BonusRestant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label25
+        '
+        Me.Label25.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(1414, 255)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(79, 15)
+        Me.Label25.TabIndex = 99
+        Me.Label25.Text = "Bonus restant"
+        '
         'Contractes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -1392,6 +1428,9 @@ Partial Class Contractes
         Me.AutoScroll = True
         Me.AutoScrollMinSize = New System.Drawing.Size(1657, 947)
         Me.ClientSize = New System.Drawing.Size(1620, 942)
+        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.Label24)
+        Me.Controls.Add(Me.TB_BonusRestant)
         Me.Controls.Add(Me.PB_EliminaFiltre)
         Me.Controls.Add(Me.TB_CercaEmpreses)
         Me.Controls.Add(Me.GroupBox3)
@@ -1580,4 +1619,7 @@ Partial Class Contractes
     Friend WithEvents CB_DataConcessio As CheckBox
     Friend WithEvents TB_CercaEmpreses As TextBox
     Friend WithEvents PB_EliminaFiltre As PictureBox
+    Friend WithEvents Label24 As Label
+    Friend WithEvents TB_BonusRestant As TextBox
+    Friend WithEvents Label25 As Label
 End Class

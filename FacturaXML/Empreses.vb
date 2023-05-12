@@ -77,9 +77,6 @@ Public Class Empreses
             TB_CampSeleccionat.Text = columnaSeleccionada.HeaderText
             mostraInfoEmpresa(DataEmpreses.Rows(e.RowIndex).Cells("Id").Value)
         End If
-
-
-
     End Sub
 
     Private Sub TextABuscar_TextChanged(sender As Object, e As EventArgs) Handles TextABuscar.TextChanged
