@@ -257,7 +257,7 @@ Public Class Extras
                     If result(4) = 4 Or result(4).ToString = 8 Then
                         TB_SitioWeb_Estat.BackColor = vermell
                     End If
-                    If result(4) = 3 Or result(4) = 6 Then
+                    If result(4) = 5 Or result(4) = 6 Then
                         TB_SitioWeb_Estat.BackColor = verd
                     End If
 
