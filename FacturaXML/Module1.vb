@@ -15,5 +15,6 @@ Module Module1
     Public fsolu As New Solucions
     Public flogo As New Logo
     Public finfo As New Informacio
+    Public fsegona As New Segona
 
 End Module

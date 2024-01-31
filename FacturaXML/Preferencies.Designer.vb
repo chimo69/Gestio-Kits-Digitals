@@ -22,403 +22,424 @@ Partial Class Preferencies
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Preferencies))
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.DiesAvisCaducat = New System.Windows.Forms.NumericUpDown()
-        Me.Btn_Guardar = New System.Windows.Forms.Button()
-        Me.MesosAprovacio = New System.Windows.Forms.NumericUpDown()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.MesosContractacio = New System.Windows.Forms.NumericUpDown()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.MesosFactura = New System.Windows.Forms.NumericUpDown()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.MostrarLlistatAprovades = New System.Windows.Forms.CheckBox()
-        Me.MostrarGestioAprovades = New System.Windows.Forms.CheckBox()
-        Me.DiesAvisConcessio = New System.Windows.Forms.NumericUpDown()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.CB_MostrarEmpresesContractes = New System.Windows.Forms.CheckBox()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TB_Pais = New System.Windows.Forms.TextBox()
-        Me.TB_Provincia = New System.Windows.Forms.TextBox()
-        Me.TB_ciutat = New System.Windows.Forms.TextBox()
-        Me.TB_CodiPostal = New System.Windows.Forms.TextBox()
-        Me.TB_Direccio = New System.Windows.Forms.TextBox()
-        Me.TB_NomEmpresa = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        CType(Me.DiesAvisCaducat, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesosAprovacio, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesosContractacio, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MesosFactura, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DiesAvisConcessio, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(15, 27)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 15)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Nº de dies per avisar per una solució apunt de caducar"
-        '
-        'DiesAvisCaducat
-        '
-        Me.DiesAvisCaducat.Location = New System.Drawing.Point(323, 25)
-        Me.DiesAvisCaducat.Name = "DiesAvisCaducat"
-        Me.DiesAvisCaducat.Size = New System.Drawing.Size(58, 23)
-        Me.DiesAvisCaducat.TabIndex = 1
-        '
-        'Btn_Guardar
-        '
-        Me.Btn_Guardar.Location = New System.Drawing.Point(12, 375)
-        Me.Btn_Guardar.Name = "Btn_Guardar"
-        Me.Btn_Guardar.Size = New System.Drawing.Size(421, 49)
-        Me.Btn_Guardar.TabIndex = 2
-        Me.Btn_Guardar.Text = "Guardar"
-        Me.Btn_Guardar.UseVisualStyleBackColor = True
-        '
-        'MesosAprovacio
-        '
-        Me.MesosAprovacio.Location = New System.Drawing.Point(323, 83)
-        Me.MesosAprovacio.Name = "MesosAprovacio"
-        Me.MesosAprovacio.Size = New System.Drawing.Size(58, 23)
-        Me.MesosAprovacio.TabIndex = 4
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(15, 85)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(191, 15)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Nº de mesos a partir de l'aprovació"
-        '
-        'MesosContractacio
-        '
-        Me.MesosContractacio.Location = New System.Drawing.Point(323, 112)
-        Me.MesosContractacio.Name = "MesosContractacio"
-        Me.MesosContractacio.Size = New System.Drawing.Size(58, 23)
-        Me.MesosContractacio.TabIndex = 6
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(15, 114)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(211, 15)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Nº de mesos a partir de la contractació"
-        '
-        'MesosFactura
-        '
-        Me.MesosFactura.Location = New System.Drawing.Point(323, 141)
-        Me.MesosFactura.Name = "MesosFactura"
-        Me.MesosFactura.Size = New System.Drawing.Size(58, 23)
-        Me.MesosFactura.TabIndex = 8
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 143)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(250, 15)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Nº de mesos a partir de la emisió de la Factura"
-        '
-        'MostrarLlistatAprovades
-        '
-        Me.MostrarLlistatAprovades.AutoSize = True
-        Me.MostrarLlistatAprovades.Location = New System.Drawing.Point(15, 199)
-        Me.MostrarLlistatAprovades.Name = "MostrarLlistatAprovades"
-        Me.MostrarLlistatAprovades.Size = New System.Drawing.Size(249, 19)
-        Me.MostrarLlistatAprovades.TabIndex = 9
-        Me.MostrarLlistatAprovades.Text = "Mostrar al llistat les solucions ja aprovades"
-        Me.MostrarLlistatAprovades.UseVisualStyleBackColor = True
-        '
-        'MostrarGestioAprovades
-        '
-        Me.MostrarGestioAprovades.AutoSize = True
-        Me.MostrarGestioAprovades.Location = New System.Drawing.Point(15, 224)
-        Me.MostrarGestioAprovades.Name = "MostrarGestioAprovades"
-        Me.MostrarGestioAprovades.Size = New System.Drawing.Size(262, 19)
-        Me.MostrarGestioAprovades.TabIndex = 10
-        Me.MostrarGestioAprovades.Text = "Mostrar a la gestió les solucions ja aprovades"
-        Me.MostrarGestioAprovades.UseVisualStyleBackColor = True
-        '
-        'DiesAvisConcessio
-        '
-        Me.DiesAvisConcessio.Location = New System.Drawing.Point(323, 54)
-        Me.DiesAvisConcessio.Name = "DiesAvisConcessio"
-        Me.DiesAvisConcessio.Size = New System.Drawing.Size(58, 23)
-        Me.DiesAvisConcessio.TabIndex = 12
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(15, 56)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(307, 15)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Nº de dies per avisar per una concessió apunt de caducar"
-        '
-        'CB_MostrarEmpresesContractes
-        '
-        Me.CB_MostrarEmpresesContractes.AutoSize = True
-        Me.CB_MostrarEmpresesContractes.Location = New System.Drawing.Point(15, 251)
-        Me.CB_MostrarEmpresesContractes.Name = "CB_MostrarEmpresesContractes"
-        Me.CB_MostrarEmpresesContractes.Size = New System.Drawing.Size(205, 19)
-        Me.CB_MostrarEmpresesContractes.TabIndex = 13
-        Me.CB_MostrarEmpresesContractes.Text = "Mostrar empreses amb contractes"
-        Me.CB_MostrarEmpresesContractes.UseVisualStyleBackColor = True
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 12)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(425, 344)
-        Me.TabControl1.TabIndex = 14
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.CB_MostrarEmpresesContractes)
-        Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Controls.Add(Me.DiesAvisConcessio)
-        Me.TabPage1.Controls.Add(Me.DiesAvisCaducat)
-        Me.TabPage1.Controls.Add(Me.Label5)
-        Me.TabPage1.Controls.Add(Me.Label2)
-        Me.TabPage1.Controls.Add(Me.MostrarGestioAprovades)
-        Me.TabPage1.Controls.Add(Me.MesosAprovacio)
-        Me.TabPage1.Controls.Add(Me.MostrarLlistatAprovades)
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.MesosFactura)
-        Me.TabPage1.Controls.Add(Me.MesosContractacio)
-        Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 24)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(417, 316)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "General"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.TB_Pais)
-        Me.TabPage2.Controls.Add(Me.TB_Provincia)
-        Me.TabPage2.Controls.Add(Me.TB_ciutat)
-        Me.TabPage2.Controls.Add(Me.TB_CodiPostal)
-        Me.TabPage2.Controls.Add(Me.TB_Direccio)
-        Me.TabPage2.Controls.Add(Me.TB_NomEmpresa)
-        Me.TabPage2.Controls.Add(Me.Label6)
-        Me.TabPage2.Controls.Add(Me.Label7)
-        Me.TabPage2.Controls.Add(Me.Label8)
-        Me.TabPage2.Controls.Add(Me.Label9)
-        Me.TabPage2.Controls.Add(Me.Label10)
-        Me.TabPage2.Controls.Add(Me.Label11)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 24)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(417, 316)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Empresa"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'TB_Pais
-        '
-        Me.TB_Pais.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_Pais.Location = New System.Drawing.Point(130, 253)
-        Me.TB_Pais.Name = "TB_Pais"
-        Me.TB_Pais.Size = New System.Drawing.Size(270, 23)
-        Me.TB_Pais.TabIndex = 19
-        '
-        'TB_Provincia
-        '
-        Me.TB_Provincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_Provincia.Location = New System.Drawing.Point(130, 205)
-        Me.TB_Provincia.Name = "TB_Provincia"
-        Me.TB_Provincia.Size = New System.Drawing.Size(270, 23)
-        Me.TB_Provincia.TabIndex = 17
-        '
-        'TB_ciutat
-        '
-        Me.TB_ciutat.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_ciutat.Location = New System.Drawing.Point(130, 157)
-        Me.TB_ciutat.Name = "TB_ciutat"
-        Me.TB_ciutat.Size = New System.Drawing.Size(270, 23)
-        Me.TB_ciutat.TabIndex = 15
-        '
-        'TB_CodiPostal
-        '
-        Me.TB_CodiPostal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_CodiPostal.Location = New System.Drawing.Point(130, 109)
-        Me.TB_CodiPostal.Name = "TB_CodiPostal"
-        Me.TB_CodiPostal.Size = New System.Drawing.Size(131, 23)
-        Me.TB_CodiPostal.TabIndex = 13
-        '
-        'TB_Direccio
-        '
-        Me.TB_Direccio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_Direccio.Location = New System.Drawing.Point(130, 61)
-        Me.TB_Direccio.Name = "TB_Direccio"
-        Me.TB_Direccio.Size = New System.Drawing.Size(270, 23)
-        Me.TB_Direccio.TabIndex = 11
-        '
-        'TB_NomEmpresa
-        '
-        Me.TB_NomEmpresa.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TB_NomEmpresa.Location = New System.Drawing.Point(130, 13)
-        Me.TB_NomEmpresa.Name = "TB_NomEmpresa"
-        Me.TB_NomEmpresa.Size = New System.Drawing.Size(270, 23)
-        Me.TB_NomEmpresa.TabIndex = 9
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(17, 261)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(28, 15)
-        Me.Label6.TabIndex = 18
-        Me.Label6.Text = "Pais"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(17, 213)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(56, 15)
-        Me.Label7.TabIndex = 16
-        Me.Label7.Text = "Provincia"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(17, 165)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(39, 15)
-        Me.Label8.TabIndex = 14
-        Me.Label8.Text = "Ciutat"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(17, 117)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(67, 15)
-        Me.Label9.TabIndex = 12
-        Me.Label9.Text = "Codi Postal"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(17, 69)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(50, 15)
-        Me.Label10.TabIndex = 10
-        Me.Label10.Text = "Direcció"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(17, 21)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(82, 15)
-        Me.Label11.TabIndex = 8
-        Me.Label11.Text = "Nom empresa"
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.PictureBox2)
-        Me.TabPage3.Controls.Add(Me.Label12)
-        Me.TabPage3.Controls.Add(Me.PictureBox1)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 24)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(417, 316)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "A sobre de"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label12.Location = New System.Drawing.Point(76, 257)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(267, 17)
-        Me.Label12.TabIndex = 3
-        Me.Label12.Text = "Made by Antonio Rodríguez Sirgado ®2022"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.FacturaXML.My.Resources.Resources.logo_telematic
-        Me.PictureBox1.Location = New System.Drawing.Point(56, 31)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(300, 137)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Image = Global.FacturaXML.My.Resources.Resources.Ayudas_Kit_Digital__Grande_
-        Me.PictureBox2.Location = New System.Drawing.Point(56, 174)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(300, 50)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox2.TabIndex = 4
-        Me.PictureBox2.TabStop = False
-        '
-        'Preferencies
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(466, 441)
-        Me.Controls.Add(Me.Btn_Guardar)
-        Me.Controls.Add(Me.TabControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "Preferencies"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Preferències"
-        CType(Me.DiesAvisCaducat, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesosAprovacio, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesosContractacio, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MesosFactura, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DiesAvisConcessio, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Preferencies))
+        Label1 = New Label()
+        DiesAvisCaducat = New NumericUpDown()
+        Btn_Guardar = New Button()
+        MesosAprovacio = New NumericUpDown()
+        Label2 = New Label()
+        MesosContractacio = New NumericUpDown()
+        Label3 = New Label()
+        MesosFactura = New NumericUpDown()
+        Label4 = New Label()
+        MostrarLlistatAprovades = New CheckBox()
+        MostrarGestioAprovades = New CheckBox()
+        DiesAvisConcessio = New NumericUpDown()
+        Label5 = New Label()
+        CB_MostrarEmpresesContractes = New CheckBox()
+        TabControl1 = New TabControl()
+        TabPage1 = New TabPage()
+        TabPage2 = New TabPage()
+        TB_Pais = New TextBox()
+        TB_Provincia = New TextBox()
+        TB_ciutat = New TextBox()
+        TB_CodiPostal = New TextBox()
+        TB_Direccio = New TextBox()
+        TB_NomEmpresa = New TextBox()
+        Label6 = New Label()
+        Label7 = New Label()
+        Label8 = New Label()
+        Label9 = New Label()
+        Label10 = New Label()
+        Label11 = New Label()
+        TabPage3 = New TabPage()
+        PictureBox2 = New PictureBox()
+        Label12 = New Label()
+        PictureBox1 = New PictureBox()
+        Label13 = New Label()
+        MesosSuport = New NumericUpDown()
+        CType(DiesAvisCaducat, ComponentModel.ISupportInitialize).BeginInit()
+        CType(MesosAprovacio, ComponentModel.ISupportInitialize).BeginInit()
+        CType(MesosContractacio, ComponentModel.ISupportInitialize).BeginInit()
+        CType(MesosFactura, ComponentModel.ISupportInitialize).BeginInit()
+        CType(DiesAvisConcessio, ComponentModel.ISupportInitialize).BeginInit()
+        TabControl1.SuspendLayout()
+        TabPage1.SuspendLayout()
+        TabPage2.SuspendLayout()
+        TabPage3.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(MesosSuport, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(15, 27)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(293, 15)
+        Label1.TabIndex = 0
+        Label1.Text = "Nº de dies per avisar per una solució apunt de caducar"
+        ' 
+        ' DiesAvisCaducat
+        ' 
+        DiesAvisCaducat.Location = New Point(323, 25)
+        DiesAvisCaducat.Name = "DiesAvisCaducat"
+        DiesAvisCaducat.Size = New Size(58, 23)
+        DiesAvisCaducat.TabIndex = 1
+        ' 
+        ' Btn_Guardar
+        ' 
+        Btn_Guardar.Location = New Point(12, 375)
+        Btn_Guardar.Name = "Btn_Guardar"
+        Btn_Guardar.Size = New Size(421, 49)
+        Btn_Guardar.TabIndex = 2
+        Btn_Guardar.Text = "Guardar"
+        Btn_Guardar.UseVisualStyleBackColor = True
+        ' 
+        ' MesosAprovacio
+        ' 
+        MesosAprovacio.Location = New Point(323, 83)
+        MesosAprovacio.Name = "MesosAprovacio"
+        MesosAprovacio.Size = New Size(58, 23)
+        MesosAprovacio.TabIndex = 4
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(15, 85)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(191, 15)
+        Label2.TabIndex = 3
+        Label2.Text = "Nº de mesos a partir de l'aprovació"
+        ' 
+        ' MesosContractacio
+        ' 
+        MesosContractacio.Location = New Point(323, 112)
+        MesosContractacio.Name = "MesosContractacio"
+        MesosContractacio.Size = New Size(58, 23)
+        MesosContractacio.TabIndex = 6
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(15, 114)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(211, 15)
+        Label3.TabIndex = 5
+        Label3.Text = "Nº de mesos a partir de la contractació"
+        ' 
+        ' MesosFactura
+        ' 
+        MesosFactura.Location = New Point(323, 141)
+        MesosFactura.Name = "MesosFactura"
+        MesosFactura.Size = New Size(58, 23)
+        MesosFactura.TabIndex = 8
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Location = New Point(15, 143)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(250, 15)
+        Label4.TabIndex = 7
+        Label4.Text = "Nº de mesos a partir de la emisió de la Factura"
+        ' 
+        ' MostrarLlistatAprovades
+        ' 
+        MostrarLlistatAprovades.AutoSize = True
+        MostrarLlistatAprovades.Location = New Point(15, 206)
+        MostrarLlistatAprovades.Name = "MostrarLlistatAprovades"
+        MostrarLlistatAprovades.Size = New Size(249, 19)
+        MostrarLlistatAprovades.TabIndex = 9
+        MostrarLlistatAprovades.Text = "Mostrar al llistat les solucions ja aprovades"
+        MostrarLlistatAprovades.UseVisualStyleBackColor = True
+        ' 
+        ' MostrarGestioAprovades
+        ' 
+        MostrarGestioAprovades.AutoSize = True
+        MostrarGestioAprovades.Location = New Point(15, 231)
+        MostrarGestioAprovades.Name = "MostrarGestioAprovades"
+        MostrarGestioAprovades.Size = New Size(262, 19)
+        MostrarGestioAprovades.TabIndex = 10
+        MostrarGestioAprovades.Text = "Mostrar a la gestió les solucions ja aprovades"
+        MostrarGestioAprovades.UseVisualStyleBackColor = True
+        ' 
+        ' DiesAvisConcessio
+        ' 
+        DiesAvisConcessio.Location = New Point(323, 54)
+        DiesAvisConcessio.Name = "DiesAvisConcessio"
+        DiesAvisConcessio.Size = New Size(58, 23)
+        DiesAvisConcessio.TabIndex = 12
+        ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Location = New Point(15, 56)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(307, 15)
+        Label5.TabIndex = 11
+        Label5.Text = "Nº de dies per avisar per una concessió apunt de caducar"
+        ' 
+        ' CB_MostrarEmpresesContractes
+        ' 
+        CB_MostrarEmpresesContractes.AutoSize = True
+        CB_MostrarEmpresesContractes.Location = New Point(15, 258)
+        CB_MostrarEmpresesContractes.Name = "CB_MostrarEmpresesContractes"
+        CB_MostrarEmpresesContractes.Size = New Size(205, 19)
+        CB_MostrarEmpresesContractes.TabIndex = 13
+        CB_MostrarEmpresesContractes.Text = "Mostrar empreses amb contractes"
+        CB_MostrarEmpresesContractes.UseVisualStyleBackColor = True
+        ' 
+        ' TabControl1
+        ' 
+        TabControl1.Controls.Add(TabPage1)
+        TabControl1.Controls.Add(TabPage2)
+        TabControl1.Controls.Add(TabPage3)
+        TabControl1.Location = New Point(12, 12)
+        TabControl1.Name = "TabControl1"
+        TabControl1.SelectedIndex = 0
+        TabControl1.Size = New Size(425, 344)
+        TabControl1.TabIndex = 14
+        ' 
+        ' TabPage1
+        ' 
+        TabPage1.Controls.Add(MesosSuport)
+        TabPage1.Controls.Add(Label13)
+        TabPage1.Controls.Add(CB_MostrarEmpresesContractes)
+        TabPage1.Controls.Add(Label1)
+        TabPage1.Controls.Add(DiesAvisConcessio)
+        TabPage1.Controls.Add(DiesAvisCaducat)
+        TabPage1.Controls.Add(Label5)
+        TabPage1.Controls.Add(Label2)
+        TabPage1.Controls.Add(MostrarGestioAprovades)
+        TabPage1.Controls.Add(MesosAprovacio)
+        TabPage1.Controls.Add(MostrarLlistatAprovades)
+        TabPage1.Controls.Add(Label3)
+        TabPage1.Controls.Add(MesosFactura)
+        TabPage1.Controls.Add(MesosContractacio)
+        TabPage1.Controls.Add(Label4)
+        TabPage1.Location = New Point(4, 24)
+        TabPage1.Name = "TabPage1"
+        TabPage1.Padding = New Padding(3)
+        TabPage1.Size = New Size(417, 316)
+        TabPage1.TabIndex = 0
+        TabPage1.Text = "General"
+        TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' TabPage2
+        ' 
+        TabPage2.Controls.Add(TB_Pais)
+        TabPage2.Controls.Add(TB_Provincia)
+        TabPage2.Controls.Add(TB_ciutat)
+        TabPage2.Controls.Add(TB_CodiPostal)
+        TabPage2.Controls.Add(TB_Direccio)
+        TabPage2.Controls.Add(TB_NomEmpresa)
+        TabPage2.Controls.Add(Label6)
+        TabPage2.Controls.Add(Label7)
+        TabPage2.Controls.Add(Label8)
+        TabPage2.Controls.Add(Label9)
+        TabPage2.Controls.Add(Label10)
+        TabPage2.Controls.Add(Label11)
+        TabPage2.Location = New Point(4, 24)
+        TabPage2.Name = "TabPage2"
+        TabPage2.Padding = New Padding(3)
+        TabPage2.Size = New Size(417, 316)
+        TabPage2.TabIndex = 1
+        TabPage2.Text = "Empresa"
+        TabPage2.UseVisualStyleBackColor = True
+        ' 
+        ' TB_Pais
+        ' 
+        TB_Pais.CharacterCasing = CharacterCasing.Upper
+        TB_Pais.Location = New Point(130, 253)
+        TB_Pais.Name = "TB_Pais"
+        TB_Pais.Size = New Size(270, 23)
+        TB_Pais.TabIndex = 19
+        ' 
+        ' TB_Provincia
+        ' 
+        TB_Provincia.CharacterCasing = CharacterCasing.Upper
+        TB_Provincia.Location = New Point(130, 205)
+        TB_Provincia.Name = "TB_Provincia"
+        TB_Provincia.Size = New Size(270, 23)
+        TB_Provincia.TabIndex = 17
+        ' 
+        ' TB_ciutat
+        ' 
+        TB_ciutat.CharacterCasing = CharacterCasing.Upper
+        TB_ciutat.Location = New Point(130, 157)
+        TB_ciutat.Name = "TB_ciutat"
+        TB_ciutat.Size = New Size(270, 23)
+        TB_ciutat.TabIndex = 15
+        ' 
+        ' TB_CodiPostal
+        ' 
+        TB_CodiPostal.CharacterCasing = CharacterCasing.Upper
+        TB_CodiPostal.Location = New Point(130, 109)
+        TB_CodiPostal.Name = "TB_CodiPostal"
+        TB_CodiPostal.Size = New Size(131, 23)
+        TB_CodiPostal.TabIndex = 13
+        ' 
+        ' TB_Direccio
+        ' 
+        TB_Direccio.CharacterCasing = CharacterCasing.Upper
+        TB_Direccio.Location = New Point(130, 61)
+        TB_Direccio.Name = "TB_Direccio"
+        TB_Direccio.Size = New Size(270, 23)
+        TB_Direccio.TabIndex = 11
+        ' 
+        ' TB_NomEmpresa
+        ' 
+        TB_NomEmpresa.CharacterCasing = CharacterCasing.Upper
+        TB_NomEmpresa.Location = New Point(130, 13)
+        TB_NomEmpresa.Name = "TB_NomEmpresa"
+        TB_NomEmpresa.Size = New Size(270, 23)
+        TB_NomEmpresa.TabIndex = 9
+        ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(17, 261)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(28, 15)
+        Label6.TabIndex = 18
+        Label6.Text = "Pais"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Location = New Point(17, 213)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(56, 15)
+        Label7.TabIndex = 16
+        Label7.Text = "Provincia"
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(17, 165)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(39, 15)
+        Label8.TabIndex = 14
+        Label8.Text = "Ciutat"
+        ' 
+        ' Label9
+        ' 
+        Label9.AutoSize = True
+        Label9.Location = New Point(17, 117)
+        Label9.Name = "Label9"
+        Label9.Size = New Size(67, 15)
+        Label9.TabIndex = 12
+        Label9.Text = "Codi Postal"
+        ' 
+        ' Label10
+        ' 
+        Label10.AutoSize = True
+        Label10.Location = New Point(17, 69)
+        Label10.Name = "Label10"
+        Label10.Size = New Size(50, 15)
+        Label10.TabIndex = 10
+        Label10.Text = "Direcció"
+        ' 
+        ' Label11
+        ' 
+        Label11.AutoSize = True
+        Label11.Location = New Point(17, 21)
+        Label11.Name = "Label11"
+        Label11.Size = New Size(82, 15)
+        Label11.TabIndex = 8
+        Label11.Text = "Nom empresa"
+        ' 
+        ' TabPage3
+        ' 
+        TabPage3.Controls.Add(PictureBox2)
+        TabPage3.Controls.Add(Label12)
+        TabPage3.Controls.Add(PictureBox1)
+        TabPage3.Location = New Point(4, 24)
+        TabPage3.Name = "TabPage3"
+        TabPage3.Padding = New Padding(3)
+        TabPage3.Size = New Size(417, 316)
+        TabPage3.TabIndex = 2
+        TabPage3.Text = "A sobre de"
+        TabPage3.UseVisualStyleBackColor = True
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = My.Resources.Resources.Ayudas_Kit_Digital__Grande_
+        PictureBox2.Location = New Point(56, 174)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(300, 50)
+        PictureBox2.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox2.TabIndex = 4
+        PictureBox2.TabStop = False
+        ' 
+        ' Label12
+        ' 
+        Label12.AutoSize = True
+        Label12.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Label12.Location = New Point(76, 257)
+        Label12.Name = "Label12"
+        Label12.Size = New Size(267, 17)
+        Label12.TabIndex = 3
+        Label12.Text = "Made by Antonio Rodríguez Sirgado ®2022"
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = My.Resources.Resources.logo_telematic
+        PictureBox1.Location = New Point(56, 31)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(300, 137)
+        PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
+        PictureBox1.TabIndex = 2
+        PictureBox1.TabStop = False
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(15, 170)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(127, 15)
+        Label13.TabIndex = 14
+        Label13.Text = "Nº de mesos de suport"
+        ' 
+        ' MesosSuport
+        ' 
+        MesosSuport.Location = New Point(323, 169)
+        MesosSuport.Name = "MesosSuport"
+        MesosSuport.Size = New Size(58, 23)
+        MesosSuport.TabIndex = 15
+        ' 
+        ' Preferencies
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        AutoSizeMode = AutoSizeMode.GrowAndShrink
+        ClientSize = New Size(466, 441)
+        Controls.Add(Btn_Guardar)
+        Controls.Add(TabControl1)
+        Icon = CType(resources.GetObject("$this.Icon"), Icon)
+        MaximizeBox = False
+        MinimizeBox = False
+        Name = "Preferencies"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Preferències"
+        CType(DiesAvisCaducat, ComponentModel.ISupportInitialize).EndInit()
+        CType(MesosAprovacio, ComponentModel.ISupportInitialize).EndInit()
+        CType(MesosContractacio, ComponentModel.ISupportInitialize).EndInit()
+        CType(MesosFactura, ComponentModel.ISupportInitialize).EndInit()
+        CType(DiesAvisConcessio, ComponentModel.ISupportInitialize).EndInit()
+        TabControl1.ResumeLayout(False)
+        TabPage1.ResumeLayout(False)
+        TabPage1.PerformLayout()
+        TabPage2.ResumeLayout(False)
+        TabPage2.PerformLayout()
+        TabPage3.ResumeLayout(False)
+        TabPage3.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(MesosSuport, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
     End Sub
 
     Friend WithEvents Label1 As Label
@@ -454,4 +475,6 @@ Partial Class Preferencies
     Friend WithEvents Label12 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents MesosSuport As NumericUpDown
+    Friend WithEvents Label13 As Label
 End Class

@@ -302,6 +302,10 @@ Public Class Solucions
             If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.Cells("Empresa").Style.BackColor = taronja
             If Fila.Cells("Dies").Value <= 0 Then Fila.Cells("Empresa").Style.BackColor = vermell
             If Fila.Cells("Justificat").Value = "Si" Then Fila.Cells("Empresa").Style.BackColor = verd
+            If Fila.Cells("Estat").Value = "Presentada" Then Fila.Cells("Empresa").Style.BackColor = blau
+            If Fila.Cells("Estat").Value = "Enviada" Then Fila.Cells("Empresa").Style.BackColor = blau
+            If Fila.Cells("Estat").Value = "Termini d'esmena obert" Then Fila.Cells("Empresa").Style.BackColor = blau
+            If Fila.Cells("Estat").Value = "Finalitzat termini d'esmena" Then Fila.Cells("Empresa").Style.BackColor = blau
         Next
 
         ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 

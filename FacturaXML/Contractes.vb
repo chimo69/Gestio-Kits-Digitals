@@ -76,7 +76,7 @@ Public Class Contractes
                         Exit For
                     End If
                 Next
-                idSolucioSeleccionadaUtils=0
+                idSolucioSeleccionadaUtils = 0
         End Select
 
     End Sub
@@ -424,6 +424,7 @@ Public Class Contractes
                                           Solucions.DataPagament,
                                           strftime('%d-%m-%Y',Solucions.DataVenciment) AS 'Dia venciment',                                          
                                           Solucions.Justificat,
+                                          Solucions.SegonJustificat,
                                           Solucions.PrimerPagament,
                                           Solucions.SegonPagament,
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
@@ -448,6 +449,7 @@ Public Class Contractes
                                           Solucions.DataPagament,
                                           Solucions.DataVenciment AS 'Dia venciment',
                                           Solucions.Justificat,
+                                          Solucions.SegonJustificat,
                                           Solucions.PrimerPagament,
                                           Solucions.SegonPagament,  
                                           julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
@@ -490,21 +492,21 @@ Public Class Contractes
                                           WHERE idEmpresa=" & id
 
                 Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
-                    Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
-                    If lector.Read Then
-                        If Not IsDBNull(lector.GetValue("Consumit")) Then
-                            consumit = lector.GetValue("Consumit")
-                        Else
-                            consumit = 0
-                        End If
+                If lector.Read Then
+                    If Not IsDBNull(lector.GetValue("Consumit")) Then
+                        consumit = lector.GetValue("Consumit")
+                    Else
+                        consumit = 0
+                    End If
 
                     concedit = TB_ImportBono.Text
                     TB_BonusRestant.Text = (concedit - consumit).ToString
                 End If
-                    lector.Close()
+                lector.Close()
 
-                End If
+            End If
 
 
         Catch ex As Exception
@@ -545,6 +547,7 @@ Public Class Contractes
         ProgressBar1.Value = 0
         TBObservacions.Clear()
         CheckEstaJustificat.Checked = False
+        CheckEstaJustificat2.Checked = False
         CB_TipusSolucio.Text = "Selecciona un tipus de solució"
         DataSolucions.ClearSelection()
         infoMax.Visible = False
@@ -554,6 +557,7 @@ Public Class Contractes
         CB_PrimerPagament.Checked = False
         CB_SegonPagament.Checked = False
         EstaLaSolucioSeleccionada(False)
+        InfoSubvencio.Clear()
 
         ' Formatejem estats
         TB_Proces0.Enabled = False
@@ -653,6 +657,7 @@ Public Class Contractes
             .Columns("Id").Visible = False
             .Columns("IdSolucio").Visible = False
             .Columns("Justificat").Visible = False
+            .Columns("SegonJustificat").Visible = False
             .Columns("Observacions").Visible = False
             .Columns("DataPagament").Visible = False
             .Columns("Quantitat").Visible = False
@@ -677,6 +682,10 @@ Public Class Contractes
             If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
             If Fila.Cells("Dies").Value <= 0 Then Fila.DefaultCellStyle.BackColor = Color.Red
             If Fila.Cells("Justificat").Value = "Si" Then Fila.DefaultCellStyle.BackColor = Color.LightGreen
+            If Fila.Cells("Estat").Value = "3" Then Fila.DefaultCellStyle.BackColor = blau
+            If Fila.Cells("Estat").Value = "1" Then Fila.DefaultCellStyle.BackColor = blau
+            If Fila.Cells("Estat").Value = "4" Then Fila.DefaultCellStyle.BackColor = blau
+            If Fila.Cells("Estat").Value = "7" Then Fila.DefaultCellStyle.BackColor = blau
         Next
 
     End Sub
@@ -693,7 +702,7 @@ Public Class Contractes
         Dim Observacions As String = TBObservacions.Text
         Dim DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt As String
         Dim seleccio As Boolean
-        Dim Justificat As String
+        Dim Justificat, Justificat2 As String
         Dim checks As Integer = 0
 
         seleccio = solucioSeleccionada
@@ -729,6 +738,11 @@ Public Class Contractes
         Else
             Justificat = "'No'"
         End If
+        If CheckEstaJustificat2.Checked = True Then
+            Justificat2 = "'Si'"
+        Else
+            Justificat2 = "'No'"
+        End If
 
         If (seleccio = True) Then
 
@@ -740,6 +754,7 @@ Public Class Contractes
                             DataPagament= " & StringDB(DataPagamentTxt) & ",
                             DataVenciment=" & StringDB(DataVencimentTxt) & ", 
                             Justificat=" & Justificat & ",
+                            SegonJustificat=" & Justificat2 & ",
                             PrimerPagament=" & CB_PrimerPagament.Checked & ",
                             SegonPagament=" & CB_SegonPagament.Checked & ",
                             Observacions=" & StringDB(Observacions) & ",
@@ -756,6 +771,7 @@ Public Class Contractes
                                  StringDB(DataVencimentTxt) & "," &
                                  idEmpresaSeleccionada & "," &
                                  Justificat & "," &
+                                 Justificat2 & "," &
                                  CB_PrimerPagament.Checked & "," &
                                  CB_SegonPagament.Checked & "," &
                                  StringDB(Observacions) & "," &
@@ -874,6 +890,7 @@ Public Class Contractes
 
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = True
+            CheckEstaJustificat2.Enabled = True
             TBObservacions.Enabled = True
             Btn_AfegirSolucio.Enabled = True
             Btn_esborrarEmpresa.Enabled = True
@@ -883,6 +900,7 @@ Public Class Contractes
 
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = False
+            CheckEstaJustificat2.Enabled = False
             Btn_EstatJustificacio.Enabled = False
             Btn_EsborrarSeleccioSolucio.Enabled = False
             Btn_AfegirSolucio.Enabled = False
@@ -895,7 +913,7 @@ Public Class Contractes
         End If
     End Sub
     'Modifica els camps quan la selecció d'empresa canvia
-    Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click, DataEmpreses.KeyDown
+    Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
         MostraDadesEmpresaSeleccionada()
     End Sub
 
@@ -918,6 +936,16 @@ Public Class Contractes
             verificat.Visible = False
             CB_PrimerPagament.Enabled = False
             CB_PrimerPagament.Checked = False
+            CB_SegonPagament.Checked = False
+        End If
+    End Sub
+    Private Sub CheckEstaJustificat2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEstaJustificat2.CheckedChanged
+        If CheckEstaJustificat2.Checked = True Then
+            verificat2.Visible = True
+            CB_SegonPagament.Enabled = True
+        Else
+            verificat2.Visible = False
+            CB_SegonPagament.Enabled = False
             CB_SegonPagament.Checked = False
         End If
     End Sub
@@ -1016,6 +1044,8 @@ Public Class Contractes
                 DataFacturaOK.Visible = mostrar
                 DataFiFactura.Visible = mostrar
                 TitolFactura.Visible = mostrar
+                TitolJustificacio.Visible = mostrar
+                DataFiJustificacio.Visible = mostrar
             Case 4
                 DataPagament.Visible = mostrar
                 DataPagamentOK.Visible = mostrar
@@ -1090,6 +1120,7 @@ Public Class Contractes
     Private Sub DataFactura_ValueChanged(sender As Object, e As EventArgs) Handles DataFactura.ValueChanged
 
         DataFiFactura.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosFactura).Date, "Short Date")
+        DataFiJustificacio.Text = Format(DataFactura.Value.AddMonths(My.Settings.MesosSuport + 3).Date, "Short Date")
         MiraCaducitat()
 
     End Sub
@@ -1112,8 +1143,9 @@ Public Class Contractes
         Dim CaducitatContracte As Date = DataContracte.Value.AddMonths(My.Settings.MesosContractacio)
         Dim CaducitatFactura As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
         Dim CaducitatPagament As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
-        Dim CaducitatJustificacio As Date = DataFactura.Value.AddMonths(My.Settings.MesosFactura)
+        Dim CaducitatJustificacio As Date = DataFactura.Value.AddMonths(My.Settings.MesosSuport + 3)
         Dim CaducitatConcessio As Date = DataAprovacio.Value.AddMonths(My.Settings.MesosAprovacio)
+
 
         Dim DataToCheck As Date
 
@@ -1175,6 +1207,7 @@ Public Class Contractes
 
         If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
         If CB_DataFactura.Checked = True Then DataVenciment = CaducitatFactura
+        If CheckEstaJustificat.Checked = True Then DataVenciment = CaducitatJustificacio
 
         dies = DateDiff(DateInterval.Day, Now, DataVenciment)
 
@@ -1228,6 +1261,7 @@ Public Class Contractes
 
     Private Sub CB_TipusSolucio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_TipusSolucio.SelectionChangeCommitted
         GestionaInfo(CB_TipusSolucio.SelectedValue)
+        'EsborrarCampsSolucio()
     End Sub
 
     'Mostra el menu d'empreses al fer click dret sobre l'empresa
@@ -1270,7 +1304,7 @@ Public Class Contractes
     End Sub
 
     'Modifica els camps quan la selecció de solucio canvia
-    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click, DataSolucions.KeyDown
+    Private Sub DataSolucions_Click(Sender As Object, e As EventArgs) Handles DataSolucions.Click
         If DataSolucions.SelectedRows.Count > 0 Then
             OmpleDadesSolucions(DataSolucions.CurrentRow.Index)
             MiraCaducitat()
@@ -1394,6 +1428,13 @@ Public Class Contractes
         Else
             CheckEstaJustificat.Checked = False
         End If
+
+        If row.Cells("SegonJustificat").Value = "Si" Then
+            CheckEstaJustificat2.Checked = True
+        Else
+            CheckEstaJustificat2.Checked = False
+        End If
+
 
         CB_PrimerPagament.Checked = row.Cells("PrimerPagament").Value
         CB_SegonPagament.Checked = row.Cells("SegonPagament").Value
@@ -1532,6 +1573,7 @@ Public Class Contractes
                 If lector.Read() Then
                     subvencioSolucioSeleccionada = lector.GetValue(segmentString)
                     InfoSubvencio.Text = (subvencioSolucioSeleccionada * InfoVariableNum.Value).ToString
+
                 End If
                 lector.Close()
 

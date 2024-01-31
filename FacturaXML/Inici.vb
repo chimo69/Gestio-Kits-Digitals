@@ -12,6 +12,7 @@ Public Class Inici
         ffactu.MdiParent = Me
         fsolu.MdiParent = Me
         finfo.MdiParent = Me
+        fsegona.MdiParent = Me
 
         PanelContenedor.Controls.Add(flogo)
         PanelContenedor.Controls.Add(fcontr)
@@ -20,6 +21,7 @@ Public Class Inici
         PanelContenedor.Controls.Add(ffactu)
         PanelContenedor.Controls.Add(fsolu)
         PanelContenedor.Controls.Add(finfo)
+        PanelContenedor.Controls.Add(fsegona)
 
         MostraForm(flogo)
 
@@ -74,6 +76,9 @@ Public Class Inici
                 Case Factures.Name
                     ffactu = New Factures
                     FormMostrar = ffactu
+                Case Segona.Name
+                    fsegona = New Segona
+                    FormMostrar = fsegona
             End Select
 
             FormMostrar.MdiParent = Me
@@ -133,6 +138,9 @@ Public Class Inici
     Private Sub Btn_Empreses_Click(sender As Object, e As EventArgs) Handles Btn_Empreses.Click, Btn_Empreses_obert.Click
         MostraForm(fempre)
     End Sub
+    Private Sub btn_segona_Click(sender As Object, e As EventArgs) Handles btn_segona.Click, btn_segona_obert.Click
+        MostraForm(fsegona)
+    End Sub
 
     Private Sub ActivaBotonMenu(FA As Form)
 
@@ -142,6 +150,7 @@ Public Class Inici
         Btn_informacio.BackColor = telematic_oscur
         Btn_informes.BackColor = telematic_oscur
         Btn_llistat.BackColor = telematic_oscur
+        btn_segona.BackColor = telematic_oscur
 
         Btn_Empreses_obert.BackColor = telematic_oscur
         Btn_factures_obert.BackColor = telematic_oscur
@@ -149,6 +158,7 @@ Public Class Inici
         Btn_Informació_obert.BackColor = telematic_oscur
         Btn_Informes_obert.BackColor = telematic_oscur
         Btn_llistat_obert.BackColor = telematic_oscur
+        btn_segona_obert.BackColor = telematic_oscur
 
         Btn_Empreses_obert.FlatStyle = FlatStyle.Popup
         Btn_factures_obert.FlatStyle = FlatStyle.Popup
@@ -156,6 +166,7 @@ Public Class Inici
         Btn_Informació_obert.FlatStyle = FlatStyle.Popup
         Btn_Informes_obert.FlatStyle = FlatStyle.Popup
         Btn_llistat_obert.FlatStyle = FlatStyle.Popup
+        btn_segona_obert.FlatStyle = FlatStyle.Popup
 
         Select Case (FA.Name)
             Case Empreses.Name
@@ -188,6 +199,11 @@ Public Class Inici
                 Btn_llistat_obert.BackColor = telematic
                 Btn_llistat_obert.FlatStyle = FlatStyle.Popup
                 MostraPestanya(Panel_solucions_obert)
+            Case Segona.Name
+                btn_segona.BackColor = telematic
+                btn_segona_obert.BackColor = telematic
+                btn_segona_obert.FlatStyle = FlatStyle.Popup
+                MostraPestanya(Panell_segona_obert)
         End Select
     End Sub
 
@@ -218,6 +234,8 @@ Public Class Inici
                 OcultaPestanya(Panel_solucions_obert)
             Case "Empreses"
                 OcultaPestanya(Panel_empreses_obert)
+            Case "Segona"
+                OcultaPestanya(Panell_segona_obert)
         End Select
 
         MostraForm(FormsList.Last)
@@ -229,5 +247,6 @@ Public Class Inici
         Lbl_Data.Text = DateTime.Now.ToLongDateString
         Lbl_Hora.Text = DateTime.Now.ToLongTimeString
     End Sub
+
 
 End Class

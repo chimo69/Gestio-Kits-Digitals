@@ -22,799 +22,799 @@ Partial Class Solucions
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Btn_actualitzar = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.contracte = New System.Windows.Forms.TextBox()
-        Me.AdvertenciaCaducats = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.nomEmpresa = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.DataLlistat = New System.Windows.Forms.DataGridView()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TB_Pagada = New System.Windows.Forms.TextBox()
-        Me.RB_Pagada = New System.Windows.Forms.RadioButton()
-        Me.TB_EsmenaIncorrecta = New System.Windows.Forms.TextBox()
-        Me.TB_FinalitzadaEsmena = New System.Windows.Forms.TextBox()
-        Me.RB_FinalitzadaEsmena = New System.Windows.Forms.RadioButton()
-        Me.RB_EsmenaIncorrecta = New System.Windows.Forms.RadioButton()
-        Me.TB_Presentada = New System.Windows.Forms.TextBox()
-        Me.RB_Presentada = New System.Windows.Forms.RadioButton()
-        Me.TB_ValidadaPagament = New System.Windows.Forms.TextBox()
-        Me.TB_EsmenaObert = New System.Windows.Forms.TextBox()
-        Me.RB_ValidadaPagament = New System.Windows.Forms.RadioButton()
-        Me.RB_EsmenaObert = New System.Windows.Forms.RadioButton()
-        Me.TB_TotsEstats = New System.Windows.Forms.TextBox()
-        Me.RB_TotsEstats = New System.Windows.Forms.RadioButton()
-        Me.TB_Esborrany = New System.Windows.Forms.TextBox()
-        Me.TB_Enviada = New System.Windows.Forms.TextBox()
-        Me.TB_PreparantDocumentacio = New System.Windows.Forms.TextBox()
-        Me.RB_PreparantDocumentacio = New System.Windows.Forms.RadioButton()
-        Me.RB_Esborrany = New System.Windows.Forms.RadioButton()
-        Me.RB_Enviada = New System.Windows.Forms.RadioButton()
-        Me.GB_TipusSolucions = New System.Windows.Forms.GroupBox()
-        Me.TB_FacturaElectronica = New System.Windows.Forms.TextBox()
-        Me.CB_JaPresentades = New System.Windows.Forms.CheckBox()
-        Me.RB_FacturaElectronica = New System.Windows.Forms.RadioButton()
-        Me.TB_Ciberseguridad = New System.Windows.Forms.TextBox()
-        Me.TB_ComunicacionesSeguras = New System.Windows.Forms.TextBox()
-        Me.TB_OficinaVirtual = New System.Windows.Forms.TextBox()
-        Me.RB_OficinaVirtual = New System.Windows.Forms.RadioButton()
-        Me.RB_Ciberseguridad = New System.Windows.Forms.RadioButton()
-        Me.RB_ComunicacionesSeguras = New System.Windows.Forms.RadioButton()
-        Me.TB_GestionClientes = New System.Windows.Forms.TextBox()
-        Me.RB_GestionClientes = New System.Windows.Forms.RadioButton()
-        Me.TB_GestionProcesos = New System.Windows.Forms.TextBox()
-        Me.TB_BusinessInteligence = New System.Windows.Forms.TextBox()
-        Me.RB_GestionProcesos = New System.Windows.Forms.RadioButton()
-        Me.RB_BusinessInteligence = New System.Windows.Forms.RadioButton()
-        Me.TB_totes = New System.Windows.Forms.TextBox()
-        Me.RB_Totes = New System.Windows.Forms.RadioButton()
-        Me.TB_RedesSociales = New System.Windows.Forms.TextBox()
-        Me.TB_ComercioElectronico = New System.Windows.Forms.TextBox()
-        Me.TB_SitioWeb = New System.Windows.Forms.TextBox()
-        Me.RB_SitioWeb = New System.Windows.Forms.RadioButton()
-        Me.RB_RedesSociales = New System.Windows.Forms.RadioButton()
-        Me.RB_ComercioElectronico = New System.Windows.Forms.RadioButton()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel1.SuspendLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SplitContainer1.Panel1.SuspendLayout()
-        Me.SplitContainer1.Panel2.SuspendLayout()
-        Me.SplitContainer1.SuspendLayout()
-        CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        Me.GB_TipusSolucions.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.Btn_actualitzar)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.contracte)
-        Me.Panel1.Controls.Add(Me.AdvertenciaCaducats)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.nomEmpresa)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1631, 53)
-        Me.Panel1.TabIndex = 0
-        '
-        'Btn_actualitzar
-        '
-        Me.Btn_actualitzar.BackColor = System.Drawing.SystemColors.Control
-        Me.Btn_actualitzar.BackgroundImage = Global.FacturaXML.My.Resources.Resources.Icono_Actualizar
-        Me.Btn_actualitzar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Btn_actualitzar.FlatAppearance.BorderSize = 0
-        Me.Btn_actualitzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_actualitzar.Location = New System.Drawing.Point(513, 7)
-        Me.Btn_actualitzar.Name = "Btn_actualitzar"
-        Me.Btn_actualitzar.Size = New System.Drawing.Size(40, 40)
-        Me.Btn_actualitzar.TabIndex = 20
-        Me.Btn_actualitzar.UseVisualStyleBackColor = False
-        '
-        'Label4
-        '
-        Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(1402, 6)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(115, 15)
-        Me.Label4.TabIndex = 19
-        Me.Label4.Text = "Buscar per contracte"
-        '
-        'contracte
-        '
-        Me.contracte.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.contracte.Location = New System.Drawing.Point(1401, 24)
-        Me.contracte.Name = "contracte"
-        Me.contracte.Size = New System.Drawing.Size(220, 23)
-        Me.contracte.TabIndex = 18
-        '
-        'AdvertenciaCaducats
-        '
-        Me.AdvertenciaCaducats.AutoSize = True
-        Me.AdvertenciaCaducats.BackColor = System.Drawing.SystemColors.Control
-        Me.AdvertenciaCaducats.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.AdvertenciaCaducats.ForeColor = System.Drawing.Color.Red
-        Me.AdvertenciaCaducats.Location = New System.Drawing.Point(633, 10)
-        Me.AdvertenciaCaducats.Name = "AdvertenciaCaducats"
-        Me.AdvertenciaCaducats.Size = New System.Drawing.Size(375, 29)
-        Me.AdvertenciaCaducats.TabIndex = 18
-        Me.AdvertenciaCaducats.Text = "Atenció! Solucions apunt de caducar"
-        Me.AdvertenciaCaducats.Visible = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(218, 21)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(279, 15)
-        Me.Label2.TabIndex = 17
-        Me.Label2.Text = "(Doble click per accedir a les dades de cada solució)"
-        '
-        'Label3
-        '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(1176, 6)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(110, 15)
-        Me.Label3.TabIndex = 17
-        Me.Label3.Text = "Buscar per empresa"
-        '
-        'nomEmpresa
-        '
-        Me.nomEmpresa.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.nomEmpresa.Location = New System.Drawing.Point(1176, 24)
-        Me.nomEmpresa.Name = "nomEmpresa"
-        Me.nomEmpresa.Size = New System.Drawing.Size(220, 23)
-        Me.nomEmpresa.TabIndex = 16
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(3, 10)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(200, 30)
-        Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Llistat de solucions"
-        '
-        'SplitContainer1
-        '
-        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 53)
-        Me.SplitContainer1.Name = "SplitContainer1"
-        '
-        'SplitContainer1.Panel1
-        '
-        Me.SplitContainer1.Panel1.AutoScroll = True
-        Me.SplitContainer1.Panel1.Controls.Add(Me.DataLlistat)
-        Me.SplitContainer1.Panel1.Padding = New System.Windows.Forms.Padding(20, 0, 0, 20)
-        '
-        'SplitContainer1.Panel2
-        '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox1)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.GB_TipusSolucions)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1631, 981)
-        Me.SplitContainer1.SplitterDistance = 1371
-        Me.SplitContainer1.TabIndex = 1
-        '
-        'DataLlistat
-        '
-        Me.DataLlistat.AllowUserToAddRows = False
-        Me.DataLlistat.AllowUserToDeleteRows = False
-        Me.DataLlistat.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.DataLlistat.ColumnHeadersHeight = 40
-        Me.DataLlistat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(72, Byte), Integer), CType(CType(101, Byte), Integer), CType(CType(174, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataLlistat.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DataLlistat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataLlistat.EnableHeadersVisualStyles = False
-        Me.DataLlistat.Location = New System.Drawing.Point(20, 0)
-        Me.DataLlistat.MultiSelect = False
-        Me.DataLlistat.Name = "DataLlistat"
-        Me.DataLlistat.ReadOnly = True
-        Me.DataLlistat.RowHeadersVisible = False
-        DataGridViewCellStyle4.Padding = New System.Windows.Forms.Padding(0, 3, 0, 3)
-        Me.DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.DataLlistat.RowTemplate.Height = 25
-        Me.DataLlistat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataLlistat.ShowEditingIcon = False
-        Me.DataLlistat.Size = New System.Drawing.Size(1351, 961)
-        Me.DataLlistat.TabIndex = 4
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.TB_Pagada)
-        Me.GroupBox1.Controls.Add(Me.RB_Pagada)
-        Me.GroupBox1.Controls.Add(Me.TB_EsmenaIncorrecta)
-        Me.GroupBox1.Controls.Add(Me.TB_FinalitzadaEsmena)
-        Me.GroupBox1.Controls.Add(Me.RB_FinalitzadaEsmena)
-        Me.GroupBox1.Controls.Add(Me.RB_EsmenaIncorrecta)
-        Me.GroupBox1.Controls.Add(Me.TB_Presentada)
-        Me.GroupBox1.Controls.Add(Me.RB_Presentada)
-        Me.GroupBox1.Controls.Add(Me.TB_ValidadaPagament)
-        Me.GroupBox1.Controls.Add(Me.TB_EsmenaObert)
-        Me.GroupBox1.Controls.Add(Me.RB_ValidadaPagament)
-        Me.GroupBox1.Controls.Add(Me.RB_EsmenaObert)
-        Me.GroupBox1.Controls.Add(Me.TB_TotsEstats)
-        Me.GroupBox1.Controls.Add(Me.RB_TotsEstats)
-        Me.GroupBox1.Controls.Add(Me.TB_Esborrany)
-        Me.GroupBox1.Controls.Add(Me.TB_Enviada)
-        Me.GroupBox1.Controls.Add(Me.TB_PreparantDocumentacio)
-        Me.GroupBox1.Controls.Add(Me.RB_PreparantDocumentacio)
-        Me.GroupBox1.Controls.Add(Me.RB_Esborrany)
-        Me.GroupBox1.Controls.Add(Me.RB_Enviada)
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 447)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(236, 354)
-        Me.GroupBox1.TabIndex = 20
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Tipus de estats"
-        '
-        'TB_Pagada
-        '
-        Me.TB_Pagada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_Pagada.Enabled = False
-        Me.TB_Pagada.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Pagada.Location = New System.Drawing.Point(187, 255)
-        Me.TB_Pagada.Name = "TB_Pagada"
-        Me.TB_Pagada.Size = New System.Drawing.Size(40, 23)
-        Me.TB_Pagada.TabIndex = 29
-        Me.TB_Pagada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_Pagada
-        '
-        Me.RB_Pagada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Pagada.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Pagada.Location = New System.Drawing.Point(7, 254)
-        Me.RB_Pagada.Name = "RB_Pagada"
-        Me.RB_Pagada.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Pagada.TabIndex = 28
-        Me.RB_Pagada.Text = "Pagada"
-        Me.RB_Pagada.UseVisualStyleBackColor = True
-        '
-        'TB_EsmenaIncorrecta
-        '
-        Me.TB_EsmenaIncorrecta.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_EsmenaIncorrecta.Enabled = False
-        Me.TB_EsmenaIncorrecta.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_EsmenaIncorrecta.Location = New System.Drawing.Point(187, 317)
-        Me.TB_EsmenaIncorrecta.Name = "TB_EsmenaIncorrecta"
-        Me.TB_EsmenaIncorrecta.Size = New System.Drawing.Size(40, 23)
-        Me.TB_EsmenaIncorrecta.TabIndex = 26
-        Me.TB_EsmenaIncorrecta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_FinalitzadaEsmena
-        '
-        Me.TB_FinalitzadaEsmena.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_FinalitzadaEsmena.Enabled = False
-        Me.TB_FinalitzadaEsmena.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_FinalitzadaEsmena.Location = New System.Drawing.Point(187, 286)
-        Me.TB_FinalitzadaEsmena.Name = "TB_FinalitzadaEsmena"
-        Me.TB_FinalitzadaEsmena.Size = New System.Drawing.Size(40, 23)
-        Me.TB_FinalitzadaEsmena.TabIndex = 25
-        Me.TB_FinalitzadaEsmena.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_FinalitzadaEsmena
-        '
-        Me.RB_FinalitzadaEsmena.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_FinalitzadaEsmena.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_FinalitzadaEsmena.Location = New System.Drawing.Point(7, 285)
-        Me.RB_FinalitzadaEsmena.Name = "RB_FinalitzadaEsmena"
-        Me.RB_FinalitzadaEsmena.Size = New System.Drawing.Size(174, 25)
-        Me.RB_FinalitzadaEsmena.TabIndex = 22
-        Me.RB_FinalitzadaEsmena.Text = "Finalitzat termini d'esmena"
-        Me.RB_FinalitzadaEsmena.UseVisualStyleBackColor = True
-        '
-        'RB_EsmenaIncorrecta
-        '
-        Me.RB_EsmenaIncorrecta.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_EsmenaIncorrecta.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_EsmenaIncorrecta.Location = New System.Drawing.Point(7, 316)
-        Me.RB_EsmenaIncorrecta.Name = "RB_EsmenaIncorrecta"
-        Me.RB_EsmenaIncorrecta.Size = New System.Drawing.Size(174, 25)
-        Me.RB_EsmenaIncorrecta.TabIndex = 23
-        Me.RB_EsmenaIncorrecta.Text = "Esmena incorrecta"
-        Me.RB_EsmenaIncorrecta.UseVisualStyleBackColor = True
-        '
-        'TB_Presentada
-        '
-        Me.TB_Presentada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_Presentada.Enabled = False
-        Me.TB_Presentada.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Presentada.Location = New System.Drawing.Point(187, 162)
-        Me.TB_Presentada.Name = "TB_Presentada"
-        Me.TB_Presentada.Size = New System.Drawing.Size(40, 23)
-        Me.TB_Presentada.TabIndex = 21
-        Me.TB_Presentada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_Presentada
-        '
-        Me.RB_Presentada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Presentada.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Presentada.Location = New System.Drawing.Point(7, 161)
-        Me.RB_Presentada.Name = "RB_Presentada"
-        Me.RB_Presentada.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Presentada.TabIndex = 20
-        Me.RB_Presentada.Text = "Presentada"
-        Me.RB_Presentada.UseVisualStyleBackColor = True
-        '
-        'TB_ValidadaPagament
-        '
-        Me.TB_ValidadaPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_ValidadaPagament.Enabled = False
-        Me.TB_ValidadaPagament.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ValidadaPagament.Location = New System.Drawing.Point(187, 224)
-        Me.TB_ValidadaPagament.Name = "TB_ValidadaPagament"
-        Me.TB_ValidadaPagament.Size = New System.Drawing.Size(40, 23)
-        Me.TB_ValidadaPagament.TabIndex = 19
-        Me.TB_ValidadaPagament.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_EsmenaObert
-        '
-        Me.TB_EsmenaObert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_EsmenaObert.Enabled = False
-        Me.TB_EsmenaObert.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_EsmenaObert.Location = New System.Drawing.Point(187, 193)
-        Me.TB_EsmenaObert.Name = "TB_EsmenaObert"
-        Me.TB_EsmenaObert.Size = New System.Drawing.Size(40, 23)
-        Me.TB_EsmenaObert.TabIndex = 18
-        Me.TB_EsmenaObert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_ValidadaPagament
-        '
-        Me.RB_ValidadaPagament.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_ValidadaPagament.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_ValidadaPagament.Location = New System.Drawing.Point(7, 223)
-        Me.RB_ValidadaPagament.Name = "RB_ValidadaPagament"
-        Me.RB_ValidadaPagament.Size = New System.Drawing.Size(174, 25)
-        Me.RB_ValidadaPagament.TabIndex = 16
-        Me.RB_ValidadaPagament.Text = "Validada per pagament"
-        Me.RB_ValidadaPagament.UseVisualStyleBackColor = True
-        '
-        'RB_EsmenaObert
-        '
-        Me.RB_EsmenaObert.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_EsmenaObert.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_EsmenaObert.Location = New System.Drawing.Point(7, 192)
-        Me.RB_EsmenaObert.Name = "RB_EsmenaObert"
-        Me.RB_EsmenaObert.Size = New System.Drawing.Size(174, 25)
-        Me.RB_EsmenaObert.TabIndex = 15
-        Me.RB_EsmenaObert.Text = "Termini d'esmena obert"
-        Me.RB_EsmenaObert.UseVisualStyleBackColor = True
-        '
-        'TB_TotsEstats
-        '
-        Me.TB_TotsEstats.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_TotsEstats.Enabled = False
-        Me.TB_TotsEstats.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_TotsEstats.Location = New System.Drawing.Point(187, 23)
-        Me.TB_TotsEstats.Name = "TB_TotsEstats"
-        Me.TB_TotsEstats.Size = New System.Drawing.Size(40, 23)
-        Me.TB_TotsEstats.TabIndex = 13
-        Me.TB_TotsEstats.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_TotsEstats
-        '
-        Me.RB_TotsEstats.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_TotsEstats.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_TotsEstats.Location = New System.Drawing.Point(7, 22)
-        Me.RB_TotsEstats.Name = "RB_TotsEstats"
-        Me.RB_TotsEstats.Size = New System.Drawing.Size(174, 25)
-        Me.RB_TotsEstats.TabIndex = 12
-        Me.RB_TotsEstats.Text = "Totes els estats"
-        Me.RB_TotsEstats.UseVisualStyleBackColor = True
-        '
-        'TB_Esborrany
-        '
-        Me.TB_Esborrany.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_Esborrany.Enabled = False
-        Me.TB_Esborrany.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Esborrany.Location = New System.Drawing.Point(187, 131)
-        Me.TB_Esborrany.Name = "TB_Esborrany"
-        Me.TB_Esborrany.Size = New System.Drawing.Size(40, 23)
-        Me.TB_Esborrany.TabIndex = 11
-        Me.TB_Esborrany.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_Enviada
-        '
-        Me.TB_Enviada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_Enviada.Enabled = False
-        Me.TB_Enviada.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Enviada.Location = New System.Drawing.Point(187, 100)
-        Me.TB_Enviada.Name = "TB_Enviada"
-        Me.TB_Enviada.Size = New System.Drawing.Size(40, 23)
-        Me.TB_Enviada.TabIndex = 10
-        Me.TB_Enviada.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_PreparantDocumentacio
-        '
-        Me.TB_PreparantDocumentacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_PreparantDocumentacio.Enabled = False
-        Me.TB_PreparantDocumentacio.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_PreparantDocumentacio.Location = New System.Drawing.Point(187, 69)
-        Me.TB_PreparantDocumentacio.Name = "TB_PreparantDocumentacio"
-        Me.TB_PreparantDocumentacio.Size = New System.Drawing.Size(40, 23)
-        Me.TB_PreparantDocumentacio.TabIndex = 9
-        Me.TB_PreparantDocumentacio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_PreparantDocumentacio
-        '
-        Me.RB_PreparantDocumentacio.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_PreparantDocumentacio.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_PreparantDocumentacio.Location = New System.Drawing.Point(7, 68)
-        Me.RB_PreparantDocumentacio.Name = "RB_PreparantDocumentacio"
-        Me.RB_PreparantDocumentacio.Size = New System.Drawing.Size(174, 25)
-        Me.RB_PreparantDocumentacio.TabIndex = 6
-        Me.RB_PreparantDocumentacio.Text = "Preparant documentació"
-        Me.RB_PreparantDocumentacio.UseVisualStyleBackColor = True
-        '
-        'RB_Esborrany
-        '
-        Me.RB_Esborrany.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Esborrany.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Esborrany.Location = New System.Drawing.Point(7, 130)
-        Me.RB_Esborrany.Name = "RB_Esborrany"
-        Me.RB_Esborrany.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Esborrany.TabIndex = 8
-        Me.RB_Esborrany.Text = "Esborrany"
-        Me.RB_Esborrany.UseVisualStyleBackColor = True
-        '
-        'RB_Enviada
-        '
-        Me.RB_Enviada.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Enviada.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Enviada.Location = New System.Drawing.Point(7, 99)
-        Me.RB_Enviada.Name = "RB_Enviada"
-        Me.RB_Enviada.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Enviada.TabIndex = 7
-        Me.RB_Enviada.Text = "Enviada"
-        Me.RB_Enviada.UseVisualStyleBackColor = True
-        '
-        'GB_TipusSolucions
-        '
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_FacturaElectronica)
-        Me.GB_TipusSolucions.Controls.Add(Me.CB_JaPresentades)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_FacturaElectronica)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_Ciberseguridad)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_ComunicacionesSeguras)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_OficinaVirtual)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_OficinaVirtual)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_Ciberseguridad)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_ComunicacionesSeguras)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_GestionClientes)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_GestionClientes)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_GestionProcesos)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_BusinessInteligence)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_GestionProcesos)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_BusinessInteligence)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_totes)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_Totes)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_RedesSociales)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_ComercioElectronico)
-        Me.GB_TipusSolucions.Controls.Add(Me.TB_SitioWeb)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_SitioWeb)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_RedesSociales)
-        Me.GB_TipusSolucions.Controls.Add(Me.RB_ComercioElectronico)
-        Me.GB_TipusSolucions.Location = New System.Drawing.Point(11, 0)
-        Me.GB_TipusSolucions.Name = "GB_TipusSolucions"
-        Me.GB_TipusSolucions.Size = New System.Drawing.Size(236, 441)
-        Me.GB_TipusSolucions.TabIndex = 15
-        Me.GB_TipusSolucions.TabStop = False
-        Me.GB_TipusSolucions.Text = "Tipus de solucions"
-        '
-        'TB_FacturaElectronica
-        '
-        Me.TB_FacturaElectronica.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_FacturaElectronica.Enabled = False
-        Me.TB_FacturaElectronica.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_FacturaElectronica.Location = New System.Drawing.Point(187, 261)
-        Me.TB_FacturaElectronica.Name = "TB_FacturaElectronica"
-        Me.TB_FacturaElectronica.Size = New System.Drawing.Size(40, 23)
-        Me.TB_FacturaElectronica.TabIndex = 29
-        Me.TB_FacturaElectronica.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'CB_JaPresentades
-        '
-        Me.CB_JaPresentades.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CB_JaPresentades.AutoSize = True
-        Me.CB_JaPresentades.Location = New System.Drawing.Point(7, 406)
-        Me.CB_JaPresentades.Name = "CB_JaPresentades"
-        Me.CB_JaPresentades.Size = New System.Drawing.Size(189, 19)
-        Me.CB_JaPresentades.TabIndex = 5
-        Me.CB_JaPresentades.Text = "Mostrar solucions ja aprovades"
-        Me.CB_JaPresentades.UseVisualStyleBackColor = True
-        '
-        'RB_FacturaElectronica
-        '
-        Me.RB_FacturaElectronica.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_FacturaElectronica.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_FacturaElectronica.Location = New System.Drawing.Point(7, 260)
-        Me.RB_FacturaElectronica.Name = "RB_FacturaElectronica"
-        Me.RB_FacturaElectronica.Size = New System.Drawing.Size(174, 25)
-        Me.RB_FacturaElectronica.TabIndex = 28
-        Me.RB_FacturaElectronica.Text = "Factura electrónica"
-        Me.RB_FacturaElectronica.UseVisualStyleBackColor = True
-        '
-        'TB_Ciberseguridad
-        '
-        Me.TB_Ciberseguridad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_Ciberseguridad.Enabled = False
-        Me.TB_Ciberseguridad.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_Ciberseguridad.Location = New System.Drawing.Point(187, 354)
-        Me.TB_Ciberseguridad.Name = "TB_Ciberseguridad"
-        Me.TB_Ciberseguridad.Size = New System.Drawing.Size(40, 23)
-        Me.TB_Ciberseguridad.TabIndex = 27
-        Me.TB_Ciberseguridad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_ComunicacionesSeguras
-        '
-        Me.TB_ComunicacionesSeguras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_ComunicacionesSeguras.Enabled = False
-        Me.TB_ComunicacionesSeguras.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComunicacionesSeguras.Location = New System.Drawing.Point(187, 323)
-        Me.TB_ComunicacionesSeguras.Name = "TB_ComunicacionesSeguras"
-        Me.TB_ComunicacionesSeguras.Size = New System.Drawing.Size(40, 23)
-        Me.TB_ComunicacionesSeguras.TabIndex = 26
-        Me.TB_ComunicacionesSeguras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_OficinaVirtual
-        '
-        Me.TB_OficinaVirtual.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_OficinaVirtual.Enabled = False
-        Me.TB_OficinaVirtual.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_OficinaVirtual.Location = New System.Drawing.Point(187, 292)
-        Me.TB_OficinaVirtual.Name = "TB_OficinaVirtual"
-        Me.TB_OficinaVirtual.Size = New System.Drawing.Size(40, 23)
-        Me.TB_OficinaVirtual.TabIndex = 25
-        Me.TB_OficinaVirtual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_OficinaVirtual
-        '
-        Me.RB_OficinaVirtual.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_OficinaVirtual.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_OficinaVirtual.Location = New System.Drawing.Point(7, 291)
-        Me.RB_OficinaVirtual.Name = "RB_OficinaVirtual"
-        Me.RB_OficinaVirtual.Size = New System.Drawing.Size(174, 25)
-        Me.RB_OficinaVirtual.TabIndex = 22
-        Me.RB_OficinaVirtual.Text = "Oficina virtual"
-        Me.RB_OficinaVirtual.UseVisualStyleBackColor = True
-        '
-        'RB_Ciberseguridad
-        '
-        Me.RB_Ciberseguridad.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Ciberseguridad.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Ciberseguridad.Location = New System.Drawing.Point(7, 353)
-        Me.RB_Ciberseguridad.Name = "RB_Ciberseguridad"
-        Me.RB_Ciberseguridad.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Ciberseguridad.TabIndex = 24
-        Me.RB_Ciberseguridad.Text = "Ciberseguridad"
-        Me.RB_Ciberseguridad.UseVisualStyleBackColor = True
-        '
-        'RB_ComunicacionesSeguras
-        '
-        Me.RB_ComunicacionesSeguras.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_ComunicacionesSeguras.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_ComunicacionesSeguras.Location = New System.Drawing.Point(7, 322)
-        Me.RB_ComunicacionesSeguras.Name = "RB_ComunicacionesSeguras"
-        Me.RB_ComunicacionesSeguras.Size = New System.Drawing.Size(174, 25)
-        Me.RB_ComunicacionesSeguras.TabIndex = 23
-        Me.RB_ComunicacionesSeguras.Text = "Comunicaciones seguras"
-        Me.RB_ComunicacionesSeguras.UseVisualStyleBackColor = True
-        '
-        'TB_GestionClientes
-        '
-        Me.TB_GestionClientes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_GestionClientes.Enabled = False
-        Me.TB_GestionClientes.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_GestionClientes.Location = New System.Drawing.Point(187, 168)
-        Me.TB_GestionClientes.Name = "TB_GestionClientes"
-        Me.TB_GestionClientes.Size = New System.Drawing.Size(40, 23)
-        Me.TB_GestionClientes.TabIndex = 21
-        Me.TB_GestionClientes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_GestionClientes
-        '
-        Me.RB_GestionClientes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_GestionClientes.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_GestionClientes.Location = New System.Drawing.Point(7, 167)
-        Me.RB_GestionClientes.Name = "RB_GestionClientes"
-        Me.RB_GestionClientes.Size = New System.Drawing.Size(174, 25)
-        Me.RB_GestionClientes.TabIndex = 20
-        Me.RB_GestionClientes.Text = "Gestión de clientes"
-        Me.RB_GestionClientes.UseVisualStyleBackColor = True
-        '
-        'TB_GestionProcesos
-        '
-        Me.TB_GestionProcesos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_GestionProcesos.Enabled = False
-        Me.TB_GestionProcesos.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_GestionProcesos.Location = New System.Drawing.Point(187, 230)
-        Me.TB_GestionProcesos.Name = "TB_GestionProcesos"
-        Me.TB_GestionProcesos.Size = New System.Drawing.Size(40, 23)
-        Me.TB_GestionProcesos.TabIndex = 19
-        Me.TB_GestionProcesos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_BusinessInteligence
-        '
-        Me.TB_BusinessInteligence.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_BusinessInteligence.Enabled = False
-        Me.TB_BusinessInteligence.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_BusinessInteligence.Location = New System.Drawing.Point(187, 199)
-        Me.TB_BusinessInteligence.Name = "TB_BusinessInteligence"
-        Me.TB_BusinessInteligence.Size = New System.Drawing.Size(40, 23)
-        Me.TB_BusinessInteligence.TabIndex = 18
-        Me.TB_BusinessInteligence.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_GestionProcesos
-        '
-        Me.RB_GestionProcesos.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_GestionProcesos.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_GestionProcesos.Location = New System.Drawing.Point(7, 229)
-        Me.RB_GestionProcesos.Name = "RB_GestionProcesos"
-        Me.RB_GestionProcesos.Size = New System.Drawing.Size(174, 25)
-        Me.RB_GestionProcesos.TabIndex = 16
-        Me.RB_GestionProcesos.Text = "Gestión de procesos"
-        Me.RB_GestionProcesos.UseVisualStyleBackColor = True
-        '
-        'RB_BusinessInteligence
-        '
-        Me.RB_BusinessInteligence.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_BusinessInteligence.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_BusinessInteligence.Location = New System.Drawing.Point(7, 198)
-        Me.RB_BusinessInteligence.Name = "RB_BusinessInteligence"
-        Me.RB_BusinessInteligence.Size = New System.Drawing.Size(174, 25)
-        Me.RB_BusinessInteligence.TabIndex = 15
-        Me.RB_BusinessInteligence.Text = "Business Inteligence"
-        Me.RB_BusinessInteligence.UseVisualStyleBackColor = True
-        '
-        'TB_totes
-        '
-        Me.TB_totes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_totes.Enabled = False
-        Me.TB_totes.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_totes.Location = New System.Drawing.Point(187, 29)
-        Me.TB_totes.Name = "TB_totes"
-        Me.TB_totes.Size = New System.Drawing.Size(40, 23)
-        Me.TB_totes.TabIndex = 13
-        Me.TB_totes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_Totes
-        '
-        Me.RB_Totes.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_Totes.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_Totes.Location = New System.Drawing.Point(7, 28)
-        Me.RB_Totes.Name = "RB_Totes"
-        Me.RB_Totes.Size = New System.Drawing.Size(174, 25)
-        Me.RB_Totes.TabIndex = 12
-        Me.RB_Totes.Text = "Totes les solucions"
-        Me.RB_Totes.UseVisualStyleBackColor = True
-        '
-        'TB_RedesSociales
-        '
-        Me.TB_RedesSociales.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_RedesSociales.Enabled = False
-        Me.TB_RedesSociales.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_RedesSociales.Location = New System.Drawing.Point(187, 137)
-        Me.TB_RedesSociales.Name = "TB_RedesSociales"
-        Me.TB_RedesSociales.Size = New System.Drawing.Size(40, 23)
-        Me.TB_RedesSociales.TabIndex = 11
-        Me.TB_RedesSociales.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_ComercioElectronico
-        '
-        Me.TB_ComercioElectronico.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_ComercioElectronico.Enabled = False
-        Me.TB_ComercioElectronico.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_ComercioElectronico.Location = New System.Drawing.Point(187, 106)
-        Me.TB_ComercioElectronico.Name = "TB_ComercioElectronico"
-        Me.TB_ComercioElectronico.Size = New System.Drawing.Size(40, 23)
-        Me.TB_ComercioElectronico.TabIndex = 10
-        Me.TB_ComercioElectronico.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TB_SitioWeb
-        '
-        Me.TB_SitioWeb.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TB_SitioWeb.Enabled = False
-        Me.TB_SitioWeb.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TB_SitioWeb.Location = New System.Drawing.Point(187, 75)
-        Me.TB_SitioWeb.Name = "TB_SitioWeb"
-        Me.TB_SitioWeb.Size = New System.Drawing.Size(40, 23)
-        Me.TB_SitioWeb.TabIndex = 9
-        Me.TB_SitioWeb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'RB_SitioWeb
-        '
-        Me.RB_SitioWeb.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_SitioWeb.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_SitioWeb.Location = New System.Drawing.Point(7, 74)
-        Me.RB_SitioWeb.Name = "RB_SitioWeb"
-        Me.RB_SitioWeb.Size = New System.Drawing.Size(174, 25)
-        Me.RB_SitioWeb.TabIndex = 6
-        Me.RB_SitioWeb.Text = "Sitio Web"
-        Me.RB_SitioWeb.UseVisualStyleBackColor = True
-        '
-        'RB_RedesSociales
-        '
-        Me.RB_RedesSociales.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_RedesSociales.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_RedesSociales.Location = New System.Drawing.Point(7, 136)
-        Me.RB_RedesSociales.Name = "RB_RedesSociales"
-        Me.RB_RedesSociales.Size = New System.Drawing.Size(174, 25)
-        Me.RB_RedesSociales.TabIndex = 8
-        Me.RB_RedesSociales.Text = "Gestión de redes sociales"
-        Me.RB_RedesSociales.UseVisualStyleBackColor = True
-        '
-        'RB_ComercioElectronico
-        '
-        Me.RB_ComercioElectronico.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RB_ComercioElectronico.Appearance = System.Windows.Forms.Appearance.Button
-        Me.RB_ComercioElectronico.Location = New System.Drawing.Point(7, 105)
-        Me.RB_ComercioElectronico.Name = "RB_ComercioElectronico"
-        Me.RB_ComercioElectronico.Size = New System.Drawing.Size(174, 25)
-        Me.RB_ComercioElectronico.TabIndex = 7
-        Me.RB_ComercioElectronico.Text = "Comercio electrónico"
-        Me.RB_ComercioElectronico.UseVisualStyleBackColor = True
-        '
-        'Timer1
-        '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
-        '
-        'Solucions
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1631, 1034)
-        Me.Controls.Add(Me.SplitContainer1)
-        Me.Controls.Add(Me.Panel1)
-        Me.DoubleBuffered = True
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Solucions"
-        Me.Text = "Solucions"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.SplitContainer1.Panel1.ResumeLayout(False)
-        Me.SplitContainer1.Panel2.ResumeLayout(False)
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SplitContainer1.ResumeLayout(False)
-        CType(Me.DataLlistat, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GB_TipusSolucions.ResumeLayout(False)
-        Me.GB_TipusSolucions.PerformLayout()
-        Me.ResumeLayout(False)
+        components = New ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Panel1 = New Panel()
+        Btn_actualitzar = New Button()
+        Label4 = New Label()
+        contracte = New TextBox()
+        AdvertenciaCaducats = New Label()
+        Label2 = New Label()
+        Label3 = New Label()
+        nomEmpresa = New TextBox()
+        Label1 = New Label()
+        SplitContainer1 = New SplitContainer()
+        DataLlistat = New DataGridView()
+        GroupBox1 = New GroupBox()
+        TB_Pagada = New TextBox()
+        RB_Pagada = New RadioButton()
+        TB_EsmenaIncorrecta = New TextBox()
+        TB_FinalitzadaEsmena = New TextBox()
+        RB_FinalitzadaEsmena = New RadioButton()
+        RB_EsmenaIncorrecta = New RadioButton()
+        TB_Presentada = New TextBox()
+        RB_Presentada = New RadioButton()
+        TB_ValidadaPagament = New TextBox()
+        TB_EsmenaObert = New TextBox()
+        RB_ValidadaPagament = New RadioButton()
+        RB_EsmenaObert = New RadioButton()
+        TB_TotsEstats = New TextBox()
+        RB_TotsEstats = New RadioButton()
+        TB_Esborrany = New TextBox()
+        TB_Enviada = New TextBox()
+        TB_PreparantDocumentacio = New TextBox()
+        RB_PreparantDocumentacio = New RadioButton()
+        RB_Esborrany = New RadioButton()
+        RB_Enviada = New RadioButton()
+        GB_TipusSolucions = New GroupBox()
+        TB_FacturaElectronica = New TextBox()
+        CB_JaPresentades = New CheckBox()
+        RB_FacturaElectronica = New RadioButton()
+        TB_Ciberseguridad = New TextBox()
+        TB_ComunicacionesSeguras = New TextBox()
+        TB_OficinaVirtual = New TextBox()
+        RB_OficinaVirtual = New RadioButton()
+        RB_Ciberseguridad = New RadioButton()
+        RB_ComunicacionesSeguras = New RadioButton()
+        TB_GestionClientes = New TextBox()
+        RB_GestionClientes = New RadioButton()
+        TB_GestionProcesos = New TextBox()
+        TB_BusinessInteligence = New TextBox()
+        RB_GestionProcesos = New RadioButton()
+        RB_BusinessInteligence = New RadioButton()
+        TB_totes = New TextBox()
+        RB_Totes = New RadioButton()
+        TB_RedesSociales = New TextBox()
+        TB_ComercioElectronico = New TextBox()
+        TB_SitioWeb = New TextBox()
+        RB_SitioWeb = New RadioButton()
+        RB_RedesSociales = New RadioButton()
+        RB_ComercioElectronico = New RadioButton()
+        Timer1 = New Timer(components)
+        Panel1.SuspendLayout()
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
+        SplitContainer1.Panel1.SuspendLayout()
+        SplitContainer1.Panel2.SuspendLayout()
+        SplitContainer1.SuspendLayout()
+        CType(DataLlistat, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox1.SuspendLayout()
+        GB_TipusSolucions.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' Panel1
+        ' 
+        Panel1.Controls.Add(Btn_actualitzar)
+        Panel1.Controls.Add(Label4)
+        Panel1.Controls.Add(contracte)
+        Panel1.Controls.Add(AdvertenciaCaducats)
+        Panel1.Controls.Add(Label2)
+        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(nomEmpresa)
+        Panel1.Controls.Add(Label1)
+        Panel1.Dock = DockStyle.Top
+        Panel1.Location = New Point(0, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(1631, 53)
+        Panel1.TabIndex = 0
+        ' 
+        ' Btn_actualitzar
+        ' 
+        Btn_actualitzar.BackColor = SystemColors.Control
+        Btn_actualitzar.BackgroundImage = My.Resources.Resources.Icono_Actualizar
+        Btn_actualitzar.BackgroundImageLayout = ImageLayout.Zoom
+        Btn_actualitzar.FlatAppearance.BorderSize = 0
+        Btn_actualitzar.FlatStyle = FlatStyle.Flat
+        Btn_actualitzar.Location = New Point(513, 7)
+        Btn_actualitzar.Name = "Btn_actualitzar"
+        Btn_actualitzar.Size = New Size(40, 40)
+        Btn_actualitzar.TabIndex = 20
+        Btn_actualitzar.UseVisualStyleBackColor = False
+        ' 
+        ' Label4
+        ' 
+        Label4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Label4.AutoSize = True
+        Label4.Location = New Point(1402, 6)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(115, 15)
+        Label4.TabIndex = 19
+        Label4.Text = "Buscar per contracte"
+        ' 
+        ' contracte
+        ' 
+        contracte.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        contracte.Location = New Point(1401, 24)
+        contracte.Name = "contracte"
+        contracte.Size = New Size(220, 23)
+        contracte.TabIndex = 18
+        ' 
+        ' AdvertenciaCaducats
+        ' 
+        AdvertenciaCaducats.AutoSize = True
+        AdvertenciaCaducats.BackColor = SystemColors.Control
+        AdvertenciaCaducats.Font = New Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        AdvertenciaCaducats.ForeColor = Color.Red
+        AdvertenciaCaducats.Location = New Point(633, 10)
+        AdvertenciaCaducats.Name = "AdvertenciaCaducats"
+        AdvertenciaCaducats.Size = New Size(375, 29)
+        AdvertenciaCaducats.TabIndex = 18
+        AdvertenciaCaducats.Text = "Atenció! Solucions apunt de caducar"
+        AdvertenciaCaducats.Visible = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(218, 21)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(279, 15)
+        Label2.TabIndex = 17
+        Label2.Text = "(Doble click per accedir a les dades de cada solució)"
+        ' 
+        ' Label3
+        ' 
+        Label3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Label3.AutoSize = True
+        Label3.Location = New Point(1176, 6)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(110, 15)
+        Label3.TabIndex = 17
+        Label3.Text = "Buscar per empresa"
+        ' 
+        ' nomEmpresa
+        ' 
+        nomEmpresa.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        nomEmpresa.Location = New Point(1176, 24)
+        nomEmpresa.Name = "nomEmpresa"
+        nomEmpresa.Size = New Size(220, 23)
+        nomEmpresa.TabIndex = 16
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
+        Label1.Location = New Point(3, 10)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(200, 30)
+        Label1.TabIndex = 16
+        Label1.Text = "Llistat de solucions"
+        ' 
+        ' SplitContainer1
+        ' 
+        SplitContainer1.Dock = DockStyle.Fill
+        SplitContainer1.FixedPanel = FixedPanel.Panel2
+        SplitContainer1.Location = New Point(0, 53)
+        SplitContainer1.Name = "SplitContainer1"
+        ' 
+        ' SplitContainer1.Panel1
+        ' 
+        SplitContainer1.Panel1.AutoScroll = True
+        SplitContainer1.Panel1.Controls.Add(DataLlistat)
+        SplitContainer1.Panel1.Padding = New Padding(20, 0, 0, 20)
+        ' 
+        ' SplitContainer1.Panel2
+        ' 
+        SplitContainer1.Panel2.Controls.Add(GroupBox1)
+        SplitContainer1.Panel2.Controls.Add(GB_TipusSolucions)
+        SplitContainer1.Size = New Size(1631, 981)
+        SplitContainer1.SplitterDistance = 1371
+        SplitContainer1.TabIndex = 1
+        ' 
+        ' DataLlistat
+        ' 
+        DataLlistat.AllowUserToAddRows = False
+        DataLlistat.AllowUserToDeleteRows = False
+        DataLlistat.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = Color.Gray
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataLlistat.ColumnHeadersHeight = 40
+        DataLlistat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = SystemColors.Window
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        DataLlistat.DefaultCellStyle = DataGridViewCellStyle3
+        DataLlistat.Dock = DockStyle.Fill
+        DataLlistat.EnableHeadersVisualStyles = False
+        DataLlistat.Location = New Point(20, 0)
+        DataLlistat.MultiSelect = False
+        DataLlistat.Name = "DataLlistat"
+        DataLlistat.ReadOnly = True
+        DataLlistat.RowHeadersVisible = False
+        DataGridViewCellStyle4.Padding = New Padding(0, 3, 0, 3)
+        DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataLlistat.RowTemplate.Height = 25
+        DataLlistat.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataLlistat.ShowEditingIcon = False
+        DataLlistat.Size = New Size(1351, 961)
+        DataLlistat.TabIndex = 4
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(TB_Pagada)
+        GroupBox1.Controls.Add(RB_Pagada)
+        GroupBox1.Controls.Add(TB_EsmenaIncorrecta)
+        GroupBox1.Controls.Add(TB_FinalitzadaEsmena)
+        GroupBox1.Controls.Add(RB_FinalitzadaEsmena)
+        GroupBox1.Controls.Add(RB_EsmenaIncorrecta)
+        GroupBox1.Controls.Add(TB_Presentada)
+        GroupBox1.Controls.Add(RB_Presentada)
+        GroupBox1.Controls.Add(TB_ValidadaPagament)
+        GroupBox1.Controls.Add(TB_EsmenaObert)
+        GroupBox1.Controls.Add(RB_ValidadaPagament)
+        GroupBox1.Controls.Add(RB_EsmenaObert)
+        GroupBox1.Controls.Add(TB_TotsEstats)
+        GroupBox1.Controls.Add(RB_TotsEstats)
+        GroupBox1.Controls.Add(TB_Esborrany)
+        GroupBox1.Controls.Add(TB_Enviada)
+        GroupBox1.Controls.Add(TB_PreparantDocumentacio)
+        GroupBox1.Controls.Add(RB_PreparantDocumentacio)
+        GroupBox1.Controls.Add(RB_Esborrany)
+        GroupBox1.Controls.Add(RB_Enviada)
+        GroupBox1.Location = New Point(11, 447)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(236, 354)
+        GroupBox1.TabIndex = 20
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Tipus de estats"
+        ' 
+        ' TB_Pagada
+        ' 
+        TB_Pagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Pagada.Enabled = False
+        TB_Pagada.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Pagada.Location = New Point(187, 255)
+        TB_Pagada.Name = "TB_Pagada"
+        TB_Pagada.Size = New Size(40, 23)
+        TB_Pagada.TabIndex = 29
+        TB_Pagada.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_Pagada
+        ' 
+        RB_Pagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Pagada.Appearance = Appearance.Button
+        RB_Pagada.Location = New Point(7, 254)
+        RB_Pagada.Name = "RB_Pagada"
+        RB_Pagada.Size = New Size(174, 25)
+        RB_Pagada.TabIndex = 28
+        RB_Pagada.Text = "Pagada"
+        RB_Pagada.UseVisualStyleBackColor = True
+        ' 
+        ' TB_EsmenaIncorrecta
+        ' 
+        TB_EsmenaIncorrecta.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_EsmenaIncorrecta.Enabled = False
+        TB_EsmenaIncorrecta.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_EsmenaIncorrecta.Location = New Point(187, 317)
+        TB_EsmenaIncorrecta.Name = "TB_EsmenaIncorrecta"
+        TB_EsmenaIncorrecta.Size = New Size(40, 23)
+        TB_EsmenaIncorrecta.TabIndex = 26
+        TB_EsmenaIncorrecta.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_FinalitzadaEsmena
+        ' 
+        TB_FinalitzadaEsmena.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_FinalitzadaEsmena.Enabled = False
+        TB_FinalitzadaEsmena.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_FinalitzadaEsmena.Location = New Point(187, 286)
+        TB_FinalitzadaEsmena.Name = "TB_FinalitzadaEsmena"
+        TB_FinalitzadaEsmena.Size = New Size(40, 23)
+        TB_FinalitzadaEsmena.TabIndex = 25
+        TB_FinalitzadaEsmena.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_FinalitzadaEsmena
+        ' 
+        RB_FinalitzadaEsmena.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_FinalitzadaEsmena.Appearance = Appearance.Button
+        RB_FinalitzadaEsmena.Location = New Point(7, 285)
+        RB_FinalitzadaEsmena.Name = "RB_FinalitzadaEsmena"
+        RB_FinalitzadaEsmena.Size = New Size(174, 25)
+        RB_FinalitzadaEsmena.TabIndex = 22
+        RB_FinalitzadaEsmena.Text = "Finalitzat termini d'esmena"
+        RB_FinalitzadaEsmena.UseVisualStyleBackColor = True
+        ' 
+        ' RB_EsmenaIncorrecta
+        ' 
+        RB_EsmenaIncorrecta.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_EsmenaIncorrecta.Appearance = Appearance.Button
+        RB_EsmenaIncorrecta.Location = New Point(7, 316)
+        RB_EsmenaIncorrecta.Name = "RB_EsmenaIncorrecta"
+        RB_EsmenaIncorrecta.Size = New Size(174, 25)
+        RB_EsmenaIncorrecta.TabIndex = 23
+        RB_EsmenaIncorrecta.Text = "Esmena incorrecta"
+        RB_EsmenaIncorrecta.UseVisualStyleBackColor = True
+        ' 
+        ' TB_Presentada
+        ' 
+        TB_Presentada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Presentada.Enabled = False
+        TB_Presentada.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Presentada.Location = New Point(187, 162)
+        TB_Presentada.Name = "TB_Presentada"
+        TB_Presentada.Size = New Size(40, 23)
+        TB_Presentada.TabIndex = 21
+        TB_Presentada.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_Presentada
+        ' 
+        RB_Presentada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Presentada.Appearance = Appearance.Button
+        RB_Presentada.Location = New Point(7, 161)
+        RB_Presentada.Name = "RB_Presentada"
+        RB_Presentada.Size = New Size(174, 25)
+        RB_Presentada.TabIndex = 20
+        RB_Presentada.Text = "Presentada"
+        RB_Presentada.UseVisualStyleBackColor = True
+        ' 
+        ' TB_ValidadaPagament
+        ' 
+        TB_ValidadaPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_ValidadaPagament.Enabled = False
+        TB_ValidadaPagament.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_ValidadaPagament.Location = New Point(187, 224)
+        TB_ValidadaPagament.Name = "TB_ValidadaPagament"
+        TB_ValidadaPagament.Size = New Size(40, 23)
+        TB_ValidadaPagament.TabIndex = 19
+        TB_ValidadaPagament.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_EsmenaObert
+        ' 
+        TB_EsmenaObert.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_EsmenaObert.Enabled = False
+        TB_EsmenaObert.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_EsmenaObert.Location = New Point(187, 193)
+        TB_EsmenaObert.Name = "TB_EsmenaObert"
+        TB_EsmenaObert.Size = New Size(40, 23)
+        TB_EsmenaObert.TabIndex = 18
+        TB_EsmenaObert.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_ValidadaPagament
+        ' 
+        RB_ValidadaPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_ValidadaPagament.Appearance = Appearance.Button
+        RB_ValidadaPagament.Location = New Point(7, 223)
+        RB_ValidadaPagament.Name = "RB_ValidadaPagament"
+        RB_ValidadaPagament.Size = New Size(174, 25)
+        RB_ValidadaPagament.TabIndex = 16
+        RB_ValidadaPagament.Text = "Validada per pagament"
+        RB_ValidadaPagament.UseVisualStyleBackColor = True
+        ' 
+        ' RB_EsmenaObert
+        ' 
+        RB_EsmenaObert.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_EsmenaObert.Appearance = Appearance.Button
+        RB_EsmenaObert.Location = New Point(7, 192)
+        RB_EsmenaObert.Name = "RB_EsmenaObert"
+        RB_EsmenaObert.Size = New Size(174, 25)
+        RB_EsmenaObert.TabIndex = 15
+        RB_EsmenaObert.Text = "Termini d'esmena obert"
+        RB_EsmenaObert.UseVisualStyleBackColor = True
+        ' 
+        ' TB_TotsEstats
+        ' 
+        TB_TotsEstats.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_TotsEstats.Enabled = False
+        TB_TotsEstats.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_TotsEstats.Location = New Point(187, 23)
+        TB_TotsEstats.Name = "TB_TotsEstats"
+        TB_TotsEstats.Size = New Size(40, 23)
+        TB_TotsEstats.TabIndex = 13
+        TB_TotsEstats.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_TotsEstats
+        ' 
+        RB_TotsEstats.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_TotsEstats.Appearance = Appearance.Button
+        RB_TotsEstats.Location = New Point(7, 22)
+        RB_TotsEstats.Name = "RB_TotsEstats"
+        RB_TotsEstats.Size = New Size(174, 25)
+        RB_TotsEstats.TabIndex = 12
+        RB_TotsEstats.Text = "Totes els estats"
+        RB_TotsEstats.UseVisualStyleBackColor = True
+        ' 
+        ' TB_Esborrany
+        ' 
+        TB_Esborrany.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Esborrany.Enabled = False
+        TB_Esborrany.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Esborrany.Location = New Point(187, 131)
+        TB_Esborrany.Name = "TB_Esborrany"
+        TB_Esborrany.Size = New Size(40, 23)
+        TB_Esborrany.TabIndex = 11
+        TB_Esborrany.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_Enviada
+        ' 
+        TB_Enviada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Enviada.Enabled = False
+        TB_Enviada.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Enviada.Location = New Point(187, 100)
+        TB_Enviada.Name = "TB_Enviada"
+        TB_Enviada.Size = New Size(40, 23)
+        TB_Enviada.TabIndex = 10
+        TB_Enviada.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_PreparantDocumentacio
+        ' 
+        TB_PreparantDocumentacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_PreparantDocumentacio.Enabled = False
+        TB_PreparantDocumentacio.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_PreparantDocumentacio.Location = New Point(187, 69)
+        TB_PreparantDocumentacio.Name = "TB_PreparantDocumentacio"
+        TB_PreparantDocumentacio.Size = New Size(40, 23)
+        TB_PreparantDocumentacio.TabIndex = 9
+        TB_PreparantDocumentacio.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_PreparantDocumentacio
+        ' 
+        RB_PreparantDocumentacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_PreparantDocumentacio.Appearance = Appearance.Button
+        RB_PreparantDocumentacio.Location = New Point(7, 68)
+        RB_PreparantDocumentacio.Name = "RB_PreparantDocumentacio"
+        RB_PreparantDocumentacio.Size = New Size(174, 25)
+        RB_PreparantDocumentacio.TabIndex = 6
+        RB_PreparantDocumentacio.Text = "Preparant documentació"
+        RB_PreparantDocumentacio.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Esborrany
+        ' 
+        RB_Esborrany.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Esborrany.Appearance = Appearance.Button
+        RB_Esborrany.Location = New Point(7, 130)
+        RB_Esborrany.Name = "RB_Esborrany"
+        RB_Esborrany.Size = New Size(174, 25)
+        RB_Esborrany.TabIndex = 8
+        RB_Esborrany.Text = "Esborrany"
+        RB_Esborrany.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Enviada
+        ' 
+        RB_Enviada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Enviada.Appearance = Appearance.Button
+        RB_Enviada.Location = New Point(7, 99)
+        RB_Enviada.Name = "RB_Enviada"
+        RB_Enviada.Size = New Size(174, 25)
+        RB_Enviada.TabIndex = 7
+        RB_Enviada.Text = "Enviada"
+        RB_Enviada.UseVisualStyleBackColor = True
+        ' 
+        ' GB_TipusSolucions
+        ' 
+        GB_TipusSolucions.Controls.Add(TB_FacturaElectronica)
+        GB_TipusSolucions.Controls.Add(CB_JaPresentades)
+        GB_TipusSolucions.Controls.Add(RB_FacturaElectronica)
+        GB_TipusSolucions.Controls.Add(TB_Ciberseguridad)
+        GB_TipusSolucions.Controls.Add(TB_ComunicacionesSeguras)
+        GB_TipusSolucions.Controls.Add(TB_OficinaVirtual)
+        GB_TipusSolucions.Controls.Add(RB_OficinaVirtual)
+        GB_TipusSolucions.Controls.Add(RB_Ciberseguridad)
+        GB_TipusSolucions.Controls.Add(RB_ComunicacionesSeguras)
+        GB_TipusSolucions.Controls.Add(TB_GestionClientes)
+        GB_TipusSolucions.Controls.Add(RB_GestionClientes)
+        GB_TipusSolucions.Controls.Add(TB_GestionProcesos)
+        GB_TipusSolucions.Controls.Add(TB_BusinessInteligence)
+        GB_TipusSolucions.Controls.Add(RB_GestionProcesos)
+        GB_TipusSolucions.Controls.Add(RB_BusinessInteligence)
+        GB_TipusSolucions.Controls.Add(TB_totes)
+        GB_TipusSolucions.Controls.Add(RB_Totes)
+        GB_TipusSolucions.Controls.Add(TB_RedesSociales)
+        GB_TipusSolucions.Controls.Add(TB_ComercioElectronico)
+        GB_TipusSolucions.Controls.Add(TB_SitioWeb)
+        GB_TipusSolucions.Controls.Add(RB_SitioWeb)
+        GB_TipusSolucions.Controls.Add(RB_RedesSociales)
+        GB_TipusSolucions.Controls.Add(RB_ComercioElectronico)
+        GB_TipusSolucions.Location = New Point(11, 0)
+        GB_TipusSolucions.Name = "GB_TipusSolucions"
+        GB_TipusSolucions.Size = New Size(236, 441)
+        GB_TipusSolucions.TabIndex = 15
+        GB_TipusSolucions.TabStop = False
+        GB_TipusSolucions.Text = "Tipus de solucions"
+        ' 
+        ' TB_FacturaElectronica
+        ' 
+        TB_FacturaElectronica.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_FacturaElectronica.Enabled = False
+        TB_FacturaElectronica.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_FacturaElectronica.Location = New Point(187, 261)
+        TB_FacturaElectronica.Name = "TB_FacturaElectronica"
+        TB_FacturaElectronica.Size = New Size(40, 23)
+        TB_FacturaElectronica.TabIndex = 29
+        TB_FacturaElectronica.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' CB_JaPresentades
+        ' 
+        CB_JaPresentades.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        CB_JaPresentades.AutoSize = True
+        CB_JaPresentades.Location = New Point(7, 406)
+        CB_JaPresentades.Name = "CB_JaPresentades"
+        CB_JaPresentades.Size = New Size(189, 19)
+        CB_JaPresentades.TabIndex = 5
+        CB_JaPresentades.Text = "Mostrar solucions ja aprovades"
+        CB_JaPresentades.UseVisualStyleBackColor = True
+        ' 
+        ' RB_FacturaElectronica
+        ' 
+        RB_FacturaElectronica.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_FacturaElectronica.Appearance = Appearance.Button
+        RB_FacturaElectronica.Location = New Point(7, 260)
+        RB_FacturaElectronica.Name = "RB_FacturaElectronica"
+        RB_FacturaElectronica.Size = New Size(174, 25)
+        RB_FacturaElectronica.TabIndex = 28
+        RB_FacturaElectronica.Text = "Factura electrónica"
+        RB_FacturaElectronica.UseVisualStyleBackColor = True
+        ' 
+        ' TB_Ciberseguridad
+        ' 
+        TB_Ciberseguridad.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Ciberseguridad.Enabled = False
+        TB_Ciberseguridad.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Ciberseguridad.Location = New Point(187, 354)
+        TB_Ciberseguridad.Name = "TB_Ciberseguridad"
+        TB_Ciberseguridad.Size = New Size(40, 23)
+        TB_Ciberseguridad.TabIndex = 27
+        TB_Ciberseguridad.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_ComunicacionesSeguras
+        ' 
+        TB_ComunicacionesSeguras.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_ComunicacionesSeguras.Enabled = False
+        TB_ComunicacionesSeguras.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_ComunicacionesSeguras.Location = New Point(187, 323)
+        TB_ComunicacionesSeguras.Name = "TB_ComunicacionesSeguras"
+        TB_ComunicacionesSeguras.Size = New Size(40, 23)
+        TB_ComunicacionesSeguras.TabIndex = 26
+        TB_ComunicacionesSeguras.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_OficinaVirtual
+        ' 
+        TB_OficinaVirtual.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_OficinaVirtual.Enabled = False
+        TB_OficinaVirtual.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_OficinaVirtual.Location = New Point(187, 292)
+        TB_OficinaVirtual.Name = "TB_OficinaVirtual"
+        TB_OficinaVirtual.Size = New Size(40, 23)
+        TB_OficinaVirtual.TabIndex = 25
+        TB_OficinaVirtual.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_OficinaVirtual
+        ' 
+        RB_OficinaVirtual.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_OficinaVirtual.Appearance = Appearance.Button
+        RB_OficinaVirtual.Location = New Point(7, 291)
+        RB_OficinaVirtual.Name = "RB_OficinaVirtual"
+        RB_OficinaVirtual.Size = New Size(174, 25)
+        RB_OficinaVirtual.TabIndex = 22
+        RB_OficinaVirtual.Text = "Oficina virtual"
+        RB_OficinaVirtual.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Ciberseguridad
+        ' 
+        RB_Ciberseguridad.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Ciberseguridad.Appearance = Appearance.Button
+        RB_Ciberseguridad.Location = New Point(7, 353)
+        RB_Ciberseguridad.Name = "RB_Ciberseguridad"
+        RB_Ciberseguridad.Size = New Size(174, 25)
+        RB_Ciberseguridad.TabIndex = 24
+        RB_Ciberseguridad.Text = "Ciberseguridad"
+        RB_Ciberseguridad.UseVisualStyleBackColor = True
+        ' 
+        ' RB_ComunicacionesSeguras
+        ' 
+        RB_ComunicacionesSeguras.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_ComunicacionesSeguras.Appearance = Appearance.Button
+        RB_ComunicacionesSeguras.Location = New Point(7, 322)
+        RB_ComunicacionesSeguras.Name = "RB_ComunicacionesSeguras"
+        RB_ComunicacionesSeguras.Size = New Size(174, 25)
+        RB_ComunicacionesSeguras.TabIndex = 23
+        RB_ComunicacionesSeguras.Text = "Comunicaciones seguras"
+        RB_ComunicacionesSeguras.UseVisualStyleBackColor = True
+        ' 
+        ' TB_GestionClientes
+        ' 
+        TB_GestionClientes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_GestionClientes.Enabled = False
+        TB_GestionClientes.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_GestionClientes.Location = New Point(187, 168)
+        TB_GestionClientes.Name = "TB_GestionClientes"
+        TB_GestionClientes.Size = New Size(40, 23)
+        TB_GestionClientes.TabIndex = 21
+        TB_GestionClientes.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_GestionClientes
+        ' 
+        RB_GestionClientes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_GestionClientes.Appearance = Appearance.Button
+        RB_GestionClientes.Location = New Point(7, 167)
+        RB_GestionClientes.Name = "RB_GestionClientes"
+        RB_GestionClientes.Size = New Size(174, 25)
+        RB_GestionClientes.TabIndex = 20
+        RB_GestionClientes.Text = "Gestión de clientes"
+        RB_GestionClientes.UseVisualStyleBackColor = True
+        ' 
+        ' TB_GestionProcesos
+        ' 
+        TB_GestionProcesos.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_GestionProcesos.Enabled = False
+        TB_GestionProcesos.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_GestionProcesos.Location = New Point(187, 230)
+        TB_GestionProcesos.Name = "TB_GestionProcesos"
+        TB_GestionProcesos.Size = New Size(40, 23)
+        TB_GestionProcesos.TabIndex = 19
+        TB_GestionProcesos.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_BusinessInteligence
+        ' 
+        TB_BusinessInteligence.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_BusinessInteligence.Enabled = False
+        TB_BusinessInteligence.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_BusinessInteligence.Location = New Point(187, 199)
+        TB_BusinessInteligence.Name = "TB_BusinessInteligence"
+        TB_BusinessInteligence.Size = New Size(40, 23)
+        TB_BusinessInteligence.TabIndex = 18
+        TB_BusinessInteligence.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_GestionProcesos
+        ' 
+        RB_GestionProcesos.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_GestionProcesos.Appearance = Appearance.Button
+        RB_GestionProcesos.Location = New Point(7, 229)
+        RB_GestionProcesos.Name = "RB_GestionProcesos"
+        RB_GestionProcesos.Size = New Size(174, 25)
+        RB_GestionProcesos.TabIndex = 16
+        RB_GestionProcesos.Text = "Gestión de procesos"
+        RB_GestionProcesos.UseVisualStyleBackColor = True
+        ' 
+        ' RB_BusinessInteligence
+        ' 
+        RB_BusinessInteligence.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_BusinessInteligence.Appearance = Appearance.Button
+        RB_BusinessInteligence.Location = New Point(7, 198)
+        RB_BusinessInteligence.Name = "RB_BusinessInteligence"
+        RB_BusinessInteligence.Size = New Size(174, 25)
+        RB_BusinessInteligence.TabIndex = 15
+        RB_BusinessInteligence.Text = "Business Inteligence"
+        RB_BusinessInteligence.UseVisualStyleBackColor = True
+        ' 
+        ' TB_totes
+        ' 
+        TB_totes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_totes.Enabled = False
+        TB_totes.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_totes.Location = New Point(187, 29)
+        TB_totes.Name = "TB_totes"
+        TB_totes.Size = New Size(40, 23)
+        TB_totes.TabIndex = 13
+        TB_totes.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_Totes
+        ' 
+        RB_Totes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_Totes.Appearance = Appearance.Button
+        RB_Totes.Location = New Point(7, 28)
+        RB_Totes.Name = "RB_Totes"
+        RB_Totes.Size = New Size(174, 25)
+        RB_Totes.TabIndex = 12
+        RB_Totes.Text = "Totes les solucions"
+        RB_Totes.UseVisualStyleBackColor = True
+        ' 
+        ' TB_RedesSociales
+        ' 
+        TB_RedesSociales.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_RedesSociales.Enabled = False
+        TB_RedesSociales.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_RedesSociales.Location = New Point(187, 137)
+        TB_RedesSociales.Name = "TB_RedesSociales"
+        TB_RedesSociales.Size = New Size(40, 23)
+        TB_RedesSociales.TabIndex = 11
+        TB_RedesSociales.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_ComercioElectronico
+        ' 
+        TB_ComercioElectronico.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_ComercioElectronico.Enabled = False
+        TB_ComercioElectronico.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_ComercioElectronico.Location = New Point(187, 106)
+        TB_ComercioElectronico.Name = "TB_ComercioElectronico"
+        TB_ComercioElectronico.Size = New Size(40, 23)
+        TB_ComercioElectronico.TabIndex = 10
+        TB_ComercioElectronico.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' TB_SitioWeb
+        ' 
+        TB_SitioWeb.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_SitioWeb.Enabled = False
+        TB_SitioWeb.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_SitioWeb.Location = New Point(187, 75)
+        TB_SitioWeb.Name = "TB_SitioWeb"
+        TB_SitioWeb.Size = New Size(40, 23)
+        TB_SitioWeb.TabIndex = 9
+        TB_SitioWeb.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_SitioWeb
+        ' 
+        RB_SitioWeb.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_SitioWeb.Appearance = Appearance.Button
+        RB_SitioWeb.Location = New Point(7, 74)
+        RB_SitioWeb.Name = "RB_SitioWeb"
+        RB_SitioWeb.Size = New Size(174, 25)
+        RB_SitioWeb.TabIndex = 6
+        RB_SitioWeb.Text = "Sitio Web"
+        RB_SitioWeb.UseVisualStyleBackColor = True
+        ' 
+        ' RB_RedesSociales
+        ' 
+        RB_RedesSociales.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_RedesSociales.Appearance = Appearance.Button
+        RB_RedesSociales.Location = New Point(7, 136)
+        RB_RedesSociales.Name = "RB_RedesSociales"
+        RB_RedesSociales.Size = New Size(174, 25)
+        RB_RedesSociales.TabIndex = 8
+        RB_RedesSociales.Text = "Gestión de redes sociales"
+        RB_RedesSociales.UseVisualStyleBackColor = True
+        ' 
+        ' RB_ComercioElectronico
+        ' 
+        RB_ComercioElectronico.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_ComercioElectronico.Appearance = Appearance.Button
+        RB_ComercioElectronico.Location = New Point(7, 105)
+        RB_ComercioElectronico.Name = "RB_ComercioElectronico"
+        RB_ComercioElectronico.Size = New Size(174, 25)
+        RB_ComercioElectronico.TabIndex = 7
+        RB_ComercioElectronico.Text = "Comercio electrónico"
+        RB_ComercioElectronico.UseVisualStyleBackColor = True
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Enabled = True
+        Timer1.Interval = 1000
+        ' 
+        ' Solucions
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        AutoScroll = True
+        ClientSize = New Size(1631, 1034)
+        Controls.Add(SplitContainer1)
+        Controls.Add(Panel1)
+        DoubleBuffered = True
+        FormBorderStyle = FormBorderStyle.None
+        Name = "Solucions"
+        Text = "Solucions"
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
+        SplitContainer1.Panel1.ResumeLayout(False)
+        SplitContainer1.Panel2.ResumeLayout(False)
+        CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
+        SplitContainer1.ResumeLayout(False)
+        CType(DataLlistat, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox1.ResumeLayout(False)
+        GroupBox1.PerformLayout()
+        GB_TipusSolucions.ResumeLayout(False)
+        GB_TipusSolucions.PerformLayout()
+        ResumeLayout(False)
 
     End Sub
 

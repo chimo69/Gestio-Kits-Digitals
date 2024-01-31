@@ -13,6 +13,7 @@
         MostrarLlistatAprovades.Checked = My.Settings.MostrarGestioAprovades
         MostrarGestioAprovades.Checked = My.Settings.MostrarGestioAprovades
         CB_MostrarEmpresesContractes.Checked = My.Settings.MostrarEmpresesConcessio
+        MesosSuport.Value = My.Settings.MesosSuport
         TB_NomEmpresa.Text = My.Settings.Empresa
         TB_Direccio.Text = My.Settings.Direccio
         TB_CodiPostal.Text = My.Settings.CodiPostal
@@ -26,6 +27,7 @@
         My.Settings.MesosAprovacio = MesosAprovacio.Value
         My.Settings.MesosContractacio = MesosContractacio.Value
         My.Settings.MesosFactura = MesosFactura.Value
+        My.Settings.MesosSuport = MesosSuport.Value
         My.Settings.MostrarLlistatAprovades = MostrarLlistatAprovades.Checked
         My.Settings.MostrarGestioAprovades = MostrarGestioAprovades.Checked
         My.Settings.MostrarEmpresesConcessio = CB_MostrarEmpresesContractes.Checked
