@@ -66,8 +66,6 @@ Partial Class Contractes
         CheckJustificat = New CheckBox()
         CheckEstaJustificat = New CheckBox()
         Btn_EstatJustificacio = New Button()
-        ProgressBar1 = New ProgressBar()
-        Label15 = New Label()
         TBObservacions = New TextBox()
         Label16 = New Label()
         verificat = New PictureBox()
@@ -100,12 +98,8 @@ Partial Class Contractes
         InfoSubvencio = New TextBox()
         Label18 = New Label()
         CB_PrimerPagament = New CheckBox()
-        CB_SegonPagament = New CheckBox()
         Pagat1 = New PictureBox()
-        Pagat2 = New PictureBox()
         Panel1 = New Panel()
-        verificat2 = New PictureBox()
-        CheckEstaJustificat2 = New CheckBox()
         Panel2 = New Panel()
         GroupBox2 = New GroupBox()
         TB_Proces7 = New TextBox()
@@ -149,9 +143,7 @@ Partial Class Contractes
         GroupBox1.SuspendLayout()
         CType(InfoVariableNum, ComponentModel.ISupportInitialize).BeginInit()
         CType(Pagat1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(Pagat2, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
-        CType(verificat2, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         GroupBox2.SuspendLayout()
         CType(DataConcessioOK, ComponentModel.ISupportInitialize).BeginInit()
@@ -208,7 +200,7 @@ Partial Class Contractes
         DataEmpreses.RowTemplate.Height = 25
         DataEmpreses.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataEmpreses.ShowEditingIcon = False
-        DataEmpreses.Size = New Size(581, 847)
+        DataEmpreses.Size = New Size(549, 870)
         DataEmpreses.TabIndex = 6
         DataEmpreses.TabStop = False
         ' 
@@ -336,7 +328,7 @@ Partial Class Contractes
         ' Btn_afegir
         ' 
         Btn_afegir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        Btn_afegir.Location = New Point(28, 859)
+        Btn_afegir.Location = New Point(28, 882)
         Btn_afegir.Name = "Btn_afegir"
         Btn_afegir.Size = New Size(148, 53)
         Btn_afegir.TabIndex = 9
@@ -347,7 +339,7 @@ Partial Class Contractes
         ' 
         Btn_esborrarEmpresa.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         Btn_esborrarEmpresa.BackColor = Color.IndianRed
-        Btn_esborrarEmpresa.Location = New Point(193, 859)
+        Btn_esborrarEmpresa.Location = New Point(193, 882)
         Btn_esborrarEmpresa.Name = "Btn_esborrarEmpresa"
         Btn_esborrarEmpresa.Size = New Size(148, 53)
         Btn_esborrarEmpresa.TabIndex = 10
@@ -393,7 +385,7 @@ Partial Class Contractes
         DataSolucions.DefaultCellStyle = DataGridViewCellStyle6
         DataSolucions.EditMode = DataGridViewEditMode.EditProgrammatically
         DataSolucions.EnableHeadersVisualStyles = False
-        DataSolucions.Location = New Point(967, 65)
+        DataSolucions.Location = New Point(932, 65)
         DataSolucions.MultiSelect = False
         DataSolucions.Name = "DataSolucions"
         DataSolucions.ReadOnly = True
@@ -410,7 +402,7 @@ Partial Class Contractes
         DataSolucions.RowTemplate.Height = 25
         DataSolucions.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataSolucions.ShowEditingIcon = False
-        DataSolucions.Size = New Size(691, 187)
+        DataSolucions.Size = New Size(691, 264)
         DataSolucions.TabIndex = 18
         DataSolucions.TabStop = False
         ' 
@@ -418,7 +410,7 @@ Partial Class Contractes
         ' 
         Label8.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label8.AutoSize = True
-        Label8.Location = New Point(1080, 26)
+        Label8.Location = New Point(1045, 26)
         Label8.Name = "Label8"
         Label8.Size = New Size(64, 15)
         Label8.TabIndex = 20
@@ -428,7 +420,7 @@ Partial Class Contractes
         ' 
         Label9.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label9.AutoSize = True
-        Label9.Location = New Point(967, 277)
+        Label9.Location = New Point(936, 372)
         Label9.Name = "Label9"
         Label9.Size = New Size(76, 15)
         Label9.TabIndex = 21
@@ -438,7 +430,7 @@ Partial Class Contractes
         ' 
         Label10.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label10.AutoSize = True
-        Label10.Location = New Point(967, 345)
+        Label10.Location = New Point(936, 440)
         Label10.Name = "Label10"
         Label10.Size = New Size(56, 15)
         Label10.TabIndex = 22
@@ -459,7 +451,7 @@ Partial Class Contractes
         CB_TipusSolucio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_TipusSolucio.Enabled = False
         CB_TipusSolucio.FormattingEnabled = True
-        CB_TipusSolucio.Location = New Point(1116, 273)
+        CB_TipusSolucio.Location = New Point(1085, 368)
         CB_TipusSolucio.Name = "CB_TipusSolucio"
         CB_TipusSolucio.Size = New Size(290, 23)
         CB_TipusSolucio.TabIndex = 11
@@ -469,7 +461,7 @@ Partial Class Contractes
         NoAcord.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         NoAcord.CharacterCasing = CharacterCasing.Upper
         NoAcord.Enabled = False
-        NoAcord.Location = New Point(1116, 339)
+        NoAcord.Location = New Point(1085, 434)
         NoAcord.Name = "NoAcord"
         NoAcord.Size = New Size(116, 23)
         NoAcord.TabIndex = 12
@@ -491,7 +483,7 @@ Partial Class Contractes
         ' 
         Btn_AfegirSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_AfegirSolucio.Enabled = False
-        Btn_AfegirSolucio.Location = New Point(1362, 859)
+        Btn_AfegirSolucio.Location = New Point(1331, 882)
         Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Btn_AfegirSolucio.Size = New Size(146, 53)
         Btn_AfegirSolucio.TabIndex = 22
@@ -502,7 +494,7 @@ Partial Class Contractes
         ' 
         DataContracte.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataContracte.Format = DateTimePickerFormat.Short
-        DataContracte.Location = New Point(1116, 406)
+        DataContracte.Location = New Point(1085, 501)
         DataContracte.Name = "DataContracte"
         DataContracte.Size = New Size(111, 23)
         DataContracte.TabIndex = 14
@@ -512,7 +504,7 @@ Partial Class Contractes
         ' 
         Btn_EsborrarSeleccioSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSeleccioSolucio.Enabled = False
-        Btn_EsborrarSeleccioSolucio.Location = New Point(967, 859)
+        Btn_EsborrarSeleccioSolucio.Location = New Point(936, 882)
         Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Btn_EsborrarSeleccioSolucio.Size = New Size(146, 53)
         Btn_EsborrarSeleccioSolucio.TabIndex = 21
@@ -524,7 +516,7 @@ Partial Class Contractes
         Btn_EsborrarSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSolucio.BackColor = Color.IndianRed
         Btn_EsborrarSolucio.Enabled = False
-        Btn_EsborrarSolucio.Location = New Point(1514, 859)
+        Btn_EsborrarSolucio.Location = New Point(1483, 882)
         Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Btn_EsborrarSolucio.Size = New Size(144, 53)
         Btn_EsborrarSolucio.TabIndex = 23
@@ -542,7 +534,7 @@ Partial Class Contractes
         TitolEmpresa.Name = "TitolEmpresa"
         TitolEmpresa.PlaceholderText = "SELECCIONA EMPRESA"
         TitolEmpresa.ReadOnly = True
-        TitolEmpresa.Size = New Size(366, 36)
+        TitolEmpresa.Size = New Size(334, 36)
         TitolEmpresa.TabIndex = 36
         TitolEmpresa.TextAlign = HorizontalAlignment.Center
         ' 
@@ -552,10 +544,10 @@ Partial Class Contractes
         TitolSolucio.CharacterCasing = CharacterCasing.Upper
         TitolSolucio.Enabled = False
         TitolSolucio.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point)
-        TitolSolucio.Location = New Point(967, 23)
+        TitolSolucio.Location = New Point(932, 23)
         TitolSolucio.Multiline = True
         TitolSolucio.Name = "TitolSolucio"
-        TitolSolucio.PlaceholderText = "SELECCIONA SOLUCIÓ"
+        TitolSolucio.PlaceholderText = "SELECCIONA JUSTIFICACIÓ"
         TitolSolucio.ReadOnly = True
         TitolSolucio.Size = New Size(691, 36)
         TitolSolucio.TabIndex = 37
@@ -563,10 +555,10 @@ Partial Class Contractes
         ' 
         ' CheckJustificat
         ' 
-        CheckJustificat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        CheckJustificat.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         CheckJustificat.AutoSize = True
         CheckJustificat.CheckAlign = ContentAlignment.MiddleRight
-        CheckJustificat.Location = New Point(1534, 779)
+        CheckJustificat.Location = New Point(1147, 900)
         CheckJustificat.Name = "CheckJustificat"
         CheckJustificat.Size = New Size(120, 19)
         CheckJustificat.TabIndex = 19
@@ -578,58 +570,39 @@ Partial Class Contractes
         CheckEstaJustificat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CheckEstaJustificat.AutoSize = True
         CheckEstaJustificat.Enabled = False
-        CheckEstaJustificat.Location = New Point(17, 3)
+        CheckEstaJustificat.Location = New Point(16, 21)
         CheckEstaJustificat.Name = "CheckEstaJustificat"
-        CheckEstaJustificat.Size = New Size(97, 19)
+        CheckEstaJustificat.Size = New Size(77, 19)
         CheckEstaJustificat.TabIndex = 17
-        CheckEstaJustificat.Text = "1ª justificació"
+        CheckEstaJustificat.Text = "Justificat?"
         CheckEstaJustificat.UseVisualStyleBackColor = True
         ' 
         ' Btn_EstatJustificacio
         ' 
         Btn_EstatJustificacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Btn_EstatJustificacio.Enabled = False
-        Btn_EstatJustificacio.Location = New Point(1537, 273)
+        Btn_EstatJustificacio.Location = New Point(1506, 368)
         Btn_EstatJustificacio.Name = "Btn_EstatJustificacio"
         Btn_EstatJustificacio.Size = New Size(121, 63)
         Btn_EstatJustificacio.TabIndex = 18
         Btn_EstatJustificacio.Text = "Veure estat de" & vbCrLf & "justificació"
         Btn_EstatJustificacio.UseVisualStyleBackColor = True
         ' 
-        ' ProgressBar1
-        ' 
-        ProgressBar1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        ProgressBar1.Location = New Point(967, 803)
-        ProgressBar1.Name = "ProgressBar1"
-        ProgressBar1.Size = New Size(684, 30)
-        ProgressBar1.Style = ProgressBarStyle.Continuous
-        ProgressBar1.TabIndex = 42
-        ' 
-        ' Label15
-        ' 
-        Label15.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Label15.AutoSize = True
-        Label15.Location = New Point(967, 780)
-        Label15.Name = "Label15"
-        Label15.Size = New Size(241, 15)
-        Label15.TabIndex = 43
-        Label15.Text = "Percentatge de preparació de documentació"
-        ' 
         ' TBObservacions
         ' 
         TBObservacions.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TBObservacions.Enabled = False
-        TBObservacions.Location = New Point(1343, 670)
+        TBObservacions.Location = New Point(1114, 765)
         TBObservacions.Multiline = True
         TBObservacions.Name = "TBObservacions"
-        TBObservacions.Size = New Size(312, 102)
+        TBObservacions.Size = New Size(510, 102)
         TBObservacions.TabIndex = 20
         ' 
         ' Label16
         ' 
         Label16.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label16.AutoSize = True
-        Label16.Location = New Point(1343, 649)
+        Label16.Location = New Point(1114, 747)
         Label16.Name = "Label16"
         Label16.Size = New Size(78, 15)
         Label16.TabIndex = 45
@@ -641,7 +614,7 @@ Partial Class Contractes
         verificat.BackColor = Color.Transparent
         verificat.BackgroundImageLayout = ImageLayout.None
         verificat.Image = My.Resources.Resources.verificado
-        verificat.Location = New Point(215, 5)
+        verificat.Location = New Point(99, 8)
         verificat.Name = "verificat"
         verificat.Size = New Size(40, 40)
         verificat.SizeMode = PictureBoxSizeMode.Zoom
@@ -659,7 +632,7 @@ Partial Class Contractes
         DataAprovacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataAprovacio.Enabled = False
         DataAprovacio.Format = DateTimePickerFormat.Short
-        DataAprovacio.Location = New Point(1116, 377)
+        DataAprovacio.Location = New Point(1085, 472)
         DataAprovacio.Name = "DataAprovacio"
         DataAprovacio.Size = New Size(111, 23)
         DataAprovacio.TabIndex = 13
@@ -669,7 +642,7 @@ Partial Class Contractes
         ' 
         DataPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataPagament.Format = DateTimePickerFormat.Short
-        DataPagament.Location = New Point(1116, 466)
+        DataPagament.Location = New Point(1085, 561)
         DataPagament.Name = "DataPagament"
         DataPagament.Size = New Size(111, 23)
         DataPagament.TabIndex = 16
@@ -681,7 +654,7 @@ Partial Class Contractes
         TitolContracte.AutoSize = True
         TitolContracte.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
         TitolContracte.ImageAlign = ContentAlignment.MiddleRight
-        TitolContracte.Location = New Point(1319, 411)
+        TitolContracte.Location = New Point(1288, 506)
         TitolContracte.Name = "TitolContracte"
         TitolContracte.Size = New Size(206, 13)
         TitolContracte.TabIndex = 52
@@ -692,7 +665,7 @@ Partial Class Contractes
         ' DataFiContracte
         ' 
         DataFiContracte.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        DataFiContracte.Location = New Point(1536, 403)
+        DataFiContracte.Location = New Point(1505, 498)
         DataFiContracte.Name = "DataFiContracte"
         DataFiContracte.ReadOnly = True
         DataFiContracte.Size = New Size(118, 23)
@@ -706,7 +679,7 @@ Partial Class Contractes
         CB_DataContracte.AutoSize = True
         CB_DataContracte.Enabled = False
         CB_DataContracte.ForeColor = SystemColors.ControlText
-        CB_DataContracte.Location = New Point(967, 404)
+        CB_DataContracte.Location = New Point(936, 499)
         CB_DataContracte.Name = "CB_DataContracte"
         CB_DataContracte.Size = New Size(105, 19)
         CB_DataContracte.TabIndex = 57
@@ -718,7 +691,7 @@ Partial Class Contractes
         CB_DataPagamentIVA.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataPagamentIVA.AutoSize = True
         CB_DataPagamentIVA.Enabled = False
-        CB_DataPagamentIVA.Location = New Point(967, 464)
+        CB_DataPagamentIVA.Location = New Point(936, 559)
         CB_DataPagamentIVA.Name = "CB_DataPagamentIVA"
         CB_DataPagamentIVA.Size = New Size(127, 19)
         CB_DataPagamentIVA.TabIndex = 7
@@ -730,7 +703,7 @@ Partial Class Contractes
         CB_DataAprovacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataAprovacio.AutoSize = True
         CB_DataAprovacio.Enabled = False
-        CB_DataAprovacio.Location = New Point(967, 377)
+        CB_DataAprovacio.Location = New Point(936, 472)
         CB_DataAprovacio.Name = "CB_DataAprovacio"
         CB_DataAprovacio.Size = New Size(138, 19)
         CB_DataAprovacio.TabIndex = 59
@@ -741,7 +714,7 @@ Partial Class Contractes
         ' 
         DataContracteOK.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataContracteOK.Image = My.Resources.Resources.verificado_petit
-        DataContracteOK.Location = New Point(1238, 405)
+        DataContracteOK.Location = New Point(1207, 500)
         DataContracteOK.Name = "DataContracteOK"
         DataContracteOK.Size = New Size(24, 24)
         DataContracteOK.SizeMode = PictureBoxSizeMode.Zoom
@@ -753,7 +726,7 @@ Partial Class Contractes
         ' 
         DataPagamentOK.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataPagamentOK.Image = My.Resources.Resources.verificado_petit
-        DataPagamentOK.Location = New Point(1238, 465)
+        DataPagamentOK.Location = New Point(1207, 560)
         DataPagamentOK.Name = "DataPagamentOK"
         DataPagamentOK.Size = New Size(24, 24)
         DataPagamentOK.SizeMode = PictureBoxSizeMode.Zoom
@@ -788,7 +761,7 @@ Partial Class Contractes
         CB_DataFactura.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataFactura.AutoSize = True
         CB_DataFactura.Enabled = False
-        CB_DataFactura.Location = New Point(967, 434)
+        CB_DataFactura.Location = New Point(936, 529)
         CB_DataFactura.Name = "CB_DataFactura"
         CB_DataFactura.Size = New Size(90, 19)
         CB_DataFactura.TabIndex = 66
@@ -799,7 +772,7 @@ Partial Class Contractes
         ' 
         DataFactura.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataFactura.Format = DateTimePickerFormat.Short
-        DataFactura.Location = New Point(1116, 436)
+        DataFactura.Location = New Point(1085, 531)
         DataFactura.Name = "DataFactura"
         DataFactura.Size = New Size(111, 23)
         DataFactura.TabIndex = 15
@@ -809,7 +782,7 @@ Partial Class Contractes
         ' 
         DataFacturaOK.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataFacturaOK.Image = My.Resources.Resources.verificado_petit
-        DataFacturaOK.Location = New Point(1238, 436)
+        DataFacturaOK.Location = New Point(1207, 531)
         DataFacturaOK.Name = "DataFacturaOK"
         DataFacturaOK.Size = New Size(24, 24)
         DataFacturaOK.SizeMode = PictureBoxSizeMode.Zoom
@@ -820,7 +793,7 @@ Partial Class Contractes
         ' DataFiFactura
         ' 
         DataFiFactura.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        DataFiFactura.Location = New Point(1536, 434)
+        DataFiFactura.Location = New Point(1505, 529)
         DataFiFactura.Name = "DataFiFactura"
         DataFiFactura.ReadOnly = True
         DataFiFactura.Size = New Size(118, 23)
@@ -834,7 +807,7 @@ Partial Class Contractes
         TitolFactura.AutoSize = True
         TitolFactura.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
         TitolFactura.ImageAlign = ContentAlignment.MiddleRight
-        TitolFactura.Location = New Point(1361, 444)
+        TitolFactura.Location = New Point(1330, 539)
         TitolFactura.Name = "TitolFactura"
         TitolFactura.Size = New Size(164, 13)
         TitolFactura.TabIndex = 69
@@ -916,7 +889,7 @@ Partial Class Contractes
         ' 
         InfoVariable.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         InfoVariable.AutoSize = True
-        InfoVariable.Location = New Point(967, 311)
+        InfoVariable.Location = New Point(936, 406)
         InfoVariable.Name = "InfoVariable"
         InfoVariable.Size = New Size(72, 15)
         InfoVariable.TabIndex = 75
@@ -926,7 +899,7 @@ Partial Class Contractes
         ' InfoVariableNum
         ' 
         InfoVariableNum.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        InfoVariableNum.Location = New Point(1116, 307)
+        InfoVariableNum.Location = New Point(1085, 402)
         InfoVariableNum.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         InfoVariableNum.Name = "InfoVariableNum"
         InfoVariableNum.Size = New Size(47, 23)
@@ -938,7 +911,7 @@ Partial Class Contractes
         ' 
         infoMax.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         infoMax.AutoSize = True
-        infoMax.Location = New Point(1169, 311)
+        infoMax.Location = New Point(1138, 406)
         infoMax.Name = "infoMax"
         infoMax.Size = New Size(54, 15)
         infoMax.TabIndex = 77
@@ -949,7 +922,7 @@ Partial Class Contractes
         ' 
         Label17.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label17.AutoSize = True
-        Label17.Location = New Point(1322, 313)
+        Label17.Location = New Point(1291, 408)
         Label17.Name = "Label17"
         Label17.Size = New Size(101, 15)
         Label17.TabIndex = 78
@@ -959,7 +932,7 @@ Partial Class Contractes
         ' 
         InfoSubvencio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         InfoSubvencio.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        InfoSubvencio.Location = New Point(1325, 331)
+        InfoSubvencio.Location = New Point(1294, 426)
         InfoSubvencio.Name = "InfoSubvencio"
         InfoSubvencio.ReadOnly = True
         InfoSubvencio.Size = New Size(81, 33)
@@ -972,7 +945,7 @@ Partial Class Contractes
         Label18.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label18.AutoSize = True
         Label18.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        Label18.Location = New Point(1408, 338)
+        Label18.Location = New Point(1377, 433)
         Label18.Name = "Label18"
         Label18.Size = New Size(18, 20)
         Label18.TabIndex = 80
@@ -983,24 +956,12 @@ Partial Class Contractes
         CB_PrimerPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_PrimerPagament.AutoSize = True
         CB_PrimerPagament.Enabled = False
-        CB_PrimerPagament.Location = New Point(17, 51)
+        CB_PrimerPagament.Location = New Point(16, 67)
         CB_PrimerPagament.Name = "CB_PrimerPagament"
-        CB_PrimerPagament.Size = New Size(118, 19)
+        CB_PrimerPagament.Size = New Size(61, 19)
         CB_PrimerPagament.TabIndex = 81
-        CB_PrimerPagament.Text = "Primer pagament"
+        CB_PrimerPagament.Text = "Pagat?"
         CB_PrimerPagament.UseVisualStyleBackColor = True
-        ' 
-        ' CB_SegonPagament
-        ' 
-        CB_SegonPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        CB_SegonPagament.AutoSize = True
-        CB_SegonPagament.Enabled = False
-        CB_SegonPagament.Location = New Point(17, 74)
-        CB_SegonPagament.Name = "CB_SegonPagament"
-        CB_SegonPagament.Size = New Size(116, 19)
-        CB_SegonPagament.TabIndex = 82
-        CB_SegonPagament.Text = "Segon pagament"
-        CB_SegonPagament.UseVisualStyleBackColor = True
         ' 
         ' Pagat1
         ' 
@@ -1008,7 +969,7 @@ Partial Class Contractes
         Pagat1.BackColor = Color.Transparent
         Pagat1.BackgroundImageLayout = ImageLayout.None
         Pagat1.Image = My.Resources.Resources.Icono_Pagos
-        Pagat1.Location = New Point(215, 51)
+        Pagat1.Location = New Point(99, 54)
         Pagat1.Name = "Pagat1"
         Pagat1.Size = New Size(40, 40)
         Pagat1.SizeMode = PictureBoxSizeMode.Zoom
@@ -1016,62 +977,18 @@ Partial Class Contractes
         Pagat1.TabStop = False
         Pagat1.Visible = False
         ' 
-        ' Pagat2
-        ' 
-        Pagat2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        Pagat2.BackColor = Color.Transparent
-        Pagat2.BackgroundImageLayout = ImageLayout.None
-        Pagat2.Image = My.Resources.Resources.Icono_Pagos
-        Pagat2.Location = New Point(288, 53)
-        Pagat2.Name = "Pagat2"
-        Pagat2.Size = New Size(40, 40)
-        Pagat2.SizeMode = PictureBoxSizeMode.Zoom
-        Pagat2.TabIndex = 84
-        Pagat2.TabStop = False
-        Pagat2.Visible = False
-        ' 
         ' Panel1
         ' 
         Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Panel1.BackColor = Color.LightGray
-        Panel1.Controls.Add(verificat2)
-        Panel1.Controls.Add(CheckEstaJustificat2)
         Panel1.Controls.Add(CheckEstaJustificat)
         Panel1.Controls.Add(verificat)
-        Panel1.Controls.Add(Pagat2)
         Panel1.Controls.Add(CB_PrimerPagament)
         Panel1.Controls.Add(Pagat1)
-        Panel1.Controls.Add(CB_SegonPagament)
-        Panel1.Location = New Point(967, 670)
+        Panel1.Location = New Point(936, 765)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(369, 102)
+        Panel1.Size = New Size(160, 102)
         Panel1.TabIndex = 85
-        ' 
-        ' verificat2
-        ' 
-        verificat2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        verificat2.BackColor = Color.Transparent
-        verificat2.BackgroundImageLayout = ImageLayout.None
-        verificat2.Image = My.Resources.Resources.verificado
-        verificat2.Location = New Point(288, 5)
-        verificat2.Name = "verificat2"
-        verificat2.Size = New Size(40, 40)
-        verificat2.SizeMode = PictureBoxSizeMode.Zoom
-        verificat2.TabIndex = 86
-        verificat2.TabStop = False
-        verificat2.Visible = False
-        ' 
-        ' CheckEstaJustificat2
-        ' 
-        CheckEstaJustificat2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        CheckEstaJustificat2.AutoSize = True
-        CheckEstaJustificat2.Enabled = False
-        CheckEstaJustificat2.Location = New Point(17, 26)
-        CheckEstaJustificat2.Name = "CheckEstaJustificat2"
-        CheckEstaJustificat2.Size = New Size(97, 19)
-        CheckEstaJustificat2.TabIndex = 85
-        CheckEstaJustificat2.Text = "2ª justificació"
-        CheckEstaJustificat2.UseVisualStyleBackColor = True
         ' 
         ' Panel2
         ' 
@@ -1081,7 +998,7 @@ Partial Class Contractes
         Panel2.Controls.Add(Label13)
         Panel2.Controls.Add(DiesCaducitat)
         Panel2.Controls.Add(Label11)
-        Panel2.Location = New Point(967, 504)
+        Panel2.Location = New Point(936, 599)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(688, 48)
         Panel2.TabIndex = 86
@@ -1098,7 +1015,7 @@ Partial Class Contractes
         GroupBox2.Controls.Add(TB_Proces3)
         GroupBox2.Controls.Add(TB_Proces2)
         GroupBox2.Controls.Add(TB_Proces1)
-        GroupBox2.Location = New Point(967, 564)
+        GroupBox2.Location = New Point(936, 659)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(687, 82)
         GroupBox2.TabIndex = 87
@@ -1234,7 +1151,7 @@ Partial Class Contractes
         ' DataFiConcessio
         ' 
         DataFiConcessio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        DataFiConcessio.Location = New Point(1536, 371)
+        DataFiConcessio.Location = New Point(1505, 466)
         DataFiConcessio.Name = "DataFiConcessio"
         DataFiConcessio.ReadOnly = True
         DataFiConcessio.Size = New Size(118, 23)
@@ -1248,7 +1165,7 @@ Partial Class Contractes
         TitolAprovacio.AutoSize = True
         TitolAprovacio.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
         TitolAprovacio.ImageAlign = ContentAlignment.MiddleRight
-        TitolAprovacio.Location = New Point(1349, 379)
+        TitolAprovacio.Location = New Point(1318, 474)
         TitolAprovacio.Name = "TitolAprovacio"
         TitolAprovacio.Size = New Size(176, 13)
         TitolAprovacio.TabIndex = 88
@@ -1260,7 +1177,7 @@ Partial Class Contractes
         ' 
         DataConcessioOK.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         DataConcessioOK.Image = My.Resources.Resources.verificado_petit
-        DataConcessioOK.Location = New Point(1238, 378)
+        DataConcessioOK.Location = New Point(1207, 473)
         DataConcessioOK.Name = "DataConcessioOK"
         DataConcessioOK.Size = New Size(24, 24)
         DataConcessioOK.SizeMode = PictureBoxSizeMode.Zoom
@@ -1273,7 +1190,7 @@ Partial Class Contractes
         Label14.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label14.AutoSize = True
         Label14.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        Label14.Location = New Point(1511, 338)
+        Label14.Location = New Point(1480, 433)
         Label14.Name = "Label14"
         Label14.Size = New Size(18, 20)
         Label14.TabIndex = 93
@@ -1283,7 +1200,7 @@ Partial Class Contractes
         ' 
         InfoSubvencioReal.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         InfoSubvencioReal.Font = New Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point)
-        InfoSubvencioReal.Location = New Point(1427, 331)
+        InfoSubvencioReal.Location = New Point(1396, 426)
         InfoSubvencioReal.Name = "InfoSubvencioReal"
         InfoSubvencioReal.ReadOnly = True
         InfoSubvencioReal.Size = New Size(81, 33)
@@ -1295,7 +1212,7 @@ Partial Class Contractes
         ' 
         Label19.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label19.AutoSize = True
-        Label19.Location = New Point(1424, 313)
+        Label19.Location = New Point(1393, 408)
         Label19.Name = "Label19"
         Label19.Size = New Size(84, 15)
         Label19.TabIndex = 91
@@ -1423,7 +1340,7 @@ Partial Class Contractes
         Label24.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label24.AutoSize = True
         Label24.Font = New Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point)
-        Label24.Location = New Point(1511, 273)
+        Label24.Location = New Point(1480, 368)
         Label24.Name = "Label24"
         Label24.Size = New Size(18, 20)
         Label24.TabIndex = 98
@@ -1433,7 +1350,7 @@ Partial Class Contractes
         ' 
         TB_BonusRestant.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_BonusRestant.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point)
-        TB_BonusRestant.Location = New Point(1427, 272)
+        TB_BonusRestant.Location = New Point(1396, 367)
         TB_BonusRestant.Name = "TB_BonusRestant"
         TB_BonusRestant.ReadOnly = True
         TB_BonusRestant.Size = New Size(81, 29)
@@ -1445,7 +1362,7 @@ Partial Class Contractes
         ' 
         Label25.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Label25.AutoSize = True
-        Label25.Location = New Point(1427, 255)
+        Label25.Location = New Point(1396, 350)
         Label25.Name = "Label25"
         Label25.Size = New Size(79, 15)
         Label25.TabIndex = 99
@@ -1457,7 +1374,7 @@ Partial Class Contractes
         TitolJustificacio.AutoSize = True
         TitolJustificacio.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
         TitolJustificacio.ImageAlign = ContentAlignment.MiddleRight
-        TitolJustificacio.Location = New Point(1348, 476)
+        TitolJustificacio.Location = New Point(1317, 571)
         TitolJustificacio.Name = "TitolJustificacio"
         TitolJustificacio.Size = New Size(177, 13)
         TitolJustificacio.TabIndex = 101
@@ -1468,7 +1385,7 @@ Partial Class Contractes
         ' DataFiJustificacio
         ' 
         DataFiJustificacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        DataFiJustificacio.Location = New Point(1536, 466)
+        DataFiJustificacio.Location = New Point(1505, 561)
         DataFiJustificacio.Name = "DataFiJustificacio"
         DataFiJustificacio.ReadOnly = True
         DataFiJustificacio.Size = New Size(118, 23)
@@ -1482,7 +1399,7 @@ Partial Class Contractes
         AutoScaleMode = AutoScaleMode.Font
         AutoScroll = True
         AutoScrollMinSize = New Size(1657, 947)
-        ClientSize = New Size(1711, 942)
+        ClientSize = New Size(1653, 956)
         Controls.Add(TitolJustificacio)
         Controls.Add(DataFiJustificacio)
         Controls.Add(Label25)
@@ -1525,8 +1442,6 @@ Partial Class Contractes
         Controls.Add(DataAprovacio)
         Controls.Add(Label16)
         Controls.Add(TBObservacions)
-        Controls.Add(Label15)
-        Controls.Add(ProgressBar1)
         Controls.Add(Btn_EstatJustificacio)
         Controls.Add(TitolSolucio)
         Controls.Add(TitolEmpresa)
@@ -1558,10 +1473,8 @@ Partial Class Contractes
         GroupBox1.PerformLayout()
         CType(InfoVariableNum, ComponentModel.ISupportInitialize).EndInit()
         CType(Pagat1, ComponentModel.ISupportInitialize).EndInit()
-        CType(Pagat2, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(verificat2, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         GroupBox2.ResumeLayout(False)
@@ -1609,8 +1522,6 @@ Partial Class Contractes
     Friend WithEvents CheckJustificat As CheckBox
     Friend WithEvents CheckEstaJustificat As CheckBox
     Friend WithEvents Btn_EstatJustificacio As Button
-    Friend WithEvents ProgressBar1 As ProgressBar
-    Friend WithEvents Label15 As Label
     Friend WithEvents TBObservacions As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents verificat As PictureBox
@@ -1643,9 +1554,7 @@ Partial Class Contractes
     Friend WithEvents InfoSubvencio As TextBox
     Friend WithEvents Label18 As Label
     Friend WithEvents CB_PrimerPagament As CheckBox
-    Friend WithEvents CB_SegonPagament As CheckBox
     Friend WithEvents Pagat1 As PictureBox
-    Friend WithEvents Pagat2 As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents GroupBox2 As GroupBox
@@ -1681,6 +1590,4 @@ Partial Class Contractes
     Friend WithEvents Label25 As Label
     Friend WithEvents TitolJustificacio As Label
     Friend WithEvents DataFiJustificacio As TextBox
-    Friend WithEvents CheckEstaJustificat2 As CheckBox
-    Friend WithEvents verificat2 As PictureBox
 End Class

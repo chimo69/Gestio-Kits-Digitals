@@ -8,6 +8,10 @@
     Public groc As Color = Color.FromArgb(252, 255, 168)
     Public telematic As Color = Color.FromArgb(72, 101, 174)
     Public telematic_oscur As Color = Color.FromArgb(37, 46, 59)
+    Public gris As Color = Color.FromArgb(189, 189, 189)
+    Public gris_oscur As Color = Color.FromArgb(115, 115, 115)
+    Public tipus1 As Color = Color.FromArgb(32, 230, 62)
+    Public tipus2 As Color = Color.FromArgb(20, 159, 187)
 
     Public formActual As Form
     Public FormsList As New List(Of Form)

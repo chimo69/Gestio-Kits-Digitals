@@ -6,15 +6,19 @@ Public Class Solucions
     Dim SolucioFiltre, SolucioFiltreEstat As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
     Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta As Integer
+    Dim tipusJustificacio As Integer
+
+
     Public Sub New()
         MyBase.New
-        MyBase.DoubleBuffered = True
+        Me.DoubleBuffered = True
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         SolucioFiltre = 0
         SolucioFiltreEstat = -1
+        tipusJustificacio = 1
         CB_JaPresentades.Checked = My.Settings.MostrarLlistatAprovades
         CarregaLlistat()
 
@@ -97,12 +101,12 @@ Public Class Solucions
             .Columns("Estat").DefaultCellStyle.WrapMode = DataGridViewTriState.True
 
             .Columns.Add(imgVerificat)
-            .Columns.Add(imgWord)
-            .Columns.Add(imgCompPagament)
-            .Columns.Add(imgXML)
-            .Columns.Add(imgFabSolucio)
-            .Columns.Add(imgD1)
-            .Columns.Add(imgD2)
+            '.Columns.Add(imgWord)
+            '.Columns.Add(imgCompPagament)
+            '.Columns.Add(imgXML)
+            '.Columns.Add(imgFabSolucio)
+            '.Columns.Add(imgD1)
+            '.Columns.Add(imgD2)
             .Columns("Verificat").DisplayIndex = 0
 
         End With
@@ -207,21 +211,21 @@ Public Class Solucions
     End Sub
     Private Sub DataLlistat_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DataLlistat.CellFormatting
         Dim dgv As DataGridView = sender
-        If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
+        'If dgv.Columns(e.ColumnIndex).Name = "TWord" Or dgv.Columns(e.ColumnIndex).Name = "TComp. Pagament" Or dgv.Columns(e.ColumnIndex).Name = "TXML" Or dgv.Columns(e.ColumnIndex).Name = "TD1" Or dgv.Columns(e.ColumnIndex).Name = "TD2" Then
 
-            If e.Value = 1 Then
-                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
-            Else
-                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
-            End If
-        End If
-        If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
-            If e.Value <> "" Then
-                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
-            Else
-                dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
-            End If
-        End If
+        '    If e.Value = 1 Then
+        '        dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
+        '    Else
+        '        dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
+        '    End If
+        'End If
+        'If dgv.Columns(e.ColumnIndex).Name = "TFabricant Solució" Then
+        '    If e.Value <> "" Then
+        '        dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.verificado_petit
+        '    Else
+        '        dgv.Item(e.ColumnIndex - 21, e.RowIndex).Value = My.Resources.sin_verificar_petit
+        '    End If
+        'End If
 
         If dgv.Columns(e.ColumnIndex).Name = "Justificat" Then
             If e.Value = "Si" Then
@@ -260,28 +264,28 @@ Public Class Solucions
         Dim font As New Font("Calibri", 7, FontStyle.Regular)
 
         With dgv
-            .Columns("Empresa").Width = 230
+            .Columns("Empresa").Width = 300
             .Columns("Solucio").Width = 150
             .Columns("Contracte").Width = 100
             .Columns("Verificat").Width = 50
             .Columns("Observacions").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("Observacions").MinimumWidth = 100
-            .Columns("Word").Width = 50
+            '.Columns("Word").Width = 50
             .Columns("Data contracte").Width = 70
             .Columns("Data pagament").Width = 70
             .Columns("Data venciment").Width = 70
             .Columns("Data factura").Width = 70
-            .Columns("Word").HeaderCell.Style.Font = font
-            .Columns("Comp. Pagament").Width = 50
-            .Columns("Comp. Pagament").HeaderCell.Style.Font = font
-            .Columns("XML").Width = 50
-            .Columns("XML").HeaderCell.Style.Font = font
-            .Columns("Fabricant Solució").Width = 50
-            .Columns("Fabricant Solució").HeaderCell.Style.Font = font
-            .Columns("D1").Width = 50
-            .Columns("D1").HeaderCell.Style.Font = font
-            .Columns("D2").Width = 50
-            .Columns("D2").HeaderCell.Style.Font = font
+            '.Columns("Word").HeaderCell.Style.Font = font
+            '.Columns("Comp. Pagament").Width = 50
+            '.Columns("Comp. Pagament").HeaderCell.Style.Font = font
+            '.Columns("XML").Width = 50
+            '.Columns("XML").HeaderCell.Style.Font = font
+            '.Columns("Fabricant Solució").Width = 50
+            '.Columns("Fabricant Solució").HeaderCell.Style.Font = font
+            '.Columns("D1").Width = 50
+            '.Columns("D1").HeaderCell.Style.Font = font
+            '.Columns("D2").Width = 50
+            '.Columns("D2").HeaderCell.Style.Font = font
         End With
 
     End Sub
@@ -323,6 +327,7 @@ Public Class Solucions
     'Carrega el llistat de solucions de la base de dades
 
     Public Sub CarregaLlistat()
+
         Try
             Dim SqlFiltre As String = ""
             Dim SqlFiltreStats As String = ""
@@ -367,7 +372,7 @@ Public Class Solucions
             INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
             INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio
             INNER JOIN TipusEstats ON Justificacions.Estat=TipusEstats.id
-            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & SqlFiltreStats & "ORDER BY Solucions.DataVenciment ASC"
+            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & SqlFiltreStats & "AND tipus=" & tipusJustificacio & " ORDER BY Solucions.DataVenciment ASC"
 
             Debug.WriteLine(Sql)
 
@@ -475,4 +480,16 @@ Public Class Solucions
 
     End Sub
 
+    Private Sub tipusJustificacio_CheckedChanged(sender As Object, e As EventArgs) Handles RB_primera.CheckedChanged, RB_segona.CheckedChanged
+        If DataLlistat IsNot Nothing AndAlso DataLlistat.DataSource IsNot Nothing Then
+            If RB_primera.Checked Then
+                tipusJustificacio = 1
+                CarregaLlistat()
+            End If
+            If RB_segona.Checked Then
+                tipusJustificacio = 2
+                CarregaLlistat()
+            End If
+        End If
+    End Sub
 End Class

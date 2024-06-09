@@ -2,7 +2,7 @@
 
 Public Class EstatJustificacio
 
-    Dim IdSolucio, IdTipusSolucio, IdEmpresa As Integer
+    Dim IdSolucio, IdTipusSolucio, IdEmpresa, tipus As Integer
     Dim PorcentatgeDesglossament As Integer = 0
     Dim PorcentatgeFabricantSolucio As Integer = 0
     Dim PercentatgeTeComprovant As Integer = 0
@@ -13,7 +13,7 @@ Public Class EstatJustificacio
     Dim PercentatgeTeFactura As Integer = 0
     Dim Subvencio As String
 
-    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer, SubvencioRebuda As String)
+    Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer, SubvencioRebuda As String, tipusRebut As Integer)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -25,6 +25,7 @@ Public Class EstatJustificacio
         Subvencio = SubvencioRebuda
         Empresa.Text = EmpresaRebuda
         Solucio.Text = SolucioRebuda
+        tipus = tipusRebut
         ImportSubvencionat.Text = Subvencio
 
         RebreDades()
@@ -57,28 +58,37 @@ Public Class EstatJustificacio
 
                     If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
 
+                    If tipus = 1 Then Lbl_tipusJustificacio.Text = "Primera justificació"
+                    If tipus = 2 Then Lbl_tipusJustificacio.Text = "Segona justificació"
+
                     Select Case (lector.GetValue("Estat"))
-                        Case 0
-                            RB_Proces0.Checked = True
-                        Case 1
-                            RB_Proces1.Checked = True
-                        Case 2
-                            RB_Proces2.Checked = True
-                        Case 3
-                            RB_Proces3.Checked = True
-                        Case 4
-                            RB_Proces4.Checked = True
-                        Case 5
-                            RB_Proces5.Checked = True
-                        Case 6
-                            RB_Proces6.Checked = True
-                        Case 7
-                            RB_Proces7.Checked = True
-                        Case 8
+                            Case 0
+                                RB_Proces0.Checked = True
+                            Case 1
+                                RB_Proces1.Checked = True
+                            Case 2
+                                RB_Proces2.Checked = True
+                            Case 3
+                                RB_Proces3.Checked = True
+                            Case 4
+                                RB_Proces4.Checked = True
+                            Case 5
+                                RB_Proces5.Checked = True
+                            Case 6
+                                RB_Proces6.Checked = True
+                            Case 7
+                                RB_Proces7.Checked = True
+                            Case 8
                             RB_Proces8.Checked = True
+                        Case 9
+                            RB_Proces9.Checked = True
+                        Case 10
+                            RB_Proces10.Checked = True
+                        Case 11
+                            RB_Proces11.Checked = True
                     End Select
-                End If
-                lector.Close()
+                    End If
+                    lector.Close()
             Catch ex As Exception
 
             End Try
@@ -132,6 +142,8 @@ Public Class EstatJustificacio
                 TeDada2.Visible = False
                 TeDada2.Checked = True
         End Select
+
+
         ActualitzaProgresBar()
     End Sub
     'Guardem els canvis a la base de dades
@@ -153,11 +165,21 @@ Public Class EstatJustificacio
         Else
             sqltxt = ""
         End If
+        'If RB_Proces10.Checked = True Then
+        '    estat = 10
+        '    txtDataPresentacio = StringDB(Format(DataPresentacio.Value, "yyyy-MM-dd"))
+        '    sqltxt = ", DataPresentacio=" & txtDataPresentacio + " "
+        'Else
+        '    sqltxt = ""
+        'End If
         If RB_Proces4.Checked = True Then estat = 4
         If RB_Proces5.Checked = True Then estat = 5
         If RB_Proces6.Checked = True Then estat = 6
         If RB_Proces7.Checked = True Then estat = 7
         If RB_Proces8.Checked = True Then estat = 8
+        If RB_Proces9.Checked = True Then estat = 9
+        If RB_Proces10.Checked = True Then estat = 10
+        If RB_Proces11.Checked = True Then estat = 11
 
 
         Try
@@ -179,7 +201,39 @@ Public Class EstatJustificacio
                         WHERE iDSolucio=" & IdSolucio
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()
-                MsgBox("L'estat de justificació ha sigut actualitzat", vbInformation, "Justificació")
+
+                'canviem estat solucio a justificat
+                If estat = 4 Or 6 Or 10 Then
+                    Query = "UPDATE Solucions SET
+                        Justificat='Si'
+                        WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
+                Else
+                    Query = "UPDATE Solucions SET
+                        Justificat='No'
+                        WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
+                End If
+
+                'canviem estat solucio a pagat
+                If estat = 6 Or 10 Then
+                    Query = "UPDATE Solucions SET
+                        PrimerPagament=1
+                        WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
+                Else
+                    Query = "UPDATE Solucions SET
+                        PrimerPagament=0
+                        WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
+                End If
+
+
+
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+
+
+
+
+
+                MsgBox("L'estat de justificació ha sigut actualitzat", , "Justificació")
                 Me.Close()
             End If
         Catch ex As Exception

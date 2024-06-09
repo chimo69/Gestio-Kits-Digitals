@@ -28,6 +28,8 @@ Partial Class Solucions
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
+        RB_segona = New RadioButton()
+        RB_primera = New RadioButton()
         Btn_actualitzar = New Button()
         Label4 = New Label()
         contracte = New TextBox()
@@ -96,6 +98,8 @@ Partial Class Solucions
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(RB_segona)
+        Panel1.Controls.Add(RB_primera)
         Panel1.Controls.Add(Btn_actualitzar)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(contracte)
@@ -109,6 +113,30 @@ Partial Class Solucions
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1631, 53)
         Panel1.TabIndex = 0
+        ' 
+        ' RB_segona
+        ' 
+        RB_segona.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_segona.AutoSize = True
+        RB_segona.Location = New Point(1035, 29)
+        RB_segona.Name = "RB_segona"
+        RB_segona.Size = New Size(124, 19)
+        RB_segona.TabIndex = 22
+        RB_segona.Text = "Segona justificació"
+        RB_segona.UseVisualStyleBackColor = True
+        ' 
+        ' RB_primera
+        ' 
+        RB_primera.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_primera.AutoSize = True
+        RB_primera.Checked = True
+        RB_primera.Location = New Point(1035, 4)
+        RB_primera.Name = "RB_primera"
+        RB_primera.Size = New Size(126, 19)
+        RB_primera.TabIndex = 21
+        RB_primera.TabStop = True
+        RB_primera.Text = "Primera justificació"
+        RB_primera.UseVisualStyleBackColor = True
         ' 
         ' Btn_actualitzar
         ' 
@@ -875,4 +903,6 @@ Partial Class Solucions
     Friend WithEvents RB_PreparantDocumentacio As RadioButton
     Friend WithEvents RB_Esborrany As RadioButton
     Friend WithEvents RB_Enviada As RadioButton
+    Friend WithEvents RB_segona As RadioButton
+    Friend WithEvents RB_primera As RadioButton
 End Class

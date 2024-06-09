@@ -1,9 +1,11 @@
 ﻿Imports System.Data.SQLite
+Imports System.Text
 Imports System.Threading
+Imports System.Windows.Forms.VisualStyles
 
 Public Class Contractes
     Private empresaSeleccionada, solucioSeleccionada As Boolean
-    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada, teContractes As Integer
+    Private idEmpresaSeleccionada, idSolucioSeleccionada, segmentEmpresaSeleccionada, teContractes, tipusJustificacioSeleccionada As Integer
     Private subvencioSolucioSeleccionada As Double
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
@@ -416,6 +418,7 @@ Public Class Contractes
                 If CheckJustificat.Checked = True Then
 
                     comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          Solucions.tipus,
                                           Solucions.IdSolucio,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,                                          
@@ -438,9 +441,11 @@ Public Class Contractes
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
                                           WHERE idEmpresa=" & id, conexion)
+
                 Else
 
                     comm = New SQLiteCommand("SELECT Solucions.Id,
+                                          Solucions.tipus,
                                           Solucions.IdSolucio,
                                           TipusSolucions.Nom,
                                           Solucions.Contracte,                                          
@@ -472,7 +477,7 @@ Public Class Contractes
 
                 If DT_Solucions.Rows.Count > 0 Then
                     DataSolucions.DataSource = DT_Solucions
-                    TitolSolucio.Text = "SELECCIONA SOLUCIÓ"
+                    TitolSolucio.Text = "SELECCIONA JUSTIFICACIÓ"
                 Else
                     DataSolucions.DataSource = Nothing
                     TitolSolucio.Text = "SENSE SOLUCIONS"
@@ -489,7 +494,7 @@ Public Class Contractes
                                           FROM Solucions
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE idEmpresa=" & id
+                                          WHERE idEmpresa=" & id & " and tipus=1"
 
                 Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
                 Dim lector As SQLiteDataReader = strCommand.ExecuteReader
@@ -519,8 +524,27 @@ Public Class Contractes
         Dim index As Integer = DataSolucions.CurrentCell.RowIndex
         Dim row As DataGridViewRow = DataSolucions.Rows(index)
         Dim idBorrar As Integer
+        Dim contracte As String = row.Cells("Contracte").Value
         idBorrar = row.Cells("Id").Value
-        EsborrarSolucio(idBorrar)
+
+        Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo + vbQuestion, "Esborrar solució")
+
+
+        If resposta = vbYes Then
+            Try
+                For Each linea In DataSolucions.Rows
+                    Debug.WriteLine("Buscada:" + contracte.ToString() & " - Probada:" + linea.Cells("Contracte").Value.ToString())
+                    If contracte = linea.Cells("Contracte").Value Then
+                        EsborrarSolucio(linea.Cells("Id").Value)
+                    End If
+                Next
+
+                OmpleSolucions(idEmpresaSeleccionada)
+                MsgBox("S'ha esborrat correctament la solució", , "Esborrar solució")
+            Catch ex As Exception
+                MsgBox("No s'ha pogut esborrar la solució ", vbCritical, "Esborrar solució")
+            End Try
+        End If
     End Sub
     'Esborra tots els camps de la solució
     Private Sub EsborrarCampsSolucio()
@@ -544,10 +568,9 @@ Public Class Contractes
         DataCaducitat.Clear()
         solucioSeleccionada = False
         TitolSolucio.Clear()
-        ProgressBar1.Value = 0
+
         TBObservacions.Clear()
         CheckEstaJustificat.Checked = False
-        CheckEstaJustificat2.Checked = False
         CB_TipusSolucio.Text = "Selecciona un tipus de solució"
         DataSolucions.ClearSelection()
         infoMax.Visible = False
@@ -555,7 +578,6 @@ Public Class Contractes
         InfoVariableNum.Visible = False
         InfoVariableNum.Value = 1
         CB_PrimerPagament.Checked = False
-        CB_SegonPagament.Checked = False
         EstaLaSolucioSeleccionada(False)
         InfoSubvencio.Clear()
 
@@ -586,7 +608,7 @@ Public Class Contractes
     End Sub
 
     Private Sub Btn_EstatJustificacio_Click(sender As Object, e As EventArgs) Handles Btn_EstatJustificacio.Click
-        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text)
+        Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, idSolucioSeleccionada, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text, tipusJustificacioSeleccionada)
         OpenSubFormDialog(EstatJustificacio)
         OmpleSolucions(idEmpresaSeleccionada)
         seleccionaFila(idSolucioSeleccionada, 2)
@@ -594,34 +616,34 @@ Public Class Contractes
     'Esborra la solució seleccionada
     Private Sub EsborrarSolucio(id As Integer)
 
-        Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo + vbQuestion, "Esborrar solució")
+        'Dim resposta = MsgBox("¿Estàs segur que vols esborrar aquesta solució?", vbYesNo + vbQuestion, "Esborrar solució")
         Dim conexion As New SQLiteConnection(cadena)
 
-        If resposta = vbYes Then
-            Try
-                conexion.Open()
-                If conexion.State = ConnectionState.Open Then
-                    Dim Query As String
-                    Dim strCommand As SQLiteCommand
-                    ' Esborrem solucio
-                    Query = "DELETE FROM Solucions WHERE id=" & id
-                    strCommand = New SQLiteCommand(Query, conexion)
 
-                    strCommand.ExecuteNonQuery()
+        Try
+            conexion.Open()
+            If conexion.State = ConnectionState.Open Then
+                Dim Query As String
+                Dim strCommand As SQLiteCommand
+                ' Esborrem solucio
+                Query = "DELETE FROM Solucions WHERE id=" & id
+                strCommand = New SQLiteCommand(Query, conexion)
 
-                    'Esborrem Justificacions
-                    Query = "DELETE FROM Justificacions WHERE IdSolucio=" & id
-                    strCommand = New SQLiteCommand(Query, conexion)
-                    strCommand.ExecuteNonQuery()
-                End If
+                strCommand.ExecuteNonQuery()
 
-                OmpleSolucions(idEmpresaSeleccionada)
-                MsgBox("S'ha esborrat correctament la solució", , "Esborrar solució")
-            Catch ex As Exception
-                MsgBox("No s'ha pogut esborrar la solució ", vbCritical, "Esborrar solució")
-            End Try
-            conexion.Close()
-        End If
+                'Esborrem Justificacions
+                Query = "DELETE FROM Justificacions WHERE IdSolucio=" & id
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+            End If
+
+            'OmpleSolucions(idEmpresaSeleccionada)
+            'MsgBox("S'ha esborrat correctament la solució", , "Esborrar solució")
+        Catch ex As Exception
+            'MsgBox("No s'ha pogut esborrar la solució ", vbCritical, "Esborrar solució")
+        End Try
+        conexion.Close()
+
 
     End Sub
 
@@ -642,6 +664,11 @@ Public Class Contractes
             .Columns("CodiBono").Visible = False
             .Columns("Import").Visible = False
             .Columns("Contractes").Visible = False
+            '.Columns("nif").Width = 60
+            .Columns("ciutat").Visible = False
+            .Columns("provincia").Visible = False
+            '.Columns("segment").Width = 60
+            '.Columns("concessió").Width = 90
             .AutoResizeColumns()
             .ClearSelection()
         End With
@@ -675,6 +702,9 @@ Public Class Contractes
             .Columns("Contracte").Width = 100
             .Columns("%").Width = 30
             .Columns("Dies").Width = 70
+            .Columns("Tipus").HeaderText = ""
+            .Columns("Tipus").Width = 20
+            .Columns("Tipus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .ClearSelection()
         End With
 
@@ -686,6 +716,21 @@ Public Class Contractes
             If Fila.Cells("Estat").Value = "1" Then Fila.DefaultCellStyle.BackColor = blau
             If Fila.Cells("Estat").Value = "4" Then Fila.DefaultCellStyle.BackColor = blau
             If Fila.Cells("Estat").Value = "7" Then Fila.DefaultCellStyle.BackColor = blau
+            If Fila.Cells("Tipus").Value = 1 Then
+                Dim style As New DataGridViewCellStyle()
+                style.Font = New Font(Fila.Cells("Tipus").InheritedStyle.Font, FontStyle.Bold)
+                style.BackColor = tipus1
+                style.ForeColor = Color.White
+                Fila.Cells("Tipus").Style = style
+
+            End If
+            If Fila.Cells("Tipus").Value = 2 Then
+                Dim style As New DataGridViewCellStyle()
+                style.Font = New Font(Fila.Cells("Tipus").InheritedStyle.Font, FontStyle.Bold)
+                style.BackColor = tipus2
+                style.ForeColor = Color.White
+                Fila.Cells("Tipus").Style = style
+            End If
         Next
 
     End Sub
@@ -702,7 +747,7 @@ Public Class Contractes
         Dim Observacions As String = TBObservacions.Text
         Dim DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt As String
         Dim seleccio As Boolean
-        Dim Justificat, Justificat2 As String
+        Dim Justificat As String
         Dim checks As Integer = 0
 
         seleccio = solucioSeleccionada
@@ -738,11 +783,7 @@ Public Class Contractes
         Else
             Justificat = "'No'"
         End If
-        If CheckEstaJustificat2.Checked = True Then
-            Justificat2 = "'Si'"
-        Else
-            Justificat2 = "'No'"
-        End If
+
 
         If (seleccio = True) Then
 
@@ -753,17 +794,17 @@ Public Class Contractes
                             DataFactura= " & StringDB(DataFacturaTxt) & ",
                             DataPagament= " & StringDB(DataPagamentTxt) & ",
                             DataVenciment=" & StringDB(DataVencimentTxt) & ", 
-                            Justificat=" & Justificat & ",
-                            SegonJustificat=" & Justificat2 & ",
-                            PrimerPagament=" & CB_PrimerPagament.Checked & ",
-                            SegonPagament=" & CB_SegonPagament.Checked & ",
+                            Justificat=" & Justificat & ",                            
+                            PrimerPagament=" & CB_PrimerPagament.Checked & ",                            
                             Observacions=" & StringDB(Observacions) & ",
                             Quantitat=" & InfoVariableNum.Value &
                             " WHERE Id=" & idSolucio
 
+
         Else
-            Query = "INSERT INTO Solucions (IdSolucio,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,SegonPagament,Observacions,Quantitat) VALUES (" &
+            Query = "INSERT INTO Solucions (IdSolucio,Tipus,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
+                                 "1" & "," &
                                  StringDB(NoAcordTxt) & "," &
                                  StringDB(DataContracteTxt) & "," &
                                  StringDB(DataFacturaTxt) & "," &
@@ -771,9 +812,7 @@ Public Class Contractes
                                  StringDB(DataVencimentTxt) & "," &
                                  idEmpresaSeleccionada & "," &
                                  Justificat & "," &
-                                 Justificat2 & "," &
                                  CB_PrimerPagament.Checked & "," &
-                                 CB_SegonPagament.Checked & "," &
                                  StringDB(Observacions) & "," &
                                  InfoVariableNum.Value & ")"
 
@@ -784,6 +823,27 @@ Public Class Contractes
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()
+            End If
+
+            If seleccio = False Then
+                Query = "INSERT INTO Solucions (IdSolucio,Tipus,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PrimerPagament,Observacions,Quantitat) VALUES (" &
+                                 idTipusSolucio & "," &
+                                 "2" & "," &
+                                 StringDB(NoAcordTxt) & "," &
+                                 StringDB(DataContracteTxt) & "," &
+                                 StringDB(DataFacturaTxt) & "," &
+                                 StringDB(DataPagamentTxt) & "," &
+                                 StringDB(DataVencimentTxt) & "," &
+                                 idEmpresaSeleccionada & "," &
+                                 Justificat & "," &
+                                 CB_PrimerPagament.Checked & "," &
+                                 StringDB(Observacions) & "," &
+                                 InfoVariableNum.Value & ")"
+
+                If conexion.State = ConnectionState.Open Then
+                    strCommand = New SQLiteCommand(Query, conexion)
+                    strCommand.ExecuteNonQuery()
+                End If
             End If
 
             Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
@@ -819,13 +879,7 @@ Public Class Contractes
             MsgBox("Has de introduir el nº d'acord", vbCritical, "Dades de la solució")
             Return False
         End If
-        If ProgressBar1.Value < 100 And CheckEstaJustificat.Checked = True Then
-            If MsgBox("¿Estas segur que ho vols donar per justificat sense tenir el proces al 100%?", vbYesNo + vbQuestion, "Introduir solució") = vbYes Then
-                Return True
-            Else
-                Return False
-            End If
-        End If
+
         Return True
     End Function
     'Inserta una justificacio buida
@@ -840,11 +894,29 @@ Public Class Contractes
         Try
             conexion.Open()
 
+            Dim lector As SQLiteDataReader
+
             If conexion.State = ConnectionState.Open Then
-                Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa
+                'Introduim primera justificació
+                Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa & " AND tipus=1"
                 strCommand = New SQLiteCommand(Query, conexion)
 
-                Dim lector As SQLiteDataReader = strCommand.ExecuteReader
+                lector = strCommand.ExecuteReader
+                If lector.Read Then
+                    id = lector.GetValue("Id")
+                End If
+                lector.Close()
+
+                Query = "INSERT INTO Justificacions (IdSolucio,Subvencio) VALUES (" & id & "," & InfoSubvencio.Text & ")"
+
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+
+                ' Introduim segona justificació
+                Query = "SELECT * FROM Solucions WHERE idSolucio=" & idSolucio & " AND idEmpresa=" & idEmpresa & " AND tipus=2"
+                strCommand = New SQLiteCommand(Query, conexion)
+
+                lector = strCommand.ExecuteReader
                 If lector.Read Then
                     id = lector.GetValue("Id")
                 End If
@@ -890,7 +962,6 @@ Public Class Contractes
 
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = True
-            CheckEstaJustificat2.Enabled = True
             TBObservacions.Enabled = True
             Btn_AfegirSolucio.Enabled = True
             Btn_esborrarEmpresa.Enabled = True
@@ -900,7 +971,6 @@ Public Class Contractes
 
             CB_DataPagamentIVA.Enabled = False
             CheckEstaJustificat.Enabled = False
-            CheckEstaJustificat2.Enabled = False
             Btn_EstatJustificacio.Enabled = False
             Btn_EsborrarSeleccioSolucio.Enabled = False
             Btn_AfegirSolucio.Enabled = False
@@ -936,17 +1006,6 @@ Public Class Contractes
             verificat.Visible = False
             CB_PrimerPagament.Enabled = False
             CB_PrimerPagament.Checked = False
-            CB_SegonPagament.Checked = False
-        End If
-    End Sub
-    Private Sub CheckEstaJustificat2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckEstaJustificat2.CheckedChanged
-        If CheckEstaJustificat2.Checked = True Then
-            verificat2.Visible = True
-            CB_SegonPagament.Enabled = True
-        Else
-            verificat2.Visible = False
-            CB_SegonPagament.Enabled = False
-            CB_SegonPagament.Checked = False
         End If
     End Sub
 
@@ -1006,8 +1065,9 @@ Public Class Contractes
         If nom.Contains("Estat") Then
             Dim RowBorrar As Integer = nom.Replace("Estat", "")
             Dim IdSolucio As Integer = DataSolucions.Rows(RowBorrar).Cells("Id").Value
+            Dim tipusJustificacio As Integer = DataSolucions.Rows(RowBorrar).Cells("Tipus").Value
 
-            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, IdSolucio, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text)
+            Dim EstatJustificacio As New EstatJustificacio(TitolEmpresa.Text, TitolSolucio.Text, idEmpresaSeleccionada, IdSolucio, CB_TipusSolucio.SelectedValue, InfoSubvencio.Text, tipusJustificacio)
 
             OpenSubFormDialog(EstatJustificacio)
             OmpleSolucions(idEmpresaSeleccionada)
@@ -1287,19 +1347,8 @@ Public Class Contractes
     Private Sub CB_PrimerPagament_CheckedChanged(sender As Object, e As EventArgs) Handles CB_PrimerPagament.CheckedChanged
         If CB_PrimerPagament.Checked = True Then
             Pagat1.Visible = True
-            CB_SegonPagament.Enabled = True
         Else
             Pagat1.Visible = False
-            CB_SegonPagament.Enabled = False
-            CB_SegonPagament.Checked = False
-        End If
-    End Sub
-
-    Private Sub CB_SegonPagament_CheckedChanged(sender As Object, e As EventArgs) Handles CB_SegonPagament.CheckedChanged
-        If CB_SegonPagament.Checked = True Then
-            Pagat2.Visible = True
-        Else
-            Pagat2.Visible = False
         End If
     End Sub
 
@@ -1417,6 +1466,7 @@ Public Class Contractes
         GestionaInfo(row.Cells("IdSolucio").Value)
 
         idSolucioSeleccionada = row.Cells("Id").Value
+        tipusJustificacioSeleccionada = row.Cells("Tipus").Value
         TitolSolucio.Text = row.Cells("Nom").Value
         TBObservacions.Text = row.Cells("Observacions").Value
         InfoVariableNum.Value = row.Cells("Quantitat").Value
@@ -1429,17 +1479,7 @@ Public Class Contractes
             CheckEstaJustificat.Checked = False
         End If
 
-        If row.Cells("SegonJustificat").Value = "Si" Then
-            CheckEstaJustificat2.Checked = True
-        Else
-            CheckEstaJustificat2.Checked = False
-        End If
-
-
         CB_PrimerPagament.Checked = row.Cells("PrimerPagament").Value
-        CB_SegonPagament.Checked = row.Cells("SegonPagament").Value
-
-        ProgressBar1.Value = row.Cells("%").Value
 
         If Not IsDBNull(row.Cells("Dia contracte").Value) Then
             If row.Cells("Dia contracte").Value <> "" Then
