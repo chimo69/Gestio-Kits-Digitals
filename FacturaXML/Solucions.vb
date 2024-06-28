@@ -1,11 +1,12 @@
 ﻿Imports System.Data.SQLite
+Imports System.Reflection
 
 Public Class Solucions
 
     Dim DT_Llistat As New DataTable
     Dim SolucioFiltre, SolucioFiltreEstat As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
-    Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta As Integer
+    Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta, NoPagada, PagamentMinorat, DocumentacioAddicional As Integer
     Dim tipusJustificacio As Integer
 
 
@@ -20,6 +21,9 @@ Public Class Solucions
         SolucioFiltreEstat = -1
         tipusJustificacio = 1
         CB_JaPresentades.Checked = My.Settings.MostrarLlistatAprovades
+        Dim dgvType As Type = GetType(DataGridView)
+        Dim dgvPropInfo As PropertyInfo = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance Or BindingFlags.NonPublic)
+        dgvPropInfo.SetValue(DataLlistat, True, Nothing)
         CarregaLlistat()
 
     End Sub
@@ -56,8 +60,8 @@ Public Class Solucions
     End Sub
 
     Private Sub Llistat_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        DataLlistat.AutoResizeColumns()
-        DataLlistat.AutoResizeRows()
+        ' DataLlistat.AutoResizeColumns()
+        'DataLlistat.AutoResizeRows()
     End Sub
 
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
@@ -134,6 +138,9 @@ Public Class Solucions
             Pagada = 0
             FinalitzatEsmena = 0
             EsmenaIncorrecta = 0
+            NoPagada = 0
+            PagamentMinorat = 0
+            DocumentacioAddicional = 0
         End If
 
         If dgv.Rows.Count > 0 Then
@@ -203,6 +210,15 @@ Public Class Solucions
                         If Fila.Cells("IdEstat").Value = 8 Then
                             EsmenaIncorrecta += 1
                         End If
+                        If Fila.Cells("IdEstat").Value = 9 Then
+                            NoPagada += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 10 Then
+                            PagamentMinorat += 1
+                        End If
+                        If Fila.Cells("IdEstat").Value = 11 Then
+                            DocumentacioAddicional += 1
+                        End If
                     End If
                 End If
             Next
@@ -265,27 +281,16 @@ Public Class Solucions
 
         With dgv
             .Columns("Empresa").Width = 300
-            .Columns("Solucio").Width = 150
+            .Columns("Solucio").Width = 50
             .Columns("Contracte").Width = 100
             .Columns("Verificat").Width = 50
             .Columns("Observacions").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("Observacions").MinimumWidth = 100
-            '.Columns("Word").Width = 50
             .Columns("Data contracte").Width = 70
             .Columns("Data pagament").Width = 70
             .Columns("Data venciment").Width = 70
             .Columns("Data factura").Width = 70
-            '.Columns("Word").HeaderCell.Style.Font = font
-            '.Columns("Comp. Pagament").Width = 50
-            '.Columns("Comp. Pagament").HeaderCell.Style.Font = font
-            '.Columns("XML").Width = 50
-            '.Columns("XML").HeaderCell.Style.Font = font
-            '.Columns("Fabricant Solució").Width = 50
-            '.Columns("Fabricant Solució").HeaderCell.Style.Font = font
-            '.Columns("D1").Width = 50
-            '.Columns("D1").HeaderCell.Style.Font = font
-            '.Columns("D2").Width = 50
-            '.Columns("D2").HeaderCell.Style.Font = font
+
         End With
 
     End Sub
@@ -310,6 +315,7 @@ Public Class Solucions
             If Fila.Cells("Estat").Value = "Enviada" Then Fila.Cells("Empresa").Style.BackColor = blau
             If Fila.Cells("Estat").Value = "Termini d'esmena obert" Then Fila.Cells("Empresa").Style.BackColor = blau
             If Fila.Cells("Estat").Value = "Finalitzat termini d'esmena" Then Fila.Cells("Empresa").Style.BackColor = blau
+            If Fila.Cells("Estat").Value = "Documentació addicional" Then Fila.Cells("Empresa").Style.BackColor = blau
         Next
 
         ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 
@@ -415,6 +421,9 @@ Public Class Solucions
         TB_Pagada.Text = Pagada.ToString
         TB_FinalitzadaEsmena.Text = FinalitzatEsmena.ToString
         TB_EsmenaIncorrecta.Text = EsmenaIncorrecta.ToString
+        TB_NoPagada.Text = NoPagada.ToString
+        TB_PagamentMinorat.Text = PagamentMinorat.ToString
+        TB_DocumentacioAddicional.Text = DocumentacioAddicional.ToString
     End Sub
     Private Sub CB_JaPresentades_CheckedChanged(sender As Object, e As EventArgs) Handles CB_JaPresentades.CheckedChanged
         CarregaLlistat()
@@ -451,9 +460,7 @@ Public Class Solucions
         CarregaLlistat()
     End Sub
 
-    Private Sub TipusEstats_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Enviada.CheckedChanged, RB_PreparantDocumentacio.CheckedChanged,
-            RB_Esborrany.CheckedChanged, RB_Presentada.CheckedChanged, RB_EsmenaObert.CheckedChanged, RB_ValidadaPagament.CheckedChanged,
-            RB_Pagada.CheckedChanged, RB_FinalitzadaEsmena.CheckedChanged, RB_EsmenaIncorrecta.CheckedChanged, RB_TotsEstats.CheckedChanged
+    Private Sub TipusEstats_CheckedChanged(sender As Object, e As EventArgs) Handles RB_Enviada.CheckedChanged, RB_PreparantDocumentacio.CheckedChanged, RB_Esborrany.CheckedChanged, RB_Presentada.CheckedChanged, RB_EsmenaObert.CheckedChanged, RB_ValidadaPagament.CheckedChanged, RB_Pagada.CheckedChanged, RB_FinalitzadaEsmena.CheckedChanged, RB_EsmenaIncorrecta.CheckedChanged, RB_TotsEstats.CheckedChanged, RB_NoPagada.CheckedChanged, RB_PagamentMinorat.CheckedChanged, RB_DocumentacioAddicional.CheckedChanged
 
         If RB_Enviada.Checked Then
             SolucioFiltreEstat = 1
@@ -473,6 +480,12 @@ Public Class Solucions
             SolucioFiltreEstat = 7
         ElseIf RB_EsmenaIncorrecta.Checked Then
             SolucioFiltreEstat = 8
+        ElseIf RB_NoPagada.Checked Then
+            SolucioFiltreEstat = 9
+        ElseIf RB_PagamentMinorat.Checked Then
+            SolucioFiltreEstat = 10
+        ElseIf RB_DocumentacioAddicional.Checked Then
+            SolucioFiltreEstat = 11
         ElseIf RB_TotsEstats.Checked Then
             SolucioFiltreEstat = -1
         End If

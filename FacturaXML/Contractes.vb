@@ -20,13 +20,20 @@ Public Class Contractes
 
         ActualitzaEmpreses(TB_CercaEmpreses.Text)
 
+
+
+        CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
+    End Sub
+    Private Sub carregaTipusSolucions()
         Dim conexion As New SQLiteConnection(cadena)
         Try
 
             conexion.Open()
 
+            DT_TipusSolucions.Clear()
+
             If conexion.State = ConnectionState.Open Then
-                Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions", conexion)
+                Dim DA As New SQLiteDataAdapter("SELECT * FROM TipusSolucions where Segment" + segmentEmpresaSeleccionada.ToString() + ">0", conexion)
                 DA.Fill(DT_TipusSolucions)
                 CB_TipusSolucio.DataSource = DT_TipusSolucions
                 CB_TipusSolucio.DisplayMember = "Nom"
@@ -39,8 +46,6 @@ Public Class Contractes
         End Try
 
         conexion.Close()
-
-        CheckJustificat.Checked = My.Settings.MostrarGestioAprovades
     End Sub
     Private Sub clickEmpreses(row As Integer)
         If DataEmpreses.SelectedRows.Count > 0 Then
@@ -179,6 +184,8 @@ Public Class Contractes
         If RB_Segment1.Checked = True Then segment = 1
         If RB_Segment2.Checked = True Then segment = 2
         If RB_Segment3.Checked = True Then segment = 3
+        If RB_Segment4.Checked = True Then segment = 4
+        If RB_Segment5.Checked = True Then segment = 5
 
         If TB_ImportBono.Text = "" Then
             import = 0
@@ -288,7 +295,7 @@ Public Class Contractes
             Return False
         End If
 
-        If RB_Segment1.Checked = False And RB_Segment2.Checked = False And RB_Segment3.Checked = False Then
+        If RB_Segment1.Checked = False And RB_Segment2.Checked = False And RB_Segment3.Checked = False And RB_Segment4.Checked = False And RB_Segment5.Checked = False Then
             MsgBox("Has de escollir el segment de l'empresa", vbCritical, "Dades de empresa")
             Return False
         End If
@@ -440,7 +447,8 @@ Public Class Contractes
                                           FROM Solucions
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE idEmpresa=" & id, conexion)
+                                          WHERE idEmpresa=" & id &
+                                          " Order by tipus, contracte", conexion)
 
                 Else
 
@@ -467,7 +475,7 @@ Public Class Contractes
                                           FROM Solucions
                                           INNER JOIN TipusSolucions On TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE (idEmpresa=" & id & " And Justificat='No')", conexion)
+                                          WHERE (idEmpresa=" & id & " And Justificat='No') order by tipus, contracte", conexion)
                 End If
 
 
@@ -482,6 +490,42 @@ Public Class Contractes
                     DataSolucions.DataSource = Nothing
                     TitolSolucio.Text = "SENSE SOLUCIONS"
                 End If
+
+                If DataSolucions.DataSource IsNot Nothing Then
+
+                    With DataSolucions
+                        .Columns("Id").Visible = False
+                        .Columns("IdSolucio").Visible = False
+                        .Columns("Justificat").Visible = False
+                        .Columns("SegonJustificat").Visible = False
+                        .Columns("Observacions").Visible = False
+                        .Columns("DataPagament").Visible = False
+                        .Columns("Quantitat").Visible = False
+                        .Columns("PrimerPagament").Visible = False
+                        .Columns("SegonPagament").Visible = False
+                        .Columns("Estat").Visible = False
+                        .Columns("DataPresentacio").Visible = False
+                        .Columns("Subvencio").Visible = False
+                        .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("Dia venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("Nom").Width = 150
+                        .Columns("Contracte").Width = 100
+                        .Columns("%").Width = 30
+                        .Columns("Dies").Width = 70
+                        .Columns("Tipus").HeaderText = ""
+                        .Columns("Tipus").Width = 20
+                        .Columns("Tipus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .ClearSelection()
+                    End With
+
+
+                End If
+
+
+
 
             End If
 
@@ -581,25 +625,10 @@ Public Class Contractes
         EstaLaSolucioSeleccionada(False)
         InfoSubvencio.Clear()
 
-        ' Formatejem estats
-        TB_Proces0.Enabled = False
-        TB_Proces0.BackColor = SystemColors.Control
-        TB_Proces1.Enabled = False
-        TB_Proces1.BackColor = SystemColors.Control
-        TB_Proces2.Enabled = False
-        TB_Proces2.BackColor = SystemColors.Control
-        TB_Proces3.Enabled = False
-        TB_Proces3.BackColor = SystemColors.Control
-        TB_Proces4.Enabled = False
-        TB_Proces4.BackColor = SystemColors.Control
-        TB_Proces5.Enabled = False
-        TB_Proces5.BackColor = SystemColors.Control
-        TB_Proces6.Enabled = False
-        TB_Proces6.BackColor = SystemColors.Control
-        TB_Proces7.Enabled = False
-        TB_Proces7.BackColor = SystemColors.Control
-        TB_Proces8.Enabled = False
-        TB_Proces8.BackColor = SystemColors.Control
+        Lbl_estat.Text = ""
+        Lbl_tipus.Text = ""
+        Lbl_estat.BackColor = SystemColors.Control
+        Lbl_tipus.BackColor = SystemColors.Control
 
     End Sub
 
@@ -680,33 +709,7 @@ Public Class Contractes
         EsborrarCampsSolucio()
         EstaLaSolucioSeleccionada(False)
 
-        With DataSolucions
-            .Columns("Id").Visible = False
-            .Columns("IdSolucio").Visible = False
-            .Columns("Justificat").Visible = False
-            .Columns("SegonJustificat").Visible = False
-            .Columns("Observacions").Visible = False
-            .Columns("DataPagament").Visible = False
-            .Columns("Quantitat").Visible = False
-            .Columns("PrimerPagament").Visible = False
-            .Columns("SegonPagament").Visible = False
-            .Columns("Estat").Visible = False
-            .Columns("DataPresentacio").Visible = False
-            .Columns("Subvencio").Visible = False
-            .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Dia venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Nom").Width = 150
-            .Columns("Contracte").Width = 100
-            .Columns("%").Width = 30
-            .Columns("Dies").Width = 70
-            .Columns("Tipus").HeaderText = ""
-            .Columns("Tipus").Width = 20
-            .Columns("Tipus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .ClearSelection()
-        End With
+
 
         For Each Fila As DataGridViewRow In DataSolucions.Rows
             If Fila.Cells("Dies").Value <= 90 And Fila.Cells("Dies").Value >= 1 Then Fila.DefaultCellStyle.BackColor = Color.Orange
@@ -798,7 +801,7 @@ Public Class Contractes
                             PrimerPagament=" & CB_PrimerPagament.Checked & ",                            
                             Observacions=" & StringDB(Observacions) & ",
                             Quantitat=" & InfoVariableNum.Value &
-                            " WHERE Id=" & idSolucio
+                            " WHERE Contracte=" & StringDB(NoAcordTxt) & " AND tipus=" & tipusJustificacioSeleccionada
 
 
         Else
@@ -985,6 +988,7 @@ Public Class Contractes
     'Modifica els camps quan la selecció d'empresa canvia
     Private Sub DataEmpreses_Click(sender As Object, e As EventArgs) Handles DataEmpreses.Click
         MostraDadesEmpresaSeleccionada()
+        carregaTipusSolucions()
     End Sub
 
     Private Sub MostraDadesEmpresaSeleccionada()
@@ -1267,10 +1271,9 @@ Public Class Contractes
 
         If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
         If CB_DataFactura.Checked = True Then DataVenciment = CaducitatFactura
-        If CheckEstaJustificat.Checked = True Then DataVenciment = CaducitatJustificacio
+        If CheckEstaJustificat.Checked = True Or tipusJustificacioSeleccionada = 2 Then DataVenciment = CaducitatJustificacio
 
         dies = DateDiff(DateInterval.Day, Now, DataVenciment)
-
 
         If solucioSeleccionada Then
             If CB_DataConcessio.Checked = True Then
@@ -1280,7 +1283,6 @@ Public Class Contractes
                 Else
                     DiesCaducitat.Text = "Caducat"
                     DataCaducitat.Text = Format(DataVenciment.Date, "Short Date")
-
                 End If
             Else
                 DiesCaducitat.Text = ""
@@ -1514,53 +1516,52 @@ Public Class Contractes
         InfoSubvencioReal.Text = row.Cells("Subvencio").Value.ToString
 
         ' Formatejem estats
-        TB_Proces0.Enabled = False
-        TB_Proces0.BackColor = SystemColors.Control
-        TB_Proces1.Enabled = False
-        TB_Proces1.BackColor = SystemColors.Control
-        TB_Proces2.Enabled = False
-        TB_Proces2.BackColor = SystemColors.Control
-        TB_Proces3.Enabled = False
-        TB_Proces3.BackColor = SystemColors.Control
-        TB_Proces4.Enabled = False
-        TB_Proces4.BackColor = SystemColors.Control
-        TB_Proces5.Enabled = False
-        TB_Proces5.BackColor = SystemColors.Control
-        TB_Proces6.Enabled = False
-        TB_Proces6.BackColor = SystemColors.Control
-        TB_Proces7.Enabled = False
-        TB_Proces7.BackColor = SystemColors.Control
-        TB_Proces8.Enabled = False
-        TB_Proces8.BackColor = SystemColors.Control
 
+        Select Case row.Cells("Tipus").Value
+            Case 1
+                Lbl_tipus.Text = "Primera"
+                Lbl_tipus.BackColor = tipus1
+            Case 2
+                Lbl_tipus.Text = "Segona"
+                Lbl_tipus.BackColor = tipus2
+        End Select
         Select Case row.Cells("Estat").Value
             Case 0
-                TB_Proces0.Enabled = True
-                TB_Proces0.BackColor = verdClar
+                Lbl_estat.Text = "Preparant documentació"
+                Lbl_estat.BackColor = taronja
             Case 1
-                TB_Proces1.Enabled = True
-                TB_Proces1.BackColor = verdClar
+                Lbl_estat.Text = "Enviada"
+                Lbl_estat.BackColor = taronja
             Case 2
-                TB_Proces2.Enabled = True
-                TB_Proces2.BackColor = verdClar
+                Lbl_estat.Text = "Esborrany"
+                Lbl_estat.BackColor = taronja
             Case 3
-                TB_Proces3.Enabled = True
-                TB_Proces3.BackColor = verdClar
+                Lbl_estat.Text = "Presentada"
+                Lbl_estat.BackColor = taronja
             Case 4
-                TB_Proces4.Enabled = True
-                TB_Proces4.BackColor = verdClar
+                Lbl_estat.Text = "Termini d'esmena obert"
+                Lbl_estat.BackColor = vermell
             Case 5
-                TB_Proces5.Enabled = True
-                TB_Proces5.BackColor = verdClar
+                Lbl_estat.Text = "Validada per pagament"
+                Lbl_estat.BackColor = verdClar
             Case 6
-                TB_Proces6.Enabled = True
-                TB_Proces6.BackColor = verdClar
+                Lbl_estat.Text = "Pagada"
+                Lbl_estat.BackColor = verdClar
             Case 7
-                TB_Proces7.Enabled = True
-                TB_Proces7.BackColor = verdClar
+                Lbl_estat.Text = "Finalitzat termini d'esmena"
+                Lbl_estat.BackColor = vermell
             Case 8
-                TB_Proces8.Enabled = True
-                TB_Proces8.BackColor = verdClar
+                Lbl_estat.Text = "Esmena incorrecta"
+                Lbl_estat.BackColor = vermell
+            Case 9
+                Lbl_estat.Text = "No pagada"
+                Lbl_estat.BackColor = vermell
+            Case 10
+                Lbl_estat.Text = "Pagament minorat"
+                Lbl_estat.BackColor = verdClar
+            Case 11
+                Lbl_estat.Text = "Documentació addicional"
+                Lbl_estat.BackColor = vermell
         End Select
 
         EstaLaSolucioSeleccionada(True)
@@ -1580,6 +1581,11 @@ Public Class Contractes
                 infoMax.Visible = True
                 InfoVariable.Text = "Nº de usuaris"
             Case 10
+                InfoVariable.Visible = True
+                InfoVariableNum.Visible = True
+                infoMax.Visible = True
+                InfoVariable.Text = "Nº de dispositius"
+            Case 12
                 InfoVariable.Visible = True
                 InfoVariableNum.Visible = True
                 infoMax.Visible = True
@@ -1633,7 +1639,23 @@ Public Class Contractes
         ElseIf segmentEmpresaSeleccionada = 3 Then
             infoMax.Text = "Màxim 2"
             InfoVariableNum.Maximum = 2
+        ElseIf segmentEmpresaSeleccionada = 4 Then
+            infoMax.Text = "Màxim 99"
+            InfoVariableNum.Maximum = 99
+        ElseIf segmentEmpresaSeleccionada = 5 Then
+            infoMax.Text = "Màxim 145"
+            InfoVariableNum.Maximum = 145
         End If
+    End Sub
+
+    Private Sub MostraSubvencioConcedida() Handles RB_Segment1.CheckedChanged, RB_Segment2.CheckedChanged, RB_Segment3.CheckedChanged, RB_Segment4.CheckedChanged, RB_Segment5.CheckedChanged
+
+        If RB_Segment1.Checked = True Then TB_ImportBono.Text = "12000"
+        If RB_Segment2.Checked = True Then TB_ImportBono.Text = "6000"
+        If RB_Segment3.Checked = True Then TB_ImportBono.Text = "2000"
+        If RB_Segment4.Checked = True Then TB_ImportBono.Text = "25000"
+        If RB_Segment5.Checked = True Then TB_ImportBono.Text = "29000"
+
     End Sub
 
 

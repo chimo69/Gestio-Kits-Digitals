@@ -87,6 +87,8 @@ Partial Class Contractes
         DataFiFactura = New TextBox()
         TitolFactura = New Label()
         GroupBox1 = New GroupBox()
+        RB_Segment5 = New RadioButton()
+        RB_Segment4 = New RadioButton()
         RB_Segment3 = New RadioButton()
         RB_Segment2 = New RadioButton()
         RB_Segment1 = New RadioButton()
@@ -102,15 +104,8 @@ Partial Class Contractes
         Panel1 = New Panel()
         Panel2 = New Panel()
         GroupBox2 = New GroupBox()
-        TB_Proces7 = New TextBox()
-        TB_Proces8 = New TextBox()
-        TB_Proces0 = New TextBox()
-        TB_Proces4 = New TextBox()
-        TB_Proces6 = New TextBox()
-        TB_Proces5 = New TextBox()
-        TB_Proces3 = New TextBox()
-        TB_Proces2 = New TextBox()
-        TB_Proces1 = New TextBox()
+        Lbl_tipus = New Label()
+        Lbl_estat = New Label()
         DataFiConcessio = New TextBox()
         TitolAprovacio = New Label()
         DataConcessioOK = New PictureBox()
@@ -348,7 +343,7 @@ Partial Class Contractes
         ' 
         ' btn_EsborrarSeleccioEmpresa
         ' 
-        btn_EsborrarSeleccioEmpresa.Location = New Point(24, 670)
+        btn_EsborrarSeleccioEmpresa.Location = New Point(28, 727)
         btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
         btn_EsborrarSeleccioEmpresa.Size = New Size(148, 54)
         btn_EsborrarSeleccioEmpresa.TabIndex = 8
@@ -818,6 +813,8 @@ Partial Class Contractes
         ' GroupBox1
         ' 
         GroupBox1.BackColor = SystemColors.ControlLight
+        GroupBox1.Controls.Add(RB_Segment5)
+        GroupBox1.Controls.Add(RB_Segment4)
         GroupBox1.Controls.Add(RB_Segment3)
         GroupBox1.Controls.Add(RB_Segment2)
         GroupBox1.Controls.Add(RB_Segment1)
@@ -838,15 +835,37 @@ Partial Class Contractes
         GroupBox1.Controls.Add(Pais)
         GroupBox1.Location = New Point(28, 23)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(313, 424)
+        GroupBox1.Size = New Size(313, 464)
         GroupBox1.TabIndex = 74
         GroupBox1.TabStop = False
         GroupBox1.Text = "Dades de l'empresa"
         ' 
+        ' RB_Segment5
+        ' 
+        RB_Segment5.AutoSize = True
+        RB_Segment5.Location = New Point(85, 427)
+        RB_Segment5.Name = "RB_Segment5"
+        RB_Segment5.Size = New Size(169, 19)
+        RB_Segment5.TabIndex = 13
+        RB_Segment5.TabStop = True
+        RB_Segment5.Text = "V - Entre 100 i 249 empleats"
+        RB_Segment5.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Segment4
+        ' 
+        RB_Segment4.AutoSize = True
+        RB_Segment4.Location = New Point(85, 403)
+        RB_Segment4.Name = "RB_Segment4"
+        RB_Segment4.Size = New Size(163, 19)
+        RB_Segment4.TabIndex = 12
+        RB_Segment4.TabStop = True
+        RB_Segment4.Text = "IV  - Entre 50 i 99 empleats"
+        RB_Segment4.UseVisualStyleBackColor = True
+        ' 
         ' RB_Segment3
         ' 
         RB_Segment3.AutoSize = True
-        RB_Segment3.Location = New Point(85, 381)
+        RB_Segment3.Location = New Point(85, 379)
         RB_Segment3.Name = "RB_Segment3"
         RB_Segment3.Size = New Size(147, 19)
         RB_Segment3.TabIndex = 11
@@ -857,7 +876,7 @@ Partial Class Contractes
         ' RB_Segment2
         ' 
         RB_Segment2.AutoSize = True
-        RB_Segment2.Location = New Point(85, 356)
+        RB_Segment2.Location = New Point(85, 355)
         RB_Segment2.Name = "RB_Segment2"
         RB_Segment2.Size = New Size(147, 19)
         RB_Segment2.TabIndex = 10
@@ -1006,15 +1025,8 @@ Partial Class Contractes
         ' GroupBox2
         ' 
         GroupBox2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        GroupBox2.Controls.Add(TB_Proces7)
-        GroupBox2.Controls.Add(TB_Proces8)
-        GroupBox2.Controls.Add(TB_Proces0)
-        GroupBox2.Controls.Add(TB_Proces4)
-        GroupBox2.Controls.Add(TB_Proces6)
-        GroupBox2.Controls.Add(TB_Proces5)
-        GroupBox2.Controls.Add(TB_Proces3)
-        GroupBox2.Controls.Add(TB_Proces2)
-        GroupBox2.Controls.Add(TB_Proces1)
+        GroupBox2.Controls.Add(Lbl_tipus)
+        GroupBox2.Controls.Add(Lbl_estat)
         GroupBox2.Location = New Point(936, 659)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Size = New Size(687, 82)
@@ -1022,131 +1034,26 @@ Partial Class Contractes
         GroupBox2.TabStop = False
         GroupBox2.Text = "Procés de justificació"
         ' 
-        ' TB_Proces7
+        ' Lbl_tipus
         ' 
-        TB_Proces7.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces7.BackColor = SystemColors.Control
-        TB_Proces7.Enabled = False
-        TB_Proces7.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces7.Location = New Point(215, 50)
-        TB_Proces7.Name = "TB_Proces7"
-        TB_Proces7.ReadOnly = True
-        TB_Proces7.Size = New Size(192, 22)
-        TB_Proces7.TabIndex = 8
-        TB_Proces7.Text = "Finalitzat termini esmena"
-        TB_Proces7.TextAlign = HorizontalAlignment.Center
+        Lbl_tipus.Font = New Font("Barlow Medium", 18F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
+        Lbl_tipus.Location = New Point(6, 22)
+        Lbl_tipus.Name = "Lbl_tipus"
+        Lbl_tipus.Size = New Size(154, 46)
+        Lbl_tipus.TabIndex = 1
+        Lbl_tipus.Text = "-"
+        Lbl_tipus.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' TB_Proces8
+        ' Lbl_estat
         ' 
-        TB_Proces8.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces8.BackColor = SystemColors.Control
-        TB_Proces8.Enabled = False
-        TB_Proces8.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces8.Location = New Point(10, 50)
-        TB_Proces8.Name = "TB_Proces8"
-        TB_Proces8.ReadOnly = True
-        TB_Proces8.Size = New Size(199, 22)
-        TB_Proces8.TabIndex = 7
-        TB_Proces8.Text = "Esmena incorrecta"
-        TB_Proces8.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces0
-        ' 
-        TB_Proces0.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces0.BackColor = SystemColors.Control
-        TB_Proces0.Enabled = False
-        TB_Proces0.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces0.Location = New Point(10, 22)
-        TB_Proces0.Name = "TB_Proces0"
-        TB_Proces0.ReadOnly = True
-        TB_Proces0.Size = New Size(195, 22)
-        TB_Proces0.TabIndex = 6
-        TB_Proces0.Text = "Preparant documentació"
-        TB_Proces0.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces4
-        ' 
-        TB_Proces4.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces4.BackColor = SystemColors.Control
-        TB_Proces4.Enabled = False
-        TB_Proces4.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces4.Location = New Point(485, 22)
-        TB_Proces4.Name = "TB_Proces4"
-        TB_Proces4.ReadOnly = True
-        TB_Proces4.Size = New Size(192, 22)
-        TB_Proces4.TabIndex = 5
-        TB_Proces4.Text = "Termini d'esmena obert"
-        TB_Proces4.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces6
-        ' 
-        TB_Proces6.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces6.BackColor = SystemColors.Control
-        TB_Proces6.Enabled = False
-        TB_Proces6.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces6.Location = New Point(609, 50)
-        TB_Proces6.Name = "TB_Proces6"
-        TB_Proces6.ReadOnly = True
-        TB_Proces6.Size = New Size(69, 22)
-        TB_Proces6.TabIndex = 4
-        TB_Proces6.Text = "Pagada"
-        TB_Proces6.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces5
-        ' 
-        TB_Proces5.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces5.BackColor = SystemColors.Control
-        TB_Proces5.Enabled = False
-        TB_Proces5.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces5.Location = New Point(413, 50)
-        TB_Proces5.Name = "TB_Proces5"
-        TB_Proces5.ReadOnly = True
-        TB_Proces5.Size = New Size(189, 22)
-        TB_Proces5.TabIndex = 3
-        TB_Proces5.Text = "Validada per pagament"
-        TB_Proces5.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces3
-        ' 
-        TB_Proces3.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces3.BackColor = SystemColors.Control
-        TB_Proces3.Enabled = False
-        TB_Proces3.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces3.Location = New Point(381, 22)
-        TB_Proces3.Name = "TB_Proces3"
-        TB_Proces3.ReadOnly = True
-        TB_Proces3.Size = New Size(98, 22)
-        TB_Proces3.TabIndex = 2
-        TB_Proces3.Text = "Presentada"
-        TB_Proces3.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces2
-        ' 
-        TB_Proces2.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces2.BackColor = SystemColors.Control
-        TB_Proces2.Enabled = False
-        TB_Proces2.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces2.Location = New Point(284, 22)
-        TB_Proces2.Name = "TB_Proces2"
-        TB_Proces2.ReadOnly = True
-        TB_Proces2.Size = New Size(91, 22)
-        TB_Proces2.TabIndex = 1
-        TB_Proces2.Text = "Esborrany"
-        TB_Proces2.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' TB_Proces1
-        ' 
-        TB_Proces1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_Proces1.BackColor = SystemColors.Control
-        TB_Proces1.Enabled = False
-        TB_Proces1.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Proces1.Location = New Point(211, 22)
-        TB_Proces1.Name = "TB_Proces1"
-        TB_Proces1.ReadOnly = True
-        TB_Proces1.Size = New Size(67, 22)
-        TB_Proces1.TabIndex = 0
-        TB_Proces1.Text = "Enviada"
-        TB_Proces1.TextAlign = HorizontalAlignment.Center
+        Lbl_estat.BackColor = SystemColors.Control
+        Lbl_estat.Font = New Font("Barlow Medium", 18F, FontStyle.Bold Or FontStyle.Italic, GraphicsUnit.Point)
+        Lbl_estat.Location = New Point(178, 22)
+        Lbl_estat.Name = "Lbl_estat"
+        Lbl_estat.Size = New Size(503, 46)
+        Lbl_estat.TabIndex = 0
+        Lbl_estat.Text = "-"
+        Lbl_estat.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' DataFiConcessio
         ' 
@@ -1230,7 +1137,7 @@ Partial Class Contractes
         GroupBox3.Controls.Add(TB_CaducitatConcessio)
         GroupBox3.Controls.Add(DataConcessio)
         GroupBox3.Controls.Add(CB_DataConcessio)
-        GroupBox3.Location = New Point(28, 464)
+        GroupBox3.Location = New Point(32, 521)
         GroupBox3.Name = "GroupBox3"
         GroupBox3.Size = New Size(313, 189)
         GroupBox3.TabIndex = 94
@@ -1478,7 +1385,6 @@ Partial Class Contractes
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         GroupBox2.ResumeLayout(False)
-        GroupBox2.PerformLayout()
         CType(DataConcessioOK, ComponentModel.ISupportInitialize).EndInit()
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
@@ -1558,21 +1464,12 @@ Partial Class Contractes
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents TB_Proces2 As TextBox
-    Friend WithEvents TB_Proces1 As TextBox
-    Friend WithEvents TB_Proces4 As TextBox
-    Friend WithEvents TB_Proces6 As TextBox
-    Friend WithEvents TB_Proces5 As TextBox
-    Friend WithEvents TB_Proces3 As TextBox
-    Friend WithEvents TB_Proces0 As TextBox
     Friend WithEvents DataFiConcessio As TextBox
     Friend WithEvents TitolAprovacio As Label
     Friend WithEvents DataConcessioOK As PictureBox
     Friend WithEvents Label14 As Label
     Friend WithEvents InfoSubvencioReal As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents TB_Proces8 As TextBox
-    Friend WithEvents TB_Proces7 As TextBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents Label23 As Label
     Friend WithEvents TB_ImportBono As TextBox
@@ -1590,4 +1487,8 @@ Partial Class Contractes
     Friend WithEvents Label25 As Label
     Friend WithEvents TitolJustificacio As Label
     Friend WithEvents DataFiJustificacio As TextBox
+    Friend WithEvents Lbl_tipus As Label
+    Friend WithEvents Lbl_estat As Label
+    Friend WithEvents RB_Segment5 As RadioButton
+    Friend WithEvents RB_Segment4 As RadioButton
 End Class

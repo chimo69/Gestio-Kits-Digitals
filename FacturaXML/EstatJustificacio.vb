@@ -28,6 +28,14 @@ Public Class EstatJustificacio
         tipus = tipusRebut
         ImportSubvencionat.Text = Subvencio
 
+        If tipus = 2 Then
+            GP_import.Enabled = False
+            Gp_cost.Enabled = False
+            GP_word.Enabled = False
+            FabricantSolucio.Enabled = False
+            Factura.Enabled = False
+            ProgressBar1.Visible = False
+        End If
         RebreDades()
     End Sub
     'Carrega les justificacions de la solucio seleccionada
@@ -203,7 +211,7 @@ Public Class EstatJustificacio
                 strCommand.ExecuteNonQuery()
 
                 'canviem estat solucio a justificat
-                If estat = 4 Or 6 Or 10 Then
+                If estat = 5 Or estat = 6 Or estat = 10 Then
                     Query = "UPDATE Solucions SET
                         Justificat='Si'
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
@@ -213,8 +221,11 @@ Public Class EstatJustificacio
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
                 End If
 
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
+
                 'canviem estat solucio a pagat
-                If estat = 6 Or 10 Then
+                If estat = 6 Or estat = 10 Then
                     Query = "UPDATE Solucions SET
                         PrimerPagament=1
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
@@ -223,8 +234,6 @@ Public Class EstatJustificacio
                         PrimerPagament=0
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
                 End If
-
-
 
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()

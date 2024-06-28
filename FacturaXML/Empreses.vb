@@ -123,7 +123,7 @@ Public Class Empreses
     End Sub
 
     Private Sub DataEmpreses_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles DataEmpreses.DataBindingComplete
-        Debug.WriteLine("DataBindingComplete")
+
         Dim dgv As DataGridView = sender
 
             With dgv
@@ -189,7 +189,7 @@ Public Class Empreses
                 conexion.Open()
 
                 If conexion.State = ConnectionState.Open Then
-                    Dim Sql As String = "select IdSolucio from solucions where idEmpresa=" & idEmpresa
+                    Dim Sql As String = "select IdSolucio from solucions where idEmpresa=" & idEmpresa & " and tipus=1"
                     Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
                     Dim lector As SQLiteDataReader = strCommand.ExecuteReader
 
@@ -236,7 +236,7 @@ Public Class Empreses
                                           FROM Solucions
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE idEmpresa=" & idEmpresa
+                                          WHERE idEmpresa=" & idEmpresa & " and tipus=1"
 
                     Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
                     Dim lector As SQLiteDataReader = strCommand.ExecuteReader
@@ -264,7 +264,7 @@ Public Class Empreses
                                           FROM Solucions
                                           INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                           INNER JOIN Justificacions ON Solucions.Id=Justificacions.idSolucio  
-                                          WHERE idEmpresa=" & idEmpresa
+                                          WHERE idEmpresa=" & idEmpresa & " and tipus=1"
 
                     Dim strCommand As SQLiteCommand = New SQLiteCommand(Sql, conexion)
                     Dim adapter As New SQLiteDataAdapter(strCommand)

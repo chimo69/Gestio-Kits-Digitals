@@ -27,6 +27,9 @@ Partial Class Segona
         Llista_segona = New DataGridView()
         Mesos = New DataGridViewTextBoxColumn()
         SplitContainer1 = New SplitContainer()
+        Panel2 = New Panel()
+        Label1 = New Label()
+        CB_MostraJustificades = New CheckBox()
         GB_TipusSolucions = New GroupBox()
         RB_FacturaElectronica = New RadioButton()
         RB_OficinaVirtual = New RadioButton()
@@ -41,12 +44,12 @@ Partial Class Segona
         RB_ComercioElectronico = New RadioButton()
         Panel1 = New Panel()
         Label2 = New Label()
-        CB_MostraJustificades = New CheckBox()
         CType(Llista_segona, ComponentModel.ISupportInitialize).BeginInit()
         CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
         SplitContainer1.Panel1.SuspendLayout()
         SplitContainer1.Panel2.SuspendLayout()
         SplitContainer1.SuspendLayout()
+        Panel2.SuspendLayout()
         GB_TipusSolucions.SuspendLayout()
         Panel1.SuspendLayout()
         SuspendLayout()
@@ -60,7 +63,6 @@ Partial Class Segona
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
         Llista_segona.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Llista_segona.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
-        Llista_segona.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.ControlDark
         DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -87,6 +89,7 @@ Partial Class Segona
         Mesos.HeaderText = "Mesos"
         Mesos.Name = "Mesos"
         Mesos.ReadOnly = True
+        Mesos.Width = 719
         ' 
         ' SplitContainer1
         ' 
@@ -98,6 +101,7 @@ Partial Class Segona
         ' 
         ' SplitContainer1.Panel1
         ' 
+        SplitContainer1.Panel1.Controls.Add(Panel2)
         SplitContainer1.Panel1.Controls.Add(CB_MostraJustificades)
         SplitContainer1.Panel1.Controls.Add(GB_TipusSolucions)
         ' 
@@ -107,6 +111,34 @@ Partial Class Segona
         SplitContainer1.Size = New Size(990, 713)
         SplitContainer1.SplitterDistance = 237
         SplitContainer1.TabIndex = 1
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.Yellow
+        Panel2.Controls.Add(Label1)
+        Panel2.Location = New Point(12, 571)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(221, 28)
+        Panel2.TabIndex = 18
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(51, 6)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(117, 15)
+        Label1.TabIndex = 19
+        Label1.Text = "S'han de fer captures"
+        ' 
+        ' CB_MostraJustificades
+        ' 
+        CB_MostraJustificades.AutoSize = True
+        CB_MostraJustificades.Location = New Point(40, 509)
+        CB_MostraJustificades.Name = "CB_MostraJustificades"
+        CB_MostraJustificades.Size = New Size(178, 34)
+        CB_MostraJustificades.TabIndex = 17
+        CB_MostraJustificades.Text = "Mostrar solucions" & vbCrLf & "ja completament justificades"
+        CB_MostraJustificades.UseVisualStyleBackColor = True
         ' 
         ' GB_TipusSolucions
         ' 
@@ -268,16 +300,6 @@ Partial Class Segona
         Label2.TabIndex = 17
         Label2.Text = "Segones Justificacions"
         ' 
-        ' CB_MostraJustificades
-        ' 
-        CB_MostraJustificades.AutoSize = True
-        CB_MostraJustificades.Location = New Point(40, 509)
-        CB_MostraJustificades.Name = "CB_MostraJustificades"
-        CB_MostraJustificades.Size = New Size(178, 34)
-        CB_MostraJustificades.TabIndex = 17
-        CB_MostraJustificades.Text = "Mostrar solucions" & vbCrLf & "ja completament justificades"
-        CB_MostraJustificades.UseVisualStyleBackColor = True
-        ' 
         ' Segona
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -285,6 +307,7 @@ Partial Class Segona
         ClientSize = New Size(990, 713)
         Controls.Add(Panel1)
         Controls.Add(SplitContainer1)
+        DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.None
         Name = "Segona"
         Text = "Segona"
@@ -294,6 +317,8 @@ Partial Class Segona
         SplitContainer1.Panel2.ResumeLayout(False)
         CType(SplitContainer1, ComponentModel.ISupportInitialize).EndInit()
         SplitContainer1.ResumeLayout(False)
+        Panel2.ResumeLayout(False)
+        Panel2.PerformLayout()
         GB_TipusSolucions.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
@@ -318,4 +343,6 @@ Partial Class Segona
     Friend WithEvents Label2 As Label
     Friend WithEvents Mesos As DataGridViewTextBoxColumn
     Friend WithEvents CB_MostraJustificades As CheckBox
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label1 As Label
 End Class
