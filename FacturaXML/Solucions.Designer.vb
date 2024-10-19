@@ -23,24 +23,31 @@ Partial Class Solucions
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
+        PB_importarExcel = New ProgressBar()
+        btn_importarExcel = New Button()
         RB_segona = New RadioButton()
         RB_primera = New RadioButton()
         Btn_actualitzar = New Button()
         Label4 = New Label()
         contracte = New TextBox()
         AdvertenciaCaducats = New Label()
-        Label2 = New Label()
         Label3 = New Label()
         nomEmpresa = New TextBox()
         Label1 = New Label()
         SplitContainer1 = New SplitContainer()
         DataLlistat = New DataGridView()
         GroupBox1 = New GroupBox()
+        TB_DocumentacioAddicional = New TextBox()
+        RB_DocumentacioAddicional = New RadioButton()
+        TB_PagamentMinorat = New TextBox()
+        RB_PagamentMinorat = New RadioButton()
+        TB_NoPagada = New TextBox()
+        RB_NoPagada = New RadioButton()
         TB_Pagada = New TextBox()
         RB_Pagada = New RadioButton()
         TB_EsmenaIncorrecta = New TextBox()
@@ -86,12 +93,6 @@ Partial Class Solucions
         RB_RedesSociales = New RadioButton()
         RB_ComercioElectronico = New RadioButton()
         Timer1 = New Timer(components)
-        TB_NoPagada = New TextBox()
-        RB_NoPagada = New RadioButton()
-        TB_PagamentMinorat = New TextBox()
-        RB_PagamentMinorat = New RadioButton()
-        TB_DocumentacioAddicional = New TextBox()
-        RB_DocumentacioAddicional = New RadioButton()
         Panel1.SuspendLayout()
         CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
         SplitContainer1.Panel1.SuspendLayout()
@@ -104,13 +105,14 @@ Partial Class Solucions
         ' 
         ' Panel1
         ' 
+        Panel1.Controls.Add(PB_importarExcel)
+        Panel1.Controls.Add(btn_importarExcel)
         Panel1.Controls.Add(RB_segona)
         Panel1.Controls.Add(RB_primera)
         Panel1.Controls.Add(Btn_actualitzar)
         Panel1.Controls.Add(Label4)
         Panel1.Controls.Add(contracte)
         Panel1.Controls.Add(AdvertenciaCaducats)
-        Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(Label3)
         Panel1.Controls.Add(nomEmpresa)
         Panel1.Controls.Add(Label1)
@@ -119,6 +121,27 @@ Partial Class Solucions
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(1631, 53)
         Panel1.TabIndex = 0
+        ' 
+        ' PB_importarExcel
+        ' 
+        PB_importarExcel.Location = New Point(317, 16)
+        PB_importarExcel.Name = "PB_importarExcel"
+        PB_importarExcel.Size = New Size(310, 23)
+        PB_importarExcel.TabIndex = 24
+        PB_importarExcel.Visible = False
+        ' 
+        ' btn_importarExcel
+        ' 
+        btn_importarExcel.BackgroundImage = My.Resources.Resources._4202106excellogomicrosoftms_115582_115719
+        btn_importarExcel.BackgroundImageLayout = ImageLayout.Zoom
+        btn_importarExcel.FlatAppearance.BorderSize = 0
+        btn_importarExcel.FlatStyle = FlatStyle.Flat
+        btn_importarExcel.Location = New Point(266, 3)
+        btn_importarExcel.Name = "btn_importarExcel"
+        btn_importarExcel.Size = New Size(45, 45)
+        btn_importarExcel.TabIndex = 23
+        btn_importarExcel.TextImageRelation = TextImageRelation.TextBeforeImage
+        btn_importarExcel.UseVisualStyleBackColor = True
         ' 
         ' RB_segona
         ' 
@@ -151,7 +174,7 @@ Partial Class Solucions
         Btn_actualitzar.BackgroundImageLayout = ImageLayout.Zoom
         Btn_actualitzar.FlatAppearance.BorderSize = 0
         Btn_actualitzar.FlatStyle = FlatStyle.Flat
-        Btn_actualitzar.Location = New Point(513, 7)
+        Btn_actualitzar.Location = New Point(209, 4)
         Btn_actualitzar.Name = "Btn_actualitzar"
         Btn_actualitzar.Size = New Size(40, 40)
         Btn_actualitzar.TabIndex = 20
@@ -187,15 +210,6 @@ Partial Class Solucions
         AdvertenciaCaducats.TabIndex = 18
         AdvertenciaCaducats.Text = "Atenció! Solucions apunt de caducar"
         AdvertenciaCaducats.Visible = False
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(218, 21)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(279, 15)
-        Label2.TabIndex = 17
-        Label2.Text = "(Doble click per accedir a les dades de cada solució)"
         ' 
         ' Label3
         ' 
@@ -251,26 +265,26 @@ Partial Class Solucions
         DataLlistat.AllowUserToAddRows = False
         DataLlistat.AllowUserToDeleteRows = False
         DataLlistat.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = Color.Gray
-        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = Color.Gray
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         DataLlistat.ColumnHeadersHeight = 40
         DataLlistat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = SystemColors.Window
-        DataGridViewCellStyle7.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle7.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = DataGridViewTriState.False
-        DataLlistat.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = SystemColors.Window
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        DataLlistat.DefaultCellStyle = DataGridViewCellStyle3
         DataLlistat.Dock = DockStyle.Fill
         DataLlistat.EnableHeadersVisualStyles = False
         DataLlistat.Location = New Point(20, 0)
@@ -278,8 +292,8 @@ Partial Class Solucions
         DataLlistat.Name = "DataLlistat"
         DataLlistat.ReadOnly = True
         DataLlistat.RowHeadersVisible = False
-        DataGridViewCellStyle8.Padding = New Padding(0, 3, 0, 3)
-        DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Padding = New Padding(0, 3, 0, 3)
+        DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle4
         DataLlistat.RowTemplate.Height = 25
         DataLlistat.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataLlistat.ShowEditingIcon = False
@@ -320,6 +334,72 @@ Partial Class Solucions
         GroupBox1.TabIndex = 20
         GroupBox1.TabStop = False
         GroupBox1.Text = "Tipus de estats"
+        ' 
+        ' TB_DocumentacioAddicional
+        ' 
+        TB_DocumentacioAddicional.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_DocumentacioAddicional.Enabled = False
+        TB_DocumentacioAddicional.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_DocumentacioAddicional.Location = New Point(186, 410)
+        TB_DocumentacioAddicional.Name = "TB_DocumentacioAddicional"
+        TB_DocumentacioAddicional.Size = New Size(40, 23)
+        TB_DocumentacioAddicional.TabIndex = 35
+        TB_DocumentacioAddicional.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_DocumentacioAddicional
+        ' 
+        RB_DocumentacioAddicional.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_DocumentacioAddicional.Appearance = Appearance.Button
+        RB_DocumentacioAddicional.Location = New Point(6, 409)
+        RB_DocumentacioAddicional.Name = "RB_DocumentacioAddicional"
+        RB_DocumentacioAddicional.Size = New Size(174, 25)
+        RB_DocumentacioAddicional.TabIndex = 34
+        RB_DocumentacioAddicional.Text = "Documentació addicional"
+        RB_DocumentacioAddicional.UseVisualStyleBackColor = True
+        ' 
+        ' TB_PagamentMinorat
+        ' 
+        TB_PagamentMinorat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_PagamentMinorat.Enabled = False
+        TB_PagamentMinorat.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_PagamentMinorat.Location = New Point(187, 379)
+        TB_PagamentMinorat.Name = "TB_PagamentMinorat"
+        TB_PagamentMinorat.Size = New Size(40, 23)
+        TB_PagamentMinorat.TabIndex = 33
+        TB_PagamentMinorat.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_PagamentMinorat
+        ' 
+        RB_PagamentMinorat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_PagamentMinorat.Appearance = Appearance.Button
+        RB_PagamentMinorat.Location = New Point(7, 378)
+        RB_PagamentMinorat.Name = "RB_PagamentMinorat"
+        RB_PagamentMinorat.Size = New Size(174, 25)
+        RB_PagamentMinorat.TabIndex = 32
+        RB_PagamentMinorat.Text = "Pagament minorat"
+        RB_PagamentMinorat.UseVisualStyleBackColor = True
+        ' 
+        ' TB_NoPagada
+        ' 
+        TB_NoPagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_NoPagada.Enabled = False
+        TB_NoPagada.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_NoPagada.Location = New Point(186, 348)
+        TB_NoPagada.Name = "TB_NoPagada"
+        TB_NoPagada.Size = New Size(40, 23)
+        TB_NoPagada.TabIndex = 31
+        TB_NoPagada.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_NoPagada
+        ' 
+        RB_NoPagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_NoPagada.Appearance = Appearance.Button
+        RB_NoPagada.Location = New Point(6, 347)
+        RB_NoPagada.Name = "RB_NoPagada"
+        RB_NoPagada.Size = New Size(174, 25)
+        RB_NoPagada.TabIndex = 30
+        RB_NoPagada.Text = "No pagada"
+        RB_NoPagada.UseVisualStyleBackColor = True
         ' 
         ' TB_Pagada
         ' 
@@ -831,72 +911,6 @@ Partial Class Solucions
         Timer1.Enabled = True
         Timer1.Interval = 1000
         ' 
-        ' TB_NoPagada
-        ' 
-        TB_NoPagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_NoPagada.Enabled = False
-        TB_NoPagada.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_NoPagada.Location = New Point(186, 348)
-        TB_NoPagada.Name = "TB_NoPagada"
-        TB_NoPagada.Size = New Size(40, 23)
-        TB_NoPagada.TabIndex = 31
-        TB_NoPagada.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' RB_NoPagada
-        ' 
-        RB_NoPagada.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        RB_NoPagada.Appearance = Appearance.Button
-        RB_NoPagada.Location = New Point(6, 347)
-        RB_NoPagada.Name = "RB_NoPagada"
-        RB_NoPagada.Size = New Size(174, 25)
-        RB_NoPagada.TabIndex = 30
-        RB_NoPagada.Text = "No pagada"
-        RB_NoPagada.UseVisualStyleBackColor = True
-        ' 
-        ' TB_PagamentMinorat
-        ' 
-        TB_PagamentMinorat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_PagamentMinorat.Enabled = False
-        TB_PagamentMinorat.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_PagamentMinorat.Location = New Point(187, 379)
-        TB_PagamentMinorat.Name = "TB_PagamentMinorat"
-        TB_PagamentMinorat.Size = New Size(40, 23)
-        TB_PagamentMinorat.TabIndex = 33
-        TB_PagamentMinorat.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' RB_PagamentMinorat
-        ' 
-        RB_PagamentMinorat.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        RB_PagamentMinorat.Appearance = Appearance.Button
-        RB_PagamentMinorat.Location = New Point(7, 378)
-        RB_PagamentMinorat.Name = "RB_PagamentMinorat"
-        RB_PagamentMinorat.Size = New Size(174, 25)
-        RB_PagamentMinorat.TabIndex = 32
-        RB_PagamentMinorat.Text = "Pagament minorat"
-        RB_PagamentMinorat.UseVisualStyleBackColor = True
-        ' 
-        ' TB_DocumentacioAddicional
-        ' 
-        TB_DocumentacioAddicional.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_DocumentacioAddicional.Enabled = False
-        TB_DocumentacioAddicional.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_DocumentacioAddicional.Location = New Point(186, 410)
-        TB_DocumentacioAddicional.Name = "TB_DocumentacioAddicional"
-        TB_DocumentacioAddicional.Size = New Size(40, 23)
-        TB_DocumentacioAddicional.TabIndex = 35
-        TB_DocumentacioAddicional.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' RB_DocumentacioAddicional
-        ' 
-        RB_DocumentacioAddicional.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        RB_DocumentacioAddicional.Appearance = Appearance.Button
-        RB_DocumentacioAddicional.Location = New Point(6, 409)
-        RB_DocumentacioAddicional.Name = "RB_DocumentacioAddicional"
-        RB_DocumentacioAddicional.Size = New Size(174, 25)
-        RB_DocumentacioAddicional.TabIndex = 34
-        RB_DocumentacioAddicional.Text = "Documentació addicional"
-        RB_DocumentacioAddicional.UseVisualStyleBackColor = True
-        ' 
         ' Solucions
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -926,7 +940,6 @@ Partial Class Solucions
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents AdvertenciaCaducats As Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents DataLlistat As DataGridView
@@ -989,4 +1002,6 @@ Partial Class Solucions
     Friend WithEvents RB_DocumentacioAddicional As RadioButton
     Friend WithEvents TB_PagamentMinorat As TextBox
     Friend WithEvents RB_PagamentMinorat As RadioButton
+    Friend WithEvents btn_importarExcel As Button
+    Friend WithEvents PB_importarExcel As ProgressBar
 End Class

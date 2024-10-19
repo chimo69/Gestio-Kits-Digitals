@@ -52,8 +52,6 @@ Public Class Extras
 
         ' carrega filtre segments
 
-
-
         CarregaSolucionsTotes()
         CarregaEstatsTotes()
 
@@ -845,7 +843,34 @@ Public Class Extras
 
     End Sub
 
+    Private Sub Extras_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        Dim conexion As New SQLiteConnection(cadena)
 
+        conexion.Open()
 
+        ' Columna Empreses
+        Try
+            If conexion.State = ConnectionState.Open Then
+                Dim DA As New SQLiteDataAdapter("SELECT id,nom from empreses", conexion)
+                DT_CercaEmpreses.Clear()
+                DA.Fill(DT_CercaEmpreses)
 
+                If DT_CercaEmpreses.Rows.Count > 0 Then
+                    CercaEmpreses.DataSource = DT_CercaEmpreses
+                Else
+                    CercaEmpreses.DataSource = Nothing
+                End If
+            End If
+
+        Catch ex As Exception
+            MsgBox("No s'ha pogut accedir a la base de dades", vbCritical, "Error")
+        End Try
+
+        conexion.Close()
+
+        ' carrega filtre segments
+
+        CarregaSolucionsTotes()
+        CarregaEstatsTotes()
+    End Sub
 End Class

@@ -1,14 +1,17 @@
 ﻿Imports System.Data.SQLite
+Imports System.IO
 Imports System.Reflection
+Imports ClosedXML.Excel
 
 Public Class Solucions
+
 
     Dim DT_Llistat As New DataTable
     Dim SolucioFiltre, SolucioFiltreEstat As Integer
     Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
     Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta, NoPagada, PagamentMinorat, DocumentacioAddicional As Integer
     Dim tipusJustificacio As Integer
-
+    Dim cambios As New List(Of AcuerdosCambiados)()
 
     Public Sub New()
         MyBase.New
@@ -57,11 +60,6 @@ Public Class Solucions
 
     Private Sub NomEmpresa_TextChanged(sender As Object, e As EventArgs) Handles nomEmpresa.TextChanged
         CarregaLlistat()
-    End Sub
-
-    Private Sub Llistat_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        ' DataLlistat.AutoResizeColumns()
-        'DataLlistat.AutoResizeRows()
     End Sub
 
     Private Sub DataLlistat_DataSourceChanged(sender As Object, e As EventArgs) Handles DataLlistat.DataSourceChanged
@@ -273,30 +271,35 @@ Public Class Solucions
                 e.Value = "Pendent"
                 e.CellStyle.BackColor = groc
             End If
-
+        End If
+        If dgv.Columns(e.ColumnIndex).Name = "Data venciment" Then
+            If IsDBNull(e.Value) Then
+                e.Value = "Pendent"
+                e.CellStyle.BackColor = groc
+            End If
         End If
 
 
-        Dim font As New Font("Calibri", 7, FontStyle.Regular)
+        'Dim font As New Font("Calibri", 7, FontStyle.Regular)
+
+
+
+    End Sub
+    Private Sub DataLlistat_DataBindingComplete(ByVal sender As Object, ByVal e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
+
+        Dim dgv As DataGridView = sender
 
         With dgv
             .Columns("Empresa").Width = 300
-            .Columns("Solucio").Width = 50
             .Columns("Contracte").Width = 100
-            .Columns("Verificat").Width = 50
             .Columns("Observacions").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("Observacions").MinimumWidth = 100
             .Columns("Data contracte").Width = 70
             .Columns("Data pagament").Width = 70
             .Columns("Data venciment").Width = 70
             .Columns("Data factura").Width = 70
-
+            .Columns("Solucio").Width = 300
         End With
-
-    End Sub
-    Private Sub DataLlistat_DataBindingComplete(ByVal sender As Object, ByVal e As DataGridViewBindingCompleteEventArgs) Handles DataLlistat.DataBindingComplete
-
-        Dim dgv As DataGridView = sender
 
         With sender
             .AutoResizeColumns()
@@ -338,7 +341,9 @@ Public Class Solucions
             Dim SqlFiltre As String = ""
             Dim SqlFiltreStats As String = ""
             Dim SqlJustificats As String = ""
+            Dim SqlFiltreFactura As String = ""
 
+            If tipusJustificacio = 2 Then SqlFiltreFactura = " AND DataFactura <> ''"
             If SolucioFiltre <> 0 Then
                 SqlFiltre = "AND (Solucions.idSolucio=" & SolucioFiltre & ")"
             End If
@@ -362,7 +367,7 @@ Public Class Solucions
                    strftime('%d-%m-%Y',Solucions.DataFactura) AS 'Data factura',
                    strftime('%d-%m-%Y',Solucions.DataPagament) AS 'Data pagament',  
                    strftime('%d-%m-%Y',Solucions.DataVenciment) AS 'Data venciment',
-                   julianday(Solucions.DataVenciment) - julianday(date())  AS Dies,
+                   IFNULL(julianday(Solucions.DataVenciment) - julianday(date()), 0) AS Dies,                                   
                    TipusEstats.NomEstat AS 'Estat',
                    TipusEstats.Id as 'IdEstat', 
                    Solucions.Justificat,
@@ -378,9 +383,7 @@ Public Class Solucions
             INNER JOIN TipusSolucions ON Solucions.idSolucio=TipusSolucions.Id
             INNER JOIN Justificacions ON Solucions.id=Justificacions.idSolucio
             INNER JOIN TipusEstats ON Justificacions.Estat=TipusEstats.id
-            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & SqlFiltreStats & "AND tipus=" & tipusJustificacio & " ORDER BY Solucions.DataVenciment ASC"
-
-            Debug.WriteLine(Sql)
+            WHERE (Solucions.Contracte like '%' || @contracte || '%')" & SqlJustificats & " AND (Empreses.Nom like '%'|| @nomEmpresa ||'%')" & SqlFiltre & SqlFiltreStats & "AND tipus=" & tipusJustificacio & SqlFiltreFactura & " ORDER BY Solucions.DataVenciment ASC"
 
             Using conexion As New SQLiteConnection(cadena),
               comm As New SQLiteCommand(Sql, conexion),
@@ -505,4 +508,266 @@ Public Class Solucions
             End If
         End If
     End Sub
+
+    Private Sub btn_importarExcel_Click(sender As Object, e As EventArgs) Handles btn_importarExcel.Click
+        importaAcuerdosExcel()
+    End Sub
+
+    Private Sub importaAcuerdosExcel()
+        Dim listaAcuerdos As New List(Of acuerdo)
+        Dim listaEmpresasNuevas As New List(Of String)
+
+        Dim rutaArchivo As String
+
+
+        Using openFileDialog As New OpenFileDialog()
+            openFileDialog.Filter = "Excel Files|*.xls;*.xlsx"
+            openFileDialog.Title = "Seleccione un archivo Excel"
+
+            If openFileDialog.ShowDialog() = DialogResult.OK Then
+                rutaArchivo = openFileDialog.FileName
+            Else
+                Exit Sub
+            End If
+        End Using
+
+        ' Abrir el archivo Excel
+        Using workbook As New XLWorkbook(rutaArchivo)
+            ' Seleccionar la primera hoja
+            Dim worksheet = workbook.Worksheet(1)
+
+            ' Recorrer las filas (empezando desde la fila 2 para omitir los encabezados)
+            For Each row As IXLRow In worksheet.RowsUsed().Skip(1)
+                ' Crear una nueva instancia de Persona
+                Dim acuerdo As New acuerdo()
+
+                ' Asignar los valores de las celdas a las propiedades de la instancia de Persona
+                acuerdo.Codigo = row.Cell(1).GetValue(Of String)()
+                acuerdo.Acuerdo = row.Cell(2).GetValue(Of String)()
+                acuerdo.Bono = row.Cell(3).GetValue(Of String)()
+                acuerdo.Estado = row.Cell(4).GetValue(Of String)()
+                acuerdo.NifIniciador = row.Cell(5).GetValue(Of String)()
+                acuerdo.NifDigitalizador = row.Cell(6).GetValue(Of String)()
+                acuerdo.Digitalizador = row.Cell(7).GetValue(Of String)()
+                acuerdo.NifBeneficiario = row.Cell(8).GetValue(Of String)()
+                acuerdo.Beneficiario = row.Cell(9).GetValue(Of String)()
+                acuerdo.Categoria = row.Cell(10).GetValue(Of String)()
+                acuerdo.Fecha = row.Cell(11).GetValue(Of String)()
+
+                ' Agregar la instancia a la lista
+                listaAcuerdos.Add(acuerdo)
+
+                If Not ExisteNIF(acuerdo.NifBeneficiario) Then
+                    listaEmpresasNuevas.Add(acuerdo.NifBeneficiario)
+                End If
+
+            Next
+        End Using
+
+
+        ' Aquí puedes usar la listaPersonas según necesites
+        ' Por ejemplo, mostrar el contenido en la consola
+        PB_importarExcel.Minimum = 0
+        PB_importarExcel.Maximum = listaAcuerdos.Count
+
+        Dim i As Integer = 0
+        PB_importarExcel.Visible = True
+        cambios.Clear()
+        For Each acuerdo In listaAcuerdos
+
+            actualizaAcuerdo(acuerdo)
+            Debug.WriteLine($"Contracte: {acuerdo.Acuerdo}, Tipo: {acuerdo.Codigo}, Beneficiario: {acuerdo.Beneficiario}, Nuevo estado: {acuerdo.Estado}")
+
+            PB_importarExcel.Value = i
+            i = i + 1
+        Next
+        PB_importarExcel.Visible = False
+
+        ' Mostrar los cambios realizados
+        If listaEmpresasNuevas.Count > 0 Then
+            MessageBox.Show("Hi ha empreses noves o donades de baixa, potser no estan pasades per IDR i s'han d'introduir manualment , aquestes no s'actualitzaran", "Noves empreses", MessageBoxButtons.OK)
+        End If
+
+        If cambios.Count > 0 Then
+            Debug.WriteLine("Ha habido cambios")
+            For Each cambio In cambios
+                Debug.WriteLine($"Contracte: {cambio.Contracte}, Tipus {cambio.Tipus} Nuevo estado: {cambio.Estat}")
+            Next
+            Dim cambiosAcuerdos As cambiosAcuerdos = New cambiosAcuerdos(cambios)
+            cambiosAcuerdos.Show()
+
+        Else
+            MessageBox.Show("No hi ha canvis als acords", "Actualitzacions", MessageBoxButtons.OK)
+            Debug.WriteLine("No ha habido cambios")
+
+
+        End If
+
+
+
+    End Sub
+
+    Private Sub actualizaAcuerdo(acuerdo As acuerdo)
+        Dim tipus, estat As Integer
+        Dim conexion As New SQLiteConnection(cadena)
+        Dim Query As String
+
+        'Dim strCommand As SQLiteCommand
+
+        If acuerdo.Codigo.Substring(14) = "001" Then
+            tipus = 1
+        Else
+            tipus = 2
+        End If
+
+        Select Case (acuerdo.Estado)
+            Case "Borrador"
+                estat = 2
+            Case "Presentada"
+                estat = 3
+            Case "Pdte. conformidad PYME"
+                estat = 3
+            Case "Enviada para pago"
+                estat = 5
+            Case "Plazo de subsanación abierto"
+                estat = 4
+            Case "Pagada"
+                estat = 6
+            Case "Finalizado plazo subsanación"
+                estat = 7
+            Case "No pagada"
+                estat = 9
+            Case "Proceso de Documentación Adicional"
+                estat = 11
+            Case "Pagada con minoración"
+                estat = 10
+            Case "Subsanada incorrecta"
+                estat = 8
+        End Select
+
+
+        Try
+            conexion.Open()
+
+            If conexion.State = ConnectionState.Open Then
+
+                ' Seleccionar los idSolucio de Solucions que cumplen las condiciones
+                Dim selectQuery As String = "SELECT Solucions.id
+                                     FROM Solucions
+                                     WHERE Solucions.Contracte = @contracte AND Solucions.Tipus = @tipus"
+
+                Dim idSolucions As New List(Of Integer)()
+
+                Using selectCommand As New SQLiteCommand(selectQuery, conexion)
+                    selectCommand.Parameters.AddWithValue("@contracte", acuerdo.Acuerdo.Substring(0, 13))
+                    selectCommand.Parameters.AddWithValue("@tipus", tipus)
+                    Using reader As SQLiteDataReader = selectCommand.ExecuteReader()
+                        While reader.Read()
+                            idSolucions.Add(reader.GetInt32(0))
+                        End While
+                    End Using
+                End Using
+
+                ' Verificar y actualizar solo los registros que necesiten cambiar
+                For Each idSolucio As Integer In idSolucions
+                    Dim currentEstat As Integer
+
+                    ' Obtener el valor actual de Estat
+                    Dim getCurrentEstatQuery As String = "SELECT Estat FROM Justificacions WHERE idSolucio = @idSolucio"
+                    Using getCurrentEstatCommand As New SQLiteCommand(getCurrentEstatQuery, conexion)
+                        getCurrentEstatCommand.Parameters.AddWithValue("@idSolucio", idSolucio)
+                        currentEstat = Convert.ToInt32(getCurrentEstatCommand.ExecuteScalar())
+                    End Using
+
+                    ' Solo actualizar si el valor actual es diferente del nuevo valor
+                    If currentEstat <> estat Then
+                        Query = "UPDATE Justificacions
+                         SET Estat = @estat
+                         WHERE idSolucio = @idSolucio"
+
+                        Using strCommand As New SQLiteCommand(Query, conexion)
+                            strCommand.Parameters.AddWithValue("@estat", estat)
+                            strCommand.Parameters.AddWithValue("@idSolucio", idSolucio)
+                            strCommand.ExecuteNonQuery()
+                        End Using
+
+                        ' Añadir el cambio a la lista de cambios
+                        cambios.Add(New AcuerdosCambiados With {
+                            .Tipus = tipus,
+                            .Empresa = acuerdo.Beneficiario,
+                            .Contracte = acuerdo.Acuerdo.Substring(0, 13),
+                            .AnticEstat = currentEstat,
+                            .Estat = estat,
+                            .Solucio = Trim(acuerdo.Categoria)
+                        })
+                    End If
+                Next
+
+                ' Cambiar el estado de Justificat en Solucions solo si es necesario
+                Dim currentJustificat As String
+                Dim getJustificatQuery As String = "SELECT Justificat FROM Solucions WHERE Contracte = @contracte AND Tipus = @tipus"
+                Using getJustificatCommand As New SQLiteCommand(getJustificatQuery, conexion)
+                    getJustificatCommand.Parameters.AddWithValue("@contracte", acuerdo.Acuerdo.Substring(0, 13))
+                    getJustificatCommand.Parameters.AddWithValue("@tipus", tipus)
+                    currentJustificat = Convert.ToString(getJustificatCommand.ExecuteScalar())
+                End Using
+
+                Dim newJustificat As String = If(estat = 5 Or estat = 6 Or estat = 10, "Si", "No")
+                If currentJustificat <> newJustificat Then
+                    Query = "UPDATE Solucions SET Justificat = @justificat
+                     WHERE Contracte = @contracte AND Tipus = @tipus;"
+
+                    Using strCommand As New SQLiteCommand(Query, conexion)
+                        strCommand.Parameters.AddWithValue("@justificat", newJustificat)
+                        strCommand.Parameters.AddWithValue("@contracte", acuerdo.Acuerdo.Substring(0, 13))
+                        strCommand.Parameters.AddWithValue("@tipus", tipus)
+                        strCommand.ExecuteNonQuery()
+                    End Using
+                End If
+
+                ' Cambiar el estado de PagamentFet en Solucions solo si es necesario
+                Dim currentPagamentFet As Integer
+                Dim getPagamentFetQuery As String = "SELECT PagamentFet FROM Solucions WHERE Contracte = @contracte AND Tipus = @tipus"
+                Using getpagamentFetCommand As New SQLiteCommand(getPagamentFetQuery, conexion)
+                    getpagamentFetCommand.Parameters.AddWithValue("@contracte", acuerdo.Acuerdo.Substring(0, 13))
+                    getpagamentFetCommand.Parameters.AddWithValue("@tipus", tipus)
+                    currentPagamentFet = Convert.ToInt32(getpagamentFetCommand.ExecuteScalar())
+                End Using
+
+                Dim newPagamentFet As Integer = If(estat = 6 Or estat = 10, 1, 0)
+                If currentPagamentFet <> newPagamentFet Then
+                    Query = "UPDATE Solucions SET PagamentFet = @PagamentFet
+                     WHERE Contracte = @contracte AND Tipus = @tipus;"
+
+                    Using strCommand As New SQLiteCommand(Query, conexion)
+                        strCommand.Parameters.AddWithValue("@PagamentFet", newPagamentFet)
+                        strCommand.Parameters.AddWithValue("@contracte", acuerdo.Acuerdo.Substring(0, 13))
+                        strCommand.Parameters.AddWithValue("@tipus", tipus)
+                        strCommand.ExecuteNonQuery()
+                    End Using
+                End If
+            End If
+        Catch ex As Exception
+            ' Manejo del error
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            If conexion.State = ConnectionState.Open Then
+                conexion.Close()
+            End If
+        End Try
+
+
+
+    End Sub
+    Public Function ExisteNIF(nif As String) As Boolean
+        Dim conexion As New SQLiteConnection(cadena)
+
+        Dim query As String = "SELECT COUNT(*) FROM Empreses WHERE trim(NIF) = @nif;"
+        Using cmd As New SQLiteCommand(query, conexio)
+            cmd.Parameters.AddWithValue("@nif", nif)
+            Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+            Return count > 0
+        End Using
+    End Function
+
 End Class

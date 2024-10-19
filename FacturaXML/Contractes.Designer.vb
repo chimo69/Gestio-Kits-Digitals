@@ -99,7 +99,7 @@ Partial Class Contractes
         Label17 = New Label()
         InfoSubvencio = New TextBox()
         Label18 = New Label()
-        CB_PrimerPagament = New CheckBox()
+        CB_PagamentFet = New CheckBox()
         Pagat1 = New PictureBox()
         Panel1 = New Panel()
         Panel2 = New Panel()
@@ -129,6 +129,9 @@ Partial Class Contractes
         Label25 = New Label()
         TitolJustificacio = New Label()
         DataFiJustificacio = New TextBox()
+        btn_importarEmpreses = New Button()
+        Label15 = New Label()
+        Retraso = New Timer(components)
         CType(DataEmpreses, ComponentModel.ISupportInitialize).BeginInit()
         CType(DataSolucions, ComponentModel.ISupportInitialize).BeginInit()
         CType(verificat, ComponentModel.ISupportInitialize).BeginInit()
@@ -195,7 +198,7 @@ Partial Class Contractes
         DataEmpreses.RowTemplate.Height = 25
         DataEmpreses.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataEmpreses.ShowEditingIcon = False
-        DataEmpreses.Size = New Size(549, 870)
+        DataEmpreses.Size = New Size(549, 852)
         DataEmpreses.TabIndex = 6
         DataEmpreses.TabStop = False
         ' 
@@ -323,7 +326,7 @@ Partial Class Contractes
         ' Btn_afegir
         ' 
         Btn_afegir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        Btn_afegir.Location = New Point(28, 882)
+        Btn_afegir.Location = New Point(28, 789)
         Btn_afegir.Name = "Btn_afegir"
         Btn_afegir.Size = New Size(148, 53)
         Btn_afegir.TabIndex = 9
@@ -334,7 +337,7 @@ Partial Class Contractes
         ' 
         Btn_esborrarEmpresa.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         Btn_esborrarEmpresa.BackColor = Color.IndianRed
-        Btn_esborrarEmpresa.Location = New Point(193, 882)
+        Btn_esborrarEmpresa.Location = New Point(193, 789)
         Btn_esborrarEmpresa.Name = "Btn_esborrarEmpresa"
         Btn_esborrarEmpresa.Size = New Size(148, 53)
         Btn_esborrarEmpresa.TabIndex = 10
@@ -343,7 +346,7 @@ Partial Class Contractes
         ' 
         ' btn_EsborrarSeleccioEmpresa
         ' 
-        btn_EsborrarSeleccioEmpresa.Location = New Point(28, 727)
+        btn_EsborrarSeleccioEmpresa.Location = New Point(28, 881)
         btn_EsborrarSeleccioEmpresa.Name = "btn_EsborrarSeleccioEmpresa"
         btn_EsborrarSeleccioEmpresa.Size = New Size(148, 54)
         btn_EsborrarSeleccioEmpresa.TabIndex = 8
@@ -472,13 +475,14 @@ Partial Class Contractes
         DiesCaducitat.Size = New Size(112, 33)
         DiesCaducitat.TabIndex = 30
         DiesCaducitat.TabStop = False
+        DiesCaducitat.Text = "-"
         DiesCaducitat.TextAlign = HorizontalAlignment.Center
         ' 
         ' Btn_AfegirSolucio
         ' 
         Btn_AfegirSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_AfegirSolucio.Enabled = False
-        Btn_AfegirSolucio.Location = New Point(1331, 882)
+        Btn_AfegirSolucio.Location = New Point(1331, 864)
         Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Btn_AfegirSolucio.Size = New Size(146, 53)
         Btn_AfegirSolucio.TabIndex = 22
@@ -499,7 +503,7 @@ Partial Class Contractes
         ' 
         Btn_EsborrarSeleccioSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSeleccioSolucio.Enabled = False
-        Btn_EsborrarSeleccioSolucio.Location = New Point(936, 882)
+        Btn_EsborrarSeleccioSolucio.Location = New Point(1114, 864)
         Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Btn_EsborrarSeleccioSolucio.Size = New Size(146, 53)
         Btn_EsborrarSeleccioSolucio.TabIndex = 21
@@ -511,7 +515,7 @@ Partial Class Contractes
         Btn_EsborrarSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSolucio.BackColor = Color.IndianRed
         Btn_EsborrarSolucio.Enabled = False
-        Btn_EsborrarSolucio.Location = New Point(1483, 882)
+        Btn_EsborrarSolucio.Location = New Point(1483, 864)
         Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Btn_EsborrarSolucio.Size = New Size(144, 53)
         Btn_EsborrarSolucio.TabIndex = 23
@@ -553,7 +557,7 @@ Partial Class Contractes
         CheckJustificat.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         CheckJustificat.AutoSize = True
         CheckJustificat.CheckAlign = ContentAlignment.MiddleRight
-        CheckJustificat.Location = New Point(1147, 900)
+        CheckJustificat.Location = New Point(932, 882)
         CheckJustificat.Name = "CheckJustificat"
         CheckJustificat.Size = New Size(120, 19)
         CheckJustificat.TabIndex = 19
@@ -587,7 +591,7 @@ Partial Class Contractes
         ' 
         TBObservacions.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TBObservacions.Enabled = False
-        TBObservacions.Location = New Point(1114, 765)
+        TBObservacions.Location = New Point(1117, 765)
         TBObservacions.Multiline = True
         TBObservacions.Name = "TBObservacions"
         TBObservacions.Size = New Size(510, 102)
@@ -674,7 +678,7 @@ Partial Class Contractes
         CB_DataContracte.AutoSize = True
         CB_DataContracte.Enabled = False
         CB_DataContracte.ForeColor = SystemColors.ControlText
-        CB_DataContracte.Location = New Point(936, 499)
+        CB_DataContracte.Location = New Point(936, 506)
         CB_DataContracte.Name = "CB_DataContracte"
         CB_DataContracte.Size = New Size(105, 19)
         CB_DataContracte.TabIndex = 57
@@ -686,7 +690,7 @@ Partial Class Contractes
         CB_DataPagamentIVA.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataPagamentIVA.AutoSize = True
         CB_DataPagamentIVA.Enabled = False
-        CB_DataPagamentIVA.Location = New Point(936, 559)
+        CB_DataPagamentIVA.Location = New Point(936, 565)
         CB_DataPagamentIVA.Name = "CB_DataPagamentIVA"
         CB_DataPagamentIVA.Size = New Size(127, 19)
         CB_DataPagamentIVA.TabIndex = 7
@@ -698,7 +702,7 @@ Partial Class Contractes
         CB_DataAprovacio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataAprovacio.AutoSize = True
         CB_DataAprovacio.Enabled = False
-        CB_DataAprovacio.Location = New Point(936, 472)
+        CB_DataAprovacio.Location = New Point(936, 477)
         CB_DataAprovacio.Name = "CB_DataAprovacio"
         CB_DataAprovacio.Size = New Size(138, 19)
         CB_DataAprovacio.TabIndex = 59
@@ -739,6 +743,7 @@ Partial Class Contractes
         DataCaducitat.Size = New Size(180, 33)
         DataCaducitat.TabIndex = 63
         DataCaducitat.TabStop = False
+        DataCaducitat.Text = "-"
         DataCaducitat.TextAlign = HorizontalAlignment.Center
         ' 
         ' Label11
@@ -756,7 +761,7 @@ Partial Class Contractes
         CB_DataFactura.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         CB_DataFactura.AutoSize = True
         CB_DataFactura.Enabled = False
-        CB_DataFactura.Location = New Point(936, 529)
+        CB_DataFactura.Location = New Point(936, 537)
         CB_DataFactura.Name = "CB_DataFactura"
         CB_DataFactura.Size = New Size(90, 19)
         CB_DataFactura.TabIndex = 66
@@ -833,7 +838,7 @@ Partial Class Contractes
         GroupBox1.Controls.Add(Ciutat)
         GroupBox1.Controls.Add(Provincia)
         GroupBox1.Controls.Add(Pais)
-        GroupBox1.Location = New Point(28, 23)
+        GroupBox1.Location = New Point(28, 65)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Size = New Size(313, 464)
         GroupBox1.TabIndex = 74
@@ -970,17 +975,17 @@ Partial Class Contractes
         Label18.TabIndex = 80
         Label18.Text = "€"
         ' 
-        ' CB_PrimerPagament
+        ' CB_PagamentFet
         ' 
-        CB_PrimerPagament.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        CB_PrimerPagament.AutoSize = True
-        CB_PrimerPagament.Enabled = False
-        CB_PrimerPagament.Location = New Point(16, 67)
-        CB_PrimerPagament.Name = "CB_PrimerPagament"
-        CB_PrimerPagament.Size = New Size(61, 19)
-        CB_PrimerPagament.TabIndex = 81
-        CB_PrimerPagament.Text = "Pagat?"
-        CB_PrimerPagament.UseVisualStyleBackColor = True
+        CB_PagamentFet.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        CB_PagamentFet.AutoSize = True
+        CB_PagamentFet.Enabled = False
+        CB_PagamentFet.Location = New Point(16, 67)
+        CB_PagamentFet.Name = "CB_PagamentFet"
+        CB_PagamentFet.Size = New Size(61, 19)
+        CB_PagamentFet.TabIndex = 81
+        CB_PagamentFet.Text = "Pagat?"
+        CB_PagamentFet.UseVisualStyleBackColor = True
         ' 
         ' Pagat1
         ' 
@@ -1002,9 +1007,9 @@ Partial Class Contractes
         Panel1.BackColor = Color.LightGray
         Panel1.Controls.Add(CheckEstaJustificat)
         Panel1.Controls.Add(verificat)
-        Panel1.Controls.Add(CB_PrimerPagament)
+        Panel1.Controls.Add(CB_PagamentFet)
         Panel1.Controls.Add(Pagat1)
-        Panel1.Location = New Point(936, 765)
+        Panel1.Location = New Point(932, 765)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(160, 102)
         Panel1.TabIndex = 85
@@ -1137,7 +1142,7 @@ Partial Class Contractes
         GroupBox3.Controls.Add(TB_CaducitatConcessio)
         GroupBox3.Controls.Add(DataConcessio)
         GroupBox3.Controls.Add(CB_DataConcessio)
-        GroupBox3.Location = New Point(32, 521)
+        GroupBox3.Location = New Point(28, 599)
         GroupBox3.Name = "GroupBox3"
         GroupBox3.Size = New Size(313, 189)
         GroupBox3.TabIndex = 94
@@ -1300,6 +1305,30 @@ Partial Class Contractes
         DataFiJustificacio.TextAlign = HorizontalAlignment.Center
         DataFiJustificacio.Visible = False
         ' 
+        ' btn_importarEmpreses
+        ' 
+        btn_importarEmpreses.BackgroundImage = My.Resources.Resources._4202106excellogomicrosoftms_115582_115719
+        btn_importarEmpreses.BackgroundImageLayout = ImageLayout.Zoom
+        btn_importarEmpreses.Location = New Point(28, 13)
+        btn_importarEmpreses.Name = "btn_importarEmpreses"
+        btn_importarEmpreses.Size = New Size(40, 40)
+        btn_importarEmpreses.TabIndex = 102
+        btn_importarEmpreses.UseVisualStyleBackColor = True
+        ' 
+        ' Label15
+        ' 
+        Label15.AutoSize = True
+        Label15.Location = New Point(74, 23)
+        Label15.Name = "Label15"
+        Label15.Size = New Size(106, 15)
+        Label15.TabIndex = 103
+        Label15.Text = "Importar empreses"
+        ' 
+        ' Retraso
+        ' 
+        Retraso.Enabled = True
+        Retraso.Interval = 1000
+        ' 
         ' Contractes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -1307,6 +1336,10 @@ Partial Class Contractes
         AutoScroll = True
         AutoScrollMinSize = New Size(1657, 947)
         ClientSize = New Size(1653, 956)
+        Controls.Add(Label15)
+        Controls.Add(TBObservacions)
+        Controls.Add(Panel1)
+        Controls.Add(btn_importarEmpreses)
         Controls.Add(TitolJustificacio)
         Controls.Add(DataFiJustificacio)
         Controls.Add(Label25)
@@ -1323,7 +1356,6 @@ Partial Class Contractes
         Controls.Add(TitolAprovacio)
         Controls.Add(GroupBox2)
         Controls.Add(Panel2)
-        Controls.Add(Panel1)
         Controls.Add(Label18)
         Controls.Add(InfoSubvencio)
         Controls.Add(CheckJustificat)
@@ -1348,7 +1380,6 @@ Partial Class Contractes
         Controls.Add(DataPagament)
         Controls.Add(DataAprovacio)
         Controls.Add(Label16)
-        Controls.Add(TBObservacions)
         Controls.Add(Btn_EstatJustificacio)
         Controls.Add(TitolSolucio)
         Controls.Add(TitolEmpresa)
@@ -1459,7 +1490,7 @@ Partial Class Contractes
     Friend WithEvents Label17 As Label
     Friend WithEvents InfoSubvencio As TextBox
     Friend WithEvents Label18 As Label
-    Friend WithEvents CB_PrimerPagament As CheckBox
+    Friend WithEvents CB_PagamentFet As CheckBox
     Friend WithEvents Pagat1 As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
@@ -1491,4 +1522,7 @@ Partial Class Contractes
     Friend WithEvents Lbl_estat As Label
     Friend WithEvents RB_Segment5 As RadioButton
     Friend WithEvents RB_Segment4 As RadioButton
+    Friend WithEvents btn_importarEmpreses As Button
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Retraso As Timer
 End Class

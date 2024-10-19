@@ -181,11 +181,14 @@
   <data name="Icono cerrar FN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icono cerrar FN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icono Restaurar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icono Restaurar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo Telematic blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_telematic_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icono Restaurar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icono Restaurar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icono Minimizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icono Minimizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,13 +202,16 @@
   <data name="Icono Empresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\empresa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="png-transparent-microsoft-excel-logo-microsoft-word-microsoft-office-365-pivot-table-excel-office-xlsx-icon-microsoft-excel-logo-miscellaneous-template-angle-thumbnail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-transparent-microsoft-excel-logo-microsoft-word-microsoft-office-365-pivot-table-excel-office-xlsx-icon-microsoft-excel-logo-miscellaneous-template-angle-thumbnail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Icono Informacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-información-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icono Ajustes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-opciones-para-ordenar-501.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="4202106excellogomicrosoftms-115582_115719" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4202106excellogomicrosoftms-115582_115719.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

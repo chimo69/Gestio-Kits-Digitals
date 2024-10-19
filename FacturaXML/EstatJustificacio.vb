@@ -227,11 +227,11 @@ Public Class EstatJustificacio
                 'canviem estat solucio a pagat
                 If estat = 6 Or estat = 10 Then
                     Query = "UPDATE Solucions SET
-                        PrimerPagament=1
+                        PagamentFet=1
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
                 Else
                     Query = "UPDATE Solucions SET
-                        PrimerPagament=0
+                        PagamentFet=0
                         WHERE idEmpresa=" & IdEmpresa & " AND idSolucio=" & IdTipusSolucio & " AND tipus=" & tipus
                 End If
 

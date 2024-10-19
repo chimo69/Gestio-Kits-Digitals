@@ -22,8 +22,8 @@ Partial Class Extras
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Extras))
         Panel2 = New Panel()
         Label2 = New Label()
@@ -966,23 +966,23 @@ Partial Class Extras
         CercaEmpreses.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         CercaEmpreses.BackgroundColor = SystemColors.Control
         CercaEmpreses.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.Window
-        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        CercaEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = SystemColors.Window
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        CercaEmpreses.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         CercaEmpreses.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = SystemColors.Window
-        DataGridViewCellStyle4.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False
-        CercaEmpreses.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = SystemColors.Window
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        CercaEmpreses.DefaultCellStyle = DataGridViewCellStyle2
         CercaEmpreses.EditMode = DataGridViewEditMode.EditProgrammatically
         CercaEmpreses.EnableHeadersVisualStyles = False
         CercaEmpreses.Location = New Point(12, 41)

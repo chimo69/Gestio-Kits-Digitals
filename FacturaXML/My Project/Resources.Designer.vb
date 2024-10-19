@@ -83,6 +83,16 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property _4202106excellogomicrosoftms_115582_115719() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("4202106excellogomicrosoftms-115582_115719", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Ayudas_Kit_Digital__Grande_() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Ayudas Kit Digital (Grande)", resourceCulture)
@@ -316,6 +326,18 @@ Namespace My.Resources
         Friend ReadOnly Property Logo_Telematic_blanco() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Logo Telematic blanco", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property png_transparent_microsoft_excel_logo_microsoft_word_microsoft_office_365_pivot_table_excel_office_xlsx_icon_microsoft_excel_logo_miscellaneous_template_angle_thumbnail() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("png-transparent-microsoft-excel-logo-microsoft-word-microsoft-office-365-pivot-ta"& _ 
+                        "ble-excel-office-xlsx-icon-microsoft-excel-logo-miscellaneous-template-angle-thu"& _ 
+                        "mbnail", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
