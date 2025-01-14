@@ -44,6 +44,7 @@ Partial Class Segona
         RB_ComercioElectronico = New RadioButton()
         Panel1 = New Panel()
         Label2 = New Label()
+        RB_PuestoSeguro = New RadioButton()
         CType(Llista_segona, ComponentModel.ISupportInitialize).BeginInit()
         CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
         SplitContainer1.Panel1.SuspendLayout()
@@ -142,6 +143,7 @@ Partial Class Segona
         ' 
         ' GB_TipusSolucions
         ' 
+        GB_TipusSolucions.Controls.Add(RB_PuestoSeguro)
         GB_TipusSolucions.Controls.Add(RB_FacturaElectronica)
         GB_TipusSolucions.Controls.Add(RB_OficinaVirtual)
         GB_TipusSolucions.Controls.Add(RB_Ciberseguridad)
@@ -155,7 +157,7 @@ Partial Class Segona
         GB_TipusSolucions.Controls.Add(RB_ComercioElectronico)
         GB_TipusSolucions.Location = New Point(12, 74)
         GB_TipusSolucions.Name = "GB_TipusSolucions"
-        GB_TipusSolucions.Size = New Size(221, 419)
+        GB_TipusSolucions.Size = New Size(221, 429)
         GB_TipusSolucions.TabIndex = 16
         GB_TipusSolucions.TabStop = False
         GB_TipusSolucions.Text = "Tipus de solucions"
@@ -300,6 +302,17 @@ Partial Class Segona
         Label2.TabIndex = 17
         Label2.Text = "Segones Justificacions"
         ' 
+        ' RB_PuestoSeguro
+        ' 
+        RB_PuestoSeguro.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_PuestoSeguro.Appearance = Appearance.Button
+        RB_PuestoSeguro.Location = New Point(28, 388)
+        RB_PuestoSeguro.Name = "RB_PuestoSeguro"
+        RB_PuestoSeguro.Size = New Size(174, 25)
+        RB_PuestoSeguro.TabIndex = 29
+        RB_PuestoSeguro.Text = "Puesto seguro"
+        RB_PuestoSeguro.UseVisualStyleBackColor = True
+        ' 
         ' Segona
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -345,4 +358,5 @@ Partial Class Segona
     Friend WithEvents CB_MostraJustificades As CheckBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents RB_PuestoSeguro As RadioButton
 End Class

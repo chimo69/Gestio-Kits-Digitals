@@ -6,6 +6,7 @@
     Public verd As Color = Color.FromArgb(164, 255, 150)
     Public verdClar As Color = Color.FromArgb(192, 255, 192)
     Public groc As Color = Color.FromArgb(252, 255, 168)
+    Public grocfort As Color = Color.FromArgb(255, 255, 0)
     Public telematic As Color = Color.FromArgb(72, 101, 174)
     Public telematic_oscur As Color = Color.FromArgb(37, 46, 59)
     Public gris As Color = Color.FromArgb(189, 189, 189)

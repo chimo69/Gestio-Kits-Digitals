@@ -2,6 +2,7 @@
 Imports System.Diagnostics.Contracts
 Imports System.IO
 Imports System.Reflection
+'Imports DocumentFormat.OpenXml.Spreadsheet
 
 Public Class Segona
     Dim DT_Llistat As New DataTable
@@ -78,7 +79,7 @@ DA As New SQLiteDataAdapter(comm)
     Private Sub TipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged,
         RB_ComercioElectronico.CheckedChanged, RB_RedesSociales.CheckedChanged, RB_GestionClientes.CheckedChanged,
         RB_BusinessInteligence.CheckedChanged, RB_GestionProcesos.CheckedChanged, RB_FacturaElectronica.CheckedChanged,
-        RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged
+        RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged, RB_PuestoSeguro.CheckedChanged
 
         If RB_SitioWeb.Checked Then
             SolucioFiltre = 1
@@ -102,6 +103,9 @@ DA As New SQLiteDataAdapter(comm)
             SolucioFiltre = 10
         ElseIf RB_Totes.Checked Then
             SolucioFiltre = 0
+        ElseIf RB_PuestoSeguro.Checked Then
+            SolucioFiltre = 11
+
         End If
         CarregaLlistat()
     End Sub
@@ -152,7 +156,34 @@ DA As New SQLiteDataAdapter(comm)
             .Columns("Observacions").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         End With
 
-        ConfigureDataGridViewColumns()
+
+        Dim dataFactura As DateTime
+        Dim dataAvui As DateTime
+        Dim diferencia As TimeSpan
+
+
+
+        For Each Fila As DataGridViewRow In Llista_segona.Rows
+
+            If Not IsDBNull(Fila.Cells("Data Factura").Value) Then
+                dataFactura = Fila.Cells("Data Factura").Value
+                dataAvui = DateTime.Now
+                diferencia = dataAvui - dataFactura
+            Else
+                diferencia = Nothing
+            End If
+
+
+            If Fila.Cells("Dies").Value < 0 Then Fila.Cells("Dies").Value = 0
+            If diferencia.Days >= 365 Then Fila.Cells("Empresa").Style.BackColor = blau
+            If diferencia.Days < 365 And diferencia.Days >= 275 Then Fila.Cells("Empresa").Style.BackColor = taronja
+            If Fila.Cells("Justificat").Value = "Si" Then Fila.Cells("Empresa").Style.BackColor = verdClar
+            If diferencia.Days > 275 And diferencia.Days < 366 And Fila.Cells("Estat").Value = "Preparant documentació" Then Fila.Cells("Mesos").Style.BackColor = grocfort
+            Fila.Cells("Mesos").Value = Math.Truncate(diferencia.Days / 30)
+
+
+        Next
+        'ConfigureDataGridViewColumns()
 
     End Sub
 
@@ -182,11 +213,7 @@ DA As New SQLiteDataAdapter(comm)
 
                 Fila.Cells("Mesos").Value = Math.Truncate(diferencia.Days / 30)
 
-                If Fila.Cells("Mesos").Value >= 10 And Fila.Cells("Mesos").Value <= 12 Then
-                    If Fila.Cells("Solucio").Value <> "Sitio web" And Fila.Cells("Solucio").Value <> "Comercio electrónico" Then
-                        Fila.Cells("Mesos").Style.BackColor = Color.Yellow
-                    End If
-                End If
+
             Next
         Catch ex As Exception
             MessageBox.Show("Error configuring columns: " & ex.Message)

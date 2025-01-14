@@ -8,7 +8,7 @@ Public Class Solucions
 
     Dim DT_Llistat As New DataTable
     Dim SolucioFiltre, SolucioFiltreEstat As Integer
-    Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad As Integer
+    Dim SitioWeb, ComercioElectronico, RedesSociales, Procesos, Clientes, Business, Factura, Oficina, Comunicaciones, Ciberseguridad, Puestoseguro As Integer
     Dim Preparant, Enviada, Esborrany, Presentada, EsmenaObert, ValidadaPagament, Pagada, FinalitzatEsmena, EsmenaIncorrecta, NoPagada, PagamentMinorat, DocumentacioAddicional As Integer
     Dim tipusJustificacio As Integer
     Dim cambios As New List(Of AcuerdosCambiados)()
@@ -124,6 +124,7 @@ Public Class Solucions
             Oficina = 0
             Comunicaciones = 0
             Ciberseguridad = 0
+            Puestoseguro = 0
         End If
 
         If SolucioFiltreEstat = -1 Then
@@ -175,6 +176,9 @@ Public Class Solucions
                         End If
                         If Fila.Cells("IdTipusSolucio").Value = 10 Then
                             Ciberseguridad += 1
+                        End If
+                        If Fila.Cells("IdTipusSolucio").Value = 11 Then
+                            Puestoseguro += 1
                         End If
                     End If
                 End If
@@ -405,14 +409,13 @@ Public Class Solucions
         If SolucioFiltre = 0 Then TB_totes.Text = DataLlistat.RowCount.ToString
         TB_SitioWeb.Text = SitioWeb.ToString
         TB_ComercioElectronico.Text = ComercioElectronico.ToString
-        TB_RedesSociales.Text = RedesSociales.ToString
-        TB_GestionClientes.Text = Clientes.ToString
         TB_BusinessInteligence.Text = Business.ToString
         TB_GestionProcesos.Text = Procesos.ToString
         TB_FacturaElectronica.Text = Factura.ToString
         TB_OficinaVirtual.Text = Oficina.ToString
         TB_ComunicacionesSeguras.Text = Comunicaciones.ToString
         TB_Ciberseguridad.Text = Ciberseguridad.ToString
+        TB_Puestoseguro.Text = Puestoseguro.ToString
 
         If SolucioFiltreEstat = -1 Then TB_TotsEstats.Text = DataLlistat.RowCount.ToString
         TB_PreparantDocumentacio.Text = Preparant.ToString
@@ -432,19 +435,12 @@ Public Class Solucions
         CarregaLlistat()
     End Sub
 
-    Private Sub TipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged,
-        RB_ComercioElectronico.CheckedChanged, RB_RedesSociales.CheckedChanged, RB_GestionClientes.CheckedChanged,
-        RB_BusinessInteligence.CheckedChanged, RB_GestionProcesos.CheckedChanged, RB_FacturaElectronica.CheckedChanged,
-        RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged
+    Private Sub TipusSolucions_CheckedChanged(sender As Object, e As EventArgs) Handles RB_SitioWeb.CheckedChanged, RB_ComercioElectronico.CheckedChanged, RB_BusinessInteligence.CheckedChanged, RB_GestionProcesos.CheckedChanged, RB_FacturaElectronica.CheckedChanged, RB_OficinaVirtual.CheckedChanged, RB_ComunicacionesSeguras.CheckedChanged, RB_Ciberseguridad.CheckedChanged, RB_Totes.CheckedChanged, RB_PuestoSeguro.CheckedChanged
 
         If RB_SitioWeb.Checked Then
             SolucioFiltre = 1
         ElseIf RB_ComercioElectronico.Checked Then
             SolucioFiltre = 2
-        ElseIf RB_RedesSociales.Checked Then
-            SolucioFiltre = 3
-        ElseIf RB_GestionClientes.Checked Then
-            SolucioFiltre = 4
         ElseIf RB_BusinessInteligence.Checked Then
             SolucioFiltre = 5
         ElseIf RB_GestionProcesos.Checked Then
@@ -459,6 +455,8 @@ Public Class Solucions
             SolucioFiltre = 10
         ElseIf RB_Totes.Checked Then
             SolucioFiltre = 0
+        ElseIf RB_PuestoSeguro.Checked Then
+            SolucioFiltre = 11
         End If
         CarregaLlistat()
     End Sub
@@ -625,6 +623,8 @@ Public Class Solucions
                 estat = 2
             Case "Presentada"
                 estat = 3
+            Case "Pdte. presentar"
+                estat = 3
             Case "Pdte. conformidad PYME"
                 estat = 3
             Case "Enviada para pago"
@@ -635,7 +635,7 @@ Public Class Solucions
                 estat = 6
             Case "Finalizado plazo subsanación"
                 estat = 7
-            Case "No pagada"
+            Case "No Pagada"
                 estat = 9
             Case "Proceso de Documentación Adicional"
                 estat = 11

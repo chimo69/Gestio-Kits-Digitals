@@ -23,10 +23,10 @@ Partial Class Solucions
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Panel1 = New Panel()
         PB_importarExcel = New ProgressBar()
         btn_importarExcel = New Button()
@@ -69,6 +69,8 @@ Partial Class Solucions
         RB_Esborrany = New RadioButton()
         RB_Enviada = New RadioButton()
         GB_TipusSolucions = New GroupBox()
+        TB_Puestoseguro = New TextBox()
+        RB_PuestoSeguro = New RadioButton()
         TB_FacturaElectronica = New TextBox()
         CB_JaPresentades = New CheckBox()
         RB_FacturaElectronica = New RadioButton()
@@ -78,19 +80,15 @@ Partial Class Solucions
         RB_OficinaVirtual = New RadioButton()
         RB_Ciberseguridad = New RadioButton()
         RB_ComunicacionesSeguras = New RadioButton()
-        TB_GestionClientes = New TextBox()
-        RB_GestionClientes = New RadioButton()
         TB_GestionProcesos = New TextBox()
         TB_BusinessInteligence = New TextBox()
         RB_GestionProcesos = New RadioButton()
         RB_BusinessInteligence = New RadioButton()
         TB_totes = New TextBox()
         RB_Totes = New RadioButton()
-        TB_RedesSociales = New TextBox()
         TB_ComercioElectronico = New TextBox()
         TB_SitioWeb = New TextBox()
         RB_SitioWeb = New RadioButton()
-        RB_RedesSociales = New RadioButton()
         RB_ComercioElectronico = New RadioButton()
         Timer1 = New Timer(components)
         Panel1.SuspendLayout()
@@ -265,26 +263,26 @@ Partial Class Solucions
         DataLlistat.AllowUserToAddRows = False
         DataLlistat.AllowUserToDeleteRows = False
         DataLlistat.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = Color.Gray
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
+        DataLlistat.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = Color.Gray
+        DataGridViewCellStyle6.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle6.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
+        DataLlistat.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         DataLlistat.ColumnHeadersHeight = 40
         DataLlistat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = SystemColors.Window
-        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
-        DataLlistat.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = SystemColors.Window
+        DataGridViewCellStyle7.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle7.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(CByte(72), CByte(101), CByte(174))
+        DataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = DataGridViewTriState.False
+        DataLlistat.DefaultCellStyle = DataGridViewCellStyle7
         DataLlistat.Dock = DockStyle.Fill
         DataLlistat.EnableHeadersVisualStyles = False
         DataLlistat.Location = New Point(20, 0)
@@ -292,8 +290,8 @@ Partial Class Solucions
         DataLlistat.Name = "DataLlistat"
         DataLlistat.ReadOnly = True
         DataLlistat.RowHeadersVisible = False
-        DataGridViewCellStyle4.Padding = New Padding(0, 3, 0, 3)
-        DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Padding = New Padding(0, 3, 0, 3)
+        DataLlistat.RowsDefaultCellStyle = DataGridViewCellStyle8
         DataLlistat.RowTemplate.Height = 25
         DataLlistat.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataLlistat.ShowEditingIcon = False
@@ -623,6 +621,8 @@ Partial Class Solucions
         ' 
         ' GB_TipusSolucions
         ' 
+        GB_TipusSolucions.Controls.Add(TB_Puestoseguro)
+        GB_TipusSolucions.Controls.Add(RB_PuestoSeguro)
         GB_TipusSolucions.Controls.Add(TB_FacturaElectronica)
         GB_TipusSolucions.Controls.Add(CB_JaPresentades)
         GB_TipusSolucions.Controls.Add(RB_FacturaElectronica)
@@ -632,19 +632,15 @@ Partial Class Solucions
         GB_TipusSolucions.Controls.Add(RB_OficinaVirtual)
         GB_TipusSolucions.Controls.Add(RB_Ciberseguridad)
         GB_TipusSolucions.Controls.Add(RB_ComunicacionesSeguras)
-        GB_TipusSolucions.Controls.Add(TB_GestionClientes)
-        GB_TipusSolucions.Controls.Add(RB_GestionClientes)
         GB_TipusSolucions.Controls.Add(TB_GestionProcesos)
         GB_TipusSolucions.Controls.Add(TB_BusinessInteligence)
         GB_TipusSolucions.Controls.Add(RB_GestionProcesos)
         GB_TipusSolucions.Controls.Add(RB_BusinessInteligence)
         GB_TipusSolucions.Controls.Add(TB_totes)
         GB_TipusSolucions.Controls.Add(RB_Totes)
-        GB_TipusSolucions.Controls.Add(TB_RedesSociales)
         GB_TipusSolucions.Controls.Add(TB_ComercioElectronico)
         GB_TipusSolucions.Controls.Add(TB_SitioWeb)
         GB_TipusSolucions.Controls.Add(RB_SitioWeb)
-        GB_TipusSolucions.Controls.Add(RB_RedesSociales)
         GB_TipusSolucions.Controls.Add(RB_ComercioElectronico)
         GB_TipusSolucions.Location = New Point(11, 0)
         GB_TipusSolucions.Name = "GB_TipusSolucions"
@@ -653,12 +649,34 @@ Partial Class Solucions
         GB_TipusSolucions.TabStop = False
         GB_TipusSolucions.Text = "Tipus de solucions"
         ' 
+        ' TB_Puestoseguro
+        ' 
+        TB_Puestoseguro.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        TB_Puestoseguro.Enabled = False
+        TB_Puestoseguro.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TB_Puestoseguro.Location = New Point(187, 323)
+        TB_Puestoseguro.Name = "TB_Puestoseguro"
+        TB_Puestoseguro.Size = New Size(40, 23)
+        TB_Puestoseguro.TabIndex = 31
+        TB_Puestoseguro.TextAlign = HorizontalAlignment.Center
+        ' 
+        ' RB_PuestoSeguro
+        ' 
+        RB_PuestoSeguro.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        RB_PuestoSeguro.Appearance = Appearance.Button
+        RB_PuestoSeguro.Location = New Point(7, 322)
+        RB_PuestoSeguro.Name = "RB_PuestoSeguro"
+        RB_PuestoSeguro.Size = New Size(174, 25)
+        RB_PuestoSeguro.TabIndex = 30
+        RB_PuestoSeguro.Text = "Puesto seguro"
+        RB_PuestoSeguro.UseVisualStyleBackColor = True
+        ' 
         ' TB_FacturaElectronica
         ' 
         TB_FacturaElectronica.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_FacturaElectronica.Enabled = False
         TB_FacturaElectronica.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_FacturaElectronica.Location = New Point(187, 261)
+        TB_FacturaElectronica.Location = New Point(187, 199)
         TB_FacturaElectronica.Name = "TB_FacturaElectronica"
         TB_FacturaElectronica.Size = New Size(40, 23)
         TB_FacturaElectronica.TabIndex = 29
@@ -679,7 +697,7 @@ Partial Class Solucions
         ' 
         RB_FacturaElectronica.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_FacturaElectronica.Appearance = Appearance.Button
-        RB_FacturaElectronica.Location = New Point(7, 260)
+        RB_FacturaElectronica.Location = New Point(7, 198)
         RB_FacturaElectronica.Name = "RB_FacturaElectronica"
         RB_FacturaElectronica.Size = New Size(174, 25)
         RB_FacturaElectronica.TabIndex = 28
@@ -691,7 +709,7 @@ Partial Class Solucions
         TB_Ciberseguridad.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_Ciberseguridad.Enabled = False
         TB_Ciberseguridad.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_Ciberseguridad.Location = New Point(187, 354)
+        TB_Ciberseguridad.Location = New Point(187, 292)
         TB_Ciberseguridad.Name = "TB_Ciberseguridad"
         TB_Ciberseguridad.Size = New Size(40, 23)
         TB_Ciberseguridad.TabIndex = 27
@@ -702,7 +720,7 @@ Partial Class Solucions
         TB_ComunicacionesSeguras.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_ComunicacionesSeguras.Enabled = False
         TB_ComunicacionesSeguras.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_ComunicacionesSeguras.Location = New Point(187, 323)
+        TB_ComunicacionesSeguras.Location = New Point(187, 261)
         TB_ComunicacionesSeguras.Name = "TB_ComunicacionesSeguras"
         TB_ComunicacionesSeguras.Size = New Size(40, 23)
         TB_ComunicacionesSeguras.TabIndex = 26
@@ -713,7 +731,7 @@ Partial Class Solucions
         TB_OficinaVirtual.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_OficinaVirtual.Enabled = False
         TB_OficinaVirtual.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_OficinaVirtual.Location = New Point(187, 292)
+        TB_OficinaVirtual.Location = New Point(187, 230)
         TB_OficinaVirtual.Name = "TB_OficinaVirtual"
         TB_OficinaVirtual.Size = New Size(40, 23)
         TB_OficinaVirtual.TabIndex = 25
@@ -723,7 +741,7 @@ Partial Class Solucions
         ' 
         RB_OficinaVirtual.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_OficinaVirtual.Appearance = Appearance.Button
-        RB_OficinaVirtual.Location = New Point(7, 291)
+        RB_OficinaVirtual.Location = New Point(7, 229)
         RB_OficinaVirtual.Name = "RB_OficinaVirtual"
         RB_OficinaVirtual.Size = New Size(174, 25)
         RB_OficinaVirtual.TabIndex = 22
@@ -734,7 +752,7 @@ Partial Class Solucions
         ' 
         RB_Ciberseguridad.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_Ciberseguridad.Appearance = Appearance.Button
-        RB_Ciberseguridad.Location = New Point(7, 353)
+        RB_Ciberseguridad.Location = New Point(7, 291)
         RB_Ciberseguridad.Name = "RB_Ciberseguridad"
         RB_Ciberseguridad.Size = New Size(174, 25)
         RB_Ciberseguridad.TabIndex = 24
@@ -745,41 +763,19 @@ Partial Class Solucions
         ' 
         RB_ComunicacionesSeguras.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_ComunicacionesSeguras.Appearance = Appearance.Button
-        RB_ComunicacionesSeguras.Location = New Point(7, 322)
+        RB_ComunicacionesSeguras.Location = New Point(7, 260)
         RB_ComunicacionesSeguras.Name = "RB_ComunicacionesSeguras"
         RB_ComunicacionesSeguras.Size = New Size(174, 25)
         RB_ComunicacionesSeguras.TabIndex = 23
         RB_ComunicacionesSeguras.Text = "Comunicaciones seguras"
         RB_ComunicacionesSeguras.UseVisualStyleBackColor = True
         ' 
-        ' TB_GestionClientes
-        ' 
-        TB_GestionClientes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_GestionClientes.Enabled = False
-        TB_GestionClientes.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_GestionClientes.Location = New Point(187, 168)
-        TB_GestionClientes.Name = "TB_GestionClientes"
-        TB_GestionClientes.Size = New Size(40, 23)
-        TB_GestionClientes.TabIndex = 21
-        TB_GestionClientes.TextAlign = HorizontalAlignment.Center
-        ' 
-        ' RB_GestionClientes
-        ' 
-        RB_GestionClientes.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        RB_GestionClientes.Appearance = Appearance.Button
-        RB_GestionClientes.Location = New Point(7, 167)
-        RB_GestionClientes.Name = "RB_GestionClientes"
-        RB_GestionClientes.Size = New Size(174, 25)
-        RB_GestionClientes.TabIndex = 20
-        RB_GestionClientes.Text = "Gestión de clientes"
-        RB_GestionClientes.UseVisualStyleBackColor = True
-        ' 
         ' TB_GestionProcesos
         ' 
         TB_GestionProcesos.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_GestionProcesos.Enabled = False
         TB_GestionProcesos.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_GestionProcesos.Location = New Point(187, 230)
+        TB_GestionProcesos.Location = New Point(187, 168)
         TB_GestionProcesos.Name = "TB_GestionProcesos"
         TB_GestionProcesos.Size = New Size(40, 23)
         TB_GestionProcesos.TabIndex = 19
@@ -790,7 +786,7 @@ Partial Class Solucions
         TB_BusinessInteligence.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         TB_BusinessInteligence.Enabled = False
         TB_BusinessInteligence.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_BusinessInteligence.Location = New Point(187, 199)
+        TB_BusinessInteligence.Location = New Point(187, 137)
         TB_BusinessInteligence.Name = "TB_BusinessInteligence"
         TB_BusinessInteligence.Size = New Size(40, 23)
         TB_BusinessInteligence.TabIndex = 18
@@ -800,7 +796,7 @@ Partial Class Solucions
         ' 
         RB_GestionProcesos.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_GestionProcesos.Appearance = Appearance.Button
-        RB_GestionProcesos.Location = New Point(7, 229)
+        RB_GestionProcesos.Location = New Point(7, 167)
         RB_GestionProcesos.Name = "RB_GestionProcesos"
         RB_GestionProcesos.Size = New Size(174, 25)
         RB_GestionProcesos.TabIndex = 16
@@ -811,7 +807,7 @@ Partial Class Solucions
         ' 
         RB_BusinessInteligence.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         RB_BusinessInteligence.Appearance = Appearance.Button
-        RB_BusinessInteligence.Location = New Point(7, 198)
+        RB_BusinessInteligence.Location = New Point(7, 136)
         RB_BusinessInteligence.Name = "RB_BusinessInteligence"
         RB_BusinessInteligence.Size = New Size(174, 25)
         RB_BusinessInteligence.TabIndex = 15
@@ -839,17 +835,6 @@ Partial Class Solucions
         RB_Totes.TabIndex = 12
         RB_Totes.Text = "Totes les solucions"
         RB_Totes.UseVisualStyleBackColor = True
-        ' 
-        ' TB_RedesSociales
-        ' 
-        TB_RedesSociales.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        TB_RedesSociales.Enabled = False
-        TB_RedesSociales.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        TB_RedesSociales.Location = New Point(187, 137)
-        TB_RedesSociales.Name = "TB_RedesSociales"
-        TB_RedesSociales.Size = New Size(40, 23)
-        TB_RedesSociales.TabIndex = 11
-        TB_RedesSociales.TextAlign = HorizontalAlignment.Center
         ' 
         ' TB_ComercioElectronico
         ' 
@@ -883,17 +868,6 @@ Partial Class Solucions
         RB_SitioWeb.TabIndex = 6
         RB_SitioWeb.Text = "Sitio Web"
         RB_SitioWeb.UseVisualStyleBackColor = True
-        ' 
-        ' RB_RedesSociales
-        ' 
-        RB_RedesSociales.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        RB_RedesSociales.Appearance = Appearance.Button
-        RB_RedesSociales.Location = New Point(7, 136)
-        RB_RedesSociales.Name = "RB_RedesSociales"
-        RB_RedesSociales.Size = New Size(174, 25)
-        RB_RedesSociales.TabIndex = 8
-        RB_RedesSociales.Text = "Gestión de redes sociales"
-        RB_RedesSociales.UseVisualStyleBackColor = True
         ' 
         ' RB_ComercioElectronico
         ' 
@@ -957,19 +931,15 @@ Partial Class Solucions
     Friend WithEvents RB_OficinaVirtual As RadioButton
     Friend WithEvents RB_Ciberseguridad As RadioButton
     Friend WithEvents RB_ComunicacionesSeguras As RadioButton
-    Friend WithEvents TB_GestionClientes As TextBox
-    Friend WithEvents RB_GestionClientes As RadioButton
     Friend WithEvents TB_GestionProcesos As TextBox
     Friend WithEvents TB_BusinessInteligence As TextBox
     Friend WithEvents RB_GestionProcesos As RadioButton
     Friend WithEvents RB_BusinessInteligence As RadioButton
     Friend WithEvents TB_totes As TextBox
     Friend WithEvents RB_Totes As RadioButton
-    Friend WithEvents TB_RedesSociales As TextBox
     Friend WithEvents TB_ComercioElectronico As TextBox
     Friend WithEvents TB_SitioWeb As TextBox
     Friend WithEvents RB_SitioWeb As RadioButton
-    Friend WithEvents RB_RedesSociales As RadioButton
     Friend WithEvents RB_ComercioElectronico As RadioButton
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Btn_actualitzar As Button
@@ -1004,4 +974,6 @@ Partial Class Solucions
     Friend WithEvents RB_PagamentMinorat As RadioButton
     Friend WithEvents btn_importarExcel As Button
     Friend WithEvents PB_importarExcel As ProgressBar
+    Friend WithEvents TB_Puestoseguro As TextBox
+    Friend WithEvents RB_PuestoSeguro As RadioButton
 End Class

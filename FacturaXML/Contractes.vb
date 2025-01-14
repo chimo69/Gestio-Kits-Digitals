@@ -11,7 +11,7 @@ Public Class Contractes
     Private subvencioSolucioSeleccionada As Double
     Private DT_TipusSolucions, DT_Solucions, DT_Empreses As New DataTable
     Private idEmpresaRebuda, idSolucioRebuda As Integer
-    Private DataVenciment As Date
+    Private DataVenciment, DataVenciment2 As Date
     Private DataPresentacio As String
     Private vuelta As Int32 = 0
 
@@ -1019,7 +1019,7 @@ Public Class Contractes
         Dim idTipusSolucio As Integer = CB_TipusSolucio.SelectedValue
         Dim NoAcordTxt As String = NoAcord.Text.Trim()
         Dim Observacions As String = TBObservacions.Text
-        Dim DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt As String
+        Dim DataPagamentTxt, DataFacturaTxt, DataContracteTxt, DataVencimentTxt, DataVenciment2Txt As String
         Dim seleccio As Boolean
         Dim Justificat As String
         Dim checks As Integer = 0
@@ -1049,6 +1049,7 @@ Public Class Contractes
 
         If checks <> 3 Then
             DataVencimentTxt = Format(DataVenciment, "yyyy-MM-dd")
+            DataVenciment2Txt = Format(DataVenciment2, "yyyy-MM-dd")
         Else
             DataVencimentTxt = Format(Date.Now.AddYears(1000), "yyyy-MM-dd")
         End If
@@ -1133,7 +1134,8 @@ Public Class Contractes
                             Contracte= " & StringDB(NoAcordTxt) & ",                            
                             DataContracte=" & StringDB(DataContracteTxt) & ",
                             DataFactura= " & StringDB(DataFacturaTxt) & ",
-                            DataPagament= " & StringDB(DataPagamentTxt) &
+                            DataPagament= " & StringDB(DataPagamentTxt) & ",
+                            DataVenciment= " & StringDB(DataVenciment2Txt) &
                             " WHERE Contracte=" & StringDB(NoAcordTxt) & " AND tipus=2"
 
             If conexion.State = ConnectionState.Open Then
@@ -1748,7 +1750,11 @@ Public Class Contractes
             ' Calculamos la fecha de vencimiento según los CheckBoxes
             DataVenciment = CaducitatConcessio
             If CB_DataContracte.Checked = True Then DataVenciment = CaducitatContracte
-            If CB_DataFactura.Checked = True Then DataVenciment = CaducitatFactura
+            If CB_DataFactura.Checked = True Then
+                DataVenciment = CaducitatFactura
+                DataVenciment2 = CaducitatFactura.AddYears(1)
+            End If
+
 
             'If CheckEstaJustificat.Checked = True Then DataVenciment = CaducitatJustificacio
 
