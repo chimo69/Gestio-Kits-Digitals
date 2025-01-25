@@ -62,6 +62,7 @@ Public Class EstatJustificacio
                     TeDada2.Checked = lector.GetBoolean("Dada2")
                     TotalSolucio.Text = (lector.GetValue("TotalSolucio")).ToString
                     Factura.Text = lector.GetString("Factura")
+                    TB_Monitor.Text = lector.GetString("Monitor")
                     If lector.GetString("DataPresentacio") <> "" Then DataPresentacio.Value = lector.GetString("DataPresentacio")
 
                     If lector.GetValue("Subvencio") <> 0 Then ImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
@@ -149,6 +150,12 @@ Public Class EstatJustificacio
                 PercentatgeTeDada2 = 10
                 TeDada2.Visible = False
                 TeDada2.Checked = True
+            Case 11
+                TeDada1.Visible = False
+                TeDada2.Visible = False
+                LB_Monitor.Visible = True
+                TB_Monitor.Visible = True
+                LB_ordinador.Text = "Ordinador"
         End Select
 
 
@@ -205,7 +212,8 @@ Public Class EstatJustificacio
                         FabricantSolucio =" & StringDB(FabricantSolucio.Text) & ",
                         Subvencio=" & ImportSubvencionat.Text & ",
                         Factura=" & StringDB(Factura.Text) & ",
-                        Estat=" & estat & sqltxt & "
+                        Estat=" & estat & sqltxt & ",
+                        Monitor= " & StringDB(TB_Monitor.Text) & "
                         WHERE iDSolucio=" & IdSolucio
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()

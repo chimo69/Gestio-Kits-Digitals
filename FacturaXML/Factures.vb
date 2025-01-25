@@ -8,6 +8,8 @@ Public Class Factures
     Private idEmpresa As Integer
     Private idSolucio As Integer
     Private CarregarDades As Boolean
+    Private tipusSolucio, monitor, ordinador As String
+
 
     'Carrega les empreses per omplir el combobox
     Private Sub Factures_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -85,7 +87,9 @@ Public Class Factures
                                      Justificacions.TotalSolucio,
                                      Justificacions.Percentatge,
                                      Justificacions.Subvencio,
-                                     Justificacions.Factura 
+                                     Justificacions.Factura,
+                                     Justificacions.FabricantSolucio,
+                                     Justificacions.Monitor
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
@@ -103,6 +107,10 @@ Public Class Factures
                         TB_DataCobrament.Text = Format(lector.GetString("DataPagament"), "Short Date")
                         FacturaImportSubvencionat.Text = lector.GetValue("Subvencio").ToString
                         FacturaNumero.Text = lector.GetString("Factura")
+                        monitor = lector.GetString("Monitor")
+                        ordinador = lector.GetString("FabricantSolucio")
+
+                        Debug.WriteLine(monitor & " - " & ordinador)
 
                         If lector.GetValue("Percentatge") <> 100 Then
                             Vigila.Visible = True
@@ -317,6 +325,487 @@ Public Class Factures
 
 
     End Sub
+    Private Sub PreparaArxiuPuestoSeguroPortatil()
+
+        Dim totalString, solucioString, ivaString, subvencioString, dataInici, dataFi As String
+        Dim totalDecimal, solucioDecimal, IvaDecimal, SubvencioDecimal As Decimal
+
+        If FacturaImportSubvencionat.Text = "" Then FacturaImportSubvencionat.Text = 0
+        If (FacturaImportSolucio.Text <> "") Then
+            totalDecimal = FacturaImportTotal.Text
+            solucioDecimal = FacturaImportSolucio.Text
+            IvaDecimal = FacturaImportIVA.Text
+            SubvencioDecimal = FacturaImportSubvencionat.Text
+        Else
+            totalDecimal = 0
+            solucioDecimal = 0
+            IvaDecimal = 0
+            SubvencioDecimal = 0
+        End If
+
+        totalString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", totalDecimal)
+        solucioString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", solucioDecimal)
+        ivaString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", IvaDecimal)
+        subvencioString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", SubvencioDecimal)
+
+        dataInici = Format(FacturaData.Value.Date, "yyyy-MM-dd")
+        dataFi = Format(FacturaData.Value.AddYears(1).Date, "yyyy-MM-dd")
+
+        '
+        'Texto XML
+        '
+
+        textoXML.Clear()
+        textoXML.Append("<fe:Facturae xmlns:fe = ""http://www.facturae.es/Facturae/2014/v3.2.1/Facturae"" xmlns:ds = ""http://www.w3.org/2000/09/xmldsig#"">")
+
+        'FileHeader
+
+        textoXML.AppendLine("<FileHeader>
+        <SchemaVersion>3.2.1</SchemaVersion>
+        <Modality>I</Modality>
+        <InvoiceIssuerType>EM</InvoiceIssuerType>
+        <Batch>
+            <BatchIdentifier>A0886144582208021</BatchIdentifier>
+            <InvoicesCount>1</InvoicesCount>
+            <TotalInvoicesAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalInvoicesAmount>
+            <TotalOutstandingAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalOutstandingAmount>
+            <TotalExecutableAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalExecutableAmount>
+            <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        </Batch>
+    </FileHeader>")
+
+
+        ' Parties
+
+        textoXML.AppendLine("<Parties>
+        <SellerParty>
+            <TaxIdentification>
+                <PersonTypeCode>J</PersonTypeCode>
+                <ResidenceTypeCode>R</ResidenceTypeCode>
+                <TaxIdentificationNumber>B61904520</TaxIdentificationNumber>
+            </TaxIdentification>
+            <LegalEntity>
+                <CorporateName>" & My.Settings.Empresa & "</CorporateName>
+                <AddressInSpain>
+                    <Address>" & My.Settings.Direccio & "</Address>
+                    <PostCode>" & My.Settings.CodiPostal & "</PostCode>
+                    <Town>" & My.Settings.Ciuat & "</Town>
+                    <Province>" & My.Settings.Provincia & "</Province>
+                    <CountryCode>ESP</CountryCode>
+                </AddressInSpain>
+            </LegalEntity>
+        </SellerParty>
+        <BuyerParty>
+            <TaxIdentification>
+                <PersonTypeCode>J</PersonTypeCode>
+                <ResidenceTypeCode>R</ResidenceTypeCode>
+                <TaxIdentificationNumber>" & EmpresaNif.Text & "</TaxIdentificationNumber>
+            </TaxIdentification>
+            <LegalEntity>
+                <CorporateName>" & EmpresaNom.Text & "</CorporateName>
+                <AddressInSpain>
+                    <Address>" & EmpresaDireccio.Text & "</Address>
+                    <PostCode>" & EmpresaCodiPostal.Text & "</PostCode>
+                    <Town>" & EmpresaCiutat.Text & "</Town>
+                    <Province>" & EmpresaProvincia.Text & "</Province>
+                    <CountryCode>ESP</CountryCode>
+                </AddressInSpain>
+            </LegalEntity>
+        </BuyerParty>
+    </Parties>")
+
+        ' Invoices
+
+        textoXML.AppendLine(" <Invoices>
+        <Invoice>
+            <InvoiceHeader>
+                <InvoiceNumber>" & FacturaNumero.Text & "</InvoiceNumber>
+                <InvoiceSeriesCode>1</InvoiceSeriesCode>
+                <InvoiceDocumentType>FC</InvoiceDocumentType>
+                <InvoiceClass>OO</InvoiceClass>
+            </InvoiceHeader>
+            <InvoiceIssueData>
+                <IssueDate>" & dataInici & "</IssueDate>
+                <InvoicingPeriod>
+                    <StartDate>" & dataInici & "</StartDate>
+                    <EndDate>" & dataFi & "</EndDate>
+                </InvoicingPeriod>
+                <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+                <TaxCurrencyCode>EUR</TaxCurrencyCode>
+                <LanguageName>es</LanguageName>
+            </InvoiceIssueData>
+            <TaxesOutputs>
+                <Tax>
+                    <TaxTypeCode>01</TaxTypeCode>
+                    <TaxRate>21.0</TaxRate>
+                    <TaxableBase>
+                        <TotalAmount>" & solucioString & "</TotalAmount>
+                    </TaxableBase>
+                    <TaxAmount>
+                        <TotalAmount>" & ivaString & "</TotalAmount>
+                    </TaxAmount>
+                </Tax>
+            </TaxesOutputs>
+            <InvoiceTotals>
+                <TotalGrossAmount>" & solucioString & "</TotalGrossAmount>
+                <TotalGeneralDiscounts>0.0</TotalGeneralDiscounts>
+                <TotalGeneralSurcharges>0.0</TotalGeneralSurcharges>
+                <TotalGrossAmountBeforeTaxes>" & solucioString & "</TotalGrossAmountBeforeTaxes>
+                <TotalTaxOutputs>" & ivaString & "</TotalTaxOutputs>
+                <TotalTaxesWithheld>0.0</TotalTaxesWithheld>
+                <InvoiceTotal>" & totalString & "</InvoiceTotal>
+                <TotalOutstandingAmount>" & totalString & "</TotalOutstandingAmount>
+                <TotalExecutableAmount>" & totalString & "</TotalExecutableAmount>
+                <TotalReimbursableExpenses>0.0</TotalReimbursableExpenses>
+            </InvoiceTotals>
+            <Items>
+                <InvoiceLine>
+                    <ItemDescription>94</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>" & solucioString & "</UnitPriceWithoutTax>
+                    <TotalCost>" & solucioString & "</TotalCost>
+                    <GrossAmount>" & solucioString & "</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>" & solucioString & "</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>" & ivaString & "</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                    
+                </InvoiceLine>
+                <InvoiceLine>
+                    <ItemDescription>" & FacturaAcord.Text & " - Puesto de trabajo seguro</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>
+                    <InvoiceLine>
+                    <ItemDescription>" & ordinador & "</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>                  
+                <InvoiceLine>
+                    <ItemDescription>Financiado por el Programa KIT Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU. IMPORTE SUBVENCIONADO: 1000€</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>   
+            </Items>
+            <LegalLiterals>
+                <LegalReference>Solución Kit Digital Puesto de trabajo seguro Nº de acuerdo: " & FacturaAcord.Text & " Financiado por el Programa Kit Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU IMPORTE SUBVENCIONADO: 1000€</LegalReference>
+            </LegalLiterals>                
+        </Invoice>
+    </Invoices>
+</fe:Facturae>")
+
+    End Sub
+    Private Sub PreparaArxiuPuestoSeguroSobremesa()
+
+        Dim totalString, solucioString, ivaString, subvencioString, dataInici, dataFi As String
+        Dim totalDecimal, solucioDecimal, IvaDecimal, SubvencioDecimal As Decimal
+
+        If FacturaImportSubvencionat.Text = "" Then FacturaImportSubvencionat.Text = 0
+        If (FacturaImportSolucio.Text <> "") Then
+            totalDecimal = FacturaImportTotal.Text
+            solucioDecimal = FacturaImportSolucio.Text
+            IvaDecimal = FacturaImportIVA.Text
+            SubvencioDecimal = FacturaImportSubvencionat.Text
+        Else
+            totalDecimal = 0
+            solucioDecimal = 0
+            IvaDecimal = 0
+            SubvencioDecimal = 0
+        End If
+
+        totalString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", totalDecimal)
+        solucioString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", solucioDecimal)
+        ivaString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", IvaDecimal)
+        subvencioString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", SubvencioDecimal)
+
+        dataInici = Format(FacturaData.Value.Date, "yyyy-MM-dd")
+        dataFi = Format(FacturaData.Value.AddYears(1).Date, "yyyy-MM-dd")
+
+        '
+        'Texto XML
+        '
+
+        textoXML.Clear()
+        textoXML.Append("<fe:Facturae xmlns:fe = ""http://www.facturae.es/Facturae/2014/v3.2.1/Facturae"" xmlns:ds = ""http://www.w3.org/2000/09/xmldsig#"">")
+
+        'FileHeader
+
+        textoXML.AppendLine("<FileHeader>
+        <SchemaVersion>3.2.1</SchemaVersion>
+        <Modality>I</Modality>
+        <InvoiceIssuerType>EM</InvoiceIssuerType>
+        <Batch>
+            <BatchIdentifier>A0886144582208021</BatchIdentifier>
+            <InvoicesCount>1</InvoicesCount>
+            <TotalInvoicesAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalInvoicesAmount>
+            <TotalOutstandingAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalOutstandingAmount>
+            <TotalExecutableAmount>
+                <TotalAmount>" & totalString & "</TotalAmount>
+            </TotalExecutableAmount>
+            <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+        </Batch>
+    </FileHeader>")
+
+
+        ' Parties
+
+        textoXML.AppendLine("<Parties>
+        <SellerParty>
+            <TaxIdentification>
+                <PersonTypeCode>J</PersonTypeCode>
+                <ResidenceTypeCode>R</ResidenceTypeCode>
+                <TaxIdentificationNumber>B61904520</TaxIdentificationNumber>
+            </TaxIdentification>
+            <LegalEntity>
+                <CorporateName>" & My.Settings.Empresa & "</CorporateName>
+                <AddressInSpain>
+                    <Address>" & My.Settings.Direccio & "</Address>
+                    <PostCode>" & My.Settings.CodiPostal & "</PostCode>
+                    <Town>" & My.Settings.Ciuat & "</Town>
+                    <Province>" & My.Settings.Provincia & "</Province>
+                    <CountryCode>ESP</CountryCode>
+                </AddressInSpain>
+            </LegalEntity>
+        </SellerParty>
+        <BuyerParty>
+            <TaxIdentification>
+                <PersonTypeCode>J</PersonTypeCode>
+                <ResidenceTypeCode>R</ResidenceTypeCode>
+                <TaxIdentificationNumber>" & EmpresaNif.Text & "</TaxIdentificationNumber>
+            </TaxIdentification>
+            <LegalEntity>
+                <CorporateName>" & EmpresaNom.Text & "</CorporateName>
+                <AddressInSpain>
+                    <Address>" & EmpresaDireccio.Text & "</Address>
+                    <PostCode>" & EmpresaCodiPostal.Text & "</PostCode>
+                    <Town>" & EmpresaCiutat.Text & "</Town>
+                    <Province>" & EmpresaProvincia.Text & "</Province>
+                    <CountryCode>ESP</CountryCode>
+                </AddressInSpain>
+            </LegalEntity>
+        </BuyerParty>
+    </Parties>")
+
+        ' Invoices
+
+        textoXML.AppendLine(" <Invoices>
+        <Invoice>
+            <InvoiceHeader>
+                <InvoiceNumber>" & FacturaNumero.Text & "</InvoiceNumber>
+                <InvoiceSeriesCode>1</InvoiceSeriesCode>
+                <InvoiceDocumentType>FC</InvoiceDocumentType>
+                <InvoiceClass>OO</InvoiceClass>
+            </InvoiceHeader>
+            <InvoiceIssueData>
+                <IssueDate>" & dataInici & "</IssueDate>
+                <InvoicingPeriod>
+                    <StartDate>" & dataInici & "</StartDate>
+                    <EndDate>" & dataFi & "</EndDate>
+                </InvoicingPeriod>
+                <InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+                <TaxCurrencyCode>EUR</TaxCurrencyCode>
+                <LanguageName>es</LanguageName>
+            </InvoiceIssueData>
+            <TaxesOutputs>
+                <Tax>
+                    <TaxTypeCode>01</TaxTypeCode>
+                    <TaxRate>21.0</TaxRate>
+                    <TaxableBase>
+                        <TotalAmount>" & solucioString & "</TotalAmount>
+                    </TaxableBase>
+                    <TaxAmount>
+                        <TotalAmount>" & ivaString & "</TotalAmount>
+                    </TaxAmount>
+                </Tax>
+            </TaxesOutputs>
+            <InvoiceTotals>
+                <TotalGrossAmount>" & solucioString & "</TotalGrossAmount>
+                <TotalGeneralDiscounts>0.0</TotalGeneralDiscounts>
+                <TotalGeneralSurcharges>0.0</TotalGeneralSurcharges>
+                <TotalGrossAmountBeforeTaxes>" & solucioString & "</TotalGrossAmountBeforeTaxes>
+                <TotalTaxOutputs>" & ivaString & "</TotalTaxOutputs>
+                <TotalTaxesWithheld>0.0</TotalTaxesWithheld>
+                <InvoiceTotal>" & totalString & "</InvoiceTotal>
+                <TotalOutstandingAmount>" & totalString & "</TotalOutstandingAmount>
+                <TotalExecutableAmount>" & totalString & "</TotalExecutableAmount>
+                <TotalReimbursableExpenses>0.0</TotalReimbursableExpenses>
+            </InvoiceTotals>
+            <Items>
+                <InvoiceLine>
+                    <ItemDescription>94</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>" & solucioString & "</UnitPriceWithoutTax>
+                    <TotalCost>" & solucioString & "</TotalCost>
+                    <GrossAmount>" & solucioString & "</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>" & solucioString & "</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>" & ivaString & "</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                    
+                </InvoiceLine>
+                <InvoiceLine>
+                    <ItemDescription>" & FacturaAcord.Text & " - Puesto de trabajo seguro</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                    
+                </InvoiceLine>
+                     <InvoiceLine>
+                    <ItemDescription>Financiado por el Programa KIT Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU. IMPORTE SUBVENCIONADO: 1000€</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>   
+                <InvoiceLine>
+                    <ItemDescription>" & ordinador & "</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>
+                    <InvoiceLine>
+                    <ItemDescription>" & monitor & "</ItemDescription>
+                    <Quantity>1</Quantity>
+                    <UnitOfMeasure>01</UnitOfMeasure>
+                    <UnitPriceWithoutTax>0</UnitPriceWithoutTax>
+                    <TotalCost>0</TotalCost>
+                    <GrossAmount>0</GrossAmount>
+                    <TaxesOutputs>
+                        <Tax>
+                            <TaxTypeCode>01</TaxTypeCode>
+                            <TaxRate>21</TaxRate>
+                            <TaxableBase>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxableBase>
+                            <TaxAmount>
+                                <TotalAmount>0</TotalAmount>
+                            </TaxAmount>
+                        </Tax>
+                    </TaxesOutputs>                   
+                </InvoiceLine>                  
+               
+            </Items>
+            <LegalLiterals>
+                <LegalReference>Solución Kit Digital Puesto de trabajo seguro Nº de acuerdo: " & FacturaAcord.Text & " Financiado por el Programa Kit Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU IMPORTE SUBVENCIONADO: 1000€</LegalReference>
+            </LegalLiterals>                
+        </Invoice>
+    </Invoices>
+</fe:Facturae>")
+
+    End Sub
+
+
     'Crea l'arxiu
     Private Sub CreaArxiu()
 
@@ -348,12 +837,32 @@ Public Class Factures
 
     Private Sub Guardar_Click(sender As Object, e As EventArgs) Handles Btn_Guardar.Click
         If ComprovaDades() = True Then
-            PreparaArxiu()
+            If FacturaSolucio.Text = "Puesto de trabajo seguro" Then
+                If monitor = "" Then
+                    PreparaArxiuPuestoSeguroPortatil()
+                Else
+                    PreparaArxiuPuestoSeguroSobremesa()
+                End If
+
+            Else
+                PreparaArxiu()
+            End If
+
             CreaArxiu()
         End If
     End Sub
     Private Sub Visualitzar_Click(sender As Object, e As EventArgs) Handles Btn_Visualitzar.Click
-        PreparaArxiu()
+        If FacturaSolucio.Text = "Puesto de trabajo seguro" Then
+            If monitor = "" Then
+                PreparaArxiuPuestoSeguroPortatil()
+            Else
+                PreparaArxiuPuestoSeguroSobremesa()
+            End If
+
+        Else
+            PreparaArxiu()
+        End If
+
         Dim vistaPrevia As New VistaPrevia(textoXML)
         OpenSubForm(vistaPrevia)
     End Sub
@@ -483,6 +992,11 @@ Public Class Factures
         FacturaImportSubvencionat.Text = row.Item("Subvencio").ToString
         FacturaNumero.Text = row.Item("Factura")
         TB_DataCobrament.Text = Format(row.Item("DataPagament"), "short date")
+        tipusSolucio = row.Item("Nom").ToString
+        monitor = row.Item("Monitor")
+        ordinador = row.Item("FabricantSolucio")
+
+        Debug.WriteLine(monitor & " - " & ordinador)
 
         If row.Item("DataFactura") <> "" Then
             FacturaData.Value = row.Item("DataFactura")
@@ -516,7 +1030,9 @@ Public Class Factures
                                             Justificacions.TotalSolucio,
                                             Justificacions.Percentatge,
                                             Justificacions.Subvencio,
-                                            Justificacions.Factura 
+                                            Justificacions.Factura,
+                                            Justificacions.Monitor,
+                                            Justificacions.FabricantSolucio
                                      FROM Solucions
                                      INNER JOIN TipusSolucions ON TipusSolucions.Id=Solucions.idSolucio
                                      INNER JOIN Justificacions ON Solucions.Id= Justificacions.idSolucio  
@@ -593,5 +1109,9 @@ Public Class Factures
 
     Private Sub Btn_EsborraDades_Click(sender As Object, e As EventArgs) Handles Btn_EsborraDades.Click
         EsborraDades(1)
+    End Sub
+
+    Private Sub CB_Solucions_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Solucions.SelectedIndexChanged
+
     End Sub
 End Class

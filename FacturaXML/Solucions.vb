@@ -346,8 +346,10 @@ Public Class Solucions
             Dim SqlFiltreStats As String = ""
             Dim SqlJustificats As String = ""
             Dim SqlFiltreFactura As String = ""
+            
 
             If tipusJustificacio = 2 Then SqlFiltreFactura = " AND DataFactura <> ''"
+
             If SolucioFiltre <> 0 Then
                 SqlFiltre = "AND (Solucions.idSolucio=" & SolucioFiltre & ")"
             End If
@@ -358,6 +360,10 @@ Public Class Solucions
 
             If CB_JaPresentades.Checked = False Then
                 SqlJustificats = "AND (Solucions.Justificat='No')"
+            End If
+
+            If CB_mostrarSenseFactures.Checked = False Then
+                SqlFiltreFactura = " AND DataFactura <> ''"
             End If
 
             Dim Sql As String = "
@@ -770,4 +776,7 @@ Public Class Solucions
         End Using
     End Function
 
+    Private Sub CB_mostrarSenseFactures_CheckedChanged(sender As Object, e As EventArgs) Handles CB_mostrarSenseFactures.CheckedChanged
+        CarregaLlistat()
+    End Sub
 End Class

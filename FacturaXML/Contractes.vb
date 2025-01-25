@@ -1060,10 +1060,11 @@ Public Class Contractes
             Justificat = "'No'"
         End If
 
+        Try
+            ' Primeres justificacions
+            If (seleccio = True) Then
 
-        If (seleccio = True) Then
-
-            Query = "UPDATE Solucions SET
+                Query = "UPDATE Solucions SET
                             idSolucio=" & idTipusSolucio & ", 
                             Contracte= " & StringDB(NoAcordTxt) & ",                            
                             DataContracte=" & StringDB(DataContracteTxt) & ",
@@ -1077,8 +1078,8 @@ Public Class Contractes
                             " WHERE Contracte=" & StringDB(NoAcordTxt) & " AND tipus=" & tipusJustificacioSeleccionada
 
 
-        Else
-            Query = "INSERT INTO Solucions (IdSolucio,Tipus,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PagamentFet,Observacions,Quantitat) VALUES (" &
+            Else
+                Query = "INSERT INTO Solucions (IdSolucio,Tipus,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PagamentFet,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  "1" & "," &
                                  StringDB(NoAcordTxt) & "," &
@@ -1092,16 +1093,28 @@ Public Class Contractes
                                  StringDB(Observacions) & "," &
                                  InfoVariableNum.Value & ")"
 
-        End If
+            End If
 
-        Try
+
+
             conexion.Open()
             If conexion.State = ConnectionState.Open Then
                 strCommand = New SQLiteCommand(Query, conexion)
                 strCommand.ExecuteNonQuery()
             End If
 
-            If seleccio = False Then
+            ' Segones justificacions
+            If seleccio = True Then
+                Query = "UPDATE Solucions SET
+                            idSolucio=" & idTipusSolucio & ", 
+                            Contracte= " & StringDB(NoAcordTxt) & ",                            
+                            DataContracte=" & StringDB(DataContracteTxt) & ",
+                            DataFactura= " & StringDB(DataFacturaTxt) & ",
+                            DataPagament= " & StringDB(DataPagamentTxt) & ",
+                            DataVenciment= " & StringDB(DataVenciment2Txt) &
+                           " WHERE Contracte=" & StringDB(NoAcordTxt) & " AND tipus=2"
+            Else
+
                 Query = "INSERT INTO Solucions (IdSolucio,Tipus,Contracte,DataContracte,DataFactura,DataPagament,DataVenciment,idEmpresa,Justificat,PagamentFet,Observacions,Quantitat) VALUES (" &
                                  idTipusSolucio & "," &
                                  "2" & "," &
@@ -1115,11 +1128,11 @@ Public Class Contractes
                                  CB_PagamentFet.Checked & "," &
                                  StringDB(Observacions) & "," &
                                  InfoVariableNum.Value & ")"
+            End If
 
-                If conexion.State = ConnectionState.Open Then
-                    strCommand = New SQLiteCommand(Query, conexion)
-                    strCommand.ExecuteNonQuery()
-                End If
+            If conexion.State = ConnectionState.Open Then
+                strCommand = New SQLiteCommand(Query, conexion)
+                strCommand.ExecuteNonQuery()
             End If
 
             Query = "UPDATE Empreses SET Contractes=1 WHERE id=" & idEmpresaSeleccionada
@@ -1129,19 +1142,7 @@ Public Class Contractes
                 strCommand.ExecuteNonQuery()
             End If
 
-            Query = "UPDATE Solucions SET
-                            idSolucio=" & idTipusSolucio & ", 
-                            Contracte= " & StringDB(NoAcordTxt) & ",                            
-                            DataContracte=" & StringDB(DataContracteTxt) & ",
-                            DataFactura= " & StringDB(DataFacturaTxt) & ",
-                            DataPagament= " & StringDB(DataPagamentTxt) & ",
-                            DataVenciment= " & StringDB(DataVenciment2Txt) &
-                            " WHERE Contracte=" & StringDB(NoAcordTxt) & " AND tipus=2"
 
-            If conexion.State = ConnectionState.Open Then
-                strCommand = New SQLiteCommand(Query, conexion)
-                strCommand.ExecuteNonQuery()
-            End If
 
             If seleccio = True Then
                 MsgBox("Solució modificada correctament",, "Modificar solució")

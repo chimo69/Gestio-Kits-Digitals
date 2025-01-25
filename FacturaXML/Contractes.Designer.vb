@@ -198,7 +198,7 @@ Partial Class Contractes
         DataEmpreses.RowTemplate.Height = 25
         DataEmpreses.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DataEmpreses.ShowEditingIcon = False
-        DataEmpreses.Size = New Size(549, 852)
+        DataEmpreses.Size = New Size(549, 843)
         DataEmpreses.TabIndex = 6
         DataEmpreses.TabStop = False
         ' 
@@ -326,7 +326,7 @@ Partial Class Contractes
         ' Btn_afegir
         ' 
         Btn_afegir.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        Btn_afegir.Location = New Point(28, 789)
+        Btn_afegir.Location = New Point(28, 780)
         Btn_afegir.Name = "Btn_afegir"
         Btn_afegir.Size = New Size(148, 53)
         Btn_afegir.TabIndex = 9
@@ -337,7 +337,7 @@ Partial Class Contractes
         ' 
         Btn_esborrarEmpresa.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
         Btn_esborrarEmpresa.BackColor = Color.IndianRed
-        Btn_esborrarEmpresa.Location = New Point(193, 789)
+        Btn_esborrarEmpresa.Location = New Point(193, 780)
         Btn_esborrarEmpresa.Name = "Btn_esborrarEmpresa"
         Btn_esborrarEmpresa.Size = New Size(148, 53)
         Btn_esborrarEmpresa.TabIndex = 10
@@ -482,7 +482,7 @@ Partial Class Contractes
         ' 
         Btn_AfegirSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_AfegirSolucio.Enabled = False
-        Btn_AfegirSolucio.Location = New Point(1331, 864)
+        Btn_AfegirSolucio.Location = New Point(1331, 855)
         Btn_AfegirSolucio.Name = "Btn_AfegirSolucio"
         Btn_AfegirSolucio.Size = New Size(146, 53)
         Btn_AfegirSolucio.TabIndex = 22
@@ -503,7 +503,7 @@ Partial Class Contractes
         ' 
         Btn_EsborrarSeleccioSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSeleccioSolucio.Enabled = False
-        Btn_EsborrarSeleccioSolucio.Location = New Point(1114, 864)
+        Btn_EsborrarSeleccioSolucio.Location = New Point(1114, 855)
         Btn_EsborrarSeleccioSolucio.Name = "Btn_EsborrarSeleccioSolucio"
         Btn_EsborrarSeleccioSolucio.Size = New Size(146, 53)
         Btn_EsborrarSeleccioSolucio.TabIndex = 21
@@ -515,7 +515,7 @@ Partial Class Contractes
         Btn_EsborrarSolucio.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         Btn_EsborrarSolucio.BackColor = Color.IndianRed
         Btn_EsborrarSolucio.Enabled = False
-        Btn_EsborrarSolucio.Location = New Point(1483, 864)
+        Btn_EsborrarSolucio.Location = New Point(1483, 855)
         Btn_EsborrarSolucio.Name = "Btn_EsborrarSolucio"
         Btn_EsborrarSolucio.Size = New Size(144, 53)
         Btn_EsborrarSolucio.TabIndex = 23
@@ -557,7 +557,7 @@ Partial Class Contractes
         CheckJustificat.Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
         CheckJustificat.AutoSize = True
         CheckJustificat.CheckAlign = ContentAlignment.MiddleRight
-        CheckJustificat.Location = New Point(932, 882)
+        CheckJustificat.Location = New Point(932, 873)
         CheckJustificat.Name = "CheckJustificat"
         CheckJustificat.Size = New Size(120, 19)
         CheckJustificat.TabIndex = 19

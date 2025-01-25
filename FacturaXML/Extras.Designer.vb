@@ -1433,9 +1433,9 @@ Partial Class Extras
         Label54.AutoSize = True
         Label54.Location = New Point(2, 41)
         Label54.Name = "Label54"
-        Label54.Size = New Size(95, 30)
+        Label54.Size = New Size(99, 30)
         Label54.TabIndex = 0
-        Label54.Text = "Pueso de trabajo" & vbCrLf & "seguro"
+        Label54.Text = "Puesto de trabajo" & vbCrLf & "seguro"
         Label54.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Panel38

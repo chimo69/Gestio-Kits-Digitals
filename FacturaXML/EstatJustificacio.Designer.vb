@@ -30,7 +30,7 @@ Partial Class EstatJustificacio
         TeWord = New CheckBox()
         TeComprovant = New CheckBox()
         TeFactura = New CheckBox()
-        Label1 = New Label()
+        LB_ordinador = New Label()
         FabricantSolucio = New TextBox()
         TeDada1 = New CheckBox()
         TeDada2 = New CheckBox()
@@ -61,6 +61,9 @@ Partial Class EstatJustificacio
         Factura = New TextBox()
         Label13 = New Label()
         GroupBox3 = New GroupBox()
+        RB_Proces9 = New RadioButton()
+        RB_Proces11 = New RadioButton()
+        RB_Proces10 = New RadioButton()
         RB_Proces8 = New RadioButton()
         RB_Proces7 = New RadioButton()
         RB_Proces0 = New RadioButton()
@@ -76,9 +79,8 @@ Partial Class EstatJustificacio
         GP_word = New GroupBox()
         Panel2 = New Panel()
         Lbl_tipusJustificacio = New Label()
-        RB_Proces10 = New RadioButton()
-        RB_Proces11 = New RadioButton()
-        RB_Proces9 = New RadioButton()
+        TB_Monitor = New TextBox()
+        LB_Monitor = New Label()
         Panel1.SuspendLayout()
         Panel.SuspendLayout()
         Gp_cost.SuspendLayout()
@@ -161,18 +163,19 @@ Partial Class EstatJustificacio
         TeFactura.Text = "Factura XML"
         TeFactura.UseVisualStyleBackColor = True
         ' 
-        ' Label1
+        ' LB_ordinador
         ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(441, 50)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(126, 15)
-        Label1.TabIndex = 6
-        Label1.Text = "Fabricant de la Solució"
+        LB_ordinador.AutoSize = True
+        LB_ordinador.Location = New Point(442, 45)
+        LB_ordinador.Name = "LB_ordinador"
+        LB_ordinador.Size = New Size(126, 15)
+        LB_ordinador.TabIndex = 6
+        LB_ordinador.Text = "Fabricant de la Solució"
+        LB_ordinador.TextAlign = ContentAlignment.TopRight
         ' 
         ' FabricantSolucio
         ' 
-        FabricantSolucio.Location = New Point(573, 42)
+        FabricantSolucio.Location = New Point(573, 41)
         FabricantSolucio.Name = "FabricantSolucio"
         FabricantSolucio.Size = New Size(208, 23)
         FabricantSolucio.TabIndex = 7
@@ -442,7 +445,7 @@ Partial Class EstatJustificacio
         ' 
         ' Factura
         ' 
-        Factura.Location = New Point(573, 74)
+        Factura.Location = New Point(573, 78)
         Factura.Name = "Factura"
         Factura.Size = New Size(208, 23)
         Factura.TabIndex = 17
@@ -476,6 +479,39 @@ Partial Class EstatJustificacio
         GroupBox3.TabIndex = 18
         GroupBox3.TabStop = False
         GroupBox3.Text = "Procés de justificació"
+        ' 
+        ' RB_Proces9
+        ' 
+        RB_Proces9.AutoSize = True
+        RB_Proces9.Location = New Point(17, 241)
+        RB_Proces9.Name = "RB_Proces9"
+        RB_Proces9.Size = New Size(83, 19)
+        RB_Proces9.TabIndex = 11
+        RB_Proces9.TabStop = True
+        RB_Proces9.Text = "No pagada"
+        RB_Proces9.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Proces11
+        ' 
+        RB_Proces11.AutoSize = True
+        RB_Proces11.Location = New Point(17, 291)
+        RB_Proces11.Name = "RB_Proces11"
+        RB_Proces11.Size = New Size(214, 19)
+        RB_Proces11.TabIndex = 10
+        RB_Proces11.TabStop = True
+        RB_Proces11.Text = "Procés de documentació addicional"
+        RB_Proces11.UseVisualStyleBackColor = True
+        ' 
+        ' RB_Proces10
+        ' 
+        RB_Proces10.AutoSize = True
+        RB_Proces10.Location = New Point(17, 266)
+        RB_Proces10.Name = "RB_Proces10"
+        RB_Proces10.Size = New Size(124, 19)
+        RB_Proces10.TabIndex = 9
+        RB_Proces10.TabStop = True
+        RB_Proces10.Text = "Pagament minorat"
+        RB_Proces10.UseVisualStyleBackColor = True
         ' 
         ' RB_Proces8
         ' 
@@ -643,38 +679,24 @@ Partial Class EstatJustificacio
         Lbl_tipusJustificacio.Text = "Primera justificació"
         Lbl_tipusJustificacio.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' RB_Proces10
+        ' TB_Monitor
         ' 
-        RB_Proces10.AutoSize = True
-        RB_Proces10.Location = New Point(17, 266)
-        RB_Proces10.Name = "RB_Proces10"
-        RB_Proces10.Size = New Size(124, 19)
-        RB_Proces10.TabIndex = 9
-        RB_Proces10.TabStop = True
-        RB_Proces10.Text = "Pagament minorat"
-        RB_Proces10.UseVisualStyleBackColor = True
+        TB_Monitor.Location = New Point(573, 10)
+        TB_Monitor.Name = "TB_Monitor"
+        TB_Monitor.Size = New Size(208, 23)
+        TB_Monitor.TabIndex = 25
+        TB_Monitor.Visible = False
         ' 
-        ' RB_Proces11
+        ' LB_Monitor
         ' 
-        RB_Proces11.AutoSize = True
-        RB_Proces11.Location = New Point(17, 291)
-        RB_Proces11.Name = "RB_Proces11"
-        RB_Proces11.Size = New Size(214, 19)
-        RB_Proces11.TabIndex = 10
-        RB_Proces11.TabStop = True
-        RB_Proces11.Text = "Procés de documentació addicional"
-        RB_Proces11.UseVisualStyleBackColor = True
-        ' 
-        ' RB_Proces9
-        ' 
-        RB_Proces9.AutoSize = True
-        RB_Proces9.Location = New Point(17, 241)
-        RB_Proces9.Name = "RB_Proces9"
-        RB_Proces9.Size = New Size(83, 19)
-        RB_Proces9.TabIndex = 11
-        RB_Proces9.TabStop = True
-        RB_Proces9.Text = "No pagada"
-        RB_Proces9.UseVisualStyleBackColor = True
+        LB_Monitor.AutoSize = True
+        LB_Monitor.Location = New Point(517, 14)
+        LB_Monitor.Name = "LB_Monitor"
+        LB_Monitor.Size = New Size(50, 15)
+        LB_Monitor.TabIndex = 24
+        LB_Monitor.Text = "Monitor"
+        LB_Monitor.TextAlign = ContentAlignment.TopRight
+        LB_Monitor.Visible = False
         ' 
         ' EstatJustificacio
         ' 
@@ -682,6 +704,8 @@ Partial Class EstatJustificacio
         AutoScaleMode = AutoScaleMode.Font
         AutoSizeMode = AutoSizeMode.GrowAndShrink
         ClientSize = New Size(1076, 547)
+        Controls.Add(TB_Monitor)
+        Controls.Add(LB_Monitor)
         Controls.Add(Panel2)
         Controls.Add(GP_word)
         Controls.Add(PanelCompletat)
@@ -695,7 +719,7 @@ Partial Class EstatJustificacio
         Controls.Add(Btn_guardar)
         Controls.Add(Gp_cost)
         Controls.Add(FabricantSolucio)
-        Controls.Add(Label1)
+        Controls.Add(LB_ordinador)
         Controls.Add(Panel)
         Controls.Add(Panel1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -732,7 +756,7 @@ Partial Class EstatJustificacio
     Friend WithEvents TeWord As CheckBox
     Friend WithEvents TeComprovant As CheckBox
     Friend WithEvents TeFactura As CheckBox
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LB_ordinador As Label
     Friend WithEvents FabricantSolucio As TextBox
     Friend WithEvents TeDada1 As CheckBox
     Friend WithEvents TeDada2 As CheckBox
@@ -781,4 +805,6 @@ Partial Class EstatJustificacio
     Friend WithEvents RB_Proces9 As RadioButton
     Friend WithEvents RB_Proces11 As RadioButton
     Friend WithEvents RB_Proces10 As RadioButton
+    Friend WithEvents TB_Monitor As TextBox
+    Friend WithEvents LB_Monitor As Label
 End Class

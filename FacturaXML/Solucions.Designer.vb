@@ -91,6 +91,7 @@ Partial Class Solucions
         RB_SitioWeb = New RadioButton()
         RB_ComercioElectronico = New RadioButton()
         Timer1 = New Timer(components)
+        CB_mostrarSenseFactures = New CheckBox()
         Panel1.SuspendLayout()
         CType(SplitContainer1, ComponentModel.ISupportInitialize).BeginInit()
         SplitContainer1.Panel1.SuspendLayout()
@@ -621,6 +622,7 @@ Partial Class Solucions
         ' 
         ' GB_TipusSolucions
         ' 
+        GB_TipusSolucions.Controls.Add(CB_mostrarSenseFactures)
         GB_TipusSolucions.Controls.Add(TB_Puestoseguro)
         GB_TipusSolucions.Controls.Add(RB_PuestoSeguro)
         GB_TipusSolucions.Controls.Add(TB_FacturaElectronica)
@@ -885,6 +887,17 @@ Partial Class Solucions
         Timer1.Enabled = True
         Timer1.Interval = 1000
         ' 
+        ' CB_mostrarSenseFactures
+        ' 
+        CB_mostrarSenseFactures.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        CB_mostrarSenseFactures.AutoSize = True
+        CB_mostrarSenseFactures.Location = New Point(7, 366)
+        CB_mostrarSenseFactures.Name = "CB_mostrarSenseFactures"
+        CB_mostrarSenseFactures.Size = New Size(192, 34)
+        CB_mostrarSenseFactures.TabIndex = 32
+        CB_mostrarSenseFactures.Text = "Mostrar solucions amb factures" & vbCrLf & "pendents"
+        CB_mostrarSenseFactures.UseVisualStyleBackColor = True
+        ' 
         ' Solucions
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -976,4 +989,5 @@ Partial Class Solucions
     Friend WithEvents PB_importarExcel As ProgressBar
     Friend WithEvents TB_Puestoseguro As TextBox
     Friend WithEvents RB_PuestoSeguro As RadioButton
+    Friend WithEvents CB_mostrarSenseFactures As CheckBox
 End Class
