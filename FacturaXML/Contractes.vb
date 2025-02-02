@@ -753,7 +753,7 @@ Public Class Contractes
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("%").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .Columns("Nom").Width = 150
+            .Columns("Nom").Width = 300
             .Columns("Contracte").Width = 100
             .Columns("%").Width = 30
             .Columns("Dies").Width = 70
