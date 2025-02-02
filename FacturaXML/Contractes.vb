@@ -651,32 +651,35 @@ Public Class Contractes
                     ' Seleccionamos la consulta adecuada según si CheckJustificat está marcado o no
                     If CheckJustificat.Checked Then
                         query = "SELECT Solucions.Id, Solucions.tipus, Solucions.IdSolucio, TipusSolucions.Nom, Solucions.Contracte, 
-                                     strftime('%d-%m-%Y', DataContracte) AS 'Dia contracte', 
-                                     strftime('%d-%m-%Y', Solucions.DataFactura) AS 'Dia factura', 
-                                     Solucions.DataPagament, strftime('%d-%m-%Y', Solucions.DataVenciment) AS 'Dia venciment', 
-                                     Solucions.Justificat, Solucions.SegonJustificat, Solucions.PagamentFet, Solucions.SegonPagament, 
-                                     julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
-                                     Justificacions.Percentatge AS '%', Justificacions.Estat, Justificacions.DataPresentacio, 
-                                     Justificacions.Subvencio, Solucions.Observacions, Solucions.Quantitat 
-                              FROM Solucions
-                              INNER JOIN TipusSolucions ON TipusSolucions.Id = Solucions.idSolucio
-                              INNER JOIN Justificacions ON Solucions.Id = Justificacions.idSolucio  
-                              WHERE idEmpresa = @id
-                              ORDER BY tipus, contracte"
+                  SUBSTR(Solucions.Contracte, 1, 2) AS 'TipusAcord',
+                  strftime('%d-%m-%Y', DataContracte) AS 'Dia contracte', 
+                  strftime('%d-%m-%Y', Solucions.DataFactura) AS 'Dia factura', 
+                  Solucions.DataPagament, strftime('%d-%m-%Y', Solucions.DataVenciment) AS 'Dia venciment', 
+                  Solucions.Justificat, Solucions.SegonJustificat, Solucions.PagamentFet, Solucions.SegonPagament, 
+                  julianday(Solucions.DataVenciment) - julianday(date()) AS Dies, 
+                  Justificacions.Percentatge AS '%', Justificacions.Estat, Justificacions.DataPresentacio, 
+                  Justificacions.Subvencio, Solucions.Observacions, Solucions.Quantitat 
+           FROM Solucions
+           INNER JOIN TipusSolucions ON TipusSolucions.Id = Solucions.idSolucio
+           INNER JOIN Justificacions ON Solucions.Id = Justificacions.idSolucio  
+           WHERE idEmpresa = @id
+           ORDER BY tipus, contracte"
                     Else
                         query = "SELECT Solucions.Id, Solucions.tipus, Solucions.IdSolucio, TipusSolucions.Nom, Solucions.Contracte, 
-                                     Solucions.DataContracte AS 'Dia contracte', Solucions.DataFactura AS 'Dia factura', 
-                                     Solucions.DataPagament, Solucions.DataVenciment AS 'Dia venciment', Solucions.Justificat, 
-                                     Solucions.SegonJustificat, Solucions.PagamentFet, Solucions.SegonPagament, 
-                                     IFNULL(julianday(Solucions.DataVenciment) - julianday(date()), 0) AS Dies, 
-                                     Justificacions.Percentatge AS '%', Justificacions.Estat, Justificacions.DataPresentacio, 
-                                     Justificacions.Subvencio, Solucions.Observacions, Solucions.Quantitat 
-                              FROM Solucions
-                              INNER JOIN TipusSolucions ON TipusSolucions.Id = Solucions.idSolucio
-                              INNER JOIN Justificacions ON Solucions.Id = Justificacions.idSolucio  
-                              WHERE (idEmpresa = @id AND Justificat = 'No')
-                              ORDER BY tipus, contracte"
+                  SUBSTR(Solucions.Contracte, 1, 2) AS 'TipusAcord',
+                  Solucions.DataContracte AS 'Dia contracte', Solucions.DataFactura AS 'Dia factura', 
+                  Solucions.DataPagament, Solucions.DataVenciment AS 'Dia venciment', Solucions.Justificat, 
+                  Solucions.SegonJustificat, Solucions.PagamentFet, Solucions.SegonPagament, 
+                  IFNULL(julianday(Solucions.DataVenciment) - julianday(date()), 0) AS Dies, 
+                  Justificacions.Percentatge AS '%', Justificacions.Estat, Justificacions.DataPresentacio, 
+                  Justificacions.Subvencio, Solucions.Observacions, Solucions.Quantitat 
+           FROM Solucions
+           INNER JOIN TipusSolucions ON TipusSolucions.Id = Solucions.idSolucio
+           INNER JOIN Justificacions ON Solucions.Id = Justificacions.idSolucio  
+           WHERE (idEmpresa = @id AND Justificat = 'No')
+           ORDER BY tipus, contracte"
                     End If
+
 
                     ' Preparamos el comando con parámetros para evitar inyecciones SQL
                     Using comm As New SQLiteCommand(query, conexion)
@@ -731,6 +734,7 @@ Public Class Contractes
     ' Método para configurar las columnas del DataGridView
     Private Sub ConfigurarColumnasDataGridView()
         With DataSolucions
+
             .Columns("Id").Visible = False
             .Columns("IdSolucio").Visible = False
             .Columns("Justificat").Visible = False
@@ -743,6 +747,7 @@ Public Class Contractes
             .Columns("Estat").Visible = False
             .Columns("DataPresentacio").Visible = False
             .Columns("Subvencio").Visible = False
+            .Columns("%").Visible = False
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dia factura").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -755,6 +760,9 @@ Public Class Contractes
             .Columns("Tipus").HeaderText = ""
             .Columns("Tipus").Width = 20
             .Columns("Tipus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("TipusAcord").DisplayIndex = 2
+            .Columns("TipusAcord").HeaderText = "TA"
+            .Columns("TipusAcord").Width = 27
             .ClearSelection()
         End With
     End Sub
@@ -976,6 +984,7 @@ Public Class Contractes
 
             ' Estilo para "Tipus"
             ApplyTipusStyle(Fila)
+            ApplyTipusAcordStyle(Fila)
         Next
     End Sub
 
@@ -1007,6 +1016,27 @@ Public Class Contractes
 
         Fila.Cells("Tipus").Style = style
     End Sub
+    ' Función para aplicar el estilo según las dos primeras letras de "TipusAcord"
+    Private Sub ApplyTipusAcordStyle(ByRef Fila As DataGridViewRow)
+        Dim style As New DataGridViewCellStyle() With {
+        .Font = New Font(Fila.Cells("TipusAcord").InheritedStyle.Font, FontStyle.Bold),
+        .ForeColor = Color.White
+    }
+
+
+        ' Evaluar las dos primeras letras
+        Select Case Fila.Cells("TipusAcord").Value
+            Case "KD" ' Puedes cambiar estos valores según lo que esperas encontrar
+                style.BackColor = kdcolor
+            Case "KC"
+                style.BackColor = kccolor
+            Case Else
+                Exit Sub ' No aplicamos estilo si no es un caso esperado
+        End Select
+
+        Fila.Cells("TipusAcord").Style = style
+    End Sub
+
 
     'Afegeix o actualitza una solució
     Private Sub AfegirSolucio(idSolucio As Integer)

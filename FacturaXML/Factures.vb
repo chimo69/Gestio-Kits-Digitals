@@ -156,10 +156,11 @@ Public Class Factures
     'Prepara l'arxiu per a ser guardat o mostrat
     Private Sub PreparaArxiu()
 
-        Dim totalString, solucioString, ivaString, subvencioString, dataInici, dataFi As String
+        Dim totalString, solucioString, ivaString, subvencioString, dataInici, dataFi, textFinançament As String
         Dim totalDecimal, solucioDecimal, IvaDecimal, SubvencioDecimal As Decimal
 
         If FacturaImportSubvencionat.Text = "" Then FacturaImportSubvencionat.Text = 0
+
         If (FacturaImportSolucio.Text <> "") Then
             totalDecimal = FacturaImportTotal.Text
             solucioDecimal = FacturaImportSolucio.Text
@@ -170,6 +171,12 @@ Public Class Factures
             solucioDecimal = 0
             IvaDecimal = 0
             SubvencioDecimal = 0
+        End If
+
+        If (FacturaAcord.Text.Substring(0, 2) = "KD") Then
+            textFinançament = "Financiado por el Programa KIT Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU."
+        Else
+            textFinançament = "Financiado por el Programa Agentes del Cambio – Kit Consulting, Plan de Recuperación, Transformación y Resiliencia España-Next Generation EU"
         End If
 
         totalString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", totalDecimal)
@@ -316,7 +323,7 @@ Public Class Factures
                 </InvoiceLine>
             </Items>
             <AdditionalData>
-                <InvoiceAdditionalInformation>Financiado por el Programa KIT Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU. IMPORTE SUBVENCIONADO: " & FacturaImportSubvencionat.Text & "€</InvoiceAdditionalInformation>
+                <InvoiceAdditionalInformation>" & textFinançament & " IMPORTE SUBVENCIONADO: " & FacturaImportSubvencionat.Text & "€</InvoiceAdditionalInformation>
             </AdditionalData>
         </Invoice>
     </Invoices>
@@ -836,6 +843,8 @@ Public Class Factures
     End Sub
 
     Private Sub Guardar_Click(sender As Object, e As EventArgs) Handles Btn_Guardar.Click
+        textoXML.Clear()
+
         If ComprovaDades() = True Then
             If FacturaSolucio.Text = "Puesto de trabajo seguro" Then
                 If monitor = "" Then
@@ -852,6 +861,8 @@ Public Class Factures
         End If
     End Sub
     Private Sub Visualitzar_Click(sender As Object, e As EventArgs) Handles Btn_Visualitzar.Click
+        textoXML.Clear()
+
         If FacturaSolucio.Text = "Puesto de trabajo seguro" Then
             If monitor = "" Then
                 PreparaArxiuPuestoSeguroPortatil()

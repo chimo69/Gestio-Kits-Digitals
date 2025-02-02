@@ -13,7 +13,8 @@
     Public gris_oscur As Color = Color.FromArgb(115, 115, 115)
     Public tipus1 As Color = Color.FromArgb(32, 230, 62)
     Public tipus2 As Color = Color.FromArgb(20, 159, 187)
-
+    Public kdcolor As Color = Color.FromArgb(232, 178, 240)
+    Public kccolor As Color = Color.FromArgb(65, 210, 210)
     Public formActual As Form
     Public FormsList As New List(Of Form)
 

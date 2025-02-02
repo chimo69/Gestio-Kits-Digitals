@@ -99,8 +99,12 @@ Public Class Solucions
             .Columns("Data venciment").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Dies").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Justificat").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("TipusAcord").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .Columns("Contracte").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .Columns("Observacions").DefaultCellStyle.WrapMode = DataGridViewTriState.True
             .Columns("Estat").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+            .Columns("Solucio").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+            .RowTemplate.MinimumHeight = 30
 
             .Columns.Add(imgVerificat)
             '.Columns.Add(imgWord)
@@ -110,6 +114,8 @@ Public Class Solucions
             '.Columns.Add(imgD1)
             '.Columns.Add(imgD2)
             .Columns("Verificat").DisplayIndex = 0
+            .Columns("Verificat").Name = "Verificat"
+
 
         End With
 
@@ -293,8 +299,14 @@ Public Class Solucions
 
         Dim dgv As DataGridView = sender
 
+        With sender
+            .AutoResizeColumns()
+
+            .ClearSelection()
+        End With
         With dgv
             .Columns("Empresa").Width = 300
+            .Columns("TipusAcord").Width = 30
             .Columns("Contracte").Width = 100
             .Columns("Observacions").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             .Columns("Observacions").MinimumWidth = 100
@@ -302,13 +314,9 @@ Public Class Solucions
             .Columns("Data pagament").Width = 70
             .Columns("Data venciment").Width = 70
             .Columns("Data factura").Width = 70
-            .Columns("Solucio").Width = 300
-        End With
-
-        With sender
-            .AutoResizeColumns()
+            .Columns("Solucio").Width = 200
+            .Columns("TipusAcord").HeaderText = "TA"
             .AutoResizeRows()
-            .ClearSelection()
         End With
 
         NumeraSolucions()
@@ -323,6 +331,11 @@ Public Class Solucions
             If Fila.Cells("Estat").Value = "Termini d'esmena obert" Then Fila.Cells("Empresa").Style.BackColor = blau
             If Fila.Cells("Estat").Value = "Finalitzat termini d'esmena" Then Fila.Cells("Empresa").Style.BackColor = blau
             If Fila.Cells("Estat").Value = "Documentació addicional" Then Fila.Cells("Empresa").Style.BackColor = blau
+            If Fila.Cells("Estat").Value = "No pagada" Then Fila.Cells("Empresa").Style.BackColor = blau
+
+            If Fila.Cells("TipusAcord").Value = "KD" Then Fila.Cells("TipusAcord").Style.BackColor = kdcolor
+            If Fila.Cells("TipusAcord").Value = "KC" Then Fila.Cells("TipusAcord").Style.BackColor = kccolor
+
         Next
 
         ' Si hi ha alguna solució apunt de caducar mostrarà un missatge 
@@ -368,7 +381,8 @@ Public Class Solucions
 
             Dim Sql As String = "
             SELECT Empreses.Nom AS Empresa,
-                   Empreses.Id AS IdEmpresa,  
+                   Empreses.Id AS IdEmpresa,
+                   SUBSTR(Solucions.Contracte, 1, 2) AS 'TipusAcord',
                    TipusSolucions.Id AS IdTipusSolucio,    
                    TipusSolucions.Nom AS Solucio,
                    Solucions.Id AS IdSolucio,
