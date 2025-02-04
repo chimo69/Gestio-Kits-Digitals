@@ -175,8 +175,10 @@ Public Class Factures
 
         If (FacturaAcord.Text.Substring(0, 2) = "KD") Then
             textFinançament = "Financiado por el Programa KIT Digital. Plan de Recuperación, Transformación y Resiliencia de España Next Generation EU."
+            dataFi = Format(FacturaData.Value.AddYears(1).Date, "yyyy-MM-dd")
         Else
-            textFinançament = "Financiado por el Programa Agentes del Cambio – Kit Consulting, Plan de Recuperación, Transformación y Resiliencia España-Next Generation EU"
+            textFinançament = "Financiado por el Programa Kit Consulting. Plan de Recuperación, Transformación y Resiliencia de España ""Next Generation EU"""
+            dataFi = Format(FacturaData.Value.AddMonths(3).Date, "yyyy-MM-dd")
         End If
 
         totalString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", totalDecimal)
@@ -185,7 +187,7 @@ Public Class Factures
         subvencioString = String.Format(Globalization.CultureInfo.InvariantCulture, "{0:F1}", SubvencioDecimal)
 
         dataInici = Format(FacturaData.Value.Date, "yyyy-MM-dd")
-        dataFi = Format(FacturaData.Value.AddYears(1).Date, "yyyy-MM-dd")
+
 
         '
         'Texto XML
