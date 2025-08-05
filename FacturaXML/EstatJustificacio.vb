@@ -173,26 +173,25 @@ Public Class EstatJustificacio
         Dim txtDataPresentacio As String
         Dim sqltxt As String
 
-        If RB_Proces0.Checked = True Then
-            estat = 0
-            If tipus = 1 And estatabansguardar <> 0 Then
+        If RB_Proces0.Checked = True Then estat = 0
+        If RB_Proces1.Checked = True Then
+            estat = 1
+            If tipus = 1 And estatabansguardar <> 1 And My.Settings.EnviarCorreu Then
                 'Enviar correu a Montse
-                EnviarCorreo("chimo69@gmail.com", Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
+                EnviarCorreo(My.Settings.CorreuAvis, Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
                 Empresa.Text + " - " + Solucio.Text + vbCrLf + vbCrLf + vbCrLf +
                  "Salutacions!")
             End If
         End If
-
-        If RB_Proces1.Checked = True Then estat = 1
         If RB_Proces2.Checked = True Then estat = 2
         If RB_Proces3.Checked = True Then
             estat = 3
             txtDataPresentacio = StringDB(Format(DataPresentacio.Value, "yyyy-MM-dd"))
             sqltxt = ", DataPresentacio=" & txtDataPresentacio + " "
 
-            If tipus = 1 And estatabansguardar <> 3 Then
+            If tipus = 1 And estatabansguardar <> 3 And My.Settings.EnviarCorreu Then
                 'Enviar correu a Montse
-                EnviarCorreo("chimo69@gmail.com", Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
+                EnviarCorreo(My.Settings.CorreuAvis, Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
                 Empresa.Text + " - " + Solucio.Text + vbCrLf + vbCrLf + vbCrLf +
                  "Salutacions!")
             End If

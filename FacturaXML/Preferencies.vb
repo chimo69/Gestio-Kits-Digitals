@@ -20,6 +20,8 @@
         TB_ciutat.Text = My.Settings.Ciuat
         TB_Provincia.Text = My.Settings.Provincia
         TB_Pais.Text = My.Settings.Pais
+        TB_correuAvis.Text = My.Settings.CorreuAvis
+        CB_enviarCorreu.Checked = My.Settings.EnviarCorreu
     End Sub
     Private Sub Btn_Guardar_Click(sender As Object, e As EventArgs) Handles Btn_Guardar.Click
         My.Settings.DiesAvis = DiesAvisCaducat.Value
@@ -37,6 +39,8 @@
         My.Settings.Ciuat = TB_ciutat.Text
         My.Settings.Provincia = TB_Provincia.Text
         My.Settings.Pais = TB_Pais.Text
+        My.Settings.CorreuAvis = TB_correuAvis.Text
+        My.Settings.EnviarCorreu = CB_enviarCorreu.Checked
         Me.Close()
         MsgBox("Preferències guardades",, "Configuració preferències")
     End Sub

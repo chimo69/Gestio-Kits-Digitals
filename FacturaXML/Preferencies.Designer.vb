@@ -22,7 +22,7 @@ Partial Class Preferencies
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Preferencies))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Preferencies))
         Label1 = New Label()
         DiesAvisCaducat = New NumericUpDown()
         Btn_Guardar = New Button()
@@ -39,6 +39,10 @@ Partial Class Preferencies
         CB_MostrarEmpresesContractes = New CheckBox()
         TabControl1 = New TabControl()
         TabPage1 = New TabPage()
+        TB_correuAvis = New TextBox()
+        CB_enviarCorreu = New CheckBox()
+        MesosSuport = New NumericUpDown()
+        Label13 = New Label()
         TabPage2 = New TabPage()
         TB_Pais = New TextBox()
         TB_Provincia = New TextBox()
@@ -56,8 +60,6 @@ Partial Class Preferencies
         PictureBox2 = New PictureBox()
         Label12 = New Label()
         PictureBox1 = New PictureBox()
-        Label13 = New Label()
-        MesosSuport = New NumericUpDown()
         CType(DiesAvisCaducat, ComponentModel.ISupportInitialize).BeginInit()
         CType(MesosAprovacio, ComponentModel.ISupportInitialize).BeginInit()
         CType(MesosContractacio, ComponentModel.ISupportInitialize).BeginInit()
@@ -65,11 +67,11 @@ Partial Class Preferencies
         CType(DiesAvisConcessio, ComponentModel.ISupportInitialize).BeginInit()
         TabControl1.SuspendLayout()
         TabPage1.SuspendLayout()
+        CType(MesosSuport, ComponentModel.ISupportInitialize).BeginInit()
         TabPage2.SuspendLayout()
         TabPage3.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        CType(MesosSuport, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -90,7 +92,7 @@ Partial Class Preferencies
         ' 
         ' Btn_Guardar
         ' 
-        Btn_Guardar.Location = New Point(12, 375)
+        Btn_Guardar.Location = New Point(12, 407)
         Btn_Guardar.Name = "Btn_Guardar"
         Btn_Guardar.Size = New Size(421, 49)
         Btn_Guardar.TabIndex = 2
@@ -199,11 +201,13 @@ Partial Class Preferencies
         TabControl1.Location = New Point(12, 12)
         TabControl1.Name = "TabControl1"
         TabControl1.SelectedIndex = 0
-        TabControl1.Size = New Size(425, 344)
+        TabControl1.Size = New Size(425, 389)
         TabControl1.TabIndex = 14
         ' 
         ' TabPage1
         ' 
+        TabPage1.Controls.Add(TB_correuAvis)
+        TabPage1.Controls.Add(CB_enviarCorreu)
         TabPage1.Controls.Add(MesosSuport)
         TabPage1.Controls.Add(Label13)
         TabPage1.Controls.Add(CB_MostrarEmpresesContractes)
@@ -222,10 +226,44 @@ Partial Class Preferencies
         TabPage1.Location = New Point(4, 24)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(417, 316)
+        TabPage1.Size = New Size(417, 361)
         TabPage1.TabIndex = 0
         TabPage1.Text = "General"
         TabPage1.UseVisualStyleBackColor = True
+        ' 
+        ' TB_correuAvis
+        ' 
+        TB_correuAvis.Location = New Point(16, 312)
+        TB_correuAvis.Name = "TB_correuAvis"
+        TB_correuAvis.PlaceholderText = "Introduir correu d'avis"
+        TB_correuAvis.Size = New Size(383, 23)
+        TB_correuAvis.TabIndex = 17
+        ' 
+        ' CB_enviarCorreu
+        ' 
+        CB_enviarCorreu.AutoSize = True
+        CB_enviarCorreu.Location = New Point(15, 283)
+        CB_enviarCorreu.Name = "CB_enviarCorreu"
+        CB_enviarCorreu.Size = New Size(219, 19)
+        CB_enviarCorreu.TabIndex = 16
+        CB_enviarCorreu.Text = "Enviar correu al presentar justificació"
+        CB_enviarCorreu.UseVisualStyleBackColor = True
+        ' 
+        ' MesosSuport
+        ' 
+        MesosSuport.Location = New Point(323, 169)
+        MesosSuport.Name = "MesosSuport"
+        MesosSuport.Size = New Size(58, 23)
+        MesosSuport.TabIndex = 15
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(15, 170)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(127, 15)
+        Label13.TabIndex = 14
+        Label13.Text = "Nº de mesos de suport"
         ' 
         ' TabPage2
         ' 
@@ -244,7 +282,7 @@ Partial Class Preferencies
         TabPage2.Location = New Point(4, 24)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(3)
-        TabPage2.Size = New Size(417, 316)
+        TabPage2.Size = New Size(417, 361)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Empresa"
         TabPage2.UseVisualStyleBackColor = True
@@ -359,7 +397,7 @@ Partial Class Preferencies
         TabPage3.Location = New Point(4, 24)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(3)
-        TabPage3.Size = New Size(417, 316)
+        TabPage3.Size = New Size(417, 361)
         TabPage3.TabIndex = 2
         TabPage3.Text = "A sobre de"
         TabPage3.UseVisualStyleBackColor = True
@@ -394,28 +432,12 @@ Partial Class Preferencies
         PictureBox1.TabIndex = 2
         PictureBox1.TabStop = False
         ' 
-        ' Label13
-        ' 
-        Label13.AutoSize = True
-        Label13.Location = New Point(15, 170)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(127, 15)
-        Label13.TabIndex = 14
-        Label13.Text = "Nº de mesos de suport"
-        ' 
-        ' MesosSuport
-        ' 
-        MesosSuport.Location = New Point(323, 169)
-        MesosSuport.Name = "MesosSuport"
-        MesosSuport.Size = New Size(58, 23)
-        MesosSuport.TabIndex = 15
-        ' 
         ' Preferencies
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         AutoSizeMode = AutoSizeMode.GrowAndShrink
-        ClientSize = New Size(466, 441)
+        ClientSize = New Size(466, 468)
         Controls.Add(Btn_Guardar)
         Controls.Add(TabControl1)
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -432,13 +454,13 @@ Partial Class Preferencies
         TabControl1.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         TabPage1.PerformLayout()
+        CType(MesosSuport, ComponentModel.ISupportInitialize).EndInit()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        CType(MesosSuport, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -477,4 +499,6 @@ Partial Class Preferencies
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents MesosSuport As NumericUpDown
     Friend WithEvents Label13 As Label
+    Friend WithEvents TB_correuAvis As TextBox
+    Friend WithEvents CB_enviarCorreu As CheckBox
 End Class

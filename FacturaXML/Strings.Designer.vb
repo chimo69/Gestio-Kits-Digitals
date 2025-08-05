@@ -25,7 +25,7 @@ Namespace My.Resources
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0"),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
-    Friend Class Strings
+    Public Class Strings
         
         Private Shared resourceMan As Global.System.Resources.ResourceManager
         
@@ -40,7 +40,7 @@ Namespace My.Resources
         '''  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
+        Public Shared ReadOnly Property ResourceManager() As Global.System.Resources.ResourceManager
             Get
                 If Object.ReferenceEquals(resourceMan, Nothing) Then
                     Dim temp As Global.System.Resources.ResourceManager = New Global.System.Resources.ResourceManager("FacturaXML.Strings", GetType(Strings).Assembly)
@@ -55,7 +55,7 @@ Namespace My.Resources
         '''  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         '''</summary>
         <Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
-        Friend Shared Property Culture() As Global.System.Globalization.CultureInfo
+        Public Shared Property Culture() As Global.System.Globalization.CultureInfo
             Get
                 Return resourceCulture
             End Get
@@ -67,7 +67,7 @@ Namespace My.Resources
         '''<summary>
         '''  Busca una cadena traducida similar a Direcció.
         '''</summary>
-        Friend Shared ReadOnly Property Direccio() As String
+        Public Shared ReadOnly Property Direccio() As String
             Get
                 Return ResourceManager.GetString("Direccio", resourceCulture)
             End Get
@@ -76,7 +76,7 @@ Namespace My.Resources
         '''<summary>
         '''  Busca una cadena traducida similar a Nom.
         '''</summary>
-        Friend Shared ReadOnly Property Nom() As String
+        Public Shared ReadOnly Property Nom() As String
             Get
                 Return ResourceManager.GetString("Nom", resourceCulture)
             End Get

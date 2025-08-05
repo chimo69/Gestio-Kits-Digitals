@@ -47,5 +47,11 @@
     <Setting Name="MesosSuport" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">12</Value>
     </Setting>
+    <Setting Name="CorreuAvis" Type="System.String" Scope="User">
+      <Value Profile="(Default)">montse@gruptelematic.net</Value>
+    </Setting>
+    <Setting Name="EnviarCorreu" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
