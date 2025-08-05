@@ -12,6 +12,7 @@ Public Class EstatJustificacio
     Dim Progress As Integer
     Dim PercentatgeTeFactura As Integer = 0
     Dim Subvencio As String
+    Dim estatabansguardar As Integer
 
     Public Sub New(EmpresaRebuda As String, SolucioRebuda As String, IdEmpresaRebuda As Integer, IdSolucioRebuda As Integer, IdTipusSolucioRebuda As Integer, SubvencioRebuda As String, tipusRebut As Integer)
 
@@ -70,24 +71,26 @@ Public Class EstatJustificacio
                     If tipus = 1 Then Lbl_tipusJustificacio.Text = "Primera justificació"
                     If tipus = 2 Then Lbl_tipusJustificacio.Text = "Segona justificació"
 
-                    Select Case (lector.GetValue("Estat"))
-                            Case 0
-                                RB_Proces0.Checked = True
-                            Case 1
-                                RB_Proces1.Checked = True
-                            Case 2
-                                RB_Proces2.Checked = True
-                            Case 3
-                                RB_Proces3.Checked = True
-                            Case 4
-                                RB_Proces4.Checked = True
-                            Case 5
-                                RB_Proces5.Checked = True
-                            Case 6
-                                RB_Proces6.Checked = True
-                            Case 7
-                                RB_Proces7.Checked = True
-                            Case 8
+                    estatabansguardar = lector.GetValue("Estat")
+
+                    Select Case (estatabansguardar)
+                        Case 0
+                            RB_Proces0.Checked = True
+                        Case 1
+                            RB_Proces1.Checked = True
+                        Case 2
+                            RB_Proces2.Checked = True
+                        Case 3
+                            RB_Proces3.Checked = True
+                        Case 4
+                            RB_Proces4.Checked = True
+                        Case 5
+                            RB_Proces5.Checked = True
+                        Case 6
+                            RB_Proces6.Checked = True
+                        Case 7
+                            RB_Proces7.Checked = True
+                        Case 8
                             RB_Proces8.Checked = True
                         Case 9
                             RB_Proces9.Checked = True
@@ -96,7 +99,7 @@ Public Class EstatJustificacio
                         Case 11
                             RB_Proces11.Checked = True
                     End Select
-                    End If
+                End If
                     lector.Close()
             Catch ex As Exception
 
@@ -170,13 +173,29 @@ Public Class EstatJustificacio
         Dim txtDataPresentacio As String
         Dim sqltxt As String
 
-        If RB_Proces0.Checked = True Then estat = 0
+        If RB_Proces0.Checked = True Then
+            estat = 0
+            If tipus = 1 And estatabansguardar <> 0 Then
+                'Enviar correu a Montse
+                EnviarCorreo("chimo69@gmail.com", Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
+                Empresa.Text + " - " + Solucio.Text + vbCrLf + vbCrLf + vbCrLf +
+                 "Salutacions!")
+            End If
+        End If
+
         If RB_Proces1.Checked = True Then estat = 1
         If RB_Proces2.Checked = True Then estat = 2
         If RB_Proces3.Checked = True Then
             estat = 3
             txtDataPresentacio = StringDB(Format(DataPresentacio.Value, "yyyy-MM-dd"))
             sqltxt = ", DataPresentacio=" & txtDataPresentacio + " "
+
+            If tipus = 1 And estatabansguardar <> 3 Then
+                'Enviar correu a Montse
+                EnviarCorreo("chimo69@gmail.com", Empresa.Text + " - " + Solucio.Text, "Bones Montse, s'ha presentat la següent justificació:" + vbCrLf + vbCrLf +
+                Empresa.Text + " - " + Solucio.Text + vbCrLf + vbCrLf + vbCrLf +
+                 "Salutacions!")
+            End If
         Else
             sqltxt = ""
         End If
@@ -195,7 +214,6 @@ Public Class EstatJustificacio
         If RB_Proces9.Checked = True Then estat = 9
         If RB_Proces10.Checked = True Then estat = 10
         If RB_Proces11.Checked = True Then estat = 11
-
 
         Try
             conexion.Open()

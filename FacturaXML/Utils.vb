@@ -1,4 +1,7 @@
-﻿Module Utils
+﻿Imports System.Net
+Imports System.Net.Mail
+
+Module Utils
     Public cadena As String = "Data Source=" & Application.StartupPath & "\Database\GestioKitsDB.db;Version=3;UseUTF8Encoding=True;"
     Public taronja As Color = Color.FromArgb(255, 197, 128)
     Public vermell As Color = Color.FromArgb(255, 128, 128)
@@ -62,5 +65,30 @@
         'Indico apertura exitosa.
         Return True
     End Function
+
+    Public Sub EnviarCorreo(destinatario As String, asunto As String, cuerpo As String)
+        Try
+            ' Configurar el cliente SMTP
+            Dim clienteSmtp As New SmtpClient("smtp.gmail.com")
+            clienteSmtp.Port = 587 ' o 465 o 25 según el proveedor
+            clienteSmtp.EnableSsl = True
+            clienteSmtp.Credentials = New NetworkCredential("antonio@gruptelematic.net", "bcyr fggq bmwk etct")
+
+            ' Crear el mensaje de correo
+            Dim mensaje As New MailMessage()
+            mensaje.From = New MailAddress("antonio@gruptelematic.net")
+            mensaje.To.Add(destinatario)
+            mensaje.Subject = asunto
+            mensaje.Body = cuerpo
+            mensaje.IsBodyHtml = False ' o True si usas HTML
+
+            ' Enviar el correo
+            clienteSmtp.Send(mensaje)
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 
 End Module
